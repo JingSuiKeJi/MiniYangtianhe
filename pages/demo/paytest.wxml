@@ -1,0 +1,11 @@
+<wxs module="filter" src="../../filter/filter.wxs"></wxs>
+<import src="../../wxParse/wxParse.wxml"/>
+<header title="爱亲优选" hideLeftBtn="true"></header>
+<view class="container" style="padding-top: {{headerHeight}}px">
+    <view   class="ui-main">
+        <view class="ui-logo">
+            <image src="{{logo}}"></image>
+        </view>
+        <button bindtap="onPayTap" class="ui-btn">给钱</button>
+    </view>
+</view>

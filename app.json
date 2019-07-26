@@ -1,0 +1,18 @@
+{
+  "pages": [
+    
+  ],
+  "window": {
+    
+  },
+  "usingComponents": {
+    
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "获取定位"
+    }
+  },
+  "sitemapLocation": "sitemap.json",
+  "navigateToMiniProgramAppIdList": ["wx0349576be4e669ec"]
+}

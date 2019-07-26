@@ -1,0 +1,10 @@
+<!--模板固定格式 data页面传递进来的数据,constant模板对象定义的常量-->
+<view>
+    <view bindtap="tempTap" class="userinfo">
+        <text class="userinfo-nickname">{{data.userInfo}}</text>
+        <text class="userinfo-nickname">{{constant.test}}</text>
+    </view>
+    <view class="usermotto">
+        <text class="user-motto">{{data.motto}}</text>
+    </view>
+</view>

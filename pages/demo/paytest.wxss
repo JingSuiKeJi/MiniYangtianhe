@@ -1,0 +1,258 @@
+@import "/wxParse/wxParse.wxss";
+page {
+    background-color: #fff;
+}
+.ui-main {
+    width:100%;
+}
+.ui-logo {
+    position: relative;
+    width: 191rpx;
+    height: 191rpx;
+    margin: 110rpx auto 0 auto;
+    border-radius: 190rpx;
+    border: solid 4rpx #efefef;
+}
+
+.ui-logo image {
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 10rpx;
+    right: 0;
+    width: 85rpx;
+    height: 92rpx;
+    margin: auto;
+}
+
+.ui-phone__content {
+    position: relative;
+    padding: 30rpx 90rpx 30rpx 90rpx;
+}
+.ui-phone__box {
+    position: relative;
+    width: 100%;
+    height: 112rpx;
+    margin-top: 32rpx;
+    border-radius: 10rpx;
+    border: solid 3rpx #d6d6d6;
+}
+
+.ui-phone__box > input {
+    position: absolute;
+    top: 0;
+    left: 100rpx;
+    width: 450rpx;
+    height: 112rpx;
+    line-height: 1.5;
+    font-size: 32rpx;
+    color: #333;
+    font-weight: 400;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+.ui-phone__box:nth-child(2) > input {
+    width: 400rpx;
+}
+
+.ui-phone__box > input::placeholder {
+    color: #ededed;
+}
+
+.ui-hide {
+    display: block;
+    position: absolute;
+    right: 40rpx;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    width: 30rpx;
+    height: 15rpx;
+}
+
+.ui-icon {
+    display: block;
+    position: absolute;
+    width: 47rpx;
+    height: 52rpx;
+    left: 27rpx;
+    top: 4rpx;
+    bottom: 0;
+    margin: auto 0;
+}
+
+.ui-icon > .is-phoneIcon {
+    width: 45rpx;
+    height: 55rpx;
+}
+
+.ui-phone__code {
+    position: absolute;
+    right: 0;
+    height: 1rpx;
+    line-height: 1rpx;
+    font-size: 28rpx;
+    font-weight: 400;
+    /* color: $mainColor; */
+}
+
+.ui-clock {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 5rpx;
+    width: 134rpx;
+    height: 37rpx;
+    line-height: 37rpx;
+    margin: auto 0;
+    font-size: 24rpx;
+    color: #999;
+    font-weight: 400;
+    text-align: center;
+    border-radius: 2rpx;
+    border: 1rpx solid #999;
+}
+
+.ui-btn {
+    width: 570rpx;
+    height: 90rpx;
+    line-height: 90rpx;
+    margin: 75rpx auto 0 auto;
+    font-size: 34rpx;
+    text-align: center;
+    color: #fff;
+    font-weight: 500;
+    letter-spacing: 20rpx;
+    text-indent: 20rpx;
+    border-radius: 10rpx;
+    background: linear-gradient(185deg,rgba(226,0,130,1),rgba(238,126,113,1));
+}
+
+.ui-btn:active {
+    opacity: 0.5;
+}
+
+.ui-thridTitle {
+    display: block;
+    position: relative;
+    width: 580rpx;
+    height: 30rpx;
+    line-height: 30rpx;
+    margin:58rpx auto 0 auto;
+    font-size: 26rpx;
+    color: #9e9e9e;
+    text-align: center;
+}
+
+.ui-thridTitle::after{
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 220rpx;
+    height: 4rpx;
+    margin: auto 0;
+    background-color: #ededed;
+}
+
+.ui-thridTitle::before {
+    content: '';
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 220rpx;
+    height: 4rpx;
+    margin: auto 0;
+    background-color: #ededed;
+}
+
+.ui-thirdBox {
+    display: block;
+    bottom: 80rpx;
+    width: 100%;
+    margin:50rpx auto 60rpx auto;
+    text-align: center;
+}
+
+.ui-thirdItem {
+    display: inline-block;
+}
+
+.ui-thirdIcon {
+    display: inline-block;
+    width: 84rpx;
+    height: 84rpx;
+    margin:0 50rpx 0 50rpx;
+}
+
+.user-protocol-btn{
+    width: 100%;
+    font-size: 24rpx;
+    text-align: center;
+    position: absolute;
+    bottom: 40rpx;
+}
+
+.user-protocol-btn text{
+    color: #f08300;
+}
+
+.protocol-wrapper{
+    width: 90%;
+    height: 90%;
+    border: 2rpx solid #f1f1f1;
+    -webkit-border-radius: 10%;
+    -moz-border-radius: 10%;
+    border-radius: 10%;
+    background: #ffffff;
+    position: absolute;
+    top: 3%;
+    left: 5%;
+}
+
+.protocol-wrapper > .title {
+    width: 80%;
+    height: 40rpx;
+    line-height: 40rpx;
+    font-size: 36rpx;
+    color: #656565;
+    padding-left: 10%;
+    margin-top: 40rpx;
+}
+
+.protocol-wrapper > .content {
+    width: 90%;
+    height: auto;
+    font-size: 28rpx;
+    color: #656565;
+    padding-left: 5%;
+    margin-top: 20rpx;
+}
+.protocol-wrapper > .btn{
+    margin-top: 20rpx;
+}
+
+.protocol-wrapper > .btn > view{
+    display: inline-block;
+    width: 49.5%;
+    height: 60rpx;
+    line-height: 60rpx;
+    font-size: 36rpx;
+    color: #656565;
+    text-align: center;
+}
+
+.protocol-wrapper > .btn > .sure{
+    color: #a41717;
+}
+
+.protocol-wrapper > .btn > .cancel{
+    border-right: 2rpx solid #e9e9e9;
+}

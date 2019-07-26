@@ -1,0 +1,84 @@
+var filter = {
+    getDate: function (value) {
+        if ((value + '').length < 13) value *= 1000;
+        var d = getDate(value);
+        // d.setTime(value);
+        var year = d.getFullYear();
+        var month = d.getMonth() + 1;
+        var day = d.getDate();
+        var timeStr = d.toTimeString();
+        var time = timeStr.substring(0, timeStr.indexOf('GMT'));
+        time = time.substring(0, time.length - 4);
+        var date = d.getDay();
+        if (month < 10) month = "0" + month;
+        if (day < 10) day = "0" + day;
+        var array = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
+        var strDate = year + '-' + month + '-' + day + '(' + array[date] + ')' + ' ' + time;
+        return strDate;
+    },
+    getDay: function (value) {
+        if ((value + '').length < 13) value *= 1000;
+        var d = getDate(value);
+        // d.setTime(value);
+        var year = d.getFullYear();
+        var month = d.getMonth() + 1;
+        var day = d.getDate();
+        var timeStr = d.toTimeString();
+        var time = timeStr.substring(0, timeStr.indexOf('GMT'));
+        time = time.substring(0, time.length - 4);
+        var date = d.getDay();
+        if (month < 10) month = "0" + month;
+        if (day < 10) day = "0" + day;
+        var strDate = year + '-' + month + '-' + day;
+        return strDate;
+    },
+    countDown: function(endTime, startTime, type) {
+        // return startTime;
+        function format(time) {
+            return time < 10 ? ('0' + time): time
+        }
+        var t = endTime - startTime;
+        var seconds = Math.floor( (t) % 60 );
+        var minutes = Math.floor( (t/60) % 60 );
+        var hours = Math.floor( (t/(60*60)) );
+
+        if (!type) {
+            return t >= 0 ? (format(hours) + ':' + format(minutes) + ':' + format(seconds)): '00:00:00';
+        } else if (type == 'h') {
+            return t >= 0 ? format(hours): '0';
+        } else if (type == 'm') {
+            return t >= 0 ? format(minutes): '0';
+        } else if (type == 's') {
+            return t >= 0 ? format(seconds): '0';
+        }
+    },
+    getPhoto: function (host, photo) {
+        if (photo) {
+            photo = photo.replace('//upload','/upload');
+            if (photo.indexOf('http') > -1) {
+                return photo;
+            } else {
+                return photo ? (host + photo) : '';
+            }
+        } else {
+            return '';
+        }
+    },
+    getAvatar: function (host, avatar) {
+        if (avatar) {
+            avatar = avatar.replace('//upload','/upload');
+            if (avatar.indexOf('http') > -1) {
+                return avatar;
+            } else {
+                return avatar ? (host + avatar) : '';
+            }
+        } else {
+            return 'http://www.gzlingren.com:8098/libeika/images/account/icon-logo.png';
+        }
+    },
+    getLocalPhoto: function (path) {
+        var host = 'http://www.gzlingren.com:8098/libeika/images';
+        return host + path;
+    }
+};
+module.exports = filter;

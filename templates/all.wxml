@@ -1,0 +1,4 @@
+<!--  demo -->
+<template name="demo">
+    <include src="/templates/demo.wxml"/>
+</template>
