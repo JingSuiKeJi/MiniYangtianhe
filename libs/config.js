@@ -85,7 +85,8 @@ config.prototype = {
             getUserAssembleList:'/app/assemble/getUserAssembleList.do',
         },
         user: {
-            login: ''
+            login: '/app/account/login.do',
+            getMyInfo: '/app/user/getMyInfo.do'
         },
         goods: {
             getGoodsDetail: '/app/goods/getGoodsDetail.do',
@@ -99,7 +100,7 @@ config.prototype = {
             getAssembleList:'/app/assemble/getAssembleList.do',
             getUserAssembleList:'/app/assemble/getUserAssembleList.do',
             getCommentList: '/app/goods/getCommentList.do',
-        }
+        },
     }
 
 };

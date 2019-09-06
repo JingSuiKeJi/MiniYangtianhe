@@ -9,7 +9,7 @@ const Goods = require('../../service/Goods');
 const data = {
   hideModal:true, //模态框的状态  true-隐藏  false-显示
   animationData:{},
-  flag:2,//0商品详情页，1拼团页面,2 开团页面，3限时抢购
+  flag:0,//0商品详情页，1拼团页面,2 开团页面，3限时抢购
   ScaleType: -1,
   cartNum: 1,
   scale: '请选择规格',
@@ -190,10 +190,10 @@ const methods = {
                url:'../../pages/store/cart'  
             });
         } else {
-            
+            _g.toast({
+                title: '请先登陆',
+            }); 
         }
-       
-
      }
 };
 
