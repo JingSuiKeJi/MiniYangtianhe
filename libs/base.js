@@ -266,6 +266,7 @@ base.prototype = {
             onGotUserInfo: function (e) {
                 const self = this;
                 const detail = e.detail;
+                // _g.setLogin(self, detail);
                 wx.login({
                     success(res) {
                         if (res.code) {
@@ -1510,8 +1511,8 @@ base.prototype = {
     },
     setLogin: function (self, opts) {
         const _g = this;
-        const Platform = require('../service/Platfrom');
-        Platform.login(self, {
+        const User = require('../service/User');
+        User.login(self, {
             jsCode: opts.code,
             rawData: opts.rawData,
             signature: opts.signature,
@@ -1520,7 +1521,29 @@ base.prototype = {
             promoCode: _g.getLS('promoCode') || '',
             storeId: 1
         }).then((ret) => {
-            event.emit('login-suc');
+            _g.setLS(_c.LSKeys.sessionKey, ret.data.sessionKey);
+            _g.getMyInfo(self, {
+                type: 'login'
+            });
+        },(err)=>{
+            //TODO login fail
+            _g.toast({
+                title: '登录失败,请重试'
+            });
+        });
+    },
+    getMyInfo: function (self, opts) {
+        const _g = this;
+        const User = require('../service/User');
+        User.getMyInfo(self, {
+            
+        }).then((ret) => {
+            _g.setLS(_c.LSKeys.userInfo, ret.data.myInfo);
+            if (opts.type == 'login') {
+                event.emit('login-suc', {
+                    userInfo: ret.data.myInfo
+                });
+            }
         },(err)=>{
             //TODO login fail
         });

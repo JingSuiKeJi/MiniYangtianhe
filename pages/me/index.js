@@ -5,6 +5,7 @@ const _g = app.base;
 const _c = app.config;
 const _t = app.temps;
 const event = app.event;
+
 let data = {
 	showNikeName:false,//用户信息
 	showModal: false,//模态框
@@ -20,8 +21,8 @@ const onLoad = function(self) {
 	self.getTabBar().setData({
 		selected: 4
 	});
-	event.on('login-suc', self, ()=>{
-		
+	event.on('login-suc', self, (data)=>{
+		//TODO setData data.userInfo
 	});
 };
 const onShow = function(self) {}

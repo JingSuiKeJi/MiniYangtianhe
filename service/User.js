@@ -15,6 +15,14 @@ class User {
             data: reqData
         }, page);
     }
+
+    getMyInfo(page, reqData) {
+        _g.dm.canLoadMore = 1;
+        return _g.ajax({
+            url: mini.user.getMyInfo,
+            data: reqData
+        }, page);
+    }
     
 }
 
