@@ -31,6 +31,7 @@ const onLoad = function (self) {
         num: self.data.num,
         skuId: self.data.skuId,
         orderStatus: self.data.orderStatus,
+        buyType: self.data.buyType
     }
     if (self.data.thirdId) {
         data.thirdId = self.data.thirdId
@@ -138,7 +139,8 @@ const methods = {
             skuId: opts.skuId,
             num: opts.num,
             orderStatus: opts.orderStatus,
-            remark: opts.remark
+            remark: opts.remark,
+            buyType: opts.buyType
         }
         if (self.data.thirdId) {
             param.thirdId = opts.thirdId;
@@ -168,6 +170,12 @@ const methods = {
         self.setData({
             remark: e.detail.value 
         })
+    },
+    onAddressTap: function (e) {
+        let self = this;
+        _g.navigateTo({
+            url: 'pages/me/myAddress',
+        }, self);
     }
 }
 

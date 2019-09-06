@@ -45,7 +45,7 @@ const data = {
 
 // 页面onLoad方法
 const onLoad = function(self) {
-    // self.getCartList();
+    self.getCartList();
     self.getData();
     self.moveBarrage();
     const title = self.data.self;
@@ -300,17 +300,13 @@ const methods = {
     },
     onBuyTap: function(e) {
         let self = this;
-        // let data = {
-        //     id: 2,
-        //     num: self.data.cartNum,
-        //     orderStatus: self.data.list.type
-        // }
         let data = {
             platformFlag: 2,
             id: 2,
             num: self.data.cartNum,
             skuId: 2,
             orderStatus: 1,
+            buyType: 1
         }
         if (self.data.thirdId) {
             data.thirdId = self.data.thirdId;

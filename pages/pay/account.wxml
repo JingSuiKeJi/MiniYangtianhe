@@ -7,7 +7,7 @@
         <text class="headerItem_text">点击成为PLUS会员，享更多权限优惠！ </text>
         <image src="{{filter.getLocalPhoto('cart_right.png')}}" class="headerItem_rightIcon"/>
     </view>
-    <view class="ui-addressBox">
+    <view class="ui-addressBox"  bindtap="onAddressTap">
         <image src="{{filter.getLocalPhoto('my_landmarkIcon.png')}}" class="ui-addressItem__addressIcon"/>
         <view class="ui-addressItem__detail" wx:for="{{infoList}}" wx:key="{{index}}" wx:if="{{infoList.length}}" >
             <view class="ui-detailItem__info">

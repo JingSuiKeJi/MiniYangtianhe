@@ -118,15 +118,19 @@
                 </view>
             </view>
         </view>
-        <view class="ui-fixBox">
+        <view class="ui-fixBox" wx:if="{{isMgt}}">
             <image src="{{allSelect ? filter.getLocalPhoto('cart_selestIcon.png') : filter.getLocalPhoto('cart_selestEmptyIcon.png')}}" 
             class="ui-fixItem__selectIcon"
-            bindtap="allChoseTap"/>
-            <text class="ui-fixItem__text">全选</text>
-            <text class=" ui-fixItem__allText" wx:if="{{!isMgt}}">合计：</text>
-            <text class=" ui-fixItem__price"wx:if="{{!isMgt}}">¥ {{mediTotal + storeTotal}}</text>
+            bindtap="allChoseTap" />
+            <text class="ui-fixItem__text" >全选</text>
             <view class="ui-fixItem__delectBtn" wx:if="{{isMgt}}" bindtap="onBatchDelete">删除</view>
-            <view class="ui-fixItem__btn" wx:else bindtap="onAccountTap">结算({{mediNum + storeNum}})</view>
+        </view>
+        <view class="ui-fixBox" wx:else>
+            <view class="ui-textBox">
+                <text class=" ui-fixItem__allText" >合计：</text>
+                <text class=" ui-fixItem__price">¥ {{mediTotal + storeTotal}}</text>
+            </view>
+            <view class="ui-fixItem__btn"  bindtap="onAccountTap">结算({{mediNum + storeNum}})</view>
         </view>
     </view>
    <!-- 购物车没有东西的情况下 -->

@@ -194,7 +194,7 @@ page {
 }
 .ui-fixBox {
     position: fixed;
-    bottom: 106rpx;
+    bottom: 120rpx;
 	margin-top: 100rpx;
 	padding-top: 20rpx;
 	padding-bottom: 46rpx;
@@ -251,11 +251,14 @@ page {
     font-weight:600;
     color:#fff;
     background-image: url(http://www.gzlingren.com:8098/yangtianhe/cart_greenBtn.png);
-    /* background-image: url(http://m.qpic.cn/psb?/V12Kdegv0qd4wf/0ERQRzton3fzX2ygXoLLA9CGSAgzV3OH3SPALYBmjNQ!/b/dD4BAAAAAAAA&bo=wABQAAAAAAADF6I!&rf=viewer_4&t=5); */
     background-size: 192rpx 90rpx;
     text-align: center;
     position: absolute;
+    top: 20rpx;
     right: 20rpx;
+}
+.ui-textBox {
+    margin-left: 20rpx;
 }
 .ui-fixItem__delectBtn {
 	position: absolute;
