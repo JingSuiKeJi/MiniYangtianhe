@@ -3,6 +3,7 @@ const app = getApp();
 const _ = app.underscore;
 const _g = app.base;
 const _c = app.config;
+const Goods = require('../../service/Goods');
 // 初始化数据
   const data = {
       allSelect: false,
@@ -56,7 +57,8 @@ const _c = app.config;
   const onLoad = function (self) {
      self.getTabBar().setData({
      	selected:3
-     });
+	 });
+	 self.getData();
   };
   
   // 页面onShow方法
@@ -74,11 +76,12 @@ const _c = app.config;
 			}).then((ret)=>{
 				let data = ret.data;
 				self.setData({
-					total: total
+				    cartList: data
 				});
 			},(err)=>{
 		
 			});
+		
 		},
         onSubtractionTap: function (e) {
 			let self = this;
@@ -87,19 +90,20 @@ const _c = app.config;
 			let index = e.target.dataset.index;
 			if (e.target.dataset.type==1) {
 				if (medecineList[index].count == 1) return;
-				medecineList[index].count = medecineList[index].count - 1;
+				    medecineList[index].count = medecineList[index].count - 1;
 				self.setData({
-				medecineList: medecineList
+				    medecineList: medecineList
 				});
 				self.getMonney('medecineList',1);
 			} else {
 				if (storeList[index].count == 1) return;
 				storeList[index].count = storeList[index].count - 1;
 				self.setData({
-				storeList: storeList
+				    storeList: storeList
 				});
 				self.getMonney('storeList',2); 
 			}
+			self.subtractNum();
 
         },
         onAddTap: function (e) {
@@ -110,73 +114,70 @@ const _c = app.config;
 			if (e.target.dataset.type==1) {
 				medecineList[index].count = medecineList[index].count + 1;
 				self.setData({
-				medecineList: medecineList
+				    medecineList: medecineList
 				});
 				self.getMonney('medecineList',1);
 			} else {
 				storeList[index].count = storeList[index].count + 1;
 				self.setData({
-				storeList: storeList
+				    storeList: storeList
 				});
 				self.getMonney('storeList',2); 
 			}
+			self.addNum();
            
         },
         onChoseTap: function (e) {
 			let self = this;
+			let opts = e.target.dataset;
 			let medecineList = self.data.medecineList;
 			let storeList = self.data.storeList;
-			let index = e.target.dataset.index;
-			if (e.target.dataset.type == 1) {
+			let index = opts.index;
+			if (opts.type == 1) {
 				medecineList[index].isSelect=!medecineList[index].isSelect
 				self.setData({
-				medecineList: medecineList
+				    medecineList: medecineList
 				});
 				if (!medecineList[index].isSelect) {
-				self.setData({
-					medicineFlag: false
-				})
+					self.setData({
+						medicineFlag: false,
+						allSelect: false,
+					})
 				}
 				self.getMonney('medecineList',1);
 			} else {
 				storeList[index].isSelect = !storeList[index].isSelect
 				self.setData({
-				storeList: storeList
+				    oreList: storeList
 				});
-				if (!storeList[index].isSelect) {
-				self.setData({
-					storeFlag: false
-				})
+					if (!storeList[index].isSelect) {
+					self.setData({
+						storeFlag: false,
+						allSelect: false,
+					})
 				}
 				self.getMonney('storeList',2);
 			}   
         },
         onAllTap: function (e) {
 			let self = this;
-			let medecineList = self.data.medecineList;
-			let storeList = self.data.storeList;
 			if (e.target.dataset.type == 1) {
 				self.setData({
-				medicineFlag: !self.data.medicineFlag
+				     medicineFlag: !self.data.medicineFlag
 				})
 				self.selectTap( 'medicineFlag','medecineList');
-				// for (let index = 0; index < medecineList.length; index++) {
-				//   medecineList[index].isSelect = self.data.medicineFlag
-				// }
-				// self.setData({
-				//   medecineList: medecineList
-				// })
-          } else {
+				self.getMonney('medecineList',1);
+			} else {
 				self.setData({
-				storeFlag: !self.data.storeFlag
+					storeFlag: !self.data.storeFlag
 				})
-				for (let index = 0; index < storeList .length; index++) {
-				storeList[index].isSelect = self.data.storeFlag
-				}
+				self.selectTap( 'storeFlag','storeList');
+				self.getMonney('storeList',2);
+			}
+			if (self.data.medicineFlag == self.data.storeFlag) {
 				self.setData({
-				storeList : storeList 
-				});
-				self.getMonney('storeList',2)
+					allSelect: self.data.medicineFlag
+				})
 			}
           
         },
@@ -189,18 +190,20 @@ const _c = app.config;
 			});
 			self.totalFun('medecineList');
 			self.totalFun('storeList');
+			self.selectTap( 'medicineFlag','medecineList');
+			self.selectTap( 'storeFlag','storeList');
+			self.getMonney('medecineList',1);
+            self.getMonney('storeList',2);
         },
         selectTap: function (flag,arr) {
 			let self = this;
 			let list = self.data[arr];
-			console.log(111,self.data[arr])
 			for (let index = 0; index < list.length; index++) {
 				list[index].isSelect = self.data[flag];
 			}
 			self.setData({
-				arr: list
+				[arr]: list
 			})
-			console.log(222,self.data[arr])
         },
 
         totalFun:function (arr) {
@@ -222,25 +225,25 @@ const _c = app.config;
 			let list = self.data[arr];
 			if (type == 1) {
 				for (let index = 0; index < list.length; index++) {
-				if (list[index].isSelect) {
-					mediNum = mediNum + 1;
-					mediTotal = mediTotal +list[index].count * list[index].price
-					}  
-				}
+					if (list[index].isSelect) {
+						mediNum = mediNum + 1;
+						mediTotal = mediTotal +list[index].count * list[index].price
+						}  
+					}
 				self.setData({
-				mediNum:  mediNum,
-				mediTotal: mediTotal,
+					mediNum:  mediNum,
+					mediTotal: mediTotal,
 				})
 			} else {
 				for (let index = 0; index < list.length; index++) {
-				if (list[index].isSelect) {
-					storeNum = storeNum + 1;
-					storeTotal = storeTotal +list[index].count * list[index].price; 
-				}  
+					if (list[index].isSelect) {
+						storeNum = storeNum + 1;
+						storeTotal = storeTotal +list[index].count * list[index].price; 
+					}  
 				}
 				self.setData({
-				storeNum: storeNum,
-				storeTotal: storeTotal 
+					storeNum: storeNum,
+					storeTotal: storeTotal 
 				})
 			}
         },
@@ -260,9 +263,7 @@ const _c = app.config;
 			}
           
         },
-      
         //滑动事件处理
-      
         touchmove: function (e) {
 			let self = this;
 			let index = e.currentTarget.dataset.index;//当前索引
@@ -320,12 +321,15 @@ const _c = app.config;
 			return 360 * Math.atan(_Y / _X) / (2 * Math.PI);
         },
         //删除事件
-        del: function (e) {
-			this.data.medecineList.splice(e.currentTarget.dataset.index, 1)
-			this.setData({
-				medecineList: this.data.medecineList
+        onDeleteTap: function (e) {
+			let self = this;
+			Goods.deleteCart(self, {
+				id: 1
+			}).then((ret)=>{
+				self.getCartList()
+			},(err)=>{
 		
-			})
+			});
         },
         onMgtTap: function (e) {
 			let self = this;
@@ -338,8 +342,9 @@ const _c = app.config;
 			_g.navigateTo({
 				url:'pages/pay/account'
 			},self)
-        },
-        onDelectTap: function (e) {
+		},
+		//批量删除
+        onBatchDelete: function (e) {
 			let self = this;
 			wx.showModal({
 				content: '确认删除该商品？',
@@ -349,9 +354,14 @@ const _c = app.config;
 				confirmColor: '#007AFF',
 				success (res) {
 				if (res.confirm) {
-					console.log('用户点击确定')
+					Goods.batchDeleteCart(self, {
+						ids: '1,2,3'
+					}).then((ret)=>{
+						self.getCartList()
+					},(err)=>{
+					});
 				} else if (res.cancel) {
-					console.log('用户点击取消')
+
 				}
 				}
 			})
@@ -368,15 +378,28 @@ const _c = app.config;
 		
 			});
 		},
+		//数量加 1 接口
 		addNum: function () {
 			Goods.addNum(self, {
 				id: 1
 			}).then((ret)=>{
-				
+				self.getCartList()
 			},(err)=>{
 		
 			});
-		}
+		},
+		//数量减 1 接口
+		subtractNum: function () {
+			Goods.subtractNum(self, {
+				id: 1
+			}).then((ret)=>{
+				self.getCartList()
+			},(err)=>{
+		
+			});
+		},
+
+
   };
   
   // 有引用template时定义
