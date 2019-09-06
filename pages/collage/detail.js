@@ -363,7 +363,19 @@ const methods = {
             },(err)=>{
         
             }); 
-        }
+        },
+        onCartTap: function (e) {
+            let self = this;
+            if (self.data.userName) {
+                 wx.switchTab({  
+                   url:'../../pages/store/cart'  
+                });
+            } else {
+                _g.toast({
+                    title: '请先登陆',
+                }); 
+            }
+         }
       
 };
 
