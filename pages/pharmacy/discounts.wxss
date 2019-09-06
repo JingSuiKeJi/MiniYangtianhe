@@ -1,0 +1,215 @@
+@charset "UTF-8";
+@import "/libs/common.wxss";
+
+/**discounts.wxss**/
+page{
+	background:rgba(245,245,245,1);
+	width: 100%;
+	height: 100%;
+}
+
+.ui-main {
+    width: 100%;
+	height: 100%;
+}
+
+.ui-memuBox{
+	position: fixed;
+	z-index: 8888;
+	display: flex;
+	height: 98rpx;
+	width: 100%;
+	background: #20CAB4;
+}
+
+.ui-memuBox text{
+	position: relative;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	height: 100%;
+	font-size:26rpx;
+	font-family:PingFangSC-Regular;
+	color:rgba(255,255,255,1);
+	font-weight:400;
+	line-height:98rpx;
+}
+
+.ui-memuHover:after{
+	position: absolute;
+	content: "";
+	top: 82rpx;
+	left: 50%;
+	width:68rpx;
+	height:6rpx;
+	background:rgba(255,255,255,1);
+	border-radius:3px;
+	transform: translateX(-50%);
+}
+
+.ui-discountsBox{
+	display: flex;
+	flex-direction: column;
+	margin-top: 102rpx;
+	width: 100%;
+	margin-bottom: 60rpx;
+}
+
+.ui-discountsItems{
+	position: relative;
+	display: flex;
+	width:686rpx;
+	height:192rpx;
+	margin: 20rpx 0 0 32rpx;
+	background:rgba(255,255,255,1);
+	border-radius:16rpx;
+}
+
+.ui-price{
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	margin: 46rpx 0 0 50rpx;
+}
+
+.ui-priceInfo text:first-child{
+	font-size: 24rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	letter-spacing:2px;
+}
+
+.ui-priceInfo text:last-child{
+	height: 66rpx;
+	font-size: 48rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	letter-spacing:2px;
+}
+
+.toBeUsedColor{
+	color:#EA6363;
+}
+
+.elseColor{
+	color: #B1B1B1;
+}
+
+.ui-moneyOff{
+	height:28rpx;
+	font-size:20rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(102,102,102,1);
+	line-height:28rpx;
+}
+
+.ui-explain{
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	margin: 40rpx 0 0 192rpx;
+}
+
+.ui-explain text:nth-child(1){
+	height:36rpx;
+	font-size:26rpx;
+	font-family:PingFangSC-Medium;
+	font-weight:500;
+	color:rgba(61,61,61,1);
+	line-height:36rpx;
+}
+
+.ui-explain text:nth-child(2){
+	height:28rpx;
+	font-size:20rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(153,153,153,1);
+	line-height:28rpx;
+	margin-top: 12rpx;
+}
+
+.ui-explain text:nth-child(3){
+	height:28rpx;
+	font-size:20rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(153,153,153,1);
+	line-height:28rpx;
+	margin-top: 8rpx;
+}
+
+.btn-immediateUse{
+	position: absolute;
+	top: 72rpx;
+	right: 32rpx;
+	width: 128rpx;
+	height: 48rpx;
+	font-size:22rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(255,255,255,1);
+	line-height:48rpx;
+	text-align: center;
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_immediateUseBtn.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+}
+
+.ui-haveBeenUsed{
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 150rpx;
+	height: 126rpx;
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_used.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+}
+
+.ui-outOfDate{
+	position: absolute;
+	top: 78rpx;
+	right: 40rpx;
+	height:36rpx;
+	font-size:26rpx;
+	font-family:PingFangSC-Medium;
+	font-weight:500;
+	color:rgba(204,204,204,1);
+	line-height:36rpx;
+	letter-spacing:2rpx;
+}
+
+/* 没有优惠券 */
+.ui-blank{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	background: #FFFFFF;
+}
+
+.ui-blankIcon{
+	margin-top:318rpx;
+	width: 200rpx;
+	height: 152rpx;
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_youhuiquan.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+}
+
+.ui-blankText{
+	margin-top: 44rpx;
+	height:42rpx;
+	font-size:30rpx;
+	font-family:PingFang-SC-Medium;
+	font-weight:500;
+	color:rgba(153,153,153,1);
+	line-height:42rpx;
+}

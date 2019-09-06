@@ -1,0 +1,106 @@
+@charset "UTF-8";
+@import "/libs/common.wxss";
+
+/**submitResults.wxss**/
+page{
+	background: #FFFFFF;
+}
+
+.container{
+	background:rgba(241,241,241,1);
+}
+
+.ui-main {
+    width: 100%;
+}
+
+.ui-submitResultsInfo{
+	width: 100%;
+	height:506rpx;
+	background:rgba(255,255,255,1);
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+.ui-successIcon{
+	width: 136rpx;
+	height: 136rpx;
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_withdrawalSuccess.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+	margin-top: 112rpx;
+}
+
+.ui-submitResultsInfo view:nth-child(2){
+	height:34rpx;
+	font-size:34rpx;
+	font-family:PingFangSC-Semibold;
+	font-weight:600;
+	color:rgba(51,51,51,1);
+	line-height:34rpx;
+	margin-top: 52rpx;
+}
+
+.ui-submitResultsInfo view:nth-child(3){
+	height:26rpx;
+	font-size:26rpx;
+	font-family:PingFang-SC-Regular;
+	font-weight:400;
+	color:rgba(153,153,153,1);
+	line-height:26rpx;
+	margin-top:30rpx ;
+}
+
+.ui-submitResultsInfo view:nth-child(4){
+	height:26rpx;
+	font-size:26rpx;
+	line-height:26rpx;
+	margin-top:30rpx;
+}
+
+.ui-submitResultsInfo view:nth-child(4) text:first-child{
+	font-family:PingFang-SC-Regular;
+	font-weight:400;
+	color:rgba(153,153,153,1);
+}
+
+.ui-submitResultsInfo view:nth-child(4) text:last-child{
+	font-family:PingFang-SC-Heavy;
+	font-weight:800;
+	color:rgba(251,98,72,1);
+}
+
+.ui-btnFooter{
+	margin-top: 20rpx;
+	width: 100%;
+	background:#FFFFFF;
+	display: flex;
+	justify-content: center; /* 水平居中 */
+}
+
+.ui-btnFooter view{
+	width: 320rpx;
+	height: 100rpx;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+	font-size:30rpx;
+	font-family:PingFang-SC-Regular;
+	font-weight:400;
+	line-height:100rpx;
+	text-align: center;
+	margin-top:60rpx;
+}
+
+.btn-details{
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_btnDetails.png');
+	color:rgba(102,102,102,1);
+}
+
+.btn-backHome{
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_btnBackHome.png');
+	margin-left: 30rpx;
+	color:rgba(255,255,255,1);
+}

@@ -1,0 +1,186 @@
+<!--pages/store/store.wxml-->
+<wxs module="filter" src="../../filter/filter.wxs"></wxs>
+<view class="container">
+	<navBar title='养乐商城' background='#FF7274' color='white'></navBar>
+	<view class='tab-bottom'></view>
+	<view class="main">
+    <view >
+        <view class="ui-headBox" style="margin-top: {{statusBarHeight+44}}px;">
+            <view class="ui-headBox_search">
+                <input type="text"  placeholder="搜索你想要的商品" bindinput="onSearchTap" bindfocus="onSkipTap" value="{{inputValue}}"/>
+            </view>
+        </view>
+        <view class="ui-tapBox" >
+            <view class="ui-headBox_tap">
+                <text wx:for="{{medicineList}}" bindtap="onResultTap">{{item}}</text>
+            </view>
+        </view>
+        <view class="ui-banner">
+            <view class="ui-banner_bgroundBox" ></view>
+            <swiper
+            autoplay interval="2000" duration="500" circular class="ui-banner_swiper" 
+            bindchange="onChangeTap">
+                <block wx:for="{{imgUrls}}">
+                <swiper-item>
+                    <image src="{{item}}" class="ui-banner_image" />
+                </swiper-item>
+                </block>
+            </swiper>
+            <view class="ui-banner_btnBox">
+                <text wx:for="{{imgUrls.length}}" 
+                    data-index="{{index}}" 
+                    class="{{currentIndex==index ? 'isSelectBtn' : ''}}" >
+                </text>
+            </view>
+        </view>
+        <view class="ui-activityBox">
+            <image src="{{filter.getLocalPhoto('redActivity.png')}}" />
+        </view>
+    </view>
+    <!-- 分类专区 -->
+    <view >
+        <view class="ui-yangleBox">
+            <image src="{{filter.getLocalPhoto('redPerson.png')}}" />
+        </view>
+        <view class="ui-wrapBox">
+            <view class="ui-classBox">
+                <swiper duration="500" class="ui-imageItem_swper" bindchange="onClassifyTap">
+                    <block >
+                        <swiper-item>
+                            <view  class="ui-classBox_item" wx:for="{{classList}}" bindtap="onListTap">
+                                <image src="{{filter.getLocalPhoto(item.url)}}" />
+                                <text>{{item.text}}</text>
+                            </view>
+                        </swiper-item>
+                    </block>
+                    <block >
+                        <swiper-item>
+                            <view  class="ui-classBox_item" wx:for="{{classList}}" bindtap="onListTap">
+                                <image src="{{filter.getLocalPhoto(item.url)}}" />
+                                <text>{{item.text}}</text>
+                            </view>
+                        </swiper-item>
+                    </block>
+                </swiper>
+                <view class="ui-classBox_icon" >
+                    <text  class="{{classifyType == 0 ? 'isSelect' : ''}}"></text>
+                    <text  class="{{classifyType == 1 ? 'isSelect' : ''}}"></text>
+                </view>
+            </view>
+        </view>
+    </view>     
+    <view class="ui-noticeBox">
+        <text >优选公告</text>
+        <text >客服微信：123456</text>
+        <text >客服电话：1234567890</text>
+    </view>
+    <view class="ui-collageBox">
+        <view class="ui-collageItem_top">
+            <view class="ui-topItem_title">优选拼团会</view>
+            <view class="ui-topItem_more" bindtap="onMoreTap">
+                <text>查看更多</text>
+                <image src="{{filter.getLocalPhoto ('home_index_rightIcon.png')}}"  class="ui-topItem_icon"/>
+            </view>
+        </view>
+         <view class="ui-collageItem_bottom">
+            <scroll-view scroll-x  class="ui-collageItem_scrollView">
+                <view wx:for="{{collageList}}" class="ui-collageScroll_item">
+                    <image src="{{filter.getLocalPhoto (item.imgUrl)}}" bindtap="onDetailTap"/>
+                    <view class="ui-collageScroll_itemTitle">{{item.title}}</view>
+                    <view class="ui-collageScroll_itemNow">
+                        <text >拼团价</text>
+                        <text > ￥{{item.nowPrice}}</text>
+                       </view>
+                    <view class="ui-collageScroll_itemPre">￥{{item.prePrice}}</view>   
+                </view>
+            </scroll-view>
+        </view>
+    </view>
+    <!-- 限时抢购和品牌甄选 --> 
+    <view class="ui-imgBox">
+        <image src="{{filter.getLocalPhoto('summer.png')}}" />
+        <view class="ui-buyBox">
+            <view class="ui-buyBox_top">
+                <view >优选限时购</view>
+                <view class="ui-topItem">
+                    <view class="ui-topItem_time">4</view>
+                    <view >天</view>
+                    <view class="ui-topItem_time">13</view>
+                    <view >:</view>
+                    <view class="ui-topItem_time">28</view>
+                    <view >:</view>
+                    <view class="ui-topItem_time">55</view>
+                </view>
+            </view>
+            <view class="ui-buyBox_bottom">
+                <scroll-view scroll-x  class="ui-bottomItem_scrollView">
+                <view wx:for="{{goodList}}" class="ui-scrollView_item">
+                    <image src="{{filter.getLocalPhoto('buy.png')}}" />
+                    <image src="{{filter.getLocalPhoto (item.imgUrl)}}" bindtap="onDetailTap"/>
+                    <view class="ui-scrollView_itemTitle">{{item.title}}</view>
+                    <view class="ui-scrollView_itemNow">￥{{item.nowPrice}}</view>
+                    <view class="ui-scrollView_itemPre">￥{{item.prePrice}}</view>   
+                </view>
+                </scroll-view>
+            </view>
+        </view>
+    </view>
+    <view class="ui-brandSelectBox">
+        <view class="ui-brandSelectItem_top" bindtap="onAllBrandsTap">品牌甄选</view>
+        <view class="ui-brandSelectItem_bottom">
+            <scroll-view scroll-x  class="ui-brandItem_scrollView">
+                <view class="ui-brandScroll_itemTop">
+                <view wx:for="{{imgTopList}}" class="ui-brandScroll_item">
+                    <image src="{{filter.getLocalPhoto(item)}}" bindtap="onBrandsTap"/>
+                    </view>
+                </view>
+            </scroll-view> 
+            <scroll-view scroll-x  class="ui-brandItem_scrollView">
+                <view class="ui-brandScroll_itemBottom">
+                    <view wx:for="{{imgBottomList}}" class="ui-brandScroll_item">
+                        <image src="{{filter.getLocalPhoto(item)}}" />
+                        </view>
+                </view>
+            </scroll-view> 
+        </view>
+    </view>
+    <!-- 推荐榜单 -->
+    <view class="ui-recomListBox">
+        <view class="ui-listItem_top" >推荐榜单</view>
+        <view class="ui-listItem_bottom">
+            <view class="ui-bottomItem_tap">
+                <scroll-view scroll-x  class="ui-tapItem_scrollView">
+                <view wx:for="{{tapList}}" class="ui-tapScroll_item" bindtap="onClickTap" data-type="{{index}}">
+                    <view class="ui-tapScroll_itemText" style="font-weight: {{active == index ? '500' : '400'}}" bindtap="onClickTap" data-type="{{index}}">{{item }}</view>
+                    <view class="ui-tapScroll_itemIcon" style="background-color: {{active == index ? '#20CAB4' : ''}}"></view>
+                </view>
+                </scroll-view>  
+                <view class="ui-tapItem_Icon" bindtap="onSlideTap">
+                    <image src="{{filter.getLocalPhoto('my_downArrow.png')}}" style="transform:{{isSlide ? 'rotate(-180deg)' : ''}}" />
+                </view>
+            </view>
+            <view class="ui-bottomItem_content" wx:if="{{isSlide}}">
+                <view class="ui-content_item" wx:for="{{list}}">
+                    <view class="ui-contentItem_left">
+                        <image src="{{filter.getLocalPhoto(item.url)}}" bindtap="onDetailTap"/>
+                    </view>
+                    <view class="ui-contentItem_right">
+                        <view class="ui-content_title">{{item.title}}</view>
+                        <view class="ui-content_scale">{{item.scale}}</view>
+                        <view class="ui-content_price">
+                            <text>原价￥{{item.prePrice}}</text>
+                            <text>已售{{item.count}}件</text>
+                        </view>
+                        <view class="ui-content_reward">
+                            <text >￥{{item.nowPrice}}</text>
+                            <view >分享赚 ￥{{item.reward}}</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="ui-bottomBox">到底啦，但我们会努力变长的～</view>
+   </view>
+</view>
+

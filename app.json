@@ -1,18 +1,119 @@
 {
   "pages": [
-    
+    "pages/home/index",
+    "pages/search/search",
+    "pages/search/detailList",
+    "pages/store/store",
+    "pages/medicineRoom/medicineRoom",
+    "pages/collage/index",
+    "pages/collage/detail",
+    "pages/collage/more",
+    "pages/collage/join",
+    "pages/pay/order",
+    "pages/collage/bargainList",
+    "pages/collage/bargain",
+    "pages/collage/myBargain",
+    "pages/collage/comments",
+    "pages/search/classify",
+    "pages/step/index",
+    "pages/step/illustration",
+    "pages/step/myFriends",
+    "pages/store/cart",
+    "pages/pay/account",
+    "pages/search/brand",
+    "pages/search/brandList",
+    "pages/me/index",
+    "pages/pharmacy/revenue",
+    "pages/pharmacy/store",
+    "pages/pharmacy/commission",
+    "pages/pharmacy/application",
+    "pages/me/qr",
+    "pages/order/index",
+    "pages/me/bindingWeChat",
+    "pages/me/bindingPhone",
+    "pages/me/poster",
+    "pages/me/blissVerific",
+    "pages/me/blissDetail",
+    "pages/pharmacy/submitResults",
+    "pages/pharmacy/applicationDetails",
+    "pages/me/myCustomer",
+    "pages/me/customerCenter",
+    "pages/me/customerFootmark",
+    "pages/me/myAssistant",
+    "pages/order/orderManage",
+    "pages/order/orderVerifyDetail",
+    "pages/pharmacy/statements",
+    "pages/pharmacy/storeQRCode",
+    "pages/pharmacy/blissVerify",
+    "pages/me/messageInform",
+    "pages/me/myAddress",
+    "pages/me/addConsignee",
+    "pages/pharmacy/discounts",
+    "pages/me/storeApplication",
+    "pages/me/compileConsignee",
+    "pages/order/orderDetail",
+    "pages/order/postComment",
+    "pages/order/myComment",
+    "pages/order/afterSale",
+    "pages/order/afterDetails",
+    "pages/order/applyRefund",
+    "pages/order/applyAfter",
+    "pages/order/fillLogistics",
+    "custom-tab-bar/index",
+    "components/navBar/navBar",
+    "pages/pharmacy/blissVerifyDetail",
+    "pages/pharmacy/customer"
   ],
-  "window": {
-    
+  "tabBar": {
+    "custom": true,
+    "list": [
+      {
+        "iconPath": "images/tabbarIcon/tabbar_pharmacy.png",
+        "selectedIconPath": "images/tabbarIcon/tabbar_selectPharmacy.png",
+        "pagePath": "pages/home/index",
+        "text": "养乐药房"
+      },
+      {
+        "iconPath": "images/tabbarIcon/tabbar_market.png",
+        "selectedIconPath": "images/tabbarIcon/tabbar_selectmarket.png",
+        "pagePath": "pages/store/store",
+        "text": "养乐商城"
+      },
+      {
+        "iconPath": "images/tabbarIcon/raiseHappyStep.png",
+        "selectedIconPath": "images/tabbarIcon/raiseHappyStep.png",
+        "pagePath": "pages/step/index",
+        "text": "养步乐"
+      },
+      {
+        "iconPath": "images/tabbarIcon/tabbar_cart.png",
+        "selectedIconPath": "images/tabbarIcon/tabbar_selectCart.png",
+        "pagePath": "pages/store/cart",
+        "text": "购物车"
+      },
+      {
+        "iconPath": "images/tabbarIcon/tabbar_me.png",
+        "selectedIconPath": "images/tabbarIcon/tabbar_selectMe.png",
+        "pagePath": "pages/me/index",
+        "text": "我的"
+      }
+    ]
   },
-  "usingComponents": {
-    
-  },
+  "window": {},
+  "usingComponents": {},
   "permission": {
     "scope.userLocation": {
       "desc": "获取定位"
     }
   },
   "sitemapLocation": "sitemap.json",
-  "navigateToMiniProgramAppIdList": ["wx0349576be4e669ec"]
+  "navigateToMiniProgramAppIdList": [
+    "wxde44ee0d6e581c13"
+  ],
+  "plugins": {
+    "calendar": {
+      "version": "1.1.3",
+      "provider": "wx92c68dae5a8bb046"
+    }
+  }
 }

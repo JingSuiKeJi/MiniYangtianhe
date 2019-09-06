@@ -1,0 +1,68 @@
+<!-- <wxs module="filter" src="../../filter/filter.wxs"></wxs> -->
+<!--orderVerifyDetail.wxml-->
+<view class="container">
+	<view class="ui-main">
+		<view class="ui-storeAddressBox">
+			<view class="ui-store">
+				<text>天盈广场店</text>
+				<text>广东省广州市天河区天盈广场东塔3004</text>
+			</view>
+			<view class="btn-verify">未核销</view>
+		</view>
+		
+		<view class="ui-consigneeAddressBox">
+			<view class="ui-landmarkIcon"></view>
+			<view class="ui-consignee">
+				<view class="ui-consigneeinfo">
+					<text>周周周</text>
+					<text>13414775964</text>
+				</view>
+				<text class="ui-consigneeAddressDetial">广东省广州市天河区天盈广场东塔3004</text>
+			</view>
+		</view>
+		
+		<view class="ui-commodityInfo">
+			<text class="ui-title">商品信息</text>
+			<view class="ui-newsInfoBox" wx:for="{{storeList}}" wx:for-item="item" wx:key="idx">
+				<view class="ui-newsInfoItem">
+					<view class="ui-newsImg"><image src="http://www.gzlingren.com:8098/yangtianhe/{{item.newsImg}}.png"></image></view>
+					<view class="ui-newsInfoDetail">
+						<text class="ui-newsName">{{item.newsName}}</text>
+						<text class="ui-newsWeight">{{item.newsWeight}}</text>
+						<text class="ui-newsMoney">¥{{item.newsMoney}}</text>
+					</view>
+					<text class="ui-newsNum">x1</text>
+				</view>
+			</view>
+			<view class="ui-freight ui-commodityTextCommon">
+				<text>运费</text>
+				<text>¥0.00</text>
+			</view>
+			<view class="ui-blissDeduction ui-commodityTextCommon">
+				<text>福气抵扣</text>
+				<text>-¥1.48</text>
+			</view>
+			<view class="ui-actualPayment ui-commodityTextCommon">
+				<text>实付款</text>
+				<text>¥ 121.32</text>
+			</view>
+		</view>
+		
+		<view class="ui-verificationCode">
+			<view class="ui-codeIcon"><image src="http://www.gzlingren.com:8098/yangtianhe/my_closeOrderQR.png"></image></view>
+			<view class="ui-verificationNum">核销码：987456</view>
+		</view>
+		
+		<view class="ui-orderInfoBox">
+			<text>订单信息</text>
+			<text>配送时间：2019/07/01  16:00-18:00</text>
+			<text>订单编号：54636465456165465</text>
+			<text>创建时间：2019-01-25  14:30</text>
+			<text>付款时间：2019-01-25  14:30</text>
+		</view>
+		
+		<view class="ui-verificationFooter">
+			<view class="btn-verifyOrder">核销订单</view>
+		</view>
+	</view>
+</view>

@@ -1,0 +1,11 @@
+<!--pages/medicineRoom/medicineRoom.wxml-->
+<wxs module="filter" src="../../filter/filter.wxs"></wxs>
+<view class="contain">
+   <view class="main">
+      <view class="ui-imgIcom">
+          <image src="{{filter.getLocalPhoto('yangle_icon.png')}}" />
+      </view>
+      <view class="ui-text">很抱歉，您所在的地址暂未送达服务您可以选择去养乐商城购买</view>
+      <view class="ui-btn" bindtap="onSkipTap">前往商城</view>
+   </view>
+</view>

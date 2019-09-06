@@ -1,0 +1,483 @@
+@charset "UTF-8";
+@import "/libs/common.wxss";
+
+/**customerCenter.wxss**/
+page{
+	background:rgba(245,245,245,1);
+}
+
+.ui-main {
+    width: 100%;
+}
+
+.ui-userInfoBox{
+	position: relative;
+	width:686rpx;
+	height:364rpx;
+	background:rgba(255,255,255,1);
+	border-radius:16rpx;
+	margin: 20rpx 0 0 32rpx;
+}
+
+.ui-userInfoItem{
+	position: absolute;
+	display: flex;
+	margin:48rpx 0 0 54rpx;
+}
+
+.ui-userAvatar{
+	width: 120rpx;
+	height: 120rpx;
+	background: #ccc;
+	border-radius: 120rpx;
+	overflow: hidden;
+}
+
+.ui-userAvatar image{
+	width: 100%;
+	height: 100%;
+}
+
+.ui-userInfoDetail{
+	display: flex;
+	flex-direction: column;
+	margin-left:26rpx;
+}
+
+.ui-userInfoDetail text:nth-child(1){
+	height:34rpx;
+	font-size:34rpx;
+	font-family:PingFangSC-Medium;
+	font-weight:500;
+	color:rgba(61,61,61,1);
+	line-height:34rpx;
+}
+
+.ui-userInfoDetail text:not(first-child){
+	height:22rpx;
+	font-size:22rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(153,153,153,1);
+	line-height:22rpx;
+}
+
+.ui-userInfoDetail text:nth-child(2){
+	margin: 20rpx 0;
+}
+
+.ui-vipBackground{
+	position: absolute;
+	right: 0;
+	top: 38rpx;
+	width:160rpx;
+	height:56rpx;
+	background:linear-gradient(137deg,rgba(1,206,165,1) 0%,rgba(94,221,218,1) 100%);
+	border-radius:150rpx 0rpx 0rpx 150rpx;
+	display: flex;
+}
+
+.ui-vipBackground view{
+	display: inline-block;
+}
+
+.ui-vipLevelIcon{
+	width: 44rpx;
+	height: 44rpx;
+	margin: 6rpx 0 0 20rpx;
+}
+
+.ui-vipLevelIcon image{
+	width: 100%;
+	height: 100%;
+}
+
+.ui-levelNum{
+	font-size:28rpx;
+	font-family:PingFangSC-Medium;
+	font-weight:500;
+	color:rgba(255,255,255,1);
+	line-height: 56rpx;
+	letter-spacing: 4rpx;
+	margin-left: 16rpx;
+}
+
+.ui-userOperation{
+	position: absolute;
+	width: 558rpx;
+	margin:226rpx 64rpx 0 64rpx;
+	display: flex;
+	justify-content: space-between;
+}
+
+.ui-userOperationItemCommon{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.ui-userOperationItemCommon text:first-child{
+	height:34rpx;
+	font-size:34rpx;
+	font-family:PingFangSC-Medium;
+	font-weight:500;
+	color:rgba(32,202,180,1);
+	line-height:34rpx;
+}
+
+.ui-userOperationItemCommon text:last-child{
+	height:26rpx;
+	font-size:26rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(102,102,102,1);
+	line-height:26rpx;
+	margin-top: 38rpx;
+}
+
+.ui-addressInfo{
+	width:686rpx;
+	margin: 20rpx 0 0 32rpx;
+}
+
+.ui-oaddressHeader{
+	width: 100%;
+	height: 62rpx;
+	border-radius: 16rpx 16rpx 0 0;
+	background:rgba(255,255,255,1);
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+}
+
+.ui-oaddressHeader .ui-addressTitle{
+	margin-left: 36rpx;
+}
+
+.ui-addressMore{
+	display: flex;
+	margin-right:38rpx;
+}
+
+.ui-addressMore text{
+	margin-right: 20rpx;
+}
+
+.ui-addressNotSet{
+	height: 46rpx;
+	width:100%;
+	background:rgba(255,255,255,1);
+}
+
+.ui-addressNotSet text{
+	position: absolute;
+	margin: 20rpx 0 0 38rpx;
+}
+
+.ui-addressSet{
+	height: 102rpx;
+	width:100%;
+	background:rgba(255,255,255,1);
+	display: flex;
+	flex-direction:column;
+}
+
+.ui-nameAndTel{
+	margin: 20rpx 0 0 36rpx;
+}
+
+.ui-nameAndTel text:first-child{
+	height:30rpx;
+	font-size:30rpx;
+	font-family:PingFangSC-Medium;
+	font-weight:500;
+	color:rgba(51,51,51,1);
+	line-height:30rpx;
+}
+
+.ui-nameAndTel text:last-child{
+	height:26rpx;
+	font-size:26rpx;
+	font-family:PingFang-SC-Regular;
+	font-weight:400;
+	color:rgba(102,102,102,1);
+	line-height:26rpx;
+	margin-left: 10rpx;
+}
+
+.ui-addressDetail{
+	height:40rpx;
+	font-size:26rpx;
+	font-family:PingFang-SC-Medium;
+	font-weight:500;
+	color:rgba(51,51,51,1);
+	line-height:40rpx;
+	margin:12rpx 0 0 36rpx;
+}
+
+.ui-addressFooter{
+	width: 100%;
+	height: 32rpx;
+	background:rgba(255,255,255,1);
+	border-radius:0 0 16rpx 16rpx;
+}
+
+.ui-historyInfo{
+	width:686rpx;
+	height:94rpx;
+	background:rgba(255,255,255,1);
+	border-radius:16rpx;
+	margin: 20rpx 0 0 32rpx;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.ui-historyInfo view:first-child{
+	margin-left: 36rpx;
+}
+
+.ui-historyInfo .ui-historyMore{
+	display: flex;
+	margin-right:38rpx;
+}
+
+.ui-historyInfo .ui-historyMore text{
+	margin-right: 20rpx;
+}
+
+.ui-orderListInfo{
+	width:686rpx;
+	margin: 20rpx 0 0 32rpx;
+}
+
+.ui-orderListHeader{
+	width: 100%;
+	height: 80rpx;
+	border-radius: 16rpx 16rpx 0 0;
+	background:rgba(255,255,255,1);
+	display: flex;
+	justify-content: space-between;
+}
+
+.ui-orderListHeader .ui-fontLargeTextCommon{
+	margin-top: 32rpx;
+	margin-left: 36rpx;
+}
+
+.ui-orderListHeader .ui-orderListMore{
+	display: flex;
+	margin-top: 32rpx;
+	margin-right: 38rpx;
+}
+
+.ui-orderListHeader .ui-orderListMore text{
+	margin-right: 20rpx;
+}
+
+.ui-notOrderList{
+	height: 302rpx;
+	width: 100%;
+	background:rgba(255,255,255,1);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.ui-notOrderList .ui-orderIcon{
+	width: 118rpx;
+	height: 118rpx;
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_orderListIcon.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+	margin-top: 32rpx;
+}
+
+.ui-notOrderList text{
+	height:42rpx;
+	font-size:30rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(153,153,153,1);
+	line-height:42rpx;
+	margin-top: 60rpx;
+}
+
+.ui-orderInfoBox{
+	background: #FFFFFF;
+	width: 100%;
+	border-bottom:#F5F5F5 solid 2rpx;
+}
+
+.ui-orderStatus{
+	position: relative;
+	height: 70rpx;
+	background: #FFFFFF;
+	border-bottom:#F5F5F5 solid 2rpx;
+}
+
+.ui-orderStatus .ui-orderReferenceText{
+	position: absolute;
+	height:26rpx;
+	font-size:26rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(102,102,102,1);
+	line-height:26rpx;
+	left: 36rpx;
+	top: 22rpx;
+}
+
+.ui-orderStatus .ui-orderStatusText{
+	height:26rpx;
+	font-size:26rpx;
+	font-family:PingFang-SC-Medium;
+	font-weight:500;
+	color:rgba(253,61,47,1);
+	line-height:26rpx;
+	position: absolute;
+	top: 22rpx;
+	right: 36rpx;
+}
+
+.ui-newsInfoBox{
+	width: 100%;
+}
+
+.ui-newsInfoItem{
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+
+.ui-newsImg{
+	display: inline-block;
+	width:160rpx;
+	height:160rpx;
+	border-radius:4rpx;
+	border:2px solid rgba(245,245,245,1);
+	background:#CCCCCC ;
+	margin: 40rpx 20rpx 40rpx 40rpx;
+}
+
+.ui-newsImg image{
+	width: 100%;
+	height: 100%;
+}
+
+.ui-newsInfoDetail{
+	height: 160rpx;
+	width: 434rpx;
+	margin: 40rpx 36rpx 0 0;
+	display: flex;
+	flex-direction: column;
+}
+
+.ui-nameAndMoney{
+	display: flex;
+	justify-content: space-between;
+}
+	
+
+.ui-newsName{
+	height:36rpx;
+	font-size:26rpx;
+	font-family:PingFangSC-Medium;
+	font-weight:500;
+	color:rgba(51,51,51,1);
+	line-height:36rpx;
+}
+
+.ui-newsMoney{
+	height:26rpx;
+	font-size:26rpx;
+	font-family:PingFangSC-Medium;
+	font-weight:500;
+	color:rgba(51,51,51,1);
+	line-height:26rpx;
+	margin-top: 6rpx;
+}
+
+.ui-newsNum{
+	height:20rpx;
+	font-size:20rpx;
+	font-family:PingFangSC-Semibold;
+	font-weight:600;
+	color:rgba(153,153,153,1);
+	line-height:20rpx;
+	margin-top: 24rpx;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.ui-newsWeight{
+	height:20rpx;
+	font-size:20rpx;
+	font-family:PingFang-SC-Regular;
+	font-weight:400;
+	color:rgba(153,153,153,1);
+	line-height:20rpx;
+	margin-top: 8rpx;
+}
+
+.ui-total{
+	margin-top: 26rpx;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.ui-total text:first-child{
+	height:22rpx;
+	font-size:22rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(51,51,51,1);
+	line-height:22rpx;
+	margin-top: 6rpx;
+	margin-right: 20rpx;
+}
+
+.ui-total text:last-child{
+	height:30rpx;
+	font-size:26rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(51,51,51,1);
+	line-height:30rpx;
+}
+
+.ui-orderListfooter{
+	height: 40rpx;
+	width: 100%;
+	background:rgba(255,255,255,1);
+	border-radius: 0 0 16rpx 16rpx;
+	margin-bottom: 78rpx;
+}
+
+.ui-fontLargeTextCommon{
+	height:30rpx;
+	font-size:30rpx;
+	font-family:PingFangSC-Medium;
+	font-weight:500;
+	color:rgba(61,61,61,1);
+	line-height:30rpx;
+}
+
+.ui-fontSmallTextCommon{
+	height:26rpx;
+	font-size:26rpx;
+	font-family:PingFang-SC-Medium;
+	font-weight:500;
+	color:rgba(153,153,153,1);
+	line-height:26rpx;
+}
+
+.ui-moreIconCommon{
+	width:14rpx;
+	height:24rpx;
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_rightArrow.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+}

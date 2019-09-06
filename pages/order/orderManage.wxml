@@ -1,0 +1,46 @@
+<!-- <wxs module="filter" src="../../filter/filter.wxs"></wxs> -->
+<!--application.wxml-->
+<view class="container">
+	<view class="ui-main">
+		<view class="ui-searchOrderBox">
+			<view class="ui-searchOrder">
+				<view class="ui-searchIcon"></view>
+				<input type="text" class="ui-searchInput" placeholder="搜索订单" placeholder-style="color:color:rgba(145,145,145,1);"></input >
+			</view>
+		</view>
+		
+		<view class="ui-menuBar">
+			<text wx:for="{{menuList}}" wx:for-item="item" wx:key="currentId" bindtap="chooseMenu"
+			data-id="{{item.currentId}}" class="ui-menuText {{currentCheck==item.currentId?'currentText currentBorder':''}}"
+			>{{item.name}}</text>
+		</view>
+		
+		<view class="ui-orderInfoBox" wx:for="{{orderList}}" wx:for-item="item" wx:key="idx"
+		wx:if="{{item.orderStatus==currentState}}">
+			<view class="ui-orderStatus">
+				<text class="ui-orderReferenceText">订单编号： {{item.orderReference}}</text>
+				<text class="ui-storeTetx" wx:if="{{item.store}}">{{item.store}}</text>
+				<text class="ui-orderStatusText" 
+				style="color: {{item.orderStatus=='售后中'?'#999999':''}};color: {{item.orderStatus=='售后结束'?'#999999':''}}"
+				>{{item.orderStatus}}</text>
+			</view>
+			<view class="ui-newsInfoBox" wx:for="{{item.storeList}}" wx:for-item="item" wx:key="idx">
+				<view class="ui-newsInfoItem">
+					<view class="ui-newsImg"><image src="http://www.gzlingren.com:8098/yangtianhe/{{item.newsImg}}.png"></image></view>
+					<text class="ui-newsName">{{item.newsName}}</text>
+					<text class="ui-newsWeight">{{item.newsWeight}}</text>
+					<text class="ui-newsMoney">¥{{item.newsMoney}}</text>
+					<text class="ui-newsNum">x1</text>
+				</view>
+			</view>
+			<view class="ui-total">
+				<text>共2件商品</text>
+				<text>总额：¥109.00</text>
+			</view>
+			<view class="ui-detailBox">
+				<view class="btn-detail" catchtap="onOrderVerifyDetailTap">查看详情</view>
+			</view>
+		</view>
+		
+	</view>
+</view>

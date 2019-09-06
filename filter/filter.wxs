@@ -77,8 +77,12 @@ var filter = {
         }
     },
     getLocalPhoto: function (path) {
-        var host = 'http://www.gzlingren.com:8098/libeika/images';
+        var host = 'http://www.gzlingren.com:8098/yangtianhe/';
         return host + path;
-    }
+    },
+    getReturnPhoto: function (path) {
+        var host = 'http://120.79.36.152:10008';
+        return host + path;
+    }, 
 };
 module.exports = filter;

@@ -1,0 +1,19 @@
+<!-- <wxs module="filter" src="../../filter/filter.wxs"></wxs> -->
+<!--bindingWeChat.wxml-->
+<view class="container">
+	<navBar title='绑定微信' background='linear-gradient(137deg,rgba(1,206,165,1) 0%,rgba(94,221,218,1) 100%)' color='white' iconTheme='white' back="{{true}}"></navBar>
+    <view class="ui-main">
+		<view class="ui-bindingWeChatBox">
+			<text class="ui-weChatText">微信号</text>
+			<input class="ui-weChatInput" type="text"
+			placeholder="请输入微信号" placeholder-class="ui-weChatInputPla" 
+			value="{{weChatValue}}" onfirm-type="done" bindinput="onWeChatInputName" />
+		</view>
+		
+		<view class="btn-notBinding" wx:if="{{!weChatValue}}">立即绑定</view>
+		<view class="btn-Binding" bindtap="onSaveTap" wx:else>立即绑定</view>
+		
+		<!-- 成功弹出框 -->
+		<view class="ui-successfulBinding" wx:if="{{isShow}}"></view>
+    </view>
+</view>

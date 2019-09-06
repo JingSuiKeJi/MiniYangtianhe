@@ -1,0 +1,82 @@
+<!-- <wxs module="filter" src="../../filter/filter.wxs"></wxs> -->
+<!--statements.wxml-->
+<view class="container">
+	<navBar title='财务报表' background='linear-gradient(137deg,rgba(1,206,165,1) 0%,rgba(94,221,218,1) 100%)' color='white' iconTheme='white' back="{{true}}"></navBar>
+	<view class="ui-main">
+		<view class="ui-shortCalendar">
+			<view class="ui-weekText">
+				<text wx:for="{{weekList}}" wx:for-item="item" wx:key="idx">
+					{{item}}
+				</text>
+			</view>
+			<view class="ui-dateText">
+				<view bindtap="onChooseDate" class="ui-dateCircleBg {{currentDataState==item?'ui-dateCircleBgHhover':''}}" data-id="{{index}}" wx:for="{{dateList}}" wx:for-item="item" wx:key="idx">	
+					<text>{{item}}</text>
+				</view>
+			</view>
+			<view class="ui-pullDown"></view>
+		</view>
+		
+		<view class="ui-history">
+			<view class="ui-historyStatus">
+				<text bindtap="onChooseToday" class="{{todayFlag?'ui-historyStatusTextHover':''}}">当天</text>
+				<text bindtap="onChooseWeek" class="{{weekFlag?'ui-historyStatusTextHover':''}}">一周</text>
+				<text bindtap="onChooseMonth" class="{{monthFlag?'ui-historyStatusTextHover':''}}">一个月</text>
+			</view>
+			<text wx:if="{{todayFlag}}" class="ui-historyDateDetail">2019/07/17</text>
+			<text wx:elif="{{weekFlag}}" class="ui-historyDateDetail">2019/07/17-2019/07/23</text>
+			<text wx:elif="{{monthFlag}}" class="ui-historyDateDetail">2019/07/01-2019/07/31</text>
+			<view class="ui-historyOperation">
+				<view class="ui-historyOperationItem">
+					<text class="ui-itemTitle">实收营业额</text>
+					<view>
+						<text>¥</text>
+						<text>3555.00</text>
+					</view>
+				</view>
+				<view class="ui-historyOperationItem">
+					<text class="ui-itemTitle">应收营业额</text>
+					<view>
+						<text>¥</text>
+						<text>4000.00</text>
+					</view>
+				</view>
+				<view class="ui-historyOperationItem">
+					<text class="ui-itemTitle">福气金额</text>
+					<view>
+						<text>¥</text>
+						<text>300.00</text>
+					</view>
+				</view>
+				<view class="ui-historyOperationItem">
+					<text class="ui-itemTitle">订单数</text>
+					<text class="ui-orderNum">280</text>
+				</view>
+			</view>
+		</view>
+		
+		<view class="ui-detailReport">
+			<text class="ui-detailReportTitle">报表明细</text>
+			<block wx:if="{{detailReportList}}">
+			<view class="ui-detailReportInfoBox" wx:for="{{detailReportList}}" wx:for-item="item" wx:key="idx">
+				<view class="ui-detailReportInfoItem">
+					<view class="ui-detailReportTime">
+						<text>{{item.year}}</text>
+						<text>{{item.time}}</text>
+					</view>
+					<view class="ui-detailListInfo">
+						<view class="ui-detailListInfoItem" wx:for="{{item.detailList}}" wx:for-item="item" wx:key="idx">
+							<text>{{item.incident}}</text>
+							<text>{{item.price}}</text>
+						</view>
+					</view>
+				</view>
+			</view>
+			</block>
+			<block wx:else>
+			<view class="ui-blank"></view>
+			</block>
+			<view class="ui-detailFooter"></view>
+		</view>
+	</view>
+</view>

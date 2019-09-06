@@ -36,8 +36,12 @@ App({
                 self.base.setLS('bar2Bottom', bar2Bottom);
             }
         });
-        self.base.wxLogin({
-            self: self
-        });
+    },
+	globalData: {
+		//状态栏高度
+		statusBarHeight:wx.getSystemInfoSync()['statusBarHeight'],
+		//手机屏幕可用高度
+		screenHeight:wx.getSystemInfoSync()['screenHeight'],
     }
+
 });

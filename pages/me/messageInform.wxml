@@ -1,0 +1,19 @@
+<!-- <wxs module="filter" src="../../filter/filter.wxs"></wxs> -->
+<!--messageInform.wxml-->
+<view class="container">
+	<navBar title='消息通知' background='linear-gradient(137deg,rgba(1,206,165,1) 0%,rgba(94,221,218,1) 100%)' color='white' iconTheme='white' back="{{true}}"></navBar>
+	<view class="ui-main">
+		<view class="ui-commonBox">
+			<text>分享成功提醒</text>
+			<view class="{{successShare?'ui-Open':'ui-Close'}}" catchtap="onSuccessShareTap"></view>
+		</view>
+		<view class="ui-commonBox">
+			<text>优惠券获得提醒</text>
+			<view class="{{getCoupons?'ui-Open':'ui-Close'}}" catchtap="onGetCouponsTap"></view>
+		</view>
+		<view class="ui-commonBox">
+			<text>砍价提醒</text>
+			<view class="{{cutPrice?'ui-Open':'ui-Close'}}" catchtap="onCutPriceTap"></view>
+		</view>
+	</view>
+</view>

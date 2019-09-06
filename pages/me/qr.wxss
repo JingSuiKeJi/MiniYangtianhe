@@ -1,0 +1,93 @@
+@charset "UTF-8";
+@import "/libs/common.wxss";
+
+/**qr.wxss**/
+page{
+	background:rgba(245,245,245,1);
+}
+
+.ui-main {
+    width: 100%;
+}
+
+.ui-qrBox{
+	width:686rpx;
+	height:684rpx;
+	background:rgba(255,255,255,1);
+	box-shadow:0rpx 2rpx 8rpx 0rpx rgba(0,0,0,0.1);
+	border-radius:16rpx;
+	margin: 80rpx 0 0 32rpx;
+}
+
+.ui-headPortrait{
+	position: absolute;
+	width:120rpx;
+	height:120rpx;
+	background:rgba(234,234,234,1);
+	margin: 40rpx 0 0 40rpx;
+	border-radius: 60rpx;
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_qrHeader.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size:cover;
+}
+
+.ui-personalId{
+	position: absolute;
+	height:34rpx;
+	font-size:34rpx;
+	font-family:PingFangSC-Medium;
+	font-weight:500;
+	color:rgba(61,61,61,1);
+	line-height:34rpx;
+	margin: 84rpx 0 0 184rpx;
+}
+
+.ui-qrInfo{
+	position: absolute;
+	width:520rpx;
+	height:470rpx;
+	margin: 166rpx 0 0 82rpx;
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_qrCode.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+}
+
+.btn-savePoster{
+	width:110rpx;
+	height:110rpx;
+	background:rgba(68,215,182,1);
+	border-radius: 110rpx;
+	margin: 60rpx 0 0 318rpx;
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_save.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+}
+
+.ui-savePosterText{
+	position: relative;
+	top: 20rpx;
+	left: 320rpx;
+	height:28rpx;
+	font-size:28rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(102,102,102,1);
+	line-height:28rpx;
+}
+
+.btn-share{
+	margin: 64rpx 0 0 120rpx;
+	width:512rpx;
+	height:80rpx;
+	background:linear-gradient(137deg,rgba(1,206,165,1) 0%,rgba(94,221,218,1) 100%);
+	border-radius:40rpx;
+	font-size:28rpx;
+	font-family:PingFangSC-Semibold;
+	font-weight:600;
+	color:rgba(255,255,255,1);
+	line-height:80rpx;
+	text-align: center;
+}

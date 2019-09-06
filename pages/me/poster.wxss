@@ -1,0 +1,159 @@
+@charset "UTF-8";
+@import "/libs/common.wxss";
+
+/**poster.wxss**/
+page{
+	background:rgba(245,245,245,1);
+}
+
+.ui-main {
+    width: 100%;
+}
+
+.ui-posterBox{
+	margin: 18rpx 0 0 104rpx;
+}
+
+.ui-posterBackground{
+	width: 542rpx;
+	height: 770rpx;
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_posterBackground.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+}
+
+.ui-personalIcon{
+	position: absolute;
+	width: 106rpx;
+	height: 106rpx;
+	margin:610rpx 0 0 32rpx;
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_qrHeader.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+}
+
+.ui-personalIdText{
+	position: absolute;
+	height:26rpx;
+	font-size:26rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(255,255,255,1);
+	line-height:26rpx;
+	margin: 727rpx 0 0 91rpx;
+	transform: translateX(-50%);
+}
+
+.ui-ExtractQR{
+	width:542rpx;
+	height:194rpx;
+	background:rgba(255,255,255,1);
+}
+
+.ui-qrCode{
+	position: absolute;
+	width: 120rpx;
+	height: 120rpx;
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_posterQR.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+	margin: 36rpx 0 0 52rpx;
+}
+
+.ui-explainText{
+	position: absolute;
+	height:26rpx;
+	font-size:26rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(51,51,51,1);
+	line-height:26rpx;
+	letter-spacing: 8rpx;
+	margin: 86rpx 0 0 202rpx;
+}
+
+.ui-posterShare{
+	width: 512rpx;
+	height: 80rpx;
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_btnNotBound.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+	margin: 82rpx 0 0 120rpx;
+	font-size:28rpx;
+	font-family:PingFangSC-Semibold;
+	font-weight:600;
+	color:rgba(255,255,255,1);
+	line-height:80rpx;
+	text-align: center;
+}
+
+/* 模态框 */
+.modal-mask {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background:rgba(0,0,0,1);
+	opacity: 0.5;
+	overflow: hidden;
+	z-index: 9000;
+	color: #fff;
+}
+
+.modal-dialog {
+	width:100%;
+	overflow: hidden;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	z-index: 9999;
+	height:230rpx;
+	background:rgba(255,255,255,1);
+	border-radius:20rpx 20rpx 0rpx 0rpx;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.btn-common{
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.btn-common view{
+	width: 100rpx;
+	height: 100rpx;
+}
+
+.ui-wxImg{
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_posterShare.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+}
+
+.ui-saveImg{
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_posterSave.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+}
+
+.btn-common text{
+	height:26rpx;
+	font-size:26rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(102,102,102,1);
+	line-height:26rpx;
+	text-align: center;
+	margin-top: 20rpx;
+}

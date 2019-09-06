@@ -1,0 +1,755 @@
+@charset "UTF-8";
+@import "/libs/common.wxss";
+
+/**index.wxss**/
+.container{
+	background:rgba(245,245,245,1);
+}
+.ui-main {
+    width: 100%;
+	margin-bottom: 126rpx;
+}
+
+.ui-infoBox {
+    position: relative;
+    width: 100%;
+    height:410rpx;
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_background.png');
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	background-size: 100% 410rpx;
+}
+
+.ui-infoItem {
+    position: relative;
+    top: 0rpx;
+    width: 100%;
+    padding-top: 7rpx;
+}
+
+.ui-itemImgBox {
+    position: relative;
+    left: 32rpx;
+    width: 130rpx;
+    height: 130rpx;
+    border-radius: 65rpx;
+	overflow: hidden;
+    background-color: #fff;
+}
+
+.ui-itemImgBox image{
+	width: 100%;
+	height: 100%;
+}
+
+.ui-textBox {
+    position: absolute;
+    left: 184rpx;
+    top: 25rpx;
+}
+
+.ui-textBox text {
+    display: block;
+}
+
+.ui-textBox text:nth-child(1){
+	height:34rpx;
+	font-size:34rpx;
+	font-family:PingFangSC-Medium;
+	font-weight:500;
+	color:rgba(255,255,255,1);
+	line-height:34rpx;
+}
+
+.ui-textBox text:nth-child(2){
+	height:24rpx;
+	font-size:24rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(255,255,255,1);
+	line-height:24rpx;
+	margin-top: 22rpx;
+}
+
+.btn-login{
+	position: absolute;
+	left: 192rpx;
+	top: 45rpx;
+	width:142rpx;
+	height:58rpx;
+	border-radius:8rpx;
+	border:2rpx solid rgba(255,255,255,1);
+	font-size:26rpx;
+	font-family:PingFangSC-Medium;
+	font-weight:500;
+	color:rgba(255,255,255,1);
+	line-height:58rpx;
+	text-align: center;
+	background-color: transparent;
+}
+
+.btn-login:active{
+	opacity: 0.5;
+}
+
+.ui-useBlisses{
+	position: absolute;
+	display: flex;
+	align-items: center;
+	top: 0;
+	right: 0;
+	width:216rpx;
+	height:64rpx;
+	background:rgba(255,255,255,0.4);
+	border-radius:200rpx 0rpx 0rpx 200rpx;
+}
+
+.ui-useBlisses:active{
+	opacity: 0.5;
+}
+
+.ui-sueBlissesIcon{
+	margin-left: 6rpx;
+	display: inline-block;
+	width: 68rpx;
+	height: 48rpx;
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/useBlisses.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: contain;
+}
+
+.ui-useBlisses text{
+	margin-left: 6rpx;
+	height:36rpx;
+	font-size:26rpx;
+	font-family:PingFangSC;
+	font-weight:400;
+	color:#FFFFFF;
+	line-height:36rpx;
+}
+
+.ui-contact{
+	display: flex;
+	position: absolute;
+	right:28rpx;
+	top: 90rpx;
+}
+
+.ui-contactItem{
+	display: inline-block;
+	margin: 0 12rpx;
+}
+
+.ui-contactItem:active{
+	opacity: 0.5;
+}
+
+.ui-contactItem:last-child{
+	margin-right: 0;
+}
+
+.ui-contactItem .ui-iconContact{
+	width: 48rpx;
+	height: 48rpx;
+	margin-left: 20rpx;
+}
+
+.ui-contactItem:first-child .ui-iconContact{
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_weChatIcon.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+}
+
+.ui-contactItem:nth-child(2) .ui-iconContact{
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_phone.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+}
+
+.ui-contactItem:last-child .ui-iconContact{
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_share.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+}
+
+.ui-contactItem text{
+	display: block;
+	height:22rpx;
+	font-size:22rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(255,255,255,1);
+	line-height:26rpx;
+	text-align: center;
+	margin-top: 16rpx;
+}
+
+.ui-vip{
+	position: absolute;
+	top: 210rpx;
+	left: 56rpx;
+	width:638rpx;
+	height:136rpx;
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_vipCard.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: 100%;
+	border-radius:16px 16rpx 0 0;
+}
+
+.ui-vip view{
+	position: absolute;
+}
+
+.ui-vip view .ui-iconVip{
+	position: absolute;
+	margin: 32rpx 0 0 38rpx;
+	width:28rpx;
+	height:26rpx;
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_vipIcon.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+}
+
+.ui-vip view text{
+	position: relative;
+	margin: 24rpx 0 0 84rpx;
+	display: inline-block;
+	height: 28rpx;
+	font-size: 28rpx;
+	letter-spacing: 4rpx;
+	color:rgba(255,229,203,1);
+}
+
+.ui-incomeItems{
+	position: absolute;
+	z-index: 20;
+	left: 32rpx;
+	top: 278rpx;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 686rpx;
+	height: 190rpx;
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_rectangle.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: 718rpx  222rpx;
+	border-radius:16px 16px 16px 16px;
+}
+
+.ui-incomeItem:active{
+	opacity: 0.5;
+}
+
+.ui-incomeItem:first-child{
+	margin-left: 110rpx;
+}
+
+.ui-incomeItem:last-child{
+	margin-right: 110rpx;
+}
+
+.ui-incomeItem text:first-child{
+	margin-top: 10rpx;
+	display: block;
+	height:34rpx;
+	font-size:34rpx;
+	font-family:PingFangSC-Semibold;
+	font-weight:600;
+	color:rgba(3,184,171,1);
+	line-height:34rpx;
+	text-align: center;
+}
+
+.ui-incomeItem text:last-child{
+	margin-top: 36rpx;
+	display: block;
+	height:26rpx;
+	font-size:26rpx;
+	font-family:PingFangSC-Medium;
+	font-weight:500;
+	color:rgba(61,61,61,1);
+	line-height:26rpx;
+	text-align: center;
+}
+
+.ui-feedbackInfo{
+	display: flex;
+	flex-direction: column;
+	width:686rpx;
+	height:212rpx;
+	background:rgba(255,255,255,1);
+	box-shadow:0rpx 4rpx 16rpx 0rpx rgba(0,0,0,0.05);
+	border-radius:16rpx;
+	margin-top: 80rpx;
+	margin-left: 32rpx;
+}
+
+.ui-orderAll{
+	display: flex;
+	justify-content: space-between;
+	margin-top: 32rpx;
+	width: 100%;
+}
+
+.ui-orderText{
+	margin-left: 36rpx;
+	height:34rpx;
+	font-size:34rpx;
+	font-family:PingFangSC;
+	font-weight:400;
+	color:rgba(51,51,51,1);
+	line-height:34rpx;
+}
+
+.ui-orderCheck{
+	display: flex;
+	margin-top: 8rpx;
+	margin-right: 36rpx;
+	height: 26rpx;
+}
+
+.ui-orderCheck:active{
+	opacity: 0.5;
+}
+
+.ui-orderCheck text{
+	height:26rpx;
+	font-size:26rpx;
+	font-family:PingFangSC;
+	font-weight:400;
+	color:rgba(153,153,153,1);
+	line-height:26rpx;
+}
+
+.ui-checkMoreOrder{
+	margin-left: 8rpx;
+	width: 16rpx;
+	height: 26rpx;
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_rightArrow.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+}
+
+.ui-orderStatus{
+	display: flex;
+}
+
+.ui-feedbackItem{
+	position: relative;
+	width: 100%;
+	height: 100%;
+	flex: 1;
+}
+
+.ui-feedbackItem:active{
+	opacity: 0.5;
+}
+
+.ui-feedbackItem .iconFeedback{
+	margin-top: 30rpx;
+	position: relative;
+	left: 50%;
+	margin-left:-24rpx;
+	width:48rpx;
+	height:48rpx;
+}
+
+.ui-feedbackItem:nth-child(1) .iconFeedback{
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_uppaid.png');
+	background-repeat: no-repeat;
+	background-position:center center;
+	background-size: contain;
+}
+
+.ui-feedbackItem:nth-child(2) .iconFeedback{
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_overhang.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: contain;
+}
+
+.ui-feedbackItem:nth-child(3) .iconFeedback{
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_waitReceiving.png');
+	background-repeat: no-repeat;
+	background-position:center center;
+	background-size: contain;
+}
+
+.ui-feedbackItem:nth-child(4) .iconFeedback{
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_approved.png');
+	background-repeat: no-repeat;
+	background-position:center center;
+	background-size: contain;
+}
+
+.ui-feedbackItem:nth-child(5) .iconFeedback{
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_afterSale.png');
+	background-repeat: no-repeat;
+	background-position:center center;
+	background-size: contain;
+}
+
+.ui-feedbackItem text{
+	display: block;
+	height:22rpx;
+	font-size:22rpx;
+	font-family:PingFangSC-Medium;
+	font-weight:500;
+	color:rgba(102,102,102,1);
+	line-height:22rpx;
+	text-align: center;
+	margin-top:20rpx;
+}
+
+.ui-notification{
+	position: absolute;
+	z-index: 99;
+	margin: 12rpx 25rpx 0 0;
+	/* padding: 0 8rpx 0 8rpx; */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	top: 0;
+	right: 0;
+	/* min-height:30rpx; */
+	min-width: 30rpx;
+	background:rgba(255,255,255,1);
+	border:2rpx solid rgba(32,202,180,1);
+	border-radius: 50%;
+	box-sizing: border-box;
+}
+
+.ui-notification text{
+	margin-top: 2rpx;
+	font-size:24rpx;
+	font-family:PingFang-SC;
+	font-weight:800;
+	color:rgba(32,202,180,1);
+}
+
+.ui-textItem {
+    width: 100%;
+    height: auto;
+	background:rgba(245,245,245,1);
+	margin-top: 24rpx;
+}
+
+.ui-itemBox {
+    position: relative;
+    border-top: 3rpx solid #f8f7f7;
+	margin-bottom: 16rpx;
+	background:rgba(255,255,255,1);
+}
+
+.ui-blockInviter{
+	width: 100%;
+	height: 100%;
+}
+
+.ui-inviter{
+	width: 100%;
+	height:96rpx;
+	border-top: 2rpx solid rgba(0,0,0,0.1);
+	background:rgba(255,255,255,1);
+}
+
+.ui-inputInviterInfo{
+	position: relative;
+	width:660rpx;
+	height:56rpx;
+	background:rgba(250,250,250,1);
+	border-radius:28rpx;
+	margin: 20rpx 0 0 40rpx;
+}
+
+.ui-inputBox{
+	position: absolute;
+	width: 300rpx;
+	height:26rpx;
+	font-size:26rpx;
+	font-family:PingFang-SC-Medium;
+	font-weight:500;
+	line-height:26rpx;
+	top:2rpx;
+	left: 40rpx;
+}
+
+.ui-empty{
+	display: inline-block;
+	position: absolute;
+	width: 32rpx;
+	height:32rpx;
+	border-radius: 32rpx;
+	top:12rpx;
+	right: 126rpx;
+  background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_empty.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+}
+
+.ui-cutOff{
+	position: absolute;
+	width:2rpx;
+	height:40rpx;
+	background:rgba(204,204,204,1);
+	top:8rpx;
+	right: 100rpx;
+}
+
+.ui-save{
+	position: absolute;
+	height:26rpx;
+	font-size:26rpx;
+	font-family:PingFang-SC-Medium;
+	font-weight:500;
+	color:rgba(32,202,180,1);
+	line-height:26rpx;
+	top:14rpx;
+	right: 24rpx;
+}
+
+.ui-inviterInfo{
+	position: relative;
+}
+
+.ui-inviterInfoAvatar{
+	position:absolute;
+	display: inline-block;
+	width: 64rpx;
+	height:64rpx;
+	border-radius: 64rpx;
+	background: #CCCCCC;
+	margin: 16rpx 36rpx;
+}
+
+.ui-inviterInfo .ui-inviterNikeName{
+	position: absolute;
+	font-size:26rpx;
+	font-family:PingFang-SC-Regular;
+	font-weight:400;
+	color:rgba(51,51,51,1);
+	margin-left: 124rpx;
+}
+
+.ui-inviterInfo .ui-inviterWxName{
+	position: absolute;
+	font-size:26rpx;
+	font-family:PingFang-SC-Regular;
+	font-weight:400;
+	color:rgba(153,153,153,1);
+	margin-left: 288rpx;
+}
+
+.ui-itemBox:last-child{
+	margin-bottom:24rpx;
+}
+
+.ui-itemBox:active:not(:first-child) {
+    opacity: 0.5
+}
+
+.ui-itemBox:last-child {
+    border-bottom: 3rpx solid #f8f7f7;
+}
+
+.ui-itemBox text{
+	height:30rpx;
+	font-size:30rpx;
+	font-family:PingFangSC-Medium;
+	font-weight:500;
+	color:rgba(61,61,61,1);
+	line-height:96rpx;
+	margin-left: 40rpx;
+}
+
+.ui-itemBox .ui-moreIcon {
+	position: absolute;
+	display: inline-block;
+	top: 38rpx;
+	right: 50rpx;
+	width:16rpx;
+	height:26rpx;
+	line-height: 96rpx;
+	background-image: url('http://www.gzlingren.com:8098/yangtianhe/my_rightArrow.png');
+	background-repeat:no-repeat;
+	background-position: center center; 
+	background-size:cover;
+}
+
+.ui-dropDown{
+	width:24rpx;
+	height:14rpx;
+	position: absolute;
+	display: inline-block;
+	top: 44rpx;
+	right: 46rpx;
+	background-image: url('http://www.gzlingren.com:8098/yangtianhe/my_downArrow.png');
+	background-repeat:no-repeat;
+	background-position: center center; 
+	background-size:cover;
+}
+
+.ui-LogOut{
+	margin-bottom: 20rpx;
+	width:100%;
+	height:96rpx;
+	background:rgba(255,255,255,1);
+	font-size:26rpx;
+	font-family:PingFangSC;
+	font-weight:400;
+	color:rgba(32,202,180,1);
+	line-height:96rpx;
+	text-align: center;
+}
+
+.ui-LogOut:active{
+	opacity: 0.5;
+}
+
+/* 登录信息模态框 */
+.modal-mask {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background:rgba(0,0,0,1);
+	opacity: 0.5;
+	overflow: hidden;
+	z-index: 9000;
+	color: #fff;
+}
+.modal-dialog {
+	width:100%;
+	height:714rpx;
+	background:rgba(255,255,255,1) ;
+	border-radius:20px 20px 0px 0px;
+	overflow: hidden;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	z-index: 999999;
+}
+.moadl-ythAvatar{
+	display: inline-block;
+	width: 60rpx;
+	height: 60rpx;
+	border-radius: 60rpx;
+	margin: 60rpx 0 0 40rpx;
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_ythAvatar.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+}
+.modal-title {
+	display: inline-block;
+	position: absolute;
+	width:170rpx;
+	height:30rpx;
+	font-size:30rpx;
+	font-family:PingFangSC-Medium;
+	font-weight:500;
+	color:rgba(51,51,51,1);
+	line-height:30rpx;
+	margin: 76rpx 0 0 24rpx;
+}
+
+.modal-title text:first-child{
+	float: left;
+}
+
+.modal-title text:last-child{
+	float: right;
+}
+
+.modal-infoText{
+	height:42rpx;
+	font-size:42rpx;
+	font-family:PingFangSC-Medium;
+	font-weight:500;
+	color:rgba(51,51,51,1);
+	line-height:42rpx;
+	margin: 26rpx 0 0 40rpx;
+}
+
+.modal-infoBox{
+	position: relative;
+	width:670rpx;
+	height:132rpx;
+	border-top: #f5f5f5 solid 2rpx;
+	border-bottom: #f5f5f5 solid 2rpx;
+	margin: 44rpx 0 0 40rpx;
+}
+
+.modal-infoBoxAvatar{
+	display: inline-block;
+	width: 92rpx;
+	height: 92rpx;
+	margin-top: 20rpx;
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_infoBoxAvatar.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+}
+
+.modal-infoBox text:nth-child(2){
+	position: absolute;
+	height:30rpx;
+	font-size:30rpx;
+	font-family:PingFangSC-Medium;
+	font-weight:500;
+	color:rgba(51,51,51,1);
+	line-height:30rpx;
+	margin: 28rpx 0 0 28rpx;
+}
+
+.modal-infoBox text:nth-child(3){
+	position: absolute;
+	height:26rpx;
+	font-size:26rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(153,153,153,1);
+	line-height:26rpx;
+	margin: 78rpx 0 0 28rpx;
+}
+
+.modal-footer {
+	display: flex;
+	flex-direction: row;
+	margin: 152rpx 0 0 40rpx;
+}
+
+.modal-footer view{
+	height: 80rpx;
+	width: 320rpx;
+	border-radius: 2rpx;
+	font-size:34rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	line-height:80rpx;
+	text-align: center;
+	margin-right: 30rpx;
+}
+
+.btn-cancel {
+	background: #EDEDED;
+	color:rgba(4,193,96,1);
+}
+.btn-confirm {
+	background: #04C160;
+	color:rgba(255,255,255,1);
+}
+.getUserInfoBtn {
+	widows: 100%;
+	color: red;
+}

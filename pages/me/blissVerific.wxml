@@ -1,0 +1,29 @@
+<!-- <wxs module="filter" src="../../filter/filter.wxs"></wxs> -->
+<!--blissVerific.wxml-->
+<view class="container">
+	<navBar title='使用福气' background='#F5F5F5' color='black' iconTheme='black' back="{{true}}"></navBar>
+	<view class="ui-main">
+		<text class="ui-blissTitleText">使用福气兑换</text>
+		
+		<view class="ui-blissBox">
+			<text class="ui-blissText">福气</text>
+			<view class="ui-blissIcon"></view>
+			<view class="ui-blissInput"><input type="number" focus="true" value="{{bissNum}}" bindinput="bissNumInput"/></view>
+			<text class="ui-canUseNum">可用福气数2929</text>
+		</view>
+		
+		<view class="btn-verification" bindtap="showDialogBtn">核销</view>
+	</view>
+	<!-- 弹窗 -->
+	<view class="modal-mask" bindtap="hideModal" catchtouchmove="true" wx:if="{{showModal}}"></view>
+	<view class="modal-dialog" wx:if="{{showModal}}">
+		<view class="modal-cancel" bindtap="onCancel"></view>
+		<view class="modal-flex">
+			<view class="modal-title">使用福气</view>
+			<view class="modal-blissIcon"></view>
+			<view class="modal-blissNum">{{bissNum}}</view>
+			<view class="modal-cutOff"></view>
+			<view class="btn-confirm" bindtap="onConfirm">确认核销</view>
+		</view>
+	</view>
+</view>

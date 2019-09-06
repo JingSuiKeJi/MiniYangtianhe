@@ -1,0 +1,265 @@
+@charset "UTF-8";
+@import "/libs/common.wxss";
+
+/**revenue.wxss**/
+.container{
+	background:rgba(245,245,245,1);
+}
+.ui-main {
+    width: 100%;
+}
+
+.ui-infoBox{
+	width: 100%;
+	position: relative;
+}
+
+.ui-backGorund{
+	height: 206rpx;
+	width: 100%;
+	background: #1DC4BC;
+}
+
+.ui-infoBox{
+	position: absolute;
+	top: 50rpx;
+	left: 32rpx;
+	width:686rpx;
+	height:216rpx;
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_returnsBackground.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+	border-radius:16rpx;
+}
+
+.ui-itemImgBox{
+	display: inline-block;
+	width:120rpx;
+	height:120rpx;
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_qrHeader.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+	border-radius: 120rpx;
+	margin-top: 48rpx;
+	margin-left: 48rpx;
+}
+
+.ui-textBox{
+	display: inline-block;
+	position: absolute;
+	left: 192rpx;
+	top: 58rpx;
+}
+
+.ui-textBox text:first-child{
+	display: block;
+	height:34rpx;
+	font-size:34rpx;
+	font-family:PingFangSC-Medium;
+	font-weight:500;
+	color:rgba(61,61,61,1);
+	line-height:34rpx;
+}
+
+.ui-textBox text:last-child{
+	display: block;
+	height:24rpx;
+	font-size:24rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(3,184,171,1);
+	line-height:24rpx;
+	margin-top: 30rpx;
+}
+
+.ui-vipBox{
+	position: absolute;
+	top: 24rpx;
+	right: 0;
+	width:150rpx;
+	height:56rpx;
+	background:linear-gradient(153deg,rgba(112,112,112,1) 0%,rgba(61,61,61,1) 100%);
+	border-radius:150rpx 0rpx 0rpx 150rpx;
+}
+
+.vipIcon{
+	position: absolute;
+	top: 6rpx;
+	left: 20rpx;
+	width: 44rpx;
+	height: 44rpx;
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_distributionLevel.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+}
+
+.ui-vipBox text{
+	position: absolute;
+	left: 74rpx;
+	height:28rpx;
+	font-size:28rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:500;
+	color:#FFDD81;
+	line-height:56rpx;
+}
+
+.ui-commissionBox{
+	margin:84rpx 0 0 32rpx;
+	width:686rpx;
+	height:378rpx;
+	background:rgba(255,255,255,1);
+	box-shadow:0 2rpx 8rpx 0 rgba(0,0,0,0.1);
+	border-radius:16px;
+}
+
+.ui-withdrawItem{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.ui-withdrawItem view:first-child .withdrawIcon{
+	display: inline-block;
+	margin-top: 26rpx;
+	width:26rpx;
+	height:30rpx;
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_withdrawalCommissionIcon.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+}
+
+.ui-withdrawItem view:first-child view:last-child{
+	position: relative;
+	display: inline-block;
+	top: -3rpx;
+	height:26rpx;
+	font-size:26rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(61,61,61,1);
+	line-height:26rpx;
+	margin-left: 12rpx;
+}
+
+.ui-withdrawItem view:nth-child(2){
+	height:48rpx;
+	font-size:48rpx;
+	font-family:PingFangSC-Medium;
+	font-weight:500;
+	color:rgba(255,186,100,1);
+	line-height:48rpx;
+	margin-top: 28rpx;
+}
+
+.ui-withdrawItem view:last-child{
+	height:28rpx;
+	font-size:20rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(153,153,153,1);
+	line-height:28rpx;
+	margin-top: 30rpx;
+}
+
+.ui-cut{
+	width:622rpx;
+	height:2rpx;
+	background: #CCCCCC;
+	margin: 26rpx 0 0 32rpx;
+}
+
+.ui-detailBox{
+	width:686rpx;
+	height:144rpx;
+	background:rgba(255,255,255,1);
+	box-shadow:0 2rpx 8rpx 0 rgba(0,0,0,0.1);
+	border-radius:16rpx;
+	margin: 24rpx 0 0 32rpx;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.ui-commissionItem{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.ui-commissionItem view{
+	width: 100%;
+	margin-top: 34rpx;
+}
+
+.ui-commissionItem text:first-child{
+	display: block;
+	height:34rpx;
+	font-size:34rpx;
+	font-family:PingFangSC-Medium;
+	font-weight:500;
+	color:rgba(3,184,171,1);
+	line-height:34rpx;
+	color: #03B8AB;
+	text-align: center;
+}
+
+.ui-commissionItem text:last-child{
+	display: block;
+	height:36rpx;
+	font-size:26rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(102,102,102,1);
+	line-height:36rpx;
+	text-align: center;
+	margin-top: 32rpx;
+}
+
+.ui-detailItem{
+	width: 33.333%;
+}
+
+.ui-detailItem:active{
+	opacity: 0.5;
+}
+
+.ui-detailItem .detailIcon{
+	position: relative;
+	left: 50%;
+	margin-left:-22rpx;
+	width:44rpx;
+	height:48rpx;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: contain;
+}
+
+.ui-detailItem:nth-child(1) .detailIcon{
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_totalCommissionIcon.png');
+}
+
+.ui-detailItem:nth-child(2) .detailIcon{
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_applicationWithdrawalIcon.png');
+}
+
+.ui-detailItem:nth-child(3) .detailIcon{
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_personalCodeIcon.png');
+}
+
+.ui-detailItem text{
+	display: block;
+	height:34rpx;
+	font-size:24rpx;
+	font-family:PingFangSC-Medium;
+	font-weight:500;
+	color:rgba(102,102,102,1);
+	line-height:34rpx;
+	text-align: center;
+	margin-top: 12rpx;
+}

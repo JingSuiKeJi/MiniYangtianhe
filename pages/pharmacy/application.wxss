@@ -1,0 +1,335 @@
+@charset "UTF-8";
+@import "/libs/common.wxss";
+
+/**application.wxss**/
+page{
+	background:rgba(245,245,245,1);
+}
+
+.ui-main {
+    width: 100%;
+}
+
+.ui-withdrawPanelBox{
+	position: relative;
+	width:686rpx;
+	height:456rpx;
+	background:rgba(255,255,255,1);
+	border-radius:16rpx;
+	margin: 32rpx 0 0 32rpx;
+}
+
+.ui-cashOutUpBox{
+	position: absolute;
+	height:26rpx;
+	font-size:26rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(51,51,51,1);
+	line-height:26rpx;
+	margin: 48rpx 0 0 32rpx;
+}
+
+.ui-cutOff{
+	position: absolute;
+	width:622rpx;
+	height:2rpx;
+	background:rgba(204,204,204,1);
+	margin: 106rpx 0 0 32rpx;
+}
+
+.ui-moneyTitle{
+	position: absolute;
+	height:26rpx;
+	font-size:26rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(51,51,51,1);
+	line-height:26rpx;
+	margin: 144rpx 0 0 32rpx;
+}
+
+.ui-payBox{
+	position: relative;
+	top:206rpx ;
+	left:44rpx ;
+	background: red;
+}
+
+.ui-moneySign{
+	position: absolute;
+	height:56rpx;
+	font-size:56rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(51,51,51,1);
+	line-height:56rpx;
+}
+
+.ui-inputBox{
+	position: absolute;
+	display: inline-block;
+	width: 430rpx;
+	height:56rpx;
+	font-size:56rpx;
+	line-height: 56rpx;
+	font-family:PingFangSC-Medium;
+	font-weight:500;
+	color:rgba(51,51,51,1);
+	vertical-align: text-bottom;
+	margin-left: 58rpx;
+	direction: none;
+}
+
+.ui-inputPlaceholderStay{
+	font-size:26rpx;
+	font-weight:400;
+	color:rgba(204,204,204,1);
+	vertical-align: bottom;
+}
+
+.ui-allDistill{
+	position:absolute;
+	width:104rpx;
+	height:26rpx;
+	font-size:26rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(0,145,255,1);
+	line-height:26rpx;
+	margin: 20rpx 0 0 490rpx;
+}
+
+.ui-serviceChargeBox{
+	position:absolute;
+	margin: 302rpx 0 0 32rpx;
+}
+
+.ui-serviceChargeBox text{
+	height:26rpx;
+	font-size:26rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(51,51,51,1);
+	line-height:26rpx;
+}
+
+.ui-serviceChargeBox text:last-child{
+	margin-left: 36rpx;
+}
+
+.ui-cashOutDownBox{
+	position: absolute;
+	width:622rpx;
+	height:2rpx;
+	background:rgba(204,204,204,1);
+	margin: 360rpx 0 0 32rpx;
+}
+
+.ui-actualAmountBox{
+	position: absolute;
+	margin: 398rpx 0 0 332rpx;
+}
+
+.ui-actualAmountBox text{
+	height:26rpx;
+	font-size:26rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(51,51,51,1);
+	line-height:26rpx;
+}
+
+.ui-actualAmountBox text:last-child{
+	margin-left: 48rpx;
+}
+
+.btn-withdraw{
+	width:302rpx;
+	height:80rpx;
+	background:linear-gradient(90deg,rgba(32,202,180,1) 0%,rgba(32,202,180,1) 100%);
+	box-shadow:0rpx 4rpx 6rpx 0rpx rgba(0,0,0,0.1);
+	border-radius:8rpx;
+	border:2rpx solid rgba(3,184,171,1);
+	font-size:30rpx;
+	font-family:PingFangSC-Medium;
+	font-weight:500;
+	color:rgba(255,255,255,1);
+	line-height:80rpx;
+	text-align: center;
+	margin: 32rpx 0 0 224rpx;
+}
+
+.ui-withdrawalPromptBox{
+	width:686rpx;
+	height:278rpx;
+	background:rgba(255,255,255,1);
+	border-radius:16rpx;
+	margin: 36rpx 0 0 32rpx;
+}
+
+.ui-promptTitle{
+	position: absolute;
+	margin: 32rpx 0 0 32rpx;
+}
+
+.ui-promptTitle text:first-child{
+	display: inline-block;
+	width:4rpx;
+	height:26rpx;
+	background:rgba(51,51,51,1);
+	border-radius:2rpx;
+}
+
+.ui-promptTitle text:last-child{
+	position: absolute;
+	top: 0;
+	left: 20rpx;
+	width:156rpx;
+	height:26rpx;
+	font-size:26rpx;
+	font-family:PingFangSC-Semibold;
+	font-weight:600;
+	color:rgba(51,51,51,1);
+	line-height:26rpx;
+}
+
+.ui-promptInfoBox{
+	position: absolute;
+	margin: 90rpx 0 0 32rpx;
+}
+
+.ui-promptInfoBox text{
+	display: block;
+	height:26rpx;
+	font-size:26rpx;
+	font-family:PingFang-SC-Medium;
+	font-weight:500;
+	color:rgba(102,102,102,1);
+	line-height:26rpx;
+	margin-bottom: 16rpx;
+}
+
+.ui-promptInfoBox text:nth-child(2){
+	margin-bottom: 8rpx;
+}
+
+.ui-promptInfoBox text:last-child{
+	width:622rpx;
+	height:80rpx;
+	font-size:26rpx;
+	font-family:PingFang-SC-Medium;
+	font-weight:500;
+	color:rgba(102,102,102,1);
+	line-height:40rpx;
+}
+
+.ui-withdrawalRecord{
+	width:686rpx;
+	height:570rpx;
+	background:rgba(255,255,255,1);
+	box-shadow:0rpx 4rpx 8rpx 0rpx rgba(0,0,0,0.1);
+	border-radius:16rpx;
+	margin: 32rpx 0 0 32rpx;
+}
+
+.ui-withdrawInfoItem{
+	position: absolute;
+	margin-left: 32rpx;
+}
+
+.ui-withdrawDetail{
+	width:622rpx;
+	height:96rpx;
+	background:rgba(255,255,255,1);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-bottom:#F5F5F5 solid 2rpx;
+	color:rgba(102,102,102,1);
+}
+
+.ui-withdrawDetail text{
+	width: 100%;
+	height:36rpx;
+	font-size:26rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	line-height:36rpx;
+}
+
+.ui-withdrawDetail text:nth-child(2){
+	text-align: center;
+	height:40rpx;
+	font-size:28rpx;
+	line-height:40rpx;
+}
+
+.ui-withdrawDetail text:nth-child(3){
+	text-align: right;
+}
+
+/* 模态框 */
+.modal-mask {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background:rgba(0,0,0,1);
+	opacity: 0.5;
+	overflow: hidden;
+	z-index: 9000;
+	color: #fff;
+}
+.modal-dialog {
+	width:540rpx;
+	height:208rpx;
+	background:rgba(255,255,255,0.9);
+	border-radius:16rpx;
+	overflow: hidden;
+	position: fixed;
+	top: 50%;
+	left: 0;
+	z-index: 9999;
+	margin: -180rpx 105rpx;
+}
+.modal-title {
+	margin-top: 36rpx;
+	margin-left:30rpx ;
+	width:480rpx;
+	height:48rpx;
+	font-size:34rpx;
+	font-family:PingFangSC-Semibold;
+	font-weight:600;
+	color:rgba(0,0,0,1);
+	line-height:48rpx;
+	text-align: center;
+}
+
+.modal-footer {
+	display: flex;
+	flex-direction: row;
+	height: 86rpx;
+	border-top: 1px solid #dedede;
+	font-size: 34rpx;
+	line-height: 86rpx;
+	margin-top: 34rpx;
+}
+.btn-cancel {
+	width: 50%;
+	font-size:34rpx;
+	font-family:PingFang-SC-Medium;
+	font-weight:500;
+	color:rgba(0,122,255,1);
+	text-align: center;
+	border-right: 1px solid #dedede;
+}
+.btn-confirm {
+	width: 50%;
+	font-size:34rpx;
+	font-family:PingFangSC-Semibold;
+	font-weight:600;
+	color:rgba(253,61,47,1);
+	text-align: center;
+}

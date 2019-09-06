@@ -1,0 +1,14 @@
+<!-- <wxs module="filter" src="../../filter/filter.wxs"></wxs> -->
+<!--qr.wxml-->
+<view class="container">
+	<view class="ui-main">
+		<view class="ui-qrBox">
+			<view class="ui-headPortrait"></view>
+			<text class="ui-personalId">命运的杰克</text>
+			<view class="ui-qrInfo"></view>
+		</view>
+		<view class="btn-savePoster"></view>
+		<text class="ui-savePosterText">保存海报</text>
+		<view class="btn-share">立即分享</view>
+	</view>
+</view>

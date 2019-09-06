@@ -1,0 +1,47 @@
+<cover-view class='tab-bar'>
+    <!-- 背景图片 -->
+    <cover-image class='tab-bar-bg' src='../images/tabbarIcon/tabbar_bg.png'/>
+    
+    <!-- 养乐药房 -->
+    <cover-view class='tab-bar-index' data-index='0' data-path='{{list[0].pagePath}}' bindtap='tab_bar_index'>
+      <cover-view class='tab-bar-icon'>
+        <cover-image src='{{selected == 0 ? list[0].selectedIconPath : list[0].iconPath}}' class='tab-bar-pharmacyImg'/>
+        <cover-view class='tab-bar-text' style='color:{{selected == 0 ? selectedColor : color}}'>养乐药房</cover-view>
+      </cover-view>
+    </cover-view>
+
+    <!-- 养乐商城 -->
+    <cover-view class='tab-bar-index' data-index='1' data-path='{{list[1].pagePath}}' bindtap='tab_bar_index'>
+      <cover-view class='tab-bar-icon'>
+        <cover-image src='{{selected == 1 ? list[1].selectedIconPath : list[1].iconPath}}' class='tab-bar-marketImg'/>
+        <cover-view class='tab-bar-text' style='color:{{selected == 1 ? selectedColor : color}}'>养乐商城</cover-view>
+      </cover-view>
+    </cover-view>
+
+    <!-- 养乐步 -->
+    <cover-view class='tab-bar-index-add' data-index='2' data-path='{{list[2].pagePath}}' bindtap='tab_bar_index'>
+      <cover-view class='tab-bar-icon_add'>
+        <cover-image class='tab-bar-img-add' src='{{selected == 2 ? list[2].selectedIconPath : list[2].iconPath}}'/>
+		<cover-view class='tab-bar-add-text' style='color:{{selected == 2 ? selectedColor : color}}'>养步乐</cover-view>
+      </cover-view>
+    </cover-view>
+
+    <!-- 购物车 -->
+    <cover-view class='tab-bar-index' data-index='3' data-path='{{list[3].pagePath}}' bindtap='tab_bar_index'>
+      <cover-view class='tab-bar-icon'>
+        <cover-image src='{{selected == 3 ? list[3].selectedIconPath : list[3].iconPath}}' class='tab-bar-cartImg'/>
+        <cover-view class='tab-bar-text' style='color:{{selected == 3 ? selectedColor : color}};transform: translateX(6rpx);'>购物车</cover-view>
+      </cover-view>
+    </cover-view>
+
+    <!-- 我的 -->
+    <cover-view class='tab-bar-index' data-index='4' data-path='{{list[4].pagePath}}' bindtap='tab_bar_index'>
+      <cover-view class='tab-bar-icon'>
+        <cover-image src='{{selected == 4 ? list[4].selectedIconPath : list[4].iconPath}}' class='tab-bar-meImg'/>
+        <cover-view class='tab-bar-text'  style='color:{{selected == 4 ? selectedColor : color}}'>我的</cover-view>
+      </cover-view>
+    </cover-view>
+
+</cover-view>
+<!-- <cover-view class='tab-bottom'>
+</cover-view> -->

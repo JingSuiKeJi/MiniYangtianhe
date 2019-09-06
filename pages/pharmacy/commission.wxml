@@ -1,0 +1,27 @@
+<!-- <wxs module="filter" src="../../filter/filter.wxs"></wxs> -->
+<!--commission.wxml-->
+<view class="container">
+	<view class="ui-main">
+		<navBar ext-class="navPosition" title='佣金明细' iconTheme='white' color='#ffffff' background='transparent' back="{{true}}" bindback="handlerGobackClick"></navBar>
+		<view class="ui-moneyBox">
+			<view class="moneyInfo">
+				<text>2929</text>
+				<text>可提现佣金</text>
+			</view>
+			<view class="btn-withdraw">提现</view>
+		</view>
+		<scroll-view class="ui-withdrawInfoBox" scroll-y="true">
+			<view class="ui-withdraw__title">提现明细</view>
+			<block wx:if="{{withdrawlist.length > 0}}">
+				<view class="ui-withdrawInfoItem">
+					<view class="ui-withdrawDetail" wx:for="{{withdrawlist}}" wx:for-index="idx" wx:key="idx" wx:for-item="item"
+					style="color: {{item.money>0?'#666666':'#20CAB4'}};">
+						<text>{{item.createTime}}</text>
+						<text>{{item.money}}</text>
+						<text>{{item.type}}</text>
+					</view>
+				</view>
+			</block>
+		</scroll-view>
+	</view>
+</view>

@@ -1,0 +1,417 @@
+/* pages/collage/comments.wxss */
+page {
+    background-color: #ffffff;
+}
+.main {
+    width: 100%;
+    height: 100rpx;
+    background-color: #ffffff;
+}
+.ui-commentBox {
+    width: 100%;
+    padding: 30rpx;
+    box-sizing: border-box;
+    border-top: 1rpx solid #F1F1F1;
+}
+.ui-infoIrem__imgBox {
+    display: inline-block;
+}
+.ui-commentItem {
+    margin: 0 auto;
+    border-bottom: 1rpx solid #F1F1F1;
+}
+
+.ui-commentItem__info {
+    width: 100%;
+    white-space: nowrap;
+}
+.ui-infoIrem__imgBox .ui-imgItem__perIcon{
+    width: 64rpx;
+    height: 64rpx;
+    margin-right:30rpx;
+}
+.ui-infoItem_name {
+    display: inline-block;
+    width: 60%;
+    margin-top: 19rpx;
+    vertical-align: top;
+    line-height:30rpx;
+    font-size:30rpx;
+    font-family:PingFang-SC-Regular;
+    font-weight:400;
+    color:#333333; 
+    white-space: normal;
+}
+.ui-infoItem_time {
+    display: inline-block;
+    font-size:26rpx;
+    font-family:PingFangSC-Regular;
+    font-weight:400;
+    color:#C7C7C7;
+    line-height:26rpx;
+    margin-top: 19rpx;
+    vertical-align: top;
+}
+.ui-commentItem__content {
+    line-height:50rpx;
+    margin-bottom: 20rpx;
+    font-size:30rpx;
+    font-family:PingFangSC-Regular;
+    font-weight:400;
+    color:#333333;
+}
+
+.ui-commentItem__images .ui-imagesItem__img {
+   width: 200rpx;
+   height: 200rpx; 
+   margin: 0rpx 30rpx 20rpx 0;
+  
+}
+.ui-tapBox {
+    width: 100%;
+    height: 100rpx;
+    white-space: nowrap;
+    position: fixed;
+    bottom: 0;
+    background-color: #F6F6F6;
+    /* z-index: 1003; */
+}
+.ui-tapItem_numIcon {
+    display: inline-block;
+    min-width: 34rpx;
+    /* min-height: 34rpx; */
+    line-height: 34rpx;
+    text-align: center;
+    font-size:24rpx;
+    font-weight:800;
+    font-family:PingFangSC;
+    color: #ED3D3B;
+    border-radius: 50%;
+    border: 1rpx solid #ED3D3B;
+    position: absolute;
+    top: 5rpx;
+    right: 50rpx;
+}
+.ui-tapItem_imgBox{
+    width: 34%;
+    display: inline-block;
+    position: relative;
+}
+.ui-tapItem {
+    display: inline-block;
+    width: 66%;
+    height: 100%;
+    vertical-align: top;
+}
+.ui-nowBuyBox {
+    line-height: 100rpx;
+    font-size:32rpx;
+    font-family:PingFangSC;
+    font-weight:600;
+    color:#fff;
+    background-color: #3ED8C8;
+    text-align: center;
+    
+}
+.ui-tapItem_messageIcon, .ui-tapItem_cartIcon {
+    width: 50rpx;
+    height: 50rpx;
+    margin: 25rpx 30rpx;
+}
+.ui-tapItem_singleBuy {
+    width: 50%;
+    height: 100rpx;
+    display: inline-block;
+    text-align: center;
+    vertical-align: top;
+    background:linear-gradient(135deg,rgba(255,170,0,1) 0%,rgba(255,199,88,1) 100%);
+}
+.ui-tapItem_togetherBuy {
+    width: 50%;
+    height: 100rpx;
+    display: inline-block;
+    text-align: center;
+    vertical-align: top;
+    background:linear-gradient(137deg,rgba(1,206,165,1) 0%,rgba(94,221,218,1) 100%);
+}
+.ui-tapItem_word {
+    font-size:30rpx;
+    font-family:PingFangSC-Semibold;
+    font-weight:600;
+    color: #fff;
+}
+.ui-tapItem_text {
+    margin-top: 20rpx;
+    font-size:22rpx;
+    font-family:PingFangSC;
+    font-weight:400;
+    color:#fff;
+    line-height:22rpx;
+}
+.ui-tapItem_specialWord {
+    margin-top: 10rpx;
+    margin-bottom: -10rpx;
+    
+}
+.modals{
+    position:fixed;
+    z-index: 999;
+    top:0; left: 0; 
+    right:0;
+    bottom: 0;
+}
+.modals-cancel{
+    position:absolute; 
+    z-index:1000; 
+    top:0; 
+    left: 0; 
+    right:0; 
+    bottom: 0; 
+    background-color: rgba(0,0,0,.5);}
+.bottom-dialog-body{
+    position:absolute; 
+    z-index:10001; 
+    bottom:0;
+    left:0; 
+    right:0; 
+    background-color: #fff;}
+/*动画前初始位置*/
+.bottom-pos{
+    -webkit-transform:translateY(100%);
+    transform:translateY(100%);
+}
+.ui-modelBox {
+    width: 100%;
+    background-color: white;
+    /* position: fixed;
+    bottom: 0; */
+}
+.modal-dialog {
+    width:100%;
+    overflow: hidden;
+    z-index: 9999;
+    height:200rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1rpx solid #F5F5F5;
+}
+
+.btn-common{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.btn-common view{
+    width: 100rpx;
+    height: 100rpx;
+}
+
+.ui-wxImg{
+    background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_posterShare.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+.ui-saveImg{
+    background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_posterSave.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+.btn-common text{
+    height:26rpx;
+    font-size:26rpx;
+    font-family:PingFangSC-Regular;
+    font-weight:400;
+    color:rgba(102,102,102,1);
+    line-height:26rpx;
+    text-align: center;
+    margin-top: 20rpx;
+}
+.ui-shareItem__text {
+    width: 100%;
+    height: 90rpx;
+    line-height: 90rpx;
+    font-size:34rpx;
+    font-family:PingFangSC-Regular;
+    font-weight:400;
+    color:#999999;
+    text-align: center;
+}
+
+.ui-shareItem__text > text {
+    color: #ED3D3B;
+}
+.ui-modelBox {
+    width: 100%;
+    background-color: white;
+}
+.ui-modelContent .ui-model_top {
+    margin-top: 30rpx;
+    white-space: nowrap;
+    position: relative;
+}
+.ui-model_top .ui-modelTop_left {
+    display: inline-block;
+}
+.ui-modelTop_left .ui-leftImg_goodsIcon {
+    width: 204rpx;
+    height: 204rpx;
+    margin-left: 30rpx;
+
+}
+.ui-modelTop_center {
+    display: inline-block;
+    vertical-align: top;
+    margin: 80rpx auto 20rpx 20rpx;
+}
+.ui-modelTop_center .ui-centerItem_price {
+    font-size:38rpx;
+    font-family:PingFang-SC-Heavy;
+    font-weight:800;
+    color:#333333;
+    line-height:38rpx;
+}
+.ui-centerItem_price .ui-priceItem_text {
+    font-size:30rpx;
+    color:#ED3D3B;
+    line-height:38rpx;
+    margin-left: 15rpx;
+}
+.ui-centerItem_price .ui-priceItem_earnMoney {
+    color:#ED3D3B;
+    margin-left: 10rpx;
+}
+.ui-modelTop_center .ui-centerItem_scale {
+    font-size:26rpx;
+    font-family:PingFang-SC-Medium;
+    font-weight:500;
+    color:#333333;
+    line-height:26rpx;
+    margin-top: 20rpx;
+}
+.ui-modelTop_cancel {
+    display: inline-block;
+    vertical-align: top;
+}
+.ui-modelTop_cancel .ui-cancel_delectIcon {
+    width: 40rpx;
+    height: 40rpx;
+    position: absolute;
+    right: 30rpx;
+}
+.ui-model_middle {
+    margin: 20rpx auto 70rpx 30rpx;
+    position: relative;
+}
+.ui-model_middle .ui-middleItem_title {
+    font-size:30rpx;
+    font-family:PingFang-SC-Medium;
+    font-weight:500;
+    color:#333333;
+    line-height:30px;
+    margin-bottom: 25rpx;
+}
+.ui-model_middle .ui-middleItem_bottomTitle {
+    margin-bottom: 125rpx;
+}
+.ui-model_middle .ui-middleItem_btn {
+    width: 320rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    /* background-color: #FCFCFC; */
+    border: 1rpx solid #F5F5F5;
+    font-size:26rpx;
+    font-family:PingFang-SC-Medium;
+    font-weight:500;
+    color: #333333;
+    text-align: center;
+    border-radius: 5rpx;
+    display: inline-block;
+    margin-right: 25rpx;
+    margin-bottom: 25rpx;
+}
+.ui-model_middle .isSelectBtn {
+    background-color:#76DFDD;
+    color: #fff;
+}
+.ui-model_bottom {
+    width: 100%;
+    height: 92rpx;
+    background:linear-gradient(137deg,rgba(1,206,165,1) 0%,rgba(94,221,218,1) 100%);
+    font-size:28rpx;
+    font-family:PingFangSC-Semibold;
+    font-weight:600;
+    color:#fff;
+    line-height:92rpx;
+    text-align: center;
+
+}
+.ui-tabBox {
+    width: 100%;
+    height: 90rpx;
+    /* z-index: 999; */
+    position: fixed;
+    border: 1rpx solid #F1F1F1;
+    background-color: #fff;
+
+}
+.ui-tabBox .ui-tabItem {
+    height: 100%;
+    white-space: nowrap;
+    text-align: center;
+    display: inline-block;
+    vertical-align: top;
+    
+}
+
+.ui-tabBox .ui-tabItem:nth-child(1) {
+    margin-left: 90rpx;
+}
+.ui-tabBox .ui-tabItem:nth-child(2) {
+    margin-left: 200rpx;
+    margin-right: 200rpx;
+}
+.ui-tabItem  .ui-tabItem_title {
+    font-size:26rpx;
+    font-family:PingFang-SC-Medium;
+    font-weight:500;
+    line-height: 84rpx;
+}
+
+.ui-tabItem  .ui-tabItem_icon {
+    width: 40rpx;
+    height: 6rpx;
+    margin-left: 15%;
+    margin-top: 3rpx;
+}
+.ui-detailAssessBox {
+    padding-bottom: 20rpx; 
+    white-space: nowrap;
+}
+.ui-addCountBox {
+    position: absolute;
+    top: 0rpx;
+    right: 60rpx;
+}
+.ui-addCountBox .ui-countItem__icon{
+    width: 36rpx;
+    height: 36rpx;
+}
+.ui-addCountBox .ui-countItem__text {
+    display: inline-block;
+    line-height:26rpx;
+    vertical-align: top;
+    margin: 13rpx 20rpx;
+    font-size:26rpx;
+    font-family:PingFangSC-Medium;
+    font-weight:500;
+    color:#333333;
+}
+

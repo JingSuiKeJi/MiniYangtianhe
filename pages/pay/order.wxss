@@ -1,0 +1,182 @@
+/* pages/pay/order.wxss */
+page {
+    background-color: #fff;
+}
+.contain,.main {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+}
+.userInfoBox {
+    white-space: nowrap;
+    background-color: #fff;
+    border-top: 1rpx solid #F1F1F1;
+}
+.userInfoItem_decBox {
+    width: 10%;
+    height: 100%;
+    display: inline-block;
+    vertical-align: top;
+}
+.userInfoItem_decBox .userInfoItem_decIcon {
+    width: 34rpx;
+    height: 42rpx;
+    margin-left: 30rpx;
+    margin-top: 70%;
+}
+.userInfoItem_info {
+    width: 80%;
+    display: inline-block;
+    margin-left: 30rpx;
+    margin-top: 15rpx;
+}
+.ui-infoItem_namePho .ui-infoItem_name{
+    font-size:30rpx;
+    font-family:PingFangSC-Medium;
+    font-weight:500;
+    color:#333333;
+    line-height:30rpx;
+}
+.ui-infoItem_namePho .ui-infoItem_phone {
+    font-size:26rpx;
+    font-family:PingFang-SC-Regular;
+    font-weight:400;
+    color:#666666;
+    line-height:26rpx;
+    margin-left: 10rpx;
+}
+.userInfoItem_info .ui-infoItem_address {
+    font-size:26rpx;
+    font-family:PingFang-SC-Medium;
+    font-weight:500;
+    color:#333333;
+    white-space: normal;
+    margin-bottom: 30rpx;
+}
+.goodsBox {
+    width: 100%;
+    border-top: 20rpx solid #F1F1F1;
+    border-bottom: 20rpx solid #F1F1F1;
+    padding-bottom: 30rpx; 
+
+}
+
+.goodsItem_info {
+    white-space: nowrap;
+}
+.goodsItem_info .ui-goodsInfo_imgBox {
+    display: inline-block;
+}
+.ui-goodsInfo_imgBox .ui-goodsInfo_goodsIcon {
+    width: 160rpx;
+    height: 160rpx;
+    margin-top: 30rpx;
+    margin-left: 30rpx;
+}
+.ui-goodsInfo_text {
+    width: 63%;
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 20rpx;
+}
+.ui-goodsInfo_text .ui-goodsInfo_title {
+    font-size:26rpx;
+    font-family:PingFangSC-Medium;
+    font-weight:500;
+    color:#333333;
+    line-height:36rx;
+    margin-top: 40rpx;
+}
+.ui-goodsInfo_text .ui-goodsInfo_scale {
+    font-size:22rpx;
+    font-family:PingFangSC-Regular;
+    font-weight:400;
+    color:#999999;
+    line-height:22rpx;
+    margin: 25rpx auto;
+}
+.ui-goodsInfo_text .ui-goodsInfo_price {
+    font-size:26rpx;
+    font-family:PingFangSC-Medium;
+    font-weight:500;
+    color:#333333;
+    line-height:26rpx;
+}
+.ui-goodsInfo_text .ui-goodsInfo_count {
+    font-size:22rpx;
+    font-family:PingFangSC-Medium;
+    font-weight:500;
+    color:#999999;
+    line-height:22rpx;
+    float: right;
+}
+
+.ui-fareBox > text:nth-child(1) {
+    font-size:26rpx;
+    font-family:PingFang-SC-Medium;
+    font-weight:500;
+    color:#333333;
+    line-height:26rpx;
+    margin-left: 30rpx;
+}
+
+.ui-fareBox > text:nth-child(2) {
+    font-size:28rpx;
+    font-family:PingFang-SC-Regular;
+    font-weight:400;
+    color:#333333;
+    line-height:28rpx;
+    float: right;
+    margin-right: 70rpx;
+    margin-top: 20rpx;
+
+}
+.ui-goodsInfo_total {
+    font-family:PingFang-SC-Medium;
+    font-weight:500;
+    color:#ED3D3B;
+}
+.ui-fixedBox {
+    width: 100%;
+    height: 100rpx;
+    position: fixed;
+    bottom: 0;
+    white-space: nowrap;
+    box-shadow: 0px 1px 9px #F1F1F1;
+
+}
+.ui-fixedBox .ui-amountBox {
+    width:70%;
+    height: 100rpx;
+    line-height: 100rpx;
+    display: inline-block;
+}
+.ui-amountBox .ui-amountItem_text {
+    font-size:28rpx;
+    font-family:PingFang-SC-Medium;
+    font-weight:500;
+    color:#666666;
+    margin-left: 30rpx;
+}
+.ui-amountBox .ui-amountItem_price {
+    font-size:32rpx;
+    font-family:PingFangSC-Semibold;
+    font-weight:600;
+    color:#ED3D3B;
+    margin-left: 20rpx;
+}
+.ui-payBtn {
+    width: 30%;
+    height: 100%;
+    display: inline-block;
+    background:linear-gradient(137deg,rgba(1,206,165,1) 0%,rgba(94,221,218,1) 100%);
+    font-size:28rpx;
+    font-family:PingFangSC-Semibold;
+    font-weight:600;
+    color:#ffff;
+    line-height: 100rpx;
+    text-align: center;
+}
+
+
+

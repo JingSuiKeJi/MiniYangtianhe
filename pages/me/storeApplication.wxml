@@ -1,0 +1,82 @@
+<!-- <wxs module="filter" src="../../filter/filter.wxs"></wxs> -->
+<!--storeApplication.wxml-->
+<view class="container">
+	<view class="ui-main">
+		<view class="ui-photoBox">
+			<view class="ui-photoBg">
+				<view wx:if="{{!tempFilePaths}}" class="ui-photoDashed" bindtap="onChooseImageTap">
+					<view class="ui-takePhotosImg"></view>
+					<text class="ui-takePhotosText">添加门店相关图片</text>
+				</view>
+				<view class="ui-photoSelect" wx:else>
+					<image src="{{tempFilePaths}}"></image>
+					<view class="ui-anewPhoto" bindtap="onChooseImageTap">重置照片</view>
+				</view>
+			</view>
+			<view class="ui-storeIntroduce">
+				<view class="ui-introduceTitle">
+					<text>门店介绍</text>
+					<text>*</text>
+				</view>
+				<textarea class="ui-introduceText" placeholder="请输入门店介绍信息"  value="{{introduce}}" bindinput="onIntroduceTap"
+				cols="686rpx" maxlength="1000" auto-height="{{auto_height}}" bindblur='areablur' bindfocus='areafocus'/>
+			</view>
+		</view>
+		
+		<view class="ui-storeInfoBox">
+			<view class="ui-itemCommon">
+				<view class="ui-titleCommon">
+					<text>门店编码</text>
+					<text>*</text>
+				</view>
+				<input class="ui-inputCommon" bindinput="onEncodingTap" type="text" value="{{encoding}}" placeholder="请输入门店编码" placeholder-style="color:#666666;"/>
+			</view>
+			<view class="ui-itemCommon">
+				<view class="ui-titleCommon">
+					<text>门店名称</text>
+					<text>*</text>
+				</view>
+				<input class="ui-inputCommon" bindinput="onStoreNameTap" type="text" value="{{storeName}}" placeholder="请输入名称" placeholder-style="color:#666666;"/>
+			</view>
+			<view class="ui-itemCommon">
+				<view class="ui-titleCommon">
+					<text>地址信息</text>
+					<text>*</text>
+				</view>
+				<textarea class="ui-addressText" bindinput="onAddressTap" placeholder="请输入地址" placeholder-style="color:#666666;" value="{{address}}" bindinput="onAddressTap"
+				cols="686rpx" maxlength="110" auto-height="{{auto_height}}" bindblur='areablur' bindfocus='areafocus'/>
+			</view>
+			<view class="ui-itemCommon">
+				<view class="ui-titleCommon">
+					<text>联系方式</text>
+					<text>*</text>
+				</view>
+				<input class="ui-inputCommon" bindinput="onStoreTelTap" type="number" value="{{storeTel}}" placeholder="请输入手机号码或座机号码" placeholder-style="color:#666666;"/>
+			</view>
+			<view class="ui-itemCommon">
+				<view class="ui-titleCommon">
+					<text>营业执照</text>
+					<text>*</text>
+				</view>
+				<input class="ui-inputCommon" bindinput="onBusinessLicenseTap" type="text" value="{{businessLicense}}" placeholder="请输入门店营业执照号码" placeholder-style="color:#666666;"/>
+			</view>
+			<view class="ui-belongCompany" bindtap="showDialogBtn">
+				<input class="ui-inputCompany" disabled="true" bindinput="onCompanyTap" type="text" value="{{company}}" placeholder="所属分公司" placeholder-style="color:#666666;"/>
+				<view class="ui-pullDownIcon"></view>
+			</view>
+			
+			<!--所属公司弹窗-->
+			<view class="modal-mask" bindtap="hideModal" catchtouchmove="true" wx:if="{{showModal}}"></view>
+			<scroll-view scroll-y class="modal-dialog" catchtouchmove="true" wx:if="{{showModal}}">
+				<view class="modal-title">选择公司</view>
+				<view class="modal-companyBox">
+					<text class="modal-items" wx:for="{{companyList}}" wx:for-item="item" wx:key="idx"
+					bindtap="onConfirm" data-company="{{item.companyItem}}">{{item.companyItem}}</text>
+				</view>
+			</scroll-view>
+			
+			<view wx:if="{{!tempFilePaths||!introduce||!encoding||!storeName||!address||!storeTel||!businessLicense||!company==1}}" class="btn-submit btn-notSubmit">完成并提交申请</view>
+			<view wx:else class="btn-submit btn-canSubmit" bindtap="onSubmitTap">完成并提交申请</view>
+		</view>
+	</view>
+</view>

@@ -1,0 +1,212 @@
+<!-- <wxs module="filter" src="../../filter/filter.wxs"></wxs> -->
+<!--afterDetails.wxml-->
+<view class="container">
+	<navBar title='售后详情' background='white' color='black' iconTheme='black' back="{{true}}"></navBar>
+	<view class="ui-main">
+		<block wx:if="{{orderStatus=='已过期'}}">
+			<view class="ui-commodityInfo">
+				<view class="ui-title">
+					<text>订单编号： 54636465456165465</text>
+					<text>已过期</text>
+				</view>
+				<view class="ui-newsInfoBox">
+					<view class="ui-newsInfoItem" wx:for="{{storeList}}" wx:for-item="item" wx:key="idx">
+						<view class="ui-newsImg">
+							<image src="http://www.gzlingren.com:8098/yangtianhe/{{item.newsImg}}.png"></image>
+						</view>
+						<view class="ui-newsInfoDetail">
+							<text class="ui-newsName">{{item.newsName}}</text>
+							<view class="ui-newsWeight">
+								<text>{{item.newsWeight}}</text>
+								<text>x1</text>
+							</view>
+							<text class="ui-newsMoney">¥{{item.newsMoney}}</text>
+						</view>
+					</view>
+				</view>
+				<view class="btn-refund" bindtap="onApplyRefundTap"><text>退款</text></view>
+				<view class="ui-freight ui-commodityTextCommon">
+					<text>运费</text>
+					<text>¥0.00</text>
+				</view>
+				<view class="ui-blissDeduction ui-commodityTextCommon">
+					<text>福气抵扣</text>
+					<text>-¥1.48</text>
+				</view>
+				<view class="ui-actualPayment ui-commodityTextCommon">
+					<text>实付款</text>
+					<text>¥ 121.32</text>
+				</view>
+			</view>
+			
+			<view class="ui-orderInfoBox" wx:for="{{orderInfoList}}" wx:for-item="item" wx:key="idx">
+				<text>订单信息</text>
+				<text>订单编号：{{item.number}}</text>
+				<text>创建时间：{{item.creationTime}}</text>
+				<text wx:if="{{!(orderStatus=='待付款')}}">付款时间：{{item.paymentTime}}</text>
+			</view>
+			
+			<view class="ui-verificationFooter">
+				<view class="btn-common btn-green" bindtap="onAfterApplicationTap"><text>申请售后</text></view>
+			</view>
+		</block>
+		
+		<block wx:elif="{{orderStatus=='退款成功'}}">
+			<!-- 退款成功 -->
+			<view class="ui-refundSuccess">
+				<view class="ui-refundSuccessIcon"></view>
+				<text class="ui-refundSuccesstext">退款成功</text>
+			</view>
+			<!-- 退款金额 -->
+			<view class="ui-refundMoney">
+				<text>退款总金额：¥101.00</text>
+				<text>退款时间：2019-07-29  15:00</text>
+			</view>
+			<!-- 退款信息 -->
+			<view class="ui-refundInfo">
+				<text class="ui-refundTitle">退款信息</text>
+				<view class="ui-newsInfoItem" wx:for="{{refundList}}" wx:for-item="item" wx:key="idx">
+					<view class="ui-newsImg">
+						<image src="http://www.gzlingren.com:8098/yangtianhe/{{item.newsImg}}.png"></image>
+					</view>
+					<view class="ui-newsInfoDetail">
+						<text class="ui-newsName">{{item.newsName}}</text>
+						<view class="ui-newsWeight">
+							<text>{{item.newsWeight}}</text>
+						</view>
+						<text class="ui-newsMoney">¥{{item.newsMoney}}</text>
+					</view>
+				</view>
+				<view class="ui-refundReason">
+					<text>退款金额：¥42</text>
+					<text>申请件数：1</text>
+					<text>退款时间：2019-07-01 15:00</text>
+				</view>
+			</view>
+			<!-- 返回首页 -->
+			<view class="ui-refundSeccseeFooter">
+				<view class="btn-backHome"><text>返回首页</text></view>
+			</view>
+		</block>
+		
+		<block wx:else>
+			<view class="ui-afterStatus">
+				<!-- icon状态 -->
+				<block wx:if="{{orderStatus=='退款成功'}}">
+					<view class="ui-afterIcon ui-approve"></view>
+				</block>
+				<block wx:if="{{orderStatus=='退款失败'}}">
+					<view class="ui-afterIcon ui-notApprove"></view>
+				</block>
+				<block wx:if="{{orderStatus=='提交成功'}}">
+					<view class="ui-afterIcon ui-check"></view>
+				</block>
+				<block wx:if="{{orderStatus=='审核中'}}">
+					<view class="ui-afterIcon ui-check"></view>
+				</block>
+				<block wx:if="{{orderStatus=='售后结束'}}">
+					<view class="ui-afterIcon ui-afterEnd"></view>
+				</block>
+				<!-- 文字状态 -->
+				<block wx:if="{{orderStatus=='审核中'}}">
+					<text class="ui-afterText">审核中</text>
+				</block>
+				<block wx:if="{{orderStatus=='退款成功'}}">
+					<text class="ui-afterText">审核通过</text>
+				</block>
+				<block wx:if="{{orderStatus=='退款失败'}}">
+					<text class="ui-afterText">审核不通过，请联系客服</text>
+				</block>
+				<block wx:if="{{orderStatus=='提交成功'}}">
+					<text class="ui-afterText">提交成功</text>
+				</block>
+				<block wx:if="{{orderStatus=='售后结束'}}">
+					<text class="ui-afterText">售后结束</text>
+				</block>
+				<view class="ui-afterProgress">
+					<view class="ui-progressCommon {{orderStatus=='退款成功'||orderStatus=='审核中'||orderStatus=='提交成功'?'ui-greenProgressIcon':''}} {{orderStatus=='退款失败'?'ui-redProgressIcon':''}} {{orderStatus=='售后结束'?'ui-deepGreyProgressIcon':''}}"></view>
+					<view class="ui-progressLine {{orderStatus=='退款成功'||orderStatus=='审核中'?'ui-passProgressLine':''}} {{orderStatus=='退款失败'?'ui-rejectProgressLine':''}} {{orderStatus=='售后结束'?'ui-deepGreyProgressLine':''}}"></view>
+					<view class="ui-progressCommon {{orderStatus=='提交成功'?'ui-notProgressIcon':''}} {{orderStatus=='退款成功'?'ui-greenProgressIcon':''}} {{orderStatus=='审核中'?'ui-progressIcon':''}} {{orderStatus=='退款失败'?'ui-rejectProgressIcon':''}} {{orderStatus=='售后结束'?'ui-deepGreyProgressIcon':''}}"></view>
+					<view class="ui-progressLine {{orderStatus=='退款成功'?'ui-passProgressLine':''}} {{orderStatus=='退款失败'||orderStatus=='售后结束'?'ui-deepGreyProgressLine':''}}"></view>
+					<view class="ui-progressCommon {{orderStatus=='审核中'||orderStatus=='提交成功'?'ui-notProgressIcon':''}} {{orderStatus=='退款失败'||orderStatus=='售后结束'?'ui-deepGreyProgressIcon':''}} {{orderStatus=='退款成功'?'ui-greenProgressIcon':''}}"></view>
+				</view>
+				<view class="ui-progressText">
+					<text class="{{orderStatus=='退款失败'?'ui-redText':'ui-blackText'}}">已提交申请</text>
+					<block>
+						<text wx:if="{{orderStatus=='退款成功'}}" class="ui-blackText">客服审核中</text>
+						<text wx:if="{{orderStatus=='审核中'}}" class="ui-blackText">客服审核中</text>
+						<text wx:if="{{orderStatus=='退款失败'}}" class="ui-redText'}}">已拒绝售后</text>
+						<text wx:if="{{orderStatus=='售后结束'}}" class="ui-blackText'}}">已取消申请</text>
+						<text wx:if="{{orderStatus=='提交成功'}}" class="ui-greyText">客服审核中</text>
+					</block>
+					<block>
+						<text wx:if="{{orderStatus=='审核中'}}" class="ui-greyText">待换货退货</text>
+						<text wx:if="{{orderStatus=='退款成功'}}" class="ui-blackText">已完成售后</text>
+						<text wx:if="{{orderStatus=='退款失败'}}" class="ui-greyText'}}">待换货退货</text>
+						<text wx:if="{{orderStatus=='提交成功'}}" class="ui-greyText">待换货退货</text>
+						<text wx:if="{{orderStatus=='售后结束'}}" class="ui-greyText">待换货退货</text>
+					</block>
+				</view>
+			</view>
+			<!-- 退款信息 -->
+			<view class="ui-refundInfo">
+				<text class="ui-refundTitle">退款信息</text>
+				<view class="ui-newsInfoItem" wx:for="{{refundList}}" wx:for-item="item" wx:key="idx">
+					<view class="ui-newsImg">
+						<image src="http://www.gzlingren.com:8098/yangtianhe/{{item.newsImg}}.png"></image>
+					</view>
+					<view class="ui-newsInfoDetail">
+						<text class="ui-newsName">{{item.newsName}}</text>
+						<view class="ui-newsWeight">
+							<text>{{item.newsWeight}}</text>
+						</view>
+						<text class="ui-newsMoney">¥{{item.newsMoney}}</text>
+					</view>
+				</view>
+				<view class="ui-refundReason">
+					<text>退款原因：包装破损</text>
+					<text>退款金额：¥42</text>
+					<text>申请件数：1</text>
+					<text>申请时间：2019-07-01 15:00</text>
+				</view>
+			</view>
+			<!-- 订单信息 -->
+			<view class="ui-refundOrderInfo" wx:for="{{orderInfoList}}" wx:for-item="item" wx:key="idx">
+				<text>订单信息</text>
+				<text>订单编号：{{item.number}}</text>
+				<text>创建时间：{{item.creationTime}}</text>
+				<text wx:if="{{!(orderStatus=='待付款')}}">支付时间：{{item.paymentTime}}</text>
+			</view>
+			
+			<!-- 退货信息 -->
+			<view wx:if="{{!(goodsStatus=='仅退款')&&!(status=='申请退款')}}" class="ui-refundOrderInfo" wx:for="{{refundInfoList}}" wx:for-item="item" wx:key="idx">
+				<text>退货信息</text>
+				<text>退货地址：{{item.address}}</text>
+				<text>联系电话：{{item.tel}}</text>
+				<text>收件人：{{item.consignee}}</text>
+			</view>
+			
+			<view class="ui-verificationFooter">
+				<block wx:if="{{orderStatus=='提交成功'||orderStatus=='审核中'}}">
+					<view class="btn-common btn-grey" bindtap="onCancelServiceTap"><text>取消售后</text></view>
+				</block>
+				<block wx:if="{{orderStatus=='退款成功'}}">
+					<view class="btn-common btn-grey"><text>填写物流</text></view>
+				</block>
+				<block wx:if="{{orderStatus=='退款失败'||orderStatus=='售后结束'}}">
+					<view class="btn-common btn-grey" bindtap="onCommentTap"><text>评价</text></view>
+				</block>
+			</view>
+			
+			<!--取消售后弹窗-->
+			<view class="modal-mask" bindtap="hideModal" catchtouchmove="true" wx:if="{{showModal}}"></view>
+			<view class="modal-dialog" wx:if="{{showModal}}" catchtouchmove="true">
+				<view class="modal-title">确认取消售后吗？</view>
+				<view class="modal-footer">
+					<view class="btn-cancel" bindtap="onCancel" data-status="cancel">取消</view>
+					<view class="btn-confirm" bindtap="onConfirm" data-status="confirm">确定</view>
+				</view>
+			</view>
+		</block>
+	</view>
+</view>

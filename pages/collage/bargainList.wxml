@@ -1,0 +1,77 @@
+<wxs module="filter" src="../../filter/filter.wxs"></wxs>
+<view class="contain">
+	<navBar title='砍价商品列表' background='linear-gradient(137deg,rgba(1,206,165,1) 0%,rgba(94,221,218,1) 100%)' color='white' iconTheme='white' back="{{true}}"></navBar>
+    <view class="main">
+        <view class="ui-imgBox">
+            <image src="{{filter.getLocalPhoto('bargain_icon.png')}}" />
+            <view class="ui-rulesBtn" bindtap="showModal">活动规则</view> 
+            <image src="{{filter.getLocalPhoto('bargain_banBtn.png')}}" class="ui-bargain_banBtn" bindtap="onBargainTap"/>
+            <image src="{{filter.getLocalPhoto('bargain_left_icon.png')}}" class="ui-bargain_leftIcon" bindtap="onBargainTap"/>
+            <text class="ui-myBargain_text" bindtap="onBargainTap">我的砍价</text>  
+        </view>
+        <view class="ui-showBox" >
+           <view class="ui-showBox_btn" wx:for="{{personList}}"  style="top: {{top + 'rpx'}};transition: all {{second}}s linear 0s;"> 
+              <image src="../../images/{{item.url}}" class="ui-btnItem_icon"/>
+              <view class="ui-btnItem_text"> {{item.name}} 正在发起砍价挑战</view>
+           </view>
+        </view>
+        <view class="ui-contentBox">
+            <view class="ui-content_top">
+                <scroll-view scroll-x="{{true}}" class="ui-scrollView">
+                    <view wx:for="{{classfity}}" class="ui-scrollView_item" bindtap="onSelectTap" data-type="{{index}}">
+                        <view class="ui-scroll_text" style="color: {{isSelect == index ? '#20CAB4' : ''}}"  bindtap="onSelectTap" data-type="{{index}}">{{item}}</view>
+                        <view class="ui-scroll_icon" style="background: {{isSelect == index ? '#20CAB4' : ''}};margin-left: {{index == 0 ? '0' : ''}}"></view>
+                    </view>
+                </scroll-view>
+            </view>
+            <view class="ui-content_botttom">
+                <view class="ui-bottom_item" wx:for="{{allList}}">
+                     <view class="ui-bottomItem_left">
+                       <image src="{{filter.getLocalPhoto(item.url)}}" bindtap="onSkipTap"/>
+                       <view class="ui-timeBox">距离下架 09:11:13</view>
+                    </view>
+                    <view class="ui-bottomItem_right">
+                      <view class="ui-rightItem_title">{{item.title}}</view>
+                      <view class="ui-rightItem_useful">{{item.useful}}</view>
+                      <view class="ui-rightItem_info">仅剩{{item.scale}}件</view>
+                      <view class="ui-lineBox">
+                          <text class="ui-grayLine"></text>
+                           <text class="ui-greenLine"></text>
+                      </view>
+                      <view class="ui-rightItem_price">
+                          <text class="ui-rightItem_priceText">￥{{item.nowPrice}}</text>
+                          <text class="ui-rightItem_preText">￥{{item.prePrice}}</text>
+                          <view class="ui-rightItem_button" >疯狂砍价</view>
+                      </view>
+                      <view class="ui-rightItem_num">{{item.personNum}}人已经砍价低价</view>
+                    </view>
+                </view>
+               
+            </view>
+            <view class="ui-content_bottom"></view>
+        </view>
+        <view class="modals modals-bottom-dialog" hidden="{{hideModal}}">
+            <view class="modals-cancel" bindtap="hideModal" ></view>
+            <view class="bottom-dialog-body " >
+                <!-- <view class="ui-cancelBox">
+                    <image src="{{filter.getLocalPhoto('bargain_list_delect.png')}}" class="ui-cancelIcon" bindtap="hideModal"/>
+               </view> -->
+               <view class="ui-titleBox">
+                   <text class="ui-titleItem_icon">//</text>
+                   <text class="ui-titleItem_text">活动规则</text>
+                   <text class="ui-titleItem_icon">//</text>
+               </view>
+               <view class="ui-rulesContentBox">
+                   <view >1.规则是什么规则是什么规则是什么规则是什么规则是什么规则是什么规则是什么规则是什么规则是什么规则是什么规则是什么规则是什么规则是什么规 </view>
+                   <view >2.规则是什么规则是什么规则是什么规则是什么规则是什么规则是什么规则是什么</view>
+                   <view >3.规则是什么规则是什么规则是什规则是什么规则是什么规则是什么规则是什规则是什么规则是什么规则是什么规则是什规则是什么</view>
+                  
+              </view>
+            </view>
+            <view class="ui-cancelBox">
+                <image src="{{filter.getLocalPhoto('bargain_list_delect.png')}}" class="ui-cancelIcon" bindtap="hideModal"/>
+            </view>
+        </view>
+    </view>
+</view>
+

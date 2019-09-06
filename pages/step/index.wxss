@@ -1,0 +1,342 @@
+/* pages/step/index.wxss */
+page {
+    width: 100%;
+    height: 100%; 
+}
+.contain {
+    width: 100%;
+    height: 100%; 
+    /* overflow: auto; */
+}
+.main {
+    width: 100%;
+    min-height: 83%; 
+    background-image: url(http://www.gzlingren.com:8098/yangtianhe/step_bgIcon.png);
+    background-attachment: scroll;
+    background-size: 750rpx 1548rpx; 
+    background-position: 0 -127rpx;
+    /* overflow: auto; */
+}
+.ui-stepBox {
+    width: 100%;
+	position: relative;
+}
+.ui-stepTapBox {
+    margin: 0 auto;
+    width: 90%;
+    position: relative;
+}
+
+.ui-stepTapBox_left {
+    display: inline-block;
+    width:192rpx;
+    height:66rpx;
+    background:linear-gradient(329deg,#20CAB4 0%,#2DDCAF 100%);
+    border-radius:0px 38px 38px 0px;
+    position: absolute;
+    top: 36rpx;
+}
+.ui-stepTapBox_left .ui-leftItem_icon {
+    width: 40rpx;
+    height: 40rpx;
+    position: absolute;
+    left: 10rpx;
+    top: 10rpx;
+}
+.ui-stepTapBox_left .ui-leftItem_text {
+    color: #fff;
+    font-size: 32rpx;
+    font-weight: 500;
+    position: absolute;
+    left: 60rpx;
+    top: 5rpx;
+}
+.ui-stepTapBox_center {
+    width: 322rpx;
+    height: 286rpx;
+    margin-top: 60rpx;
+    margin-left: 27%;
+    display: inline-block;
+    text-align: center;
+    /* margin-left: 220rpx;
+    background-image: url(http://www.gzlingren.com:8098/yangtianhe/step_ditRadius.png);
+    background-size: 100% ; */
+    position: relative;
+   
+}
+.ui-block__item {
+    position: absolute;
+    width: 6rpx;
+    height: 10rpx;
+    background-color: #EEEEEE;
+    border-radius: 10rpx;
+    transform: rotate(0deg);
+}
+
+.ui-centerItem_stepText {
+    font-size: 24rpx;
+    font-family:PingFangSC-Regular;
+    font-weight:500;
+    color:#3D3D3D;
+    line-height:24px;
+    margin-top: 100rpx;
+}
+.ui-centerItem_detailText {
+    font-size: 48rpx;
+    font-family:PingFang-SC-Heavy;
+    font-weight:600;
+    color:#3D3D3D;
+    line-height:44rpx;
+    margin: 8rpx auto;
+}
+.ui-centerItem_detailText > text {
+    font-size: 26rpx;
+}
+
+.ui-leftItem_loadText {
+    width: 228rpx;
+    height: 88rpx;
+    background-image: url(http://www.gzlingren.com:8098/yangtianhe/step_greenBtn.png);
+    background-size: 100%;
+    font-size:24rpx;
+    font-family:PingFang-SC-Heavy;
+    font-weight:800;
+    color:#FFFFFF;
+    line-height: 82rpx;
+    margin: 50rpx auto;
+}
+.ui-stepTapBox_right {
+    display: inline-block;
+    width: 184rpx;
+    height: 48rpx;
+    line-height:48rpx;
+    font-size:20rpx;
+    font-family:PingFangSC-Semibold;
+    font-weight:600;
+    color: #fff;
+    text-align: center;
+    background:linear-gradient(137deg,rgba(1,206,165,1) 0%,rgba(94,221,218,1) 100%);
+    border-radius:0 24rpx 0 24rpx;
+    position: absolute;
+    top: 36rpx;
+    right: 30rpx;
+}
+.ui-stepTapBox_aimStepBox {
+    width:184rpx;
+    height:48rpx;
+    line-height:48rpx;
+    font-size:24rpx;
+    font-family:PingFangSC-Medium;
+    font-weight:500;
+    color:#fff;
+    text-align: center;
+    text-shadow:0 4rpx 8rpx #50ABF1;
+    background:linear-gradient(270deg,rgba(130,214,245,1) 0%,rgba(75,172,231,1) 100%);
+    border-radius:0 24rpx 0 24rpx;
+    position: absolute;
+    top: 100rpx;
+    right: 30rpx;
+}
+
+.ui-stepTapBox .ui-stepTapBox__questionIcon {
+    width: 40rpx;
+    height: 40rpx;
+    position: absolute;
+    right: 30rpx;
+    top: 200px;
+}
+.ui-stepContentBox {
+    width: 90%;
+    padding: 30rpx;
+    white-space: nowrap;
+    background-color: #fff;
+    position: relative;
+    margin: 0 auto;
+    margin-top: 90rpx;
+    text-align: center;
+    box-sizing: border-box;
+    border-radius:16rpx;
+}
+.ui-contenItem {
+    display: inline-block;
+}
+.ui-contenItem .ui-contenItem__text {
+    font-size:40rpx;
+    font-family:PingFangSC-Medium;
+    font-weight:500;
+    color:#FFAA00;
+    line-height:56rpx;
+    letter-spacing:2rpx;
+}
+.ui-contenItem .ui-contenItem__step {
+    color: #20CAB4;
+}
+.ui-contenItem .ui-contenItem__text >text {
+    font-size:26rpx;
+}
+.ui-contenItem .ui-contenItem__title {
+    margin-top: 10rpx;
+    font-size:24rpx;
+    font-family:PingFangSC-Medium;
+    font-weight:500;
+    color:#666666;
+    line-height:34rpx;
+}
+.ui-contenItem:nth-child(1) {
+    position: absolute;
+    left: 30rpx;
+}
+.ui-contenItem:nth-child(3) {
+    position: absolute;
+    right: 30rpx;
+}
+.ui-historyBox {
+    width: 90%;
+    padding: 100rpx 30rpx 40rpx 30rpx;
+    margin-top: 100rpx;
+    white-space: nowrap;
+    background-color: #fff;
+    margin: 0 auto;
+    margin-top: 50rpx;
+    text-align: center;
+    box-sizing: border-box;
+    border-radius:16rpx;
+    position: relative;
+}
+.ui-historyItem__icon {
+    width: 244rpx;
+    height: 72rpx;
+    position: absolute;
+    left: 32%;
+    top: -10rpx;
+}
+.ui-historyItem__text {
+    font-size:30rpx;
+    font-family:PingFangSC-Medium;
+    font-weight:500;
+    color:#C55300;
+    line-height:42rpx;
+    position: absolute;
+    top: 0rpx;
+    left: 234rpx;
+}
+.ui-hirtoryItem__list {
+    height: 90rpx;
+    line-height: 90rpx;
+    border-bottom: 1rpx solid #E5E5E5;
+    position: relative;
+    /* box-shadow:0px -2px 0px 0px rgba(0,0,0,0.1); */
+    color:#666666;
+}
+.ui-hirtoryItem__list > text {
+    display: inline-block;
+    font-size:26rpx;
+    font-family:PingFangSC-Regular;
+    font-weight:400;
+    line-height:26rpx;
+}
+.ui-hirtoryItem__list .ui-listItem__time {
+    position: absolute;
+    left: 0;
+    top: 40rpx;
+    
+}
+.ui-hirtoryItem__list .ui-listItem__status {
+    position: absolute;
+    right: 0;
+    top: 40rpx;
+}
+.ui-bottomTex {
+    width: 100%;
+    height: 130rpx;
+    font-size:24rpx;
+    font-family:PingFangSC-Regular;
+    font-weight:400;
+    color:#fff;
+    line-height:130rpx;
+    text-align: center;
+    margin-bottom: 120rpx;
+}
+.modals{
+    position:fixed;
+    z-index: 999;
+    top:0; 
+    left: 0; 
+    right:0;
+    bottom: 0;
+}
+.modals-cancel{
+    position:absolute; 
+    z-index:1000; 
+    top:0; 
+    left: 0; 
+    right:0; 
+    bottom: 0; 
+    background-color: rgba(0,0,0,.5);
+}
+.bottom-dialog-body{
+    width: 564rpx;
+    height: 678rpx;
+    padding-top: 60rpx;
+    padding-bottom: 60rpx;
+    background-color: #fff;
+    background-image: url(http://www.gzlingren.com:8098/yangtianhe/bargain_list_bgIcon.png);
+    background-size: 564rpx 678rpx;
+    position:absolute; 
+    z-index:10001; 
+    top:20%;
+    left:90rpx; 
+    overflow: auto;
+   
+}
+.bottom-dialog-body .ui-titleBox{
+    text-align: center;
+}
+.ui-titleBox .ui-titleItem_icon {
+    color: #FFD665;
+    font-size:34rpx;
+    font-family:PingFangSC-Regular;
+    font-weight:400;
+    line-height:34rpx;
+}
+.ui-titleBox .ui-titleItem_text {
+    font-size:34rpx;
+    font-family:PingFangSC-Regular;
+    font-weight:400;
+    color:#333333;
+    line-height:34rpx;
+    margin: auto 15rpx;
+}
+.ui-rulesContentBox {
+    width: 458rpx;
+    height: 476rpx;
+    margin: 0 auto;
+    padding-bottom: 40rpx; 
+    overflow: auto;
+}
+.ui-contentBox > view {
+    font-size:26rpx;
+    font-family:PingFangSC-Regular;
+    font-weight:400;
+    color:#666666;
+    line-height:46rpx;
+}
+.ui-cancelBox {
+    position: absolute;
+    top:170rpx;
+    right:90rpx; 
+}
+.ui-cancelBox  .ui-cancelIcon {
+    width: 40rpx;
+    height: 40rpx;
+}
+
+.tab-bottom{
+	position: fixed;
+	z-index: 9999999;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 25rpx;
+	background:#F9F9F9;
+}

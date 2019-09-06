@@ -1,0 +1,114 @@
+<!-- <wxs module="filter" src="../../filter/filter.wxs"></wxs> -->
+<!--applyRefund.wxml-->
+<view class="container">
+	<navBar title='{{status}}' background='white' color='black' iconTheme='black' back="{{true}}"></navBar>
+	<view class="ui-main">
+		<!-- 退款商品 -->
+		<view class="ui-newsInfoBox">
+			<view class="ui-newsInfoItem" wx:for="{{storeList}}" wx:for-item="item" wx:key="idx">
+				<view class="ui-newsImg">
+					<image src="http://www.gzlingren.com:8098/yangtianhe/{{item.newsImg}}.png"></image>
+				</view>
+				<view class="ui-newsInfoDetail">
+					<view class="ui-newsName">
+						<text>{{item.newsName}}</text>
+						<text>x1</text>
+					</view>
+					<text class="ui-newsWeight">{{item.newsWeight}}</text>
+					<text class="ui-newsMoney">¥{{item.newsMoney}}</text>
+				</view>
+			</view>
+		</view>
+		
+		<!-- 退款原因 -->
+		<view class="ui-refundReasonBox">
+			<!-- 货物状态 -->
+			<view class="ui-cargoStatus">
+				<text class="ui-commonText">货物状态</text>
+				<view class="btn-selectBox">
+					<view class="btn-selectStatus">
+						<view class="{{notCargo?'ui-selectIcon':'ui-notSelectIcon'}}" bindtap="onNotCargoTap"></view>
+						<text>{{status=='申请退款'?'未收到货':'未拆封'}}</text>
+					</view>
+					<view class="btn-selectStatus">
+						<view class="{{cargo?'ui-selectIcon':'ui-notSelectIcon'}}" bindtap="onCargoTap"></view>
+						<text>{{status=='申请退款'?'未收到货':'未拆封'}}</text>
+					</view>
+				</view>
+			</view>
+			<!-- 售后原因 -->
+			<view class="ui-refundDetail">
+				<text class="ui-commonText">售后原因</text>
+				<view class="btn-refundDetailMore" bindtap="showAfterDialogBtn">
+					<input value="{{refundText}}" placeholder="请选择原因" placeholder-style="color:rgba(153,153,153,1);" disabled="true"></input>
+					<view class="btn-moreIcon"></view>
+				</view>
+			</view>
+			
+			<!--售后原因弹窗-->
+			<view class="modal-AfterMask" catchtouchmove="true" wx:if="{{showAfterModal}}"></view>
+			<view class="modal-AfterDialog" wx:if="{{showAfterModal}}" catchtouchmove="true">
+				<view class="modal-header">
+					<view class="btn-closeIcon" bindtap="hideAfterModal"></view>
+					<text>售后原因</text>
+				</view>
+				<text class="modal-explainText">请选择售后原因</text>
+				<view class="modal-afterReason">
+					<view class="modal-reasonItems" wx:for="{{refundList}}" wx:for-index="idx" wx:key="idx" wx:for-item="item">
+						<text>{{item.reason}}</text>
+						<view class="modal-selectIcon {{reasonFlag==item.reasonFlag?'modal-selectReason':'modal-notSelectReason'}}"
+						bindtap="onSelectReasonTap" data-reason-Flag="{{item.reasonFlag}}" data-id="{{idx}}" data-reason="{{item.reason}}"></view>
+					</view>
+				</view>
+				<view class="btn-selectFinish" bindtap="onAfterConfirm" >选好了</view>
+			</view>
+			
+			<!-- 退款金额 -->
+			<view class="ui-refundMoney" wx:if="{{!(status=='申请换货')}}">
+				<text class="ui-commonText">{{status=='申请退款'?'退款金额':'退货金额'}}</text>
+				<text>¥99.00</text>
+			</view>
+			<!-- 退款说明 -->
+			<view class="ui-refundExplain">
+				<text class="ui-commonText" wx:if="{{!(status=='申请换货')}}">{{status=='申请退款'?'退款说明':'退货说明'}}</text>
+				<text class="ui-commonText" wx:else>{{status=='申请换货'?'申请换货':''}}</text>
+				<textarea class="ui-explainText" placeholder="选填" value="{{explainText}}" bindinput="onExplainTap"
+				cols="400rpx" maxlength="300" auto-height="{{auto_height}}" bindblur='areablur' bindfocus='areafocus'/>
+			</view>
+		</view>
+		
+		<!-- 上传凭证 -->
+		<view class="ui-uploadDocuments">
+			<text class="ui-uploadText">上传凭证</text>
+			<view class="ui-picture">
+				<view class="ui-flex">
+					<!-- 展示图片 -->
+					<view wx:if="{{tempFilePaths}}" class="ui-showPicture"
+					wx:for="{{tempFilePaths}}" wx:for-index="idx" wx:key="idx" wx:for-item="item">
+						<view class="ui-deleteIcon" catchtap="onDeletePicTap" data-id="{{idx}}"></view>
+						<image src="{{item}}"></image>
+					</view>
+					<!-- 添加图片 -->
+					<view wx:if="{{!(tempFilePaths.length==6)}}" class="ui-addBox" catchtap="onChooseImgTap">
+						<view class="ui-addIcon"></view>
+						<text>添加图片</text>
+						<text>（最多6张）</text>
+					</view>
+				</view>
+			</view>
+		</view>
+		
+		<!-- 提交 -->
+		<view class="btn-submit" bindtap="showDialogBtn">提交</view>
+		
+		<!-- 提交弹窗 -->
+		<view class="modal-mask" bindtap="hideModal" catchtouchmove="true" wx:if="{{showModal}}"></view>
+		<view class="modal-dialog" wx:if="{{showModal}}" catchtouchmove="true">
+			<view class="modal-title">确认提交售后申请吗？</view>
+			<view class="modal-footer">
+				<view class="btn-cancel" bindtap="onCancel">取消</view>
+				<view class="btn-confirm" bindtap="onConfirm">确定</view>
+			</view>
+		</view>
+	</view>
+</view>

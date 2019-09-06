@@ -1,0 +1,38 @@
+<!-- <wxs module="filter" src="../../filter/filter.wxs"></wxs> -->
+<!--compileConsignee.wxml-->
+<view class="container">
+	<view class="ui-main">
+		<view class="ui-common ui-name">
+			<text>姓名</text>
+			<input type="text" placeholder="输入收货人姓名" value="{{name}}" bindinput="onNameTap"/>
+		</view>
+		
+		<view class="ui-common ui-tel">
+			<text>手机号码</text>
+			<input type="number" placeholder="输入手机号码" value="{{tel}}" bindinput="onTelTap"/>
+		</view>
+		
+		<picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+			<view class="ui-common ui-area">
+				<text>所在区域</text>
+				<textarea class="ui-areaPicker" disabled="true" placeholder="请选择所在省份、城市、区县"  value="{{region}}" bindinput="onAreaTap"/>
+				<view class="ui-areaMoreIcon"></view>
+			</view>
+		</picker>
+		
+		<view class="ui-common ui-addressDetail">
+			<text>详细地址</text>
+			<textarea class="ui-addressDetailText" placeholder="街道、楼牌号等详细地址" value="{{addressDetail}}" bindinput="onAddressDetailTap"/>
+		</view>
+		
+	</view>
+	
+	<view class="ui-common ui-setDefault">
+		<text>设为默认地址</text>
+		<view type="text" class="ui-set {{set?'ui-setOpen':'ui-setOff'}}" catchtap="onSetTap"></view>
+	</view>
+	
+	<view class="btn-save cant" catchtap="onSaveTap" wx:if="{{!name||!tel||!region||!addressDetail==1}}">保存</view>
+	<view class="btn-save can" catchtap="onSaveTap" wx:else>保存</view>
+
+</view>

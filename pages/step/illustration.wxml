@@ -1,0 +1,8 @@
+<!--pages/step/illustration.wxml-->
+<navBar title='福气说明' background='linear-gradient(137deg,rgba(1,206,165,1) 0%,rgba(94,221,218,1) 100%)' color='white' iconTheme='white' back="{{true}}"></navBar>
+<view class="ui-main">
+    <view class="ui-content">
+        <view class="ui-content_title">Q：什么是福气我就是福气我就是福气我就是福气我就是福气我就是福气我就是福气我就是福气</view>
+        <view class="ui-content_answer"><text >A：</text>我就是福气我就是福气我就是福气我就是福气我就是福气我就是福气我就是福气</view>
+    </view>
+</view>

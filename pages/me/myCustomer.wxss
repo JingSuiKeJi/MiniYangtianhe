@@ -1,0 +1,147 @@
+@charset "UTF-8";
+@import "/libs/common.wxss";
+
+/**myCustomer.wxss**/
+page{
+	background:rgba(245,245,245,1);
+}
+
+.ui-main {
+    width: 100%;
+}
+
+.ui-navBar{
+	width: 100%;
+	height:84rpx;
+	background:rgba(255,255,255,1);
+	box-shadow:0rpx -2rpx 0rpx 0rpx rgba(0,0,0,0.1);
+	display: flex;
+	align-items: center;
+}
+
+.ui-navBar text{
+	height:26rpx;
+	font-size:26rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(153,153,153,1);
+	line-height:26rpx;
+}
+
+.ui-navBar text:nth-child(1){
+	margin-left: 96rpx;
+}
+
+.ui-navBar text:nth-child(2){
+	margin-left: 156rpx;
+}
+
+.ui-navBar text:nth-child(3){
+	margin-left: 112rpx;
+}
+
+.ui-navBar text:nth-child(4){
+	margin-left: 106rpx;
+}
+
+.ui-customerInfoBox{
+	width: 100%;
+	margin-top: 20rpx;
+}
+
+.ui-customerInfoItems{
+	position: relative;
+	height:112rpx;
+	background:rgba(255,255,255,1);
+	border-bottom: rgba(0,0,0,0.1) solid 2rpx;
+	display: flex;
+	align-items: center;
+}
+
+.ui-userAvatar{
+	position: absolute;
+	width: 80rpx;
+	height: 80rpx;
+	border-radius: 80rpx;
+	background: #CCCCCC;
+	margin-left: 22rpx;
+	overflow: hidden;
+}
+
+.ui-userAvatar image{
+	width: 100%;
+	height: 100%;
+}
+
+.ui-userInfo{
+	position: absolute;
+	margin-left: 108rpx;
+	width: 140rpx;
+	height: 72rpx;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.ui-userInfo .ui-userId{
+	height:22rpx;
+	font-size:22rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(51,51,51,1);
+	line-height:22rpx;
+}
+
+.ui-userInfo .ui-userVipLevel{
+	width: 44rpx;
+	height: 44rpx;
+	overflow: hidden;
+}
+
+.ui-userInfo .ui-userVipLevel image{
+	width: 100%;
+	height: 100%;
+}
+
+.ui-userLevel{
+	position: absolute;
+	margin-left: 282rpx;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.ui-userLevel text{
+	height:22rpx;
+	font-size:22rpx;
+	font-family:PingFang-SC-Medium;
+	font-weight:500;
+	color:rgba(51,51,51,1);
+	line-height:22rpx;
+}
+
+.ui-userLevel text:first-child{
+	margin-bottom: 28rpx;
+}
+
+.ui-orders{
+	position: absolute;
+	margin-left: 480rpx;
+	height:22rpx;
+	font-size:22rpx;
+	font-family:PingFang-SC-Medium;
+	font-weight:500;
+	color:rgba(51,51,51,1);
+	line-height:22rpx;
+}
+
+.ui-amount{
+	position: absolute;
+	margin-left: 644rpx;
+	height:22rpx;
+	font-size:22rpx;
+	font-family:PingFang-SC-Medium;
+	font-weight:500;
+	color:rgba(51,51,51,1);
+	line-height:22rpx;
+}

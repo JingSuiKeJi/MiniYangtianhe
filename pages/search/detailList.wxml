@@ -1,0 +1,68 @@
+<!--pages/search/detailList.wxml-->
+<wxs module="filter" src="../../filter/filter.wxs"></wxs>
+<view class="contain">
+   <view class="main">
+      <view class="ui-searchBox">
+            <input type="text"  class="ui-searchItem_input" bindinput="onGetInput" value="{{value}}"/>
+            <view class="ui-searchItem_text" bindtap="onSkipTap">搜索</view>
+            <image src="{{filter.getLocalPhoto('ic_search.png')}}" class="searchItem_icon"/>
+      </view>
+      <view class="ui-contentBox" wx:if="{{list.length}}">
+            <view class="ui-content_tips">
+                 <view class="ui-tipsItem_price" bindtap="onChoseTap" data-type="{{index}}" wx:for="{{tapList}}">
+                    <view bindtap="onChoseTap" data-type="{{index}}" class="ui-priceItem">
+                        <text class="ui-tipsItem_text" 
+                          bindtap="onChoseTap" 
+                          data-type="{{index}}" 
+                          style="color: {{type == index ? '#20CAB4' : ''}}">{{item}}</text>
+                        <image wx:if="{{index == 1}}" 
+                          src="{{ type == index ? filter.getLocalPhoto('sort.png') : filter.getLocalPhoto('graySort.png')}}" 
+                          class="ui-priceItem_img" 
+                          bindtap="onChoseTap" 
+                          data-type="{{index}}"/>
+                        <!-- <image wx:if="{{type == index}}"  src="{{filter.getLocalPhoto('index_icon.png')}}"  class="ui-tapItem_icon"/> -->
+                    </view>
+                </view>
+            </view>
+            <view >
+                 <view class="ui-content_item" wx:for="{{list}}">
+                    <view class="ui-contentItem_left">
+                        <image src="{{filter.getLocalPhoto(item.url)}}" bindtap="onDetailTap"/>
+                    </view>
+                    <view class="ui-contentItem_right">
+                        <view class="ui-content_title">{{item.title}}</view>
+                        <view class="ui-content_scale">{{item.scale}} </view>
+                        <view class="ui-content_price">
+                            <text>原价￥{{item.prePrice}}</text>
+                            <text>已售{{item.count}}件</text>
+                        </view>
+                        <view class="ui-content_reward">
+                            <text >￥{{item.nowPrice}}</text>
+                            <image src="{{filter.getLocalPhoto('cart.png')}}" bindtap="onAddtap"/>
+                        </view>
+                    </view>
+                  </view>   
+            </view>    
+      </view>
+      <view class="ui-contentBox" wx:else>
+           <view class="ui-content_tap">
+                <view class="ui-tapItem_price" >
+                    <view >
+                        <text class="ui-tapItem_text" style="color: #999999">价格</text>
+                        <image  src="{{filter.getLocalPhoto('graySort.png')}}" class="ui-priceItem_img" />
+                    </view>
+                </view>
+                <view class="ui-tapItem_count" >
+                    <view >
+                        <text class="ui-tapItem_text" style="color: #999999">数量</text>
+                    </view>
+                </view>  
+           </view>
+            <view  class="ui-noListBox">
+                <image src="{{filter.getLocalPhoto('magnifier.png')}}" class="ui-noListItem_icon"/>
+                <view >无搜索结果</view>
+                <view>换个关键词搜索试一下</view>
+            </view>
+      </view>
+   </view>
+</view>

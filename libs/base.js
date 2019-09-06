@@ -263,44 +263,20 @@ base.prototype = {
                 }
                 _g.logger('~~~ onReachBottom ~~~~ self.data.page ', self.data.page);
             },
-            getCode: function () {
-                const self = this;
-                wx.login({
-                    success(res) {
-                        if (res.code) {
-                            self.login(res.code);
-                        } else {
-                            // console.log('登录失败！' + res.errMsg)
-                        }
-                    }
-                });
-            },
-            login: function () {
-                const self = this;
-                const Platform = require('../service/Platform');
-                Platform.login(self, {
-                    code: res.code,
-                }).then(function(ret) {
-                    _g.setLS(_c.LSKeys.sessionKey, ret.data.sessionKey, _c.sessionKeyExpireTime);
-                }, function(error) {
-                });
-            },
             onGotUserInfo: function (e) {
                 const self = this;
                 const detail = e.detail;
-                const Platform = require('../service/Platform');
-                Platform.authorize(self, {
-                    rawData: detail.rawData,
-                    signature: detail.signature,
-                    encryptedData: detail.encryptedData,
-                    iv: detail.iv
-                }).then(function(ret) {
-                    _g.setLS(_c.LSKeys.userInfo, ret.data.userInfo, _c.sessionKeyExpireTime);
-                    _g.closeWin({});
-                    // event.emit('loginSuc');
-                }, function(error) {
-                    
-                });
+                wx.login({
+                    success(res) {
+                        if (res.code) {
+                            detail.code = res.code;
+                            _g.setLogin(self, detail);
+                        } else {
+                            console.log('登录失败！' + res.errMsg)
+                        }
+                    }
+                })
+                
             },
             getPhoneNumber: function (e) {
                 console.log(e);
@@ -336,7 +312,6 @@ base.prototype = {
                 console.log(e);
             },
             onFormIdTap: function(e) {
-                // console.log(e, '888888');
                 const self = this;
                 _g.postFormId({
                     self: self,
@@ -344,10 +319,7 @@ base.prototype = {
                 });
                 // console.log(e.target.dataset['fuc'])
                 e.target.dataset['fuc'] && self[e.target.dataset['fuc']](e);
-            }
-            // doubleClick: function (e) {
-            //     console.log(e);
-            // }
+            },
         };
         // 初始化页面方法
         _.each(methods, function(val, key) {
@@ -1478,15 +1450,15 @@ base.prototype = {
     postFormId: function(opts) {
         if (opts.formId == 'the formId is a mock one') return;
         const _g = this;
-        const Platform = require('../service/Platform');
-        Platform.formId(opts.self, {
-            formId: opts.formId,
-            showToast: false
-        }).then(function(ret) {
-
-        }, function(error) {
-            _g.logErrorMsg(error);
-        });
+//         const Platform = require('../service/Platform');
+//         Platform.formId(opts.self, {
+//             formId: opts.formId,
+//             showToast: false
+//         }).then(function(ret) {
+// 
+//         }, function(error) {
+//             _g.logErrorMsg(error);
+//         });
     },
     getAuthorize: function (opts, callback) {
         wx.getSetting({
@@ -1536,37 +1508,22 @@ base.prototype = {
             return false;
         }
     },
-    wxLogin: function (opts) {
+    setLogin: function (self, opts) {
         const _g = this;
-        const Platform = require('../service/Platform');
-        wx.login({
-            success(res) {
-                if (res.code) {
-                    Platform.login(opts.self, {
-                        code: res.code,
-                    }).then(function(ret) {
-                        if (!ret.data.userInfo.avatar && !ret.data.userInfo.nickname) {
-                            _g.openWin({
-                                self: opts.self,
-                                url: 'pages/account/login'
-                            });
-                            return
-                        }
-                        _g.setLS(_c.LSKeys.userInfo, ret.data.userInfo, _c.sessionKeyExpireTime);
-                        _g.setLS(_c.LSKeys.sessionKey, ret.data.sessionKey, _c.sessionKeyExpireTime);
-                        event.emit('loginSuc');
-                    }, function(error) {
-
-                    });
-                }
-            }
+        const Platform = require('../service/Platfrom');
+        Platform.login(self, {
+            jsCode: opts.code,
+            rawData: opts.rawData,
+            signature: opts.signature,
+            encryptedData: opts.encryptedData,
+            iv: opts.iv,
+            promoCode: _g.getLS('promoCode') || '',
+            storeId: 1
+        }).then((ret) => {
+            event.emit('login-suc');
+        },(err)=>{
+            //TODO login fail
         });
-        // if (!_g.checkLogin({
-        //     type: 1
-        // })) {
-        //
-        // }
-        
     }
 };
 

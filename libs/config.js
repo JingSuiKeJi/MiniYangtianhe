@@ -28,7 +28,7 @@ config.prototype = {
      */
     host: {
         // test: 'http://123.207.33.101:10008', // 测试
-        test: 'http://lingrenkeji.jios.org:10010', // 测试
+        test: 'http://120.79.36.152:10008', // 测试
         pro: '', // 生产
         dev: 'http://localhost:9528', // 开发
     },
@@ -68,7 +68,37 @@ config.prototype = {
      */
     apiUrls: {
         ajaxUpload: '/app/ajaxUpload.do', // 参数为 base64Str
-        
+        //平台相关
+        platfrom: {
+            getCurrTime: '/app/common/getCurrTime.do',
+            getCommonData: '/app/home/getCommonData.do',
+            getSecKill: '/app/home/getSecKill.do',
+            getRecommend: '/app/home/getRecommend.do',
+            getStoreList: '/app/home/getStoreList.do',
+            getStoreInfo: '/app/home/getStoreInfo.do',
+            getClassifyList: '/app/classify/getClassifyList.do',
+            getBrandList: '/app/brand/getBrandList.do',
+            getGoodsList: '/app/goods/getGoodsList.do',
+            
+            getOccasion:'/app/assemble/getOccasion.do',
+            getAssembleList:'/app/assemble/getAssembleList.do',
+            getUserAssembleList:'/app/assemble/getUserAssembleList.do',
+        },
+        user: {
+            login: ''
+        },
+        goods: {
+            getGoodsDetail: '/app/goods/getGoodsDetail.do',
+            addCart: '/app/cart/add.do',
+            cartList: '/app/cart/list.do',
+            addNum: '/app/cart/addNum.do',
+            subtractNum: '/app/cart/subtractNum.do',
+            deleteCart: '/app/cart/delete.do',
+            batchDeleteCart: '/app/cart/batchDelete.do',
+            getOccasion:'/app/assemble/getOccasion.do',
+            getAssembleList:'/app/assemble/getAssembleList.do',
+            getUserAssembleList:'/app/assemble/getUserAssembleList.do',
+        }
     }
 
 };

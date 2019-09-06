@@ -1,0 +1,26 @@
+<!-- <wxs module="filter" src="../../filter/filter.wxs"></wxs> -->
+<!--customer.wxml-->
+<view class="container">
+	<view class="ui-main">
+		<!-- 一级/二级客户 -->
+		<view class="ui-levelBox">
+			<view class="ui-levelLeft {{selectLevel==1?'ui-levelOne':''}}" bindtap="onLevelOneTap">一级客户</view>
+			<view class="ui-levelRight {{selectLevel==2?'ui-levelTwo':''}}" bindtap="onLevelTwoTap">二级客户</view>
+		</view>
+		<!-- 标题 -->
+		<view class="ui-titleText">
+			<text>用户</text>
+			<text>订单数</text>
+			<text>金额</text>
+		</view>
+		<!-- 客户明细 -->
+		<view class="ui-customerInfo">
+			<view class="ui-items" wx:for="{{customer}}" wx:for-item="item" wx:key="{{index}}" wx:if="{{selectLevel==item.selectLevel}}">
+				<view class="ui-avatar"><image src=""></image></view>
+				<text>{{item.name}}</text>
+				<text>{{item.orderNum}}</text>
+				<text>¥{{item.money}}</text>
+			</view>
+		</view>
+	</view>
+</view>

@@ -18,8 +18,8 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.7.0",
-	"appid": "wxbded9a418bae447e",
-	"projectname": "mini-fantasyPlanet",
+	"appid": "wxde44ee0d6e581c13",
+	"projectname": "mini-yangtianhe-lingrenkeji",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
@@ -44,8 +44,9 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 57,
 			"list": [
+				
 			]
 		}
 	}

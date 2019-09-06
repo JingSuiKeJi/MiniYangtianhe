@@ -1,0 +1,67 @@
+<!-- <wxs module="filter" src="../../filter/filter.wxs"></wxs> -->
+<!--postComment.wxml-->
+<view class="container">
+	<navBar title='发表评论' background='white' color='black' iconTheme='black' back="{{true}}"></navBar>
+	<view class="ui-main">
+		<!-- 商品信息 -->
+		<view class="ui-commodityInfo">
+			<view class="ui-newsInfoBox" wx:for="{{storeList}}" wx:for-item="item" wx:key="idx">
+				<view class="ui-newsInfoItem">
+					<view class="ui-newsImg">
+						<image src="http://www.gzlingren.com:8098/yangtianhe/{{item.newsImg}}.png"></image>
+					</view>
+					<view class="ui-newsInfoDetail">
+						<text class="ui-newsName">{{item.newsName}}</text>
+						<text class="ui-newsWeight">{{item.newsWeight}}</text>
+						<text class="ui-newsMoney">¥{{item.newsMoney}}</text>
+					</view>
+					<text class="ui-newsNum">x1</text>
+				</view>
+			</view>
+		</view>
+		
+		<!-- 评论 -->
+		<view class="ui-comment">
+			<view class="ui-grade">
+				<view catchtap="onPraiseTap">
+					<image src="http://www.gzlingren.com:8098/yangtianhe/{{praise?'my_ praise':'my_notPraise'}}.png"></image>
+					<text>好评</text>
+				</view>
+				<view catchtap="onMediumTap">
+					<image src="http://www.gzlingren.com:8098/yangtianhe/{{!medium?'my_medium':'my_selectMedium'}}.png"></image>
+					<text>中评</text>
+				</view>
+				<view catchtap="onBadTap">
+					<image src="http://www.gzlingren.com:8098/yangtianhe/{{!bad?'my_bad':'my_selectBad'}}.png"></image>
+					<text>差评</text>
+				</view>
+			</view>
+			<view class="ui-write" catchtap="onFocusText">
+				<textarea placeholder="请发表你对商品的评价" placeholder-style="color:rgba(199,199,199,1);"  value="{{write}}" bindinput="onWriteTap"
+				cols="686rpx" maxlength="400" auto-height="{{auto_height}}" focus="{{textFocus}}"  bindblur='areablur' bindfocus='areafocus'/>
+			</view>
+		</view>
+		
+		<!-- 选择图片 -->
+		<view class="ui-picture">
+			<view class="ui-flex">
+				<!-- 展示图片 -->
+				<view wx:if="{{tempFilePaths}}" class="ui-showPicture"
+				wx:for="{{tempFilePaths}}" wx:for-index="idx" wx:key="idx" wx:for-item="item">
+					<view class="ui-deleteIcon" catchtap="onDeletePicTap" data-id="{{idx}}"></view>
+					<image src="{{item}}"></image>
+				</view>
+				<!-- 添加图片 -->
+				<view wx:if="{{!(tempFilePaths.length==6)}}" class="ui-addBox" catchtap="onChooseImgTap">
+					<view class="ui-addIcon"></view>
+					<text>添加图片</text>
+					<text>（最多6张）</text>
+				</view>
+			</view>
+		</view>
+		
+		<!-- 发布按钮 -->
+		<view wx:if="{{!write||!tempFilePaths.length==1}}" class="btn-postComment grey">发布</view>
+		<view wx:else class="btn-postComment green" bindtap="onPostCommentTap">发布</view>
+	</view>
+</view>

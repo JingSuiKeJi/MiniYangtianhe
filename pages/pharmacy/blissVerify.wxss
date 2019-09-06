@@ -1,0 +1,70 @@
+@charset "UTF-8";
+@import "/libs/common.wxss";
+
+/**storeQRCode.wxss**/
+page{
+	background:rgba(236,255,251,1);
+}
+
+.ui-main {
+    width: 100%;
+}
+
+.ui-qrBox{
+	width:670rpx;
+	background:rgba(255,255,255,1);
+	box-shadow:0rpx 2rpx 8rpx 0rpx rgba(0,0,0,0.1);
+	border-radius:16rpx;
+	margin: 78rpx 0 0 40rpx;
+}
+
+.ui-addressBox{
+	width:100%;
+	background:rgba(245,245,245,1);
+	border-radius:16rpx 16rpx 0rpx 0rpx;
+	display: flex;
+	flex-direction: column;
+}
+
+.ui-addressBox text:first-child{
+	font-size:34rpx;
+	font-family:PingFangSC-Medium;
+	font-weight:500;
+	color:rgba(61,61,61,1);
+	margin: 32rpx 0 0 32rpx;
+}
+
+.ui-addressBox text:last-child{
+	font-size:26rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(61,61,61,1);
+	line-height:35rpx;
+	margin: 20rpx 32rpx 22rpx 32rpx;
+	word-break: keep-all;/*不允许字断开*/
+	word-wrap: break-word;/*在长单词或URL地址内部进行换行*/
+}
+
+.ui-qrInfo{
+	width: 100%;
+	height: 688rpx;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.ui-qrInfo image{
+	width:520rpx;
+	height:470rpx;
+}
+
+.ui-qrInfo text{
+	height:26rpx;
+	font-size:26rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(153,153,153,1);
+	line-height:26rpx;
+	margin-top: 82rpx;
+}

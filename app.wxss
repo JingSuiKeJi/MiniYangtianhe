@@ -27,3 +27,7 @@ swiper image {
 .ui-main {
     box-sizing: border-box;
 }
+
+view {
+    box-sizing: border-box;
+}

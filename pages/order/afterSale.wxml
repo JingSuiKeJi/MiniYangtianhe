@@ -1,0 +1,78 @@
+<!-- <wxs module="filter" src="../../filter/filter.wxs"></wxs> -->
+<!--afterSale.wxml-->
+<view class="container">
+	<view wx:if="{{orderList}}" class="ui-main">
+		<view class="ui-searchOrder">
+			<view class="ui-searchBox">
+				<view class="ui-searchIcon"></view>
+				<input class="ui-searchInput" type="text" placeholder="搜索订单"/>
+			</view>
+		</view>
+		
+		<view class="ui-menuBar">
+			<text wx:for="{{menuList}}" wx:for-item="item" wx:key="currentId" bindtap="chooseMenu"
+			class="ui-menuText {{currentCheck==item.currentId?'currentText currentBorder':''}}" data-id="{{item.currentId}}"
+			>{{item.name}}</text>
+		</view>
+		
+		<view wx:if="{{currentCheck==item.flagId||currentCheck==item.all}}" class="ui-orderInfoBox" 
+		wx:for="{{orderList}}" wx:for-item="item" wx:key="idx">
+			<view bindtap="onOrderDetailTap" data-order-Status="{{item.orderStatus}}" data-goods-Status="{{item.storeList[0].goodsStatus}}" data-flag-Id="{{item.flagId}}">
+				<view class="ui-orderStatus">
+					<text class="ui-orderReferenceText">订单编号： {{item.orderReference}}</text>
+					<text class="ui-storeTetx" wx:if="{{item.store}}">{{item.store}}</text>
+					<text class="ui-orderStatusText" 
+					style="color: {{item.orderStatus=='售后中'?'#999999':''}};color: {{item.orderStatus=='售后结束'?'#999999':''}}"
+					>{{item.orderStatus}}</text>
+				</view>
+				<view class="ui-newsInfoBox" wx:for="{{item.storeList}}" wx:for-item="item" wx:key="idx">
+					<view class="ui-newsInfoItem">
+						<view class="ui-newsImg"><image src="http://www.gzlingren.com:8098/yangtianhe/{{item.newsImg}}.png"></image></view>
+						<view class="ui-newsDetail">
+							<text class="ui-newsName">{{item.newsName}}</text>
+							<view class="ui-newsWeight">
+								<text>{{item.newsWeight}}</text>
+								<text>x1</text>
+							</view>
+							<view class="ui-newsMoney">
+								<text>¥{{item.newsMoney}}</text>
+								<text wx:if="{{!(item.goodsStatus=='已过期')}}">{{item.goodsStatus}}</text>
+							</view>
+						</view>
+					</view>
+				</view>
+				<view class="ui-total">
+					<text class="ui-goodsNum">共2件商品</text>
+					<view class="ui-MoneySum">
+						<text>共1件商品</text>
+						<text>总额：</text>
+						<text>¥109.00</text>
+					</view>
+				</view>
+			</view>
+			<block wx:if="{{item.flagId=='1'}}">
+				<view class="ui-handle">
+					<view class="btn-grey btn-common" bindtap="onOrderDetailTap" 
+					data-order-Status="{{item.orderStatus}}" data-flag-Id="{{item.flagId}}" data-goods-Status="{{item.storeList[0].goodsStatus}}"
+					><text>查看详情</text></view>
+					<view class="btn-right btn-gray btn-common" bindtap="onAfterApplicationTap"><text>申请退款</text></view>
+				</view>
+			</block>
+			<block wx:if="{{!(item.flagId=='1')}}">
+				<view class="ui-handle">
+					<view class="btn-right btn-gray btn-common" catchtap="onOrderDetailTap"
+					data-order-Status="{{item.orderStatus}}" data-flag-Id="{{item.flagId}}" data-goods-Status="{{item.storeList[0].goodsStatus}}"
+					><text>查看详情</text></view>
+				</view>
+			</block>
+		</view>
+	</view>
+	
+	<view wx:else class="ui-notOrder">
+		<view class="ui-notOrderIcon"></view>
+		<view class="ui-noOrderText">
+			<text>没有订单</text>
+			<text>要不去逛逛</text>
+		</view>
+	</view>
+</view>

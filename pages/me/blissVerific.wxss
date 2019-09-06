@@ -1,0 +1,197 @@
+@charset "UTF-8";
+@import "/libs/common.wxss";
+
+/**blissVerific.wxss**/
+page{
+	background:rgba(245,245,245,1);
+}
+
+.ui-main {
+    width: 100%;
+}
+
+.ui-blissTitleText{
+	display: block;
+	height:32rpx;
+	font-size:32rpx;
+	font-family:PingFangSC-Medium;
+	font-weight:500;
+	color:rgba(0,0,0,1);
+	line-height:32rpx;
+	margin: 80rpx 0 0 52rpx;
+}
+
+.ui-blissBox{
+	width: 100%;
+	height:568rpx;
+	background:rgba(255,255,255,1);
+	box-shadow:0rpx -2rpx 0rpx 0rpx rgba(0,0,0,0.1);
+	border-radius:20rpx 20rpx 0rpx 0rpx;
+	margin-top:80rpx;
+}
+
+.ui-blissText{
+	position: absolute;
+	height:28rpx;
+	font-size:28rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(0,0,0,1);
+	line-height:28rpx;
+	margin: 52rpx 0 0 52rpx;
+}
+
+.ui-blissIcon{
+	position: absolute;
+	width:46rpx;
+	height:36rpx;
+	margin: 48rpx 0 0 120rpx;
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_happyCloud.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+}
+
+.ui-blissInput{
+	position: absolute;
+	height: 106rpx;
+	width: 630rpx;
+	border-bottom: #CCCCCC solid 2rpx;
+	margin:170rpx 0 0 60rpx;
+}
+
+.ui-blissInput input{
+	position: absolute;
+	height:94rpx;
+	font-size:84rpx;
+	font-family:DINPro-Medium;
+	font-weight:500;
+	color:rgba(0,0,0,1);
+	line-height:94rpx;
+	margin-bottom:12rpx;
+	margin-left: 36rpx;
+	caret-color:#DCDCDC;
+}
+
+.ui-canUseNum{
+	position: absolute;
+	margin: 298rpx 0 0 60rpx;
+	font-size:24rpx;
+	font-family:PingFangSC;
+	font-weight:400;
+	color:rgba(102,102,102,1);
+	line-height:24rpx;
+}
+
+.btn-verification{
+	width: 366rpx;
+	height: 80rpx;
+	margin-top: 112rpx;
+	margin-left: 50%;
+	transform: translateX(-50%);
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_btnVerific.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+	font-size:34rpx;
+	font-family:PingFang-SC-Medium;
+	font-weight:500;
+	color:rgba(255,255,255,1);
+	line-height:80rpx;
+	text-align: center;
+}
+
+/* 模态框 */
+.modal-mask {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background:rgba(0,0,0,1);
+	opacity: 0.5;
+	overflow: hidden;
+	z-index: 9000;
+}
+.modal-dialog {
+	width:642rpx;
+	height:620rpx;
+	background:rgba(255,255,255,1);
+	border-radius:16rpx;
+	overflow: hidden;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	z-index: 9999;
+}
+
+.modal-flex{
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+.modal-cancel{
+	width: 46rpx;
+	height: 46rpx;
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_cancelVerific.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+	position: relative;
+	margin: 32rpx 0 0 32rpx;
+}
+
+.modal-title{
+	height:32rpx;
+	font-size:32rpx;
+	font-family:PingFangSC-Medium;
+	font-weight:500;
+	color:rgba(0,0,0,1);
+	line-height:32rpx;
+	margin-top: 52rpx;
+}
+
+.modal-blissIcon{
+	width: 46rpx;
+	height: 36rpx;
+	margin-top: 18rpx;
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_happyCloud.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+}
+
+.modal-blissNum{
+	height:84rpx;
+	font-size:84rpx;
+	font-family:DINPro-Medium;
+	font-weight:500;
+	color:rgba(0,0,0,1);
+	line-height:84rpx;
+	margin-top:28rpx;
+}
+
+.modal-cutOff{
+	width:566rpx;
+	height:2rpx;
+	background:rgba(245,245,245,1);
+	margin-top: 40rpx;
+}
+
+.btn-confirm{
+	width: 366rpx;
+	height: 80rpx;
+	margin-top: 112rpx;
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_btnVerific.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+	font-size:34rpx;
+	font-family:PingFang-SC-Medium;
+	font-weight:500;
+	color:rgba(255,255,255,1);
+	line-height:80rpx;
+	text-align: center;
+}

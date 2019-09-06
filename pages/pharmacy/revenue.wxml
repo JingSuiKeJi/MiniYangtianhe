@@ -1,0 +1,61 @@
+<!-- <wxs module="filter" src="../../filter/filter.wxs"></wxs> -->
+<!--revenue.wxml-->
+<view class="container">
+	<view class="ui-main">
+		<view class="ui-backGorund"></view>
+		
+		<view class="ui-infoBox">
+			<view class="ui-itemImgBox"></view>
+			<view class="ui-textBox">
+				<text>命运的杰克</text>
+				<text>所属门店：天盈广场店</text>
+			</view>
+			<view class="ui-vipBox">
+				<view class="vipIcon"></view>
+				<text>VIP1</text>
+			</view>
+		</view>
+	
+		<view class="ui-commissionBox">
+			<view class="ui-withdrawItem">
+				<view>
+					<view class="withdrawIcon"></view>
+					<view>可提现佣金</view>
+				</view>
+				<view>59.00</view>
+				<view>待结算 11.23元</view>
+			</view>
+			<view class="ui-cut"></view>
+			<view class="ui-commissionItem">
+				<view>
+					<text>2213.00</text>
+					<text>累计佣金</text>
+				</view>
+				<view>
+					<text>2213</text>
+					<text>分销订单</text>
+				</view>
+				<view bindtap="onCheckCustom">
+					<text>5416</text>
+					<text>我的客户</text>
+				</view>
+			</view>
+		</view>
+		
+		<view class="ui-detailBox">
+			<view class="ui-detailItem" catchtap="onCommissionTap">
+				<view class="detailIcon"></view>
+				<text>佣金明细</text>
+			</view>
+			<view class="ui-detailItem" catchtap="onApplicationTap">
+				<view class="detailIcon"></view>
+				<text>提现申请</text>
+			</view>
+			<view class="ui-detailItem" catchtap="onPersonalTap">
+				<view class="detailIcon"></view>
+				<text>个人二维码</text>
+			</view>
+		</view>
+		
+	</view>
+</view>

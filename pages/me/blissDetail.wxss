@@ -1,0 +1,332 @@
+@charset "UTF-8";
+@import "/libs/common.wxss";
+
+/**blissDetail.wxss**/
+.container{
+	background:rgba(245,245,245,1);
+}
+
+.ui-main {
+    width: 100%;
+	position: relative;
+}
+
+.navPosition{
+	position: absolute;
+}
+
+.ui-moneyBox{
+	position: absolute;
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_happyBackground.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+	height: 526rpx;
+	width: 100%;
+}
+
+.moneyInfo{
+	margin-top: 168rpx;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.moneyInfo text{
+	text-align: center;
+	font-family:PingFangSC-Medium;
+}
+
+.moneyInfo text:first-child{
+	height:84rpx;
+	font-size:60rpx;
+	font-weight:500;
+	color:rgba(255,255,255,1);
+	line-height:84rpx;
+	text-shadow:0rpx 4rpx 8rpx rgba(0,0,0,0.25);
+}
+
+.moneyInfo .ui-blissTextFlex text{
+	font-size:20rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(255,255,255,1);
+	line-height:20rpx;
+	margin-top: 18rpx;
+}
+
+.moneyInfo .ui-blissTextFlex .ui-blissIcon{
+	position: relative;
+	display: inline-block;
+	width: 38rpx;
+	height: 30rpx;
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_happyCloud.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+	margin-right: 12rpx;
+	top: 8rpx;
+}
+
+.btn-common{
+	display: inline-block;
+	width:304rpx;
+	height:80rpx;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+	border-radius:8rpx;
+	font-size:30rpx;
+	font-family:PingFangSC-Medium;
+	font-weight:500;
+	color:rgba(255,255,255,1);
+	line-height:80rpx;
+	text-align: center;
+}
+
+.btn-withdraw{
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_btnRecharge.png');
+	margin: 34rpx 0 0 50rpx;
+}
+
+.btn-presented{
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_btnPresent.png');
+	margin: 34rpx 0 0 18rpx;
+}
+
+.ui-withdrawInfoBox{
+	position: relative;
+	width:686rpx;
+	height:908rpx;
+	background:rgba(255,255,255,1);
+	box-shadow:0rpx 4rpx 8rpx 0rpx rgba(0,0,0,0.1);
+	border-radius:24rpx;
+	margin: 426rpx 0 0 32rpx;
+}
+
+.ui-withdraw__title{
+	position: absolute;
+	height:48rpx;
+	font-size:34rpx;
+	font-family:PingFangSC-Medium;
+	font-weight:600;
+	color:rgba(61,61,61,1);
+	line-height:48rpx;
+	margin:20rpx 0 0 32rpx;
+}
+
+.ui-withdrawInfoItem{
+	position: absolute;
+	margin: 88rpx 0 0 32rpx;
+}
+
+.ui-withdrawDetail:first-child{
+	border-top:#F5F5F5 solid 2rpx;
+}
+
+.ui-withdrawDetail{
+	width:622rpx;
+	height:96rpx;
+	background:rgba(255,255,255,1);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-bottom:#F5F5F5 solid 2rpx;
+}
+
+.ui-withdrawDetail text{
+	width: 100%;
+	height:36rpx;
+	font-size:26rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	/* color:rgba(102,102,102,1); */
+	line-height:36rpx;
+}
+
+.ui-withdrawDetail text:nth-child(2){
+	text-align: center;
+	height:40rpx;
+	font-size:28rpx;
+	line-height:40rpx;
+}
+
+.ui-withdrawDetail text:nth-child(3){
+	text-align: right;
+}
+
+.ui-presentedTextBox text{
+	display: block;
+}
+
+.ui-presentedTextBox text:first-child{
+	margin-top:-18rpx ;
+	height:36rpx;
+	font-size:26rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(32,202,180,1);
+	line-height:36rpx;
+}
+
+.ui-presentedTextBox text:last-child{
+	position: relative;
+	height:28rpx;
+	font-size:20rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(153,153,153,1);
+	line-height:28rpx;
+	text-align: right;
+	margin-top: 8rpx;
+}
+
+/* 充值模态框 */
+.modal-mask {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background:rgba(0,0,0,1);
+	opacity: 0.5;
+	overflow: hidden;
+	z-index: 9000;
+	color: #fff;
+}
+.modal-dialog {
+	width:736rpx;
+	height:646rpx;
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_rechargeBackground.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: 702rpx 602rpx;
+	border-radius:16rpx;
+	position: fixed;
+	top: 45%;
+	/* margin-top: 30rpx; */
+	left: 50%;
+	transform: translate(-50%,-50%);
+	z-index: 9999;
+}
+.modal-title {
+	margin-top: 156rpx;
+	margin-left:338rpx ;
+	width:72rpx;
+	height:48rpx;
+	font-size:34rpx;
+	font-family:PingFangSC-Medium;
+	font-weight:500;
+	color:rgba(61,61,61,1);
+	line-height:48rpx;
+	text-align: center;
+}
+
+.modal-blissNumInputBox{
+	width:630rpx;
+	height:96rpx;
+	border-radius:8rpx;
+	border:2rpx solid rgba(204,204,204,1);
+	margin: 24rpx 0 0 58rpx;
+	display: flex;
+	align-items: center;
+}
+
+.modal-blissNumInputBox text{
+	width:136rpx;
+	font-size:26rpx;
+	font-family:PingFangSC-Medium;
+	font-weight:500;
+	color:rgba(61,61,61,1);
+	line-height:26px;
+	margin-left: 24rpx;
+}
+
+.modal-blissNumInputBox input{
+	display: inline-block;
+	height:24rpx;
+	font-size:24rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(204,204,204,1);
+	line-height:24rpx;
+	margin-left: 36rpx;
+	margin-top: 2rpx;
+	color: #3D3D3D;
+}
+
+.modal-todayMoneyratio{
+	margin: 30rpx 0 0 56rpx;
+	color: #20CAB4;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(32,202,180,1);
+}
+
+.modal-todayMoneyratio text:first-child{
+	font-size:26rpx;
+	height:26rpx;
+	line-height:26rpx;
+	margin-top: 2rpx;
+}
+
+.modal-todayMoneyratio text:last-child{
+	font-size:28rpx;
+	height:28rpx;
+	line-height:28rpx;
+	margin-left:14rpx ;
+}
+
+.modal-paymentAmount{
+	margin: 28rpx 0 0 58rpx;
+	font-family:PingFangSC-Medium;
+	font-weight:500;
+	color:rgba(61,61,61,1);
+}
+
+.modal-paymentAmount text:first-child{
+	font-size:26rpx;
+	height:26rpx;
+	line-height:26rpx;
+}
+
+.modal-paymentAmount text:last-child{
+	height:48rpx;
+	font-size:48rpx;
+	line-height:48rpx;
+}
+
+.modal-commonFooter{
+	display: flex;
+	flex-direction: row;
+	height: 96rpx;
+	font-size:34rpx;
+	font-family:PingFang-SC-Medium;
+	font-weight:500;
+	color:rgba(255,255,255,1);
+	line-height:96rpx;
+	margin-top: 34rpx;
+	text-align: center;
+}
+
+.modal-footer {
+	margin: 92rpx 0 0 19rpx;
+}
+
+.modal-presentedFooter{
+	margin: 46rpx 0 0 19rpx;
+}
+
+.btn-cancel {
+	width:348rpx;
+	height:96rpx;
+	background:rgba(225,225,225,1);
+	border-radius:0rpx 0rpx 0rpx 16rpx;
+}
+.btn-confirm {
+	width:346rpx;
+	height:96rpx;
+	background:rgba(32,202,180,1);
+	border-radius:0rpx 0rpx 16rpx 0rpx;
+}

@@ -1,0 +1,92 @@
+@charset "UTF-8";
+@import "/libs/common.wxss";
+
+/**bindingWeChat.wxss**/
+page{
+	background:rgba(255,255,255,1);
+}
+
+.ui-main {
+    width: 100%;
+}
+
+.ui-bindingWeChatBox{
+	width:630rpx;
+	height:104rpx;
+	background:rgba(255,255,255,1);
+	border-bottom: #CCCCCC solid 2rpx;
+	margin: 20rpx 0 0 60rpx;
+}
+
+.ui-weChatText{
+	font-size:30rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(153,153,153,1);
+	line-height:104rpx;
+	margin-left: 20rpx;
+}
+
+.ui-weChatInput{
+	display: inline-block;
+	position: absolute;
+	height:30rpx;
+	font-size:30rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(51,51,51,1);
+	line-height:30rpx;
+	margin:30rpx 0 0 20rpx;
+}
+
+.ui-weChatInputPla{
+	font-size:24rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(153,153,153,1);
+}
+
+.btn-notBinding{
+	width: 512rpx;
+	height: 80rpx;
+	margin: 60rpx 0 0 120rpx;
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_btnBindingSuccess.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: contain;
+	font-size:28rpx;
+	font-family:PingFangSC-Semibold;
+	font-weight:600;
+	color:rgba(153,153,153,1);
+	line-height:80rpx;
+	text-align: center;
+}
+
+.btn-Binding{
+	width: 512rpx;
+	height: 80rpx;
+	margin: 60rpx 0 0 120rpx;
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_btnNotBound.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: contain;
+	font-size:28rpx;
+	font-family:PingFangSC-Semibold;
+	font-weight:600;
+	color:rgba(255,255,255,1);
+	line-height:80rpx;
+	text-align: center;
+}
+
+.ui-successfulBinding{
+	position: fixed;
+	z-index: 9000;
+	width: 350rpx;
+	height: 260rpx;
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_bindingSuccess.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: contain;
+	top: 410rpx;
+	left: 200rpx;
+}

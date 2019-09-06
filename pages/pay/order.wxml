@@ -1,0 +1,49 @@
+<!--pages/pay/order.wxml-->
+<wxs module="filter" src="../../filter/filter.wxs"></wxs>
+<view class="contain">
+    <view class="main">
+        <view class="userInfoBox">
+            <view class="userInfoItem_decBox">
+                <image src="{{filter.getLocalPhoto('decIcon.png')}}" class="userInfoItem_decIcon"/>
+            </view>
+            <view class="userInfoItem_info">
+                <view class="ui-infoItem_namePho">
+                    <text class="ui-infoItem_name">周周周</text>
+                    <text class="ui-infoItem_phone">15677220282</text>
+                </view>
+                <view class="ui-infoItem_address">广东省广州市天河区天盈广场东塔3004</view>
+            </view>
+        </view>
+        <view class="goodsBox">
+            <view class="goodsItem_info">
+                <view class="ui-goodsInfo_imgBox">
+                    <image src="../../images/order_icon.png" class="ui-goodsInfo_goodsIcon"/>
+                </view>
+                <view class="ui-goodsInfo_text">
+                    <view class="ui-goodsInfo_title">养生堂维C+维E</view>
+                    <view class="ui-goodsInfo_scale">250gx两盒装</view>
+                    <view class="ui-goodsInfo_price">
+                        <text >¥9.99</text>
+                        <text class="ui-goodsInfo_count">x1</text>
+                    </view>
+                </view>
+            </view>
+            <view class="ui-fareBox">
+            <text >运费</text>
+            <text >¥0.00</text>
+            </view>
+            <view class="ui-fareBox ui-totalBox">
+            <text >实付款</text>
+            <text class="ui-goodsInfo_total">¥ 9.99</text>
+            </view>
+        </view>
+        <view class="ui-fixedBox">
+            <view class="ui-amountBox">
+                <text class="ui-amountItem_text">应付金额</text>
+                <text class="ui-amountItem_price">¥9.99</text>
+            </view>
+            <view class="ui-payBtn" bindtap="onPayTap">去支付</view>
+        </view>
+        
+    </view>
+</view>

@@ -1,0 +1,35 @@
+<!--pages/search/brand.wxml-->
+<wxs module="filter" src="../../filter/filter.wxs"></wxs>
+<view class="main">
+    <view class="ui-brandSelectBox">
+        <view class="ui-brandSelectItem_top" >健康医药</view>
+        <view class="ui-brandSelectItem_bottom">
+            <scroll-view scroll-x  class="ui-brandItem_scrollView">
+                <view class="ui-brandScroll_itemTop">
+                    <view wx:for="{{imgBottomList}}" class="ui-brandScroll_item">
+                        <image src="{{filter.getLocalPhoto(item.url)}}" bindtap="onDetailTap"/>
+                        <view class="ui-brandScroll_text">{{item.title}}</view>
+                    </view>
+                </view>
+            </scroll-view> 
+            <scroll-view scroll-x  class="ui-brandItem_scrollView">
+                <view class="ui-brandScroll_itemBottom">
+                    <view wx:for="{{imgBottomList}}" class="ui-brandScroll_item">
+                        <image src="{{filter.getLocalPhoto(item.url)}}" />
+                        <view class="ui-brandScroll_text">{{item.title}}</view>
+                    </view>
+                </view>
+            </scroll-view> 
+        </view>
+    </view>
+    <view class="ui-allBrandBox">
+        <view class="ui-allBrandItem__title">全部品牌</view>
+        <view class="ui-allBrandItem" >
+            <view class="ui-allBrandItem__sort">A</view>
+            <view class="ui-allBrandItem__brand" wx:for="{{list}}">
+                <image src="{{filter.getLocalPhoto(item.url)}}" class="ui-brand__goodsIcon"/>
+                <text class="ui-brand__text">{{item.text}}</text>
+            </view>
+        </view>
+    </view>
+</view>

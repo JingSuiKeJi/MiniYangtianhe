@@ -1,0 +1,48 @@
+<!-- <wxs module="filter" src="../../filter/filter.wxs"></wxs> -->
+<!--applicationDetails.wxml-->
+<view class="container">
+	<view class="ui-main">
+		<view class="ui-withdrawDepositTitle">提现金额</view>
+		<view class="ui-cashWithdrawalAmount ">2929.00</view>
+		<view wx:if="{{!currentStatus}}" class="ui-currentStatus {{currentStatus==false?'ui-currentStatusUnderway':'ui-currentStatusSuccess'}}">处理中</view>
+		<view wx:else class="ui-currentStatus {{currentStatus==false?'ui-currentStatusUnderway':'ui-currentStatusSuccess'}}">提现成功</view>
+		<view class="ui-transaction">
+			<text>手续费</text>
+			<text>0.29</text>
+		</view>
+		<view class="ui-transaction">
+			<text>处理进度</text>
+			<view class="ui-processingProgress">
+				<view class="ui-processingProgressItems">
+					<view class="ui-successIcon"></view>
+					<text>提交成功</text>
+					<text>07-31 15:00</text>
+				</view>
+				
+				<view class="ui-progress ui-progressBarSuccess"></view>
+				
+				<view class="ui-processingProgressItems">
+					<view class="ui-successIcon"></view>
+					<text>处理中</text>
+					<text>07-31 16:00</text>
+				</view>
+				
+				<view class="ui-progress ui-progressBarNotHeight {{currentStatus==false?'ui-progressBarNot':'ui-progressBarSuccess'}}"></view>
+				
+				<view class="ui-processingProgressItems">
+					<view class="{{currentStatus==false?'ui-notSuccessIcon':'ui-successIcon'}}"></view>
+					<text style="color:{{currentStatus==false?'':'#20CAB4'}}">提现成功</text>
+					<text>预计07-31 18:00前</text>
+				</view>
+			</view>
+		</view>
+		<view class="ui-transaction">
+			<text>提现到</text>
+			<text>微信钱包</text>
+		</view>
+		<view class="ui-transaction">
+			<text>创建时间</text>
+			<text>2019年7月31日</text>
+		</view>
+	</view>
+</view>

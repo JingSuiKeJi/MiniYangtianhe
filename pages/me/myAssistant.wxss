@@ -1,0 +1,374 @@
+@charset "UTF-8";
+@import "/libs/common.wxss";
+
+/**myAssistant.wxss**/
+page{
+	background:rgba(245,245,245,1);
+}
+
+.ui-main {
+    width: 100%;
+}
+
+.ui-navBar{
+	width: 100%;
+	height:84rpx;
+	background:rgba(255,255,255,1);
+	border-bottom: rgba(0,0,0,0.1) solid 2rpx;
+	display: flex;
+	align-items: center;
+}
+
+.ui-navBar text{
+	height:26rpx;
+	font-size:26rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(153,153,153,1);
+	line-height:26rpx;
+}
+
+.ui-navBar text:nth-child(1){
+	margin-left: 96rpx;
+}
+
+.ui-navBar text:nth-child(2){
+	margin-left: 156rpx;
+}
+
+.ui-navBar text:nth-child(3){
+	margin-left: 86rpx;
+}
+
+.ui-navBar text:nth-child(4){
+	margin-left: 88rpx;
+}
+
+.ui-assistantInfoBox{
+	width: 100%;
+	margin-top: 20rpx;
+	margin-bottom: 120rpx;
+}
+
+.ui-assistantInfoItems{
+	position: relative;
+	height:112rpx;
+	background:rgba(255,255,255,1);
+	display: flex;
+	align-items: center;
+}
+
+.ui-assistantInfoItems:last-child{
+	border: none;
+}
+
+.ui-userAvatar{
+	position: absolute;
+	width: 80rpx;
+	height: 80rpx;
+	border-radius: 80rpx;
+	background: #CCCCCC;
+	margin-left: 22rpx;
+	overflow: hidden;
+}
+
+.ui-userAvatar image{
+	width: 100%;
+	height: 100%;
+}
+
+.ui-userInfo{
+	position: absolute;
+	margin-left: 108rpx;
+	width: 140rpx;
+	height: 72rpx;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.ui-userInfo .ui-userId{
+	height:22rpx;
+	font-size:22rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(51,51,51,1);
+	line-height:22rpx;
+}
+
+.ui-userInfo .ui-userVipLevel{
+	width: 44rpx;
+	height: 44rpx;
+	overflow: hidden;
+}
+
+.ui-userInfo .ui-userVipLevel image{
+	width: 100%;
+	height: 100%;
+}
+
+.ui-userLevel{
+	position: absolute;
+	margin-left: 282rpx;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.ui-userLevel text{
+	height:22rpx;
+	font-size:22rpx;
+	font-family:PingFang-SC-Medium;
+	font-weight:500;
+	color:rgba(51,51,51,1);
+	line-height:22rpx;
+}
+
+.ui-userLevel text:first-child{
+	margin-bottom: 28rpx;
+}
+
+.ui-commissionSum{
+	position: absolute;
+	margin-left: 462rpx;
+	height:22rpx;
+	font-size:22rpx;
+	font-family:PingFang-SC-Medium;
+	font-weight:500;
+	color:rgba(51,51,51,1);
+	line-height:22rpx;
+}
+
+.ui-deleteBtn{
+	position: absolute;
+	margin-left: 610rpx;
+	width:100rpx;
+	height:52rpx;
+	border-radius:26rpx;
+	border:2rpx solid rgba(29,196,188,1);
+	font-size:22rpx;
+	font-family:PingFang-SC-Medium;
+	font-weight:500;
+	color:rgba(32,202,180,1);
+	line-height:52rpx;
+	text-align: center;
+}
+
+.ui-bottomLine{
+	position: relative;
+	width: 702rpx;
+	border:rgba(0,0,0,0.1) solid 1rpx;
+	top: 56rpx;
+	left:24rpx;
+}
+
+.ui-assistantInfoItems:last-child .ui-bottomLine{
+	display: none;
+}
+
+.btn-addAssistant{
+	position: fixed;
+	z-index: 8888;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height:100rpx;
+	background:linear-gradient(137deg,rgba(1,206,165,1) 0%,rgba(94,221,218,1) 100%);
+	box-shadow:0rpx -4rpx 24rpx 0rpx rgba(103,103,103,0.09);
+	font-size:30rpx;
+	font-family:PingFangSC-Semibold;
+	font-weight:600;
+	color:rgba(255,255,255,1);
+	line-height:100rpx;
+	text-align: center;
+}
+
+/*添加店员模态框*/
+.modal-mask {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background:rgba(0,0,0,1);
+	opacity: 0.5;
+	overflow: hidden;
+	z-index: 9000;
+	color: #fff;
+}
+
+.modal-dialog {
+	width:694rpx;
+	background: #FFFFFF;
+	background-size: 702rpx 602rpx;
+	border-radius:16rpx;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	z-index: 9999;
+}
+.modal-title {
+	height:34rpx;
+	font-size:34rpx;
+	font-family:PingFangSC-Medium;
+	font-weight:500;
+	color:rgba(61,61,61,1);
+	line-height:34rpx;
+	margin: 38rpx 0 0 276rpx;
+}
+
+.modal-blissNumInputBox{
+	position: relative;
+	width:630rpx;
+	height:96rpx;
+	border-radius:8rpx;
+	border:2rpx solid rgba(204,204,204,1);
+	margin: 32rpx 0 0 32rpx;
+	display: flex;
+	align-items: center;
+}
+
+.modal-blissNumInputBox text{
+	width:108rpx;
+	font-size:26rpx;
+	font-family:PingFangSC-Medium;
+	font-weight:500;
+	color:rgba(61,61,61,1);
+	line-height:26px;
+	margin-left: 24rpx;
+}
+
+.modal-blissNumInputBox input{
+	display: inline-block;
+	height:26rpx;
+	font-size:26rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(51,51,51,1);
+	line-height:26rpx;
+	margin-left: 16rpx;
+	margin-top: 2rpx;
+	color: #3D3D3D;
+}
+
+.modal-pullDown{
+	position: absolute;
+	width: 32rpx;
+	height: 32rpx;
+	right: 32rpx;
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_iconDown.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: contain;
+}
+
+.placeType{
+	font-size:24rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(204,204,204,1);
+	line-height:24rpx;
+}
+
+.modal-blank{
+	width: 100%;
+	height: 32rpx;
+	background: #FFFFFF;
+}
+
+.modal-addListBox{
+	width: 100%;
+	height: 258rpx;
+	background: #FFFFFF;
+}
+
+.modal-addList{
+	width:630rpx;
+	height:258rpx;
+	background:rgba(238,238,238,1);
+	border-radius:8rpx;
+	margin-left: 32rpx;
+}
+
+.modal-addItems{
+	position: relative;
+	width: 556rpx;
+	height: 80rpx;
+	margin-left: 22rpx;
+	margin-top: 20rpx;
+	display: flex;
+	align-items: center;
+}
+
+.modal-addItems:last-child{
+	margin-bottom: 20rpx;
+}
+
+.modal-avatar{
+	width: 80rpx;
+	height: 80rpx;
+	border-radius: 80rpx;
+	overflow: hidden;
+}
+
+.modal-avatar image{
+	width: 100%;
+	height: 100%;
+}
+
+.modal-idText{
+	height:26rpx;
+	font-size:26rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(51,51,51,1);
+	line-height:26rpx;
+	margin-left: 30rpx;
+}
+
+.modal-checkCommon{
+	position: absolute;
+	right: 0;
+	width: 40rpx;
+	height: 40rpx;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+}
+
+.modal-check{
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_check.png');
+}
+
+.modal-unCheck{
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_unCheck.png');
+}
+
+.modal-commonFooter{
+	display: flex;
+	height: 96rpx;
+	font-size:34rpx;
+	font-family:PingFang-SC-Medium;
+	font-weight:500;
+	color:rgba(255,255,255,1);
+	line-height:96rpx;
+	text-align: center;
+}
+
+.modal-footer{
+	padding-top:40rpx;
+}
+
+.btn-cancel {
+	width:348rpx;
+	height:96rpx;
+	background:rgba(225,225,225,1);
+	border-radius:0rpx 0rpx 0rpx 16rpx;
+}
+.btn-confirm {
+	width:346rpx;
+	height:96rpx;
+	background:rgba(32,202,180,1);
+	border-radius:0rpx 0rpx 16rpx 0rpx;
+}

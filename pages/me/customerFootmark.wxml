@@ -1,0 +1,35 @@
+<!-- <wxs module="filter" src="../../filter/filter.wxs"></wxs> -->
+<!--customerFootmark.wxml-->
+<view class="container">
+	<navBar title='客户足迹' background='linear-gradient(137deg,rgba(1,206,165,1) 0%,rgba(94,221,218,1) 100%)' color='white' iconTheme='white' back="{{true}}"></navBar>
+    <view class="ui-main">
+		<!-- 日历 -->
+		<view class="ui-calendarBox">
+			<calendar cell-size="23" weeks-type="cn" days-color="{{dayStyle}}" show-more-days="true" binddayClick="dayClick"/>
+			<view class="ui-showHidden ui-pullUp"></view>
+		</view>
+		
+		<!-- 商品足迹列表 -->
+		<view class="ui-footmarkBox" style="margin-bottom: {{showAndHideCheck ? '126rpx' : ''}}">
+			<view class="ui-cancelSwitch" catchtap="onCancelSwitchTap"></view>
+			<view class="ui-footmarkItem" wx:for="{{dateList}}" wx:for-item="item" wx:key="idx">
+				<view class="ui-datebox">
+					<view wx:if="{{showAndHideCheck}}" catchtap="onSelectAllIcontap" class="ui-select {{slectAllIcon==true?'ui-checkIcon':'ui-unCheckIcon'}}"></view>
+					<text class="ui-dateText">{{item.date}}</text>
+				</view>
+				<view class="ui-footmarkList">
+					<view class="ui-ListItems" wx:for="{{imgAndPriceList}}" wx:for-item="item" wx:key="idx">
+						<view class="ui-img"><image src="http://www.gzlingren.com:8098/yangtianhe/{{item.img}}.png"></image></view>
+						<view class="ui-priceBox">
+							<view wx:if="{{showAndHideCheck}}" class="ui-select {{slectAllIcon==true?'ui-checkIcon':'ui-unCheckIcon'}}"></view>
+							<text class="ui-price">¥{{item.price}}</text>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+		<view class="ui-delectBox" wx:if="{{showAndHideCheck}}">
+			<view  catchtap="onDeleteTap" class="ui-delete">删除</view>
+		</view>
+	</view>
+</view>

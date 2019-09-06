@@ -1,0 +1,265 @@
+@charset "UTF-8";
+@import "/libs/common.wxss";
+
+/**index.wxss**/
+page{
+	background:rgba(245,245,245,1);
+}
+
+.ui-main {
+    width: 100%;
+}
+
+.ui-searchOrderBox{
+	height: 82rpx;
+	width: 100%;
+	background: #FFFFFF;
+	position: relative;
+}
+
+.ui-searchOrder{
+	position: absolute;
+	width:686rpx;
+	height:64rpx;
+	background:rgba(248,248,248,1);
+	border-radius:12rpx;
+	margin: 18rpx 0 0 32rpx;
+	display: flex;
+	align-items: center;
+}
+
+.ui-searchIcon{
+	width: 32rpx;
+	height: 32rpx;
+	margin-left: 20rpx;
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/ic_search.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+}
+
+.ui-searchInput{
+	height:26rpx;
+	font-size:26rpx;
+	font-family:PingFang-SC-Medium;
+	font-weight:500;
+	color:rgba(51,51,51,1);
+	line-height:26rpx;
+	margin-top: 4rpx;
+	margin-left: 24rpx;
+}
+
+.ui-menuBar{
+	width: 100%;
+	height:84rpx;
+	background:rgba(255,255,255,1);
+	border-bottom:#F1F1F1 solid 2rpx;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.ui-menuText{
+	position: relative;
+	width: 100%;
+	text-align: center;
+	font-size:26rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(153,153,153,1);
+	line-height:84rpx;
+}
+
+.currentText{
+	font-size:26rpx;
+	font-family:PingFangSC-Medium;
+	font-weight:500;
+	color:rgba(29,196,188,1);
+	line-height:84rpx;
+}
+
+.currentText:after{
+	position: absolute;
+	content: "";
+	width: 40rpx;
+	height: 6rpx;
+	background:#1DC4BC;
+	border-radius:3rpx;
+	top: 78rpx;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.ui-orderInfoBox{
+	background: #FFFFFF;
+	width: 100%;
+	margin-bottom: 20rpx;
+}
+
+.ui-orderStatus{
+	position: relative;
+	height: 108rpx;
+	background: #FFFFFF;
+	border-bottom:#F1F1F1 solid 2rpx;
+}
+
+.ui-orderStatus .ui-orderReferenceText{
+	position: absolute;
+	height:26rpx;
+	font-size:26rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(102,102,102,1);
+	line-height:26rpx;
+	left: 40rpx;
+	top: 46rpx;
+}
+
+.ui-orderStatus .ui-storeTetx{
+	position: absolute;
+	width:68rpx;
+	height:40rpx;
+	background:linear-gradient(136deg,rgba(1,206,165,1) 0%,rgba(94,221,218,1) 100%);
+	border-radius:4rpx;
+	font-size:22rpx;
+	font-family:PingFangSC-Medium;
+	font-weight:500;
+	color:rgba(255,255,255,1);
+	line-height:40rpx;
+	text-align: center;
+	left:544rpx;
+	margin-top: 40rpx;
+}
+
+.ui-orderStatus .ui-orderStatusText{
+	height:26rpx;
+	font-size:26rpx;
+	font-family:PingFang-SC-Medium;
+	font-weight:500;
+	color:rgba(253,61,47,1);
+	line-height:26rpx;
+	position: absolute;
+	top: 46rpx;
+	right: 40rpx;
+}
+
+.ui-newsInfoBox{
+	width: 100%;
+}
+
+.ui-newsInfoItem{
+	width: 100%;
+	position: relative;
+}
+
+.ui-newsImg{
+	display: inline-block;
+	width:160rpx;
+	height:160rpx;
+	border-radius:4rpx;
+	/* background:#CCCCCC ; */
+	margin: 40rpx 0 0 40rpx;
+}
+
+.ui-newsImg image{
+	width: 100%;
+	height: 100%;
+}
+
+.ui-newsName{
+	position: absolute;
+	height:36rpx;
+	font-size:26rpx;
+	font-family:PingFangSC-Medium;
+	font-weight:500;
+	color:rgba(51,51,51,1);
+	line-height:36rpx;
+	margin: 40rpx 0 0 20rpx;
+}
+
+.ui-newsWeight{
+	position: absolute;
+	height:20rpx;
+	font-size:20rpx;
+	font-family:PingFang-SC-Regular;
+	font-weight:400;
+	color:rgba(153,153,153,1);
+	line-height:20rpx;
+	margin: 124rpx 0 0 20rpx;
+}
+
+.ui-newsMoney{
+	position:absolute;
+	height:26rpx;
+	font-size:26rpx;
+	font-family:PingFangSC-Medium;
+	font-weight:500;
+	color:rgba(51,51,51,1);
+	line-height:26rpx;
+	margin: 174rpx 0 0 20rpx;
+}
+
+.ui-newsNum{
+	position: absolute;
+	height:20rpx;
+	font-size:20rpx;
+	font-family:PingFangSC-Medium;
+	font-weight:500;
+	color:rgba(153,153,153,1);
+	line-height:20rpx;
+	top: 124rpx;
+	right: 42rpx;
+}
+
+.ui-total{
+	height: 100rpx;
+	width: 100%;
+	position: relative;
+	border-bottom:#F1F1F1 solid 2rpx;
+}
+
+.ui-total text:first-child{
+	position: absolute;
+	height:26rpx;
+	font-size:26rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(51,51,51,1);
+	line-height:26rpx;
+	top: 42rpx;
+	left: 382rpx;
+}
+
+.ui-total text:last-child{
+	position: absolute;
+	height:30rpx;
+	font-size:26rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(51,51,51,1);
+	line-height:30rpx;
+	top: 40rpx;
+	right: 40rpx;
+}
+
+.ui-detailBox{
+	width: 100%;
+	height: 120rpx;
+	position: relative;
+}
+
+.btn-detail{
+	position: absolute;
+	width:148rpx;
+	height:60rpx;
+	border-radius:30rpx;
+	border:2rpx solid rgba(199,199,199,1);
+	right: 40rpx;
+	top: 30rpx;
+	font-size:26rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(102,102,102,1);
+	line-height:60rpx;
+	text-align: center;
+}

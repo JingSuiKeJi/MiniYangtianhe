@@ -1,0 +1,127 @@
+/* pages/search/classify.wxss */
+page{
+    width: 100%;
+    height: 100%;
+}
+.contain {
+    width: 100%;
+    height: 100%;
+    
+}
+.main {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+.ui-searchBox {
+    width: 100%;
+    padding: 20rpx 0rpx 0rpx 40rpx;
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+.ui-searchBox .ui-searchItem_input {
+    width: 70%;
+    height: 56rpx;
+    border: 1rpx solid #cccccc;
+    font-size:26rpx;
+    font-family:PingFang-SC-Medium;
+    font-weight:500;
+    display: inline-block;
+    color:#919191;
+    line-height: 26rpx;
+    padding-left: 70rpx;
+    border-radius:28rpx;
+    background-color: #FAFAFA; 
+   
+}
+.ui-searchBox .searchItem_icon {
+    width: 32rpx;
+    height: 32rpx;
+    position: absolute;
+    top: 38rpx;
+    left: 65rpx;
+}
+.ui-searchBox .ui-searchItem_text {
+    font-size:28rpx;
+    font-family:PingFang-SC-Medium;
+    font-weight:500;
+    color:#666666;
+    line-height:28rx;
+    display: inline-block;
+    width: 20%;
+    height: 56rpx;
+    line-height: 56rpx;
+    vertical-align: top;
+    text-align: center;
+}
+.ui-tipBox {
+    width: 100%;
+    text-align: center;
+    position: relative;
+}
+.ui-tipBox .ui-tipItem__text {
+    font-size:30rpx;
+    font-family:PingFangSC-Light;
+    font-weight:300;
+    color:#333333;
+   
+}
+.ui-tipBox .ui-tipItem__icon {
+    width: 24rpx;
+    height: 24rpx;
+    position: absolute;
+    top: 30rpx;
+    right: 40rpx;
+}
+.ui-classifyBox {
+    width: 100%;
+    height: 89.6%;
+    white-space: nowrap;
+    position: relative;
+}
+.ui-classItem_tips {
+    display: inline-block;
+    width: 20%;
+    height: 100%;
+    background-color:#F5F5F5;
+    position: absolute;
+}
+.ui-classItem_tips .ui-tipsItem__List {
+    width: 100%;
+    height: 90rpx;
+    line-height:90rpx;
+    text-align: center;
+    font-size:30rpx;
+    font-family:PingFang-SC-Medium;
+    font-weight:500;
+    color:#999999;
+}
+.ui-contentBox {
+     text-align: center;
+     display: inline-block;
+     white-space: normal;
+}
+.ui-classItem_content {
+   width: 80%;
+   display: inline-block;
+   vertical-align: top;
+   white-space: normal;
+   position: absolute;
+   left: 20%;
+}
+.ui-classItem_content .ui-contentItem_img {
+    width: 156rpx;
+    height: 156rpx;
+    margin: 0rpx 20rpx 0rpx 20rpx;
+}
+.ui-classItem_content .ui-contentItem__text {
+    font-size:26rpx;
+    font-family:PingFangSC-Regular;
+    font-weight:400;
+    color:#999999;
+    line-height:26rpx;
+    margin-top: -10rpx;
+    
+}

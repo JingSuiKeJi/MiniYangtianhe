@@ -1,0 +1,57 @@
+<!-- <wxs module="filter" src="../../filter/filter.wxs"></wxs> -->
+<!--myAssistant.wxml-->
+<view class="container">
+	<navBar title='我的店员' background='linear-gradient(137deg,rgba(1,206,165,1) 0%,rgba(94,221,218,1) 100%)' color='white' iconTheme='white' back="{{true}}"></navBar>
+	<view class="ui-main">
+		<view class="ui-navBar ">
+			<text>用户</text>
+			<text>团队</text>
+			<text>累计佣金</text>
+			<text>管理</text>
+		</view>
+		
+		<view class="ui-assistantInfoBox">
+			<view class="ui-assistantInfoItems" wx:for="{{assistantList}}" wx:for-index="idx" wx:key="idx" wx:for-item="item">
+				<view class="ui-userAvatar"><image src="http://www.gzlingren.com:8098/yangtianhe/{{item.userAvatar}}.png"></image></view>
+				<view class="ui-userInfo">
+					<view class="ui-userId">{{item.userId}}</view>
+					<view class="ui-userVipLevel"><image src="http://www.gzlingren.com:8098/yangtianhe/{{item.userVipLevel}}.png"></image></view>
+				</view>
+				<view class="ui-userLevel">
+					<text>一级：{{item.lv1}}</text>
+					<text>二级：{{item.lv2}}</text>
+				</view>
+				<view class="ui-commissionSum">¥{{item.orders}}</view>
+				<view class="ui-deleteBtn">{{item.delete}}</view>
+				<view class="ui-bottomLine"></view>
+			</view>
+		</view>
+		
+		<view class="btn-addAssistant" catchtap="showDialogBtn">添加店员</view>
+		
+		<!-- 添加店员模态框 -->
+		<view class="modal-mask" bindtap="hideModal" catchtouchmove="true" wx:if="{{showModal}}"></view>
+		<view class="modal-dialog" wx:if="{{showModal}}" catchtouchmove="true">
+			<view class="modal-title">添加店员</view>
+			<view class="modal-blissNumInputBox">
+				<text>店员ID：</text>
+				<input type="number" placeholder="请输入店员ID/昵称" placeholder-class="placeType" cursor-spacing="484rpx"/>
+				<view class="modal-pullDown"></view>
+			</view>
+			<view class="modal-addListBox" wx:if="{{addList}}">
+				<scroll-view scroll-y class="modal-addList">
+					<view class="modal-addItems" wx:for="{{addList}}" data-id="{{item.currentId}}" wx:for-index="idx" wx:key="idx" wx:for-item="item">
+						<view class="modal-avatar"><image src="http://www.gzlingren.com:8098/yangtianhe/{{item.addAvatar}}.png"></image></view>
+						<text class="modal-idText">{{item.addId}}</text>
+						<view data-id="{{item.currentId}}" catchtap="onCheckStatusTap" class="modal-checkCommon {{!item.current?'modal-unCheck':'modal-check'}}"></view>
+					</view>
+				</scroll-view>
+			</view>
+			<view class="modal-blank" wx:else></view>
+			<view class="modal-commonFooter modal-footer">
+				<view class="btn-cancel" bindtap="onCancel" data-status="cancel">取消</view>
+				<view class="btn-confirm" bindtap="onConfirm" data-status="confirm">充值</view>
+			</view>
+		</view>
+	</view>
+</view>

@@ -1,0 +1,204 @@
+<!-- <wxs module="filter" src="../../filter/filter.wxs"></wxs> -->
+<!--orderDetail.wxml-->
+<view class="container">
+	<navBar title='订单详情' background='white' color='black' iconTheme='black' back="{{true}}"></navBar>
+	<view class="ui-main">
+		<view class="ui-orderStatusBox">
+			<view class="ui-timeLimit" wx:if="{{orderStatus=='待付款'}}"><text>订单还剩{{minutes<10?'0'+minutes:minutes}}分{{seconds<10?'0'+seconds:seconds}}秒关闭，请尽快支付</text></view>
+			<view class="ui-orderStatus" wx:if="{{orderStatus=='待付款'}}">
+				<view class="ui-StatusIcon ui-notPaymentIcon"></view>
+				<text class="ui-StatusText">代付款</text>
+			</view>
+			<view class="ui-orderStatus" wx:if="{{orderStatus=='待发货'}}">
+				<view class="ui-StatusIcon ui-waitShipmentsIcon"></view>
+				<text class="ui-StatusText">待发货</text>
+			</view>
+			<view class="ui-orderStatus" wx:if="{{orderStatus=='待收货'}}">
+				<view class="ui-StatusIcon ui-waitReceivingIcon"></view>
+				<text class="ui-StatusText">待收货</text>
+			</view>
+			<view class="ui-orderStatus" wx:if="{{orderStatus=='待核销'}}">
+				<view class="ui-verificCodeIcon"></view>
+				<view class="btn-waitVerific"><text>核销码：987456</text></view>
+			</view>
+			<view class="ui-orderStatus" wx:if="{{orderStatus=='已核销'}}">
+				<view class="ui-verificCodeIcon"></view>
+				<view class="btn-alreadyVerific"><text>已核销</text></view>
+			</view>
+			<view class="ui-orderStatus" wx:if="{{orderStatus=='交易成功'}}">
+				<view class="ui-StatusIcon ui-tradeSuccessfully"></view>
+				<text class="ui-StatusText">交易成功</text>
+			</view>
+			<view class="ui-orderStatus" wx:if="{{orderStatus=='交易关闭'}}">
+				<view class="ui-StatusIcon ui-closeDeal"></view>
+				<text class="ui-StatusText">交易关闭</text>
+			</view>
+			<view class="ui-orderStatus" wx:if="{{orderStatus=='评价成功'}}">
+				<view class="ui-StatusIcon ui-commentSuccess"></view>
+				<text class="ui-StatusText">评价成功</text>
+			</view>
+		</view>
+		<!-- 配送或自提信息 -->
+		<block wx:if="{{(orderStatus=='待核销')||(orderStatus=='已核销')}}">
+			<view wx:if="{{takeState=='配送'}}" class="ui-verificInfoBox" wx:for="{{orderDistribution}}" wx:for-item="item" wx:key="idx">
+				<text class="ui-orderInfoTitle">{{item.title}}</text>
+				<view class="ui-infoCommon">
+					<text>{{item.storeTitle}}</text>
+					<text>{{item.store}}</text>
+				</view>
+				<view class="ui-infoCommon">
+					<text>{{item.indataTitle}}</text>
+					<text>{{item.indata}}</text>
+				</view>
+				<view class="ui-infoCommon">
+					<text>{{item.addressTitle}}</text>
+					<text>{{item.address}}</text>
+				</view>
+			</view>
+			<view wx:if="{{takeState=='自提'}}" class="ui-verificInfoBox" wx:for="{{orderPickUp}}" wx:for-item="item" wx:key="idx">
+				<text class="ui-orderInfoTitle">{{item.title}}</text>
+				<view class="ui-infoCommon">
+					<text>{{item.storeTitle}}</text>
+					<text>{{item.store}}</text>
+				</view>
+				<view class="ui-infoCommon">
+					<text>{{item.indataTitle}}</text>
+					<text>{{item.indata}}</text>
+				</view>
+				<view class="ui-infoCommon">
+					<text>{{item.addressTitle}}</text>
+					<text>{{item.address}}</text>
+				</view>
+			</view>
+		</block>
+		
+		<view wx:if="{{!(orderStatus=='待核销')&&!(orderStatus=='已核销')&&!(orderStatus=='评价成功')}}" class="ui-consigneeAddressBox">
+			<view class="ui-landmarkIcon"></view>
+			<view class="ui-consignee">
+				<view class="ui-consigneeinfo">
+					<text>周周周</text>
+					<text>13414775964</text>
+				</view>
+				<text class="ui-consigneeAddressDetial">广东省广州市天河区天盈广场东塔3004</text>
+			</view>
+		</view>
+		<!-- 商品信息 -->
+		<view wx:if="{{!(orderStatus=='评价成功')}}" class="ui-commodityInfo">
+			<text class="ui-title">商品信息</text>
+			<view class="ui-newsInfoBox">
+				<view class="ui-newsInfoItem" wx:for="{{storeList}}" wx:for-item="item" wx:key="idx">
+					<view class="ui-newsImg">
+						<image src="http://www.gzlingren.com:8098/yangtianhe/{{item.newsImg}}.png"></image>
+					</view>
+					<view class="ui-newsInfoDetail">
+						<text class="ui-newsName">{{item.newsName}}</text>
+						<text class="ui-newsWeight">{{item.newsWeight}}</text>
+						<text class="ui-newsMoney">¥{{item.newsMoney}}</text>
+					</view>
+					<text class="ui-newsNum">x1</text>
+				</view>
+			</view>
+			<view wx:if="{{orderStatus=='待发货'||orderStatus=='待收货'||orderStatus=='交易成功'}}" class="btn-applyAfterSales" bindtap="onApplyAfterSales">申请售后</view>
+			<view class="ui-freight ui-commodityTextCommon">
+				<text>运费</text>
+				<text>¥0.00</text>
+			</view>
+			<view class="ui-blissDeduction ui-commodityTextCommon">
+				<text>福气抵扣</text>
+				<text>-¥1.48</text>
+			</view>
+			<view class="ui-actualPayment ui-commodityTextCommon">
+				<text>实付款</text>
+				<text>¥ 121.32</text>
+			</view>
+		</view>
+		<!-- 订单信息 -->
+		<view wx:if="{{!(orderStatus=='评价成功')}}" class="ui-orderInfoBox" wx:for="{{orderInfoList}}" wx:for-item="item" wx:key="idx">
+			<text>订单信息</text>
+			<text>订单编号：{{item.number}}</text>
+			<text>创建时间：{{item.creationTime}}</text>
+			<text wx:if="{{!(orderStatus=='待付款')}}">付款时间：{{item.paymentTime}}</text>
+		</view>
+		
+		<view wx:if="{{!(orderStatus=='评价成功')}}" class="ui-verificationFooter">
+			<block  wx:if="{{orderStatus=='待付款'}}">
+				<view class="btn-common btn-grey" catchtap="showDialogBtn"><text>取消订单</text></view>
+				<view class="btn-common btn-green" catchtap="onPayMoneyTap"><text>立即支付</text></view>
+			</block>
+			<block wx:if="{{orderStatus=='待收货'}}">
+				<view class="btn-common btn-grey" catchtap="onCheckLogisticsTap"><text>查看物流</text></view>
+				<view class="btn-common btn-green" catchtap="onConfirmReceiptTap"><text>确认收货</text></view>
+			</block>
+			<block wx:if="{{orderStatus=='待发货'}}">
+				<view class="btn-common btn-grey" catchtap="showDialogBtn"><text>取消订单</text></view>
+				<view class="btn-common btn-grey btn-greyRight"><text>提醒发货</text></view>
+			</block>
+			<block wx:if="{{orderStatus=='交易成功'}}">
+				<view class="btn-common btn-grey"><text>返回首页</text></view>
+				<view class="btn-common btn-grey btn-greyRight" catchtap="onPostCommentTap"><text>立即评价</text></view>
+			</block>
+			<block wx:if="{{orderStatus=='交易关闭'}}">
+				<view class="btn-common btn-single" catchtap="onDeleteTap"><text>删除订单</text></view>
+			</block>
+			<block wx:if="{{orderStatus=='待核销'}}">
+				<view class="btn-common btn-single" catchtap="onApplyafterSaleTap"><text>申请售后</text></view>
+			</block>
+			<block wx:if="{{orderStatus=='已核销'}}">
+				<view class="btn-common btn-grey" catchtap="onApplyafterSaleTap"><text>申请售后</text></view>
+				<view class="btn-common btn-grey btn-greyRight" catchtap="onPostCommentTap"><text>评价</text></view>
+			</block>
+		</view>
+		
+		<!-- 评价成功 -->
+		<view wx:if="{{orderStatus=='评价成功'}}" class="ui-commentFooter">
+			<view class="btn-commentCommon btn-backHome"><text>返回首页</text></view>
+			<view class="btn-commentCommon btn-checkComment" catchtap="onCheckCommentTap"><text>查看评价</text></view>
+		</view>
+		
+		<!--查看物流弹窗-->
+		<view class="ui-logisticsMask" catchtouchmove="true" wx:if="{{showLogistics}}"></view>
+		<view class="ui-logisticsDialog" wx:if="{{showLogistics}}" catchtouchmove="true">
+			<view class="ui-expressInfo">
+				<view class="ui-expressImg"><image src="http://www.gzlingren.com:8098/yangtianhe/my_yangsheng.png"></image></view>
+				<view class="ui-expressText">
+					<text>顺丰快递</text>
+					<text>快递单号：34394732979</text>
+					<text>物流状态：已发货</text>
+				</view>
+			</view>
+			<scroll-view scroll-y="true" class="ui-deliveryStatus">
+				<view class="ui-items" wx:for="{{deliveryStatus}}" wx:for-item="item" wx:key="idx">
+					<view class="ui-itemsStatus">
+						<view class="{{item.arrive?'ui-arriveIcon':'ui-inTheWayIcon'}}"></view>
+						<text>{{item.where}}</text>
+					</view>
+					<view class="ui-momentData">
+						<text>{{item.momentData}}</text>
+						<text>{{item.momentTime}}</text>
+					</view>
+				</view>
+			</scroll-view>
+		</view>
+		<view class="ui-closeLogisticsIcon" bindtap="onHideLogisticsTap" wx:if="{{showLogistics}}" catchtouchmove="true"></view>
+		
+		<!-- 确认收货 -->
+		<view class="modal-mask" bindtap="hideConfirmReceipt" catchtouchmove="true" wx:if="{{confirmReceipt}}"></view>
+		<view class="modal-dialog" wx:if="{{confirmReceipt}}" catchtouchmove="true">
+			<view class="modal-title">确认已收到商品吗？</view>
+			<view class="modal-footer">
+				<view class="btn-cancel" bindtap="onCancelConfirmReceipt" data-status="cancelConfirmReceipt">取消</view>
+				<view class="btn-confirm" bindtap="onConfirmConfirmReceipt" data-status="confirmConfirmReceipt">确定</view>
+			</view>
+		</view>
+		
+		<!--取消订单弹窗-->
+		<view class="modal-mask" bindtap="hideModal" catchtouchmove="true" wx:if="{{showModal}}"></view>
+		<view class="modal-dialog" wx:if="{{showModal}}" catchtouchmove="true">
+			<view class="modal-title">确认要取消订单吗？</view>
+			<view class="modal-footer">
+				<view class="btn-cancel" bindtap="onCancel" data-status="cancel">取消</view>
+				<view class="btn-confirm" bindtap="onConfirm" data-status="confirm">确定</view>
+			</view>
+		</view>
+	</view>
+</view>

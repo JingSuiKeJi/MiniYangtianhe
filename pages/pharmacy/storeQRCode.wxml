@@ -1,0 +1,18 @@
+<!-- <wxs module="filter" src="../../filter/filter.wxs"></wxs> -->
+<!--storeQRCode.wxml-->
+<view class="container">
+	<view class="ui-main">
+		<view class="ui-qrBox">
+			<view class="ui-addressBox">
+				<text>天盈广场店</text>
+				<text>广州市天河区天盈广场东塔</text>
+			</view>
+			<view class="ui-qrInfo">
+				<image src="http://www.gzlingren.com:8098/yangtianhe/my_qrCode.png"></image>
+			</view>
+		</view>
+		<view class="btn-savePoster"></view>
+		<text class="ui-savePosterText">保存海报</text>
+		<view class="btn-share">立即分享</view>
+	</view>
+</view>

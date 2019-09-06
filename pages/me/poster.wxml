@@ -1,0 +1,33 @@
+<!-- <wxs module="filter" src="../../filter/filter.wxs"></wxs> -->
+<!--poster.wxml-->
+<view class="container">
+	<navBar title='我的海报' background='white' color='black' iconTheme='black' back="{{true}}"></navBar>
+	<view class="ui-main">
+		<view class="ui-posterBox">
+			<view class="ui-posterBackground">
+				<view class="ui-personalIcon"></view>
+				<text class="ui-personalIdText">小小小猴子</text>
+			</view>
+			
+			<view class="ui-ExtractQR">
+				<view class="ui-qrCode"></view>
+				<text class="ui-explainText">|长按识别小程序码|</text>
+			</view>
+		</view>
+		
+		<view class="ui-posterShare" bindtap="showDialogBtn">分享我的专属海报</view>
+		
+		<!--弹窗-->
+		<view class="modal-mask" bindtap="hideModal" catchtouchmove="true" wx:if="{{showModal}}"></view>
+		<view class="modal-dialog" wx:if="{{showModal}}">
+			<view class="btn-friendsShare btn-common" bindtap="onFriendsShare">
+				<view class="ui-wxImg"></view>
+				<text class="ui-wxText">分享好友</text>
+			</view>
+			<view class="btn-saveImage btn-common" bindtap="onSaveImage">
+				<view class="ui-saveImg"></view>
+				<text class="ui-saveText">保存图片</text>
+			</view>
+		</view>
+  </view>
+</view>

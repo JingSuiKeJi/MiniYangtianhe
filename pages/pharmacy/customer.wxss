@@ -1,0 +1,141 @@
+@charset "UTF-8";
+@import "/libs/common.wxss";
+
+/**customer.wxss**/
+page{
+	background:rgba(245,245,245,1);
+}
+.ui-main {
+	padding: 0 32rpx 0 32rpx;
+    width: 100%;
+}
+
+.ui-levelBox{
+	display: flex;
+	margin-top: 20rpx;
+}
+
+.ui-levelLeft{
+	width:342rpx;
+	height:88rpx;
+	background:rgba(255,255,255,1);
+	border-radius:16rpx 0rpx 0rpx 16rpx;
+	font-size:30rpx;
+	font-family:PingFangSC;
+	font-weight:500;
+	color:rgba(51,51,51,1);
+	line-height:88rpx;
+	letter-spacing:2rpx;
+	text-align: center;
+}
+
+.ui-levelOne{
+	color:rgba(255,255,255,1) !important;
+	background:rgba(255,214,101,1) !important;
+}
+
+.ui-levelRight{
+	width:344rpx;
+	height:88rpx;
+	background:rgba(255,255,255,1);
+	border-radius:0rpx 16rpx 16rpx 0rpx;
+	font-size:30rpx;
+	font-family:PingFangSC;
+	font-weight:500;
+	color:rgba(51,51,51,1);
+	line-height:88rpx;
+	letter-spacing:2rpx;
+	text-align: center;
+}
+
+.ui-levelTwo{
+	color:rgba(255,255,255,1) !important;
+	background:rgba(101,209,255,1) !important;
+}
+
+.ui-titleText{
+	position: relative;
+	margin-top: 20rpx;
+	padding: 36rpx 0 36rpx 0;
+	width:686rpx;
+	height:98rpx;
+	background:rgba(255,255,255,1);
+	border-bottom: 2rpx solid rgba(0,0,0,0.08);
+}
+
+.ui-titleText text{
+	position: absolute;
+	height:26rpx;
+	font-size:26rpx;
+	font-family:PingFangSC;
+	font-weight:400;
+	color:rgba(153,153,153,1);
+	line-height:26rpx;
+}
+
+.ui-titleText text:nth-child(1){
+	left: 134rpx;
+}
+
+.ui-titleText text:nth-child(2){
+	left: 350rpx;
+}
+
+.ui-titleText text:nth-child(3){
+	right: 72rpx;
+}
+
+.ui-customerInfo{
+	margin-top: 20rpx;
+	margin-bottom: 40rpx;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+.ui-items{
+	position: relative;
+	display: flex;
+	align-items: center;
+	padding: 24rpx 0;
+	background:rgba(255,255,255,1);
+	width: 100%;
+	height: 128rpx;
+	border-bottom: 2rpx solid rgba(0,0,0,0.08);
+}
+
+.ui-avatar{
+	position: absolute;
+	left: 40rpx;
+	width: 80rpx;
+	height: 80rpx;
+	background: #CCCCCC;
+	border-radius: 80rpx;
+}
+
+.ui-avatar image{
+	width: 100%;
+	height: 100%;
+}
+
+.ui-items text{
+	position: absolute;
+	transform: translateY(-25%);
+	height:28rpx;
+	font-size:28rpx;
+	font-family:PingFangSC;
+	font-weight:400;
+	color:rgba(61,61,61,1);
+}
+
+.ui-items text:nth-child(2){
+	left: 140rpx;
+}
+
+.ui-items text:nth-child(3){
+	left: 364rpx;
+}
+
+.ui-items text:nth-child(4){
+	right: 58rpx;
+}

@@ -1,0 +1,16 @@
+<!-- <wxs module="filter" src="../../filter/filter.wxs"></wxs> -->
+<!--storeQRCode.wxml-->
+<view class="container">
+	<view class="ui-main">
+		<view class="ui-qrBox">
+			<view class="ui-addressBox">
+				<text>天盈广场店</text>
+				<text>广州市天河区天盈广场东塔</text>
+			</view>
+			<view class="ui-qrInfo">
+				<image src="http://www.gzlingren.com:8098/yangtianhe/my_qrCode.png"></image>
+				<text>扫一扫上面的二维码图案，核销福气</text>
+			</view>
+		</view>
+	</view>
+</view>

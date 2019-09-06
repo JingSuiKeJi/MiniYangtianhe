@@ -1,0 +1,106 @@
+<!-- <wxs module="filter" src="../../filter/filter.wxs"></wxs> -->
+<!--customerCenter.wxml-->
+<view class="container">
+	<navBar title='{{userId}}' background='linear-gradient(137deg,rgba(1,206,165,1) 0%,rgba(94,221,218,1) 100%)' color='white' iconTheme='white' back="{{true}}"></navBar>
+	<view class="ui-main">
+		<view class="ui-userInfoBox">
+			<view class="ui-userInfoItem">
+				<view class="ui-userAvatar"><image src="http://www.gzlingren.com:8098/yangtianhe/my_qrHeader.png"></image></view>
+				<view class="ui-userInfoDetail">
+					<text>{{userId}}</text>
+					<text>注册时间：2019-01-01 10:00</text>
+					<text>所属门店：天盈广场店</text>
+				</view>
+			</view>
+			<view class="ui-vipBackground">
+				<view class="ui-vipLevelIcon"><image src="http://www.gzlingren.com:8098/yangtianhe/my_distributionLevel.png"></image></view>
+				<view class="ui-levelNum">一级</view>
+			</view>
+			<view class="ui-userOperation">
+				<view class="ui-userOperationItemCommon ui-orderNum">
+					<text>3555</text>
+					<text>7月订单数</text>
+				</view>
+				<view class="ui-userOperationItemCommon ui-amount">
+					<text>2213</text>
+					<text>7月消费金额</text>
+				</view>
+				<view class="ui-userOperationItemCommon ui-orderSum">
+					<text>54169</text>
+					<text>订单总数</text>
+				</view>
+			</view>
+		</view>
+		
+		<view class="ui-addressInfo">
+			<view class="ui-oaddressHeader">
+				<text class="ui-addressTitle ui-fontLargeTextCommon">收件地址</text>
+				<view class="ui-addressMore">
+					<text class="ui-fontSmallTextCommon">全部收件信息</text>
+					<view class="ui-moreIconCommon"></view>
+				</view>
+			</view>
+			<view class="ui-addressNotSet" wx:if="{{addressSet}}">
+				<text class="ui-fontSmallTextCommon">未设置收货地址</text>
+			</view>
+			<view class="ui-addressSet" wx:else>
+				<view class="ui-nameAndTel">
+					<text>周周周</text>
+					<text>13414775964</text>
+				</view>
+				<text class="ui-addressDetail">广东省广州市天河区天盈广场东塔3004</text>
+			</view>
+			<view class="ui-addressFooter"></view>
+		</view>
+		
+		<view class="ui-historyInfo">
+			<view class="ui-fontLargeTextCommon">客户足迹</view>
+			<view class="ui-historyMore" catchtap="onCusFootmarkTap">
+				<text class="ui-fontSmallTextCommon">查看客户足迹</text>
+				<view class="ui-moreIconCommon"></view>
+			</view>
+		</view>
+		
+		<view class="ui-orderListInfo">
+			<view class="ui-orderListHeader">
+				<text class="ui-fontLargeTextCommon">订单列表</text>
+				<view class="ui-orderListMore">
+					<text class="ui-fontSmallTextCommon">全部订单</text>
+					<view class="ui-moreIconCommon"></view>
+				</view>
+			</view>
+			<block wx:if="{{orderList}}">
+				<view class="ui-orderInfoBox" wx:for="{{orderList}}" wx:for-item="item" wx:key="idx">
+					<view class="ui-orderStatus">
+						<text class="ui-orderReferenceText">订单编号： {{item.orderReference}}</text>
+						<text class="ui-orderStatusText" >{{item.orderStatus}}</text>
+					</view>
+					<view class="ui-newsInfoBox" wx:for="{{storeList}}" wx:for-item="item" wx:key="idx">
+						<view class="ui-newsInfoItem">
+							<view class="ui-newsImg"><image src="http://www.gzlingren.com:8098/yangtianhe/{{item.image}}.png"></image></view>
+							<view class="ui-newsInfoDetail">
+								<view class="ui-nameAndMoney">
+									<text class="ui-newsName">{{item.newsName}}</text>
+									<text class="ui-newsMoney">¥{{item.newsMoney}}</text>
+								</view>
+								<text class="ui-newsNum">x1</text>
+								<text class="ui-newsWeight">{{item.newsWeight}}</text>
+								<view class="ui-total">
+									<text>共1件商品</text>
+									<text>总额：¥99.00</text>
+								</view>
+							</view>
+						</view>
+					</view>
+				</view>
+			</block>
+			<block wx:else>
+				<view class="ui-notOrderList">
+					<view class="ui-orderIcon"></view>
+					<text>没有订单</text>
+				</view>
+			</block>
+			<view class="ui-orderListfooter"></view>
+		</view>
+	</view>
+</view>

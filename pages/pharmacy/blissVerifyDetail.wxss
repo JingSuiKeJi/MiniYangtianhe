@@ -1,0 +1,272 @@
+@charset "UTF-8";
+@import "/libs/common.wxss";
+
+/**blissVerifyDetail.wxss**/
+page{
+	background:rgba(245,245,245,1);
+}
+
+.ui-main {
+    width: 100%;
+}
+
+.ui-shortCalendar{
+	position: relative;
+	width: 100%;
+	background: #FFFFFF;
+}
+
+.ui-weekText{
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.ui-weekText text{
+	margin-bottom: 40rpx;
+	width:30rpx;
+	height:30rpx;
+	line-height: 30rpx;
+	font-size:30rpx;
+	font-family:PingFang-SC-Medium;
+	font-weight:500;
+	color:rgba(204,204,204,1);
+}
+
+.ui-weekText text:first-child{
+	margin-left: 47rpx;
+}
+
+.ui-weekText text:last-child{
+	margin-right: 47rpx;
+}
+
+.ui-dateText{
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.ui-dateCircleBg{
+	position: relative;
+	width:46rpx;
+	height:46rpx;
+	border-radius: 46rpx;
+	font-size:30rpx;
+	font-family:PingFangSC-Medium;
+	font-weight:500;
+	color:rgba(51,51,51,1);
+	line-height:46rpx;
+	margin-top: 20rpx;
+	margin-bottom: 56rpx;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.ui-dateCircleBg:first-child{
+	margin-left: 40rpx;
+}
+
+.ui-dateCircleBg:last-child{
+	margin-right: 40rpx;
+}
+
+.ui-dateCircleBgHhover{
+	background:rgba(29,196,188,1);
+	color: #FFFFFF;
+}
+
+.ui-dateCircleBgHhover:after{
+	position: absolute;
+	content: "";
+	width:8rpx;
+	height:8rpx;
+	background:rgba(29,196,188,1);
+	top: 68rpx;
+	right: 50%;
+	transform: translateX(50%);
+}
+
+.ui-pullDown{
+	width: 64rpx;
+	height: 64rpx;
+	position: absolute;
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_pulDown.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+	right: 38rpx;
+	transform: translateY(-50%);
+}
+
+.ui-history{
+	width:100%;
+	height:300rpx;
+	background:rgba(255,255,255,1);
+	margin-top: 40rpx;
+}
+
+.ui-historyStatus{
+	height:86rpx;
+	background:rgba(255,255,255,1);
+	border-bottom: rgba(0,0,0,0.1) solid 2rpx;
+	display: flex;
+	justify-content: space-between;
+}
+
+.ui-historyStatus text{
+	position: relative;
+	font-size:26rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(153,153,153,1);
+	line-height:86rpx;
+}
+
+.ui-historyStatus text:first-child{
+	margin-left: 60rpx;
+}
+
+.ui-historyStatus text:last-child{
+	margin-right: 60rpx;
+}
+
+.ui-historyStatus .ui-historyStatusTextHover{
+	color:rgba(29,196,188,1);
+}
+
+.ui-historyStatus .ui-historyStatusTextHover:after{
+	position: absolute;
+	content: "";
+	width: 40rpx;
+	height: 6rpx;
+	background:#1DC4BC;
+	border-radius:3rpx;
+	top: 100%;
+	left: 50%;
+	transform: translate(-50%,-100%);
+}
+
+.ui-historyDateDetail{
+	position: absolute;
+	height:26rpx;
+	font-size:26rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(102,102,102,1);
+	line-height:26rpx;
+	margin: 28rpx 0 32rpx 60rpx;
+}
+
+.ui-historyOperation{
+	background: #FFFFFF;
+	display: flex;
+	margin: 86rpx 44rpx 40rpx 60rpx;
+}
+
+.ui-historyOperationItem{
+	display: flex;
+	flex-direction: column;
+}
+
+.ui-historyOperationItem:nth-child(2){
+	margin-left: 60rpx;
+}
+
+.ui-historyOperationItem .ui-itemTitle{
+	height:22rpx;
+	font-size:22rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(102,102,102,1);
+	line-height:22rpx;
+}
+
+.ui-historyOperationItem .ui-numCommon{
+	margin-top: 36rpx;
+	display: flex;
+}
+
+.ui-historyOperationItem .ui-numCommon .ui-moneySymbol{
+	margin-top: 2rpx;
+	margin-right: 4rpx;
+	height:22rpx;
+	font-size:22rpx;
+	font-family:PingFangSC-Medium;
+	font-weight:500;
+	color:rgba(32,202,180,1);
+	line-height:22rpx;
+}
+
+.ui-historyOperationItem .ui-numCommon .ui-moneyText{
+	height:30rpx;
+	font-size:30rpx;
+	font-family:PingFangSC-Medium;
+	font-weight:500;
+	color:rgba(32,202,180,1);
+	line-height:30rpx;
+}
+
+.ui-detailBox{
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+.ui-detailBox:last-child{
+	margin-bottom: 40rpx;
+}
+
+.ui-data{
+	height: 86rpx;
+	width: 100%;
+}
+
+.ui-data text{
+	display: block;
+	margin: 40rpx 0 0 40rpx;
+	height:26rpx;
+	font-size:26rpx;
+	font-family:PingFangSC;
+	font-weight:400;
+	color:rgba(153,153,153,1);
+	line-height:26rpx;
+}
+
+.ui-detailItems{
+	position: relative;
+	display: flex;
+	align-items: center;
+	width:100%;
+	height:112rpx;
+	background:rgba(255,255,255,1);
+	border-bottom: 2rpx solid rgba(0,0,0,0.1);
+}
+
+.ui-detailItems text{
+	height:28rpx;
+	font-size:28rpx;
+	font-family:PingFangSC;
+	font-weight:400;
+	color:rgba(102,102,102,1);
+	line-height:28rpx;
+	letter-spacing:2rpx;
+}
+
+.ui-detailItems text:nth-child(1){
+	position: absolute;
+	left: 40rpx;
+}
+
+.ui-detailItems text:nth-child(2){
+	position: absolute;
+	left: 298rpx;
+}
+
+.ui-detailItems text:nth-child(3){
+	position: absolute;
+	right: 40rpx;
+}

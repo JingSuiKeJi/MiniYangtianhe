@@ -1,0 +1,25 @@
+/* pages/step/illustration.wxss */
+page,.main {
+    width: 100%;
+    height: 100%;
+}
+.ui-content {
+    width: 100%;
+    padding: 60rpx 40rpx 0rpx 34rpx;
+    box-sizing: border-box;
+}
+.ui-content_title {
+    font-size:26rpx;
+    font-family:PingFangSC-Medium;
+    font-weight:500;
+    color:#333333;
+    line-height:40rpx;
+}
+.ui-content_answer {
+    font-size:26rpx;
+    font-family:PingFangSC-Medium;
+    font-weight:500;
+    color:#333333;
+    line-height:46rpx;
+    margin-top: 10rpx;
+}
