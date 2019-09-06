@@ -10,15 +10,13 @@
       <view class="ui-contentBox" wx:if="{{list.length}}">
             <view class="ui-content_tips">
                  <view class="ui-tipsItem_price" bindtap="onChoseTap" data-type="{{index}}" wx:for="{{tapList}}">
-                    <view bindtap="onChoseTap" data-type="{{index}}" class="ui-priceItem">
+                    <view data-type="{{index}}" class="ui-priceItem">
                         <text class="ui-tipsItem_text" 
-                          bindtap="onChoseTap" 
                           data-type="{{index}}" 
                           style="color: {{type == index ? '#20CAB4' : ''}}">{{item}}</text>
                         <image wx:if="{{index == 1}}" 
                           src="{{ type == index ? filter.getLocalPhoto('sort.png') : filter.getLocalPhoto('graySort.png')}}" 
                           class="ui-priceItem_img" 
-                          bindtap="onChoseTap" 
                           data-type="{{index}}"/>
                         <!-- <image wx:if="{{type == index}}"  src="{{filter.getLocalPhoto('index_icon.png')}}"  class="ui-tapItem_icon"/> -->
                     </view>
@@ -27,21 +25,21 @@
             <view >
                  <view class="ui-content_item" wx:for="{{list}}">
                     <view class="ui-contentItem_left">
-                        <image src="{{filter.getLocalPhoto(item.url)}}" bindtap="onDetailTap"/>
+                        <image src="{{filter.getReturnPhoto(item.picUrl)}}" bindtap="onDetailTap" data-id="{{item.id}}"/>
                     </view>
                     <view class="ui-contentItem_right">
-                        <view class="ui-content_title">{{item.title}}</view>
-                        <view class="ui-content_scale">{{item.scale}} </view>
+                        <view class="ui-content_title">{{item.secondTitle}}</view>
+                        <view class="ui-content_scale">{{item.mainTitle}} </view>
                         <view class="ui-content_price">
-                            <text>原价￥{{item.prePrice}}</text>
-                            <text>已售{{item.count}}件</text>
+                            <text>原价￥{{item.originPrice}}</text>
+                            <text>已售{{item.virtualNum + item.soldNum}}件</text>
                         </view>
                         <view class="ui-content_reward">
                             <text >￥{{item.nowPrice}}</text>
                             <image src="{{filter.getLocalPhoto('cart.png')}}" bindtap="onAddtap"/>
                         </view>
                     </view>
-                  </view>   
+                </view>   
             </view>    
       </view>
       <view class="ui-contentBox" wx:else>

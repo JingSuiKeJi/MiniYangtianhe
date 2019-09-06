@@ -96,8 +96,8 @@ const methods = {
             let BrandList = [];
             let length = Math.ceil(data.length/2);
             console.log(22,length)
-            for (var  index = 0; index < length; index++) {
-                BrandList[index]=data.slice(index*length,(index+1)*length+1); 
+            for (var  index = 0; index < 2; index++) {
+                BrandList[index]=data.slice(index*length,(index+1)*length-1); 
             }
             self.setData({
                 BrandList: BrandList

@@ -4,6 +4,7 @@ const app = getApp();
 const _ = app.underscore;
 const _g = app.base;
 const _c = app.config;
+const Platform = require('../../service/Platfrom');
 // 初始化数据
 const data = {
    tagList: ['清热解毒','清热','清热解毒','清热解','清热解','清热解毒'],
@@ -13,12 +14,11 @@ const data = {
   // 页面onLoad方法
   const onLoad = function (self) {
       self.getData();
-      
   };
   
   // 页面onShow方法
   const onShow = function (self) {
-     self.getData();
+        self.getData();
   };
   const onUnload= function (self) {
    
@@ -26,7 +26,7 @@ const data = {
   // 页面中的方法
   const methods = {
     getData: function () {
-    let self = this;
+       let self = this;
     },
     onGetInput: function (e) {
       let self = this;
@@ -40,7 +40,8 @@ const data = {
       _g.navigateTo({
         url: 'pages/search/detailList',
         param: {
-            value: self.data.value
+            value: self.data.value,
+            platformFlag: self.data.platformFlag
         }
        }, self);
     },

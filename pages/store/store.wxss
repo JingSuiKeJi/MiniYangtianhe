@@ -67,7 +67,7 @@ page {
     display: inline-block;
     width: 24rpx;
     height: 24rpx;
-    margin-top: 37rpx;
+    margin-top: 34rpx;
     vertical-align: top;
 }
 .ui-collageItem_bottom {
@@ -174,13 +174,16 @@ page {
     z-index: 1003; 
 }
 .ui-tapBox {
-   margin-top: 82rpx;
-   height: 80rpx;
-   background-color: #FF7274;
+    width: 100%;
+    margin-top: 82rpx;
+    height: 80rpx;
+    background-color: #FF7274;
 }
 .ui-tapBox .ui-headBox_tap {
-     padding: 0 40rpx;
-   
+    width: 100%;
+    height: 100%;
+    padding: 0 40rpx;
+    overflow: hidden;
 }
 .ui-headBox_tap text {
    display: inline-block;
@@ -485,9 +488,10 @@ page {
     height: 80rpx;
     display: inline-block;
     border-bottom: 1rpx solid #F5F5F5;
+    position: relative;
 }
 .ui-tapItem_scrollView {
-    width: 80%;
+    width: 89%;
     height: 80rpx;
     display: inline-block;
     white-space: nowrap;
@@ -524,13 +528,12 @@ page {
     vertical-align: top;
     position: relative;
 }
-.ui-tapItem_Icon > image {
+.ui-tapItem_downIcon {
     width: 24rpx;
     height: 14rpx;
     position: absolute;
     left: 15rpx;
     top: 20rpx;
-    transition: All 0.1s ease-in-out;
 }
 .ui-content_item {
     padding: 20rpx; 
@@ -586,6 +589,9 @@ page {
     display: inline-block;
     margin-left: 20rpx; 
 }
+.ui-content_reward {
+    position: relative;
+}
 .ui-content_reward > text {
     font-size:34rpx;
     font-family:PingFangSC-Medium;
@@ -602,10 +608,12 @@ page {
     font-weight:400;
     color:#fff;
     line-height:48rpx;
-    background-image: url(http://m.qpic.cn/psb?/V12Kdegv0qd4wf/rearL2Z*zQrDTiR5fa7SWvxkuHXqxJyhaGKNf0.LSbA!/b/dE0BAAAAAAAA&bo=lAAwAAAAAAADF5Y!&rf=viewer_4&t=5);
+    background-image: url(http://www.gzlingren.com:8098/yangtianhe/juxing.png);
     background-size: 148rpx 48rpx;
     text-align: center;
-    margin-left: 20rpx;
+    position: absolute;
+    top: 10rpx;
+    right: 0;
 }
 
 .tab-bottom{
@@ -616,4 +624,61 @@ page {
 	width: 100%;
 	height: 25rpx;
 	background:#F9F9F9;
+}
+.modals{
+    width: 100%;
+    position: absolute;
+    z-index: 9999;
+    top:0; 
+    left: 0; 
+}
+.modals-cancel{
+    position: fixed;
+    z-index:1000; 
+    top:0; 
+    left: 0; 
+    right:0; 
+    bottom: 0; 
+    background-color: rgba(0,0,0,.5);
+}
+.bottom-dialog-body{
+    width: 100%;
+    position:absolute; 
+    z-index:10001; 
+    top:0;
+    left:0; 
+    background-color: #fff;
+}
+
+.slideBox {
+    display: flex;
+    width: 100%;
+    padding: 32rpx;
+}
+.ui-slideItem__left {
+    display: inline-block;
+}
+.ui-leftItem {
+    display: inline-block;
+    margin: 30rpx 60rpx 30rpx 0;
+    font-size:28rpx;
+    font-family:PingFangSC;
+    font-weight:400;
+    color:#333333;
+    line-height:26rpx;
+}
+
+.ui-leftItem:nth-child(4n) {
+    margin-right: 10rpx;
+}
+.ui-slideItem__right {
+    display: inline-block;
+    width: 48rpx;
+    height: 100%;
+}
+.ui-tapItem_upIcon {
+    width: 36rpx;
+    height: 20rpx;
+    vertical-align: top;
+    margin-top: 34rpx;
 }

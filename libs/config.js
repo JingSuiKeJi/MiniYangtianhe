@@ -98,6 +98,7 @@ config.prototype = {
             getOccasion:'/app/assemble/getOccasion.do',
             getAssembleList:'/app/assemble/getAssembleList.do',
             getUserAssembleList:'/app/assemble/getUserAssembleList.do',
+            getCommentList: '/app/goods/getCommentList.do',
         }
     }
 

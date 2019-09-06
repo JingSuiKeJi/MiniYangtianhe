@@ -4,7 +4,7 @@ const app = getApp();
 const _ = app.underscore;
 const _g = app.base;
 const _c = app.config;
-
+const Platform = require('../../service/Platfrom');
 // 初始化数据
 const data = {
     type: 0,
@@ -18,14 +18,16 @@ const data = {
         url: 'zhengqiwan.png'
        },
     ],
-     tapList: ['默认','价格','销量']
+     tapList: ['默认','价格','销量'],
+     page: 1,
+     priceSort: 1,// 价格排序 1 是升序，2是降序
 };
 
 // 页面onLoad方法
 const onLoad = function (self) {
       self.setData({
         value: self.data.value,
-        flag: self.data.flag
+        platformFlag: self.data.platformFlag
       });
       if (self.data.flag) {
         wx.setNavigationBarTitle({
@@ -37,6 +39,7 @@ const onLoad = function (self) {
           })
       }
       self.getData();
+      self.getPageData();
 };
 
 // 页面onShow方法
@@ -50,32 +53,80 @@ const onUnload= function (self) {
 }
 // 页面中的方法
 const methods = {
-      getData: function () {
-          let self = this;
-      },
-      onChoseTap: function(e) {
+    getData: function () {
+        let self = this;
+    },
+    onChoseTap: function(e) {
+        let self = this;
+        const opts = e.target.dataset;
+        console.log(opts)
+        if (opts.type == self.data.type && opts.type == 1) {
+            switch(self.data.priceSort) {
+                case 1:
+                    self.setData({
+                        priceSort: 2
+                    });
+                    break;
+                default:
+                    self.setData({
+                        priceSort: 1
+                    });
+            } 
+        } else if (opts.type == self.data.type) {
+          return;
+        } else {
+            self.setData({
+                type: opts.type,
+                priceSort: 1,
+                soldNumSort: 1
+          });
+        }
+        self.getPageData();  
+    },
+    onGetInput: function (e) {
         let self = this;
         self.setData({
-          type: e.target.dataset.type,
-        });
-        
-      },
-      onGetInput: function (e) {
-        let self = this;
-        self.setData({
-          value: e.detail.value
+            value: e.detail.value
         })
-      },
-      onSkipTap: function (e) {
+    },
+    onDetailTap: function (e) {
         let self = this;
-        console.log(self.data.value)
-      },
-      onDetailTap: function (e) {
-        let self = this;
+        let opts = e.target.dataset;
         _g.navigateTo({
-          url: 'pages/collage/detail'
+            url: 'pages/collage/detail',
+            param: { id: opts.id}
         },self)
-      }
+    },
+    getPageData: function () {
+        let self = this;
+        let data = {
+            platformFlag: self.data.platformFlag,
+            page: self.data.page,
+            pageSize: 10,
+        }
+        if (self.data.value) {
+            data.keyword = self.data.value;
+        }
+        if (self.data.classifyId) {
+            data.classifyId = self.data.classifyId;
+        }
+        if (self.data.type == 1) {
+            data.priceSort = self.data.priceSort
+        }
+        if (self.data.type == 2) {
+            data.soldNumSort = 2
+        }
+        Platform.getGoodsList(self, data
+           
+        ).then((ret)=>{
+           let data = ret.data;
+           self.setData({
+               list: data.list
+           });
+        },(err)=>{
+        });
+    }
+
 };
 
 // 有引用template时定义

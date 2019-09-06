@@ -414,4 +414,8 @@ page {
     font-weight:500;
     color:#333333;
 }
+.ui-tapItem_addWord {
+    height: 100rpx;
+    line-height: 100rpx;
+}
 
