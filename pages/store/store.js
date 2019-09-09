@@ -14,7 +14,8 @@ const data = {
     currentIndex: 1,
     hotSearch: [],
     classifyType: 0,
-    goodsList: [],
+    // goodsList: [],
+    secSkill: {},
     BrandList: [],
     tapList: [],
     classifyId: -1,
@@ -82,12 +83,10 @@ const methods = {
         Platform.getSecKill(self, {
             platformFlag: 1,
         }).then((ret) => {
-            let data = ret.data;
-            if (!data.length) return;
             self.setData({
-                goodsList: data.list
+                secSkill: ret.data
             });
-            self.timeFormat(data.startTime, data.endTime);
+            self.timeFormat(ret.data.startTime, ret.data.endTime);
         }, (err) => {});
     },
     getBrandList() {
@@ -159,7 +158,8 @@ const methods = {
         _g.navigateTo({
             url: 'pages/goods/detail',
             param: {
-                id: opts.id
+                id: opts.id,
+                thirdId: opts.thirdid
             }
         }, self);
     },
