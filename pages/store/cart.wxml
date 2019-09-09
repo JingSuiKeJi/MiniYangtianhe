@@ -131,7 +131,6 @@
                 <text class=" ui-fixItem__price">¥ {{mediTotal + storeTotal}}</text>
             </view>
             <view class="ui-fixItem__btn"  bindtap="onAccountTap">结算({{mediNum + storeNum}})</view>
-        </view>
     </view>
    <!-- 购物车没有东西的情况下 -->
     <view class="main ui-noBox" wx:else>

@@ -140,7 +140,7 @@ const methods = {
                 stepInfo: stepInfo,
                 BMIIndex: BMIIndex
             });
-
+            
             self.btnShow(data.stepInfo.status);
             self.showClassify(data.navigation);
         }, (err) => {
