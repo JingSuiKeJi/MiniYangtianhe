@@ -79,14 +79,20 @@ config.prototype = {
             getClassifyList: '/app/classify/getClassifyList.do',
             getBrandList: '/app/brand/getBrandList.do',
             getGoodsList: '/app/goods/getGoodsList.do',
-            
             getOccasion:'/app/assemble/getOccasion.do',
             getAssembleList:'/app/assemble/getAssembleList.do',
             getUserAssembleList:'/app/assemble/getUserAssembleList.do',
+            getArticle: '/app/common/getArticle.do',
+            getStepInfo: '/app/step/getStepInfo.do',
+            uploadStep: '/app/step/uploadStep.do',
         },
         user: {
             login: '/app/account/login.do',
-            getMyInfo: '/app/user/getMyInfo.do'
+            getMyInfo: '/app/user/getMyInfo.do',
+            getLeyouList: '/app/step/getLeyouList.do',
+            getRecordList: '/app/step/getRecordList.do',
+            getAddressAdd: '/app/address/add.do', 
+            getAddressList: '/app/address/list.do',
         },
         goods: {
             getGoodsDetail: '/app/goods/getGoodsDetail.do',
@@ -100,7 +106,11 @@ config.prototype = {
             getAssembleList:'/app/assemble/getAssembleList.do',
             getUserAssembleList:'/app/assemble/getUserAssembleList.do',
             getCommentList: '/app/goods/getCommentList.do',
+            getBrandDetail:'/app/brand/getBrandDetail.do',
         },
+        store: {
+            storeList: '/app/home/getStoreList.do',
+        }
     }
 
 };

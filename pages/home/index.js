@@ -9,12 +9,25 @@ const Platform = require('../../service/Platfrom');
 const data = {
     banner: [],
     classList: [],
-    step: '上传步数',
+    step: '',
     currentIndex:1,
     classifyType: 0,
     hotSearch:[],
     goodsList: [],
-    tapList:[],
+    tapList:[
+        {
+            title: '夏季热销',
+            id: 1
+        },
+        {
+            title: '夏季热销',
+            id: 2
+        },
+        {
+            title: '夏季热销',
+            id: 3
+        },
+    ],
     classifyId: -1,
     list: [],
     isSlide: false,
@@ -25,27 +38,25 @@ const data = {
         bottom: 0,
         coverColor: ''
     }],
-    BMIIndex: 20,
+    BMIIndex: 0,//养步乐进度条
     second: -1,
     hideModal:true, //模态框的状态  true-隐藏  false-显示
     animationData:{},
+    isFixed:  false,
 };
 
 // 页面onLoad方法
 const onLoad = function (self) {
-    _g.getLocation().then((data)=>{
-        let lat = data.latitude;
-        let lon = data.longitude;
-        self.getStoreList(lat,lon);
-    });//获取定位
-    self.getClassifyList();
-    self.getData();
-    self.initBlock();
-    self.getStoreInfo();
-    self.getPageData();
-    // self.timeFormat('1567565880', '1567699200');
-    
+    // self.getClassifyList();
+    // self.getData();
+    // self.initBlock();
+    // self.getPageData();
 };
+
+const onReady = function(self) {
+    self.onScroll();
+    
+}
 
 // 页面onShow方法
 const onShow = function (self) {
@@ -55,22 +66,33 @@ const onUnload= function (self) {
     _g.getPrevPage().setData({
         num: self.data.value
     })
-}
+};
+// const onPageScroll = function (self) {
+//     // console.log(111,self);
+//     console.log(res.scrollTop)    
+// };
 // 页面中的方法
 const methods = {
     getData: function () {
-        var self = this;
+        let self = this;
         Platform.getCommonData(self, {
             platformFlag:2,
-            storeId: 234567
+            storeId: 1
         }).then((ret)=>{
             let data = ret.data;
+            let stepInfo = data.stepInfo;
+            let  percent = stepInfo.todayStep/stepInfo.targetStep;
+            let BMIIndex = Math.ceil(31 * percent);
             self.setData({
                 hotSearch: data.hotSearch,
                 banner: data.banner,
                 tapImgUrl: data.occasion.imgUrl,
                 activity: data.activity,
-            })
+                stepInfo: stepInfo,
+                BMIIndex: BMIIndex
+            });
+            
+            self.btnShow(data.stepInfo.status);
             self.showClassify(data.navigation);
         },(err)=>{
 
@@ -107,23 +129,6 @@ const methods = {
         });
 
     },
-    // 获取门店列表
-    getStoreList: function (lat, lon) {
-        let self = this;
-        Platform.getStoreList(self, {
-            page: 1,
-            pageSize: 10,
-            lon: lon,
-            lat: lat
-        }).then((ret)=>{
-            let data = ret.data;
-            self.setData({
-                storeList: data.list
-            })
-        },(err)=>{
-
-        });
-    },
     //榜单推荐分类列表
     getClassifyList: function () {
         let self = this;
@@ -141,42 +146,26 @@ const methods = {
 
         });
     },
-    //获取门店详情
-    getStoreInfo: function () {
-        Platform.getStoreInfo(self, {
-
-        }).then((ret)=>{
-           
-        },(err)=>{
-
-        });
-    },
-    onStepTap: function (e) {
+   
+    btnShow: function (status) {
         let self = this;
-        wx.getWeRunData({
-            success (res) {
-              console.log(res)
-            }
-        })
-        // if (self.data.step == '上传步数') {
-        //     self.setData({
-        //         step : '上传中'
-        //     })
-        // } else if (self.data.step == '上传中') {
-        //   self.setData({
-        //     step : '领取积分'
-        //   })
-        // } else if(self.data.step == '领取积分') {
-        //   self.setData({
-        //     step : '已领取'
-        //   })
-        // }else {
-        //   wx.showToast({
-        //     title: '你已领取积分',
-        //     icon: 'none',
-        //     duration: 2000
-        //   })
-        // }
+        switch( status) {
+            case 1 :
+                self.setData({
+                    step : '上传步数'
+                });
+                break;
+            case 2 :
+                    self.setData({
+                        step : '已领取'
+                    });
+                    break;
+            default: 
+                    self.setData({
+                        step : '领取积分'
+                    });
+                    break;
+        }
     },
   
     onSkipTap: function() {
@@ -313,13 +302,14 @@ const methods = {
         var left =  (1.4* Math.sin(rotate * Math.PI / 180)).toFixed(2);
         var bottom =  (1.4 * Math.cos(rotate * Math.PI / 180)).toFixed(2);
           blockList.push({
-          bottom: bottom,
-          left: left,
-          rotate: rotate
+            bottom: bottom,
+            left: left,
+            rotate: rotate
           });
         }
         self.setData({
-          blockList: blockList
+          blockList: blockList,
+         
         })
     },
     showClassify: function (arr) {
@@ -375,7 +365,7 @@ const methods = {
         let self = this;
         Platform.getRecommend(self, {
             platformFlag:2,
-            storeId: 234567,
+            storeId: 1,
             page: self.data.page,
             pageSize: 10,
             classifyId: self.data.classifyId
@@ -397,6 +387,45 @@ const methods = {
             value: e.target.dataset.id,
           }
       }, self);
+    },
+    onStepTap: function(){
+        let self = this;
+        if (self.data. stepInfo.status == 1) {
+            Platfrom.uploadStep(self,{
+                step: self.data.stepInfo.todayStep
+            }).then((ret) => {
+                self.getData();
+            },(err) => {
+             
+            })
+        } else {
+            return false;
+        }
+        
+    },
+    onScroll: function () {
+        const self = this;
+        const query = wx.createSelectorQuery();
+        query.select('#aim').boundingClientRect();
+        query.selectViewport().scrollOffset();
+        query.exec(function(res){
+            self.setData({
+                scrollTop: res[0].top
+            })
+        })
+    },
+    pageScroll: function (res) {
+        let self = this;
+        let top = self.data.scrollTop - 80;
+        if (res.scrollTop >= top) {
+            self.setData({
+                isFixed:  true,
+            })
+        }else {
+            self.setData({
+                isFixed:  false,
+            }) 
+        }
     }
     
 };
@@ -406,10 +435,11 @@ const temps = {};
 
 // 初始化页面page对象
 const initPage = _g.initPage({
-data: data,
-onLoad: onLoad,
-onShow: onShow,
-methods: methods,
-onUnload: onUnload
+    data: data,
+    onLoad: onLoad,
+    onShow: onShow,
+    methods: methods,
+    onUnload: onUnload,
+    onReady: onReady
 });
 Page(initPage);

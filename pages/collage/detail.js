@@ -35,7 +35,7 @@ const data = {
   isSelect: false,
   hideModal:true, //模态框的状态  true-隐藏  false-显示
   animationData:{},
-  flag:1,//0商品详情页，1拼团页面,2 开团页面,3 限时购页面
+  flag:0,//0商品详情页，1拼团页面,2 开团页面,3 限时购页面
   tabList: ['商品','详情','评价'],
   isTab: 0,
   assessList: [
@@ -50,7 +50,7 @@ const data = {
   scaleList: ['250g x 10包',],
   scaleIndex: -1,
   toView:'header',
-//   modelType: 0,
+  modelType: 0,
   posterFlag: false,
   ScaleType: -1,
   isBuy: false,
@@ -116,7 +116,27 @@ const methods = {
                 });
             },(err)=>{
         
-            }); 
+            });
+            //拼团 
+            if (self.data.flag ==1 || self.data.flag ==2 ) {
+                let data = {
+                    platformFlag : 1,
+                    page: 1 ,
+                    pageSize: 2,
+                }
+                if (self.data.storeId) {
+                    data.storeId = self.data.storeId;
+                }
+                Platform .getAssembleList(self, data
+                ).then((ret)=>{
+                    let data = ret.data;
+                    self.setData({
+                        collage : data.list
+                    })
+                },(err)=>{
+            
+                });
+            } 
         },
         onChangeTap: function (e) {
             let self = this;
@@ -269,11 +289,6 @@ const methods = {
         },
         onShowTap: function (e) {
             let self = this;
-            if (e.target.dataset.scaletype==1) {
-                self.setData({
-                    modelType: true
-                });
-            }
             self.setData({
                ScaleType: e.target.dataset.scaletype
             });
@@ -375,7 +390,15 @@ const methods = {
                     title: '请先登陆',
                 }); 
             }
-         }
+        },
+        onShareTap: function (e) {
+            let self = this;
+            let opts = e.currentTarget.dataset;
+            self.setData({
+                modelType: opts.type 
+            })
+            self.showModal();
+        }
       
 };
 

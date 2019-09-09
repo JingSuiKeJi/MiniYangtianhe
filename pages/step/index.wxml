@@ -17,14 +17,14 @@
                 <view class="ui-block__item" 
                     wx:for="{{blockList}}" 
                     wx:key="{{index}}"  
-                    style="left: {{item.left*100+155+'rpx'}};bottom: {{item.bottom*100 + 120+'rpx'}};-webkit-transform: rotate({{item.rotate+'deg'}}); -moz-transform: rotate({{item.rotate+'deg'}});-ms-transform: rotate({{item.rotate+'deg'}});-o-transform: rotate({{item.rotate+'deg'}}); transform: rotate({{item.rotate+'deg'}});background-color: {{index >= BMIIndex ?  '#5CEEDE': '#69CCBC'}}"
+                    style="left: {{item.left*100+155+'rpx'}};bottom: {{item.bottom*100 + 120+'rpx'}};-webkit-transform: rotate({{item.rotate+'deg'}}); -moz-transform: rotate({{item.rotate+'deg'}});-ms-transform: rotate({{item.rotate+'deg'}});-o-transform: rotate({{item.rotate+'deg'}}); transform: rotate({{item.rotate+'deg'}});background-color: {{index >= BMIIndex ?  '#EEEEEE': '#69CCBC'}}"
                 ></view>
                 <view class="ui-centerItem_stepText">今日步数</view>
-                <view class="ui-centerItem_detailText">6581<text>步</text></view>
+                <view class="ui-centerItem_detailText">{{stepInfo.todayStep}}<text>步</text></view>
                 <view class="ui-leftItem_loadText" bindtap="onStepTap">{{step}}</view>
             </view>
-            <view class="ui-stepTapBox_right">今日排名 ：未上榜</view>
-            <view class="ui-stepTapBox_aimStepBox">目标10000步</view>
+            <view class="ui-stepTapBox_right">今日排名 ：{{stepInfo.rank}}</view>
+            <view class="ui-stepTapBox_aimStepBox">目标{{stepInfo.targetStep}}步</view>
             <image src="{{filter.getLocalPhoto('step_questionIcon.png')}}" class="ui-stepTapBox__questionIcon" bindtap="onIllustrateTap"/>
           </view>
           <view class="ui-stepContentBox">
@@ -44,32 +44,14 @@
           <view class="ui-historyBox">
               <image src="{{filter.getLocalPhoto('step_historyIcon.png')}}"  class="ui-historyItem__icon"/>
               <view class="ui-historyItem__text">— 历史记录 —</view>
-              <view class="ui-hirtoryItem__list" wx:for="{{list}}" wx:key="{{index}}" style="color: {{ (item.status== 0 ? '#20CAB4' : '' ) || (item.status== 1 ? '#999999' : '' )}}">
-                  <text class="ui-listItem__time">{{item.time}}</text>
+              <view class="ui-hirtoryItem__list" wx:for="{{list}}" wx:key="{{index}}" >
+                  <text class="ui-listItem__time">{{filter.getDay(createTime)}}</text>
                   <text class="ui-listItem__step">{{item.step}}</text>
-                  <text class="ui-listItem__status">{{item.text}}</text>
+                  <text class="ui-listItem__status" style="color: {{ (item.status== 1 ? '#20CAB4' : '' ) || (item.status== 3 ? '#999999' : '' )}}">{{item.text}}</text>
               </view>
           </view>
           <view class="ui-bottomTex">为你加油，一起努力吧 ～</view>
         </view>
-        <!-- <view class="modals modals-bottom-dialog" hidden="{{hideModal}}">
-            <view class="modals-cancel" bindtap="hideModal" ></view>
-            <view class="bottom-dialog-body " >
-               <view class="ui-titleBox">
-                   <text class="ui-titleItem_icon">//</text>
-                   <text class="ui-titleItem_text">活动规则</text>
-                   <text class="ui-titleItem_icon">//</text>
-               </view>
-               <view class="ui-rulesContentBox">
-                   <view >1.规则是什么规则是什么规则是什么规则是什么规则是什么规则是什么规则是什么规则是什么规则是什么规则是什么规则是什么规则是什么规则是什么规 </view>
-                   <view >2.规则是什么规则是什么规则是什么规则是什么规则是什么规则是什么规则是什么</view>
-                   <view >3.规则是什么规则是什么规则是什规则是什么规则是什么规则是什么规则是什规则是什么规则是什么规则是什么规则是什规则是什么</view>
-                  
-              </view>
-            </view>
-            <view class="ui-cancelBox">
-                <image src="{{filter.getLocalPhoto('bargain_list_delect.png')}}" class="ui-cancelIcon" bindtap="hideModal"/>
-            </view>
-        </view> -->
+        
     </view>
 </view>

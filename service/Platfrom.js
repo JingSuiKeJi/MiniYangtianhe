@@ -93,6 +93,28 @@ class Platfrom {
             data: reqData
         }, page);
     }
+    getArticle(page, reqData) {
+        _g.dm.canLoadMore = 1;
+        return _g.ajax({
+            url: mini.user.getArticle,
+            data: reqData
+        }, page);
+    }
+    getStepInfo(page, reqData) {
+        _g.dm.canLoadMore = 1;
+        return _g.ajax({
+            url: mini.user. getStepInfo,
+            data: reqData
+        }, page);
+    }
+    getStepInfo(page, reqData) {
+        _g.dm.canLoadMore = 1;
+        return _g.ajax({
+            url: mini.user. getStepInfo,
+            data: reqData
+        }, page);
+    }
+
 }
 
 module.exports = new Platfrom();

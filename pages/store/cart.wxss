@@ -3,7 +3,7 @@ page {
     width: 100%;
     background-color: #F5F5F5;
 }
-.main {
+.main,.main__box {
     width: 100%;
 }
 .ui-headerBox {
