@@ -3,6 +3,7 @@ const app = getApp();
 const _ = app.underscore;
 const _g = app.base;
 const _c = app.config;
+const Goods = require('../../service/Goods');
 // 初始化数据
 const data = {
   type: 1,
@@ -22,19 +23,32 @@ const data = {
   
 // 页面onLoad方法
 const onLoad = function (self) {
-    
-    
+    self.getData();
 };
 
 // 页面onShow方法
 const onShow = function (self) {
-    
+    self.getData();
 };
 const onUnload= function (self) {
   
 }
 // 页面中的方法
 const methods = {
+				getData: function () {
+				    let self = this;
+				    Goods.getBrandDetail(self, {
+				        brandId:234567,
+				    }).then((ret)=>{
+				        let data = ret.data;
+				        self.setData({
+				            backgroundUrl:data.backgroundUrl,
+				        })
+								console.log(data);
+				    },(err)=>{
+				
+				    });
+				},
         onDetailTap: function (e) {
           let self = this;
           _g.navigateTo({

@@ -116,7 +116,7 @@ const methods = {
   onDetailTap: function (e) {
     let self = this;
     _g.navigateTo({
-      logoUrl: 'pages/search/brandList'
+      url: 'pages/search/brandList'
     }, self)
   },
   //锚点跳转

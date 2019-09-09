@@ -5,7 +5,7 @@
        <view class="ui-headerBox">
            <image src="../../images/brand_banner.png" class="ui-headerItem__banner" />
            <vie class="ui-infoBox">
-                <image src="{{filter.getLocalPhoto('tangcheng.png')}}" class="ui-infoItem__brandImg"/>
+                <image src="{{filter.getReturnPhoto(backgroundUrl)}}" class="ui-infoItem__brandImg"/>
                 <text class="ui-headerItem__text">汤臣倍健</text>
            </vie>
        </view>

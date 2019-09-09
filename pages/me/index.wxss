@@ -28,16 +28,26 @@
 }
 
 .ui-itemImgBox {
+	display: flex;
+	justify-content: center;
+	align-items: center;
     position: relative;
     left: 32rpx;
-    width: 130rpx;
-    height: 130rpx;
-    border-radius: 65rpx;
+    width: 136rpx;
+    height: 136rpx;
+    border-radius: 130rpx;
 	overflow: hidden;
-    background-color: #fff;
+    background-color: #E6E6E6;
 }
 
-.ui-itemImgBox image{
+.ui-itemImgBox image.ui-haveAvatar{
+	position: absolute;
+	width: 120rpx;
+	height: 120rpx;
+	border-radius: 120rpx;
+}
+
+.ui-itemImgBox image.ui-noAvatar{
 	width: 100%;
 	height: 100%;
 }
@@ -353,51 +363,51 @@
 	opacity: 0.5;
 }
 
-.ui-feedbackItem .iconFeedback{
+.ui-feedbackItem .ui-iconFeedback{
 	margin-top: 30rpx;
 	position: relative;
 	left: 50%;
-	margin-left:-24rpx;
+	transform: translateX(-6rpx);
 	width:48rpx;
 	height:48rpx;
 }
 
-.ui-feedbackItem:nth-child(1) .iconFeedback{
+.ui-feedbackItem:nth-child(1) .ui-iconFeedback{
 	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_uppaid.png');
 	background-repeat: no-repeat;
 	background-position:center center;
 	background-size: contain;
 }
 
-.ui-feedbackItem:nth-child(2) .iconFeedback{
+.ui-feedbackItem:nth-child(2) .ui-iconFeedback{
 	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_overhang.png');
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: contain;
 }
 
-.ui-feedbackItem:nth-child(3) .iconFeedback{
+.ui-feedbackItem:nth-child(3) .ui-iconFeedback{
 	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_waitReceiving.png');
 	background-repeat: no-repeat;
 	background-position:center center;
 	background-size: contain;
 }
 
-.ui-feedbackItem:nth-child(4) .iconFeedback{
+.ui-feedbackItem:nth-child(4) .ui-iconFeedback{
 	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_approved.png');
 	background-repeat: no-repeat;
 	background-position:center center;
 	background-size: contain;
 }
 
-.ui-feedbackItem:nth-child(5) .iconFeedback{
+.ui-feedbackItem:nth-child(5) .ui-iconFeedback{
 	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_afterSale.png');
 	background-repeat: no-repeat;
 	background-position:center center;
 	background-size: contain;
 }
 
-.ui-feedbackItem text{
+.ui-feedbackItem .ui-orderText{
 	display: block;
 	height:22rpx;
 	font-size:22rpx;
@@ -413,22 +423,21 @@
 	position: absolute;
 	z-index: 99;
 	margin: 12rpx 25rpx 0 0;
-	/* padding: 0 8rpx 0 8rpx; */
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	top: 0;
 	right: 0;
-	/* min-height:30rpx; */
+	transform: translateX(50%);
+	height:30rpx;
 	min-width: 30rpx;
 	background:rgba(255,255,255,1);
 	border:2rpx solid rgba(32,202,180,1);
-	border-radius: 50%;
+	border-radius:50%;
 	box-sizing: border-box;
 }
 
 .ui-notification text{
-	margin-top: 2rpx;
 	font-size:24rpx;
 	font-family:PingFang-SC;
 	font-weight:800;
@@ -529,6 +538,11 @@
 	border-radius: 64rpx;
 	background: #CCCCCC;
 	margin: 16rpx 36rpx;
+}
+
+.ui-inviterInfoAvatar image{
+	width: 100%;
+	height: 100%;
 }
 
 .ui-inviterInfo .ui-inviterNikeName{

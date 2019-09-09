@@ -64,6 +64,13 @@ class Goods {
             data: reqData
         }, page);
     }
+	getBrandDetail(page, reqData) {
+	    _g.dm.canLoadMore = 1;
+	    return _g.ajax({
+	        url: mini.goods.getBrandDetail,
+	        data: reqData
+	    }, page);
+	}
     
 }
 

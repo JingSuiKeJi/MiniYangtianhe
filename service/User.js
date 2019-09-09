@@ -23,7 +23,38 @@ class User {
             data: reqData
         }, page);
     }
+	
+	logout(page, reqData) {
+	    _g.dm.canLoadMore = 1;
+	    return _g.ajax({
+	        url: mini.user.logout,
+	        data: reqData
+	    }, page);
+	}
+	
+	bindRecommend(page, reqData) {
+	    _g.dm.canLoadMore = 1;
+	    return _g.ajax({
+	        url: mini.user.bindRecommend,
+	        data: reqData
+	    }, page);
+	}
     
+	getAddressAdd(page, reqData) {
+	    _g.dm.canLoadMore = 1;
+	    return _g.ajax({
+	        url: mini.me.getAddressAdd,
+	        data: reqData
+	    }, page);
+	}
+	
+	getAddressList(page, reqData) {
+	    _g.dm.canLoadMore = 1;
+	    return _g.ajax({
+	        url: mini.me.getAddressList,
+	        data: reqData
+	    }, page);
+	}
 }
 
 module.exports = new User();

@@ -8,16 +8,21 @@
             <view class="ui-infoItem">
 				<!-- 头像 -->
                 <view class="ui-itemImgBox">
-					<image wx:if="{{logOut==false}}" src="http://www.gzlingren.com:8098/yangtianhe/my_personalIcon.png"></image>
-					<image wx:else src="http://www.gzlingren.com:8098/yangtianhe/login_avatar.png"></image>
+					<image class="ui-haveAvatar" wx:if="{{userInfo}}" src="{{avatar}}"></image>
+					<image class="ui-noAvatar" wx:else src="http://www.gzlingren.com:8098/yangtianhe/my_personalIcon.png"></image>
 				</view>
 				<!-- id -->
-                <view class="ui-textBox" wx:if="{{showNikeName}}">
-                    <text>命运的杰克</text>
-                    <text>ID:446688</text>
-                </view>
+				<block wx:if="{{userInfo}}">
+					<view class="ui-textBox">
+					    <text>{{nickName}}</text>
+					    <text>ID:{{id}}</text>
+					</view>
+				</block>
+                
 				<!-- 登录 -->
-				<button class="btn-login" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">登录</button>
+				<block wx:else>
+					<button class="btn-login" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">登录</button>
+				</block>
 				<!-- <view class="btn-login" bindtap="showDialogBtn" wx:else>登录
                    
 				</view> -->
@@ -52,15 +57,15 @@
 			
 			<view class="ui-incomeItems">
 				<view class="ui-incomeItem" catchtap="onBlissDetailTap">
-					<text>5.00</text>
+					<text>{{points||0}}</text>
 					<text>福气</text>
 				</view>
 				<view class="ui-incomeItem" catchtap="onDiscountsTap">
-					<text>10</text>
+					<text>{{couponNum||0}}</text>
 					<text>优惠券</text>
 				</view>
 				<view class="ui-incomeItem" catchtap="onRevenueTap">
-					<text>0.23</text>
+					<text>{{money||0}}</text>
 					<text>收益</text>
 				</view>
 			</view>
@@ -77,26 +82,32 @@
 			</view>
 			<view class="ui-orderStatus">
 				<view class="ui-feedbackItem" bindtap="onPayTap">
-					<view class="iconFeedback"></view>
-					<text>待支付</text>
+					<view wx:if="{{orderNum.waitPayNum>0}}" class="ui-notification" 
+					style="{{orderNum.waitPayNum>9?'padding:6rpx 8rpx 6rpx 8rpx':''}}"><text>{{orderNum.waitPayNum}}</text></view>
+					<view class="ui-iconFeedback"></view>
+					<text class="ui-orderText">待支付</text>
 				</view>
 				<view class="ui-feedbackItem" bindtap="onShippingTap">
-					<view wx:if="{{sendGoodsNum}}" class="ui-notification"><text>1</text></view>
-					<view class="iconFeedback"></view>
-					<text>待发货</text>
+					<view wx:if="{{orderNum.waitSendGoodsNum>0}}" class="ui-notification" 
+					style="{{orderNum.waitSendGoodsNum>9?'padding:6rpx 8rpx 6rpx 8rpx':''}}"><text>{{orderNum.waitSendGoodsNum}}</text></view>
+					<view class="ui-iconFeedback"></view>
+					<text class="ui-orderText">待发货</text>
 				</view>
 				<view class="ui-feedbackItem" bindtap="onReceivingTap">
-					<view wx:if="{{waitReceiving}}" class="ui-notification"><text>1</text></view>
-					<view class="iconFeedback"></view>
-					<text>待收货</text>
+					<view wx:if="{{orderNum.waitConfirmGoodsNum>0}}" class="ui-notification" 
+					style="{{orderNum.waitConfirmGoodsNum>9?'padding:6rpx 8rpx 6rpx 8rpx':''}}"><text>{{orderNum.waitConfirmGoodsNum}}</text></view>
+					<view class="ui-iconFeedback"></view>
+					<text class="ui-orderText">待收货</text>
 				</view>
 				<view class="ui-feedbackItem" bindtap="onSignedTap">
-					<view class="iconFeedback"></view>
-					<text>已签收</text>
+					<view wx:if="{{orderNum.finishNum>0}}" class="ui-notification" 
+					style="{{orderNum.finishNum>9?'padding:6rpx 8rpx 6rpx 8rpx':''}}"><text>{{orderNum.finishNum}}</text></view>
+					<view class="ui-iconFeedback"></view>
+					<text class="ui-orderText">已签收</text>
 				</view>
 				<view class="ui-feedbackItem" bindtap="onAfterSaleTap">
-					<view class="iconFeedback"></view>
-					<text>售后</text>
+					<view class="ui-iconFeedback"></view>
+					<text class="ui-orderText">售后</text>
 				</view>
 			</view>
 		</view>
@@ -108,17 +119,17 @@
 				<view class="{{showInvite==false?'ui-moreIcon':'ui-dropDown'}}"></view>
 				</view>
 				<view class="ui-inviter" wx:if="{{showInvite}}">
-					<view class="ui-inputInviterInfo" wx:if="{{saveInvite==false}}">
-						<input class="ui-inputBox" type="text" placeholder="请输入邀请人ID" value="{{inviterName}}" confirm-type="done" bindinput ="inviterNameInput"/>
+					<view class="ui-inviterInfo" wx:if="{{inviter}}">
+						<view class="ui-inviterInfoAvatar"><image src="{{inviter.avatar}}"></image></view>
+						<text class="ui-inviterNikeName">{{inviter.nickname}}</text>
+						<text class="ui-inviterWxName">微信号：{{inviter.wxNo}}</text>
+					</view>
+					<view class="ui-inputInviterInfo" wx:else>
+						<input class="ui-inputBox" type="text" placeholder="请输入邀请人ID" value="{{inviterId}}" confirm-type="done" bindinput ="inviterIdInput"/>
 						<!-- 清空文字 -->
 						<view class="ui-empty" bindtap="onEmpty"></view>
 						<view class="ui-cutOff"></view>
 						<view class="ui-save" bindtap="onSaveInviterInfo">保存</view>
-					</view>
-					<view class="ui-inviterInfo" wx:else>
-						<view class="ui-inviterInfoAvatar"></view>
-						<text class="ui-inviterNikeName">{{inviterName}}</text>
-						<text class="ui-inviterWxName">微信号：xiaoxiaohouzi</text>
 					</view>
 				</view>
 			</view>
@@ -148,7 +159,7 @@
 			</view>
         </view>
 		
-		<view wx:if="{{logOut}}" class="ui-LogOut" bindtap='onLogOutTap'>退出登录</view>
+		<view wx:if="{{userInfo}}" class="ui-LogOut" bindtap='onLogOutTap'>退出登录</view>
 		<!--弹窗-->
 		<!-- <view class="modal-mask" bindtap="hideModal" catchtouchmove="true" wx:if="{{showModal}}"></view>
 		<view class="modal-dialog" wx:if="{{showModal}}">

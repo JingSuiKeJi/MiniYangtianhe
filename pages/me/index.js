@@ -5,75 +5,98 @@ const _g = app.base;
 const _c = app.config;
 const _t = app.temps;
 const event = app.event;
+const User = require('../../service/User');
 
 let data = {
-	showNikeName:false,//用户信息
-	showModal: false,//模态框
-	saveInvite:false,//保存邀请人信息
-	showInvite:false,//显示邀请人信息,
-	inviterName:'',
-	sendGoodsNum:true,//待发货个数
-	waitReceiving:false,//待收货个数
-	logOut:false,
+	userInfo:'',//用户信息
+	inviterId:'',//输入的邀请人id
 };
 const onLoad = function(self) {
 	// wx.hideTabBar()
 	self.getTabBar().setData({
 		selected: 4
 	});
+	self.getMyInfo();
 	event.on('login-suc', self, (data)=>{
-		//TODO setData data.userInfo
+		let userInfo = data.userInfo;
+		self.setData({
+			userInfo:userInfo,//用户信息
+			nickName:userInfo.nickname,//用户名
+			avatar:userInfo.avatar,//用户头像
+			id:userInfo.id,//用户id
+			memberId:userInfo.memberId, //会员号
+			wxNo:userInfo.wxNo, //微信号
+			promoCode:userInfo.promoCode, //邀请码
+			points:userInfo.points, //福气
+			couponNum:userInfo.couponNum, //优惠券数量
+			money:userInfo.money, //收益
+			orderNum:userInfo.orderNum,//订单类别
+			inviter:userInfo.inviter,//邀请人信息
+			// distribution:userInfo.distribution, // 分销身份
+			// verifier:userInfo.verifier, // 核销员身份
+			// isRemindShare:userInfo.isRemindShare, // 分享成功提醒：1.是 0.否
+			// isRemindCoupon:userInfo.isRemindCoupon, // 优惠券获得提醒：1.是 0.否
+			// isRemindCut:userInfo.isRemindCut, // 砍价提醒：1.是 0.否
+			// store:userInfo.store// 绑定门店
+		})
+		console.log(userInfo.inviter);
 	});
 };
 const onShow = function(self) {}
 const onReady = function(self) {}
-const onUnload = function(self) {}
+const onUnload = function(self) {
+	event.remove('login-suc', self);
+	event.remove('inviter', self);
+}
 const methods = {
-	//显示模态框
-	showDialogBtn: function () {
-		const self = this;
-		self.setData({
-		  showModal: true
-		})
+	getData: function () {
+	   
 	},
-	//隐藏模态框
-	hideModal: function () {
+	getMyInfo(){
 		const self = this;
-		self.setData({
-		  showModal: false
-		});
-	},
-	//关闭模态框
-	onCancel: function () {
-		const self = this;
-		self.hideModal();
-	},
-	//确认信息
-	onConfirm: function () {
-		const self = this;
-		self.hideModal();
-		self.setData({
-			showNikeName:true,
-			sendGoodsNum:true,
-			waitReceiving:true,
-			logOut:true
+		_g.getMyInfo(self, {
+			suc(userInfo) {
+				self.setData({
+					userInfo: userInfo
+				});
+			}
 		})
 	},
 	// 退出登录
 	onLogOutTap: function () {
-		const self = this;
-		self.setData({
-			showNikeName:false,
-			sendGoodsNum:false,
-			waitReceiving:false,
-			logOut:false
-		})
+		var self = this;
+		//登出接口
+		User.logout(self, {
+		   sessionKey:_g.getLS(_c.LSKeys.sessionKey)
+		}).then((ret)=>{
+		    let data = ret.data;
+			// 清除本地缓存用户信息
+			_g.rmLS(_c.LSKeys.userInfo);
+			// 清除本地缓存sessionKey
+			_g.rmLS(_c.LSKeys.sessionKey);
+			// 渲染层更新用户信息
+		    self.setData({
+		    	userInfo:'',//用户信息制空
+		    })
+		},(err)=>{
+			console.log("登出失败");
+		});
 	},
 	//保存邀请人信息
 	onSaveInviterInfo:function(){
 		const self = this;
+		//获取输入id
+		const inviterId = self.data.inviterId;
 		self.setData({
-		  saveInvite:true
+			inviterId:inviterId,
+		});
+		//调用邀请人接口
+		User.bindRecommend(self, {
+		   memberId: inviterId,
+		}).then((ret)=>{
+			self.getMyInfo();
+		},(err)=>{
+			console.log("获取失败");
 		});
 	},
 	//显示隐藏邀请人信息
@@ -84,18 +107,18 @@ const methods = {
 		});
 	},
 	//获取邀请人输入框内容
-	inviterNameInput:function(e){
+	inviterIdInput:function(e){
 		const self = this;
 		self.setData({
-			inviterName:e.detail.value
+			inviterId:e.detail.value
 		})
 	},
 	//清空文本
 	onEmpty:function(e){
 		const self = this;
-		const inviterName=self.data.inviterName;
+		const inviterId=self.data.inviterId;
 		self.setData({
-		  inviterName:''
+		  inviterId:''
 		});
 	},
 	//跳转到分享海报
