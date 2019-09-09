@@ -55,9 +55,13 @@ const Goods = require('../../service/Goods');
   
   // 页面onLoad方法
   const onLoad = function (self) {
-     self.getTabBar().setData({
-     	selected:3
-	 });
+	let userInfo = _g.getLS(_c.LSKeys.userInfo);
+	self.getTabBar().setData({
+		selected:3
+	});
+    self.setData({
+		userInfo: userInfo
+	})
 	 self.getData();
   };
   
@@ -72,6 +76,7 @@ const Goods = require('../../service/Goods');
   const methods = {
 		getData: function () {
 			let self = this;
+			if (!self.userInfo) return;
 			Goods.cartList(self, {
 			}).then((ret)=>{
 				let data = ret.data;
@@ -148,7 +153,7 @@ const Goods = require('../../service/Goods');
 			} else {
 				storeList[index].isSelect = !storeList[index].isSelect
 				self.setData({
-				    oreList: storeList
+				    storeList: storeList
 				});
 					if (!storeList[index].isSelect) {
 					self.setData({
@@ -228,8 +233,8 @@ const Goods = require('../../service/Goods');
 					if (list[index].isSelect) {
 						mediNum = mediNum + 1;
 						mediTotal = mediTotal +list[index].count * list[index].price
-						}  
-					}
+					}  
+				}
 				self.setData({
 					mediNum:  mediNum,
 					mediTotal: mediTotal,
@@ -254,11 +259,11 @@ const Goods = require('../../service/Goods');
 			})
 			if (e.currentTarget.dataset.type == 1) {
 				this.setData({
-				medecineList: this.data.medecineList
+					medecineList: this.data.medecineList
 				})
 			}else {
 				this.setData({
-				storeList: this.data.storeList
+					storeList: this.data.storeList
 				})
 			}
           
@@ -280,9 +285,9 @@ const Goods = require('../../service/Goods');
 					if (Math.abs(angle) > 30) return;
 					if (i == index) {
 						if (touchMoveX > startX) {//右滑
-						v.isTouchMove = false;
+							v.isTouchMove = false;
 						}else{//左滑
-						v.isTouchMove = true;
+							v.isTouchMove = true;
 						} 
 					}
 				})
@@ -296,15 +301,14 @@ const Goods = require('../../service/Goods');
 					if (Math.abs(angle) > 30) return;
 					if (i == index) {
 						if (touchMoveX > startX) {//右滑
-						v.isTouchMove = false;
+							v.isTouchMove = false;
 						}else{//左滑
-						v.isTouchMove = true;
+						    v.isTouchMove = true;
 						} 
 					}
 				})
 				self.setData({
-				storeList: self.data.storeList
-		
+					storeList: self.data.storeList
 				});
 			}
         },
@@ -346,6 +350,16 @@ const Goods = require('../../service/Goods');
 		//批量删除
         onBatchDelete: function (e) {
 			let self = this;
+			let medIds = self.deleteIds('medecineList');
+			let storeIds = self.deleteIds('storeList');
+			let ids = '';
+            if ( !medIds && !storeIds) {
+				return false ;
+			}else if (medIds && storeIds) {
+				ids = medIds + ',' + storeIds 
+			} else {
+				ids = medIds +  storeIds 
+			}
 			wx.showModal({
 				content: '确认删除该商品？',
 				confirmText: '删除',
@@ -355,7 +369,7 @@ const Goods = require('../../service/Goods');
 				success (res) {
 				if (res.confirm) {
 					Goods.batchDeleteCart(self, {
-						ids: '1,2,3'
+						ids: ids
 					}).then((ret)=>{
 						self.getCartList()
 					},(err)=>{
@@ -398,7 +412,18 @@ const Goods = require('../../service/Goods');
 		
 			});
 		},
-
+		//整合批量删除的ids
+		deleteIds: function (arr) {
+			let self = this;
+			let  aimArr = self.data[arr];
+			let idsArr = [];
+			aimArr.forEach((item) => {
+                if (item.isSelect) {
+					idsArr.push(item.id)
+				}
+			});
+			return idsArr.join(',');
+		},
 
   };
   

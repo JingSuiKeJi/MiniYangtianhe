@@ -43,7 +43,7 @@
                 <view class="ui-sendTime__titleBox">
                     <view class="ui-sendItem_title">{{list.mainTitle}}</view>
                     <view class="ui-sendTime__shareBox" wx:if="{{flag == 0 || flag ==3}}">
-                        <image src="{{filter.getLocalPhoto('detail_shareIcon.png')}}" class="ui-sendTime__shareIcon"/>
+                        <image src="{{filter.getLocalPhoto('detail_shareIcon.png')}}" class="ui-sendTime__shareIcon" bindtap="onShareTap" data-type="1"/>
                         <view class="ui-sendTime__shareText">分享</view>
                     </view>
                 </view>
