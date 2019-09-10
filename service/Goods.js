@@ -71,6 +71,13 @@ class Goods {
             data: reqData
         }, page);
     }
+    placeOrder(page, reqData) {
+        _g.dm.canLoadMore = 1;
+        return _g.ajax({
+            url: mini.goods.placeOrder,
+            data: reqData
+        }, page);
+    }
     
 }
 
