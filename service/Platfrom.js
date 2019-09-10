@@ -103,14 +103,7 @@ class Platfrom {
     getStepInfo(page, reqData) {
         _g.dm.canLoadMore = 1;
         return _g.ajax({
-            url: mini.user. getStepInfo,
-            data: reqData
-        }, page);
-    }
-    getStepInfo(page, reqData) {
-        _g.dm.canLoadMore = 1;
-        return _g.ajax({
-            url: mini.user. getStepInfo,
+            url: mini.user.getStepInfo,
             data: reqData
         }, page);
     }

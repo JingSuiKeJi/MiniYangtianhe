@@ -384,7 +384,7 @@ Page {
 .ui-tapItem_numIcon {
     display: inline-block;
     min-width: 34rpx;
-    /* min-height: 34rpx; */
+    min-height: 34rpx;
     line-height: 34rpx;
     text-align: center;
     font-size:24rpx;

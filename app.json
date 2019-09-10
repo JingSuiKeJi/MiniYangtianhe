@@ -10,7 +10,7 @@
     "pages/goods/detail",
     "pages/goods/more",
     "pages/goods/join",
-    "pages/pay/order",
+    "pages/order/submit",
     "pages/goods/bargainList",
     "pages/goods/bargain",
     "pages/goods/myBargain",

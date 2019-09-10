@@ -19,7 +19,7 @@
         <text class="ui-addressItem__text" wx:if="{{!infoList.length}}">添加收货地址</text>
         <image src="{{filter.getLocalPhoto('my_icMore.png')}}" class="ui-addressItem__moreIcon"/>
     </view>
-    <view class="postBox">
+    <!-- <view class="postBox">
         <view class="ui-postItem__text">配送方式</view>
         <view class="ui-postItem {{ type ==0 ? 'isSelectItem' : ''}}" bindtap="onPostTap" data-type="0" >
             <view bindtap="onPostTap" data-type="0">立即配送</view>
@@ -39,13 +39,13 @@
         <view class="ui-postItem {{ type ==2 ? 'isSelectItem' : ''}} " bindtap="onPostTap" data-type="2">
             <view style="margin-top: 40rpx" bindtap="onPostTap" data-type="2">到店自提</view>
         </view>
-    </view>
-    <view class="ui-storeAddressBox">
+    </view> -->
+    <!-- <view class="ui-storeAddressBox">
         <text class="ui-storeAddress__name">花城大道店</text>
         <text class="ui-storeAddress__addre">珠江新城花城大道88</text>
         <text class="ui-storeAddress__distance">距离3.56km</text>
         <image src="{{filter.getLocalPhoto('my_icMore.png')}}" class="ui-storeAddress__rightItem"/>
-    </view>
+    </view> -->
     <view class="ui-orderBox">
         <view class="ui-orderItem" wx:for="{{list}}">
             <view class="ui-orderItem__imgBox">
@@ -68,10 +68,10 @@
               <text class="ui-postItem__price">￥ 0.00</text>
            </text>
         </view>
-        <view class="ui-orderItem__post">
+        <!-- <view class="ui-orderItem__post">
             <text class="ui-postItem__title">配送时间</text>
            <text class="ui-postItem__text">{{postTime}}</text>
-        </view>
+        </view> -->
         <view class="ui-orderItem__post">
             <text class="ui-postItem__title">订单备注</text>
             <input type="text" class="ui-postItem__input" placeholder="选填，请填写您的备注信息" value="{{remark}}"/>
