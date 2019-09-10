@@ -306,9 +306,11 @@ const methods = {
         //     orderStatus: self.data.list.type
         // }
         let data = {
+            platformFlag: 2,
             id: 2,
             num: self.data.cartNum,
-            orderStatus: 1
+            skuId: 2,
+            orderStatus: 1,
         }
         if (self.data.thirdId) {
             data.thirdId = self.data.thirdId;
