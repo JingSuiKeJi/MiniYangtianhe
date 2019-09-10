@@ -393,8 +393,14 @@ const methods = {
             modelType: opts.type
         })
         self.showModal();
+    },
+    onShareAppMessage() {
+        const self = this;
+        return {
+            title: '121211',
+            path: 'pages/goods/detail?id=' + self.data.id
+        }
     }
-
 };
 
 // 有引用template时定义
