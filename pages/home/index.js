@@ -10,11 +10,11 @@ const data = {
     banner: [],
     classList: [],
     step: '',
-    currentIndex:1,
+    currentIndex: 1,
     classifyType: 0,
-    hotSearch:[],
+    hotSearch: [],
     goodsList: [],
-    tapList:[],
+    tapList: [],
     classifyId: -1,
     list: [],
     isSlide: false,
@@ -27,9 +27,9 @@ const data = {
     }],
     BMIIndex: 0,//养步乐进度条
     second: -1,
-    hideModal:true, //模态框的状态  true-隐藏  false-显示
-    animationData:{},
-    isFixed:  false,
+    hideModal: true, //模态框的状态  true-隐藏  false-显示
+    animationData: {},
+    isFixed: false,
 };
 
 // 页面onLoad方法
@@ -40,16 +40,16 @@ const onLoad = function (self) {
     self.getPageData();
 };
 
-const onReady = function(self) {
+const onReady = function (self) {
     self.onScroll();
-    
+
 }
 
 // 页面onShow方法
 const onShow = function (self) {
     self.getData();
 };
-const onUnload= function (self) {
+const onUnload = function (self) {
     _g.getPrevPage().setData({
         num: self.data.value
     })
@@ -63,12 +63,11 @@ const methods = {
     getData: function () {
         let self = this;
         Platform.getCommonData(self, {
-            platformFlag:2,
-            storeId: 1
-        }).then((ret)=>{
+            platformFlag: 2,
+        }).then((ret) => {
             let data = ret.data;
             let stepInfo = data.stepInfo;
-            let  percent = stepInfo.todayStep/stepInfo.targetStep;
+            let percent = stepInfo.todayStep / stepInfo.targetStep;
             let BMIIndex = Math.ceil(31 * percent);
             self.setData({
                 hotSearch: data.hotSearch,
@@ -78,41 +77,39 @@ const methods = {
                 stepInfo: stepInfo,
                 BMIIndex: BMIIndex
             });
-            
+
             self.btnShow(data.stepInfo.status);
             self.showClassify(data.navigation);
-        },(err)=>{
+        }, (err) => {
 
         });
         Platform.getSecKill(self, {
-            platformFlag:2,
-            storeId: 234567
-        }).then((ret)=>{
-           let data = ret.data;
-           if (! data.length) return;
-           self.setData({
-               goodsList: data.list
-           });
-           self.timeFormat(data.startTime, data.endTime);
-        },(err)=>{
+            platformFlag: 2,
+        }).then((ret) => {
+            let data = ret.data;
+            if (!data.length) return;
+            self.setData({
+                goodsList: data.list
+            });
+            self.timeFormat(data.startTime, data.endTime);
+        }, (err) => {
         });
         Platform.getBrandList(self, {
-            platformFlag:2,
-            storeId: 234567,
+            platformFlag: 2,
             page: 0
-        }).then((ret)=>{
+        }).then((ret) => {
             let data = ret.data;
             let BrandList = [];
-            let length = Math.ceil(data.length/2);
-            console.log(22,length)
-            for (var  index = 0; index < 2; index++) {
-                BrandList[index]=data.slice(index*length,(index+1)*length-1); 
+            let length = Math.ceil(data.length / 2);
+            console.log(22, length)
+            for (var index = 0; index < 2; index++) {
+                BrandList[index] = data.slice(index * length, (index + 1) * length - 1);
             }
             self.setData({
                 BrandList: BrandList
             });
-            
-        },(err)=>{
+
+        }, (err) => {
         });
 
     },
@@ -120,81 +117,79 @@ const methods = {
     getClassifyList: function () {
         let self = this;
         Platform.getClassifyList(self, {
-            platformFlag:2,
-            storeId: 234567,
+            platformFlag: 2,
             level: 2
-        }).then((ret)=>{
-           let data = ret.data;
-           self.setData({
-             tapList: data,
-             classifyId: data[0].id
-           })
-        },(err)=>{
+        }).then((ret) => {
+            let data = ret.data;
+            self.setData({
+                tapList: data,
+                classifyId: data[0].id
+            })
+        }, (err) => {
 
         });
     },
-   
+
     btnShow: function (status) {
         let self = this;
-        switch( status) {
-            case 1 :
+        switch (status) {
+            case 1:
                 self.setData({
-                    step : '上传步数'
+                    step: '上传步数'
                 });
                 break;
-            case 2 :
-                    self.setData({
-                        step : '已领取'
-                    });
-                    break;
-            default: 
-                    self.setData({
-                        step : '领取积分'
-                    });
-                    break;
+            case 2:
+                self.setData({
+                    step: '已领取'
+                });
+                break;
+            default:
+                self.setData({
+                    step: '领取积分'
+                });
+                break;
         }
     },
-  
-    onSkipTap: function() {
+
+    onSkipTap: function () {
         let self = this;
         _g.navigateTo({
-          url: 'pages/search/search',
-          param: {
-            platformFlag: 2,
-            storeId: 1
-          }
+            url: 'pages/search/search',
+            param: {
+                platformFlag: 2,
+            }
         }, self);
     },
     //限时抢购
-    timeFormat: function (startTime,endTime) {
+    timeFormat: function (startTime, endTime) {
         let self = this;
         let nowDate = new Date();
         let curTime = nowDate.getTime();//指定日期距离1970年的毫秒数
-        if (startTime*1000 > curTime) {
-           self.setData({
-               second: -1
-           })
+        if (startTime * 1000 > curTime) {
+            self.setData({
+                second: -1
+            })
         } else {
-            let second = endTime - curTime/1000;
+            let second = endTime - curTime / 1000;
             self.setData({
                 second: second
             });
             self.time(self.data.second);
-          var timer =  setInterval(() => {
-                 let second = self.data.second;
-                 if(second < 0) {
+            var timer = setInterval(() => {
+                let second = self.data.second;
+                if (second < 0) {
                     clearInterval(timer);
                     self.setData({
                         second: -1
                     })
-                 }else {
-                     second--;
-                     self.setData({
-                         second: second
-                     })
-                    self.time(self.data.second);  
-                 }
-            },1000);
+                } else {
+                    second--;
+                    self.setData({
+                        second: second
+                    })
+                    self.time(self.data.second);
+                }
+            }, 1000);
         }
     },
     // 抢购的时间
@@ -203,44 +198,44 @@ const methods = {
         second = second % 86400;// 剩余的秒数
         let hour = Math.floor(second / 3600);//还剩几个小时
         second = second % 3600;
-        let minute = Math.floor(second /60);//还剩几分
+        let minute = Math.floor(second / 60);//还剩几分
         second = parseInt(second % 60);
         let time = {
-            day:day,
-            hour:hour,
+            day: day,
+            hour: hour,
             minute: minute,
             second: second
         }
         this.setData({
-            time:time
+            time: time
         })
     },
-    onSkipTap: function() {
+    onSkipTap: function () {
         let self = this;
         _g.navigateTo({
-          url: 'pages/search/search',
+            url: 'pages/search/search',
         }, self);
     },
-    onChangeTap: function(e) {
+    onChangeTap: function (e) {
         let self = this;
         self.setData({
-          currentIndex : e.detail.current
+            currentIndex: e.detail.current
         })
     },
     onClassifyTap: function (e) {
         let self = this;
         self.setData({
-        classifyType: e.detail.current,
+            classifyType: e.detail.current,
         });
     },
-    onClickTap: function(e) {
+    onClickTap: function (e) {
         let self = this;
         // console.log(e.target.dataset.type)
         self.setData({
-          classifyId: e.target.dataset.id,
+            classifyId: e.target.dataset.id,
         })
     },
-    onSlideTap: function(e) {
+    onSlideTap: function (e) {
         let self = this;
         self.setData({
             hideModal: !self.data.hideModal
@@ -249,76 +244,76 @@ const methods = {
     onAllBrandsTap: function (e) {
         let self = this;
         _g.navigateTo({
-          url: 'pages/search/brand',
+            url: 'pages/search/brand',
         }, self);
     },
     onListTap: function (e) {
         let self = this;
         let id = e.target.dataset.id;
         if (e.target.dataset.isLink == 2) return;
-        self.map(self.data.classList,id);
+        self.map(self.data.classList, id);
     },
     onDetailTap: function (e) {
         let self = this;
         _g.navigateTo({
-          url: 'pages/goods/detail',
-          param: {
-              id: e.target.dataset.id,
+            url: 'pages/goods/detail',
+            param: {
+                id: e.target.dataset.id,
             }
         }, self);
     },
     onBrandsTap: function (e) {
-        console.log( 333,e.target.dataset.id);
+        console.log(333, e.target.dataset.id);
         let self = this;
         _g.navigateTo({
-          url: 'pages/search/brandList',
-          param: {id: e.target.dataset.id}
+            url: 'pages/search/brandList',
+            param: { id: e.target.dataset.id }
         }, self);
     },
     initBlock: function () {
         let self = this;
         var blockList = [];
         for (var i = 0; i < 31; i++) {
-          if (i <= 14) {
-          var a = 130;
-          } else if (i == 15) {
-          var a = 0;
-          } else if (i >= 16) {
-          var a = 130;
-          }
-          var rotate = ((a / 15) * i - a).toFixed(0);
-          //y = y0 + r * sin(a * pi / 180)
-          //x = x0 + r * cos(a * pi / 180)
-          //(x0, y0) ==> (0, 0)
-        var left =  (1.4* Math.sin(rotate * Math.PI / 180)).toFixed(2);
-        var bottom =  (1.4 * Math.cos(rotate * Math.PI / 180)).toFixed(2);
-          blockList.push({
-            bottom: bottom,
-            left: left,
-            rotate: rotate
-          });
+            if (i <= 14) {
+                var a = 130;
+            } else if (i == 15) {
+                var a = 0;
+            } else if (i >= 16) {
+                var a = 130;
+            }
+            var rotate = ((a / 15) * i - a).toFixed(0);
+            //y = y0 + r * sin(a * pi / 180)
+            //x = x0 + r * cos(a * pi / 180)
+            //(x0, y0) ==> (0, 0)
+            var left = (1.4 * Math.sin(rotate * Math.PI / 180)).toFixed(2);
+            var bottom = (1.4 * Math.cos(rotate * Math.PI / 180)).toFixed(2);
+            blockList.push({
+                bottom: bottom,
+                left: left,
+                rotate: rotate
+            });
         }
         self.setData({
-          blockList: blockList,
-         
+            blockList: blockList,
+
         })
     },
     showClassify: function (arr) {
         let self = this;
-        var  classList = [];
-        var length = Math.ceil(arr.length/10);
-        for (var  index = 0; index < length; index++) {
-            classList[index]=arr.slice(index*10,(index+1)*10); 
+        var classList = [];
+        var length = Math.ceil(arr.length / 10);
+        for (var index = 0; index < length; index++) {
+            classList[index] = arr.slice(index * 10, (index + 1) * 10);
         }
         self.setData({
-            classList:classList
+            classList: classList
         });
     },
     onCheckBanner: function (e) {
         let self = this;
         let id = e.target.dataset.id;
         if (e.target.dataset.isLink == 2) return;
-        self.map(self.data.banner,id);
+        self.map(self.data.banner, id);
     },
     onCheckActivity: function (e) {
         let self = this;
@@ -326,80 +321,79 @@ const methods = {
         if (e.target.dataset.isLink == 2) return;
         _g.navigateTo({
             url: self.data.activity.pageUrl,
-          }, self);
+        }, self);
     },
-    map: function (arr,id) {
-        arr.forEach(element=> {
+    map: function (arr, id) {
+        arr.forEach(element => {
             if (element.id == id) {
                 _g.navigateTo({
                     url: element.pageUrl,
-                  }, self);
+                }, self);
             }
         });
     },
-     // 显示遮罩层
+    // 显示遮罩层
     showModal: function () {
-        let self=this;
+        let self = this;
         self.setData({
-            hideModal:false
-        }) 
+            hideModal: false
+        })
     },
-  
+
     // 隐藏遮罩层
     hideModal: function () {
-        var self=this; 
+        var self = this;
         self.setData({
-            hideModal:true,
-        })    
+            hideModal: true,
+        })
     },
     getPageData: function () {
         let self = this;
         Platform.getRecommend(self, {
-            platformFlag:2,
-            storeId: 1,
+            platformFlag: 2,
             page: self.data.page,
             pageSize: 10,
             classifyId: self.data.classifyId
-        }).then((ret)=>{
-           let data = ret.data;
-           self.setData({
-               list: data.list,
-           })
-        },(err)=>{
+        }).then((ret) => {
+            let data = ret.data;
+            self.setData({
+                list: data.list,
+            })
+        }, (err) => {
 
         });
     },
     onResultTap: function (e) {
-       let self = this;
-       _g.navigateTo({
-        url: 'pages/search/detailList',
-        param: {
-            id: e.target.dataset.id,
-            value: e.target.dataset.id,
-          }
-      }, self);
-    },
-    onStepTap: function(){
         let self = this;
-        if (self.data. stepInfo.status == 1) {
-            Platfrom.uploadStep(self,{
+        _g.navigateTo({
+            url: 'pages/search/detailList',
+            param: {
+                id: e.target.dataset.id,
+                value: e.target.dataset.id,
+            }
+        }, self);
+    },
+    onStepTap: function () {
+        let self = this;
+        if (self.data.stepInfo.status == 1) {
+            Platfrom.uploadStep(self, {
                 step: self.data.stepInfo.todayStep
             }).then((ret) => {
                 self.getData();
-            },(err) => {
-             
+            }, (err) => {
+
             })
         } else {
             return false;
         }
-        
+
     },
     onScroll: function () {
         const self = this;
         const query = wx.createSelectorQuery();
         query.select('#aim').boundingClientRect();
         query.selectViewport().scrollOffset();
-        query.exec(function(res){
+        query.exec(function (res) {
             self.setData({
                 scrollTop: res[0].top
             })
@@ -410,15 +404,15 @@ const methods = {
         let top = self.data.scrollTop - 80;
         if (res.scrollTop >= top) {
             self.setData({
-                isFixed:  true,
+                isFixed: true,
             })
-        }else {
+        } else {
             self.setData({
-                isFixed:  false,
-            }) 
+                isFixed: false,
+            })
         }
     }
-    
+
 };
 
 // 有引用template时定义

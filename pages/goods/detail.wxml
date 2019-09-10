@@ -123,7 +123,7 @@
         </view>
         <view class="ui-tapBox">
             <view class="ui-tapItem_imgBox">
-                <text class="ui-tapItem_numIcon">{{total}}</text>
+                <text class="ui-tapItem_numIcon" wx:if="{{total}}">{{total}}</text>
                 <image src="{{filter.getLocalPhoto('homeIcon.png')}}" class="ui-tapItem_messageIcon" bindtap="onBackTap" />
                 <image src="{{filter.getLocalPhoto('ic_shopping_cart.png')}}" class="ui-tapItem_cartIcon" bindtap="onCartTap" />
             </view>
@@ -205,7 +205,7 @@
                         </view>
                         <view class="ui-tapBox" wx:if="{{flag == 0 || flag==3}}">
                             <view class="ui-tapItem_imgBox">
-                                <text class="ui-tapItem_numIcon">{{total}}</text>
+                                <text class="ui-tapItem_numIcon"  wx:if="{{total}}">{{total}}</text>
                                 <image src="{{filter.getLocalPhoto('homeIcon.png')}}" class="ui-tapItem_messageIcon" bindtap="onBackTap" />
                                 <image src="{{filter.getLocalPhoto('ic_shopping_cart.png')}}" class="ui-tapItem_cartIcon" bindtap="onCartTap" />
                             </view>
