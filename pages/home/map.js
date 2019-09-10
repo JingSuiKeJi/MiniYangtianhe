@@ -95,7 +95,7 @@ const methods = {
                 item.latitude = item.lat;
                 item.longitude = item.lon;
                 return item;
-            });
+            })
         })
     },
     onBubbleTap(e) {
