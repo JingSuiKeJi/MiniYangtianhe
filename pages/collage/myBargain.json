@@ -1,8 +1,0 @@
-{
-  "enablePullDownRefresh":false,
-  "navigationStyle": "custom",
-  "usingComponents": {
-    "navBar": "/components/navBar/navBar"
-  },
-  "navigationBarTextStyle":"white"
-}
