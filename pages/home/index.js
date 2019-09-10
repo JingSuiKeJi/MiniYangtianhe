@@ -14,20 +14,7 @@ const data = {
     classifyType: 0,
     hotSearch:[],
     goodsList: [],
-    tapList:[
-        {
-            title: '夏季热销',
-            id: 1
-        },
-        {
-            title: '夏季热销',
-            id: 2
-        },
-        {
-            title: '夏季热销',
-            id: 3
-        },
-    ],
+    tapList:[],
     classifyId: -1,
     list: [],
     isSlide: false,
@@ -47,10 +34,10 @@ const data = {
 
 // 页面onLoad方法
 const onLoad = function (self) {
-    // self.getClassifyList();
-    // self.getData();
-    // self.initBlock();
-    // self.getPageData();
+    self.getClassifyList();
+    self.getData();
+    self.initBlock();
+    self.getPageData();
 };
 
 const onReady = function(self) {
@@ -172,6 +159,10 @@ const methods = {
         let self = this;
         _g.navigateTo({
           url: 'pages/search/search',
+          param: {
+            platformFlag: 2,
+            storeId: 1
+          }
         }, self);
     },
     //限时抢购
