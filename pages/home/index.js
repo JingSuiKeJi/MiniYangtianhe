@@ -3,10 +3,19 @@ const app = getApp();
 const _ = app.underscore;
 const _g = app.base;
 const _c = app.config;
+const event = app.event;
+const Store = require('../../service/Store.js');
 const Platform = require('../../service/Platfrom');
 
 // 初始化数据
 const data = {
+    userInfo: {},
+    storeInfo: {},
+    isLogin: false,
+    location: {
+        lon: 112.59000,
+        lat: 28.12000
+    },
     banner: [],
     classList: [],
     step: '',
@@ -25,7 +34,7 @@ const data = {
         bottom: 0,
         coverColor: ''
     }],
-    BMIIndex: 0,//养步乐进度条
+    BMIIndex: 0, //养步乐进度条
     second: -1,
     hideModal: true, //模态框的状态  true-隐藏  false-显示
     animationData: {},
@@ -33,35 +42,89 @@ const data = {
 };
 
 // 页面onLoad方法
-const onLoad = function (self) {
-    self.getClassifyList();
-    self.getData();
+const onLoad = function(self) {
     self.initBlock();
-    self.getPageData();
+    if (_g.checkLogin({
+            type: 1
+        })) {
+        //已登录
+        self.setLoginData();
+        self.getData();
+    } else {
+        //未登录
+        self.getLocation();
+    }
+    event.emit('login-suc', (data)=>{
+        self.setLoginData();
+    });
 };
 
-const onReady = function (self) {
+const onReady = function(self) {
     self.onScroll();
-
 }
 
 // 页面onShow方法
-const onShow = function (self) {
-    self.getData();
+const onShow = function(self) {
+    // self.getData();
 };
-const onUnload = function (self) {
+
+const onUnload = function(self) {
     _g.getPrevPage().setData({
         num: self.data.value
     })
 };
-// const onPageScroll = function (self) {
-//     // console.log(111,self);
-//     console.log(res.scrollTop)    
-// };
+
 // 页面中的方法
 const methods = {
-    getData: function () {
-        let self = this;
+    setLoginData() {
+        const self = this;
+        const userInfo = _g.getLS(_c.LSKeys.userInfo);
+        self.setData({
+            isLogin: true,
+            userInfo: userInfo,
+            storeInfo: userInfo.store
+        });
+    },
+    getLocation() {
+        const self = this;
+        _g.getLocation().then((res) => {
+            self.setData({
+                location: {
+                    lon: res.longitude,
+                    lat: res.latitude
+                }
+            });
+            self.getStoreList();
+        }, (error) => {
+            self.getStoreList();
+        });
+    },
+    getStoreList() {
+        const self = this;
+        Store.storeList(self, {
+            page: 1,
+            pageSize: 1,
+            lon: self.data.location.lon,
+            lat: self.data.location.lat
+        }).then((ret) => {
+            if (ret.data.list && ret.data.list.length) {
+                self.setData({
+                    storeInfo: ret.data.list[0]
+                });
+                _g.setLS(_c.LSKeys.storeInfo, ret.data.list[0]);
+                self.getData();
+            }
+        });
+    },
+    getData() {
+        const self = this;
+        self.getCommonData();
+        self.getBrandList();
+        self.getSecKill();
+        self.getClassifyList();
+    },
+    getCommonData() {
+        const self = this;
         Platform.getCommonData(self, {
             platformFlag: 2,
         }).then((ret) => {
@@ -83,17 +146,9 @@ const methods = {
         }, (err) => {
 
         });
-        Platform.getSecKill(self, {
-            platformFlag: 2,
-        }).then((ret) => {
-            let data = ret.data;
-            if (!data.length) return;
-            self.setData({
-                goodsList: data.list
-            });
-            self.timeFormat(data.startTime, data.endTime);
-        }, (err) => {
-        });
+    },
+    getBrandList() {
+        const self = this;
         Platform.getBrandList(self, {
             platformFlag: 2,
             page: 0
@@ -109,12 +164,23 @@ const methods = {
                 BrandList: BrandList
             });
 
-        }, (err) => {
-        });
-
+        }, (err) => {});
+    },
+    getSecKill() {
+        const self = this;
+        Platform.getSecKill(self, {
+            platformFlag: 2,
+        }).then((ret) => {
+            let data = ret.data;
+            if (!data.length) return;
+            self.setData({
+                goodsList: data.list
+            });
+            self.timeFormat(data.startTime, data.endTime);
+        }, (err) => {});
     },
     //榜单推荐分类列表
-    getClassifyList: function () {
+    getClassifyList: function() {
         let self = this;
         Platform.getClassifyList(self, {
             platformFlag: 2,
@@ -124,13 +190,14 @@ const methods = {
             self.setData({
                 tapList: data,
                 classifyId: data[0].id
-            })
+            });
+            self.getPageData();
         }, (err) => {
 
         });
     },
 
-    btnShow: function (status) {
+    btnShow: function(status) {
         let self = this;
         switch (status) {
             case 1:
@@ -151,7 +218,7 @@ const methods = {
         }
     },
 
-    onSkipTap: function () {
+    onSkipTap: function() {
         let self = this;
         _g.navigateTo({
             url: 'pages/search/search',
@@ -161,10 +228,10 @@ const methods = {
         }, self);
     },
     //限时抢购
-    timeFormat: function (startTime, endTime) {
+    timeFormat: function(startTime, endTime) {
         let self = this;
         let nowDate = new Date();
-        let curTime = nowDate.getTime();//指定日期距离1970年的毫秒数
+        let curTime = nowDate.getTime(); //指定日期距离1970年的毫秒数
         if (startTime * 1000 > curTime) {
             self.setData({
                 second: -1
@@ -193,12 +260,12 @@ const methods = {
         }
     },
     // 抢购的时间
-    time: function (second) {
-        let day = Math.floor(second / 86400);//还剩几天
-        second = second % 86400;// 剩余的秒数
-        let hour = Math.floor(second / 3600);//还剩几个小时
+    time: function(second) {
+        let day = Math.floor(second / 86400); //还剩几天
+        second = second % 86400; // 剩余的秒数
+        let hour = Math.floor(second / 3600); //还剩几个小时
         second = second % 3600;
-        let minute = Math.floor(second / 60);//还剩几分
+        let minute = Math.floor(second / 60); //还剩几分
         second = parseInt(second % 60);
         let time = {
             day: day,
@@ -210,50 +277,50 @@ const methods = {
             time: time
         })
     },
-    onSkipTap: function () {
+    onSkipTap: function() {
         let self = this;
         _g.navigateTo({
             url: 'pages/search/search',
         }, self);
     },
-    onChangeTap: function (e) {
+    onChangeTap: function(e) {
         let self = this;
         self.setData({
             currentIndex: e.detail.current
         })
     },
-    onClassifyTap: function (e) {
+    onClassifyTap: function(e) {
         let self = this;
         self.setData({
             classifyType: e.detail.current,
         });
     },
-    onClickTap: function (e) {
+    onClickTap: function(e) {
         let self = this;
         // console.log(e.target.dataset.type)
         self.setData({
             classifyId: e.target.dataset.id,
         })
     },
-    onSlideTap: function (e) {
+    onSlideTap: function(e) {
         let self = this;
         self.setData({
             hideModal: !self.data.hideModal
         })
     },
-    onAllBrandsTap: function (e) {
+    onAllBrandsTap: function(e) {
         let self = this;
         _g.navigateTo({
             url: 'pages/search/brand',
         }, self);
     },
-    onListTap: function (e) {
+    onListTap: function(e) {
         let self = this;
         let id = e.target.dataset.id;
         if (e.target.dataset.isLink == 2) return;
         self.map(self.data.classList, id);
     },
-    onDetailTap: function (e) {
+    onDetailTap: function(e) {
         let self = this;
         _g.navigateTo({
             url: 'pages/goods/detail',
@@ -262,7 +329,7 @@ const methods = {
             }
         }, self);
     },
-    onBrandsTap: function (e) {
+    onBrandsTap: function(e) {
         console.log(333, e.target.dataset.id);
         let self = this;
         _g.navigateTo({
@@ -270,7 +337,7 @@ const methods = {
             param: { id: e.target.dataset.id }
         }, self);
     },
-    initBlock: function () {
+    initBlock: function() {
         let self = this;
         var blockList = [];
         for (var i = 0; i < 31; i++) {
@@ -298,7 +365,7 @@ const methods = {
 
         })
     },
-    showClassify: function (arr) {
+    showClassify: function(arr) {
         let self = this;
         var classList = [];
         var length = Math.ceil(arr.length / 10);
@@ -309,13 +376,13 @@ const methods = {
             classList: classList
         });
     },
-    onCheckBanner: function (e) {
+    onCheckBanner: function(e) {
         let self = this;
         let id = e.target.dataset.id;
         if (e.target.dataset.isLink == 2) return;
         self.map(self.data.banner, id);
     },
-    onCheckActivity: function (e) {
+    onCheckActivity: function(e) {
         let self = this;
         let id = e.target.dataset.id;
         if (e.target.dataset.isLink == 2) return;
@@ -323,7 +390,7 @@ const methods = {
             url: self.data.activity.pageUrl,
         }, self);
     },
-    map: function (arr, id) {
+    map: function(arr, id) {
         arr.forEach(element => {
             if (element.id == id) {
                 _g.navigateTo({
@@ -333,7 +400,7 @@ const methods = {
         });
     },
     // 显示遮罩层
-    showModal: function () {
+    showModal: function() {
         let self = this;
         self.setData({
             hideModal: false
@@ -341,13 +408,13 @@ const methods = {
     },
 
     // 隐藏遮罩层
-    hideModal: function () {
+    hideModal: function() {
         var self = this;
         self.setData({
             hideModal: true,
         })
     },
-    getPageData: function () {
+    getPageData: function() {
         let self = this;
         Platform.getRecommend(self, {
             platformFlag: 2,
@@ -363,7 +430,7 @@ const methods = {
 
         });
     },
-    onResultTap: function (e) {
+    onResultTap: function(e) {
         let self = this;
         _g.navigateTo({
             url: 'pages/search/detailList',
@@ -373,7 +440,7 @@ const methods = {
             }
         }, self);
     },
-    onStepTap: function () {
+    onStepTap: function() {
         let self = this;
         if (self.data.stepInfo.status == 1) {
             Platfrom.uploadStep(self, {
@@ -388,18 +455,18 @@ const methods = {
         }
 
     },
-    onScroll: function () {
+    onScroll: function() {
         const self = this;
         const query = wx.createSelectorQuery();
         query.select('#aim').boundingClientRect();
         query.selectViewport().scrollOffset();
-        query.exec(function (res) {
+        query.exec(function(res) {
             self.setData({
                 scrollTop: res[0].top
             })
         })
     },
-    pageScroll: function (res) {
+    pageScroll: function(res) {
         let self = this;
         let top = self.data.scrollTop - 80;
         if (res.scrollTop >= top) {

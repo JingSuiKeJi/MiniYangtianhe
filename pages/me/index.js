@@ -8,8 +8,10 @@ const event = app.event;
 const User = require('../../service/User');
 
 let data = {
-	userInfo:'',//用户信息
+	userInfo:{},//用户信息
 	inviterId:'',//输入的邀请人id
+	showInvite:false,//显示邀请人信息
+	isLogin:false,//是否登录
 };
 const onLoad = function(self) {
 	// wx.hideTabBar()
@@ -26,6 +28,7 @@ const onLoad = function(self) {
 			id:userInfo.id,//用户id
 			memberId:userInfo.memberId, //会员号
 			wxNo:userInfo.wxNo, //微信号
+			phone:userInfo.phone, // 手机号
 			promoCode:userInfo.promoCode, //邀请码
 			points:userInfo.points, //福气
 			couponNum:userInfo.couponNum, //优惠券数量
@@ -39,14 +42,12 @@ const onLoad = function(self) {
 			// isRemindCut:userInfo.isRemindCut, // 砍价提醒：1.是 0.否
 			// store:userInfo.store// 绑定门店
 		})
-		console.log(userInfo.inviter);
 	});
 };
 const onShow = function(self) {}
 const onReady = function(self) {}
 const onUnload = function(self) {
 	event.remove('login-suc', self);
-	event.remove('inviter', self);
 }
 const methods = {
 	getData: function () {
@@ -57,7 +58,7 @@ const methods = {
 		_g.getMyInfo(self, {
 			suc(userInfo) {
 				self.setData({
-					userInfo: userInfo
+					userInfo: userInfo,
 				});
 			}
 		})
@@ -65,6 +66,8 @@ const methods = {
 	// 退出登录
 	onLogOutTap: function () {
 		var self = this;
+		console.log(self.data.userInfo.wxNo);
+		const inviter = self.data.userInfo.inviter;
 		//登出接口
 		User.logout(self, {
 		   sessionKey:_g.getLS(_c.LSKeys.sessionKey)
@@ -76,10 +79,11 @@ const methods = {
 			_g.rmLS(_c.LSKeys.sessionKey);
 			// 渲染层更新用户信息
 		    self.setData({
-		    	userInfo:'',//用户信息制空
+		    	userInfo:{},//用户信息置空
+				inviter:'',//邀请人信息置空
+				isLogin:false,//退出登录
 		    })
 		},(err)=>{
-			console.log("登出失败");
 		});
 	},
 	//保存邀请人信息
@@ -109,6 +113,7 @@ const methods = {
 	//获取邀请人输入框内容
 	inviterIdInput:function(e){
 		const self = this;
+		const inviterId = self.data.inviterId;
 		self.setData({
 			inviterId:e.detail.value
 		})
@@ -241,14 +246,22 @@ const methods = {
 	//跳转到绑定微信
 	onBindingWeChat: function () {
 	    let self = this;
+		const userInfo = self.data.userInfo;
 	    _g.navigateTo({
+			param:{
+          		 wxNo:userInfo.wxNo
+         	},
 	        url: 'pages/me/bindingWeChat',
 	    }, self);
 	},
 	//跳转到绑定手机
 	onBindingPhone: function () {
-	    let self = this;
+		let self = this;
+		const userInfo = self.data.userInfo;
 	    _g.navigateTo({
+			param:{
+          		 phone:userInfo.phone
+         	},
 	        url: 'pages/me/bindingPhone',
 	    }, self);
 	}

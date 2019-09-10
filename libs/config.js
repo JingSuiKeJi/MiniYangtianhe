@@ -46,15 +46,10 @@ config.prototype = {
     LSKeys: {
         sessionKey: 'sessionKey',
         userInfo: 'userInfo',
-        jobList: 'jobList',
         promoCode: 'promoCode',
         checkLogin: 'checkLogin_{today}',
         systemInfo: 'systemInfo',
-        storeId: 'storeId',
-        recallUserId: 'recallUserId',
-        seniorTitle: 'seniorTitle',
-        auditStatus: 'auditStatus',
-        newRedPacket: 'newRedPacket'
+        storeInfo: 'storeInfo',
     },
 
     pages: {
@@ -96,6 +91,8 @@ config.prototype = {
             getAddressAdd: '/app/address/add.do', 
             getAddressList: '/app/address/list.do',
 			bindWX:'/app/user/bindWX.do',
+			sendCode:'/app/user/sendCode.do',
+			bindPhone:'/app/user/bindPhone.do',
         },
         goods: {
             getGoodsDetail: '/app/goods/getGoodsDetail.do',

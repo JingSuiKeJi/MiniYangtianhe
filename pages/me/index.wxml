@@ -8,14 +8,14 @@
             <view class="ui-infoItem">
 				<!-- 头像 -->
                 <view class="ui-itemImgBox">
-					<image class="ui-haveAvatar" wx:if="{{userInfo}}" src="{{avatar}}"></image>
+					<image class="ui-haveAvatar" wx:if="{{isLogin}}" src="{{avatar}}"></image>
 					<image class="ui-noAvatar" wx:else src="http://www.gzlingren.com:8098/yangtianhe/my_personalIcon.png"></image>
 				</view>
 				<!-- id -->
-				<block wx:if="{{userInfo}}">
+				<block wx:if="{{isLogin}}">
 					<view class="ui-textBox">
 					    <text>{{nickName}}</text>
-					    <text>ID:{{id}}</text>
+					    <text>ID:{{memberId}}</text>
 					</view>
 				</block>
                 
@@ -35,11 +35,11 @@
 				<view class="ui-contact">
 					<view class="ui-contactItem" catchtap="onBindingWeChat">
 						<view class="ui-iconContact"></view>
-						<text>绑定微信</text>
+						<text>{{userInfo.wxNo?'修改微信':'绑定微信'}}</text>
 					</view>
 					<view class="ui-contactItem" catchtap="onBindingPhone">
 						<view class="ui-iconContact"></view>
-						<text>绑定手机</text>
+						<text>{{userInfo.phone?'修改手机':'绑定手机'}}</text>
 					</view>
 					<view class="ui-contactItem" catchtap="onPersonalTap">
 						<view class="ui-iconContact"></view>
@@ -159,7 +159,7 @@
 			</view>
         </view>
 		
-		<view wx:if="{{userInfo}}" class="ui-LogOut" bindtap='onLogOutTap'>退出登录</view>
+		<view wx:if="{{isLogin}}" class="ui-LogOut" bindtap='onLogOutTap'>退出登录</view>
 		<!--弹窗-->
 		<!-- <view class="modal-mask" bindtap="hideModal" catchtouchmove="true" wx:if="{{showModal}}"></view>
 		<view class="modal-dialog" wx:if="{{showModal}}">

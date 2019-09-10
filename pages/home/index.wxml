@@ -1,13 +1,13 @@
 <wxs module="filter" src="../../filter/filter.wxs"></wxs>
 <view class=".ui-main">
-    <navBar title='养乐药房' background='#3CC7A4' color='white' iconTheme='white'>
-        <view class='location' slot="left">
-            <view class='ui-addressIcon' />
-            <text class='ui-addressText'>天盈广场店…</text>
-            <view class='icon' />
+    <navBar title="养乐药房" background="#3CC7A4" color="white" iconTheme="white">
+        <view class="location" slot="left">
+            <view class="ui-addressIcon" />
+            <text class="ui-addressText">{{storeInfo.title}}</text>
+            <view class="icon" />
         </view>
     </navBar>
-    <view class='tab-bottom'></view>
+    <view class="tab-bottom"></view>
     <view class="main">
         <view>
             <view class="ui-headBox" style="margin-top: {{statusBarHeight+44}}px;" wx:if="{{!isFixed}}">
