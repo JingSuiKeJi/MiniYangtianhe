@@ -45,6 +45,7 @@ const data = {
 
 // 页面onLoad方法
 const onLoad = function(self) {
+    // self.getCartList();
     self.getData();
     self.moveBarrage();
     const title = self.data.self;
@@ -57,7 +58,6 @@ const onLoad = function(self) {
             title: '养天和优选'
         })
     }
-
 };
 
 // 页面onShow方法
@@ -181,7 +181,7 @@ const methods = {
     // 显示遮罩层
     showModal: function() {
         let self = this;
-        console.log(33)
+       
         self.setData({
             hideModal: false
         })
@@ -313,11 +313,20 @@ const methods = {
         if (self.data.thirdId) {
             data.thirdId = self.data.thirdId;
         }
-        _g.navigateTo({
-            url: 'pages/pay/order',
-            param: data,
-        }, self);
+        if (self.data.flag == 0) {
+            _g.navigateTo({
+                url: 'pages/pay/account',
+                    param: data,
+            }, self);
+            
+        }else {
+             _g.navigateTo({
+                url: 'pages/order/submit',
+                    param: data,
+            }, self);
 
+        }
+       
 
     },
     onCartTap: function(e) {
