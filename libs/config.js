@@ -46,15 +46,10 @@ config.prototype = {
     LSKeys: {
         sessionKey: 'sessionKey',
         userInfo: 'userInfo',
-        jobList: 'jobList',
         promoCode: 'promoCode',
         checkLogin: 'checkLogin_{today}',
         systemInfo: 'systemInfo',
-        storeId: 'storeId',
-        recallUserId: 'recallUserId',
-        seniorTitle: 'seniorTitle',
-        auditStatus: 'auditStatus',
-        newRedPacket: 'newRedPacket'
+        storeInfo: 'storeInfo',
     },
 
     pages: {

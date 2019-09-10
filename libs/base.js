@@ -384,6 +384,15 @@ base.prototype = {
             }
 
             postData.sessionKey = opts.sessionKey || _g.getLS(_c.LSKeys.sessionKey);
+            if (_g.getUserInfo()) {
+                var userInfo = _g.getUserInfo();
+                postData.miniUserId = userInfo.id;
+                postData.data.storeId = userInfo.store.id;
+            } else {
+                if (opts.url != _c.apiUrls.store.storeList) {
+                    opts.data.storeId = _g.getLS(_c.LSKeys.storeInfo).id;
+                }
+            }
             postData.data = JSON.stringify(_g.ksort(opts.data));
             postData.appVersion = _c.version;
             postData.apiVersions = 'v1';
@@ -1470,10 +1479,10 @@ base.prototype = {
             if (opts.type == 1) {
                 return false
             } else if (opts.type == 2) {
-                _g.openWin({
-                    self: opts.self,
-                    url: 'pages/account/login'
-                });
+                // _g.openWin({
+                //     self: opts.self,
+                //     url: 'pages/account/login'
+                // });
                 return false;
             }
         };
