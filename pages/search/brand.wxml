@@ -1,35 +1,80 @@
 <!--pages/search/brand.wxml-->
 <wxs module="filter" src="../../filter/filter.wxs"></wxs>
-<view class="main">
-    <view class="ui-brandSelectBox">
-        <view class="ui-brandSelectItem_top" >健康医药</view>
-        <view class="ui-brandSelectItem_bottom">
-            <scroll-view scroll-x  class="ui-brandItem_scrollView">
-                <view class="ui-brandScroll_itemTop">
-                    <view wx:for="{{imgBottomList}}" class="ui-brandScroll_item">
-                        <image src="{{filter.getLocalPhoto(item.url)}}" bindtap="onDetailTap"/>
-                        <view class="ui-brandScroll_text">{{item.title}}</view>
-                    </view>
-                </view>
-            </scroll-view> 
-            <scroll-view scroll-x  class="ui-brandItem_scrollView">
-                <view class="ui-brandScroll_itemBottom">
-                    <view wx:for="{{imgBottomList}}" class="ui-brandScroll_item">
-                        <image src="{{filter.getLocalPhoto(item.url)}}" />
-                        <view class="ui-brandScroll_text">{{item.title}}</view>
-                    </view>
-                </view>
-            </scroll-view> 
-        </view>
-    </view>
+<!-- 浮动种类列表 -->
+<view class="ui-fixBox">
+	<view wx:for="{{targetList}}" wx:for-item="item" wx:key="{{index}}"
+	bindtap='onJumpToTap' data-opt="{{item}}">{{item=='hot'?'热':item}}</view>
+</view>
+<scroll-view  scroll-into-view="{{toView}}"  scroll-y="true"   scroll-with-animation="true" class="main">
+	<view id="hot">
+		<!-- 健康医药 -->
+		<view class="ui-brandSelectBox">
+		    <view class="ui-brandSelectItem_top" >健康医药</view>
+		    <view class="ui-brandSelectItem_bottom">
+		        <scroll-view scroll-x  class="ui-brandItem_scrollView">
+		            <view class="ui-brandScroll_itemTop">
+		                <view wx:for="{{imgBottomList}}" class="ui-brandScroll_item">
+		                    <image src="{{filter.getLocalPhoto(item.logoUrl)}}" bindtap="onDetailTap"/>
+		                    <view class="ui-brandScroll_text">{{item.title}}</view>
+		                </view>
+		            </view>
+		        </scroll-view> 
+		    </view>
+		</view>
+		<!-- 营养保健 -->
+		<view class="ui-brandSelectBox">
+		    <view class="ui-brandSelectItem_top" >营养保健</view>
+		    <view class="ui-brandSelectItem_bottom">
+		        <scroll-view scroll-x  class="ui-brandItem_scrollView">
+		            <view class="ui-brandScroll_itemTop">
+		                <view wx:for="{{imgBottomList}}" class="ui-brandScroll_item">
+		                    <image src="{{filter.getLocalPhoto(item.logoUrl)}}" bindtap="onDetailTap"/>
+		                    <view class="ui-brandScroll_text">{{item.title}}</view>
+		                </view>
+		            </view>
+		        </scroll-view> 
+		        <scroll-view scroll-x  class="ui-brandItem_scrollView">
+		            <view class="ui-brandScroll_itemBottom">
+		                <view wx:for="{{imgBottomList}}" class="ui-brandScroll_item">
+		                    <image src="{{filter.getLocalPhoto(item.logoUrl)}}" />
+		                    <view class="ui-brandScroll_text">{{item.title}}</view>
+		                </view>
+		            </view>
+		        </scroll-view> 
+		    </view>
+		</view>
+		<!-- 个护化妆 -->
+		<view class="ui-brandSelectBox">
+		    <view class="ui-brandSelectItem_top" >个护化妆</view>
+		    <view class="ui-brandSelectItem_bottom">
+		        <scroll-view scroll-x  class="ui-brandItem_scrollView">
+		            <view class="ui-brandScroll_itemTop">
+		                <view wx:for="{{imgBottomList}}" class="ui-brandScroll_item">
+		                    <image src="{{filter.getLocalPhoto(item.logoUrl)}}" bindtap="onDetailTap"/>
+		                    <view class="ui-brandScroll_text">{{item.title}}</view>
+		                </view>
+		            </view>
+		        </scroll-view> 
+		        <scroll-view scroll-x  class="ui-brandItem_scrollView">
+		            <view class="ui-brandScroll_itemBottom">
+		                <view wx:for="{{imgBottomList}}" class="ui-brandScroll_item">
+		                    <image src="{{filter.getLocalPhoto(item.logoUrl)}}" />
+		                    <view class="ui-brandScroll_text">{{item.title}}</view>
+		                </view>
+		            </view>
+		        </scroll-view> 
+		    </view>
+		</view>
+	</view>
+	<!-- 全部品牌 -->
     <view class="ui-allBrandBox">
         <view class="ui-allBrandItem__title">全部品牌</view>
-        <view class="ui-allBrandItem" >
-            <view class="ui-allBrandItem__sort">A</view>
-            <view class="ui-allBrandItem__brand" wx:for="{{list}}">
-                <image src="{{filter.getLocalPhoto(item.url)}}" class="ui-brand__goodsIcon"/>
-                <text class="ui-brand__text">{{item.text}}</text>
+        <view class="ui-allBrandItem" wx:for="{{list}}" wx:for-item="item" wx:key="{{index}}" id="{{item.initials}}">
+            <view class="ui-allBrandItem__sort">{{item.initials}}</view>
+            <view class="ui-allBrandItem__brand" wx:for="{{item.goodsInfo}}">
+                <image src="{{filter.getReturnPhoto(item.logoUrl)}}" class="ui-brand__goodsIcon"/>
+                <text class="ui-brand__text">{{item.title}}</text>
             </view>
         </view>
     </view>
-</view>
+</scroll-view>

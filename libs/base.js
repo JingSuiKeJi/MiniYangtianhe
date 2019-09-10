@@ -1549,9 +1549,12 @@ base.prototype = {
                 event.emit('login-suc', {
                     userInfo: ret.data.myInfo
                 });
-            }
+            } else {
+				opts.suc && opts.suc();
+			}
         },(err)=>{
             //TODO login fail
+			opts.fail && opts.fail();
         });
     }
 };
