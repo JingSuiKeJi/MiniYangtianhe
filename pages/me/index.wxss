@@ -7,7 +7,17 @@
 }
 .ui-main {
     width: 100%;
-	margin-bottom: 126rpx;
+	margin-bottom: 136rpx;
+}
+
+.tab-bottom{
+	position: fixed;
+	z-index: 9999999;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 25rpx;
+	background:#F9F9F9;
 }
 
 .ui-infoBox {
@@ -143,7 +153,7 @@
 	display: flex;
 	position: absolute;
 	right:28rpx;
-	top: 90rpx;
+	top:120rpx;
 }
 
 .ui-contactItem{
@@ -200,7 +210,7 @@
 
 .ui-vip{
 	position: absolute;
-	top: 210rpx;
+	top: 240rpx;
 	left: 56rpx;
 	width:638rpx;
 	height:136rpx;
@@ -240,7 +250,7 @@
 	position: absolute;
 	z-index: 20;
 	left: 32rpx;
-	top: 278rpx;
+	top: 308rpx;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -297,7 +307,7 @@
 	background:rgba(255,255,255,1);
 	box-shadow:0rpx 4rpx 16rpx 0rpx rgba(0,0,0,0.05);
 	border-radius:16rpx;
-	margin-top: 80rpx;
+	margin-top: 110rpx;
 	margin-left: 32rpx;
 }
 
@@ -535,9 +545,10 @@
 	display: inline-block;
 	width: 64rpx;
 	height:64rpx;
-	border-radius: 64rpx;
+	border-radius: 50%;
 	background: #CCCCCC;
 	margin: 16rpx 36rpx;
+	overflow: hidden;
 }
 
 .ui-inviterInfoAvatar image{
