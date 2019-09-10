@@ -7,10 +7,6 @@ const Platform = require('../../service/Platfrom');
 const Goods = require('../../service/Goods');
 // 初始化数据
 const data = {
-  imgUrls: [
-    'https://images.unsplash.com/photo-1551214012-84f95e060dee?w=640',
-    'https://images.unsplash.com/photo-1551446591-142875a901a1?w=640'
-  ],
   currentIndex: 1,
   collage: [
     {
@@ -38,13 +34,6 @@ const data = {
   flag:0,//0商品详情页，1拼团页面,2 开团页面,3 限时购页面
   tabList: ['商品','详情','评价'],
   isTab: 0,
-  assessList: [
-    {
-      url: 'detailAssess_perIcon.png',
-      name: '张雷已经买好多次了很划算',
-      content: '很划算，味道也很好，已经买好多次了很划算，味道也很好，已经买好多次了'
-    },
-  ],
   scale: '请选择规格',
   cartNum: 2,
   scaleList: ['250g x 10包',],
@@ -71,7 +60,6 @@ const onLoad = function (self) {
         title:'养天和优选'
     })
     }
-    self.splitString('bannerList');
   
 };
 
@@ -150,9 +138,7 @@ const methods = {
         },
         onSureTap: function (e) {
             let self = this;
-            _g.navigateTo({
-            url: 'pages/pay/order'
-            },self);
+            self.onBuyTap();
             self.hideModal();
         },
         onMoreTap: function (e) {
@@ -315,22 +301,30 @@ const methods = {
         onBackTap: function (e) {
             let self = this;
             wx.switchTab({  
-            url:'../../pages/home/index'  
+                url:'../../pages/home/index'  
             }); 
         }, 
         onBuyTap: function (e) {
             let self = this;
+            // let data = {
+            //     id: 2,
+            //     num: self.data.cartNum,
+            //     orderStatus: self.data.list.type
+            // }
+            let data = {
+                id: 2,
+                num: self.data.cartNum,
+                orderStatus: 1
+            }
+            if (self.data.thirdId) {
+                data.thirdId = self.data.thirdId;
+            }
             _g.navigateTo({
-            url: 'pages/pay/order'
+            url: 'pages/pay/order',
+            param: data,
             },self);
             
         
-        },
-        onCollageTap: function () {
-            let self = this;
-            _g.navigateTo({
-            url: 'pages/pay/order'
-            },self);
         },
         onCartTap: function(e) {
             let self = this;

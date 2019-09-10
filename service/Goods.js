@@ -64,6 +64,20 @@ class Goods {
             data: reqData
         }, page);
     }
+    getHotSearchList(page, reqData) {
+        _g.dm.canLoadMore = 1;
+        return _g.ajax({
+            url: mini.goods.getHotSearchList,
+            data: reqData
+        }, page);
+    }
+    placeOrder(page, reqData) {
+        _g.dm.canLoadMore = 1;
+        return _g.ajax({
+            url: mini.goods.placeOrder,
+            data: reqData
+        }, page);
+    }
     
 }
 

@@ -107,6 +107,8 @@ config.prototype = {
             getUserAssembleList:'/app/assemble/getUserAssembleList.do',
             getCommentList: '/app/goods/getCommentList.do',
             getBrandDetail:'/app/brand/getBrandDetail.do',
+            getHotSearchList: '/app/home/getHotSearchList.do',
+            placeOrder: '/app/order/placeOrder.do'
         },
         store: {
             storeList: '/app/home/getStoreList.do',

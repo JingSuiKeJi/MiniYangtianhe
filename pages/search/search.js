@@ -12,57 +12,67 @@ const data = {
   };
   
   // 页面onLoad方法
-  const onLoad = function (self) {
-      self.getData();
-  };
-  
-  // 页面onShow方法
-  const onShow = function (self) {
-        self.getData();
-  };
-  const onUnload= function (self) {
-   
-  }
-  // 页面中的方法
-  const methods = {
-    getData: function () {
-       let self = this;
-    },
-    onGetInput: function (e) {
-      let self = this;
-      self.setData({
-        value: e.detail.value
-      })
-    },
-    onSkipTap: function(e) {
-      let self = this;
-      if (!self.data.value) return;
-      _g.navigateTo({
-        url: 'pages/search/detailList',
-        param: {
-            value: self.data.value,
-            platformFlag: self.data.platformFlag
-        }
-       }, self);
-    },
-    onDelectTap: function (e) {
-      let self = this;
-      self.setData({
-        hisList: []
-      })
-      
+const onLoad = function (self) {
+    // let data = {
+    //     platformFlag : self.data.platformFlag
+    // }
+    // if (self.data.storeId) {
+    //     data.storeId = self.data.storeId
+    // }
+    self.setData({
+        platformFlag : self.data.platformFlag
+    })
+    self.getData();
+    console.log(33,self.data)
+};
+
+// 页面onShow方法
+const onShow = function (self) {
+    self.getData();
+};
+const onUnload= function (self) {
+
+}
+// 页面中的方法
+const methods = {
+getData: function () {
+    let self = this;
+},
+onGetInput: function (e) {
+    let self = this;
+    self.setData({
+    value: e.detail.value
+    })
+},
+onSkipTap: function(e) {
+    let self = this;
+    if (!self.data.value) return;
+    _g.navigateTo({
+    url: 'pages/search/detailList',
+    param: {
+        value: self.data.value,
+        platformFlag: self.data.platformFlag
     }
-  };
-  
-  // 有引用template时定义
-  const temps = {};
-  
-  // 初始化页面page对象
-  const initPage = _g.initPage({
-  data: data,
-  onLoad: onLoad,
-  onShow: onShow,
-  methods: methods,
-  onUnload: onUnload
-  });
-  Page(initPage);
+    }, self);
+},
+onDelectTap: function (e) {
+    let self = this;
+    self.setData({
+    hisList: []
+    })
+    
+}
+};
+
+// 有引用template时定义
+const temps = {};
+
+// 初始化页面page对象
+const initPage = _g.initPage({
+    data: data,
+    onLoad: onLoad,
+    onShow: onShow,
+    methods: methods,
+    onUnload: onUnload
+});
+Page(initPage);
