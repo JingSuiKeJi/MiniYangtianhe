@@ -1,7 +1,7 @@
 <!-- <wxs module="filter" src="../../filter/filter.wxs"></wxs> -->
 <!--addConsignee.wxml-->
 <view class="container">
-	<navBar title='新增收货人' background='white' color='black' iconTheme='black' back="{{true}}"></navBar>
+	<navBar title="{{title}}" background='white' color='black' iconTheme='black' back="{{true}}"></navBar>
 	<view class="ui-main">
 		<view class="ui-common ui-name">
 			<text>姓名</text>

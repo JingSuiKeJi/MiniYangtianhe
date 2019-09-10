@@ -31,9 +31,14 @@ let data = {
 	cityName: '',
 	areaId: '',
 	areaName: '',
+	title:'',
 };
 const onLoad = function (self) {
 	self.getProvince();
+	const title = self.data.title;
+	self.setData({
+		title:title
+	})
 }
 const onShow = function (self) { }
 const onReady = function (self) { }
@@ -137,7 +142,7 @@ const methods = {
 		}
 
 		// 接口: 新增收货地址
-		Me.getAddressAdd(self, {
+		User.getAddressAdd(self, {
 			receiverName: self.data.name,
 			receiverPhone: self.data.tel,
 			lon: 1,
