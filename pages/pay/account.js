@@ -87,22 +87,31 @@ const methods = {
     },
     onPostTap: function (e) {
         let self = this;
-        if (e.target.dataset.type == 0) {
-            self.setData({
-                postType: '立即配送',
-                type: 0
-            })
-        } else if (e.target.dataset.type == 1) {
-            self.setData({
-                postType: '预约配送',
-                type: e.target.dataset.type
-            })
-        } else if (e.target.dataset.type == 2) {
-            self.setData({
-                postType: '到店自取',
-                type: e.target.dataset.type
-            })
+        let type = e.target.dataset.type;
+        if (self.data.type == type) return;
+        switch (type) {
+            case '1':
+                self.setData({
+                    postType: '立即配送',
+                    type: 1
+                });
+                break;
+            case '2':
+                self.setData({
+                    postType: '预约配送',
+                    type: 2
+                });
+                break;
+            case '3':
+                self.setData({
+                    postType: '到店自取',
+                    type: 3
+                });
+                break; 
+            default: 
+                break;
         }
+        
     },
     onPickerTap: function (e) {
         let self = this;
@@ -122,27 +131,43 @@ const methods = {
     },
     onSubmitTap: function (e) {
         let self = this;
+        let opts = self.data;
         let param = {
-            platformFlag: self.data.platformFlag,
-            goodsId: self.data.id,
-            skuId: self.data.skuId,
-            num:self.data.num,
-            orderStatus: self.data.orderStatus,
+            platformFlag: opts.platformFlag,
+            goodsId: opts.id,
+            skuId: opts.skuId,
+            num: opts.num,
+            orderStatus: opts.orderStatus,
+            remark: opts.remark
         }
         if (self.data.thirdId) {
-            param.thirdId = self.data.thirdId;
+            param.thirdId = opts.thirdId;
         }
-        if (self.data.isSelect) {
+        if (opts.isSelect) {
             param.integralStatus = 1;
         }else {
             param.integralStatus = 2;
+        }
+        if (opts.platformFlag == 2) {
+            param.dispatchingType = opts.type;
+            if (opts.type == 2) {
+                param.dispatchingTime = {
+                    beginTime:1561634,
+                    endTime:1561634
+                }
+            }
         }
         Order.placeOrder(self, param).then((ret) => {
             let data = ret;
         }, (err) => {
 
         });
-
+    },
+    getInputValue: function (e) {
+        let self = this;
+        self.setData({
+            remark: e.detail.value 
+        })
     }
 }
 
