@@ -88,11 +88,13 @@ config.prototype = {
         },
         user: {
             login: '/app/account/login.do',
+			logout:'/app/account/logout.do',
             getMyInfo: '/app/user/getMyInfo.do',
             getLeyouList: '/app/step/getLeyouList.do',
             getRecordList: '/app/step/getRecordList.do',
             getAddressAdd: '/app/address/add.do', 
             getAddressList: '/app/address/list.do',
+			bindWX:'/app/user/bindWX.do',
         },
         goods: {
             getGoodsDetail: '/app/goods/getGoodsDetail.do',
