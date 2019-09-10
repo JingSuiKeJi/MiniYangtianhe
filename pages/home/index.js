@@ -261,7 +261,7 @@ const methods = {
     onDetailTap: function (e) {
         let self = this;
         _g.navigateTo({
-          url: 'pages/collage/detail',
+          url: 'pages/goods/detail',
           param: {
               id: e.target.dataset.id,
             }
