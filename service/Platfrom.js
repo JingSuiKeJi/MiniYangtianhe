@@ -114,6 +114,13 @@ class Platfrom {
             data: reqData
         }, page);
     }
+    getShareQR(page, reqData) {
+        _g.dm.canLoadMore = 1;
+        return _g.ajax({
+            url: mini.user.getShareQR,
+            data: reqData
+        }, page);
+    }
 
 }
 
