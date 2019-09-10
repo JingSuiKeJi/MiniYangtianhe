@@ -64,7 +64,6 @@ const methods = {
         let self = this;
         Platform.getCommonData(self, {
             platformFlag: 2,
-            storeId: 1
         }).then((ret) => {
             let data = ret.data;
             let stepInfo = data.stepInfo;
@@ -86,7 +85,6 @@ const methods = {
         });
         Platform.getSecKill(self, {
             platformFlag: 2,
-            storeId: 234567
         }).then((ret) => {
             let data = ret.data;
             if (!data.length) return;
@@ -98,7 +96,6 @@ const methods = {
         });
         Platform.getBrandList(self, {
             platformFlag: 2,
-            storeId: 234567,
             page: 0
         }).then((ret) => {
             let data = ret.data;
@@ -121,7 +118,6 @@ const methods = {
         let self = this;
         Platform.getClassifyList(self, {
             platformFlag: 2,
-            storeId: 234567,
             level: 2
         }).then((ret) => {
             let data = ret.data;
@@ -161,7 +157,6 @@ const methods = {
             url: 'pages/search/search',
             param: {
                 platformFlag: 2,
-                storeId: 1
             }
         }, self);
     },
@@ -356,7 +351,6 @@ const methods = {
         let self = this;
         Platform.getRecommend(self, {
             platformFlag: 2,
-            storeId: 1,
             page: self.data.page,
             pageSize: 10,
             classifyId: self.data.classifyId
