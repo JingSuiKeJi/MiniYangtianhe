@@ -8,14 +8,14 @@
             <view class="ui-infoItem">
 				<!-- 头像 -->
                 <view class="ui-itemImgBox">
-					<image class="ui-haveAvatar" wx:if="{{isLogin}}" src="{{avatar}}"></image>
+					<image class="ui-haveAvatar" wx:if="{{isLogin}}" src="{{userInfo.avatar}}"></image>
 					<image class="ui-noAvatar" wx:else src="http://www.gzlingren.com:8098/yangtianhe/my_personalIcon.png"></image>
 				</view>
 				<!-- id -->
 				<block wx:if="{{isLogin}}">
 					<view class="ui-textBox">
-					    <text>{{nickName}}</text>
-					    <text>ID:{{memberId}}</text>
+					    <text>{{userInfo.nickname}}</text>
+					    <text>ID:{{userInfo.memberId}}</text>
 					</view>
 				</block>
                 
@@ -57,15 +57,15 @@
 			
 			<view class="ui-incomeItems">
 				<view class="ui-incomeItem" catchtap="onBlissDetailTap">
-					<text>{{points||0}}</text>
+					<text>{{userInfo.points||0}}</text>
 					<text>福气</text>
 				</view>
 				<view class="ui-incomeItem" catchtap="onDiscountsTap">
-					<text>{{couponNum||0}}</text>
+					<text>{{userInfo.couponNum||0}}</text>
 					<text>优惠券</text>
 				</view>
 				<view class="ui-incomeItem" catchtap="onRevenueTap">
-					<text>{{money||0}}</text>
+					<text>{{userInfo.money||0}}</text>
 					<text>收益</text>
 				</view>
 			</view>
@@ -82,26 +82,26 @@
 			</view>
 			<view class="ui-orderStatus">
 				<view class="ui-feedbackItem" bindtap="onPayTap">
-					<view wx:if="{{orderNum.waitPayNum>0}}" class="ui-notification" 
-					style="{{orderNum.waitPayNum>9?'padding:6rpx 8rpx 6rpx 8rpx':''}}"><text>{{orderNum.waitPayNum}}</text></view>
+					<view wx:if="{{userInfo.orderNum.waitPayNum>0}}" class="ui-notification" 
+					style="{{userInfo.orderNum.waitPayNum>9?'padding:6rpx 8rpx 6rpx 8rpx':''}}"><text>{{userInfo.orderNum.waitPayNum}}</text></view>
 					<view class="ui-iconFeedback"></view>
 					<text class="ui-orderText">待支付</text>
 				</view>
 				<view class="ui-feedbackItem" bindtap="onShippingTap">
-					<view wx:if="{{orderNum.waitSendGoodsNum>0}}" class="ui-notification" 
-					style="{{orderNum.waitSendGoodsNum>9?'padding:6rpx 8rpx 6rpx 8rpx':''}}"><text>{{orderNum.waitSendGoodsNum}}</text></view>
+					<view wx:if="{{userInfo.orderNum.waitSendGoodsNum>0}}" class="ui-notification" 
+					style="{{userInfo.orderNum.waitSendGoodsNum>9?'padding:6rpx 8rpx 6rpx 8rpx':''}}"><text>{{userInfo.orderNum.waitSendGoodsNum}}</text></view>
 					<view class="ui-iconFeedback"></view>
 					<text class="ui-orderText">待发货</text>
 				</view>
 				<view class="ui-feedbackItem" bindtap="onReceivingTap">
-					<view wx:if="{{orderNum.waitConfirmGoodsNum>0}}" class="ui-notification" 
-					style="{{orderNum.waitConfirmGoodsNum>9?'padding:6rpx 8rpx 6rpx 8rpx':''}}"><text>{{orderNum.waitConfirmGoodsNum}}</text></view>
+					<view wx:if="{{userInfo.orderNum.waitConfirmGoodsNum>0}}" class="ui-notification" 
+					style="{{userInfo.orderNum.waitConfirmGoodsNum>9?'padding:6rpx 8rpx 6rpx 8rpx':''}}"><text>{{userInfo.orderNum.waitConfirmGoodsNum}}</text></view>
 					<view class="ui-iconFeedback"></view>
 					<text class="ui-orderText">待收货</text>
 				</view>
 				<view class="ui-feedbackItem" bindtap="onSignedTap">
-					<view wx:if="{{orderNum.finishNum>0}}" class="ui-notification" 
-					style="{{orderNum.finishNum>9?'padding:6rpx 8rpx 6rpx 8rpx':''}}"><text>{{orderNum.finishNum}}</text></view>
+					<view wx:if="{{userInfo.orderNum.finishNum>0}}" class="ui-notification" 
+					style="{{userInfo.orderNum.finishNum>9?'padding:6rpx 8rpx 6rpx 8rpx':''}}"><text>{{userInfo.orderNum.finishNum}}</text></view>
 					<view class="ui-iconFeedback"></view>
 					<text class="ui-orderText">已签收</text>
 				</view>
@@ -119,10 +119,10 @@
 				<view class="{{showInvite==false?'ui-moreIcon':'ui-dropDown'}}"></view>
 				</view>
 				<view class="ui-inviter" wx:if="{{showInvite}}">
-					<view class="ui-inviterInfo" wx:if="{{inviter}}">
-						<view class="ui-inviterInfoAvatar"><image src="{{inviter.avatar}}"></image></view>
-						<text class="ui-inviterNikeName">{{inviter.nickname}}</text>
-						<text class="ui-inviterWxName">微信号：{{inviter.wxNo}}</text>
+					<view class="ui-inviterInfo" wx:if="{{userInfo.inviter.id}}">
+						<view class="ui-inviterInfoAvatar"><image src="{{userInfo.inviter.avatar}}"></image></view>
+						<text class="ui-inviterNikeName">{{userInfo.inviter.nickname}}</text>
+						<text class="ui-inviterWxName">微信号：{{userInfo.inviter.wxNo}}</text>
 					</view>
 					<view class="ui-inputInviterInfo" wx:else>
 						<input class="ui-inputBox" type="text" placeholder="请输入邀请人ID" value="{{inviterId}}" confirm-type="done" bindinput ="inviterIdInput"/>
