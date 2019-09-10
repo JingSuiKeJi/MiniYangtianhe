@@ -85,6 +85,7 @@ config.prototype = {
             getArticle: '/app/common/getArticle.do',
             getStepInfo: '/app/step/getStepInfo.do',
             uploadStep: '/app/step/uploadStep.do',
+            getShareQR: '/app/common/getShareQR.do',
         },
         user: {
             login: '/app/account/login.do',
