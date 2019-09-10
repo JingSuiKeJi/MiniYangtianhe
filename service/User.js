@@ -45,6 +45,20 @@ class User {
             data: reqData
         }, page);
     }
+	getAddressList(page, reqData) {
+	    _g.dm.canLoadMore = 1;
+	    return _g.ajax({
+	        url: mini.user.getAddressList,
+	        data: reqData
+	    }, page);
+	}
+	getAddressAdd(page, reqData) {
+	    _g.dm.canLoadMore = 1;
+	    return _g.ajax({
+	        url: mini.user.getAddressAdd,
+	        data: reqData
+	    }, page);
+	}
 	bindWX(page, reqData) {
 	    _g.dm.canLoadMore = 1;
 	    return _g.ajax({

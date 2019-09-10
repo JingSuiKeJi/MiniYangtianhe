@@ -12,14 +12,14 @@ class Order {
     placeOrder(page, reqData) {
         _g.dm.canLoadMore = 1;
         return _g.ajax({
-            url: mini.store.placeOrder,
+            url: mini.order.placeOrder,
             data: reqData
         }, page);
     }
     common(page, reqData) {
         _g.dm.canLoadMore = 1;
         return _g.ajax({
-            url: mini.store.common,
+            url: mini.order.common,
             data: reqData
         }, page);
     }

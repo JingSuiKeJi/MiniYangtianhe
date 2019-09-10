@@ -111,6 +111,7 @@ class Platfrom {
         _g.dm.canLoadMore = 1;
         return _g.ajax({
             url: mini.user.getShareQR,
+            url: mini.user. getStepInfo,
             data: reqData
         }, page);
     }

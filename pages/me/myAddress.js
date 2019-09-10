@@ -28,7 +28,7 @@ const methods = {
 	// 接口: 收货地址列表
 	getAddressList: function () {
 		const self = this;
-		Me.getAddressList(self, {
+		User.getAddressList(self, {
 
 		}).then(function (ret) {
 			if (self.data.page == 1) {
@@ -46,7 +46,10 @@ const methods = {
 	onAddConsigneeTap: function () {
 		let self = this;
 		_g.navigateTo({
-			url: 'pages/me/addConsignee',
+			param:{
+				title:'新增收货人'
+			},
+			url: 'pages/me/addAddress',
 		}, self);
 	},
 	//管理地址
@@ -70,7 +73,10 @@ const methods = {
 	onCompileTap: function () {
 		let self = this;
 		_g.navigateTo({
-			url: 'pages/me/compileConsignee',
+			param:{
+				title:'编辑'
+			},
+			url: 'pages/me/addAddress',
 		}, self);
 	},
 	//删除操作和模态框
