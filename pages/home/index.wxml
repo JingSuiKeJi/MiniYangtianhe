@@ -1,10 +1,10 @@
 <wxs module="filter" src="../../filter/filter.wxs"></wxs>
-<view class=".ui-main">
+<view class="ui-main">
     <navBar title="养乐药房" background="#3CC7A4" color="white" iconTheme="white">
         <view class="location" slot="left">
-            <view class="ui-addressIcon" />
+            <view class="ui-addressIcon"></view>
             <text class="ui-addressText">{{storeInfo.title}}</text>
-            <view class="icon" />
+            <view class="icon"></view>
         </view>
     </navBar>
     <view class="tab-bottom"></view>
@@ -46,17 +46,18 @@
                     <view>
                         <image src="{{filter.getLocalPhoto('run.png')}}" class="ui-leftItem_icon" />
                     </view>
-                    <view class="ui-leftItem_text">养步乐</view>
-                </view>
-                <view class="ui-stepTapBox_center ">
-                    <view class="ui-block__item" wx:for="{{blockList}}" wx:key="{{index}}" style="left: {{item.left*100+140+'rpx'}};bottom: {{item.bottom*100 + 120+'rpx'}};-webkit-transform: rotate({{item.rotate+'deg'}}); -moz-transform: rotate({{item.rotate+'deg'}});-ms-transform: rotate({{item.rotate+'deg'}});-o-transform: rotate({{item.rotate+'deg'}}); transform: rotate({{item.rotate+'deg'}});background-color: {{index >= BMIIndex ? '#EEEEEE' : '#02CFA5'}}"></view>
-                    <view class="ui-centerItem_stepText">今日步数</view>
-                    <view class="ui-centerItem_detailText">
-                        {{stepInfo.todayStep}}
-                        <text>步</text>
+                    <view class="ui-stepTapBox_center ">
+                        <view class="ui-block__item" wx:for="{{blockList}}" wx:key="{{index}}" style="left: {{item.left*100+140+'rpx'}};bottom: {{item.bottom*100 + 120+'rpx'}};-webkit-transform: rotate({{item.rotate+'deg'}}); -moz-transform: rotate({{item.rotate+'deg'}});-ms-transform: rotate({{item.rotate+'deg'}});-o-transform: rotate({{item.rotate+'deg'}}); transform: rotate({{item.rotate+'deg'}});background-color: {{index >= BMIIndex ? '#EEEEEE' : '#02CFA5'}}"></view>
+                        <view class="ui-centerItem_stepText">今日步数</view>
+                        <view class="ui-centerItem_detailText">
+                            {{stepInfo.todayStep}}
+                            <text>步</text>
+                        </view>
+                        <view class="centerItem_aimText">目标{{stepInfo.targetStep}}步</view>
+                        <view class="ui-leftItem_loadText" bindtap="onStepTap">{{step}}</view>
                     </view>
-                    <view class="centerItem_aimText">目标{{stepInfo.targetStep}}步</view>
-                    <view class="ui-leftItem_loadText" bindtap="onStepTap">{{step}}</view>
+                    <view class="ui-stepTapBox_right">今日排名：{{stepInfo.rank}}</view>
+                    <image src="{{filter.getLocalPhoto('question_icon.png')}}" />
                 </view>
                 <view class="ui-stepTapBox_right">今日排名：{{stepInfo.rank}}</view>
                 <image src="{{filter.getLocalPhoto('question_icon.png')}}" />
@@ -89,109 +90,111 @@
                     </view>
                 </view>
             </view>
-        </view>
-        <!-- 限时抢购和品牌甄选 -->
-        <view class="ui-imgBox" wx:if="{{goodsList.length}}">
-            <image src="{{filter.getReturnPhoto(activity.imgUrl)}}" bindtap="onCheckActivity" data-id="{{activity.id}}" data-isLink="{{activity.isLink}}" />
-            <view class="ui-buyBox">
-                <view class="ui-buyBox_top">
-                    <view>优选限时购</view>
-                    <view class="ui-topItem">
-                        <view class="ui-topItem_time">{{time.day}}</view>
-                        <view>天</view>
-                        <view class="ui-topItem_time">{{time.hour}}</view>
-                        <view>:</view>
-                        <view class="ui-topItem_time">{{time.minute}}</view>
-                        <view>:</view>
-                        <view class="ui-topItem_time">{{time.second}}</view>
-                    </view>
-                </view>
-                <view class="ui-buyBox_bottom" wx:if="{{goodsList.length}}">
-                    <scroll-view scroll-x class="ui-bottomItem_scrollView">
-                        <view wx:for="{{goodsList}}" wx:key="{{index}}" class="ui-scrollView_item">
-                            <image src="{{filter.getLocalPhoto('buy.png')}}" />
-                            <image src="{{filter.getLocalPhoto (item.picUrl)}}" bindtap="onDetailTap" data-id="{{item.id}}" />
-                            <view class="ui-scrollView_itemTitle">{{item.mainTitle}}</view>
-                            <view class="ui-scrollView_itemNow">￥{{item.nowPrice}}</view>
-                            <view class="ui-scrollView_itemPre">￥{{item.originPrice}}</view>
-                        </view>
-                    </scroll-view>
-                </view>
-            </view>
-        </view>
-        <view class="ui-brandSelectBox" wx:if="{{BrandList[0].length || BrandList[1].length}}">
-            <view class="ui-brandSelectItem_top" bindtap="onAllBrandsTap">品牌甄选</view>
-            <view class="ui-brandSelectItem_bottom">
-                <scroll-view scroll-x class="ui-brandItem_scrollView">
-                    <view class="ui-brandScroll_itemTop">
-                        <view wx:for="{{BrandList[0]}}" wx:key="{{index}}" class="ui-brandScroll_item">
-                            <image src="{{filter.getLocalPhoto(item.logoUrl)}}" bindtap="onBrandsTap" data-id="{{item.id}}" />
+            <!-- 限时抢购和品牌甄选 -->
+            <view class="ui-imgBox" wx:if="{{goodsList.length}}">
+                <image src="{{filter.getReturnPhoto(activity.imgUrl)}}" bindtap="onCheckActivity" data-id="{{activity.id}}" data-isLink="{{activity.isLink}}" />
+                <view class="ui-buyBox">
+                    <view class="ui-buyBox_top">
+                        <view>优选限时购</view>
+                        <view class="ui-topItem">
+                            <view class="ui-topItem_time">{{time.day}}</view>
+                            <view>天</view>
+                            <view class="ui-topItem_time">{{time.hour}}</view>
+                            <view>:</view>
+                            <view class="ui-topItem_time">{{time.minute}}</view>
+                            <view>:</view>
+                            <view class="ui-topItem_time">{{time.second}}</view>
                         </view>
                     </view>
-                </scroll-view>
-                <scroll-view scroll-x class="ui-brandItem_scrollView">
-                    <view class="ui-brandScroll_itemBottom">
-                        <view wx:for="{{BrandList[1]}}" wx:key="{{index}}" class="ui-brandScroll_item">
-                            <image src="{{filter.getLocalPhoto(item.logoUrl)}}" bindtap="onBrandsTap" data-id="{{item.id}}" />
-                        </view>
-                    </view>
-                </scroll-view>
-            </view>
-        </view>
-        <!-- 推荐榜单 -->
-        <view class="ui-recomListBox">
-            <view class="ui-listItem_top">推荐榜单</view>
-            <view class="ui-listItem_bottom">
-                <view class="ui-bottomItem_tap" id="aim" style="position: {{isFixed ? 'fixed' : 'relative'}};top: {{isFixed ? '170rpx' : '0'}}">
-                    <scroll-view scroll-x class="ui-tapItem_scrollView">
-                        <view wx:for="{{tapList}}" wx:key="{{index}}" class="ui-tapScroll_item" bindtap="onClickTap" data-id="{{item.id}}">
-                            <view class="ui-tapScroll_itemText" style="font-weight: {{classifyId == item.id ? '500' : '400'}}" bindtap="onClickTap" data-id="{{item.id}}">
-                                {{item.title}}
+                    <view class="ui-buyBox_bottom" wx:if="{{goodsList.length}}">
+                        <scroll-view scroll-x class="ui-bottomItem_scrollView">
+                            <view wx:for="{{goodsList}}" wx:key="{{index}}" class="ui-scrollView_item">
+                                <image src="{{filter.getLocalPhoto('buy.png')}}" />
+                                <image src="{{filter.getLocalPhoto (item.picUrl)}}" bindtap="onDetailTap" data-id="{{item.id}}" />
+                                <view class="ui-scrollView_itemTitle">{{item.mainTitle}}</view>
+                                <view class="ui-scrollView_itemNow">￥{{item.nowPrice}}</view>
+                                <view class="ui-scrollView_itemPre">￥{{item.originPrice}}</view>
                             </view>
-                            <view class="ui-tapScroll_itemIcon" style="background-color: {{classifyId == item.id ? '#20CAB4' : ''}}"></view>
+                        </scroll-view>
+                    </view>
+                </view>
+            </view>
+            <view class="ui-brandSelectBox" wx:if="{{BrandList[0].length || BrandList[1].length}}">
+                <view class="ui-brandSelectItem_top" bindtap="onAllBrandsTap">品牌甄选</view>
+                <view class="ui-brandSelectItem_bottom">
+                    <scroll-view scroll-x class="ui-brandItem_scrollView">
+                        <view class="ui-brandScroll_itemTop">
+                            <view wx:for="{{BrandList[0]}}" wx:key="{{index}}" class="ui-brandScroll_item">
+                                <image src="{{filter.getLocalPhoto(item.logoUrl)}}" bindtap="onBrandsTap" data-id="{{item.id}}" />
+                            </view>
                         </view>
                     </scroll-view>
-                    <view class="ui-tapItem_Icon" bindtap="onSlideTap">
-                        <image src="{{filter.getLocalPhoto('index_slideDown.png')}}" class="ui-tapItem_downIcon" />
-                    </view>
-                    <view class="modals modals-bottom-dialog" hidden="{{hideModal}}" wx:if="{{tapList.length}}">
-                        <view class="modals-cancel" bindtap="hideModal" catchtouchmove="true"></view>
-                        <view class="bottom-dialog-body bottom-pos" animation="{{animationData}}">
-                            <view class="slideBox">
-                                <view class="ui-slideItem__left">
-                                    <view class="ui-leftItem" wx:for="{{tapList}}" wx:key="{{index}}" bindtap="onClickTap" data-id="{{item.id}}">
-                                        {{item.title}}
+                    <scroll-view scroll-x class="ui-brandItem_scrollView">
+                        <view class="ui-brandScroll_itemBottom">
+                            <view wx:for="{{BrandList[1]}}" wx:key="{{index}}" class="ui-brandScroll_item">
+                                <image src="{{filter.getLocalPhoto(item.logoUrl)}}" bindtap="onBrandsTap" data-id="{{item.id}}" />
+                            </view>
+                        </view>
+                    </scroll-view>
+                </view>
+            </view>
+            <!-- 推荐榜单 -->
+            <view class="ui-recomListBox">
+                <view class="ui-listItem_top">推荐榜单</view>
+                <view class="ui-listItem_bottom">
+                    <view class="ui-bottomItem_tap" id="aim" style="position: {{isFixed ? 'fixed' : 'relative'}};top: {{isFixed ? '170rpx' : '0'}}">
+                        <scroll-view scroll-x class="ui-tapItem_scrollView">
+                            <view wx:for="{{tapList}}" wx:key="{{index}}" class="ui-tapScroll_item" bindtap="onClickTap" data-id="{{item.id}}">
+                                <view class="ui-tapScroll_itemText" style="font-weight: {{classifyId == item.id ? '500' : '400'}}" bindtap="onClickTap" data-id="{{item.id}}">
+                                    {{item.title}}
+                                </view>
+                                <view class="ui-tapScroll_itemIcon" style="background-color: {{classifyId == item.id ? '#20CAB4' : ''}}"></view>
+                            </view>
+                        </scroll-view>
+                        <view class="ui-tapItem_Icon" bindtap="onSlideTap">
+                            <image src="{{filter.getLocalPhoto('index_slideDown.png')}}" class="ui-tapItem_downIcon" />
+                        </view>
+                        <view class="modals modals-bottom-dialog" hidden="{{hideModal}}" wx:if="{{tapList.length}}">
+                            <view class="modals-cancel" bindtap="hideModal" catchtouchmove="true"></view>
+                            <view class="bottom-dialog-body bottom-pos" animation="{{animationData}}">
+                                <view class="slideBox">
+                                    <view class="ui-slideItem__left">
+                                        <view class="ui-leftItem" wx:for="{{tapList}}" wx:key="{{index}}" bindtap="onClickTap" data-id="{{item.id}}">
+                                            {{item.title}}
+                                        </view>
+                                    </view>
+                                    <view class="ui-slideItem__right">
+                                        <image src="{{filter.getLocalPhoto('index_slideUp.png')}}" class="ui-tapItem_upIcon" bindtap="hideModal" />
                                     </view>
                                 </view>
-                                <view class="ui-slideItem__right">
-                                    <image src="{{filter.getLocalPhoto('index_slideUp.png')}}" class="ui-tapItem_upIcon" bindtap="hideModal" />
+                            </view>
+                        </view>
+                    </view>
+                    <view class="ui-bottomItem_content">
+                        <view class="ui-content_item" wx:for="{{list}}" wx:key="{{index}}">
+                            <view class="ui-contentItem_left">
+                                <image src="{{filter.getReturnPhoto(item.picUrl)}}" bindtap="onDetailTap" />
+                            </view>
+                            <view class="ui-contentItem_right">
+                                <view class="ui-content_title">{{item.secondTitle}}</view>
+                                <view class="ui-content_scale">{{item.mainTitle}}</view>
+                                <view class="ui-content_price">
+                                    <text>原价￥{{item.originPrice}}</text>
+                                    <text>已售{{item.soldNum + item.virtualNum}}件</text>
+                                </view>
+                                <view class="ui-content_reward">
+                                    <text>￥{{item.nowPrice}}</text>
+                                    <view wx:if="{{item.commission}}">
+                                        分享赚 ￥{{item.commission}}
+                                    </view>
                                 </view>
                             </view>
                         </view>
                     </view>
                 </view>
-                <view class="ui-bottomItem_content">
-                    <view class="ui-content_item" wx:for="{{list}}" wx:key="{{index}}">
-                        <view class="ui-contentItem_left">
-                            <image src="{{filter.getReturnPhoto(item.picUrl)}}" bindtap="onDetailTap" />
-                        </view>
-                        <view class="ui-contentItem_right">
-                            <view class="ui-content_title">{{item.secondTitle}}</view>
-                            <view class="ui-content_scale">{{item.mainTitle}}</view>
-                            <view class="ui-content_price">
-                                <text>原价￥{{item.originPrice}}</text>
-                                <text>已售{{item.soldNum + item.virtualNum}}件</text>
-                            </view>
-                            <view class="ui-content_reward">
-                                <text>￥{{item.nowPrice}}</text>
-                                <view wx:if="{{item.commission}}">分享赚 ￥{{item.commission}}</view>
-                            </view>
-                        </view>
-                    </view>
-                </view>
             </view>
+            <!-- <topList titleSize="44rpx"/> -->
+            <view class="ui-bottomBox">到底啦，但我们会努力变长的～</view>
         </view>
-        <!-- <topList titleSize="44rpx"/> -->
-        <view class="ui-bottomBox">到底啦，但我们会努力变长的～</view>
     </view>
 </view>

@@ -186,20 +186,20 @@ const Goods = require('../../service/Goods');
 			}
           
         },
-        allChoseTap: function (e) {
-			let self = this;
-			self.setData({
-				allSelect: !self.data.allSelect,
-				medicineFlag: !self.data.allSelect,
-				storeFlag: !self.data.allSelect,
-			});
-			self.totalFun('medecineList');
-			self.totalFun('storeList');
-			self.selectTap( 'medicineFlag','medecineList');
-			self.selectTap( 'storeFlag','storeList');
-			self.getMonney('medecineList',1);
-            self.getMonney('storeList',2);
-        },
+        // allChoseTap: function (e) {
+		// 	let self = this;
+		// 	self.setData({
+		// 		allSelect: !self.data.allSelect,
+		// 		medicineFlag: !self.data.allSelect,
+		// 		storeFlag: !self.data.allSelect,
+		// 	});
+		// 	self.totalFun('medecineList');
+		// 	self.totalFun('storeList');
+		// 	self.selectTap( 'medicineFlag','medecineList');
+		// 	self.selectTap( 'storeFlag','storeList');
+		// 	self.getMonney('medecineList',1);
+        //     self.getMonney('storeList',2);
+        // },
         selectTap: function (flag,arr) {
 			let self = this;
 			let list = self.data[arr];
@@ -211,16 +211,16 @@ const Goods = require('../../service/Goods');
 			})
         },
 
-        totalFun:function (arr) {
-			let self = this;
-			let list = self.data[arr];
-			for (let index = 0; index < list.length; index++) {
-				list[index].isSelect = self.data.allSelect;
-			}
-			self.setData({
-				arr: list
-			})
-        },
+        // totalFun:function (arr) {
+		// 	let self = this;
+		// 	let list = self.data[arr];
+		// 	for (let index = 0; index < list.length; index++) {
+		// 		list[index].isSelect = self.data.allSelect;
+		// 	}
+		// 	self.setData({
+		// 		arr: list
+		// 	})
+        // },
         getMonney: function (arr,type) {
 			let self = this;
 			let mediNum = 0;
@@ -343,6 +343,10 @@ const Goods = require('../../service/Goods');
         },
         onAccountTap: function (e) {
 			let self = this;
+		    let param = {
+				buyType: 2,
+				cartIds: '1,2,3'
+			}
 			_g.navigateTo({
 				url:'pages/pay/account'
 			},self)
