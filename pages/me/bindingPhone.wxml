@@ -3,7 +3,7 @@
 <view class="container">
 	<navBar title='绑定手机号' background='linear-gradient(137deg,rgba(1,206,165,1) 0%,rgba(94,221,218,1) 100%)' color='white' iconTheme='white' back="{{true}}"></navBar>
     <view class="ui-main">
-		<text class="ui-captionText">请绑定手机号</text>
+		<text class="ui-captionText">{{phone?'请绑定手机号':'请修改手机号'}}</text>
 		
 		<view class="ui-bindingPhoneBox ui-identicalBox">
 			<text class="ui-identicalText">手机号</text>
@@ -16,15 +16,15 @@
 			<text class="ui-identicalText">验证码</text>
 			<input class="ui-identicalInput"
 			placeholder="请输入验证码" placeholder-class="ui-identicalPla" 
-			value="{{securityCodeValue}}" bindinput="onSecurityCodeInputName" type="number"/>
+			value="{{codeValue}}" bindinput="onSecurityCodeInputName" type="number"/>
 			<text class="ui-getCodeSent" wx:if="{{!timeFlag}}" bindtap="onGetCodeSent">获取验证码</text>
 			<text class="ui-resendCode" wx:else>重新发送{{count}}s</text>
 		</view>
 		
-		<view class="btn-notBinding" wx:if="{{!phoneValue||!securityCodeValue==1}}">立即绑定</view>
+		<view class="btn-notBinding" wx:if="{{!phoneValue||!codeValue==1}}">立即绑定</view>
 		<view class="btn-Binding" bindtap="onSaveTap" wx:else>立即绑定</view>
 		
 		<!-- 成功弹出框 -->
-		<view class="ui-successfulBinding" wx:if="{{isShow}}"></view>
+		<!-- <view class="ui-successfulBinding" wx:if="{{isShow}}"></view> -->
     </view>
 </view>

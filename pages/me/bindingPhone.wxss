@@ -123,7 +123,7 @@ page{
 	text-align: center;
 }
 
-.ui-successfulBinding{
+/* .ui-successfulBinding{
 	position: fixed;
 	z-index: 9000;
 	width: 350rpx;
@@ -134,4 +134,4 @@ page{
 	background-size: contain;
 	top: 410rpx;
 	left: 200rpx;
-}
+} */

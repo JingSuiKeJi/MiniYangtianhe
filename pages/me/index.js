@@ -219,7 +219,7 @@ const methods = {
 	onStoreTap: function () {
 	    let self = this;
 	    _g.navigateTo({
-	        url: 'pages/pharmacy/store',
+	        url: 'pages/shop/store',
 	    }, self);
 	},
 	//跳转到我的评论
@@ -249,7 +249,7 @@ const methods = {
 		const userInfo = self.data.userInfo;
 	    _g.navigateTo({
 			param:{
-          		 wxNo:userInfo.wxNo
+          		wxNo:userInfo.wxNo
          	},
 	        url: 'pages/me/bindingWeChat',
 	    }, self);
@@ -260,7 +260,7 @@ const methods = {
 		const userInfo = self.data.userInfo;
 	    _g.navigateTo({
 			param:{
-          		 phone:userInfo.phone
+          		phone:userInfo.phone
          	},
 	        url: 'pages/me/bindingPhone',
 	    }, self);
