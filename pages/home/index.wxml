@@ -2,9 +2,9 @@
 <view class=".ui-main">
     <navBar title="养乐药房" background="#3CC7A4" color="white" iconTheme="white">
         <view class="location" slot="left">
-            <view class="ui-addressIcon" />
+            <view class="ui-addressIcon"></view>
             <text class="ui-addressText">{{storeInfo.title}}</text>
-            <view class="icon" />
+            <view class="icon"></view>
         </view>
     </navBar>
     <view class="tab-bottom"></view>
@@ -148,7 +148,7 @@
                             <view class="ui-tapScroll_itemText" style="font-weight: {{classifyId == item.id ? '500' : '400'}}" bindtap="onClickTap" data-id="{{item.id}}">
                                 {{item.title}}
                             </view>
-                            <view class="ui-tapScroll_itemIcon" style="background-color: {{classifyId == item.id ? '#20CAB4' : ''}}"></view>
+                            <view class="ui-tapScroll_itemIcon" hidden="{{classifyId != item.id}}"></view>
                         </view>
                     </scroll-view>
                     <view class="ui-tapItem_Icon" bindtap="onSlideTap">
@@ -170,7 +170,7 @@
                         </view>
                     </view>
                 </view>
-                <view class="ui-bottomItem_content">
+                <view class="ui-bottomItem_content" hidden="{{!list.length}}">
                     <view class="ui-content_item" wx:for="{{list}}" wx:key="{{index}}">
                         <view class="ui-contentItem_left">
                             <image src="{{filter.getReturnPhoto(item.picUrl)}}" bindtap="onDetailTap" />
@@ -188,6 +188,9 @@
                             </view>
                         </view>
                     </view>
+                </view>
+                <view class="ui-bottomItem_contentEmpty" hidden="{{list.length}}">
+                    暂无数据
                 </view>
             </view>
         </view>
