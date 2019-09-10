@@ -15,6 +15,14 @@ class User {
             data: reqData
         }, page);
     }
+	
+	logout(page, reqData) {
+	    _g.dm.canLoadMore = 1;
+	    return _g.ajax({
+	        url: mini.user.logout,
+	        data: reqData
+	    }, page);
+	}
 
     getMyInfo(page, reqData) {
         _g.dm.canLoadMore = 1;
@@ -37,6 +45,27 @@ class User {
             data: reqData
         }, page);
     }
+	bindWX(page, reqData) {
+	    _g.dm.canLoadMore = 1;
+	    return _g.ajax({
+	        url: mini.user.bindWX,
+	        data: reqData
+	    }, page);
+	}
+	sendCode(page, reqData) {
+	    _g.dm.canLoadMore = 1;
+	    return _g.ajax({
+	        url: mini.user.sendCode,
+	        data: reqData
+	    }, page);
+	}
+	bindPhone(page, reqData) {
+	    _g.dm.canLoadMore = 1;
+	    return _g.ajax({
+	        url: mini.user.bindPhone,
+	        data: reqData
+	    }, page);
+	}
 }
 
 module.exports = new User();

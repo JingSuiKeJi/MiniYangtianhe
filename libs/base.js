@@ -75,6 +75,23 @@ base.prototype = {
         return _g.getLS(_c.LSKeys.sessionKey);
     },
 
+    isLogin: function(page, callback) {
+        let _g = this;
+        _g.logger('invoke _g.isLogin');
+        let sessionKey = _g.getLS(_c.LSKeys.sessionKey);
+        let username = _g.getLS(_c.LSKeys.userInfo).username;
+        if (!sessionKey) {
+            setTimeout(() => {
+                wx.switchTab({
+                    url: '/pages/account/login'
+                });
+            }, 0.5 * 1000);
+            callback && callback();
+        } else if (sessionKey) {
+
+        }
+    },
+
     /**
      * 初始化页面对象
      * @param options
@@ -249,6 +266,10 @@ base.prototype = {
             },
             onGotUserInfo: function (e) {
                 const self = this;
+				const  isLogin = self.data.isLogin;
+				self.setData({
+					isLogin:true
+				})
                 const detail = e.detail;
                 // _g.setLogin(self, detail);
                 wx.login({
@@ -447,6 +468,17 @@ base.prototype = {
                     if (res.data.code != 200) {
                         _g.logger('~~~~~ wx.request ', res.data);
                         _g.dm.canLoadMore = 1;
+                        // if (self.route != 'pages/store/register') {
+                        //     if ([4000, 4001, 4005, 4006].indexOf(res.data.code) > -1) {
+                        //         _g.rmLS(_c.LSKeys.sessionKey);
+                        //         _g.rmLS(_c.LSKeys.userInfo);
+                        //         setTimeout(function() {
+                        //             wx.switchTab({
+                        //                 url: '/pages/account/login'
+                        //             });
+                        //         }, 1000);
+                        //     }
+                        // }
                         if ([4000, 4001, 4005, 4006].indexOf(res.data.code) > -1) {
                             _g.rmLS(_c.LSKeys.sessionKey);
                             _g.rmLS(_c.LSKeys.userInfo);
