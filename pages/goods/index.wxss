@@ -1,4 +1,4 @@
-/* pages/collage/index.wxss */
+/* pages/goods/index.wxss */
 .ui-imgBox {
     width: 100%;
     text-align: center;

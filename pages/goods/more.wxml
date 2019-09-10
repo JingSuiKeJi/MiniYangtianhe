@@ -1,4 +1,4 @@
-<!--pages/collage/more.wxml-->
+<!--pages/goods/more.wxml-->
 <wxs module="filter" src="../../filter/filter.wxs"></wxs>
 <view class="ui-contain">
     <view class="main">

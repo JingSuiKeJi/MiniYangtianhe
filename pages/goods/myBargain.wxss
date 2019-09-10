@@ -1,4 +1,4 @@
-/* pages/collage/myBargain.wxss */
+/* pages/goods/myBargain.wxss */
 .ui-content_top {
     width: 100%;
     height: 90rpx;

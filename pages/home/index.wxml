@@ -1,5 +1,5 @@
 <wxs module="filter" src="../../filter/filter.wxs"></wxs>
-<view class="container">
+<view class=".ui-main">
 	<navBar title='养乐药房' background='#3CC7A4' color='white' iconTheme='white'>
         <view class='location' slot="left">
 			<view class='ui-addressIcon' />
@@ -10,7 +10,7 @@
 	<view class='tab-bottom'></view>
    <view class="main">
         <view>
-            <view class="ui-headBox" style="margin-top: {{statusBarHeight+44}}px;">
+            <view class="ui-headBox" style="margin-top: {{statusBarHeight+44}}px;" wx:if="{{!isFixed}}">
                 <view class="ui-headBox_search">
                     <input type="text" placeholder="搜索你想要的商品" bindinput="onSearchTap" bindfocus="onSkipTap" value="{{inputValue}}"/>
                 </view>
@@ -56,14 +56,14 @@
                         <view class="ui-block__item" 
                             wx:for="{{blockList}}" 
                             wx:key="{{index}}"
-                            style="left: {{item.left*100+140+'rpx'}};bottom: {{item.bottom*100 + 120+'rpx'}};-webkit-transform: rotate({{item.rotate+'deg'}}); -moz-transform: rotate({{item.rotate+'deg'}});-ms-transform: rotate({{item.rotate+'deg'}});-o-transform: rotate({{item.rotate+'deg'}}); transform: rotate({{item.rotate+'deg'}});background-color: {{index >= BMIIndex ? '#40F6CE' : '#02CFA5'}}"
+                            style="left: {{item.left*100+140+'rpx'}};bottom: {{item.bottom*100 + 120+'rpx'}};-webkit-transform: rotate({{item.rotate+'deg'}}); -moz-transform: rotate({{item.rotate+'deg'}});-ms-transform: rotate({{item.rotate+'deg'}});-o-transform: rotate({{item.rotate+'deg'}}); transform: rotate({{item.rotate+'deg'}});background-color: {{index >= BMIIndex ? '#EEEEEE' : '#02CFA5'}}"
                         ></view>
                         <view class="ui-centerItem_stepText">今日步数</view>
-                        <view class="ui-centerItem_detailText">6581<text>步</text></view>
-                        <view class="centerItem_aimText">目标1000步</view>
+                        <view class="ui-centerItem_detailText">{{stepInfo.todayStep}}<text>步</text></view>
+                        <view class="centerItem_aimText">目标{{stepInfo.targetStep}}步</view>
                         <view class="ui-leftItem_loadText" bindtap="onStepTap">{{step}}</view>
                     </view>
-                    <view class="ui-stepTapBox_right">今日排名：未上榜</view>
+                    <view class="ui-stepTapBox_right">今日排名：{{stepInfo.rank}}</view>
                     <image src="{{filter.getLocalPhoto('question_icon.png')}}" />
                 </view>
         </view>
@@ -80,7 +80,7 @@
             <view class="ui-wrapBox">
             <view class="ui-classBox">
                 <swiper duration="500" class="ui-imageItem_swper" bindchange="onClassifyTap" >
-                    <block wx:for="{{classList}}" wx:for-item="bannerItem">
+                    <block wx:for="{{classList}}" wx:for-item="bannerItem" wx:key="{{index}}">
                         <swiper-item>
                             <view  class="ui-classBox_item" wx:for="{{bannerItem}}"  wx:key="{{index}}" bindtap="onListTap" data-id="{{item.id}}" data-isLink="{{item.isLink}}" >
                                 <image src="{{filter.getReturnPhoto(item.imgUrl)}}" class="ui-classItem__img" />
@@ -90,7 +90,7 @@
                     </block>
                 </swiper>
                 <view class="ui-classBox_icon" >
-                    <text  class="{{classifyType == index ? 'isSelect' : ''}}" wx:for="{{classList}}"></text>  
+                    <text  class="{{classifyType == index ? 'isSelect' : ''}}" wx:for="{{classList}}" wx:key="{{index}}"></text>  
                 </view>
             </view>
             </view>
@@ -123,8 +123,8 @@
                     </scroll-view>
                 </view>
             </view>
-        </view>
-        <view class="ui-brandSelectBox">
+        </view> 
+        <view class="ui-brandSelectBox" wx:if="{{BrandList[0].length || BrandList[1].length}}">
             <view class="ui-brandSelectItem_top"  bindtap="onAllBrandsTap">品牌甄选</view>
             <view class="ui-brandSelectItem_bottom">
                 <scroll-view scroll-x  class="ui-brandItem_scrollView">
@@ -147,7 +147,7 @@
         <view class="ui-recomListBox">
             <view class="ui-listItem_top" >推荐榜单</view>
             <view class="ui-listItem_bottom">
-                <view class="ui-bottomItem_tap" >
+                <view class="ui-bottomItem_tap" id="aim"  style="position: {{isFixed ? 'fixed' : 'relative'}};top: {{isFixed ? '170rpx' : '0'}}">
                     <scroll-view scroll-x  class="ui-tapItem_scrollView">
                         <view wx:for="{{tapList}}" wx:key="{{index}}" class="ui-tapScroll_item" bindtap="onClickTap" data-id="{{item.id}}">
                             <view class="ui-tapScroll_itemText" style="font-weight: {{classifyId == item.id ? '500' : '400'}}" bindtap="onClickTap" data-id="{{item.id}}">{{item.title}}</view>

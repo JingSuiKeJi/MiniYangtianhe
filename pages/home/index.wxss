@@ -4,7 +4,7 @@ page {
 }
 
 
-.container {
+.ui-main {
     height: 100%;
     width: 100%;
     background-color: #F5F5F5 ;
@@ -556,10 +556,12 @@ page {
     display: inline-block;
     border-bottom: 1rpx solid #F5F5F5;
     position: relative;
+    top: 0,
 }
 .ui-tapItem_scrollView {
     width: 89%;
     height: 80rpx;
+    line-height: 80rpx;
     display: inline-block;
     white-space: nowrap;
     padding-left: 30rpx;
@@ -600,7 +602,7 @@ page {
     height: 20rpx;
     position: absolute;
     left: 15rpx;
-    top: 20rpx;
+    top: 30rpx;
 }
 .ui-content_item {
     padding: 20rpx; 
@@ -723,6 +725,7 @@ page {
     padding: 32rpx;
 }
 .ui-slideItem__left {
+    width: 95%;
     display: inline-block;
 }
 .ui-leftItem {

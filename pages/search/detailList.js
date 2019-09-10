@@ -93,7 +93,7 @@ const methods = {
         let self = this;
         let opts = e.target.dataset;
         _g.navigateTo({
-            url: 'pages/collage/detail',
+            url: 'pages/goods/detail',
             param: { id: opts.id}
         },self)
     },

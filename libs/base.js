@@ -104,6 +104,7 @@ base.prototype = {
         var onHide = options.onHide; // 重写onHide
         var onReady = options.onReady; // 重写onReady
         var onUnload = options.onUnload; // 重写onUnload
+        var onPageScroll = options.onPageScroll;
         var methods = options.methods || {}; // 页面中的方法
         var temps = options.temps || {}; // 页面中的模板
         const headerHeight = _g.getHeaderHeight().headerHeight;
@@ -278,6 +279,11 @@ base.prototype = {
                     }
                 })
                 
+            },
+            onPageScroll: function(res) {
+                // 执行页面自定义的 onShow 方法
+                var self = this;
+                self.pageScroll && self.pageScroll(res);
             },
             getPhoneNumber: function (e) {
                 console.log(e);

@@ -3,6 +3,7 @@ const app = getApp();
 const _ = app.underscore;
 const _g = app.base;
 const _c = app.config;
+const Platfrom = require('../../service/Platfrom');
 // 初始化数据
   const data = {
       
@@ -10,7 +11,7 @@ const _c = app.config;
   
   // 页面onLoad方法
   const onLoad = function (self) {
-     
+     self.getData();
       
   };
   
@@ -22,9 +23,21 @@ const _c = app.config;
      
   }
   // 页面中的方法
-  const methods = {
-    
-  };
+const methods = {
+    getData: function () {
+        let self = this;
+        Platfrom.getArticle(self, {
+            type: 'pointsRule'
+        }).then((ret)=>{
+            let data = ret.data;
+            self.setData({
+               rules: data
+            });
+          
+        },(err)=>{
+        });
+    }
+};
   
   // 有引用template时定义
   const temps = {};

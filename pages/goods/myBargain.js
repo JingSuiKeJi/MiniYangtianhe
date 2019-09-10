@@ -1,4 +1,4 @@
-// pages/collage/myBargain.js
+// pages/goods/myBargain.js
 // js库引入
 const app = getApp();
 const _ = app.underscore;

@@ -1,4 +1,4 @@
-// pages/collage/bargainList.js
+// pages/goods/bargainList.js
 const app = getApp();
 const _ = app.underscore;
 const _g = app.base;
@@ -57,7 +57,7 @@ const methods = {
     let self = this;
     console.log(22)
     _g.navigateTo({
-      url: 'pages/collage/bargain',
+      url: 'pages/goods/bargain',
     },self)
   },
   
@@ -65,7 +65,7 @@ const methods = {
     let self = this;
     console.log(22);
     _g.navigateTo({
-      url: 'pages/collage/myBargain',
+      url: 'pages/goods/myBargain',
     },self)
   },
   moveBarrage: function () {

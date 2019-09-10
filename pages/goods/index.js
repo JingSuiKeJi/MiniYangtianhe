@@ -1,4 +1,4 @@
-// pages/collage/index.js
+// pages/goods/index.js
 // js库引入
 const app = getApp();
 const _ = app.underscore;
@@ -97,7 +97,7 @@ const methods = {
     let self = this;
     console.log(22)
     _g.navigateTo({
-      url: 'pages/collage/detail',
+      url: 'pages/goods/detail',
       // param: {
 
       // }

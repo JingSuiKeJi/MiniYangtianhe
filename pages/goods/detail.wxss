@@ -1,4 +1,4 @@
-/* pages/collage/detail.wxss */
+/* pages/goods/detail.wxss */
 Page {
   background-color: #F5F5F5;
   height: 100%;

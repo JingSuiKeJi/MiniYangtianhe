@@ -1,4 +1,4 @@
-<!--pages/collage/index.wxml-->
+<!--pages/goods/index.wxml-->
 <wxs module="filter" src="../../filter/filter.wxs"></wxs>
 <view class="contain">
 	<navBar title='拼团会' background='linear-gradient(137deg,rgba(1,206,165,1) 0%,rgba(94,221,218,1) 100%)' color='white' iconTheme='white' back="{{true}}"></navBar>

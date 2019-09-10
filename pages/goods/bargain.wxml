@@ -1,4 +1,4 @@
-<!--pages/collage/myBargain.wxml-->
+<!--pages/goods/myBargain.wxml-->
 <wxs module="filter" src="../../filter/filter.wxs"></wxs>
 <view class="contain">
 	<navBar title='xxx的砍价' background='white' color='black' iconTheme='black' back="{{true}}"></navBar>

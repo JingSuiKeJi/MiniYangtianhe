@@ -1,4 +1,4 @@
-// pages/collage/join.js
+// pages/goods/myBargain.js
 // js库引入
 const app = getApp();
 const _ = app.underscore;
@@ -7,7 +7,9 @@ const _c = app.config;
 
 // 初始化数据
 const data = {
-// value: 0
+    hideModal:true, //模态框的状态  true-隐藏  false-显示
+    animationData:{},//
+    type: '',
 };
 
 // 页面onLoad方法
@@ -24,21 +26,36 @@ const onUnload= function (self) {
 }
 // 页面中的方法
 const methods = {
-    getData: function () {
-    let self = this;
-    },
-    onJoinTap: function (e) {
+      getData: function () {
+          let self = this;
+      },
+        // 显示遮罩层
+      showModal: function (e) {
+        let self = this;
+        self.setData({
+          type: e.target.dataset.type,
+          hideModal:false
+        })
+      },
+      // 隐藏遮罩层
+      hideModal: function () {
+        let self = this;
+        self.setData({
+          hideModal:true
+        })  
+      },
+      onDetailTap: function (e) {
         let self = this;
         _g.navigateTo({
-            url: 'pages/pay/order'
+          url: 'pages/goods/detail'
         },self)
-    },
-    onDetailTap: function (e) {
+      },
+      onMoreTap: function (e) {
         let self = this;
         _g.navigateTo({
-            url: 'pages/collage/detail'
+          url: 'pages/goods/bargainList'
         },self)
-    }
+      }
 };
 
 // 有引用template时定义

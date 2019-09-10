@@ -62,7 +62,7 @@ const data = {
       let self = this;
       console.log(22)
       _g.navigateTo({
-        url: 'pages/collage/detail'
+        url: 'pages/goods/detail'
       },self)
     }
   };

@@ -1,4 +1,4 @@
-<!--pages/collage/comments.wxml-->
+<!--pages/goods/comments.wxml-->
 <wxs module="filter" src="../../filter/filter.wxs"></wxs>
 <view class="ui-contain">
    <view class="ui-main">  

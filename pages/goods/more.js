@@ -1,4 +1,4 @@
-// pages/collage/more.js
+// pages/goods/more.js
 // js库引入
 const app = getApp();
 const _ = app.underscore;
@@ -44,7 +44,7 @@ const methods = {
     onJoinTap: function (e) {
         let self = this;
         _g.navigateTo({
-            url: 'pages/collage/join'
+            url: 'pages/goods/join'
         },self)
     }
 };

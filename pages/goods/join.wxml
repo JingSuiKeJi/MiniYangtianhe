@@ -1,4 +1,4 @@
-<!--pages/collage/join.wxml-->
+<!--pages/goods/join.wxml-->
 <wxs module="filter" src="../../filter/filter.wxs"></wxs>
 <view class="contain">
 	<navBar title='养天和优选' background='white' color='black' iconTheme='black' back="{{true}}"></navBar>

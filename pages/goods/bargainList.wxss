@@ -1,5 +1,5 @@
-/* pages/collage/bargainList.wxss */
-/* pages/collage/index.wxss */
+/* pages/goods/bargainList.wxss */
+/* pages/goods/index.wxss */
 .ui-imgBox {
     width: 100%;
     text-align: center;
