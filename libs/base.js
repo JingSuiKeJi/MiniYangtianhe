@@ -391,7 +391,7 @@ base.prototype = {
             if (_g.getUserInfo()) {
                 var userInfo = _g.getUserInfo();
                 postData.miniUserId = userInfo.id;
-                postData.data.storeId = userInfo.store.id;
+                opts.data.storeId = userInfo.store.id;
             } else {
                 if (opts.url != _c.apiUrls.store.storeList) {
                     opts.data.storeId = _g.getLS(_c.LSKeys.storeInfo).id;
@@ -1526,9 +1526,7 @@ base.prototype = {
     getMyInfo: function (self, opts) {
         const _g = this;
         const User = require('../service/User');
-        User.getMyInfo(self, {
-            
-        }).then((ret) => {
+        User.getMyInfo(self, {}).then((ret) => {
             _g.setLS(_c.LSKeys.userInfo, ret.data.myInfo);
             if (opts.type == 'login') {
                 event.emit('login-suc', {
