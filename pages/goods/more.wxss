@@ -1,0 +1,60 @@
+/* pages/goods/more.wxss */
+.main {
+    width: 100%;
+}
+.moreItem {
+    width: 100%;
+    height: 140rpx ;
+    white-space: nowrap;
+    border-bottom: 1rpx solid #E5E5E5;
+    position: relative;
+}
+.ui-item_imgBox, .ui-item_info,.ui-item_teamer,.ui-item_btnBox{
+    display: inline-block;
+    vertical-align: top;
+}
+.ui-imgItem_icon {
+    width: 104rpx;
+    height: 104rpx;
+    margin: 20rpx 20rpx 30rpx;
+}
+.ui-item_info  .ui-infoItem_title{
+    font-size:22rpx;
+    font-family:PingFang-SC-Medium;
+    font-weight:500;
+    color:#333333;
+    margin-top: 35rpx;
+}
+.ui-item_info  .ui-infoItem_time {
+    font-size:22rpx;
+    font-family:PingFang-SC-Medium;
+    font-weight:500;
+    color:#666666;
+}
+.ui-item_teamer {
+    font-size:22rpx;
+    font-family:PingFang-SC-Medium;
+    font-weight:500;
+    color:#333333;
+    line-height: 140rpx;
+    margin-left: 45rpx;
+}
+.ui-item_teamer > text {
+    color: #51DBD3;
+}
+.ui-item_btnBox .ui-btnItem_btn{
+    width: 124rpx;
+    height: 52rpx;
+    position: absolute;
+    top: 40rpx;
+    right: 30rpx;
+}
+.ui-item_btnBox .ui-btnItem_text {
+    font-size:24rpx;
+    font-family:PingFang-SC-Medium;
+    font-weight:500;
+    color:#fff;
+    position: absolute;
+    top: 47rpx;
+    right: 57rpx;
+}

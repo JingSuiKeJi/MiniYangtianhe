@@ -1,0 +1,48 @@
+<!--pages/goods/join.wxml-->
+<wxs module="filter" src="../../filter/filter.wxs"></wxs>
+<view class="contain">
+	<navBar title='养天和优选' background='white' color='black' iconTheme='black' back="{{true}}"></navBar>
+    <view class="main">
+        <view class="ui-headerBox">
+            <view class="ui-contentBox" bindtap="onDetailTap">
+                <view class="contentItem_left">
+                    <image src="{{filter.getLocalPhoto('pintuan.png')}}" class="ui-leftItem_textIcon"/>
+                    <image src="{{filter.getLocalPhoto('e_c.png')}}" class="ui-leftItem_imgIcon"/>
+                </view>
+                <view class="contentItem_center">
+                    <view class="centerItem_title">[修正]红豆芡实薏米茶</view>
+                    <view class="centerItem_scale">
+                         <text >250g x 10包</text>
+                         <text > x 1</text> 
+                    </view>
+                    <view class="centerItem_price">
+                        <text class="centerItem_nowPrice">¥9.99</text>
+                        <text class="centerItem_prePrice">原价¥19.00</text>
+                    </view>
+                </view>
+                <view class="contentItem_right">></view>
+            </view>
+        </view>
+        <view class="ui-bodyBox">
+            <view class="ui-bodyItem_top">
+                <text class="ui-topItem_text">还有</text>
+                <text class="ui-topItem_time">06</text>
+                <text>:</text>
+                <text class="ui-topItem_time">41</text>
+                <text>:</text>
+                <text class="ui-topItem_time">32</text>
+                <text class="ui-topItem_text">结束</text>
+            </view>
+            <view class="ui-bodyItem_middle">还差1人</view>
+            <view class="ui-bodyItem_bottom">
+                <image src="{{filter.getLocalPhoto('addIcon.png')}}" />
+                <image src="{{filter.getLocalPhoto('addIcon.png')}}" />
+                <image src="{{filter.getLocalPhoto('addIcon.png')}}" />
+            </view>
+        </view>
+        <view class="ui-bodyItem_bottom">
+            <image src="{{filter.getLocalPhoto('join_btn_icon.png')}}" class="ui-botomItem_bgIcon" bindtap="onJoinTap"/>
+            <text class="ui-botomItem_text" bindtap="onJoinTap">立即参团</text>
+        </view>
+    </view>
+</view>

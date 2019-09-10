@@ -1,0 +1,158 @@
+/* pages/goods/myBargain.wxss */
+.ui-content_top {
+    width: 100%;
+    height: 90rpx;
+    border-bottom: 1rpx solid  #F1F1F1;
+    /* margin-top: 20rpx; */
+    line-height: 90rpx;
+}
+
+.ui-content_top .ui-scrollView_item{
+    display: inline-block;
+    margin-left: 80rpx;
+    vertical-align: bottom;
+   text-align: center;
+    
+}
+.ui-content_top .ui-scrollView_item:nth-child(2) {
+    margin-left: 150rpx;
+    margin-right: 100rpx;
+}
+.ui-scroll_text {
+    font-size:26rpx;
+    font-family:PingFangSC-Regular;
+    font-weight:400;
+    color:#999999;
+   
+}
+.ui-scrollView_item {
+    position: relative;
+}
+.ui-scroll_icon {
+    width: 68rpx;
+    height: 6rpx;
+    background-color: transparent;
+    border-radius:3rpx;
+    position: absolute;
+    bottom: 0;
+    left: 7rpx;
+    
+}
+.ui-scrollView_item .ui-selectTex {
+    background-color: #20CAB4;
+    margin-left: 0;
+}
+.ui-bottom_item {
+    width: 100%;
+    display: inline-block;
+    white-space: nowrap;
+    border-bottom: 1rpx solid #F1F1F1;
+}
+.ui-bottomItem_left {
+    display: inline-block;
+    position: relative;
+
+}
+.ui-bottomItem_left > image {
+    width: 288rpx;
+    height: 288rpx;
+    margin-bottom: 0;
+}
+.ui-bottomItem_left .ui-timeBox {
+    width: 100%;
+    height: 40rpx;
+    background:rgba(29,196,188,0.6);
+    font-size:22rpx;
+    font-family:PingFang-SC-Medium;
+    font-weight:500;
+    color:#fff;
+    line-height:40rpx;
+    text-align: center;
+     position: absolute;
+     top: 265rpx;
+}
+.ui-bottomItem_right {
+    width: 400rpx;
+    display: inline-block;
+    vertical-align: top;
+    padding-left: 30rpx;
+    position: relative;
+}
+.ui-bottomItem_right .ui-rightItem_title {
+    font-size: 32rpx;
+    font-family:PingFangSC-Regular;
+    font-weight:400;
+    color:#333333;
+    line-height:32rpx;
+    margin: 38rpx auto 110rpx auto;
+}
+.ui-bottomItem_right .ui-rightItem_text {
+    font-size:22rpx;
+    font-family:PingFang-SC-Medium;
+    font-weight:500;
+    color:#ED3D3B;
+    line-height:32rpx;
+    position: absolute;
+    top: 100rpx;
+}
+.ui-lineBox {
+    margin-top: -7rpx;
+}
+.ui-lineBox .ui-grayLine {
+    width: 200rpx;
+    height: 8rpx;
+    background-color: #EAEAEA;
+    border-radius:4rpx;
+    display: inline-block;
+}
+.ui-lineBox .ui-greenLine {
+    width: 140rpx;
+    height: 8rpx;
+    background-color: #1DC4BC;
+    border-radius:4rpx;
+    display: inline-block;
+    margin-left: -200rpx;
+}
+.ui-rightItem_price {
+    position: relative;
+}
+.ui-rightItem_priceText {
+    font-size:34rpx;
+    font-family:PingFangSC-Medium;
+    font-weight:500;
+    color:#DE4C3E;
+}
+.ui-rightItem_preText {
+    font-size:22rpx;
+    font-family:PingFangSC-Regular;
+    font-weight:400;
+    color:#999999;
+    display: inline-block;
+    margin-left: 20rpx;
+    text-decoration: line-through;
+    position: absolute;
+    top: 10rpx;
+}
+.ui-rightItem_button {
+    width:124rpx;
+    height:48rpx;
+    background-image: url(http://www.gzlingren.com:8098/yangtianhe/myBargain_greenBtn.png);
+    background-size: 124rpx 48rpx; 
+    color: #fff;
+    font-size:24rpx;
+    font-family:PingFangSC-Regular;
+    font-weight:400;
+    line-height: 48rpx;
+    text-align: center;
+    float: right;
+    margin-right: 20rpx;
+    margin-top: 15rpx;
+}
+.ui-lineBox_text {
+    font-size:22rpx;
+    font-family:PingFangSC-Regular;
+    font-weight:400;
+    color:#1DC4BC;
+    line-height:22rpx;
+    margin-left: 130rpx;
+}
