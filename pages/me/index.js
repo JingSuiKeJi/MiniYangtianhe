@@ -84,7 +84,6 @@ const methods = {
     // 退出登录
     onLogOutTap: function() {
         var self = this;
-        console.log(self.data.userInfo.wxNo);
         const inviter = self.data.userInfo.inviter;
         //登出接口
         User.logout(self, {
@@ -95,6 +94,8 @@ const methods = {
             _g.rmLS(_c.LSKeys.userInfo);
             // 清除本地缓存sessionKey
             _g.rmLS(_c.LSKeys.sessionKey);
+            //通知所有页面退出登录
+            event.emit('logout-suc');
             // 渲染层更新用户信息
             self.setData({
                 userInfo: {}, //用户信息置空
