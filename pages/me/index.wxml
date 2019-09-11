@@ -1,4 +1,4 @@
-<!-- <wxs module="filter" src="../../filter/filter.wxs"></wxs> -->
+<wxs module="filter" src="../../filter/filter.wxs"></wxs>
 <!--index.wxml-->
 <view class="container">
 	<navBar title='我的' background='#20CAB4' color='white' iconTheme='white' back="{{true}}"></navBar>
@@ -8,7 +8,7 @@
             <view class="ui-infoItem">
 				<!-- 头像 -->
                 <view class="ui-itemImgBox">
-					<image class="ui-haveAvatar" wx:if="{{isLogin}}" src="{{userInfo.avatar}}"></image>
+					<image class="ui-haveAvatar" wx:if="{{isLogin}}" src="{{filter.getAvatar(host,userInfo.avatar)}}" mode="aspectFill"></image>
 					<image class="ui-noAvatar" wx:else src="http://www.gzlingren.com:8098/yangtianhe/my_personalIcon.png"></image>
 				</view>
 				<!-- id -->

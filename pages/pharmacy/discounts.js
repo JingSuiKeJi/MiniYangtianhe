@@ -5,37 +5,34 @@ const _g = app.base;
 const _c = app.config;
 const _t = app.temps;
 const event = app.event;
+const User = require('../../service/User');
+
 let data = {
 	toBeUsed:true,
 	haveBeenUsed:false,
 	outOfDate:false,
-	currentIndex:'0',
-	BeUsedNum:5,
-	BeenUsedNum:4,
-	outOfDateNum:3,
-	discountsList:[
-		{price:"25",moneyOff:"99",couponType:"全场券",condition:"全场通用",startTime:"2019-07-31",endTime:"2019-08-02",status:"0"},
-		{price:"25",moneyOff:"99",couponType:"全场券",condition:"全场通用",startTime:"2019-07-31",endTime:"2019-08-02",status:"0"},
-		{price:"25",moneyOff:"99",couponType:"全场券",condition:"全场通用",startTime:"2019-07-31",endTime:"2019-08-02",status:"0"},
-		{price:"25",moneyOff:"99",couponType:"全场券",condition:"全场通用",startTime:"2019-07-31",endTime:"2019-08-02",status:"0"},
-		{price:"288",moneyOff:"599",couponType:"全场券",condition:"全场通用",startTime:"2019-07-31",endTime:"2019-08-02",status:"0"},
-		{price:"98",moneyOff:"199",couponType:"药房专享",condition:"仅限药房可用",startTime:"2019-07-31",endTime:"2019-08-02",status:"0"},
-		{price:"25",moneyOff:"99",couponType:"商城专享",condition:"仅限商城可用",startTime:"2019-07-31",endTime:"2019-08-02",status:"0"},
-		{price:"25",moneyOff:"99",couponType:"大神林实惠店专享",condition:"大神林店专用",startTime:"2019-07-31",endTime:"2019-08-02",status:"0"},
-		{price:"25",moneyOff:"99",couponType:"全场券",condition:"全场通用",startTime:"2019-07-31",endTime:"2019-08-02",status:"1"},
-		{price:"288",moneyOff:"599",couponType:"全场券",condition:"全场通用",startTime:"2019-07-31",endTime:"2019-08-02",status:"1"},
-		{price:"98",moneyOff:"199",couponType:"药房专享",condition:"仅限药房可用",startTime:"2019-07-31",endTime:"2019-08-02",status:"1"},
-		{price:"25",moneyOff:"99",couponType:"商城专享",condition:"仅限商城可用",startTime:"2019-07-31",endTime:"2019-08-02",status:"1"},
-		{price:"25",moneyOff:"99",couponType:"全场券",condition:"全场通用",startTime:"2019-07-31",endTime:"2019-08-02",status:"2"},
-		{price:"25",moneyOff:"599",couponType:"全场券",condition:"全场通用",startTime:"2019-07-31",endTime:"2019-08-02",status:"2"},
-		{price:"25",moneyOff:"199",couponType:"药房专享",condition:"仅限药房可用",startTime:"2019-07-31",endTime:"2019-08-02",status:"2"},
-	]
+	BeUsedNum:1,
+	BeenUsedNum:1,
+	outOfDateNum:1,
+	InvalidList: [{price:"25",moneyOff:"99",couponType:"大神林实惠店专享",condition:"大神林店专用",startTime:"2019-07-31",endTime:"2019-08-02"}], // 过期
+	waitUseList: [{price:"25",moneyOff:"99",couponType:"全场券",condition:"全场通用",startTime:"2019-07-31",endTime:"2019-08-02"}], // 待使用
+	usedList: [{price:"25",moneyOff:"199",couponType:"药房专享",condition:"仅限药房可用",startTime:"2019-07-31",endTime:"2019-08-02"}], // 已使用
 };
-const onLoad = function(self) {}
+const onLoad = function(self) {
+	self.getData();
+}
 const onShow = function(self) {}
 const onReady = function(self) {}
 const onUnload = function(self) {}
 const methods = {
+	getData: function() {
+		User.getCouponList(self, {
+		}).then((ret) => {
+		    console.log("获取成功");
+		}, (err) => {
+		    console.log("获取失败");
+		});
+	},
 	//待使用
 	onToBeUsedTap:function(){
 		const self = this;

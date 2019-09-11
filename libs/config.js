@@ -91,6 +91,9 @@ config.prototype = {
 			bindWX:'/app/user/bindWX.do',
 			sendCode:'/app/user/sendCode.do',
 			bindPhone:'/app/user/bindPhone.do',
+			getPoster:'/app/user/getPoster.do',
+			msgToggle:'/app/user/msgToggle.do',
+			getCouponList:'/app/user/getCouponList.do',
         },
         goods: {
             getGoodsDetail: '/app/goods/getGoodsDetail.do',

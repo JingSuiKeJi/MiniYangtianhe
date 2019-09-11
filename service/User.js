@@ -80,6 +80,41 @@ class User {
 	        data: reqData
 	    }, page);
 	}
+	getPoster(page, reqData) {
+	    _g.dm.canLoadMore = 1;
+	    return _g.ajax({
+	        url: mini.user.getPoster,
+	        data: reqData
+	    }, page);
+	}
+	msgToggle(page, reqData) {
+	    _g.dm.canLoadMore = 1;
+	    return _g.ajax({
+	        url: mini.user.msgToggle,
+	        data: reqData
+	    }, page);
+	}
+	getCouponList(page, reqData) {
+	    _g.dm.canLoadMore = 1;
+	    return _g.ajax({
+	        url: mini.user.getCouponList,
+	        data: reqData
+	    }, page);
+	}
+	getCompanyList(page, reqData) {
+	    _g.dm.canLoadMore = 1;
+	    return _g.ajax({
+	        url: mini.user.getCompanyList,
+	        data: reqData
+	    }, page);
+	}
+	apply(page, reqData) {
+	    _g.dm.canLoadMore = 1;
+	    return _g.ajax({
+	        url: mini.user.apply,
+	        data: reqData
+	    }, page);
+	}
 }
 
 module.exports = new User();
