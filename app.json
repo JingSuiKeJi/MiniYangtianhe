@@ -98,7 +98,9 @@
     ]
   },
   "window": {},
-  "usingComponents": {},
+  "usingComponents": {
+    "authorize": "/components/authorize/authorize"
+   },
   "permission": {
     "scope.userLocation": {
       "desc": "获取定位"

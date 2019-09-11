@@ -16,10 +16,10 @@ class Order {
             data: reqData
         }, page);
     }
-    common(page, reqData) {
+    preOrder(page, reqData) {
         _g.dm.canLoadMore = 1;
         return _g.ajax({
-            url: mini.order.common,
+            url: mini.order.preOrder,
             data: reqData
         }, page);
     }

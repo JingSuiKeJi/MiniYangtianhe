@@ -7,6 +7,10 @@ const Order = require('../../service/Order');
 
 // 初始化数据
 const data = {
+    location: {
+        lon: 112.59000,
+        lat: 28.12000
+    },
     goodsList: [],
     postType: '请输入配送方式',
     type: -1,
@@ -26,7 +30,7 @@ const data = {
 
 // 页面onLoad方法
 const onLoad = function (self) {
-    
+
     // let data = {
     //     platformFlag: self.data.platformFlag,
     //     id: self.data.id,
@@ -40,6 +44,11 @@ const onLoad = function (self) {
     // }
     // self.setData(data)
     // self.getData();
+    if (self.data.postData.platformFlag == 1) {
+        self.preOrder();
+    } else {
+        self.getLocation();
+    }
 };
 
 // 页面onShow方法
@@ -51,8 +60,37 @@ const onUnload = function (self) {
 }
 // 页面中的方法
 const methods = {
+    getLocation() {
+        const self = this;
+        _g.getLocation().then((res) => {
+            self.setData({
+                location: {
+                    lon: res.longitude,
+                    lat: res.latitude
+                }
+            });
+            self.preOrder();
+        }, (error) => {
+        });
+    },
     preOrder() {
+        const self = this;
+        if (self.data.from == 'goodsDetail') {
+            let postData = self.data.postData;
+            let data = {
+                preGoods: {
+                    goodsId: postData.id,
+                    num: postData.num,
+                },
+                sysFlag: postData.platformFlag
+            };
+            if (postData.skuId) data.preGoods.skuId = postData.skuId;
+            Order.preOrder(self, data).then((ret)=>{
 
+            });
+        } else if (self.data.from == 'cart') {
+
+        }
     },
     getData: function () {
         let self = this;

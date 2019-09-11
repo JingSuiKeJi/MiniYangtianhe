@@ -1,77 +1,76 @@
-<!-- <wxs module="filter" src="../../filter/filter.wxs"></wxs> -->
+<wxs module="filter" src="../../filter/filter.wxs"></wxs>
 <!--blissDetail.wxml-->
 <view class="container">
-	<view class="ui-main">
-		<navBar ext-class="navPosition" title='福气明细' iconTheme='white' color='#ffffff' background='transparent' back="{{true}}" bindback="handlerGobackClick"></navBar>
-		<view class="ui-moneyBox">
-			<view class="moneyInfo">
-				<text>5</text>
-				<view class="ui-blissTextFlex">
-					<view class="ui-blissIcon"></view>
-					<text>可用福气</text>
-				</view>
-			</view>
-			<view class="btn-withdraw btn-common" bindtap="showDialogBtn">充值</view>
-			<view class="btn-presented btn-common" bindtap="showPresentedBtn">赠送</view>
-		</view>
-		<scroll-view class="ui-withdrawInfoBox" scroll-y="true">
-			<view class="ui-withdraw__title">福气明细</view>
-			<block wx:if="{{withdrawlist.length > 0}}">
-				<view class="ui-withdrawInfoItem">
-					<view class="ui-withdrawDetail" wx:for="{{withdrawlist}}" wx:for-index="idx" wx:key="idx" wx:for-item="item"
-					style="color: {{item.money>0?'#666666':'#20CAB4'}};">
-						<text>{{item.createTime}}</text>
-						<text>{{item.money}}</text>
-						<text class="ui-presentedTextBox" wx:if="{{item.id}}">
-							<text>{{item.type}}</text>
-							<text>{{item.id}}</text>
-						</text>
-						<text wx:else>{{item.type}}</text>
-					</view>
-				</view>
-			</block>
-		</scroll-view>
-	</view>
-	<!-- 充值弹窗信息 -->
-	<view class="modal-mask" bindtap="hideModal" catchtouchmove="true" wx:if="{{showModal}}"></view>
-	<view class="modal-dialog" wx:if="{{showModal}}">
-		<view class="modal-title">充值</view>
-		<view class="modal-blissNumInputBox">
-			<text>福气数量：</text>
-			<input type="number" placeholder="请输入要充值的福气数量" cursor-spacing="484rpx"/>
-		</view>
-		<view class="modal-todayMoneyratio">
-			<text>今日比例：</text>
-			<text>1RMB：100福气</text>
-		</view>
-		<view class="modal-paymentAmount">
-			<text>支付金额：</text>
-			<text>100</text>
-		</view>
-		<view class="modal-commonFooter modal-footer">
-			<view class="btn-cancel" bindtap="onCancel" data-status="cancel">取消</view>
-			<view class="btn-confirm" bindtap="onConfirm" data-status="confirm">充值</view>
-		</view>
-	</view>
-	<!-- 赠送弹窗信息 -->
-	<view class="modal-mask" bindtap="hideModal" catchtouchmove="true" wx:if="{{showPresentedBtn}}"></view>
-	<view class="modal-dialog" wx:if="{{showPresentedBtn}}">
-		<view class="modal-title">赠送</view>
-		<view class="modal-blissNumInputBox">
-			<text>福气数量：</text>
-			<input type="number" placeholder="请输入要充值的福气数量" cursor-spacing="408rpx"/>
-		</view>
-		<view class="modal-blissNumInputBox">
-			<text>受赠人ID：</text>
-			<input type="text" placeholder="请输入要赠送的用户ID" cursor-spacing="288rpx"/>
-		</view>
-		<view class="modal-todayMoneyratio">
-			<text>今日比例：</text>
-			<text>1RMB：100福气</text>
-		</view>
-		<view class="modal-commonFooter modal-presentedFooter">
-			<view class="btn-cancel btn-presentedCancel" bindtap="onPresentedCancel" data-status="presentedcancel">取消</view>
-			<view class="btn-confirm btn-presentedConfirm" bindtap="onPresentedConfirm" data-status="presentedconfirm">赠送</view>
-		</view>
-	</view>
+    <view class="ui-main">
+        <navBar ext-class="navPosition" title='福气明细' iconTheme='white' color='#ffffff' background='transparent' back="{{true}}" bindback="handlerGobackClick"></navBar>
+        <view class="ui-moneyBox">
+            <view class="moneyInfo">
+                <text>{{points}}</text>
+                <view class="ui-blissTextFlex">
+                    <view class="ui-blissIcon"></view>
+                    <text>可用福气</text>
+                </view>
+            </view>
+            <view class="btn-withdraw btn-common" bindtap="showDialogBtn">充值</view>
+            <view class="btn-presented btn-common" bindtap="showPresentedBtn">赠送</view>
+        </view>
+        <scroll-view class="ui-withdrawInfoBox" scroll-y="true" bindscrolltolower="scrollTolower">
+            <view class="ui-withdraw__title">福气明细</view>
+            <block wx:if="{{withdrawlist.length > 0}}">
+                <view class="ui-withdrawInfoItem">
+                    <view class="ui-withdrawDetail" wx:for="{{withdrawlist}}" wx:for-index="idx" wx:key="idx" wx:for-item="item" style="color: {{item.money>0?'#666666':'#20CAB4'}};">
+                        <text>{{filter.getDay(item.createTime)}}</text>
+                        <text>{{item.points}}</text>
+                        <text class="ui-presentedTextBox" wx:if="{{item.id}}">
+                            <text>{{item.type}}</text>
+                            <text>{{item.id}}</text>
+                        </text>
+                        <text wx:else>{{item.type}}</text>
+                    </view>
+                </view>
+            </block>
+        </scroll-view>
+    </view>
+    <!-- 充值弹窗信息 -->
+    <view class="modal-mask" bindtap="hideModal" catchtouchmove="true" wx:if="{{showModal}}"></view>
+    <view class="modal-dialog" wx:if="{{showModal}}">
+        <view class="modal-title">充值</view>
+        <view class="modal-blissNumInputBox">
+            <text>福气数量：</text>
+            <input type="number" placeholder="请输入要充值的福气数量" cursor-spacing="484rpx" value="{{rechargePoint}}" bindinput="inputFuQi" />
+        </view>
+        <view class="modal-todayMoneyratio">
+            <text>今日比例：</text>
+            <text>{{setting.pointsExchangeVO.money}}RMB：{{setting.pointsExchangeVO.points}}福气</text>
+        </view>
+        <view class="modal-paymentAmount">
+            <text>支付金额：</text>
+            <text>{{(rechargePoint * setting.pointsExchangeVO.money) / setting.pointsExchangeVO.points}}</text>
+        </view>
+        <view class="modal-commonFooter modal-footer">
+            <view class="btn-cancel" bindtap="onCancel" data-status="cancel">取消</view>
+            <view class="btn-confirm" bindtap="onConfirm" data-status="confirm">充值</view>
+        </view>
+    </view>
+    <!-- 赠送弹窗信息 -->
+    <view class="modal-mask" bindtap="hideModal" catchtouchmove="true" wx:if="{{showPresentedBtn}}"></view>
+    <view class="modal-dialog" wx:if="{{showPresentedBtn}}">
+        <view class="modal-title">赠送</view>
+        <view class="modal-blissNumInputBox">
+            <text>福气数量：</text>
+            <input type="number" placeholder="请输入要充值的福气数量" cursor-spacing="408rpx" data-key="giftPoint" bindinput="inputValue"/>
+        </view>
+        <view class="modal-blissNumInputBox">
+            <text>受赠人ID：</text>
+            <input type="text" placeholder="请输入要赠送的用户ID" cursor-spacing="288rpx" data-key="giftMember" bindinput="inputValue"/>
+        </view>
+        <view class="modal-todayMoneyratio">
+            <text>今日比例：</text>
+            <text>{{setting.pointsExchangeVO.money}}RMB：{{setting.pointsExchangeVO.points}}福气</text>
+        </view>
+        <view class="modal-commonFooter modal-presentedFooter">
+            <view class="btn-cancel btn-presentedCancel" bindtap="onPresentedCancel" data-status="presentedcancel">取消</view>
+            <view class="btn-confirm btn-presentedConfirm" bindtap="onPresentedConfirm" data-status="presentedconfirm">赠送</view>
+        </view>
+    </view>
 </view>

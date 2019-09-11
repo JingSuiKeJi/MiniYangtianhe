@@ -15,23 +15,37 @@ page{
 }
 
 .ui-posterBackground{
+	position: relative;
 	width: 542rpx;
 	height: 770rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_posterBackground.png');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
+}
+
+.ui-posterBackground image{
+	position: absolute;
+	z-index: -1;
+	width: 100%;
+	height: 100%;
 }
 
 .ui-personalIcon{
 	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	width: 106rpx;
 	height: 106rpx;
 	margin:610rpx 0 0 32rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_qrHeader.png');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
+	background-color: #E6E6E6;
+	border-radius: 50%;
+	overflow: hidden;
+}
+
+.ui-personalIcon image{
+	position: absolute;
+	z-index: 10;
+	width: 96rpx;
+	height: 96rpx;
+	border-radius: 50%;
 }
 
 .ui-personalIdText{
