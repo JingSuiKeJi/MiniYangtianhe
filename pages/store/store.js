@@ -23,6 +23,7 @@ const data = {
     hideModal: true, //模态框的状态  true-隐藏  false-显示
     animationData: {},
     second: -1,
+    isFixed: false,
 };
 
 // 页面onLoad方法
@@ -34,10 +35,12 @@ const onLoad = function(self) {
 
 // 页面onShow方法
 const onShow = function(self) {
-    self.getData();
 };
 const onUnload = function(self) {
 
+}
+const onReady = function(self) {
+    self.onScroll();
 }
 // 页面中的方法
 const methods = {
@@ -72,6 +75,7 @@ const methods = {
                 banner: data.banner,
                 tapImgUrl: data.occasion.imgUrl,
                 activity: data.activity,
+                tabList: data.navigation
             })
             self.showClassify(data.navigation);
         }, (err) => {
@@ -97,14 +101,22 @@ const methods = {
         }).then((ret) => {
             let data = ret.data;
             let BrandList = [];
-            let length = Math.ceil(data.length / 2);
-            for (var index = 0; index < 2; index++) {
-                BrandList[index] = data.slice(index * length, (index + 1) * length );
+            if (data.length < 5) {
+                self.setData({
+                    singleBrandList: data
+                });
+               
+            } else {
+                 let length = Math.ceil(data.length / 2);
+                for (var index = 0; index < 2; index++) {
+                    BrandList[index] = data.slice(index * length, (index + 1) * length );
+                }
+                self.setData({
+                    brandList: BrandList
+                });
             }
-            self.setData({
-                brandList: BrandList
-            });
-            console.log(3333,self.data.brandList)
+           
+            
         }, (err) => {});
     },
     onMoreTap: function(e) {
@@ -137,7 +149,7 @@ const methods = {
     onSlideTap: function(e) {
         const self = this;
         self.setData({
-            isSlide: !self.data.isSlide
+            hideModal: !self.data.hideModal
         })
     },
     onClassifyTap: function(e) {
@@ -146,11 +158,17 @@ const methods = {
             classifyType: e.detail.current,
         });
     },
-    onListTap: function(e) {
+    onTabTap: function(e) {
         const self = this;
-        _g.navigateTo({
-            url: 'pages/search/classify',
-        }, self);
+        const id = e.target.dataset.id;
+        if (e.target.dataset.isLink == 2) return;
+        self.data.tabList.forEach(element => {
+            if (id == element.id) {
+                _g.navigateTo({
+                    url: 'pages' + element.pageUrl,
+                }, self);
+            }
+        });
     },
     onDetailTap: function(e) {
         const self = this;
@@ -237,6 +255,7 @@ const methods = {
                 second: second
             });
             self.time(self.data.second);
+            clearInterval(self.data.timer);
             var timer = setInterval(() => {
                 let second = self.data.second;
                 if (second < 0) {
@@ -252,6 +271,9 @@ const methods = {
                     self.time(self.data.second);
                 }
             }, 1000);
+            self.setData({
+                timer: timer
+            })
         }
     },
     // 抢购的时间
@@ -307,7 +329,45 @@ const methods = {
 
         });
     },
+    // 显示遮罩层
+    showModal: function() {
+        let self = this;
+        self.setData({
+            hideModal: false
+        })
+    },
 
+    // 隐藏遮罩层
+    hideModal: function() {
+        var self = this;
+        self.setData({
+            hideModal: true,
+        })
+    },
+    onScroll: function() {
+        const self = this;
+        const query = wx.createSelectorQuery();
+        query.select('#aim').boundingClientRect();
+        query.selectViewport().scrollOffset();
+        query.exec(function(res) {
+            self.setData({
+                scrollTop: res[0].top
+            })
+        })
+    },
+    pageScroll: function(res) {
+        let self = this;
+        let top = self.data.scrollTop - 80;
+        if (res.scrollTop >= top) {
+            self.setData({
+                isFixed: true,
+            })
+        } else {
+            self.setData({
+                isFixed: false,
+            })
+        }
+    }
 
 };
 
@@ -320,6 +380,7 @@ const initPage = _g.initPage({
     onLoad: onLoad,
     onShow: onShow,
     methods: methods,
-    onUnload: onUnload
+    onUnload: onUnload,
+    onReady: onReady
 });
 Page(initPage);
