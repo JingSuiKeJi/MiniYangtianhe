@@ -317,16 +317,13 @@ const methods = {
     onBuyTap: function(e) {
         let self = this;
         let data = {
-            platformFlag: 2,
-            id: 2,
-            num: self.data.cartNum,
-            skuId: 2,
-            orderStatus: 1,
-            buyType: 1
-        }
-        if (self.data.thirdId) {
-            data.thirdId = self.data.thirdId;
-        }
+            platformFlag: self.data.goodsDetail.platformFlag,
+            id: self.data.goodsDetail.id,
+            num: 1,
+        };
+            
+        if (self.data.goodsDetail.skuId) data.skuId = self.data.goodsDetail.skuId;
+        if (self.data.thirdId) data.thirdId = self.data.thirdId;
         _g.navigateTo({
             url: 'pages/order/submit',
             param: {
