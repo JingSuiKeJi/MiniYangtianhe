@@ -157,13 +157,20 @@ const methods = {
         }).then((ret) => {
             let data = ret.data;
             let BrandList = [];
-            let length = Math.ceil(data.length / 2);
-            for (var index = 0; index < 2; index++) {
-                BrandList[index] = data.slice(index * length, (index + 1) * length );
+            if (data.length < 5) {
+                self.setData({
+                    singleBrandList: data
+                });
+            } else {
+                let length = Math.ceil(data.length / 2);
+                for (var index = 0; index < 2; index++) {
+                    BrandList[index] = data.slice(index * length, (index + 1) * length );
+                }
+                self.setData({
+                    brandList: BrandList
+                });
             }
-            self.setData({
-                brandList: BrandList
-            });
+            
            
         }, (err) => {});
     },
@@ -242,6 +249,7 @@ const methods = {
             self.setData({
                 second: second
             });
+            clearInterval(self.data.timer);
             self.time(self.data.second);
             var timer = setInterval(() => {
                 let second = self.data.second;
@@ -258,6 +266,9 @@ const methods = {
                     self.time(self.data.second);
                 }
             }, 1000);
+            self.setData({
+                timer: timer
+            })
         }
     },
     // 抢购的时间

@@ -27,7 +27,7 @@
                 <swiper current="currentIndex" autoplay interval="2000" duration="500" circular class="ui-banner_swiper" bindchange="onChangeTap">
                     <block wx:for="{{banner}}" wx:key="{{index}}">
                         <swiper-item>
-                            <image src="{{filter.getPhoto(host,item.imgUrl)}}" class="ui-banner_image" data-index="{{index}}" data-isLink="{{item.isLink}}" bindtap="onGoTap" />
+                            <image src="{{filter.getPhoto(host,item.imgUrl)}}" mode="aspectFill" class="ui-banner_image" data-index="{{index}}" data-isLink="{{item.isLink}}" bindtap="onGoTap" />
                         </swiper-item>
                     </block>
                 </swiper>
@@ -36,15 +36,15 @@
                 </view>
             </view>
             <view class="ui-activityBox">
-                <image src="{{filter.getLocalPhoto('activity.png')}}" />
+                <image src="{{filter.getLocalPhoto('activity.png')}}" mode="aspectFill"/>
             </view>
         </view>
         <view class="ui-stepBox">
             <view class="ui-stepTapBox">
                 <view class="ui-stepTapBox_left">
-                    <image src="{{filter.getLocalPhoto('squareness.png')}}" />
+                    <image src="{{filter.getLocalPhoto('squareness.png')}}" mode="aspectFill"/>
                     <view>
-                        <image src="{{filter.getLocalPhoto('run.png')}}" class="ui-leftItem_icon" />
+                        <image src="{{filter.getLocalPhoto('run.png')}}" class="ui-leftItem_icon" mode="aspectFill"/>
                     </view>
                     <view class="ui-leftItem_text">养步乐</view>
                 </view>
@@ -59,7 +59,7 @@
                     <view class="ui-leftItem_loadText" bindtap="onStepTap">{{step}}</view>
                 </view>
                 <view class="ui-stepTapBox_right">今日排名：{{stepInfo.rank}}</view>
-                <image src="{{filter.getLocalPhoto('question_icon.png')}}" />
+                <image src="{{filter.getLocalPhoto('question_icon.png')}}" mode="aspectFill"/>
             </view>
         </view>
         <view class="ui-noticeBox">
@@ -70,7 +70,7 @@
         <!-- 分类专区 -->
         <view>
             <view class="ui-yangleBox">
-                <image src="{{filter.getPhoto(host,tapImgUrl)}}" />
+                <image src="{{filter.getPhoto(host,tapImgUrl)}}" mode="aspectFill"/>
             </view>
             <view class="ui-wrapBox">
                 <view class="ui-classBox">
@@ -78,7 +78,7 @@
                         <block wx:for="{{classList}}" wx:for-item="bannerItem" wx:key="{{index}}">
                             <swiper-item>
                                 <view class="ui-classBox_item" wx:for="{{bannerItem}}" wx:key="{{index}}" bindtap="onTabTap" data-id="{{item.id}}" data-isLink="{{item.isLink}}">
-                                    <image src="{{filter.getPhoto(host,item.imgUrl)}}" class="ui-classItem__img" data-id="{{item.id}}" data-isLink="{{item.isLink}}"/>
+                                    <image src="{{filter.getPhoto(host,item.imgUrl)}}" class="ui-classItem__img" data-id="{{item.id}}" data-isLink="{{item.isLink}}" mode="aspectFill"/>
                                     <text class="ui-classItem__text" data-id="{{item.id}}" data-isLink="{{item.isLink}}">{{item.title}}</text>
                                 </view>
                             </swiper-item>
@@ -92,7 +92,7 @@
         </view>
         <!-- 限时抢购和品牌甄选 -->
         <view class="ui-imgBox" wx:if="{{second != -1}}">
-            <image src="{{filter.getPhoto(host,activity[0].imgUrl)}}" bindtap="onCheckActivity"  data-isLink="{{activity.isLink}}" />
+            <image src="{{filter.getPhoto(host,activity[0].imgUrl)}}" mode="aspectFill" bindtap="onCheckActivity"  data-isLink="{{activity.isLink}}" />
             <view class="ui-buyBox">
                 <view class="ui-buyBox_top">
                     <view>优选限时购</view>
@@ -109,8 +109,8 @@
                 <view class="ui-buyBox_bottom" wx:if="{{goodsList.length}}">
                     <scroll-view scroll-x class="ui-bottomItem_scrollView">
                         <view wx:for="{{goodsList}}" wx:key="{{index}}" class="ui-scrollView_item" bindtap="onDetailTap" data-id="{{item.id}}" data-thirdid="{{goodsList.id}}">
-                            <image src="{{filter.getLocalPhoto('buy.png')}}" />
-                            <image src="{{filter.getPhoto(host,item.picUrl)}}"  />
+                            <image src="{{filter.getLocalPhoto('buy.png')}}" mode="aspectFill"/>
+                            <image src="{{filter.getPhoto(host,item.picUrl)}}"  mode="aspectFill"/>
                             <view class="ui-scrollView_itemTitle">{{item.mainTitle}}</view>
                             <view class="ui-scrollView_itemNow">￥{{item.nowPrice}}</view>
                             <view class="ui-scrollView_itemPre">￥{{item.originPrice}}</view>
@@ -119,12 +119,12 @@
                 </view>
             </view>
         </view>
-        <view class="ui-brandSelectBox" wx:if="{{brandList[0].length || brandList[1].length}}">
+        <view class="ui-brandSelectBox" wx:if="{{brandList[0].length || brandList[1].length || singleBrandList.length}}">
             <view class="ui-brandSelectItem_top" bindtap="onAllBrandsTap">品牌甄选</view>
             <view class="ui-brandSelectItem_bottom">
-                <scroll-view scroll-x class="ui-brandItem_scrollView" wx:if="{{brandList[0].length}}">
+                <scroll-view scroll-x class="ui-brandItem_scrollView" wx:if="{{brandList[0].length || singleBrandList.length}}">
                     <view class="ui-brandScroll_itemTop">
-                        <view wx:for="{{brandList[0]}}" wx:key="{{index}}" class="ui-brandScroll_item">
+                        <view wx:for="{{brandList[0] || singleBrandList}}" wx:key="{{index}}" class="ui-brandScroll_item">
                             <image src="{{filter.getPhoto(host,item.logoUrl)}}" bindtap="onBrandsTap" data-id="{{item.id}}" />
                         </view>
                     </view>
@@ -132,7 +132,7 @@
                 <scroll-view scroll-x class="ui-brandItem_scrollView" wx:if="{{brandList[1].length}}">
                     <view class="ui-brandScroll_itemBottom">
                         <view wx:for="{{brandList[1]}}" wx:key="{{index}}" class="ui-brandScroll_item">
-                            <image src="{{filter.getPhoto(host,item.logoUrl)}}" bindtap="onBrandsTap" data-id="{{item.id}}" />
+                            <image src="{{filter.getPhoto(host,item.logoUrl)}}" mode="aspectFill" bindtap="onBrandsTap" data-id="{{item.id}}" />
                         </view>
                     </view>
                 </scroll-view>
@@ -152,7 +152,7 @@
                         </view>
                     </scroll-view>
                     <view class="ui-tapItem_Icon" bindtap="onSlideTap">
-                        <image src="{{filter.getLocalPhoto('index_slideDown.png')}}" class="ui-tapItem_downIcon"></image>
+                        <image src="{{filter.getLocalPhoto('index_slideDown.png')}}" class="ui-tapItem_downIcon" mode="aspectFill"></image>
                     </view>
                     <view class="modals modals-bottom-dialog" hidden="{{hideModal}}" wx:if="{{tapList.length}}">
                         <view class="modals-cancel" bindtap="hideModal" catchtouchmove="true"></view>
@@ -164,7 +164,7 @@
                                     </view>
                                 </view>
                                 <view class="ui-slideItem__right">
-                                    <image src="{{filter.getLocalPhoto('index_slideUp.png')}}" class="ui-tapItem_upIcon" bindtap="hideModal" />
+                                    <image src="{{filter.getLocalPhoto('index_slideUp.png')}}" class="ui-tapItem_upIcon" bindtap="hideModal" mode="aspectFill"/>
                                 </view>
                             </view>
                         </view>
