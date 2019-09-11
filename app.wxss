@@ -31,3 +31,21 @@ swiper image {
 view {
     box-sizing: border-box;
 }
+
+.ui-empty {
+    /*empty-address.png*/
+    padding-top: 300rpx;
+}
+
+.ui-empty__icon {
+    display: block;
+    width: 128rpx;
+    height: 136rpx;
+    margin: 0 auto 32rpx;
+}
+
+.ui-empty__text {
+    font-size: 30rpx;
+    color: #999;
+    text-align: center;
+}

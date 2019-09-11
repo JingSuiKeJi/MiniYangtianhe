@@ -317,31 +317,20 @@ const methods = {
     onBuyTap: function(e) {
         let self = this;
         let data = {
-            platformFlag: 2,
-            id: 2,
-            num: self.data.cartNum,
-            skuId: 2,
-            orderStatus: 1,
-            buyType: 1
-        }
-        if (self.data.thirdId) {
-            data.thirdId = self.data.thirdId;
-        }
-        if (self.data.flag == 0) {
-            _g.navigateTo({
-                url: 'pages/pay/account',
-                param: data,
-            }, self);
-
-        } else {
-            _g.navigateTo({
-                url: 'pages/order/submit',
-                param: data,
-            }, self);
-
-        }
-
-
+            platformFlag: self.data.goodsDetail.platformFlag,
+            id: self.data.goodsDetail.id,
+            num: 1,
+        };
+            
+        if (self.data.goodsDetail.skuId) data.skuId = self.data.goodsDetail.skuId;
+        if (self.data.thirdId) data.thirdId = self.data.thirdId;
+        _g.navigateTo({
+            url: 'pages/order/submit',
+            param: {
+                postData: data,
+                from: 'goodsDetail'
+            },
+        }, self);
     },
     onCartTap: function(e) {
         let self = this;
@@ -382,27 +371,7 @@ const methods = {
         Goods.cartList(self, {}).then((ret) => {
             let data = ret.data;
             self.setData({
-
-
-
-
-
-
-
-
-                
-                total: data.length  ////////////这里报错注意一下
-
-
-
-
-
-
-
-
-
-
-
+                // total: data.length  ////////////这里报错注意一下
             });
         }, (err) => {
 
@@ -431,7 +400,7 @@ const methods = {
     onShareAppMessage() {
         const self = this;
         return {
-            title: '121211',
+            title: self.data.goodsDetail.mainTitle,
             path: 'pages/goods/detail?id=' + self.data.id
         }
     }

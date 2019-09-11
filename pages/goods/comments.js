@@ -15,6 +15,7 @@ const data = {
   scale: '请选择规格',
   scaleList: ['250g x 10包',],
   scaleIndex: -1,
+  type: 1,   //1.普通 2.秒杀 3.权益卡附属 4.权益 5.拼团 6.砍价 7.推荐
 };
 
 // 页面onLoad方法

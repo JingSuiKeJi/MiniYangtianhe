@@ -24,7 +24,6 @@
     "pages/search/brandList",
     "pages/me/index",
     "pages/pharmacy/revenue",
-    "pages/shop/store",
     "pages/pharmacy/commission",
     "pages/pharmacy/application",
     "pages/me/qr",
@@ -99,7 +98,9 @@
     ]
   },
   "window": {},
-  "usingComponents": {},
+  "usingComponents": {
+    "authorize": "/components/authorize/authorize"
+   },
   "permission": {
     "scope.userLocation": {
       "desc": "获取定位"

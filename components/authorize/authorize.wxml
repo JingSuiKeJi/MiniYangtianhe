@@ -1,0 +1,10 @@
+<view class="ui-authorize" hidden="{{isHidden}}">
+	<view class="ui-authorize__bg"></view>
+	<view class="ui-dialog__bd">
+		<view class="ui-dialog__content">{{message}}</view>
+		<view class="ui-btns">
+			<button class="ui-btn" catchtap="onCancelTap">暂不开启</button>
+			<button class="ui-btn" bindopensetting="openSettingTap" open-type="openSetting">去开启</button>
+		</view>
+	</view>
+</view>

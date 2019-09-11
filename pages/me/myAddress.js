@@ -8,36 +8,32 @@ const event = app.event;
 const User = require('../../service/User');
 
 let data = {
-	page: 1,
-	consigneeList: [
-		{ name: "周周周", tel: "13414775964", address: "广东省广州市天河区天盈广场东塔3004", currentId: 0 },
-		{ name: "周周周", tel: "13414775964", address: "广东省广州市天河区天盈广场东塔3004", currentId: 1 },
-		{ name: "周周周", tel: "13414775964", address: "广东省广州市天河区天盈广场东塔3004", currentId: 2 },
-	],
+	addressList: [],
 	handle: true,//切换管理状态下的背景颜色样式
 	currentCheck: 0,
 	showModal: false,
 };
 const onLoad = function (self) {
-	self.getAddressList();
+	self.getPageData();
 }
 const onShow = function (self) { }
 const onReady = function (self) { }
 const onUnload = function (self) { }
 const methods = {
 	// 接口: 收货地址列表
-	getAddressList: function () {
+	getPageData: function () {
 		const self = this;
 		User.getAddressList(self, {
-
+			page: self.data.page,
+			pageSize: 15
 		}).then(function (ret) {
 			if (self.data.page == 1) {
 				self.setData({
-					consigneeList: ret.data
+					addressList: ret.data
 				})
 			} else {
 				self.setData({
-					consigneeList: self.data.consigneeList.concat(ret.data)
+					addressList: self.data.addressList.concat(ret.data)
 				})
 			}
 		});

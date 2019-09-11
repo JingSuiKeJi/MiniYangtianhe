@@ -1,54 +1,50 @@
-<!-- <wxs module="filter" src="../../filter/filter.wxs"></wxs> -->
-<!--myAddress.wxml-->
+<wxs module="filter" src="../../filter/filter.wxs"></wxs>
 <view class="container {{!handle?'containerHandle':''}}">
-	<navBar title='收货地址' background='white' color='black' iconTheme='black' back="{{true}}"></navBar>
-	<view class="ui-main">
-		<!-- <view class="ui-notAddress">
-				<view class="ui-noAddressIcon"></view>
-				<text>暂无收货信息</text>
-		</view> -->
-		
-		<view class="ui-consigneeInfoBox">
-			<view wx:if="{{handle}}" class="btn-handle" catchtap="onHandleTap">管理</view>
-			
-			<view class="ui-consigneeInfoItems {{handle?'ui-consigneeInfoItemsHandle':''}}" wx:for="{{consigneeList}}" wx:for-index="idx" wx:key="idx" wx:for-item="item">
-				<view class="ui-consigneeNameTel">
-					<text>{{item.name}}</text>
-					<text>{{item.tel}}</text>
-					<view wx:if="{{handle}}" class="{{currentCheck==item.currentId?'ui-defaultIcon':''}}"></view>
-				</view>
-				<text class="ui-consigneeAddressDetail">{{item.address}}</text>
-				<view class="ui-handleMemu" wx:if="{{!handle}}">
-					<view class="ui-common ui-selectDefault">
-						<view data-id="{{item.currentId}}" class="ui-commonCheck {{currentCheck==item.currentId?'ui-check':'ui-noCheck'}}" bindtap="chooseMenu"></view>
-						<text class="ui-defaultText">默认地址</text>
-					</view>
-					<view class="ui-common ui-compile" bindtap="onCompileTap">
-						<view class="ui-compileIcon"></view>
-						<text>编辑</text>
-					</view>
-					<view class="ui-common ui-delete" bindtap="showDialogBtn">
-						<view class="ui-deleteIcon"></view>
-						<text>删除</text>
-					</view>
-				</view>
-			</view>
-		</view>
-		
-		<!--删除弹窗-->
-		<view class="modal-mask" bindtap="hideModal" catchtouchmove="true" wx:if="{{showModal}}"></view>
-		<view class="modal-dialog" wx:if="{{showModal}}" catchtouchmove="true">
-			<view class="modal-title">确认删除该地址吗</view>
-			<view class="modal-footer">
-				<view class="btn-cancel" bindtap="onCancel" data-status="cancel">取消</view>
-				<view class="btn-confirm" bindtap="onConfirm" data-status="confirm">确定</view>
-			</view>
-		</view>
-		
-		<!-- 新增收货人 -->
-		<view wx:if="{{handle}}" class="btn-addConsignee" catchtap="onAddConsigneeTap">添加收货人</view>
-		<!-- 完成 -->
-		<view wx:else="{{!handle}}" class="btn-addConsignee" catchtap="onCompleteTap">完成</view>
-		
-	</view>
+    <navBar title='收货地址' background='white' color='black' iconTheme='black' back="{{true}}"></navBar>
+    <view class="ui-main">
+        <view hidden="{{!addressList.length}}">
+            <view class="ui-consigneeInfoBox">
+                <view wx:if="{{handle}}" class="btn-handle" catchtap="onHandleTap">管理</view>
+                <view class="ui-consigneeInfoItems {{handle?'ui-consigneeInfoItemsHandle':''}}" wx:for="{{consigneeList}}" wx:for-index="idx" wx:key="idx" wx:for-item="item">
+                    <view class="ui-consigneeNameTel">
+                        <text>{{item.name}}</text>
+                        <text>{{item.tel}}</text>
+                        <view wx:if="{{handle}}" class="{{currentCheck==item.currentId?'ui-defaultIcon':''}}"></view>
+                    </view>
+                    <text class="ui-consigneeAddressDetail">{{item.address}}</text>
+                    <view class="ui-handleMemu" wx:if="{{!handle}}">
+                        <view class="ui-common ui-selectDefault">
+                            <view data-id="{{item.currentId}}" class="ui-commonCheck {{currentCheck==item.currentId?'ui-check':'ui-noCheck'}}" bindtap="chooseMenu"></view>
+                            <text class="ui-defaultText">默认地址</text>
+                        </view>
+                        <view class="ui-common ui-compile" bindtap="onCompileTap">
+                            <view class="ui-compileIcon"></view>
+                            <text>编辑</text>
+                        </view>
+                        <view class="ui-common ui-delete" bindtap="showDialogBtn">
+                            <view class="ui-deleteIcon"></view>
+                            <text>删除</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <!--删除弹窗-->
+            <view class="modal-mask" bindtap="hideModal" catchtouchmove="true" wx:if="{{showModal}}"></view>
+            <view class="modal-dialog" wx:if="{{showModal}}" catchtouchmove="true">
+                <view class="modal-title">确认删除该地址吗</view>
+                <view class="modal-footer">
+                    <view class="btn-cancel" bindtap="onCancel" data-status="cancel">取消</view>
+                    <view class="btn-confirm" bindtap="onConfirm" data-status="confirm">确定</view>
+                </view>
+            </view>
+        </view>
+        <view class="ui-empty" hidden="{{addressList.length}}">
+            <image class="ui-empty__icon" src="{{filter.getLocalPhoto('empty-address.png')}}"></image>
+            <view class="ui-empty__text">暂无收货地址</view>
+        </view>
+        <!-- 新增收货人 -->
+        <view wx:if="{{handle}}" class="btn-addConsignee" catchtap="onAddConsigneeTap">添加收货人</view>
+        <!-- 完成 -->
+        <view wx:else="{{!handle}}" class="btn-addConsignee" catchtap="onCompleteTap">完成</view>
+    </view>
 </view>

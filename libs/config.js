@@ -116,7 +116,7 @@ config.prototype = {
         },
         order: {
             placeOrder: '/app/order/placeOrder.do',
-            common: '/app/preOrder/common.do'
+            preOrder: '/app/preOrder/common.do'
         }
     }
 
