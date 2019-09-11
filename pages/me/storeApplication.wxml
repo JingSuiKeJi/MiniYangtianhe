@@ -61,7 +61,7 @@
 				<input class="ui-inputCommon" bindinput="onBusinessLicenseTap" type="text" value="{{businessLicense}}" placeholder="请输入门店营业执照号码" placeholder-style="color:#666666;"/>
 			</view>
 			<view class="ui-belongCompany" bindtap="showDialogBtn">
-				<input class="ui-inputCompany" disabled="true" bindinput="onCompanyTap" type="text" value="{{company}}" placeholder="所属分公司" placeholder-style="color:#666666;"/>
+				<input class="ui-inputCompany" disabled="true" bindinput="onCompanyTap" type="text" data-id="{{companyId}}" value="{{company}}" placeholder="所属分公司" placeholder-style="color:#666666;"/>
 				<view class="ui-pullDownIcon"></view>
 			</view>
 			
@@ -70,12 +70,12 @@
 			<scroll-view scroll-y class="modal-dialog" catchtouchmove="true" wx:if="{{showModal}}">
 				<view class="modal-title">选择公司</view>
 				<view class="modal-companyBox">
-					<text class="modal-items" wx:for="{{companyList}}" wx:for-item="item" wx:key="idx"
-					bindtap="onConfirm" data-company="{{item.companyItem}}">{{item.companyItem}}</text>
+					<text class="modal-items" wx:for="{{list}}" wx:for-item="item" wx:key="idx"
+					bindtap="onConfirm" data-company="{{item.contactName}}" data-id="{{item.id}}">{{item.contactName}}</text>
 				</view>
 			</scroll-view>
 			
-			<view wx:if="{{!tempFilePaths||!introduce||!encoding||!storeName||!address||!storeTel||!businessLicense||!company==1}}" class="btn-submit btn-notSubmit">完成并提交申请</view>
+			<view wx:if="{{!tempFilePaths||!introduce||!encoding||!storeName||!address||!storeTel||!businessLicense||!company==1}}" class="btn-submit btn-notSubmit" bindtap="onSubmitTap">完成并提交申请</view>
 			<view wx:else class="btn-submit btn-canSubmit" bindtap="onSubmitTap">完成并提交申请</view>
 		</view>
 	</view>
