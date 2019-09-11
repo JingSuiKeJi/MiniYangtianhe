@@ -117,6 +117,14 @@ config.prototype = {
         order: {
             placeOrder: '/app/order/placeOrder.do',
             preOrder: '/app/preOrder/common.do'
+        },
+        point: {
+            getBaseInfo: '/app/points/getBaseInfo.do',
+            prePay: '/pay/points/prePay.do',
+            charge: '/app/points/charge.do',
+            getRecordList: '/app/points/getRecordList.do',
+            gift: '/app/points/gift.do',
+            verifier: '/app/points/verifier.do',
         }
     }
 
