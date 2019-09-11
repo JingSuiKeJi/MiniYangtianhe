@@ -5,14 +5,39 @@ const _g = app.base;
 const _c = app.config;
 const _t = app.temps;
 const event = app.event;
+const User = require('../../service/User');
+
 let data = {
+	avatar:'',
+	nickname:'',
 	showModal: false,//模态框
 };
-const onLoad = function (self) { }
+const onLoad = function (self) {
+	self.getData()
+	const avatar = self.data.avatar;
+	const nickname = self.data.nickname;
+	self.setData({
+		avatar:avatar,
+		nickname:nickname,
+	})
+	console.log(123456,avatar);
+}
 const onShow = function (self) { }
 const onReady = function (self) { }
 const onUnload = function (self) { }
 const methods = {
+	getData: function() {
+		let self = this;
+		User.getPoster(self, {
+		}).then((ret) => {
+			let poster = ret.data.poster;//海报地址
+			self.setData({
+				poster:poster
+			})
+		}, (err) => {
+			console.log("获取失败");
+		});
+	},
 	//显示模态框
 	showDialogBtn: function () {
 		const self = this;

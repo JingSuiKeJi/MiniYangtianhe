@@ -1,12 +1,13 @@
-<!-- <wxs module="filter" src="../../filter/filter.wxs"></wxs> -->
+<wxs module="filter" src="../../filter/filter.wxs"></wxs>
 <!--poster.wxml-->
 <view class="container">
 	<navBar title='我的海报' background='white' color='black' iconTheme='black' back="{{true}}"></navBar>
 	<view class="ui-main">
 		<view class="ui-posterBox">
 			<view class="ui-posterBackground">
-				<view class="ui-personalIcon"></view>
-				<text class="ui-personalIdText">小小小猴子</text>
+				<image src="{{poster}}" mode="aspectFill"></image>
+				<view class="ui-personalIcon"><image src="{{filter.getAvatar(host,avatar)}}" mode="aspectFill"></image></view>
+				<text class="ui-personalIdText">{{nickname}}</text>
 			</view>
 			
 			<view class="ui-ExtractQR">
