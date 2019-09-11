@@ -8,27 +8,64 @@
 			<text class="{{outOfDate?'ui-memuHover':''}}" bindtap="onOutOfDateTap">已过期({{outOfDateNum}})</text>
 		</view>
 		
-		<view wx:if="{{discountsList}}" class="ui-discountsBox">
-			<view wx:if="{{currentIndex==item.status}}" class="ui-discountsItems" wx:for="{{discountsList}}" wx:for-index="idx" wx:key="idx" wx:for-item="item">
-				<view class="ui-price">
-					<view class="ui-priceInfo">
-						<text class="{{item.status=='0'?'toBeUsedColor':'elseColor'}}">¥</text>
-						<text class="{{item.status=='0'?'toBeUsedColor':'elseColor'}}">{{item.price}}</text>
+		<block wx:if="{{InvalidList||waitUseList||usedList}}">
+			<view wx:if="{{toBeUsed}}" class="ui-discountsBox">
+				<view class="ui-discountsItems" wx:for="{{InvalidList}}" wx:for-index="idx" wx:key="idx" wx:for-item="item">
+					<view class="ui-price">
+						<view class="ui-priceInfo">
+							<text class="toBeUsedColor">¥</text>
+							<text class="toBeUsedColor}}">{{item.price}}</text>
+						</view>
+						<text class="ui-moneyOff">满{{item.moneyOff}}可用</text>
 					</view>
-					<text class="ui-moneyOff">满{{item.moneyOff}}可用</text>
+					
+					<view class="ui-explain">
+						<text>{{item.couponType}}</text>
+						<text>{{item.startTime}}至{{item.endTime}}</text>
+						<text>全场通用</text>
+					</view>
+					<view class="btn-immediateUse">立即使用</view>
 				</view>
-				
-				<view class="ui-explain">
-					<text>{{item.couponType}}</text>
-					<text>{{item.startTime}}至{{item.endTime}}</text>
-					<text>全场通用</text>
-				</view>
-				
-				<view wx:if="{{item.status=='0'}}" class="btn-immediateUse">立即使用</view>
-				<view wx:if="{{item.status=='1'}}" class="ui-haveBeenUsed"></view>
-				<view wx:if="{{item.status=='2'}}" class="ui-outOfDate">已过期</view>
 			</view>
-		</view>
+			
+			<view wx:if="{{haveBeenUsed}}" class="ui-discountsBox">
+				<view class="ui-discountsItems" wx:for="{{waitUseList}}" wx:for-index="idx" wx:key="idx" wx:for-item="item">
+					<view class="ui-price">
+						<view class="ui-priceInfo">
+							<text class="elseColor">¥</text>
+							<text class="elseColor">{{item.price}}</text>
+						</view>
+						<text class="ui-moneyOff">满{{item.moneyOff}}可用</text>
+					</view>
+					
+					<view class="ui-explain">
+						<text>{{item.couponType}}</text>
+						<text>{{item.startTime}}至{{item.endTime}}</text>
+						<text>全场通用</text>
+					</view>
+					<view class="ui-haveBeenUsed"></view>
+				</view>
+			</view>
+			
+			<view wx:if="{{outOfDate}}" class="ui-discountsBox">
+				<view class="ui-discountsItems" wx:for="{{usedList}}" wx:for-index="idx" wx:key="idx" wx:for-item="item">
+					<view class="ui-price">
+						<view class="ui-priceInfo">
+							<text class="elseColor">¥</text>
+							<text class="elseColor">{{item.price}}</text>
+						</view>
+						<text class="ui-moneyOff">满{{item.moneyOff}}可用</text>
+					</view>
+					
+					<view class="ui-explain">
+						<text>{{item.couponType}}</text>
+						<text>{{item.startTime}}至{{item.endTime}}</text>
+						<text>全场通用</text>
+					</view>
+					<view class="ui-outOfDate">已过期</view>
+				</view>
+			</view>
+		</block>
 		
 		<view wx:else class="ui-blank">
 			<view class="ui-blankIcon"></view>

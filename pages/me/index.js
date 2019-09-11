@@ -31,18 +31,18 @@ const onLoad = function(self) {
         let userInfo = data.userInfo;
         self.setData({
             userInfo: userInfo, //用户信息
-            nickName: userInfo.nickname, //用户名
-            avatar: userInfo.avatar, //用户头像
-            id: userInfo.id, //用户id
-            memberId: userInfo.memberId, //会员号
-            wxNo: userInfo.wxNo, //微信号
-            phone: userInfo.phone, // 手机号
-            promoCode: userInfo.promoCode, //邀请码
-            points: userInfo.points, //福气
-            couponNum: userInfo.couponNum, //优惠券数量
-            money: userInfo.money, //收益
-            orderNum: userInfo.orderNum, //订单类别
-            inviter: userInfo.inviter, //邀请人信息
+            // nickName: userInfo.nickname, //用户名
+            // avatar: userInfo.avatar, //用户头像
+            // id: userInfo.id, //用户id
+            // memberId: userInfo.memberId, //会员号
+            // wxNo: userInfo.wxNo, //微信号
+            // phone: userInfo.phone, // 手机号
+            // promoCode: userInfo.promoCode, //邀请码
+            // points: userInfo.points, //福气
+            // couponNum: userInfo.couponNum, //优惠券数量
+            // money: userInfo.money, //收益
+            // orderNum: userInfo.orderNum, //订单类别
+            // inviter: userInfo.inviter, //邀请人信息
             // distribution:userInfo.distribution, // 分销身份
             // verifier:userInfo.verifier, // 核销员身份
             // isRemindShare:userInfo.isRemindShare, // 分享成功提醒：1.是 0.否
@@ -147,7 +147,12 @@ const methods = {
     //跳转到分享海报
     onPersonalTap: function() {
         let self = this;
+		const userInfo = self.data.userInfo;
         _g.navigateTo({
+			param:{
+				avatar:userInfo.avatar,
+				nickname:userInfo.nickname,
+			},
             url: 'pages/me/poster',
         }, self);
     },
@@ -266,7 +271,7 @@ const methods = {
         let self = this;
         const userInfo = self.data.userInfo;
         _g.navigateTo({
-            param: {            wxNo: userInfo.wxNo          },
+            param: {wxNo: userInfo.wxNo},
             url: 'pages/me/bindingWeChat',
         }, self);
     },
@@ -275,7 +280,7 @@ const methods = {
         let self = this;
         const userInfo = self.data.userInfo;
         _g.navigateTo({
-            param: {            phone: userInfo.phone          },
+            param: {phone: userInfo.phone},
             url: 'pages/me/bindingPhone',
         }, self);
     }

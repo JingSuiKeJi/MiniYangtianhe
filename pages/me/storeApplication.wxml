@@ -1,15 +1,15 @@
-<!-- <wxs module="filter" src="../../filter/filter.wxs"></wxs> -->
+<wxs module="filter" src="../../filter/filter.wxs"></wxs>
 <!--storeApplication.wxml-->
 <view class="container">
 	<view class="ui-main">
 		<view class="ui-photoBox">
 			<view class="ui-photoBg">
-				<view wx:if="{{!tempFilePaths}}" class="ui-photoDashed" bindtap="onChooseImageTap">
+				<view wx:if="{{!photo}}" class="ui-photoDashed" bindtap="onChooseImageTap">
 					<view class="ui-takePhotosImg"></view>
 					<text class="ui-takePhotosText">添加门店相关图片</text>
 				</view>
 				<view class="ui-photoSelect" wx:else>
-					<image src="{{tempFilePaths}}"></image>
+					<image src="{{filter.getPhoto(host,photo)}}"></image>
 					<view class="ui-anewPhoto" bindtap="onChooseImageTap">重置照片</view>
 				</view>
 			</view>
@@ -80,3 +80,10 @@
 		</view>
 	</view>
 </view>
+<authorize
+	id="authorize" 
+	message="请开启门店定位" 
+	bind:onCancelTap="onCancelTap" 
+	eventName="me-storeApplication-authorize" 
+	isHidden="{{authorizeHidden}}">
+</authorize>
