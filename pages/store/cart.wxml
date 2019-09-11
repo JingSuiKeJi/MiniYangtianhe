@@ -1,6 +1,6 @@
 <!-- pages/store/cart.wxml -->
 <wxs module="filter" src="../../filter/filter.wxs"></wxs>
-<view class="main" wx:if="{{ userInfo}}">
+<view class="main" wx:if="{{userInfo}}">
     <view class=" main__box" wx:if="{{(medecineList.length || storeList.length)}}">
         <navBar ext-class="navPosition" title='购物车' iconTheme='black' color='black' background='white' back="{{true}}"></navBar>
         <view class='tab-bottom'></view>

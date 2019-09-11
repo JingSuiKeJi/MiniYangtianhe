@@ -1,0 +1,72 @@
+<!-- <wxs module="filter" src="../../filter/filter.wxs"></wxs> -->
+<!--store.wxml-->
+<view class="container">
+	<view class="ui-main">
+		<view class="ui-backGorund"></view>
+		
+		<view class="ui-infoBox">
+			<view class="ui-itemImgBox"></view>
+			<view class="ui-textBox">
+				<text>命运的杰克</text>
+				<text>所属门店：天盈广场店</text>
+			</view>
+			<view class="ui-personBox">
+				<text>店长/店员</text>
+			</view>
+		</view>
+	
+		<view class="ui-commissionBox">
+			<view class="ui-withdrawItem">
+				<view>
+					<view class="withdrawIcon"></view>
+					<view>可提现佣金</view>
+				</view>
+				<view>59.00</view>
+				<view>待结算 11.23元</view>
+			</view>
+			<view class="ui-cut"></view>
+			<view class="ui-commissionItem">
+				<view catchtap="onMyCustomerTap">
+					<text>3555</text>
+					<text>累计客户</text>
+				</view>
+				<view catchtap="onMyAssistantTap">
+					<text>2213</text>
+					<text>门店店员</text>
+				</view>
+				<view>
+					<text>54169</text>
+					<text>累计订单</text>
+				</view>
+			</view>
+		</view>
+		
+		<view class="ui-detailBox">
+			<view class="ui-detailItem" catchtap="onStatementsTap">
+				<view class="detailIcon"></view>
+				<text>财务报表</text>
+			</view>
+			<view class="ui-detailItem" bindtap="getScancode">
+				<view class="detailIcon"></view>
+				<text>扫码核销</text>
+			</view>
+			<view class="ui-detailItem" catchtap="onBlissVerifyTap">
+				<view class="detailIcon"></view>
+				<text>福气核销</text>
+			</view>
+			<view class="ui-detailItem" catchtap="onOrderManageTap">
+				<view class="detailIcon"></view>
+				<text>订单管理</text>
+			</view>
+			<view class="ui-detailItem" catchtap="onStoreQRCodeTap">
+				<view class="detailIcon"></view>
+				<text>门店二维码</text>
+			</view>
+			<view class="ui-detailItem" catchtap="onBlissVerifyDetailTap">
+				<view class="detailIcon"></view>
+				<text>福气核销明细</text>
+			</view>
+		</view>
+		
+	</view>
+</view>
