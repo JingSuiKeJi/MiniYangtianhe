@@ -5,6 +5,8 @@ const _g = app.base;
 const _c = app.config;
 const _t = app.temps;
 const event = app.event;
+const User = require('../../service/User');
+
 let data = {
 	photo:'',//照片地址
 	auto_height:true,//当textarea获取焦点时自适应高度，失去焦点时不自适应高度 //自适应高度时，style中的height无效
@@ -14,26 +16,16 @@ let data = {
 	storeName:'',//门店名称
 	storeTel:'',//门店电话
 	businessLicense:'',//营业执照
-	company:'',//公司
-	authorizeHidden: true,//开启地理授权
+	company:'',//分公司
+	companyId:'',//分公司Id
+	authorizeHidden: false,//开启地理授权
 	lon:'',
 	lat:'',
 	showModal: false,//选择公司模态框,
-	companyList:[
-		{companyItem:"广州京穗科技有限公司"},
-		{companyItem:"广州上单科技有限公司"},
-		{companyItem:"广州刷新科技有限公司"},
-		{companyItem:"广州按时科技有限公司"},
-		{companyItem:"广州请问科技有限公司"},
-		{companyItem:"广州二位科技有限公司"},
-		{companyItem:"广州就就科技有限公司"},
-		{companyItem:"广州光辉科技有限公司"},
-		{companyItem:"广州就好科技有限公司"},
-		{companyItem:"广州别扭科技有限公司"}
-	]
+	list:[],//分公司列表
 };
 const onLoad = function(self) {
-	
+	self.getData();
 }
 const onShow = function(self) {}
 const onReady = function(self) {
@@ -61,6 +53,20 @@ const onUnload = function(self) {
 	event.remove('me-storeApplication-authorize');
 }
 const methods = {
+	getData: function() {
+		const self = this;
+		User.getCompanyList(self, {
+		    page:1,
+				pageSize:15,
+		}).then((ret) => {
+		   let list = ret.data.list;
+			 self.setData({
+				 list:list
+			 })
+		}, (err) => {
+		    console.log("获取失败");
+		});
+	},
 	//上传本地图片或拍照
 	onChooseImageTap:function(){
 		const self = this;
@@ -151,12 +157,12 @@ const methods = {
 	    businessLicense: e.detail.value
 	  })
 	},
-	//双向绑定公司
+	//双向绑定分公司
 	onCompanyTap: function (e) {
 	  const self = this;
 	  const company = self.data.company;
 	  self.setData({
-	    company: e.detail.value
+	    company: e.detail.value,
 	  })
 	},
 	//选择公司模态框
@@ -174,14 +180,44 @@ const methods = {
 	onConfirm: function (options) {
 		const self = this;
 		const company =  options.currentTarget.dataset.company;
+		const companyId = self.data.companyId;
+		let id = options.currentTarget.dataset.id
 		self.setData({
-			company:company
+			company:company,
+			companyId:id,
 		})
-		this.hideModal();
+		this.hideModal(companyId);
 	},
 	//门店信息填写完成并提交申请
 	onSubmitTap:function(){
-		console.log("门店信息填写完成并提交申请")
+		const self = this;
+		const lon = self.data.lon;
+		const lat = self.data.lat;
+		const photo = self.data.photo;
+		const introduce = self.data.introduce;//门店介绍
+		const encoding = self.data.encoding;//门店编码
+		const address = self.data.address;//门店地址
+		const storeName = self.data.storeName;//门店名称
+		const storeTel = self.data.storeTel;
+		const businessLicense = self.data.businessLicense;//营业执照
+		const company = self.data.company;//分公司名称
+		const companyId = self.data.companyId;//分公司Id
+		User.apply(self, {
+		    imgUrls:photo,
+				description:introduce,
+				storeNo:encoding,
+				title:storeName,
+				address:address,
+				lon:lon,
+				lat:lat,
+				phone:storeTel,
+				businessLicense:businessLicense,
+				companyId:companyId,
+		}).then((ret) => {
+		   console.log("提交成功");
+		}, (err) => {
+		    console.log("提交失败");
+		});
 	},
 	// 微信 获取 经纬度:
 	onMapTap() {
