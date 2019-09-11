@@ -67,7 +67,7 @@ page {
 .ui-tipsItem__text {
     position: absolute;
     right: 30rpx;
-    top: 28rpx;
+    /* top: 28rpx; */
 }
 .ui-contentItem__list {
     width: 100%;
