@@ -84,7 +84,7 @@
             </view>
         </view>
         <!-- 限时抢购和品牌甄选 -->
-        <view class="ui-imgBox" wx:if="{{goodsList.length}}">
+        <view class="ui-imgBox" wx:if="{{secSkill.list && secSkill.list.length}}">
             <image src="{{filter.getPhoto(host,activity.imgUrl)}}" bindtap="onCheckActivity" data-id="{{activity.id}}" data-isLink="{{activity.isLink}}" />
             <view class="ui-buyBox">
                 <view class="ui-buyBox_top">
@@ -101,9 +101,9 @@
                 </view>
                 <view class="ui-buyBox_bottom" wx:if="{{second != -1}}">
                     <scroll-view scroll-x class="ui-bottomItem_scrollView">
-                        <view wx:for="{{goodsList}}" wx:key="{{index}}" class="ui-scrollView_item">
-                            <image src="{{filter.getLocalPhoto('buy.png')}}" />
-                            <image src="{{filter.getLocalPhoto (item.picUrl)}}" bindtap="onDetailTap" data-id="{{item.id}}" />
+                        <view wx:for="{{secSkill.list}}" wx:key="{{index}}" class="ui-scrollView_item" bindtap="onDetailTap" data-id="{{item.id}}" data-thirdid="{{secSkill.id}}">
+                            <image src="{{filter.getLocalPhoto('buy.png')}}"></image>
+                            <image src="{{filter.getPhoto(host, item.picUrl)}}"></image>
                             <view class="ui-scrollView_itemTitle">{{item.mainTitle}}</view>
                             <view class="ui-scrollView_itemNow">￥{{item.nowPrice}}</view>
                             <view class="ui-scrollView_itemPre">￥{{item.originPrice}}</view>

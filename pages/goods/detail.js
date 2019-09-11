@@ -327,21 +327,13 @@ const methods = {
         if (self.data.thirdId) {
             data.thirdId = self.data.thirdId;
         }
-        if (self.data.flag == 0) {
-            _g.navigateTo({
-                url: 'pages/pay/account',
-                param: data,
-            }, self);
-
-        } else {
-            _g.navigateTo({
-                url: 'pages/order/submit',
-                param: data,
-            }, self);
-
-        }
-
-
+        _g.navigateTo({
+            url: 'pages/order/submit',
+            param: {
+                postData: data,
+                from: 'goodsDetail'
+            },
+        }, self);
     },
     onCartTap: function(e) {
         let self = this;
@@ -382,27 +374,7 @@ const methods = {
         Goods.cartList(self, {}).then((ret) => {
             let data = ret.data;
             self.setData({
-
-
-
-
-
-
-
-
-                
-                total: data.length  ////////////这里报错注意一下
-
-
-
-
-
-
-
-
-
-
-
+                // total: data.length  ////////////这里报错注意一下
             });
         }, (err) => {
 
@@ -431,7 +403,7 @@ const methods = {
     onShareAppMessage() {
         const self = this;
         return {
-            title: '121211',
+            title: self.data.goodsDetail.mainTitle,
             path: 'pages/goods/detail?id=' + self.data.id
         }
     }
