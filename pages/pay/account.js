@@ -21,6 +21,7 @@ const data = {
     points: 148,//可用积分
     num: 0,//商品总数
     totalPrice: 22,//总价
+    addressId: 0,
 };
 
 // 页面onLoad方法
