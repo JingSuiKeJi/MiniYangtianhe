@@ -274,11 +274,11 @@ page {
 
 .ui-headBox_tap text {
     display: inline-block;
+    line-height: 0rpx;
     font-size: 26rpx;
     font-family: PingFangSC-Regular;
     font-weight: 400;
     color: #ffff;
-    line-height: 80rpx;
     margin-right: 40rpx;
 }
 
@@ -318,7 +318,7 @@ page {
     text-align: center;
     position: absolute;
     bottom: 25rpx;
-    left: 40%;
+    left: 45%;
     z-index: 999;
 }
 
@@ -378,13 +378,14 @@ page {
 
 .ui-imageItem_swper {
     width: 100%;
-    height: 370rpx;
+    max-height: 370rpx;
 }
 
 .ui-classBox .ui-classBox_item {
     width: 20%;
     text-align: center;
     display: inline-block;
+    vertical-align: top;
 }
 
 .ui-classBox_item .ui-classItem__img {
@@ -399,7 +400,8 @@ page {
     font-family: PingFangSC-Light;
     font-weight: 300;
     color: #333333;
-    margin-bottom: 20rpx
+    margin-bottom: 20rpx;
+    vertical-align: top;
 }
 
 .ui-classBox_icon {
@@ -434,6 +436,7 @@ page {
 .ui-buyBox {
     width: 100%;
     background-color: #fff;
+    margin-bottom: 20rpx;
     /* height: 500rpx; */
 }
 
@@ -500,7 +503,7 @@ page {
     width: 226rpx;
     height: 374rpx;
     display: inline-block;
-    border-left: 1rpx solid #F5F5F5;
+    border-right: 1rpx solid #F5F5F5;
     text-align: center;
     position: relative;
 }

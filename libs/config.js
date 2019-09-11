@@ -90,7 +90,12 @@ config.prototype = {
             getAddressList: '/app/address/list.do',
 			bindWX:'/app/user/bindWX.do',
 			sendCode:'/app/user/sendCode.do',
-			bindPhone:'/app/user/bindPhone.do',
+            bindPhone:'/app/user/bindPhone.do',
+            getPoster:'/app/user/getPoster.do',
+            msgToggle:'/app/user/msgToggle.do',
+            getCouponList:'/app/user/getCouponList.do',
+            getCompanyList:'/app/store/getCompanyList.do',
+            apply:'/app/store/apply.do',
         },
         goods: {
             getGoodsDetail: '/app/goods/getGoodsDetail.do',

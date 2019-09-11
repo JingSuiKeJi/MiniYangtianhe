@@ -16,7 +16,7 @@ const data = {
     classifyType: 0,
     // goodsList: [],
     secSkill: {},
-    BrandList: [],
+    brandList: [],
     tapList: [],
     classifyId: -1,
     list: [],
@@ -98,13 +98,13 @@ const methods = {
             let data = ret.data;
             let BrandList = [];
             let length = Math.ceil(data.length / 2);
-            for (var index = 0; index < length; index++) {
-                BrandList[index] = data.slice(index * length, (index + 1) * length);
+            for (var index = 0; index < 2; index++) {
+                BrandList[index] = data.slice(index * length, (index + 1) * length );
             }
             self.setData({
-                BrandList: BrandList
+                brandList: BrandList
             });
-
+            console.log(3333,self.data.brandList)
         }, (err) => {});
     },
     onMoreTap: function(e) {
@@ -188,18 +188,17 @@ const methods = {
     },
     onCheckBanner: function(e) {
         const self = this;
-        let id = e.target.dataset.id;
+        console.log(555,e.target.dataset.index)
+        let index = e.target.dataset.index;
         if (e.target.dataset.isLink == 2) return;
-        self.map(self.data.banner, id);
+        self.map(self.data.banner,index);
     },
-    map: function(arr, id) {
-        arr.forEach(element => {
-            if (element.id == id) {
-                _g.navigateTo({
-                    url: element.pageUrl,
-                }, self);
-            }
-        });
+    map: function(arr, index) {
+        let self = this;
+        _g.navigateTo({
+            url: 'pages' + arr[index].pageUrl,
+        }, self);
+        
     },
     onListTap: function(e) {
         const self = this;
@@ -220,11 +219,8 @@ const methods = {
     },
     onCheckActivity: function(e) {
         const self = this;
-        let id = e.target.dataset.id;
         if (e.target.dataset.isLink == 2) return;
-        _g.navigateTo({
-            url: self.data.activity.pageUrl,
-        }, self);
+        self.map(self.data.activity,0);
     },
     //限时抢购
     timeFormat: function(startTime, endTime) {

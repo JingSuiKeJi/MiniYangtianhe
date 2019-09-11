@@ -20,7 +20,7 @@
                 <swiper autoplay interval="2000" duration="500" circular class="ui-banner_swiper" bindchange="onChangeTap">
                     <block wx:for="{{banner}}" wx:key="{{index}}">
                         <swiper-item>
-                            <image src="{{filter.getPhoto(host,item.imgUrl)}}" class="ui-banner_image" data-id="{{item.id}}" data-isLink="{{item.isLink}}" bindtap="onCheckBanner" />
+                            <image src="{{filter.getPhoto(host,item.imgUrl)}}" class="ui-banner_image" data-index="{{index}}" data-isLink="{{item.isLink}}" bindtap="onCheckBanner" />
                         </swiper-item>
                     </block>
                 </swiper>
@@ -85,7 +85,7 @@
         </view>
         <!-- 限时抢购和品牌甄选 -->
         <view class="ui-imgBox" wx:if="{{secSkill.list && secSkill.list.length}}">
-            <image src="{{filter.getPhoto(host,activity.imgUrl)}}" bindtap="onCheckActivity" data-id="{{activity.id}}" data-isLink="{{activity.isLink}}" />
+            <image src="{{filter.getPhoto(host,activity[0].imgUrl)}}" bindtap="onCheckActivity"  data-isLink="{{activity.isLink}}" />
             <view class="ui-buyBox">
                 <view class="ui-buyBox_top">
                     <view>优选限时购</view>
@@ -112,19 +112,19 @@
                 </view>
             </view>
         </view>
-        <view class="ui-brandSelectBox">
+        <view class="ui-brandSelectBox" wx:if="{{brandList[0].length || brandList[1].length}}">
             <view class="ui-brandSelectItem_top" bindtap="onAllBrandsTap">品牌甄选</view>
             <view class="ui-brandSelectItem_bottom">
-                <scroll-view scroll-x class="ui-brandItem_scrollView">
+                <scroll-view scroll-x class="ui-brandItem_scrollView" wx:if="{{brandList[0].length }}"> 
                     <view class="ui-brandScroll_itemTop">
-                        <view wx:for="{{BrandList[0]}}" wx:key="{{index}}" class="ui-brandScroll_item">
+                        <view wx:for="{{brandList[0]}}" wx:key="{{index}}" class="ui-brandScroll_item">
                             <image src="{{filter.getPhoto(host,item.logoUrl)}}" bindtap="onBrandsTap" data-id="{{item.id}}" />
                         </view>
                     </view>
                 </scroll-view>
-                <scroll-view scroll-x class="ui-brandItem_scrollView">
+                <scroll-view scroll-x class="ui-brandItem_scrollView" wx:if="{{brandList[1].length}}">
                     <view class="ui-brandScroll_itemBottom">
-                        <view wx:for="{{BrandList[1]}}" wx:key="{{index}}" class="ui-brandScroll_item">
+                        <view wx:for="{{brandList[1]}}" wx:key="{{index}}" class="ui-brandScroll_item">
                             <image src="{{filter.getPhoto(host,item.logoUrl)}}" bindtap="onBrandsTap" data-id="{{item.id}}" />
                         </view>
                     </view>
