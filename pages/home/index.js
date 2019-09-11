@@ -139,7 +139,8 @@ const methods = {
                 tapImgUrl: data.occasion.imgUrl,
                 activity: data.activity,
                 stepInfo: stepInfo,
-                BMIIndex: BMIIndex
+                BMIIndex: BMIIndex,
+                tabList: data.navigation
             });
             
             self.btnShow(data.stepInfo.status);
@@ -157,14 +158,13 @@ const methods = {
             let data = ret.data;
             let BrandList = [];
             let length = Math.ceil(data.length / 2);
-            console.log(22, length)
             for (var index = 0; index < 2; index++) {
-                BrandList[index] = data.slice(index * length, (index + 1) * length - 1);
+                BrandList[index] = data.slice(index * length, (index + 1) * length );
             }
             self.setData({
-                BrandList: BrandList
+                brandList: BrandList
             });
-
+           
         }, (err) => {});
     },
     getSecKill() {
@@ -173,7 +173,7 @@ const methods = {
             platformFlag: 2,
         }).then((ret) => {
             let data = ret.data;
-            if (!data.length) return;
+            if (!data.list.length) return;
             self.setData({
                 goodsList: data.list
             });
@@ -298,10 +298,10 @@ const methods = {
     },
     onClickTap: function(e) {
         let self = this;
-        // console.log(e.target.dataset.type)
         self.setData({
-            classifyId: e.target.dataset.id,
-        })
+            classifyId: e.currentTarget.id,
+        });
+        self.getPageData();
     },
     onSlideTap: function(e) {
         let self = this;
@@ -315,23 +315,31 @@ const methods = {
             url: 'pages/search/brand',
         }, self);
     },
-    onListTap: function(e) {
+    onTabTap: function(e) {
         let self = this;
         let id = e.target.dataset.id;
         if (e.target.dataset.isLink == 2) return;
-        self.map(self.data.classList, id);
+        self.data.tabList.forEach(element => {
+            if (id == element.id) {
+                _g.navigateTo({
+                    url: 'pages' + element.pageUrl,
+                }, self);
+            }
+        });
+      
     },
     onDetailTap: function(e) {
         let self = this;
+        const opts = e.currentTarget.dataset;
         _g.navigateTo({
             url: 'pages/goods/detail',
             param: {
-                id: e.target.dataset.id,
+                id: opts.id,
+                thirdId: opts.thirdid
             }
         }, self);
     },
     onBrandsTap: function(e) {
-        console.log(333, e.target.dataset.id);
         let self = this;
         _g.navigateTo({
             url: 'pages/search/brandList',
@@ -377,28 +385,23 @@ const methods = {
             classList: classList
         });
     },
-    onCheckBanner: function(e) {
+    onGoTap: function(e) {
         let self = this;
-        let id = e.target.dataset.id;
+        let index = e.target.dataset.index;
         if (e.target.dataset.isLink == 2) return;
-        self.map(self.data.banner, id);
+        self.map(self.data.banner, index);
     },
     onCheckActivity: function(e) {
         let self = this;
-        let id = e.target.dataset.id;
         if (e.target.dataset.isLink == 2) return;
-        _g.navigateTo({
-            url: self.data.activity.pageUrl,
-        }, self);
+        self.map(self.data.activity,0);
     },
-    map: function(arr, id) {
-        arr.forEach(element => {
-            if (element.id == id) {
-                _g.navigateTo({
-                    url: element.pageUrl,
-                }, self);
-            }
-        });
+    map: function(arr, index) {
+        let self = this;
+        _g.navigateTo({
+            url: 'pages' + arr[index].pageUrl,
+        }, self);
+        
     },
     // 显示遮罩层
     showModal: function() {
