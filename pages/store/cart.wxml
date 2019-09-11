@@ -1,144 +1,103 @@
-<!--pages/store/cart.wxml-->
+<!-- pages/store/cart.wxml -->
 <wxs module="filter" src="../../filter/filter.wxs"></wxs>
 <view class="main" wx:if="{{ userInfo}}">
-    <view class=" main__box" wx:if="{{(medecineList.length || storeList.length)}}">>
+    <view class=" main__box" wx:if="{{(medecineList.length || storeList.length)}}">
         <navBar ext-class="navPosition" title='购物车' iconTheme='black' color='black' background='white' back="{{true}}"></navBar>
         <view class='tab-bottom'></view>
         <view class="ui-headerBox">
-            <image src="{{filter.getLocalPhoto('cart_laba.png')}}" class="headerItem_labaIcon"/>
-            <text class="headerItem_text">点击成为PLUS会员，享更多权限优惠！ </text>
-                <image src="{{filter.getLocalPhoto('cart_right.png')}}" class="headerItem_rightIcon"/>
+            <image src="{{filter.getLocalPhoto('cart_laba.png')}}" class="headerItem_labaIcon" />
+            <text class="headerItem_text">点击成为PLUS会员，享更多权限优惠！</text>
+            <image src="{{filter.getLocalPhoto('cart_right.png')}}" class="headerItem_rightIcon" />
         </view>
         <view class="ui-contentBox">
             <view class="ui-contentItem__tips">
-                <image src="{{medicineFlag ? filter.getLocalPhoto('cart_selestIcon.png') : filter.getLocalPhoto('cart_selestEmptyIcon.png')}}" 
-                class="ui-tipsItem__selectIcon" 
-                bindtap="onAllTap"
-                data-type="1"/>
-                <image src="{{filter.getLocalPhoto('cart_storeIcon.png')}}" class="ui-tipsItem__storeIcon"/>
+                <image src="{{medicineFlag ? filter.getLocalPhoto('cart_selestIcon.png') : filter.getLocalPhoto('cart_selestEmptyIcon.png')}}" class="ui-tipsItem__selectIcon" bindtap="onAllTap" data-type="1" />
+                <image src="{{filter.getLocalPhoto('cart_storeIcon.png')}}" class="ui-tipsItem__storeIcon" />
                 <text class="ui-tipsItem__storeName">养乐药房</text>
-                <text class="ui-tipsItem__storeName ui-tipsItem__text" bindtap="onMgtTap">{{isMgt ? '完成' : '管理'}}</text>
+                <text class="ui-tipsItem__storeName ui-tipsItem__text" bindtap="onMgtTap">
+                    {{isMgt ? '完成' : '管理'}}
+                </text>
             </view>
             <view class="ui-contentItem__list">
-                <view class="ui-contentItem__listBox {{item.isTouchMove ? 'touch-move-active' : ''}}" 
-                wx:for="{{medecineList}}"
-                data-index="{{index}}" 
-                    data-type="1"
-                bindtouchstart="touchstart" 
-                bindtouchmove="touchmove" 
-                wx:key="{{item.id}}">
-                    <view class="ui-contentItem__listItem" >
-                        <image src="{{item.isSelect  ? filter.getLocalPhoto('cart_selestIcon.png')  : filter.getLocalPhoto('cart_selestEmptyIcon.png')}}" 
-                            class="ui-listItem__selectIcon" 
-                            bindtap="onChoseTap" 
-                            data-type="1"
-                            data-index="{{index}}"/>
+                <view class="ui-contentItem__listBox {{item.isTouchMove ? 'touch-move-active' : ''}}" wx:for="{{medecineList}}" data-index="{{index}}" data-type="1" bindtouchstart="touchstart" bindtouchmove="touchmove" wx:key="{{item.id}}">
+                    <view class="ui-contentItem__listItem">
+                        <image src="{{item.isSelect  ? filter.getLocalPhoto('cart_selestIcon.png')  : filter.getLocalPhoto('cart_selestEmptyIcon.png')}}" class="ui-listItem__selectIcon" bindtap="onChoseTap" data-type="1" data-index="{{index}}" />
                         <view class="ui-goodsBox">
-                                <image src="../../images/{{item.url}}" class="ui-listItem__goodsIcon"/>
+                            <image src="../../images/{{item.url}}" class="ui-listItem__goodsIcon" />
                         </view>
                         <view class="ui-listItem__info">
                             <view class="ui-infoItem__title">{{item.title}}</view>
                             <view class="ui-infoItem__scale">{{item.scale}}</view>
                             <view class="ui-infoItem__price">
-                                <text >¥{{item.price}}</text>
-                                    <view class="ui-listItem__operatebBox">
-                                    <image src="{{filter.getLocalPhoto('goodsDetail_subtraction.png')}}" 
-                                        class="operateItem_subtractione" 
-                                        bindtap="onSubtractionTap" 
-                                        data-id="{{item.id}}"
-                                        data-type="1"
-                                        data-index="{{index}}"/>
+                                <text>¥{{item.price}}</text>
+                                <view class="ui-listItem__operatebBox">
+                                    <image src="{{filter.getLocalPhoto('goodsDetail_subtraction.png')}}" class="operateItem_subtractione" bindtap="onSubtractionTap" data-id="{{item.id}}" data-type="1" data-index="{{index}}" />
                                     <text class="operateItem__text">{{item.count}}</text>
-                                    <image src="{{filter.getLocalPhoto('goodsDetail_add.png')}}" 
-                                        class="operateItem_add" 
-                                        bindtap="onAddTap" 
-                                        data-id="{{item.id}}"
-                                        data-type="1"
-                                        data-index="{{index}}"/> 
-                                    </view>
+                                    <image src="{{filter.getLocalPhoto('goodsDetail_add.png')}}" class="operateItem_add" bindtap="onAddTap" data-id="{{item.id}}" data-type="1" data-index="{{index}}" />
                                 </view>
+                            </view>
                         </view>
                     </view>
-                    <view class="ui-listItem__del" bindtap="onDeleteTap" data-index="{{index}}">删除</view>
+                    <view class="ui-listItem__del" bindtap="onDeleteTap" data-index="{{index}}">
+                        删除
+                    </view>
                 </view>
             </view>
         </view>
-
-        <view class="ui-contentBox ui-storeBox" >
+        <view class="ui-contentBox ui-storeBox">
             <view class="ui-contentItem__tips">
-                <image src="{{storeFlag ? filter.getLocalPhoto('cart_selestIcon.png') : filter.getLocalPhoto('cart_selestEmptyIcon.png')}}" 
-                class="ui-tipsItem__selectIcon" 
-                bindtap="onAllTap"
-                data-type="2"/>
-                <image src="{{filter.getLocalPhoto('cart_storeIcon.png')}}" class="ui-tipsItem__storeIcon"/>
+                <image src="{{storeFlag ? filter.getLocalPhoto('cart_selestIcon.png') : filter.getLocalPhoto('cart_selestEmptyIcon.png')}}" class="ui-tipsItem__selectIcon" bindtap="onAllTap" data-type="2" />
+                <image src="{{filter.getLocalPhoto('cart_storeIcon.png')}}" class="ui-tipsItem__storeIcon" />
                 <text class="ui-tipsItem__storeName">养乐商城</text>
             </view>
-            <view class="ui-contentItem__list" >
-                <view class="ui-contentItem__listBox {{item.isTouchMove ? 'touch-move-active' : ''}}" 
-                wx:for="{{storeList}}"
-                data-index="{{index}}" 
-                data-type="2"
-                bindtouchstart="touchstart" 
-                bindtouchmove="touchmove" 
-                wx:key="{{item.id}}">
-                <view class="ui-contentItem__listItem">
-                        <image src="{{item.isSelect ? filter.getLocalPhoto('cart_selestIcon.png') : filter.getLocalPhoto('cart_selestEmptyIcon.png')}}" 
-                            class="ui-listItem__selectIcon" 
-                            bindtap="onChoseTap"
-                            data-type="2"
-                            data-index="{{index}}"/>
+            <view class="ui-contentItem__list">
+                <view class="ui-contentItem__listBox {{item.isTouchMove ? 'touch-move-active' : ''}}" wx:for="{{storeList}}" data-index="{{index}}" data-type="2" bindtouchstart="touchstart" bindtouchmove="touchmove" wx:key="{{item.id}}">
+                    <view class="ui-contentItem__listItem">
+                        <image src="{{item.isSelect ? filter.getLocalPhoto('cart_selestIcon.png') : filter.getLocalPhoto('cart_selestEmptyIcon.png')}}" class="ui-listItem__selectIcon" bindtap="onChoseTap" data-type="2" data-index="{{index}}" />
                         <view class="ui-goodsBox">
-                                <image src="../../images/{{item.url}}" class="ui-listItem__goodsIcon"/>
+                            <image src="../../images/{{item.url}}" class="ui-listItem__goodsIcon" />
                         </view>
                         <view class="ui-listItem__info">
                             <view class="ui-infoItem__title">{{item.title}}</view>
                             <view class="ui-infoItem__scale">{{item.scale}}</view>
                             <view class="ui-infoItem__price">
-                                <text >¥{{item.price}}</text>
-                                    <view class="ui-listItem__operatebBox">
-                                    <image src="{{filter.getLocalPhoto('goodsDetail_subtraction.png')}}" 
-                                        class="operateItem_subtractione" 
-                                        bindtap="onSubtractionTap" 
-                                        data-id="{{item.id}}" 
-                                        data-index="{{index}}"
-                                        data-type="2"/> 
+                                <text>¥{{item.price}}</text>
+                                <view class="ui-listItem__operatebBox">
+                                    <image src="{{filter.getLocalPhoto('goodsDetail_subtraction.png')}}" class="operateItem_subtractione" bindtap="onSubtractionTap" data-id="{{item.id}}" data-index="{{index}}" data-type="2" />
                                     <text class="operateItem__text">{{item.count}}</text>
-                                    <image src="{{filter.getLocalPhoto('goodsDetail_add.png')}}" 
-                                        class="operateItem_add" 
-                                        bindtap="onAddTap" 
-                                        data-id="{{item.id}}" 
-                                        data-index="{{index}}"
-                                        data-type="2"/>  
-                                    
-                                    </view>
+                                    <image src="{{filter.getLocalPhoto('goodsDetail_add.png')}}" class="operateItem_add" bindtap="onAddTap" data-id="{{item.id}}" data-index="{{index}}" data-type="2" />
                                 </view>
+                            </view>
                         </view>
-                </view>
-                <view class="ui-listItem__del" bindtap="onDeleteTap" data-index="{{index}}">删除</view>
+                    </view>
+                    <view class="ui-listItem__del" bindtap="onDeleteTap" data-index="{{index}}">
+                        删除
+                    </view>
                 </view>
             </view>
         </view>
-        <view class="ui-fixBox">
-            <image src="{{allSelect ? filter.getLocalPhoto('cart_selestIcon.png') : filter.getLocalPhoto('cart_selestEmptyIcon.png')}}" 
-            class="ui-fixItem__selectIcon"
-            bindtap="allChoseTap"/>
+        <view class="ui-fixBox" wx:if="{{isMgt}}">
+            <image src="{{allSelect ? filter.getLocalPhoto('cart_selestIcon.png') : filter.getLocalPhoto('cart_selestEmptyIcon.png')}}" class="ui-fixItem__selectIcon" bindtap="allChoseTap" />
             <text class="ui-fixItem__text">全选</text>
-            <text class=" ui-fixItem__allText" wx:if="{{!isMgt}}">合计：</text>
-            <text class=" ui-fixItem__price"wx:if="{{!isMgt}}">¥ {{mediTotal + storeTotal}}</text>
             <view class="ui-fixItem__delectBtn" wx:if="{{isMgt}}" bindtap="onBatchDelete">删除</view>
-            <view class="ui-fixItem__btn" wx:else bindtap="onAccountTap">结算({{mediNum + storeNum}})</view>
+        </view>
+        <view class="ui-fixBox" wx:else>
+            <view class="ui-textBox">
+                <text class=" ui-fixItem__allText">合计：</text>
+                <text class=" ui-fixItem__price">¥ {{mediTotal + storeTotal}}</text>
+            </view>
+            <view class="ui-fixItem__btn" bindtap="onAccountTap">结算({{mediNum + storeNum}})</view>
+        </view>
+        <!-- 购物车没有东西的情况下 -->
+        <view class="main ui-noBox"  wx:if="{{(!medecineList.length && !storeList.length)}}">
+            <image src="{{filter.getLocalPhote('cart_cart.png')}}" class="ui-cartIcon" />
+            <view class="ui-text">暂无选购</view>
+            <view>快去添加吧</view>
         </view>
     </view>
-   <!-- 购物车没有东西的情况下 -->
-    <view class="main ui-noBox" wx:else>
-    <image src="{{filter.getLocalPhote('cart_cart.png')}}" class="ui-cartIcon"/>
-    <view class="ui-text">暂无选购</view>
-    <view >快去添加吧</view>
-    </view> 
-</view> 
-<!-- 没有登陆的情况 -->
-<view class="main ui-noBox" wx:else>
-   <view class="ui-noLogin__text">亲，您还没登陆哦～</view>
-   <view class="ui-loginBtn">立即登陆</view>
 </view>
-
+<!-- 没有登陆的情况 -->
+<view class="main ui-noBox" wx:if="{{ !userInfo}}">
+    <view class="ui-noLogin__text">亲，您还没登陆哦～</view>
+    <view class="ui-loginBtn">立即登陆</view>
+</view>

@@ -1,5 +1,5 @@
 /* pages/goods/bargainList.wxss */
-/* pages/goods/index.wxss */
+/* pages/goods/groupList.wxss */
 .ui-imgBox {
     width: 100%;
     text-align: center;

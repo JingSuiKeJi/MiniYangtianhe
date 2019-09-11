@@ -609,11 +609,11 @@ page {
 .ui-listItem_top {
     width: 100%;
     height: 130rpx;
-    line-height: 150rpx;
+    padding-left: 30rpx;
+    padding-top: 30rpx;
     font-family: PingFangSC-Medium;
     font-weight: 500;
     color: #333333;
-    padding-left: 30rpx;
     font-size: 44rpx;
 }
 
@@ -623,7 +623,8 @@ page {
     display: inline-block;
     border-bottom: 1rpx solid #F5F5F5;
     position: relative;
-    top: 0,
+    top: 0;
+    font-size: 0;
 }
 
 .ui-tapItem_scrollView {
@@ -635,33 +636,39 @@ page {
     padding-left: 30rpx;
 }
 
-.ui-tapItem_scrollView .ui-tapScroll_item {
-    height: 80rpx;
+.ui-tapScroll_item {
+    position: relative;
     display: inline-block;
-    margin-right: 100rpx;
+    height: 80rpx;
+    margin-right: 60rpx;
+    box-sizing: border-box;
 }
 
-.ui-tapItem_scrollView .ui-tapScroll_item:last-child {
-    margin-right: 0;
+.ui-tapScroll_item view {
+    box-sizing: border-box;
 }
 
-.ui-tapScroll_item .ui-tapScroll_itemText {
+.ui-tapScroll_itemText {
+    padding: 0 5rpx;
     font-size: 28rpx;
     font-family: PingFangSC-Medium;
     font-weight: 400;
     color: #333333;
 }
 
-.ui-tapScroll_item .ui-tapScroll_itemIcon {
-    width: 66rpx;
-    height: 6rpx;
-    background-color: transparent;
+.ui-tapScroll_itemIcon {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
     display: inline-block;
-    margin-bottom: 4rpx;
-    margin-left: 20%;
+    width: 70%;
+    height: 6rpx;
+    margin: 0 auto;
+    background-color: #20CAB4;
 }
 
-.ui-bottomItem_tap .ui-tapItem_Icon {
+.ui-tapItem_Icon {
     width: 10%;
     height: 80rpx;
     display: inline-block;
@@ -766,6 +773,14 @@ page {
     position: absolute;
     top: 10rpx;
     right: 0;
+}
+
+.ui-bottomItem_contentEmpty {
+    height: 150rpx;
+    line-height: 150rpx;
+    font-size: 30rpx;
+    text-align: center;
+    color: #999;
 }
 
 .tab-bottom {

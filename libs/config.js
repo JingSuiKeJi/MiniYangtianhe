@@ -75,8 +75,6 @@ config.prototype = {
             getBrandList: '/app/brand/getBrandList.do',
             getGoodsList: '/app/goods/getGoodsList.do',
             getOccasion:'/app/assemble/getOccasion.do',
-            getAssembleList:'/app/assemble/getAssembleList.do',
-            getUserAssembleList:'/app/assemble/getUserAssembleList.do',
             getArticle: '/app/common/getArticle.do',
             getStepInfo: '/app/step/getStepInfo.do',
             uploadStep: '/app/step/uploadStep.do',

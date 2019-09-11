@@ -1,39 +1,16 @@
-// pages/store/store.js
 // js库引入
 const app = getApp();
 const _ = app.underscore;
 const _g = app.base;
 const _c = app.config;
+const event = app.event;
 const Platform = require('../../service/Platfrom');
-// 初始化数据
+const Goods = require('../../service/Goods');
+
 const data = {
     banner: [],
     classList: [],
-    collageList: [{
-            imgUrl: 'guilinggao.png',
-            title: '生和堂红豆龟苓膏',
-            nowPrice: 10.00,
-            prePrice: 14.00
-        },
-        {
-            imgUrl: 'e_c.png',
-            title: '养生堂VE+C',
-            nowPrice: 99.00,
-            prePrice: 133.00
-        },
-        {
-            imgUrl: 'jieshibang.png',
-            title: '杰士邦黄金持久避孕套套套',
-            nowPrice: 59.90,
-            prePrice: 99.00
-        },
-        {
-            imgUrl: 'guilinggao.png',
-            title: '生和堂红豆龟苓膏',
-            nowPrice: 10.00,
-            prePrice: 14.00
-        }
-    ],
+    groupList: [],
     currentIndex: 1,
     hotSearch: [],
     classifyType: 0,
@@ -49,12 +26,9 @@ const data = {
 
 // 页面onLoad方法
 const onLoad = function(self) {
-    self.getClassifyList();
     self.getData();
-    self.getTabBar().setData({
-        selected: 1
-    });
-    self.getPageData();
+    event.on('login-suc', (ret) => {});
+    event.on('logout-suc', (ret) => {});
 };
 
 // 页面onShow方法
@@ -67,8 +41,27 @@ const onUnload = function(self) {
 // 页面中的方法
 const methods = {
     getData: function() {
-        let self = this;
+        const self = this;
         self.getClassifyList();
+        self.getCommonData();
+        self.getSecKill();
+        self.getBrandList();
+        self.getGroupList();
+    },
+    getGroupList() {
+        const self = this;
+        Goods.getAssembleList(self, {
+            platformFlag: 1,
+            page: 1,
+            pageSize: 5
+        }).then((ret) => {
+            self.setData({
+                groupList: ret.data.list
+            });
+        })
+    },
+    getCommonData() {
+        const self = this;
         Platform.getCommonData(self, {
             platformFlag: 1,
         }).then((ret) => {
@@ -83,6 +76,9 @@ const methods = {
         }, (err) => {
 
         });
+    },
+    getSecKill() {
+        const self = this;
         Platform.getSecKill(self, {
             platformFlag: 1,
         }).then((ret) => {
@@ -93,6 +89,9 @@ const methods = {
             });
             self.timeFormat(data.startTime, data.endTime);
         }, (err) => {});
+    },
+    getBrandList() {
+        const self = this;
         Platform.getBrandList(self, {
             platformFlag: 1,
             page: 0
@@ -110,70 +109,75 @@ const methods = {
         }, (err) => {});
     },
     onMoreTap: function(e) {
-        let self = this;
+        const self = this;
         _g.navigateTo({
-            url: 'pages/goods/index'
+            url: 'pages/goods/groupList'
         }, self)
     },
     onSkipTap: function() {
-        let self = this;
+        const self = this;
         _g.navigateTo({
             url: 'pages/search/search',
             param: { platformFlag: 1 }
         }, self);
     },
     onChangeTap: function(e) {
-        let self = this;
+        const self = this;
         self.setData({
             currentIndex: e.detail.current
         })
     },
     onClickTap: function(e) {
-        let self = this;
+        const self = this;
         self.setData({
             classifyId: e.target.dataset.id,
-        })
+            page: 1
+        });
+        self.getPageData();
     },
     onSlideTap: function(e) {
-        let self = this;
+        const self = this;
         self.setData({
             isSlide: !self.data.isSlide
         })
-
     },
     onClassifyTap: function(e) {
-        let self = this;
+        const self = this;
         self.setData({
             classifyType: e.detail.current,
         });
     },
     onListTap: function(e) {
-        let self = this;
+        const self = this;
         _g.navigateTo({
             url: 'pages/search/classify',
         }, self);
     },
     onDetailTap: function(e) {
-        let self = this;
+        const self = this;
+        const opts = e.currentTarget.dataset;
         _g.navigateTo({
             url: 'pages/goods/detail',
+            param: {
+                id: opts.id
+            }
         }, self);
     },
     onBrandsTap: function(e) {
-        let self = this;
+        const self = this;
         _g.navigateTo({
             url: 'pages/search/brandList',
             param: { id: e.target.dataset.id }
         }, self);
     },
     onAllBrandsTap: function(e) {
-        let self = this;
+        const self = this;
         _g.navigateTo({
             url: 'pages/search/brand',
         }, self);
     },
     onResultTap: function(e) {
-        let self = this;
+        const self = this;
         _g.navigateTo({
             url: 'pages/search/detailList',
             param: {
@@ -183,7 +187,7 @@ const methods = {
         }, self);
     },
     onCheckBanner: function(e) {
-        let self = this;
+        const self = this;
         let id = e.target.dataset.id;
         if (e.target.dataset.isLink == 2) return;
         self.map(self.data.banner, id);
@@ -198,13 +202,13 @@ const methods = {
         });
     },
     onListTap: function(e) {
-        let self = this;
+        const self = this;
         let id = e.target.dataset.id;
         if (e.target.dataset.isLink == 2) return;
         self.map(self.data.classList, id);
     },
     showClassify: function(arr) {
-        let self = this;
+        const self = this;
         var classList = [];
         var length = Math.ceil(arr.length / 10);
         for (var index = 0; index < length; index++) {
@@ -215,7 +219,7 @@ const methods = {
         });
     },
     onCheckActivity: function(e) {
-        let self = this;
+        const self = this;
         let id = e.target.dataset.id;
         if (e.target.dataset.isLink == 2) return;
         _g.navigateTo({
@@ -224,7 +228,7 @@ const methods = {
     },
     //限时抢购
     timeFormat: function(startTime, endTime) {
-        let self = this;
+        const self = this;
         let nowDate = new Date();
         let curTime = nowDate.getTime(); //指定日期距离1970年的毫秒数
         if (startTime * 1000 > curTime) {
@@ -274,22 +278,25 @@ const methods = {
     },
     //榜单推荐分类列表
     getClassifyList: function() {
-        let self = this;
+        const self = this;
         Platform.getClassifyList(self, {
             platformFlag: 1,
-            level: 2
+            level: 1
         }).then((ret) => {
             let data = ret.data;
-            self.setData({
-                tapList: data,
-                classifyId: data[0].id
-            })
+            if (ret.data && ret.data.length) {
+                self.setData({
+                    tapList: data,
+                    classifyId: data[0].id
+                });
+                self.getPageData();
+            }
         }, (err) => {
 
         });
     },
     getPageData: function() {
-        let self = this;
+        const self = this;
         Platform.getRecommend(self, {
             platformFlag: 1,
             page: self.data.page,
@@ -298,7 +305,7 @@ const methods = {
         }).then((ret) => {
             let data = ret.data;
             self.setData({
-                list: data.list,
+                list: data.list
             })
         }, (err) => {
 

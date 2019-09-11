@@ -1,4 +1,4 @@
-// pages/goods/index.js
+// pages/goods/groupList.js
 // js库引入
 const app = getApp();
 const _ = app.underscore;

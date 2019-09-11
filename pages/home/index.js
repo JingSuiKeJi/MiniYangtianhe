@@ -57,6 +57,7 @@ const onLoad = function(self) {
     event.emit('login-suc', (data)=>{
         self.setLoginData();
     });
+    // event.on('logout-suc', (ret) => {});
 };
 
 const onReady = function(self) {
@@ -140,7 +141,7 @@ const methods = {
                 stepInfo: stepInfo,
                 BMIIndex: BMIIndex
             });
-
+            
             self.btnShow(data.stepInfo.status);
             self.showClassify(data.navigation);
         }, (err) => {
@@ -184,7 +185,7 @@ const methods = {
         let self = this;
         Platform.getClassifyList(self, {
             platformFlag: 2,
-            level: 2
+            level: 1
         }).then((ret) => {
             let data = ret.data;
             self.setData({

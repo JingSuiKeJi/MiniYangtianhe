@@ -5,6 +5,7 @@ const _g = app.base;
 const _c = app.config;
 const Platform = require('../../service/Platfrom');
 const Goods = require('../../service/Goods');
+
 // 初始化数据
 const data = {
     currentIndex: 1,
@@ -41,11 +42,12 @@ const data = {
     ScaleType: -1,
     isBuy: false,
     title: '', //头部标题
+    goodsDetail: {},
 };
 
 // 页面onLoad方法
 const onLoad = function(self) {
-    // self.getCartList();
+    self.getCartList();
     self.getData();
     self.moveBarrage();
     const title = self.data.self;
@@ -70,55 +72,69 @@ const onUnload = function(self) {
 // 页面中的方法
 const methods = {
     getData: function() {
-        let self = this;
+        const self = this;
+        self.getGoodsDetail();
+        self.getCommentList();
+    },
+    getGoodsDetail() {
+        const self = this;
         let data = {
-            id: 2
+            id: self.data.id
         };
         if (self.data.thirdId) {
             data.thirdId = self.data.thirdId
         }
         Goods.getGoodsDetail(self, data).then((ret) => {
-            let data = ret.data;
             self.setData({
-                list: data
+                goodsDetail: ret.data
             });
-            self.splitString(data.goodImgs, 'bannerImgs');
-            self.splitString(data.description, 'goodsImgs');
-
+            // "goodsDetail.type": 1,   //1.普通 2.秒杀 3.权益卡附属 4.权益 5.拼团 6.砍价 7.推荐
+            self.splitString(ret.data.goodImgs, 'bannerImgs');
+            self.splitString(ret.data.description, 'goodsImgs');
+            // if (self.data.flag == 1 || self.data.flag == 2) { //一切数据根据返回数据为准
+            if (ret.data.type == 5) {
+                //需要知道是门店商品还是商城的商品
+                self.getAssembleList();
+            }
         }, (err) => {});
-        //评价
+    },
+    getCommentList() {
+        const self = this;
         Goods.getCommentList(self, {
-            goodsId: 2
+            goodsId: self.data.id,
+            page: 1,
+            pageSize: 5 //请求5条数据即可,不需要自己去切割
         }).then((ret) => {
-            let data = ret.data;
-            let commentList = data.list.slice(0, 5);
-            let commentLength = data.list.length;
+            // let data = ret.data;
+            // let commentList = data.list.slice(0, 5);
+            // let commentLength = data.list.length; //这里的评论长度展示应该是评论总数
             self.setData({
-                commentList: commentList,
-                commentLength: commentLength
+                commentList: ret.data.list,
+                commentLength: ret.data.totalCount
             });
         }, (err) => {
 
         });
+    },
+    getAssembleList() {
+        const self = this;
         //拼团 
-        if (self.data.flag == 1 || self.data.flag == 2) {
-            let data = {
-                platformFlag: 1,
-                page: 1,
-                pageSize: 2,
-            }
-            if (self.data.storeId) {
-                data.storeId = self.data.storeId;
-            }
-            Platform.getAssembleList(self, data).then((ret) => {
-                let data = ret.data;
-                self.setData({
-                    collage: data.list
-                })
-            }, (err) => {
-
-            });
+        let data = {
+            platformFlag: self.data.goodsDetail.platformFlag,
+            page: 1,
+            pageSize: 2,
         }
+        if (self.data.storeId) {
+            data.storeId = self.data.storeId;
+        }
+        Platform.getAssembleList(self, data).then((ret) => {
+            let data = ret.data;
+            self.setData({
+                collage: data.list
+            })
+        }, (err) => {
+
+        });
     },
     onChangeTap: function(e) {
         let self = this;
@@ -181,7 +197,7 @@ const methods = {
     // 显示遮罩层
     showModal: function() {
         let self = this;
-       
+
         self.setData({
             hideModal: false
         })
@@ -300,15 +316,13 @@ const methods = {
     },
     onBuyTap: function(e) {
         let self = this;
-        // let data = {
-        //     id: 2,
-        //     num: self.data.cartNum,
-        //     orderStatus: self.data.list.type
-        // }
         let data = {
+            platformFlag: 2,
             id: 2,
             num: self.data.cartNum,
-            orderStatus: 1
+            skuId: 2,
+            orderStatus: 1,
+            buyType: 1
         }
         if (self.data.thirdId) {
             data.thirdId = self.data.thirdId;
@@ -316,17 +330,17 @@ const methods = {
         if (self.data.flag == 0) {
             _g.navigateTo({
                 url: 'pages/pay/account',
-                    param: data,
+                param: data,
             }, self);
-            
-        }else {
-             _g.navigateTo({
+
+        } else {
+            _g.navigateTo({
                 url: 'pages/order/submit',
-                    param: data,
+                param: data,
             }, self);
 
         }
-       
+
 
     },
     onCartTap: function(e) {
@@ -337,10 +351,10 @@ const methods = {
     },
     splitString: function(str, key) {
         let self = this;
-        let bannerList = [];
-        bannerList = str.split(',')
+        let picList = [];
+        picList = str.split(',')
         self.setData({
-            [key]: bannerList
+            [key]: picList
         })
 
     },
@@ -368,7 +382,27 @@ const methods = {
         Goods.cartList(self, {}).then((ret) => {
             let data = ret.data;
             self.setData({
-                total: data.length
+
+
+
+
+
+
+
+
+                
+                total: data.length  ////////////这里报错注意一下
+
+
+
+
+
+
+
+
+
+
+
             });
         }, (err) => {
 
@@ -393,8 +427,14 @@ const methods = {
             modelType: opts.type
         })
         self.showModal();
+    },
+    onShareAppMessage() {
+        const self = this;
+        return {
+            title: '121211',
+            path: 'pages/goods/detail?id=' + self.data.id
+        }
     }
-
 };
 
 // 有引用template时定义
