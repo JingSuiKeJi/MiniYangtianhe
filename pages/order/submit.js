@@ -218,6 +218,9 @@ const methods = {
         let self = this;
         _g.navigateTo({
             url: 'pages/me/myAddress',
+            param: {
+                from: 'order'
+            }
         }, self);
     }
 }

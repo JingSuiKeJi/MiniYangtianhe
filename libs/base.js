@@ -1288,36 +1288,6 @@ base.prototype = {
             }
         })
     },
-    getPhoto: function(photo) {
-        let _g = this;
-        let host = _g.getHost();
-        if (photo) {
-            photo = photo.replace('//upload', '/upload');
-            if (photo.indexOf('http') > -1) {
-                return photo;
-            } else {
-                return photo ? (host + photo) : '';
-            }
-        } else {
-            return 'https://app.aiqinyouxuan.com/app/icon.png';
-        }
-    },
-
-    getAvatar: function(avatar) {
-        let _g = this;
-        let host = _g.getHost();
-        if (avatar) {
-            avatar = avatar.replace('//upload', '/upload');
-            if (avatar.indexOf('http') > -1) {
-                return avatar;
-            } else {
-                return avatar ? (host + avatar) : '';
-            }
-        } else {
-            return 'https://app.aiqinyouxuan.com/app/icon.png';
-        }
-    },
-
     getStatusBarHeight: function() {
         let _g = this;
         return _g.getLS('statusBarHeight');

@@ -40,10 +40,19 @@
 			</view>
 			<view class="ui-itemCommon">
 				<view class="ui-titleCommon">
-					<text>地址信息</text>
+					<text>选择地址</text>
 					<text>*</text>
 				</view>
-				<textarea class="ui-addressText" bindinput="onAddressTap" placeholder="请输入地址" placeholder-style="color:#666666;" value="{{address}}" bindinput="onAddressTap"
+				<view class="ui-addressText" catchtap="onMapTap">{{addressDetail}}</view>
+				<!-- <textarea class="ui-addressText" bindinput="onAddressTap" placeholder="请输入地址" placeholder-style="color:#666666;" value="{{address}}" bindinput="onAddressTap"
+				cols="686rpx" maxlength="110" auto-height="{{auto_height}}" bindblur='areablur' bindfocus='areafocus'/> -->
+			</view>
+			<view class="ui-itemCommon">
+				<view class="ui-titleCommon">
+					<text>详细地址</text>
+					<text>*</text>
+				</view>
+				<textarea class="ui-addressText" bindinput="onAddressTap" placeholder="请输入详细地址" placeholder-style="color:#666666;" value="{{address}}" bindinput="onAddressTap"
 				cols="686rpx" maxlength="110" auto-height="{{auto_height}}" bindblur='areablur' bindfocus='areafocus'/>
 			</view>
 			<view class="ui-itemCommon">
