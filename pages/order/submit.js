@@ -7,44 +7,41 @@ const Order = require('../../service/Order');
 
 // 初始化数据
 const data = {
-    location: {
-        lon: 112.59000,
-        lat: 28.12000
-    },
+    orderAddressVo: {},
+    goodsVoList: [],
+    orderStoreVO: {},
+    points: 0,
+    totalPrice: 0,
+    num: '',
+    deliveryTime: '',
+    deliveryRange: '',
+
+
     goodsList: [],
     postType: '请输入配送方式',
     type: -1,
     pickerValue: [0, 0],
-    timeList: [['2019-07-25', '2019-07-26'], ['12:00-13:00', '13:00-14:00']],
+    timeList: [
+        ['2019-07-25', '2019-07-26'],
+        ['12:00-13:00', '13:00-14:00']
+    ],
     postTime: '请选择配送时间',
     infoList: [],
-    pointsFlag: true,//有积分可用
-    flag: true,//有优惠卷可用,
-    isSelect: false,//是否使用积分
+    pointsFlag: true, //有积分可用
+    flag: true, //有优惠卷可用,
+    isSelect: false, //是否使用积分
     remark: '',
-    points: 148,//可用积分
-    num: 0,//商品总数
-    totalPrice: 22,//总价
-    addressId: 0,
+    // points: 148, //可用积分
+    num: 0, //商品总数
+    totalPrice: 22, //总价
 };
 
 // 页面onLoad方法
-const onLoad = function (self) {
-
-    // let data = {
-    //     platformFlag: self.data.platformFlag,
-    //     id: self.data.id,
-    //     num: self.data.num,
-    //     skuId: self.data.skuId,
-    //     orderStatus: self.data.orderStatus,
-    //     buyType: self.data.buyType
-    // }
-    // if (self.data.thirdId) {
-    //     data.thirdId = self.data.thirdId
-    // }
-    // self.setData(data)
-    // self.getData();
-    if (self.data.postData.platformFlag == 1) {
+const onLoad = function(self) {
+    self.setData({
+        platformFlag: self.data.platformFlag
+    })
+    if (self.data.platformFlag == 1) {
         self.preOrder();
     } else {
         self.getLocation();
@@ -52,27 +49,14 @@ const onLoad = function (self) {
 };
 
 // 页面onShow方法
-const onShow = function (self) {
+const onShow = function(self) {
 
 };
-const onUnload = function (self) {
+const onUnload = function(self) {
 
 }
 // 页面中的方法
 const methods = {
-    getLocation() {
-        const self = this;
-        _g.getLocation().then((res) => {
-            self.setData({
-                location: {
-                    lon: res.longitude,
-                    lat: res.latitude
-                }
-            });
-            self.preOrder();
-        }, (error) => {
-        });
-    },
     preOrder() {
         const self = this;
         if (self.data.from == 'goodsDetail') {
@@ -82,54 +66,63 @@ const methods = {
                     goodsId: postData.id,
                     num: postData.num,
                 },
-                sysFlag: postData.platformFlag
+                platformFlag: postData.platformFlag
             };
             if (postData.skuId) data.preGoods.skuId = postData.skuId;
-            Order.preOrder(self, data).then((ret)=>{
-
+            Order.preOrder(self, data).then((ret) => {
+                self.setData({
+                    orderAddressVo: ret.data.orderAddressVo,
+                    goodsVoList: ret.data.goodsVoList,
+                    orderStoreVO: ret.data.orderStoreVO,
+                    points: ret.data.points || 0,
+                    totalPrice: ret.data.totalPrice,
+                    num: ret.data.num,
+                    deliveryTime: ret.data.deliveryTime,
+                    deliveryRange: ret.data.deliveryRange
+                })
             });
         } else if (self.data.from == 'cart') {
 
         }
     },
-    getData: function () {
-        let self = this;
-        let param = {
-            platformFlag: self.data.platformFlag,
-            preGoods: {
-                goodsId: self.data.id,
-                skuId: self.data.skuId,
-                num:self.data.num
-            } 
-        }
-        if (self.data.platformFlag == 2) {
-            _g.getLocation(self).then((data)=>{
-                self.setData({
-                    lat: data.latitude,
-                    lon: data.longitude
-                })
-            });
-            param.lat =self.data.latitude;
-            param.lon =self.data.longitude;
-        }
-        Order.common(self, param).then((ret) => {
-            let data = ret;
-            let dataObj = {
-                infoList: data.orderAddressVo,
-                goodsList: data.goodsVoList,
-                points: data.points,
-                num: data.num,
-                totalPrice: data.totalPrice,
-            }
-            if (data.orderStoreVO.length) {
-                dataObj.orderStoreVO = data.orderStoreVO
-            }
-            self.setData(param);
-        }, (err) => {
+    getData: function() {
+        // let self = this;
+        // let param = {
+        //     platformFlag: self.data.platformFlag,
+        //     preGoods: {
+        //         goodsId: self.data.id,
+        //         skuId: self.data.skuId,
+        //         num: self.data.num
+        //     }
+        // }
+        // if (self.data.platformFlag == 2) {
+        //     _g.getLocation(self).then((data) => {
+        //         self.setData({
+        //             lat: data.latitude,
+        //             lon: data.longitude
+        //         })
+        //     });
+        //     param.lat = self.data.latitude;
+        //     param.lon = self.data.longitude;
+        // }
+        // Order.common(self, param).then((ret) => {
+        //     let data = ret;
+        //     let dataObj = {
+        //         infoList: data.orderAddressVo,
+        //         goodsList: data.goodsVoList,
+        //         points: data.points,
+        //         num: data.num,
+        //         totalPrice: data.totalPrice,
+        //     }
+        //     if (data.orderStoreVO.length) {
+        //         dataObj.orderStoreVO = data.orderStoreVO
+        //     }
+        //     self.setData(param);
+        // }, (err) => {
 
-        });
+        // });
     },
-    onPostTap: function (e) {
+    onPostTap: function(e) {
         let self = this;
         let type = e.target.dataset.type;
         if (self.data.type == type) return;
@@ -151,13 +144,12 @@ const methods = {
                     postType: '到店自取',
                     type: 3
                 });
-                break; 
-            default: 
+                break;
+            default:
                 break;
         }
-        
     },
-    onPickerTap: function (e) {
+    onPickerTap: function(e) {
         let self = this;
         let pickerValue = e.detail.value;
         let postTime = self.data.timeList[0][pickerValue[0]] + self.data.timeList[1][pickerValue[1]]
@@ -166,55 +158,71 @@ const methods = {
             postTime: postTime
         })
     },
-    onSelectTap: function (e) {
+    onSelectTap: function(e) {
         let self = this;
         if (!self.data.points) return;
         self.setData({
             isSelect: !self.data.isSelect
         })
     },
-    onSubmitTap: function (e) {
-        let self = this;
-        let opts = self.data;
-        let param = {
-            platformFlag: opts.platformFlag,
-            goodsId: opts.id,
-            skuId: opts.skuId,
-            num: opts.num,
-            orderStatus: opts.orderStatus,
-            remark: opts.remark,
-            buyType: opts.buyType
-        }
-        if (self.data.thirdId) {
-            param.thirdId = opts.thirdId;
-        }
-        if (opts.isSelect) {
-            param.integralStatus = 1;
-        }else {
-            param.integralStatus = 2;
-        }
-        if (opts.platformFlag == 2) {
-            param.dispatchingType = opts.type;
-            if (opts.type == 2) {
-                param.dispatchingTime = {
-                    beginTime:1561634,
-                    endTime:1561634
+    payStatus(type) {
+        const self = this;
+        if (type == 'success') {
+            _g.redirectTo({
+                url: 'pages/order/orderDetail',
+                param: {
+                    index: 0,
+                    from: 'submit'
                 }
-            }
+            }, self);
+        } else {
+            //fail
+            _g.redirectTo({
+                url: 'pages/order/orderDetail',
+                param: {
+                    index: 0,
+                    from: 'submit'
+                }
+            }, self);
         }
-        Order.placeOrder(self, param).then((ret) => {
-            let data = ret;
-        }, (err) => {
+    },
+    onSubmitTap: function(e) {
+        const self = this;
+        let data = {
+            id: self.data.postData.id,
+            num: self.data.num,
+            skuId: '',
+            addressId: self.data.orderAddressVo.id,
+            integralStatus: 2,
+            dispatchingType: 1,
+            remark: '',
+            platformFlag: self.data.platformFlag,
+            buyType: 1
+        };
 
+        Order.placeOrder(self, data).then((ret) => {
+            if (self.data.from == 'goodsDetail') {
+                //TODO pay
+                self.payStatus('success');
+            } else {
+                //
+            }
+        }, (err) => {
+            _g.showModal({
+                content: '提交订单失败',
+                confirm() {
+                    _g.navigateBack();
+                }
+            })
         });
     },
-    getInputValue: function (e) {
+    getInputValue: function(e) {
         let self = this;
         self.setData({
-            remark: e.detail.value 
+            remark: e.detail.value
         })
     },
-    onAddressTap: function (e) {
+    onAddressTap: function(e) {
         let self = this;
         _g.navigateTo({
             url: 'pages/me/myAddress',

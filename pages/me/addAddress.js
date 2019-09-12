@@ -16,9 +16,12 @@ let data = {
     addressDetail: '',
     houseNumber: '',
     selectLocation: {
-    	lon: 112.59000,
-        lat: 28.12000
+    	lon: 0,
+        lat: 0
     },
+    provinceName: '',
+    cityName: '',
+    areaName: '',
     customItem: '全部',
     // 爱亲 获取 省市区: 
     changeDeep: 0,
@@ -135,16 +138,20 @@ const methods = {
         const self = this;
         const phoneReg = /^1[0-9]{10}$/;
 
-        // 省市区
-        self.setData({
-            provinceId: Region[self.data.confirmSelect[0]].id,
-            provinceName: Region[self.data.confirmSelect[0]].name,
-            cityId: Region[self.data.confirmSelect[0]].sub[self.data.confirmSelect[1]].id,
-            cityName: Region[self.data.confirmSelect[0]].sub[self.data.confirmSelect[1]].name,
-            areaId: Region[self.data.confirmSelect[0]].sub[self.data.confirmSelect[1]].sub[self.data.confirmSelect[2]].id,
-            areaName: Region[self.data.confirmSelect[0]].sub[self.data.confirmSelect[1]].sub[self.data.confirmSelect[2]].name,
 
-        })
+        if (!self.data.selectLocation.lon) {
+            _g.toast({
+                title: '请选择地址'
+            });
+            return
+        };
+
+        if (!self.data.houseNumber) {
+            _g.toast({
+                title: '请输入门牌号'
+            });
+            return
+        };
 
         if (!self.data.name.trim()) {
             _g.toast({
@@ -178,8 +185,12 @@ const methods = {
             lon: self.data.selectLocation.lon,
             lat: self.data.selectLocation.lat,
             address: self.data.addressDetail,
+            houseNumber: self.data.houseNumber,
             showAddress: self.data.showAddress,
             isDefault: self.data.set == false ? 0 : 1,
+            provinceName: self.data.provinceName,
+            cityName: self.data.cityName,
+            areaName: self.data.areaName,
         }).then(function(ret) {
         	_g.toast({
         		title: '添加地址成功',
@@ -221,6 +232,18 @@ const methods = {
                 		lat: ret.latitude
                 	}
                 });
+                _g.getLocationDetail(ret.longitude, ret.latitude).then((res)=>{
+                    self.setData({
+                        provinceName: res.province,
+                        cityName: res.city,
+                        areaName: res.district
+                    })
+                },(err)=>{
+
+                })
+                // provinceName: '',
+                // cityName: '',
+                // areaName: '',
             },
             fail (err) {
             	self.setData({

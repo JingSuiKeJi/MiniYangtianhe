@@ -894,27 +894,26 @@ base.prototype = {
             });
             wx.getLocation({
                 success: function(data) {
-                    var key = 'LN7BZ-O4YC3-HGK3Q-YLMCP-A7YOO-KCFJI';
+                    var key = 'YLTBZ-SPSRO-PPIWR-SKAML-PNQ72-CWBWC';
                     var getAddressUrl = 'https://apis.map.qq.com/ws/geocoder/v1/?location=' + data.latitude + ',' + data.longitude + '&key=' + key + '&get_poi=1';
                     _g.dm.lat = data.latitude;
                     _g.dm.lon = data.longitude;
-                    return resolve(data);
-                    // wx.request({
-                    //     url: getAddressUrl, //仅为示例，并非真实的接口地址
-                    //     header: {
-                    //         'content-type': 'application/json' // 默认值
-                    //     },
-                    //     success: function(res) {
-                    //         if (res.data.status == 0) {
-
-                    //             _g.dm.addr = res.data.result.address_component;
-                    //         }
-                    //         return resolve(_g.dm.addr);
-                    //     },
-                    //     fail: function(err) {
-                    //         return reject(err);
-                    //     }
-                    // });
+                    // return resolve(data);
+                    wx.request({
+                        url: getAddressUrl, //仅为示例，并非真实的接口地址
+                        header: {
+                            'content-type': 'application/json' // 默认值
+                        },
+                        success: function(res) {
+                            if (res.data.status == 0) {
+                                _g.dm.addr = res.data.result.address_component;
+                            }
+                            return resolve(_g.dm.addr);
+                        },
+                        fail: function(err) {
+                            return reject(err);
+                        }
+                    });
                 },
                 fail: function(e) {
                     if (e.errMsg == 'getLocation:fail auth deny') {
@@ -926,6 +925,33 @@ base.prototype = {
         })
     },
 
+    /**
+     * 根据经纬度获取详细地址
+     * @returns {string}
+     */
+    getLocationDetail: function (lon, lat) {
+        var _g = this;
+        return new Promise(function(resolve, reject) {
+            var key = 'YLTBZ-SPSRO-PPIWR-SKAML-PNQ72-CWBWC';
+            var getAddressUrl = 'https://apis.map.qq.com/ws/geocoder/v1/?location=' + lat + ',' + lon + '&key=' + key + '&get_poi=1';
+            wx.request({
+                url: getAddressUrl,
+                header: {
+                    'content-type': 'application/json' // 默认值
+                },
+                success: function(res) {
+                    var addr;
+                    if (res.data.status == 0) {
+                        addr = res.data.result.address_component;
+                    }
+                    return resolve(addr);
+                },
+                fail: function(err) {
+                    return reject(err);
+                }
+            });
+        })
+    },
     /**
      * 根据配置文件中不同的环境获取不同的host
      * @returns {string}
