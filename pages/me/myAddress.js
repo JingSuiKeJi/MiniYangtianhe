@@ -6,6 +6,7 @@ const _c = app.config;
 const _t = app.temps;
 const event = app.event;
 const User = require('../../service/User');
+const Order = require('../../service/Order');
 
 let data = {
 	addressList: [],
@@ -32,20 +33,38 @@ const methods = {
 	// 接口: 收货地址列表
 	getPageData: function () {
 		const self = this;
-		User.getAddressList(self, {
-			page: self.data.page,
-			pageSize: 15
-		}).then(function (ret) {
-			if (self.data.page == 1) {
+		if (self.data.from == 'order') {
+			Order.addressList(self, {
+				storeId: self.data.storeId || 0
+			}).then((ret) => {
 				self.setData({
-					addressList: ret.data
+					addressList: _.map(ret.data, (item) => {
+						return {
+							id: item.id,
+							receiverName: item.name,
+							receiverPhone: item.phone,
+							isDefault: item.isDefault || 0,
+							address: item.address
+						}
+					})
 				})
-			} else {
-				self.setData({
-					addressList: self.data.addressList.concat(ret.data)
-				})
-			}
-		});
+			});
+		} else {
+			User.getAddressList(self, {
+				page: self.data.page,
+				pageSize: 15
+			}).then(function (ret) {
+				if (self.data.page == 1) {
+					self.setData({
+						addressList: ret.data
+					})
+				} else {
+					self.setData({
+						addressList: self.data.addressList.concat(ret.data)
+					})
+				}
+			});
+		}
 	},
 	//添加收货人
 	onAddConsigneeTap: function () {
@@ -112,9 +131,17 @@ const methods = {
 	onAddressTap(e) {
 		const self = this;
 		const opts = e.currentTarget.dataset;
+		const item = self.data.addressList[opts.index];
 		if (self.data.from != 'order') return;
 		_g.getPrevPage().setData({
-			addressId: self.data.addressList[opts.index].id
+			orderAddressVo: {
+				id: item.id,
+				phone: item.phone,
+				address: item.address,
+				name: item.name,
+				distance: item.distance,
+				isDelivery: item.isDelivery,
+			}
 		});
 		_g.navigateBack();
 	}

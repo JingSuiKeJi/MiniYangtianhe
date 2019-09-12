@@ -120,14 +120,14 @@ config.prototype = {
             getCommentList: '/app/goods/getCommentList.do',
             getBrandDetail:'/app/brand/getBrandDetail.do',
             getHotSearchList: '/app/home/getHotSearchList.do',
-            placeOrder: '/app/order/placeOrder.do'
         },
         store: {
             storeList: '/app/home/getStoreList.do',
         },
         order: {
             placeOrder: '/app/order/placeOrder.do',
-            preOrder: '/app/preOrder/common.do'
+            preOrder: '/app/preOrder/common.do',
+            addressList: '/app/preOrder/addressList.do'
         },
         point: {
             getBaseInfo: '/app/points/getBaseInfo.do',

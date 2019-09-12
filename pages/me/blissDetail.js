@@ -89,6 +89,7 @@ const methods = {
         Point.prePay(self, {
             chargeId: chargeId
         }).then((ret) => {
+            ret.data.package = ret.data.package.replace(/\s*/g,'');
             let payInfo = ret.data;
             payInfo.success = function() {
                 //TODO check pay status
@@ -187,7 +188,10 @@ const methods = {
         })
     },
     scrollTolower() {
-    	this.onReachBottom()
+        const self = this;
+        if (self.data.hasNextPage) {
+    	   self.onReachBottom();
+        }
     }
 };
 

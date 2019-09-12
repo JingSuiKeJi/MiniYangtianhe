@@ -329,6 +329,7 @@ const methods = {
             url: 'pages/order/submit',
             param: {
                 postData: data,
+                platformFlag: self.data.goodsDetail.platformFlag,
                 from: 'goodsDetail'
             },
         }, self);
