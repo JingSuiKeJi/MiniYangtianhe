@@ -1,31 +1,28 @@
-<!--pages/search/classify.wxml-->
+<!-- pages/search/classify.wxml -->
 <wxs module="filter" src="../../filter/filter.wxs"></wxs>
 <view class="contain">
-   <view class="main">
-      <view class="ui-searchBox">
-        <input type="text" placeholder="药品、炎症、品牌" class="ui-searchItem_input" bindinput="onGetInput"/>
-         <view class="ui-searchItem_text" bindtap="onSkipTap">搜索</view>
-         <image src="{{filter.getLocalPhoto('ic_search.png')}}" class="searchItem_icon"/>
-      </view>
-      <view class="ui-tipBox" bindtap="onSkipTap">
-          <text class="ui-tipItem__text" >{{title}}</text>
-          <image src="{{filter.getLocalPhoto('classfity_rightIcon.png')}}" class="ui-tipItem__icon"/>
-      </view>
-      <view class="ui-classifyBox">
-          <view class="ui-classItem_tips">
-              <view class="ui-tipsItem__List" 
-                wx:for="{{classifyList}}" 
-                bindtap="onChoseTap" 
-                data-type="{{index}}"
-                style="background-color: {{ type == index ? '#fff' : ''}}">{{item}}</view>
-          </view>
-          <view class="ui-classItem_content">
-              <view class="ui-contentBox" wx:for="{{contentList}}" bindtap="onCheckDetail">
-                  <image src="../../images/{{item.url}}"  class="ui-contentItem_img" />
-                  <view class="ui-contentItem__text">{{item.text}}</view>
-              </view>
-              
-          </view>
-      </view>
-   </view>
+    <view class="main">
+        <view class="ui-searchBox">
+            <input type="text" placeholder="药品、炎症、品牌" class="ui-searchItem_input" bindinput="onGetInput" />
+            <view class="ui-searchItem_text" bindtap="onSkipTap" data-type="0">搜索</view>
+            <image src="{{filter.getLocalPhoto('ic_search.png')}}" class="searchItem_icon" />
+        </view>
+        <view class="ui-tipBox" bindtap="onSkipTap" data-type="1">
+            <text class="ui-tipItem__text">{{title}}</text>
+            <image src="{{filter.getLocalPhoto('classfity_rightIcon.png')}}" class="ui-tipItem__icon" data-type="1" />
+        </view>
+        <view class="ui-classifyBox">
+            <view class="ui-classItem_tips">
+                <view class="ui-tipsItem__List" wx:for="{{classifyList}}" bindtap="onChoseTap" data-id="{{item.id}}" data-title="{{item.title}}" style="background-color: {{ id == item.id ? '#fff' : ''}}">
+                    {{item.title}}
+                </view>
+            </view>
+            <view class="ui-classItem_content">
+                <view class="ui-contentBox" wx:for="{{contentList}}">
+                    <image src="{{filter.getPhoto(host,item.imgUrl)}}" data-id="{{item.id}}" data-title="{{item.title}}" data-type="2" bindtap="onSkipTap" class="ui-contentItem_img" />
+                    <view class="ui-contentItem__text">{{item.title}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
 </view>

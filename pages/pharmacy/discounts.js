@@ -11,12 +11,12 @@ let data = {
 	toBeUsed:true,
 	haveBeenUsed:false,
 	outOfDate:false,
-	BeUsedNum:1,
-	BeenUsedNum:1,
-	outOfDateNum:1,
-	InvalidList: [{price:"25",moneyOff:"99",couponType:"大神林实惠店专享",condition:"大神林店专用",startTime:"2019-07-31",endTime:"2019-08-02"}], // 过期
-	waitUseList: [{price:"25",moneyOff:"99",couponType:"全场券",condition:"全场通用",startTime:"2019-07-31",endTime:"2019-08-02"}], // 待使用
-	usedList: [{price:"25",moneyOff:"199",couponType:"药房专享",condition:"仅限药房可用",startTime:"2019-07-31",endTime:"2019-08-02"}], // 已使用
+	BeUsedNum:'',//待使用的优惠券数
+	BeenUsedNum:'',//已使用的优惠券数
+	outOfDateNum:'',//已过期的优惠券数
+	InvalidList: [], // 过期
+	waitUseList: [], // 待使用
+	usedList: [], // 已使用
 };
 const onLoad = function(self) {
 	self.getData();
@@ -26,9 +26,18 @@ const onReady = function(self) {}
 const onUnload = function(self) {}
 const methods = {
 	getData: function() {
+		let self = this;
 		User.getCouponList(self, {
 		}).then((ret) => {
-		    console.log("获取成功");
+		    let data = ret.data;
+			self.setData({
+				InvalidList:data.InvalidList,
+				waitUseList:data.waitUseList,
+				usedList:data.usedList,
+				BeUsedNum:data.waitUseList.length,
+				BeenUsedNum:data.usedList.length,
+				outOfDateNum:data.InvalidList.length,
+			})
 		}, (err) => {
 		    console.log("获取失败");
 		});

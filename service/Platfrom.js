@@ -79,10 +79,10 @@ class Platfrom {
 	        data: reqData
 	    }, page);
 	}
-	getUserAssembleList(page, reqData) {
+	getplatfromAssembleList(page, reqData) {
 	    _g.dm.canLoadMore = 1;
 	    return _g.ajax({
-	        url: mini.platfrom.getUserAssembleList,
+	        url: mini.platfrom.getplatfromAssembleList,
 	        data: reqData
 	    }, page);
 	}
@@ -96,29 +96,28 @@ class Platfrom {
     getArticle(page, reqData) {
         _g.dm.canLoadMore = 1;
         return _g.ajax({
-            url: mini.user.getArticle,
+            url: mini.platfrom.getArticle,
             data: reqData
         }, page);
     }
     getStepInfo(page, reqData) {
         _g.dm.canLoadMore = 1;
         return _g.ajax({
-            url: mini.user.getStepInfo,
+            url: mini.platfrom.getStepInfo,
             data: reqData
         }, page);
     }
     getShareQR(page, reqData) {
         _g.dm.canLoadMore = 1;
         return _g.ajax({
-            url: mini.user.getShareQR,
+            url: mini.platfrom.getShareQR,
             data: reqData
         }, page);
     }
     getGoodsList(page, reqData) {
         _g.dm.canLoadMore = 1;
         return _g.ajax({
-            url: mini.user.getShareQR,
-            url: mini.user.getGoodsList,
+            url: mini.platfrom.getGoodsList,
             data: reqData
         }, page);
     }

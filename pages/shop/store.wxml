@@ -1,14 +1,17 @@
-<!-- <wxs module="filter" src="../../filter/filter.wxs"></wxs> -->
+<wxs module="filter" src="../../filter/filter.wxs"></wxs>
 <!--store.wxml-->
 <view class="container">
 	<view class="ui-main">
 		<view class="ui-backGorund"></view>
 		
 		<view class="ui-infoBox">
-			<view class="ui-itemImgBox"></view>
+			<view class="ui-itemImgBox">
+				<image class="ui-haveAvatar" wx:if="{{userInfo.avatar}}" src="{{filter.getAvatar(host,userInfo.avatar)}}" mode="aspectFill"></image>
+				<image class="ui-noAvatar" wx:else src="http://www.gzlingren.com:8098/yangtianhe/my_personalIcon.png"></image>
+			</view>
 			<view class="ui-textBox">
-				<text>命运的杰克</text>
-				<text>所属门店：天盈广场店</text>
+				<text>{{userInfo.nickname}}</text>
+				<text>所属门店：{{userInfo.store.title}}</text>
 			</view>
 			<view class="ui-personBox">
 				<text>店长/店员</text>
@@ -21,21 +24,21 @@
 					<view class="withdrawIcon"></view>
 					<view>可提现佣金</view>
 				</view>
-				<view>59.00</view>
-				<view>待结算 11.23元</view>
+				<view>{{centerInfo.money}}</view>
+				<view>待结算 {{centerInfo.waitMoney}}元</view>
 			</view>
 			<view class="ui-cut"></view>
 			<view class="ui-commissionItem">
 				<view catchtap="onMyCustomerTap">
-					<text>3555</text>
+					<text>{{centerInfo.clientNum}}</text>
 					<text>累计客户</text>
 				</view>
 				<view catchtap="onMyAssistantTap">
-					<text>2213</text>
+					<text>{{centerInfo.verifierNum}}</text>
 					<text>门店店员</text>
 				</view>
 				<view>
-					<text>54169</text>
+					<text>{{centerInfo.orderNum}}</text>
 					<text>累计订单</text>
 				</view>
 			</view>

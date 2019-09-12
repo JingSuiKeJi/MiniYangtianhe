@@ -44,8 +44,58 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 57,
-			"list": []
+			"current": 6,
+			"list": [
+				{
+					"id": -1,
+					"name": "门店申请",
+					"pathName": "pages/me/storeApplication",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "优惠券",
+					"pathName": "pages/pharmacy/discounts",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的",
+					"pathName": "pages/me/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "门店中心",
+					"pathName": "pages/shop/store",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "消息通知",
+					"pathName": "pages/me/messageInform",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的客户",
+					"pathName": "pages/shop/myCustomer",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "客户详情页",
+					"pathName": "pages/me/customerCenter",
+					"query": "",
+					"scene": null
+				}
+			]
 		}
 	}
 }

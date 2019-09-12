@@ -23,9 +23,9 @@
                 </view>
             </view>
             <view >
-                 <view class="ui-content_item" wx:for="{{list}}">
+                 <view class="ui-content_item" wx:for="{{list}}" bindtap="onDetailTap" data-id="{{item.id}}">
                     <view class="ui-contentItem_left">
-                        <image src="{{filter.getReturnPhoto(item.picUrl)}}" bindtap="onDetailTap" data-id="{{item.id}}"/>
+                        <image src="{{filter.getReturnPhoto(item.picUrl)}}" />
                     </view>
                     <view class="ui-contentItem_right">
                         <view class="ui-content_title">{{item.secondTitle}}</view>

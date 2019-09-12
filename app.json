@@ -44,6 +44,7 @@
     "pages/shop/statements",
     "pages/shop/storeQRCode",
     "pages/shop/blissVerify",
+    "pages/shop/store",
     "pages/me/messageInform",
     "pages/me/myAddress",
     "pages/me/addAddress",
@@ -60,7 +61,8 @@
     "custom-tab-bar/index",
     "components/navBar/navBar",
     "pages/shop/blissVerifyDetail",
-    "pages/pharmacy/customer"
+    "pages/pharmacy/customer",
+    "pages/card/card"
   ],
   "tabBar": {
     "custom": true,
@@ -100,7 +102,7 @@
   "window": {},
   "usingComponents": {
     "authorize": "/components/authorize/authorize"
-   },
+  },
   "permission": {
     "scope.userLocation": {
       "desc": "获取定位"

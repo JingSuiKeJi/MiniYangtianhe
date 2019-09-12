@@ -29,6 +29,7 @@ const data = {
 // 页面onLoad方法
 const onLoad = function(self) {
     self.getData();
+    // self.onScroll();
     event.on('login-suc', (ret) => {});
     event.on('logout-suc', (ret) => {});
 };
@@ -41,6 +42,7 @@ const onUnload = function(self) {
 }
 const onReady = function(self) {
     self.onScroll();
+  
 }
 // 页面中的方法
 const methods = {
@@ -75,7 +77,8 @@ const methods = {
                 banner: data.banner,
                 tapImgUrl: data.occasion.imgUrl,
                 activity: data.activity,
-                tabList: data.navigation
+                tabList: data.navigation,
+                notion: data.notion
             })
             self.showClassify(data.navigation);
         }, (err) => {
@@ -200,13 +203,13 @@ const methods = {
             url: 'pages/search/detailList',
             param: {
                 id: e.target.dataset.id,
-                value: e.target.dataset.id,
+                value: e.target.dataset.value,
+                platformFlag: 1,
             }
         }, self);
     },
     onCheckBanner: function(e) {
         const self = this;
-        console.log(555,e.target.dataset.index)
         let index = e.target.dataset.index;
         if (e.target.dataset.isLink == 2) return;
         self.map(self.data.banner,index);
@@ -352,16 +355,18 @@ const methods = {
         query.exec(function(res) {
             self.setData({
                 scrollTop: res[0].top
-            })
+            });
         })
+       
     },
     pageScroll: function(res) {
         let self = this;
-        let top = self.data.scrollTop - 80;
+        let top = self.data.scrollTop + 900;
         if (res.scrollTop >= top) {
             self.setData({
                 isFixed: true,
-            })
+            });
+           
         } else {
             self.setData({
                 isFixed: false,

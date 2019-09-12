@@ -77,26 +77,27 @@ page{
 }
 .ui-classifyBox {
     width: 100%;
-    height: 89.6%;
+    height: 89%;
     white-space: nowrap;
     position: relative;
 }
 .ui-classItem_tips {
     display: inline-block;
-    width: 20%;
+    width: 200rpx;
     height: 100%;
     background-color:#F5F5F5;
     position: absolute;
 }
 .ui-classItem_tips .ui-tipsItem__List {
     width: 100%;
-    height: 90rpx;
-    line-height:90rpx;
+    min-height: 90rpx;
     text-align: center;
     font-size:30rpx;
     font-family:PingFang-SC-Medium;
     font-weight:500;
     color:#999999;
+    white-space: normal;
+    padding: 20rpx auto;
 }
 .ui-contentBox {
      text-align: center;
@@ -104,7 +105,7 @@ page{
      white-space: normal;
 }
 .ui-classItem_content {
-   width: 80%;
+   width: 550rpx;
    display: inline-block;
    vertical-align: top;
    white-space: normal;

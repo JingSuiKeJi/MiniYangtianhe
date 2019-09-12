@@ -8,58 +8,57 @@ const Platform = require('../../service/Platfrom');
 // 初始化数据
 const data = {
     type: 0,
-     list: [
-       {
-        title: '藿香正气胶囊，防暑降温。',
-        scale: '防暑降温组包[曼秀雷敦]复方薄荷软膏+[太极]藿香正气胶呱呱呱嘎嘎嘎规格',
-        prePrice: '19.00',
-        nowPrice: '9.00' ,
-        count: '1120',
-        url: 'zhengqiwan.png'
-       },
-    ],
+     list: [],
      tapList: ['默认','价格','销量'],
      page: 1,
      priceSort: 1,// 价格排序 1 是升序，2是降序
+     value: '你好'
 };
 
 // 页面onLoad方法
 const onLoad = function (self) {
-      self.setData({
-        value: self.data.value,
-        platformFlag: self.data.platformFlag
-      });
-      if (self.data.flag) {
+    let data = {
+         value: self.data.value,
+         platformFlag: self.data.platformFlag
+    }
+    if (self.data.flag) {
+    wx.setNavigationBarTitle({
+        title: '全部分类',
+    })
+    } else {
         wx.setNavigationBarTitle({
-          title: '全部分类',
+        title: '搜索',
         })
-      } else {
-          wx.setNavigationBarTitle({
-            title: '搜索',
-          })
-      }
-      self.getData();
-      self.getPageData();
+    }
+    if (self.data.value) {
+        data.value = self.data.value;
+    }
+    if (self.data.classifyId) {
+        data.classifyId = self.data.classifyId;
+    }
+    if (self.data.brandId) {
+        data.brandId = self.data.brandId
+    }
+    self.setData(data); 
+    self.getData();
 };
 
 // 页面onShow方法
 const onShow = function (self) {
-      self.getData();
+      
 };
 const onUnload= function (self) {
-        _g.getPrevPage().setData({
-            num: self.data.value
-        })
+
 }
 // 页面中的方法
 const methods = {
     getData: function () {
         let self = this;
+        self.getPageData();
     },
     onChoseTap: function(e) {
         let self = this;
         const opts = e.target.dataset;
-        console.log(opts)
         if (opts.type == self.data.type && opts.type == 1) {
             switch(self.data.priceSort) {
                 case 1:
@@ -91,7 +90,7 @@ const methods = {
     },
     onDetailTap: function (e) {
         let self = this;
-        let opts = e.target.dataset;
+        let opts = e.currentTarget.dataset;
         _g.navigateTo({
             url: 'pages/goods/detail',
             param: { id: opts.id}
@@ -103,12 +102,13 @@ const methods = {
             platformFlag: self.data.platformFlag,
             page: self.data.page,
             pageSize: 10,
-        }
-        if (self.data.value) {
-            data.keyword = self.data.value;
+            keyword: self.data.value,
         }
         if (self.data.classifyId) {
             data.classifyId = self.data.classifyId;
+        }
+        if (self.data.brandId) {
+            data.brandId = self.data.brandId
         }
         if (self.data.type == 1) {
             data.priceSort = self.data.priceSort
@@ -116,16 +116,19 @@ const methods = {
         if (self.data.type == 2) {
             data.soldNumSort = 2
         }
-        Platform.getGoodsList(self, data
-           
+        Platform.getGoodsList(self, data 
         ).then((ret)=>{
-           let data = ret.data;
+           let param = ret.data;
            self.setData({
-               list: data.list
+               list: param.list
            });
         },(err)=>{
         });
-    }
+    },
+    onSkipTap: function () {
+        let self = this;
+        self.getPageData();
+    },
 
 };
 
