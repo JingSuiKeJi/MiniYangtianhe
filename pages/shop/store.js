@@ -5,14 +5,40 @@ const _g = app.base;
 const _c = app.config;
 const _t = app.temps;
 const event = app.event;
+const User = require('../../service/User');
+
 let data = {
-	result: ''
+	userInfo:{},//用户信息
+	result: '',//核销照片本地地址
+	centerInfo:{},//门店中心信息
 };
-const onLoad = function(self) {}
+const onLoad = function(self) {
+	self.getMyInfo();
+	self.getData();
+}
 const onShow = function(self) {}
 const onReady = function(self) {}
 const onUnload = function(self) {}
 const methods = {
+	getMyInfo() {
+	    const self = this;
+		const userInfo = self.data.userInfo;
+	    self.setData({
+	        userInfo: _g.getLS(_c.LSKeys.userInfo),
+	    });
+	},
+	getData: function() {
+		let self = this;
+		User.getBaseInfo(self, {
+		}).then((ret) => {
+		    let centerInfo = ret.data;
+			self.setData({
+				centerInfo:centerInfo
+			})
+		}, (err) => {
+		    console.log("获取失败");
+		});
+	},
 	//跳转到我的客户
 	onMyCustomerTap:function(){
 		let self = this;

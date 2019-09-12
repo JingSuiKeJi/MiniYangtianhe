@@ -5,35 +5,71 @@ const _g = app.base;
 const _c = app.config;
 const _t = app.temps;
 const event = app.event;
+const User = require('../../service/User');
+
 let data = {
+	userInfo:{},//用户信息
+	storeId:'',//门店id
 	customerList:[
-		{userAvatar:'my_infoBoxAvatar',userId:'于此长歌',userVipLevel:'my_distributionLevel',lv1:10,lv2:25,orders:1244,amount:2335},
-		{userAvatar:'my_infoBoxAvatar',userId:'邻家小姐姐',userVipLevel:'my_distributionLevel2',lv1:10,lv2:25,orders:1244,amount:2335},
-		{userAvatar:'my_infoBoxAvatar',userId:'邻家小哥哥',userVipLevel:'my_distributionLevel',lv1:10,lv2:25,orders:1244,amount:2335},
-		{userAvatar:'my_infoBoxAvatar',userId:'邻家小哥哥',userVipLevel:'my_distributionLevel',lv1:10,lv2:25,orders:1244,amount:2335},
-		{userAvatar:'my_infoBoxAvatar',userId:'于此长歌',userVipLevel:'my_distributionLevel',lv1:10,lv2:25,orders:1244,amount:2335},
-		{userAvatar:'my_infoBoxAvatar',userId:'邻家小姐姐',userVipLevel:'my_distributionLevel2',lv1:10,lv2:25,orders:1244,amount:2335},
-		{userAvatar:'my_infoBoxAvatar',userId:'邻家小哥哥',userVipLevel:'my_distributionLevel',lv1:10,lv2:25,orders:1244,amount:2335},
-		{userAvatar:'my_infoBoxAvatar',userId:'邻家小哥哥',userVipLevel:'my_distributionLevel',lv1:10,lv2:25,orders:1244,amount:2335},
-		{userAvatar:'my_infoBoxAvatar',userId:'于此长歌',userVipLevel:'my_distributionLevel',lv1:10,lv2:25,orders:1244,amount:2335},
-		{userAvatar:'my_infoBoxAvatar',userId:'邻家小姐姐',userVipLevel:'my_distributionLevel2',lv1:10,lv2:25,orders:1244,amount:2335}
+		// {avatar:'my_infoBoxAvatar',nickname:'于此长歌',sort:0,oneLevelTeamNum:10,twoLevelTeamNum:25,orderNum:1244,totalPayment:2335,id:1},
+		// {avatar:'my_infoBoxAvatar',nickname:'邻家小姐姐',sort:1,oneLevelTeamNum:10,twoLevelTeamNum:25,orderNum:1244,totalPayment:2335,id:2},
+		// {avatar:'my_infoBoxAvatar',nickname:'邻家小哥哥',sort:2,oneLevelTeamNum:10,twoLevelTeamNum:25,orderNum:1244,totalPayment:2335,id:3},
+		// {avatar:'my_infoBoxAvatar',nickname:'邻家小哥哥',sort:null,oneLevelTeamNum:10,twoLevelTeamNum:25,orderNum:1244,totalPayment:2335,id:4},
+		// {avatar:'my_infoBoxAvatar',nickname:'于此长歌',sort:2,oneLevelTeamNum:10,twoLevelTeamNum:25,orderNum:1244,totalPayment:2335,id:5},
 	],
 };
-const onLoad = function(self) {}
+const onLoad = function(self) {
+	self.getMyInfo();
+	self.getPageData();
+	const storeId = self.data.userInfo.store.id;
+	self.setData({
+		storeId:storeId
+	})
+}
 const onShow = function(self) {}
 const onReady = function(self) {}
 const onUnload = function(self) {}
 const methods = {
+	getMyInfo() {
+	    const self = this;
+		const userInfo = self.data.userInfo;
+	    self.setData({
+	        userInfo: _g.getLS(_c.LSKeys.userInfo),
+	    });
+	},
+	getPageData:function(){
+		const self = this;
+		const storeId = self.data.storeId;
+		User.getClientList(self, {
+    		page: self.data.page,
+    		pageSize: 10,
+			storeId:storeId,
+    	}).then((ret) => {
+    		if (self.data.page == 1) {
+	    		self.setData({
+	    			customerList: ret.data.list
+	    		});
+    		} else {
+    			self.setData({
+	    			customerList: self.data.customerList.concat(ret.data.list)
+	    		});
+    		}
+    	},(err) => {
+            console.log("获取失败");
+        });
+	},
 	//跳转到客户中心
 	onCustomerCenterTap:function(options){
 		let self = this;
 		// 获取索引
-		const id = options.currentTarget.dataset.id;
-		// 获取当前userId
-		const userId = self.data.customerList[id].userId;
+		const index = options.currentTarget.dataset.id;
+		// 获取当前userId和nickname
+		const userId = self.data.customerList[index].id;
+		const nickname = self.data.customerList[index].nickname;
 	    _g.navigateTo({
 			param:{
-				userId:userId
+				nickname:nickname,
+				userId:userId,
 			},
 	        url: 'pages/me/customerCenter',
 	    }, self);
