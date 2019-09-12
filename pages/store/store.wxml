@@ -58,7 +58,7 @@
         </view>
         <view class="ui-noticeBox" wx:if="{{notion}}">
             <text>优选公告</text>
-            <text wx:for="{{notion}}">{{item.title}}：{{item.content}}</text>
+            <text wx:for="{{notion}}">{{item.title}}</text>
         </view>
         <view class="ui-collageBox" wx:if="{{groupList.length}}">
             <view class="ui-collageItem_top">
