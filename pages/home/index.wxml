@@ -17,7 +17,7 @@
             </view>
             <view class="ui-tapBox">
                 <view class="ui-headBox_tap">
-                    <text wx:for="{{hotSearch}}" wx:key="{{index}}" bindtap="onResultTap" data-id="{{item.id}}" data-vlue="{{item.title}}">
+                    <text wx:for="{{hotSearch}}" wx:key="{{index}}" bindtap="onResultTap" data-id="{{item.id}}" data-value="{{item.title}}">
                         {{item.title}}
                     </text>
                 </view>
@@ -62,10 +62,9 @@
                 <image src="{{filter.getLocalPhoto('question_icon.png')}}" mode="aspectFill"/>
             </view>
         </view>
-        <view class="ui-noticeBox">
+        <view class="ui-noticeBox" wx:if="{{notion}}">
             <text>优选公告</text>
-            <text>客服微信：123456</text>
-            <text>客服电话：1234567890</text>
+            <text wx:for="{{notion}}">{{item.title}}：{{item.content}}</text>
         </view>
         <!-- 分类专区 -->
         <view>
@@ -142,10 +141,10 @@
         <view class="ui-recomListBox">
             <view class="ui-listItem_top">推荐榜单</view>
             <view class="ui-listItem_bottom">
-                <view class="ui-bottomItem_tap" id="aim" style="position: {{isFixed ? 'fixed' : 'relative'}};top: {{isFixed ? '170rpx' : '0'}}">
+                <view class="ui-bottomItem_tap {{isFixed ? 'isFixed' : ''}}" id="aim" >
                     <scroll-view scroll-x class="ui-tapItem_scrollView">
                         <view wx:for="{{tapList}}" wx:key="{{index}}" class="ui-tapScroll_item" bindtap="onClickTap" id="{{item.id}}">
-                            <view class="ui-tapScroll_itemText" style="font-weight: {{classifyId == item.id ? '500' : '400'}}">
+                            <view class="ui-tapScroll_itemText" style="font-weight: {{classifyId == item.id ? '500' : '400'}};color: {{isFixed ? '#fff' : ''}}">
                                 {{item.title}}
                             </view>
                             <view class="ui-tapScroll_itemIcon" hidden="{{classifyId != item.id}}"></view>

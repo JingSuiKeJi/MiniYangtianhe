@@ -61,7 +61,8 @@
     "custom-tab-bar/index",
     "components/navBar/navBar",
     "pages/shop/blissVerifyDetail",
-    "pages/pharmacy/customer"
+    "pages/pharmacy/customer",
+    "pages/card/card"
   ],
   "tabBar": {
     "custom": true,
@@ -101,7 +102,7 @@
   "window": {},
   "usingComponents": {
     "authorize": "/components/authorize/authorize"
-   },
+  },
   "permission": {
     "scope.userLocation": {
       "desc": "获取定位"

@@ -140,7 +140,8 @@ const methods = {
                 activity: data.activity,
                 stepInfo: stepInfo,
                 BMIIndex: BMIIndex,
-                tabList: data.navigation
+                tabList: data.navigation,
+                notion: data.notion
             });
             
             self.btnShow(data.stepInfo.status);
@@ -288,12 +289,6 @@ const methods = {
         this.setData({
             time: time
         })
-    },
-    onSkipTap: function() {
-        let self = this;
-        _g.navigateTo({
-            url: 'pages/search/search',
-        }, self);
     },
     onChangeTap: function(e) {
         let self = this;
@@ -451,7 +446,8 @@ const methods = {
             url: 'pages/search/detailList',
             param: {
                 id: e.target.dataset.id,
-                value: e.target.dataset.id,
+                value: e.target.dataset.value,
+                platformFlag: 2
             }
         }, self);
     },
@@ -478,8 +474,10 @@ const methods = {
         query.exec(function(res) {
             self.setData({
                 scrollTop: res[0].top
-            })
-        })
+            });
+        });
+
+
     },
     pageScroll: function(res) {
         let self = this;
