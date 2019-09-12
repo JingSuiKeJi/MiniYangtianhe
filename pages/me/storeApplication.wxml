@@ -51,7 +51,7 @@
 					<text>联系方式</text>
 					<text>*</text>
 				</view>
-				<input class="ui-inputCommon" bindinput="onStoreTelTap" type="number" value="{{storeTel}}" placeholder="请输入手机号码或座机号码" placeholder-style="color:#666666;"/>
+				<input class="ui-inputCommon" bindinput="onStoreTelTap" type="number" value="{{storeTel}}" placeholder="请输入手机号码" placeholder-style="color:#666666;"/>
 			</view>
 			<view class="ui-itemCommon">
 				<view class="ui-titleCommon">
@@ -75,7 +75,7 @@
 				</view>
 			</scroll-view>
 			
-			<view wx:if="{{!tempFilePaths||!introduce||!encoding||!storeName||!address||!storeTel||!businessLicense||!company==1}}" class="btn-submit btn-notSubmit" bindtap="onSubmitTap">完成并提交申请</view>
+			<view wx:if="{{!tempFilePaths||!introduce||!encoding||!storeName||!address||!storeTel||!businessLicense||!company==1}}" class="btn-submit btn-notSubmit" bindtap="onNotSubmitTap">完成并提交申请</view>
 			<view wx:else class="btn-submit btn-canSubmit" bindtap="onSubmitTap">完成并提交申请</view>
 		</view>
 	</view>
