@@ -10,14 +10,14 @@
       <view class="ui-hotSearchBox">
           <view class="ui-hotItem_title">热门搜索</view>
           <view class="ui-hotItem_tag">
-              <view wx:for="{{tagList}}" class="ui-hotItem_tagBtn">{{item}}</view>
+              <view wx:for="{{tagList}}" class="ui-hotItem_tagBtn" data-title = "{{item.title}}" data-type = "1" bindtap="onSkipTap">{{item.title}}</view>
           </view>
          <view class="ui-hotItem_title">
              <text >历史记录</text>
              <image src="{{filter.getLocalPhoto('delect.png')}}" class="ui-hotItem_delectIcon" bindtap="onDelectTap"/>
          </view>
-          <view class="ui-hotItem_hisTag">
-              <view wx:for="{{hisList}}" class="ui-hotItem_hisTagBtn">{{item}}</view>
+          <view class="ui-hotItem_hisTag" wx:if="{{hisList.length}}">
+              <view wx:for="{{hisList}}" class="ui-hotItem_hisTagBtn" data-title = "{{item}}" data-type = "1" bindtap="onSkipTap">{{item}}</view>
           </view>
       </view>
    </view>

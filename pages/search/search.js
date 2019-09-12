@@ -4,64 +4,99 @@ const app = getApp();
 const _ = app.underscore;
 const _g = app.base;
 const _c = app.config;
-const Platform = require('../../service/Platfrom');
+const Goods = require('../../service/Goods');
 // 初始化数据
 const data = {
-   tagList: ['清热解毒','清热','清热解毒','清热解','清热解','清热解毒'],
-    hisList: ['消炎药药','消炎药','消炎药','消炎','消炎药','消炎药药药',]
-  };
-  
-  // 页面onLoad方法
+    tagList: [],
+    hisList: [],
+    key: 'hisList'
+};
+
+// 页面onLoad方法
 const onLoad = function (self) {
-    // let data = {
-    //     platformFlag : self.data.platformFlag
-    // }
-    // if (self.data.storeId) {
-    //     data.storeId = self.data.storeId
-    // }
     self.setData({
-        platformFlag : self.data.platformFlag
+        platformFlag: self.data.platformFlag
     })
     self.getData();
-    console.log(33,self.data)
 };
 
 // 页面onShow方法
 const onShow = function (self) {
-    self.getData();
+    
 };
-const onUnload= function (self) {
+const onUnload = function (self) {
 
 }
 // 页面中的方法
 const methods = {
-getData: function () {
-    let self = this;
-},
-onGetInput: function (e) {
-    let self = this;
-    self.setData({
-    value: e.detail.value
-    })
-},
-onSkipTap: function(e) {
-    let self = this;
-    if (!self.data.value) return;
-    _g.navigateTo({
-    url: 'pages/search/detailList',
-    param: {
-        value: self.data.value,
-        platformFlag: self.data.platformFlag
+    getData: function () {
+        let self = this;
+        self.getHotSearchList();
+        
+    },
+    getHotSearchList: function () {
+        let self = this;
+        Goods.getHotSearchList(self, {
+            platformFlag: self.data.platformFlag,
+        }).then((ret) => {
+             self.setData({
+                tagList: ret.data
+             });
+             self.getHisList();
+        }, (err) => {
+
+        }); 
+    },
+    onGetInput: function (e) {
+        let self = this;
+        self.setData({
+            value: e.detail.value
+        })
+    },
+    onSkipTap: function (e) {
+        let self = this;
+        let opts = e.target.dataset;
+        let param = {
+            platformFlag: self.data.platformFlag
+        }
+        if (opts.type == '1') {
+            param.value = opts.title;
+        } else {
+            if (!self.data.value) return;
+            param.value = self.data.value;
+            self.setHisttory(self.data.value);
+        }
+        _g.navigateTo({
+            url: 'pages/search/detailList',
+            param: param
+        }, self);
+    },
+    onDelectTap: function (e) {
+        let self = this;
+        wx.setStorageSync(self.data.key, []);
+        self.getHisList();
+    },
+    //设置历史记录
+    setHisttory: function (value) {
+       let self = this;
+       let key = self.data.key;
+       let storage = wx.getStorageSync(self.data.key);
+       if (storage) {
+           storage.push(value);
+          wx.setStorageSync(key, storage);
+       } else {
+           storage = [value]
+           wx.setStorageSync(key, storage);
+       }
+    },
+    //获取本地缓存
+    getHisList: function () {
+       let self = this; 
+       let hisList = wx.getStorageSync(self.data.key)
+        self.setData({
+            hisList: hisList
+        })
     }
-    }, self);
-},
-onDelectTap: function (e) {
-    let self = this;
-    self.setData({
-    hisList: []
-    })
-    
-}
 };
 
 // 有引用template时定义

@@ -77,7 +77,8 @@ const methods = {
                 banner: data.banner,
                 tapImgUrl: data.occasion.imgUrl,
                 activity: data.activity,
-                tabList: data.navigation
+                tabList: data.navigation,
+                notion: data.notion
             })
             self.showClassify(data.navigation);
         }, (err) => {
@@ -202,13 +203,13 @@ const methods = {
             url: 'pages/search/detailList',
             param: {
                 id: e.target.dataset.id,
-                value: e.target.dataset.id,
+                value: e.target.dataset.value,
+                platformFlag: 1,
             }
         }, self);
     },
     onCheckBanner: function(e) {
         const self = this;
-        console.log(555,e.target.dataset.index)
         let index = e.target.dataset.index;
         if (e.target.dataset.isLink == 2) return;
         self.map(self.data.banner,index);
@@ -352,19 +353,15 @@ const methods = {
         query.select('#aim').boundingClientRect();
         query.selectViewport().scrollOffset();
         query.exec(function(res) {
-            console.log(55,res)
-            // self.setData({
-            //     scrollTop: res[0].top
-            // })
-        });
-        console.log(444,self.data.scrollTop )
+            self.setData({
+                scrollTop: res[0].top
+            });
+        })
        
     },
     pageScroll: function(res) {
         let self = this;
-        let top = self.data.scrollTop - 100;
-        console.log(top,top );
-        console.log(scrollTop,res.scrollTop);
+        let top = self.data.scrollTop + 900;
         if (res.scrollTop >= top) {
             self.setData({
                 isFixed: true,
