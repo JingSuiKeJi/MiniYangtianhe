@@ -29,6 +29,7 @@ const data = {
 // 页面onLoad方法
 const onLoad = function(self) {
     self.getData();
+    // self.onScroll();
     event.on('login-suc', (ret) => {});
     event.on('logout-suc', (ret) => {});
 };
@@ -41,6 +42,7 @@ const onUnload = function(self) {
 }
 const onReady = function(self) {
     self.onScroll();
+  
 }
 // 页面中的方法
 const methods = {
@@ -350,18 +352,24 @@ const methods = {
         query.select('#aim').boundingClientRect();
         query.selectViewport().scrollOffset();
         query.exec(function(res) {
-            self.setData({
-                scrollTop: res[0].top
-            })
-        })
+            console.log(55,res)
+            // self.setData({
+            //     scrollTop: res[0].top
+            // })
+        });
+        console.log(444,self.data.scrollTop )
+       
     },
     pageScroll: function(res) {
         let self = this;
-        let top = self.data.scrollTop - 80;
+        let top = self.data.scrollTop - 100;
+        console.log(top,top );
+        console.log(scrollTop,res.scrollTop);
         if (res.scrollTop >= top) {
             self.setData({
                 isFixed: true,
-            })
+            });
+           
         } else {
             self.setData({
                 isFixed: false,

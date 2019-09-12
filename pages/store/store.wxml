@@ -135,7 +135,7 @@
         <view class="ui-recomListBox">
             <view class="ui-listItem_top">推荐榜单</view>
             <view class="ui-listItem_bottom">
-                <view class="ui-bottomItem_tap" id="aim" style="position: {{isFixed ? 'fixed' : 'relative'}};top: {{isFixed ? '170rpx' : '0'}};background: {{isFixed ? '#FF7274' : ''}};">
+                <view class="ui-bottomItem_tap" id="aim" style="position: {{isFixed ? 'fixed' : 'relative'}};top: {{isFixed ? '183rpx' : '0'}};background: {{isFixed ? '#FF7274' : ''}}; border-bottom: {{isFixed ?  '' : '1rpx solid #F5F5F5'}};">
                     <scroll-view scroll-x class="ui-tapItem_scrollView">
                         <view wx:for="{{tapList}}" wx:key="{{index}}" class="ui-tapScroll_item" bindtap="onClickTap" data-id="{{item.id}}">
                             <view class="ui-tapScroll_itemText" style="font-weight: {{classifyId == item.id ? '500' : '400'}};color:{{isFixed ? '#ffff' : ''}}"  data-id="{{item.id}}">{{item.title}}</view>
