@@ -43,6 +43,7 @@ const data = {
     isBuy: false,
     title: '', //头部标题
     goodsDetail: {},
+    num: 1
 };
 
 // 页面onLoad方法
@@ -271,15 +272,15 @@ const methods = {
     onChangeCount: function(e) {
         let self = this;
         if (e.target.dataset.type == 1) {
-            if (self.data.cartNum == 1) return;
-            let cartNum = self.data.cartNum - 1;
+            if (self.data.num == 1) return;
+            let num = self.data.num - 1;
             self.setData({
-                cartNum: cartNum
+                num: num
             })
         } else {
-            let cartNum = self.data.cartNum + 1;
+            let num = self.data.num + 1;
             self.setData({
-                cartNum: cartNum
+                num: num
             })
         }
     },
@@ -319,7 +320,7 @@ const methods = {
         let data = {
             platformFlag: self.data.goodsDetail.platformFlag,
             id: self.data.goodsDetail.id,
-            num: 1,
+            num: self.data.num,
         };
             
         if (self.data.goodsDetail.skuId) data.skuId = self.data.goodsDetail.skuId;

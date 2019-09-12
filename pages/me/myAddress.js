@@ -16,10 +16,19 @@ let data = {
 const onLoad = function (self) {
 	self.getPageData();
 }
-const onShow = function (self) { }
+const onShow = function (self) {
+	self.getData();
+}
+
 const onReady = function (self) { }
+
 const onUnload = function (self) { }
+
 const methods = {
+	getData() {
+		const self = this;
+		self.getPageData();
+	},
 	// 接口: 收货地址列表
 	getPageData: function () {
 		const self = this;
@@ -99,6 +108,15 @@ const methods = {
 		self.setData({
 			handle: handle
 		})
+	},
+	onAddressTap(e) {
+		const self = this;
+		const opts = e.currentTarget.dataset;
+		if (self.data.from != 'order') return;
+		_g.getPrevPage().setData({
+			addressId: self.data.addressList[opts.index].id
+		});
+		_g.navigateBack();
 	}
 }
 
