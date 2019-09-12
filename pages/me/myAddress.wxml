@@ -5,10 +5,16 @@
         <view hidden="{{!addressList.length}}">
             <view class="ui-consigneeInfoBox">
                 <view wx:if="{{handle}}" class="btn-handle" catchtap="onHandleTap">管理</view>
-                <view class="ui-consigneeInfoItems {{handle?'ui-consigneeInfoItemsHandle':''}}" wx:for="{{consigneeList}}" wx:for-index="idx" wx:key="idx" wx:for-item="item">
+                <view class="ui-consigneeInfoItems {{handle?'ui-consigneeInfoItemsHandle':''}}" 
+                	wx:for="{{addressList}}" 
+                	wx:for-index="idx" 
+                	wx:key="idx" 
+                	wx:for-item="item"
+                	bindtap="onAddressTap"
+                	data-index="{{idx}}">
                     <view class="ui-consigneeNameTel">
-                        <text>{{item.name}}</text>
-                        <text>{{item.tel}}</text>
+                        <text>{{item.receiverName}}</text>
+                        <text>{{item.receiverPhone}}</text>
                         <view wx:if="{{handle}}" class="{{currentCheck==item.currentId?'ui-defaultIcon':''}}"></view>
                     </view>
                     <text class="ui-consigneeAddressDetail">{{item.address}}</text>
