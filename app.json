@@ -44,6 +44,7 @@
     "pages/shop/statements",
     "pages/shop/storeQRCode",
     "pages/shop/blissVerify",
+    "pages/shop/store",
     "pages/me/messageInform",
     "pages/me/myAddress",
     "pages/me/addAddress",

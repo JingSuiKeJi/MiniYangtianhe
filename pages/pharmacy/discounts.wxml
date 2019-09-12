@@ -1,4 +1,4 @@
-<!-- <wxs module="filter" src="../../filter/filter.wxs"></wxs> -->
+<wxs module="filter" src="../../filter/filter.wxs"></wxs>
 <!--discounts.wxml-->
 <view class="container">
 	<view class="ui-main">
@@ -14,14 +14,14 @@
 					<view class="ui-price">
 						<view class="ui-priceInfo">
 							<text class="toBeUsedColor">¥</text>
-							<text class="toBeUsedColor}}">{{item.price}}</text>
+							<text class="toBeUsedColor}}">{{item.deductionPrice}}</text>
 						</view>
-						<text class="ui-moneyOff">满{{item.moneyOff}}可用</text>
+						<text class="ui-moneyOff">满{{item.limitPrice}}可用</text>
 					</view>
 					
 					<view class="ui-explain">
-						<text>{{item.couponType}}</text>
-						<text>{{item.startTime}}至{{item.endTime}}</text>
+						<text>{{item.title}}</text>
+						<text>{{filter.getDay(item.startTime)}}至{{filter.getDay(item.endTime)}}</text>
 						<text>全场通用</text>
 					</view>
 					<view class="btn-immediateUse">立即使用</view>
@@ -33,14 +33,14 @@
 					<view class="ui-price">
 						<view class="ui-priceInfo">
 							<text class="elseColor">¥</text>
-							<text class="elseColor">{{item.price}}</text>
+							<text class="elseColor">{{item.deductionPrice}}</text>
 						</view>
-						<text class="ui-moneyOff">满{{item.moneyOff}}可用</text>
+						<text class="ui-moneyOff">满{{item.limitPrice}}可用</text>
 					</view>
 					
 					<view class="ui-explain">
-						<text>{{item.couponType}}</text>
-						<text>{{item.startTime}}至{{item.endTime}}</text>
+						<text>{{item.title}}</text>
+						<text>{{filter.getDay(item.startTime)}}至{{filter.getDay(item.endTime)}}</text>
 						<text>全场通用</text>
 					</view>
 					<view class="ui-haveBeenUsed"></view>
@@ -52,14 +52,14 @@
 					<view class="ui-price">
 						<view class="ui-priceInfo">
 							<text class="elseColor">¥</text>
-							<text class="elseColor">{{item.price}}</text>
+							<text class="elseColor">{{item.deductionPrice}}</text>
 						</view>
-						<text class="ui-moneyOff">满{{item.moneyOff}}可用</text>
+						<text class="ui-moneyOff">满{{item.limitPrice}}可用</text>
 					</view>
 					
 					<view class="ui-explain">
-						<text>{{item.couponType}}</text>
-						<text>{{item.startTime}}至{{item.endTime}}</text>
+						<text>{{item.title}}</text>
+						<text>{{filter.getDay(item.startTime)}}至{{filter.getDay(item.endTime)}}</text>
 						<text>全场通用</text>
 					</view>
 					<view class="ui-outOfDate">已过期</view>
