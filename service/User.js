@@ -115,6 +115,41 @@ class User {
 	        data: reqData
 	    }, page);
 	}
+	getBaseInfo(page, reqData) {
+	    _g.dm.canLoadMore = 1;
+	    return _g.ajax({
+	        url: mini.user.getBaseInfo,
+	        data: reqData
+	    }, page);
+	}
+	getClientList(page, reqData) {
+	    _g.dm.canLoadMore = 1;
+	    return _g.ajax({
+	        url: mini.user.getClientList,
+	        data: reqData
+	    }, page);
+	}
+	getClientDetail(page, reqData) {
+	    _g.dm.canLoadMore = 1;
+	    return _g.ajax({
+	        url: mini.user.getClientDetail,
+	        data: reqData
+	    }, page);
+	}
+	getClientAddress(page, reqData) {
+	    _g.dm.canLoadMore = 1;
+	    return _g.ajax({
+	        url: mini.user.getClientAddress,
+	        data: reqData
+	    }, page);
+	}
+	getClientOrder(page, reqData) {
+	    _g.dm.canLoadMore = 1;
+	    return _g.ajax({
+	        url: mini.user.getClientOrder,
+	        data: reqData
+	    }, page);
+	}
 }
 
 module.exports = new User();

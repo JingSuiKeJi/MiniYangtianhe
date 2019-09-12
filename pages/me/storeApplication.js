@@ -189,6 +189,12 @@ const methods = {
         })
         this.hideModal(companyId);
     },
+	//提现完善门店信息
+	onNotSubmitTap:function(){
+		_g.toast({
+			title: '请按要求完善门店信息'
+		});
+	},
     //门店信息填写完成并提交申请
     onSubmitTap: function() {
         const self = this;
@@ -203,6 +209,13 @@ const methods = {
         const businessLicense = self.data.businessLicense; //营业执照
         const company = self.data.company; //分公司名称
         const companyId = self.data.companyId; //分公司Id
+		const phoneReg = /^1[0-9]{10}$/;
+		if (!phoneReg.test(photo)) {
+			_g.toast({
+				title: '请输入正确的手机号码'
+			});
+			return
+		};
         User.apply(self, {
             imgUrls: photo,
             description: introduce,

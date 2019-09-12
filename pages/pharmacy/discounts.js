@@ -11,9 +11,9 @@ let data = {
 	toBeUsed:true,
 	haveBeenUsed:false,
 	outOfDate:false,
-	BeUsedNum:1,
-	BeenUsedNum:1,
-	outOfDateNum:1,
+	BeUsedNum:'',//待使用的优惠券数
+	BeenUsedNum:'',//已使用的优惠券数
+	outOfDateNum:'',//已过期的优惠券数
 	InvalidList: [], // 过期
 	waitUseList: [], // 待使用
 	usedList: [], // 已使用
@@ -34,6 +34,9 @@ const methods = {
 				InvalidList:data.InvalidList,
 				waitUseList:data.waitUseList,
 				usedList:data.usedList,
+				BeUsedNum:data.waitUseList.length,
+				BeenUsedNum:data.usedList.length,
+				outOfDateNum:data.InvalidList.length,
 			})
 		}, (err) => {
 		    console.log("获取失败");

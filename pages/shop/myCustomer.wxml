@@ -1,4 +1,4 @@
-<!-- <wxs module="filter" src="../../filter/filter.wxs"></wxs> -->
+<wxs module="filter" src="../../filter/filter.wxs"></wxs>
 <!--myCustomer.wxml-->
 <view class="container">
 	<navBar title='我的客户' background='linear-gradient(137deg,rgba(1,206,165,1) 0%,rgba(94,221,218,1) 100%)' color='white' iconTheme='white' back="{{true}}"></navBar>
@@ -11,18 +11,20 @@
 		</view>
 		
 		<view class="ui-customerInfoBox">
-			<view class="ui-customerInfoItems" catchtap="onCustomerCenterTap" data-id='{{idx}}' wx:for="{{customerList}}" wx:for-index="idx" wx:key="idx" wx:for-item="item">
-				<view class="ui-userAvatar"><image src="http://www.gzlingren.com:8098/yangtianhe/{{item.userAvatar}}.png"></image></view>
+			<view class="ui-customerInfoItems" catchtap="onCustomerCenterTap" data-id="{{idx}}" wx:for="{{customerList}}" wx:for-index="idx" wx:key="idx" wx:for-item="item">
+				<view class="ui-userAvatar"><image src="{{filter.getAvatar(host,item.avatar)}}"></image></view>
 				<view class="ui-userInfo">
-					<view class="ui-userId">{{item.userId}}</view>
-					<view class="ui-userVipLevel"><image src="http://www.gzlingren.com:8098/yangtianhe/{{item.userVipLevel}}.png"></image></view>
+					<view class="ui-userId">{{item.nickname}}</view>
+					<view class="ui-userVipLevel" wx:if="{{item.sort==1}}"><image src="http://www.gzlingren.com:8098/yangtianhe/my_distributionLevel.png"></image></view>
+					<view class="ui-userVipLevel" wx:if="{{item.sort==2}}"><image src="http://www.gzlingren.com:8098/yangtianhe/my_distributionLevel2.png"></image></view>
+					<view class="ui-userVipLevel" wx:if="{{item.sort==null||item.sort==0}}"></view>
 				</view>
 				<view class="ui-userLevel">
-					<text>一级：{{item.lv1}}</text>
-					<text>二级：{{item.lv2}}</text>
+					<text>一级：{{item.oneLevelTeamNum}}</text>
+					<text>二级：{{item.twoLevelTeamNum}}</text>
 				</view>
-				<view class="ui-orders">{{item.orders}}</view>
-				<view class="ui-amount">¥{{item.amount}}</view>
+				<view class="ui-orders">{{item.orderNum}}</view>
+				<view class="ui-amount">¥{{item.totalPayment}}</view>
 			</view>
 		</view>
 	</view>
