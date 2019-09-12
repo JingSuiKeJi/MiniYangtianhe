@@ -70,9 +70,7 @@ const onShow = function(self) {
 };
 
 const onUnload = function(self) {
-    _g.getPrevPage().setData({
-        num: self.data.value
-    })
+    
 };
 
 // 页面中的方法

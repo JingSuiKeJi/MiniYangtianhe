@@ -254,7 +254,6 @@ base.prototype = {
 					isLogin:true
 				})
                 const detail = e.detail;
-                // _g.setLogin(self, detail);
                 wx.login({
                     success(res) {
                         if (res.code) {
@@ -1063,6 +1062,7 @@ base.prototype = {
         if (_g.getUserInfo()) {
             path = path + '?promoCode=' + _g.getUserInfo().promoCode;
         }
+        console.log(path);
         _g.logger('the path of shareAppMsg is ', path);
         return {
             title: title,
