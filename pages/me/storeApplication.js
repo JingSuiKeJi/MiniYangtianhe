@@ -12,18 +12,22 @@ let data = {
     auto_height: true, //当textarea获取焦点时自适应高度，失去焦点时不自适应高度 //自适应高度时，style中的height无效
     introduce: '', //门店介绍
     encoding: '', //门店编码
-    addressDetail: '',
-    address: '', //门店地址
     storeName: '', //门店名称
     storeTel: '', //门店电话
     businessLicense: '', //营业执照
     company: '', //分公司
     companyId: '', //分公司Id
     authorizeHidden: true, //开启地理授权
-    lon: '',
-    lat: '',
     showModal: false, //选择公司模态框,
     list: [], //分公司列表
+    lon: '',
+    lat: '',
+    provinceName: '',
+    cityName: '',
+    areaName: '',
+    address: '', //choose Location 返回的详细地址
+    showAddress: '',//choose Location 返回的name
+    houseNumber: '', //详细地址
 };
 const onLoad = function(self) {
     self.getData();
@@ -137,9 +141,9 @@ const methods = {
     //双向绑定地址信息
     onAddressTap: function(e) {
         const self = this;
-        const address = self.data.address;
+        // const address = self.data.address;
         self.setData({
-            address: e.detail.value
+            houseNumber: e.detail.value
         })
     },
     //双向绑定联系电话
@@ -198,39 +202,44 @@ const methods = {
     //门店信息填写完成并提交申请
     onSubmitTap: function() {
         const self = this;
-        const lon = self.data.lon;
-        const lat = self.data.lat;
-        const photo = self.data.photo;
-        const introduce = self.data.introduce; //门店介绍
-        const encoding = self.data.encoding; //门店编码
-        const address = self.data.address; //门店地址
-        const storeName = self.data.storeName; //门店名称
-        const storeTel = self.data.storeTel;
-        const businessLicense = self.data.businessLicense; //营业执照
-        const company = self.data.company; //分公司名称
-        const companyId = self.data.companyId; //分公司Id
-		const phoneReg = /^1[0-9]{10}$/;
-		if (!phoneReg.test(photo)) {
-			_g.toast({
-				title: '请输入正确的手机号码'
-			});
-			return
-		};
-        User.apply(self, {
-            imgUrls: photo,
-            description: introduce,
-            storeNo: encoding,
-            title: storeName,
-            address: address,
-            lon: lon,
-            lat: lat,
-            phone: storeTel,
-            businessLicense: businessLicense,
-            companyId: companyId,
-        }).then((ret) => {
-            console.log("提交成功");
+        const phoneReg = /^1[0-9]{10}$/;
+
+        if (!phoneReg.test(self.data.storeTel)) {
+            _g.toast({
+                title: '请输入正确的手机号码'
+            });
+            return
+        };
+        const  data = {
+            lon: self.data.lon,
+            lat: self.data.lat,
+            photo: self.data.photo,
+            introduce: self.data.introduce,
+            encoding: self.data.encoding,
+            storeName: self.data.storeName,
+            storeTel: self.data.storeTel,
+            businessLicense: self.data.businessLicense,
+            company: self.data.company,
+            companyId: self.data.companyId,
+            provinceName: self.data.provinceName,
+            cityName: self.data.cityName,
+            areaName: self.data.areaName,
+            houseNumber: self.data.houseNumber,
+            address: self.data.address,
+            showAddress: self.data.showAddress,
+        };
+        
+        User.apply(self, data).then((ret) => {
+            _g.showModal({
+                content: '提交成功',
+                confirm() {
+                    _g.navigateBack();
+                }
+            });
         }, (err) => {
-            console.log("提交失败");
+            _g.showModal({
+                content: '提交失败,请重试!',
+            });
         });
     },
     // 微信 获取 经纬度:
@@ -254,14 +263,22 @@ const methods = {
         const self = this;
         wx.chooseLocation({
             success(ret) {
-                console.log(ret)
                 const lon = ret.longitude;
                 const lat = ret.latitude;
-                self.setData({
-                    lon: lon,
-                    lat: lat,
-                    addressDetail: ret.address
-                });
+                _g.getLocationDetail(lon, lat).then((res) =>{
+                    self.setData({
+                        provinceName: res.province,
+                        cityName: res.city,
+                        areaName: res.district ? res.district : res.city,
+                        lon: lon,
+                        lat: lat,
+                        address: ret.address,
+                        showAddress: ret.name
+                    })
+                },(err) => {
+                    _g.toast('请重新选择');
+                })
+                
             },
             fail(err) {
                 self.setData({
