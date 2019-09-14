@@ -31,7 +31,7 @@
 					<view class="ui-newsInfoItem">
 						<view class="ui-newsImg"><image src="{{filter.getPhoto(host,GoodsItem.imgUrl)}}"></image></view>
 						<text class="ui-newsName">{{GoodsItem.title}}</text>
-						<text class="ui-newsWeight">{{GoodsItem.newsWeight}}</text>
+						<text class="ui-newsWeight">{{GoodsItem.specificationName}}</text>
 						<text class="ui-newsMoney">¥{{GoodsItem.price}}</text>
 						<text class="ui-newsNum">x{{GoodsItem.num}}</text>
 					</view>
@@ -41,8 +41,8 @@
 					<text>总额：¥{{item.totalPrice}}</text>
 				</view>
 			</view>
-			<block wx:if="{{item.status=='WAIT_BUYER_PAY'}}">
-				<!-- <block wx:if="{{item.status=='WAIT_'}}"> -->
+			<!-- <block wx:if="{{item.status=='WAIT_BUYER_PAY'}}"> -->
+				<block wx:if="{{item.status=='WAIT_'}}">
 				<view class="ui-handle">
 					<view class="btn-cancelPay btn-common" bindtap="onCancelTap"  data-orderid="{{item.orderId}}"><text>取消订单</text></view>
 					<view class="btn-pay btn-common" bindtap="onPayTap" data-orderid="{{item.orderId}}"><text>立即支付</text></view>
@@ -59,11 +59,11 @@
 					<view class="btn-comfirmRec btn-common" catchtap="onConfirmTap" data-orderid="{{item.orderId}}"><text>确认收货</text></view>
 				</view>
 			</block>
-			<block wx:elif="{{item.status=='TRADE_BUYER_SIGNED'}}">
-              <!-- <block wx:elif="{{item.status=='WAIT_BUYER_PAY'}}"> -->
+			<!-- <block wx:elif="{{item.status=='TRADE_BUYER_SIGNED'}}"> -->
+              <block wx:elif="{{item.status=='WAIT_BUYER_PAY'}}">
 				<view class="ui-handle">
                     <view class="btn-applyAfter btn-common" ><text>查看订单</text></view>
-					<view class="btn-evaluate btn-common" catchtap="onPostCommentTap"><text>评价</text></view>
+					<view class="btn-evaluate btn-common" catchtap="onPostCommentTap" data-index="{{index}}"><text>评价</text></view>
 				</view>
 			</block>
 			<block wx:elif="{{item.status=='WAIT_CHECK'}}">

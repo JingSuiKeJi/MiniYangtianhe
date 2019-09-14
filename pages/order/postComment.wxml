@@ -1,4 +1,4 @@
-<!-- <wxs module="filter" src="../../filter/filter.wxs"></wxs> -->
+<wxs module="filter" src="../../filter/filter.wxs"></wxs>
 <!--postComment.wxml-->
 <view class="container">
 	<navBar title='发表评论' background='white' color='black' iconTheme='black' back="{{true}}"></navBar>
@@ -23,16 +23,16 @@
 		<!-- 评论 -->
 		<view class="ui-comment">
 			<view class="ui-grade">
-				<view catchtap="onPraiseTap">
-					<image src="http://www.gzlingren.com:8098/yangtianhe/{{praise?'my_ praise':'my_notPraise'}}.png"></image>
+			<view catchtap="onChosePraise" data-type="1">
+					<image src="{{type == 1 ? filter.getLocalPhoto('my_ praise') : filter.getLocalPhoto('my_notPraise')}}.png"></image>
 					<text>好评</text>
 				</view>
-				<view catchtap="onMediumTap">
-					<image src="http://www.gzlingren.com:8098/yangtianhe/{{!medium?'my_medium':'my_selectMedium'}}.png"></image>
+				<view catchtap="onChosePraise" data-type="2">
+					<image src="{{type != 2 ? filter.getLocalPhoto('my_medium') :filter.getLocalPhoto('my_selectMedium')}}.png"></image>
 					<text>中评</text>
 				</view>
-				<view catchtap="onBadTap">
-					<image src="http://www.gzlingren.com:8098/yangtianhe/{{!bad?'my_bad':'my_selectBad'}}.png"></image>
+				<view catchtap="onChosePraise" data-type="3">
+					<image src="{{type != 3 ? filter.getLocalPhoto('my_bad'): filter.getLocalPhoto('my_selectBad')}}.png"></image>
 					<text>差评</text>
 				</view>
 			</view>
