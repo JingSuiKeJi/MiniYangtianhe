@@ -165,24 +165,19 @@ const methods = {
             isSelect: !self.data.isSelect
         })
     },
-    payStatus(type) {
+    payStatus(type, id) {
         const self = this;
-        if (type == 'success') {
+        if (self.data.from == 'goodsDetail') {
             _g.redirectTo({
                 url: 'pages/order/orderDetail',
                 param: {
-                    index: 0,
+                    orderId: id,
                     from: 'submit'
                 }
             }, self);
         } else {
-            //fail
             _g.redirectTo({
-                url: 'pages/order/orderDetail',
-                param: {
-                    index: 0,
-                    from: 'submit'
-                }
+                url: 'pages/order/index',
             }, self);
         }
     },
@@ -203,7 +198,8 @@ const methods = {
         Order.placeOrder(self, data).then((ret) => {
             if (self.data.from == 'goodsDetail') {
                 //TODO pay
-                self.payStatus('success');
+                // self.payStatus('success');
+                self.prePay(ret.data);
             } else {
                 //
             }
@@ -216,6 +212,47 @@ const methods = {
             })
         });
     },
+    prePay(id) {
+        const self = this;
+        Order.prePay(self, {
+            orderId: id
+        }).then((ret)=>{
+            let payInfo = ret.data;
+            payInfo.success = function() {
+                //TODO check pay status
+                self.payStatus('success', id);
+            };
+            payInfo.fail = function() {
+                _g.showModal({
+                    title: '提示',
+                    content: '支付失败',
+                    confirm: function() {
+                        self.payStatus('fail', id);
+                    }
+                });
+            };
+            _g.requestPayment(payInfo);
+        },err=>{
+            _g.showModal({
+                title: '提示',
+                content: '支付失败',
+                confirm: function() {
+                    _g.navigateBack();
+                }
+            });
+        });
+    },
+    // onSkip(){
+    //     const self = this;
+    //     if (self.data.from == 'order') {};
+    //     _g.redirectTo({
+    //         url: 'pages/order/index',
+    //         param: {
+    //             index: 0,
+    //             from: 'submit'
+    //         }
+    //     }, self);
+    // },
     getInputValue: function(e) {
         let self = this;
         self.setData({
