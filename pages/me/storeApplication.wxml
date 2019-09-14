@@ -43,7 +43,7 @@
 					<text>选择地址</text>
 					<text>*</text>
 				</view>
-				<view class="ui-addressText" catchtap="onMapTap">{{addressDetail}}</view>
+				<view class="ui-addressText" catchtap="onMapTap">{{address || '请选择地址'}}</view>
 				<!-- <textarea class="ui-addressText" bindinput="onAddressTap" placeholder="请输入地址" placeholder-style="color:#666666;" value="{{address}}" bindinput="onAddressTap"
 				cols="686rpx" maxlength="110" auto-height="{{auto_height}}" bindblur='areablur' bindfocus='areafocus'/> -->
 			</view>
@@ -52,7 +52,7 @@
 					<text>详细地址</text>
 					<text>*</text>
 				</view>
-				<textarea class="ui-addressText" bindinput="onAddressTap" placeholder="请输入详细地址" placeholder-style="color:#666666;" value="{{address}}" bindinput="onAddressTap"
+				<textarea class="ui-addressText" bindinput="onAddressTap" placeholder="请输入详细地址" placeholder-style="color:#666666;" value="{{houseNumber}}" bindinput="onAddressTap"
 				cols="686rpx" maxlength="110" auto-height="{{auto_height}}" bindblur='areablur' bindfocus='areafocus'/>
 			</view>
 			<view class="ui-itemCommon">
@@ -84,7 +84,7 @@
 				</view>
 			</scroll-view>
 			
-			<view wx:if="{{!tempFilePaths||!introduce||!encoding||!storeName||!address||!storeTel||!businessLicense||!company||!addressDetail==1}}" class="btn-submit btn-notSubmit" bindtap="onNotSubmitTap">完成并提交申请</view>
+			<view wx:if="{{!introduce||!encoding||!storeName||!address||!storeTel||!businessLicense||!company}}" class="btn-submit btn-notSubmit" bindtap="onNotSubmitTap">完成并提交申请</view>
 			<view wx:else class="btn-submit btn-canSubmit" bindtap="onSubmitTap">完成并提交申请</view>
 		</view>
 	</view>
