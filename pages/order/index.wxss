@@ -409,3 +409,7 @@ page{
 	color:#FD3D2F;
 	text-align: center;
 }
+.ui-noDataBox {
+	margin-top: 200rpx;
+	margin-left: 300rpx;
+}

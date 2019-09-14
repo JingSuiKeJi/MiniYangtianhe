@@ -1,4 +1,4 @@
-<!-- <wxs module="filter" src="../../filter/filter.wxs"></wxs> -->
+<wxs module="filter" src="../../filter/filter.wxs"></wxs>
 <!--orderDetail.wxml-->
 <view class="container">
 	<navBar title='订单详情' background='white' color='black' iconTheme='black' back="{{true}}"></navBar>
@@ -40,46 +40,46 @@
 		</view>
 		<!-- 配送或自提信息 -->
 		<block wx:if="{{(orderStatus=='待核销')||(orderStatus=='已核销')}}">
-			<view wx:if="{{takeState=='配送'}}" class="ui-verificInfoBox" wx:for="{{orderDistribution}}" wx:for-item="item" wx:key="idx">
+			<view wx:if="{{takeState==4}}" class="ui-verificInfoBox" wx:for="{{orderDelivery}}" wx:for-item="item" wx:key="idx">
 				<text class="ui-orderInfoTitle">{{item.title}}</text>
 				<view class="ui-infoCommon">
-					<text>{{item.storeTitle}}</text>
-					<text>{{item.store}}</text>
+					<text>配送地址</text>
+					<text>{{item.address+ item.name+item.phone }}</text>
 				</view>
 				<view class="ui-infoCommon">
-					<text>{{item.indataTitle}}</text>
-					<text>{{item.indata}}</text>
+					<text>配送时间</text>
+					<text>{{item.deliveryTime}}</text>
 				</view>
 				<view class="ui-infoCommon">
-					<text>{{item.addressTitle}}</text>
-					<text>{{item.address}}</text>
+					<text>店铺地址</text>
+					<text>{{item.storeAddress}}</text>
 				</view>
 			</view>
-			<view wx:if="{{takeState=='自提'}}" class="ui-verificInfoBox" wx:for="{{orderPickUp}}" wx:for-item="item" wx:key="idx">
-				<text class="ui-orderInfoTitle">{{item.title}}</text>
+			<view wx:if="{{deliveryType==2}}" class="ui-verificInfoBox" wx:for="{{orderDelivery}}" wx:for-item="item" wx:key="idx">
+				<text class="ui-orderInfoTitle">自提信息</text>
 				<view class="ui-infoCommon">
-					<text>{{item.storeTitle}}</text>
-					<text>{{item.store}}</text>
+					<text>供货门店</text>
+					<text>{{item.storeName}}</text>
 				</view>
 				<view class="ui-infoCommon">
-					<text>{{item.indataTitle}}</text>
-					<text>{{item.indata}}</text>
+					<text>订单有效期</text>
+					<text>{{item.deliveryTime}}</text>
 				</view>
 				<view class="ui-infoCommon">
-					<text>{{item.addressTitle}}</text>
-					<text>{{item.address}}</text>
+					<text>店铺地址</text>
+					<text>{{item.storeAddress}}</text>
 				</view>
 			</view>
 		</block>
 		
 		<view wx:if="{{!(orderStatus=='待核销')&&!(orderStatus=='已核销')&&!(orderStatus=='评价成功')}}" class="ui-consigneeAddressBox">
 			<view class="ui-landmarkIcon"></view>
-			<view class="ui-consignee">
+			<view class="ui-consignee" >
 				<view class="ui-consigneeinfo">
-					<text>周周周</text>
-					<text>13414775964</text>
+					<text>{{orderAddress.name}}</text>
+					<text>{{orderAddress.phone}}</text>
 				</view>
-				<text class="ui-consigneeAddressDetial">广东省广州市天河区天盈广场东塔3004</text>
+				<text class="ui-consigneeAddressDetial">{{orderAddress.address}}</text>
 			</view>
 		</view>
 		<!-- 商品信息 -->
@@ -88,36 +88,36 @@
 			<view class="ui-newsInfoBox">
 				<view class="ui-newsInfoItem" wx:for="{{storeList}}" wx:for-item="item" wx:key="idx">
 					<view class="ui-newsImg">
-						<image src="http://www.gzlingren.com:8098/yangtianhe/{{item.newsImg}}.png"></image>
+						<image src="{{filter.getPhoto(host,item.imgUrl)}}"></image>
 					</view>
 					<view class="ui-newsInfoDetail">
-						<text class="ui-newsName">{{item.newsName}}</text>
-						<text class="ui-newsWeight">{{item.newsWeight}}</text>
-						<text class="ui-newsMoney">¥{{item.newsMoney}}</text>
+						<text class="ui-newsName">{{item.title}}</text>
+						<text class="ui-newsWeight">{{item.specificationName}}</text>
+						<text class="ui-newsMoney">¥{{item.price}}</text>
 					</view>
-					<text class="ui-newsNum">x1</text>
+					<text class="ui-newsNum">x{{item.num}}</text>
 				</view>
 			</view>
 			<view wx:if="{{orderStatus=='待发货'||orderStatus=='待收货'||orderStatus=='交易成功'}}" class="btn-applyAfterSales" bindtap="onApplyAfterSales">申请售后</view>
 			<view class="ui-freight ui-commodityTextCommon">
 				<text>运费</text>
-				<text>¥0.00</text>
+				<text>¥{{deliveryFee}}</text>
 			</view>
 			<view class="ui-blissDeduction ui-commodityTextCommon">
 				<text>福气抵扣</text>
-				<text>-¥1.48</text>
+				<text>-¥{{pointsDeduction}}</text>
 			</view>
 			<view class="ui-actualPayment ui-commodityTextCommon">
 				<text>实付款</text>
-				<text>¥ 121.32</text>
+				<text>¥ {{payment}}</text>
 			</view>
 		</view>
 		<!-- 订单信息 -->
 		<view wx:if="{{!(orderStatus=='评价成功')}}" class="ui-orderInfoBox" wx:for="{{orderInfoList}}" wx:for-item="item" wx:key="idx">
 			<text>订单信息</text>
-			<text>订单编号：{{item.number}}</text>
-			<text>创建时间：{{item.creationTime}}</text>
-			<text wx:if="{{!(orderStatus=='待付款')}}">付款时间：{{item.paymentTime}}</text>
+			<text>订单编号：{{orderNo}}</text>
+			<text>创建时间：{{filter.getDate(creatrTime)}}</text>
+			<text wx:if="{{!(orderStatus=='待付款')}}">付款时间：{{filter.getDate(payTime)}}</text>
 		</view>
 		
 		<view wx:if="{{!(orderStatus=='评价成功')}}" class="ui-verificationFooter">

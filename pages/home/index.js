@@ -179,7 +179,7 @@ const methods = {
             platformFlag: 2,
         }).then((ret) => {
             let data = ret.data;
-            if (!data.list.length) return;
+            if (!data.list ) return;
             self.setData({
                 goodsList: data.list
             });

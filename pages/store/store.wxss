@@ -77,7 +77,7 @@ page {
     display: inline-block;
     width: 24rpx;
     height: 24rpx;
-    margin-top: 34rpx;
+    margin-top: 38rpx;
     vertical-align: top;
 }
 

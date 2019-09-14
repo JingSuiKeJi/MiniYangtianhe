@@ -5,102 +5,144 @@ const _g = app.base;
 const _c = app.config;
 const _t = app.temps;
 const event = app.event;
+const Order = require('../../service/Order');
 let data = {
-	menuList:[
-		{name:"全部",currentId:0},
-		{name:"待付款",currentId:1},
-		{name:"待发货",currentId:2},
-		{name:"待收货",currentId:3},
-		{name:"已签收",currentId:4}
+	menuList: [
+		{ name: "全部", currentId: 0 },
+		{ name: "待付款", currentId: 1 },
+		{ name: "待发货", currentId: 2 },
+		{ name: "待收货", currentId: 3 },
+		{ name: "已签收", currentId: 4 }
 	],
 	currentCheck: 0,//默认显示全部
 	showModal: false,
-	orderList:[
-		{orderReference:54636465456165465,store:"药店",orderStatus:"待付款",all:0,flagId:1,
-		storeList:[
-			{newsImg:"my_vce",newsName:"养生堂维C+维E",newsWeight:"250gx两盒装",newsMoney:99.00},
-			{newsImg:"my_weImg",newsName:"红豆龟苓膏",newsWeight:"250gx两盒装",newsMoney:10.00},
-		]
-		},
-		{orderReference:54636465456165465,store:"商城",orderStatus:"待发货",all:0,flagId:2,
-		storeList:[
-			{newsImg:"my_vce",newsName:"养生堂维C+维E",newsWeight:"250gx两盒装",newsMoney:99.00},
-		]
-		},
-		{orderReference:54636465456165465,orderStatus:"待收货",all:0,flagId:3,
-		storeList:[
-			{newsImg:"my_vce",newsName:"养生堂维C+维E",newsWeight:"250gx两盒装",newsMoney:99.00},
-		]
-		},
-		{orderReference:54636465456165465,store:"药房自提",orderStatus:"待核销",all:0,flagId:3,
-		storeList:[
-			{newsImg:"my_vce",newsName:"养生堂维C+维E",newsWeight:"250gx两盒装",newsMoney:99.00},
-		]
-		},
-		{orderReference:54636465456165465,orderStatus:"已签收",all:0,flagId:4,
-		storeList:[
-			{newsImg:"my_vce",newsName:"养生堂维C+维E",newsWeight:"250gx两盒装",newsMoney:99.00},
-		]
-		},
-		{orderReference:54636465456165465,orderStatus:"交易关闭",all:0,flagId:0,
-		storeList:[
-			{newsImg:"my_vce",newsName:"养生堂维C+维E",newsWeight:"250gx两盒装",newsMoney:99.00},
-		]
-		},
-		{orderReference:54636465456165465,orderStatus:"已核销",all:0,flagId:0,
-		storeList:[
-			{newsImg:"my_vce",newsName:"养生堂维C+维E",newsWeight:"250gx两盒装",newsMoney:99.00},
-		]
-		},
-		{orderReference:54636465456165465,orderStatus:"售后中",all:0,flagId:0,
-		storeList:[
-			{newsImg:"my_vce",newsName:"养生堂维C+维E",newsWeight:"250gx两盒装",newsMoney:99.00},
-		]
-		},
-		{orderReference:54636465456165465,orderStatus:"售后结束",all:0,flagId:0,
-		storeList:[
-			{newsImg:"my_vce",newsName:"养生堂维C+维E",newsWeight:"250gx两盒装",newsMoney:99.00},
-		]
-		}
-	],
+	orderList: [],
 };
-const onLoad = function(self) {
+const onLoad = function (self) {
 	//接收上一个页面状态
 	const currentCheck = self.data.currentCheck;
 	self.setData({
-		currentCheck:currentCheck
-	})
+		currentCheck: currentCheck
+	});
+	self.getData();
 
 };
-const onShow = function(self) {
-	
+const onShow = function (self) {
+
 };
-const onReady = function(self) {};
-const onUnload = function(self) {};
+const onReady = function (self) { };
+const onUnload = function (self) { };
 const methods = {
-	//选择菜单状态
-	chooseMenu:function(options){
+	getData: function () {
 		let self = this;
-		//当前选择
+        self.getPageData();
+	},
+	getPageData: function (value) {
+		let self = this;
+		let param = {
+			page: 1,
+			pageSize: 10,
+			type: self.data.currentCheck + 1,//1.全部 2.待付款 3.待发货 4.代收贷 5.已签收 
+		}
+		if (value) {
+			param.orderNo = value
+		}
+		Order.myOrderList(self, param).then((ret) => {
+			let data = ret.data;
+			self.setData({
+				orderList: data.list,
+				hasNextPage: data.hasNextPage
+			})
+        }, (err) => {
+
+        });
+	},
+    prePay(orderId) {
+        const self = this;
+        Order.prePay(self, {
+            orderId: self.data.orderId
+        }).then((ret) => {
+			ret.data.package = ret.data.package.replace(/\s*/g,'');
+            let payInfo = ret.data;
+            payInfo.success = function() {
+                //TODO check pay status
+                _g.showModal({
+                    title: '提示',
+                    content: '支付成功',
+                    confirm: function() {
+                        self.payStatus();
+                    }
+                });
+            };
+            payInfo.fail = function() {
+                _g.showModal({
+                    title: '提示',
+                    content: '支付失败',
+                });
+            };
+            _g.requestPayment(payInfo);
+
+        }, (err) => {
+        	_g.showModal({
+                title: '提示',
+                content: '支付失败',
+            });
+        });
+	},
+	payStatus() {
+		const self = this;
+		_g.redirectTo({
+			url: 'pages/order/orderDetail',
+			param: {
+				orderId: self.data.orderId,
+				index: 0,
+				from: 'index'
+			}
+		}, self);
+
+	},
+	cancelOrder: function () {
+		const self = this;
+        Order.cancelOrder(self, {
+            orderId: self.data.orderId
+        }).then((ret) => {
+			self.redirectTo('交易关闭');
+        }, (err) => {
+        });
+	},
+	confirmOrder: function () {
+		const self = this;
+        Order.confirmOrder(self, {
+            orderId: self.data.orderId
+        }).then((ret) => {
+			_g.toast({
+				title: '收货成功',
+			    icon: 'success',
+			})
+			self.redirectTo('交易关闭');
+        }, (err) => {
+        });
+	},
+	//选择菜单状态
+	chooseMenu: function (options) {
+		let self = this;
 		const id = options.currentTarget.dataset.id;
-		//列表
-		const orderList = self.data.orderList;
-		//设置当前样式
 		self.setData({
-			currentCheck:id,
+			currentCheck: id,
 		})
+		self.getPageData();
 	},
 	//跳转到对应的状态页
-	onOrderDetailTap:function(options){
+	onOrderDetailTap: function (options) {
 		let self = this;
 		const orderStatus = options.currentTarget.dataset.orderStatus;
-		if(orderStatus=='售后中'||orderStatus=='售后结束'||orderStatus=='已签收'){
+		if (orderStatus == '售后中' || orderStatus == '售后结束' || orderStatus == '已签收') {
 			return
-		}else{
+		} else {
 			_g.navigateTo({
-				param:{
-			    	orderStatus:orderStatus
-			    },
+				param: {
+					orderStatus: orderStatus
+				},
 				url: 'pages/order/orderDetail',
 			}, self);
 		}
@@ -108,12 +150,12 @@ const methods = {
 	//取消订单操作和模态框
 	showDialogBtn: function () {
 		this.setData({
-		  showModal: true
+			showModal: true
 		})
 	},
 	hideModal: function () {
 		this.setData({
-		  showModal: false
+			showModal: false
 		});
 	},
 	onCancel: function () {
@@ -123,64 +165,137 @@ const methods = {
 		let self = this;
 		const orderStatus = '交易关闭';
 		_g.navigateTo({
-			param:{
-		    	orderStatus:orderStatus
-		    },
+			param: {
+				orderStatus: orderStatus
+			},
 			url: 'pages/order/orderDetail',
 		}, self);
 		self.hideModal();
 	},
-	//提醒发货
-	onAlertTap:function () {
-		
-	},
-	//确认收货
-	onConfirmReceiptTap: function () {
+	onCancelTap: function (e) {
 		let self = this;
 		self.setData({
-		  confirmReceipt: true
+			orderId: e.currentTarget.dataset.orderid
+		})
+		_g.showModal({
+			title: '',
+			content: '确认要取消订单吗',
+			showCancel:  true,
+            confirmColor: '#FD3D2F',
+			cancelColor: '#007AFF',
+			confirm() {
+				self.cancelOrder()
+				
+			}
+		});
+	},
+	//提醒发货
+	onAlertTap: function () {
+
+	},
+	//确认收货
+	onConfirmReceiptTap: function (e) {
+		let self = this;
+		self.setData({
+			confirmReceipt: true
 		})
 	},
 	hideConfirmReceipt: function () {
 		let self = this;
 		self.setData({
-		  confirmReceipt: false
+			confirmReceipt: false
 		});
 	},
 	onCancelConfirmReceipt: function () {
 		let self = this;
 		self.hideConfirmReceipt();
 	},
+	onConfirmTap: function (e) {
+		let self = this;
+		self.setData({
+			orderId: e.currentTarget.dataset.orderid 
+		})
+		_g.showModal({
+			title: '',
+			content: '确认已收到商品吗',
+			showCancel:  true,
+            confirmColor: '#FD3D2F',
+			cancelColor: '#007AFF',
+			confirm() {
+				self.confirmOrder();
+				
+			}
+		});	
+	},
 	onConfirmConfirmReceipt: function () {
 		let self = this;
 		wx.showToast({
-			mask:true,
+			mask: true,
 			title: '收货成功',
 			icon: 'success',
 			duration: 1000,
-			success:function(){
+			success: function () {
 				setTimeout(function () {
 					//延时跳转到交易成功
 					const orderStatus = '交易成功';
 					_g.navigateTo({
-						param:{
-					    	orderStatus:orderStatus
-					    },
+						param: {
+							orderStatus: orderStatus
+						},
 						url: 'pages/order/orderDetail',
 					}, self);
 				}, 400) //延迟时间
 			}
 		})
-		setTimeout(function(){
-		  wx.hideToast()
-		},1000)
+		setTimeout(function () {
+			wx.hideToast()
+		}, 1000)
 		self.hideConfirmReceipt();
 	},
 	//发表评论
-	onPostCommentTap:function(){
+	onPostCommentTap: function () {
 		let self = this;
 		_g.navigateTo({
 			url: 'pages/order/postComment',
+			param: {
+				orderId: self.data.orderId,
+				goodsId: self.getGoodsId(),
+			}
+		}, self);
+	},
+	getGoodsId: function () {
+		var self = this;
+		let goodsId = [];
+		let list = self.data.storeList;
+		if (list.length>1) {
+			list.forEach(element => {
+			   goodsId.push(element.goodsId);
+			});
+			return goodsId.join(',');
+		}else {
+			return list[0].goodsId;
+		}
+	},
+	onPayTap: function (e) {
+		let self = this;
+		self.setData({
+			orderId: e.currentTarget.dataset.orderid
+		})
+		self.prePay();
+	},
+	onInputTap: function (e) {
+		let self = this;
+		self.getPageData(e.detail.value);
+	},
+	redirectTo : function (orderStatus) {
+		let self = this;
+		_g.redirectTo({
+			url: 'pages/order/orderDetail',
+			param: {
+				orderId: self.data.orderId,
+				orderStatus: orderStatus,
+				from: 'index'
+			}
 		}, self);
 	}
 }
@@ -190,12 +305,12 @@ const temps = {};
 
 // 初始化页面page对象
 const initPage = _g.initPage({
-    data: data,
-    onLoad: onLoad,
-    onUnload: onUnload,
-    onReady: onReady,
-    onShow: onShow,
-    methods: methods,
-    temps: temps,
+	data: data,
+	onLoad: onLoad,
+	onUnload: onUnload,
+	onReady: onReady,
+	onShow: onShow,
+	methods: methods,
+	temps: temps,
 });
 Page(initPage);
