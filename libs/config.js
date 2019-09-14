@@ -127,7 +127,13 @@ config.prototype = {
         order: {
             placeOrder: '/app/order/placeOrder.do',
             preOrder: '/app/preOrder/common.do',
-            addressList: '/app/preOrder/addressList.do'
+            addressList: '/app/preOrder/addressList.do',
+            commentOrder: '/app/order/commentOrder.do',
+            myOrderList: '/app/order/myOrderList.do',
+            myOrderDetail: '/app/order/myOrderDetail.do',
+            cancelOrder: '/app//order/cancelOrder.do',
+            confirmOrder: '/app//order/confirmOrder.do',
+            prePay: '/pay/order/prePay.do'
         },
         point: {
             getBaseInfo: '/app/points/getBaseInfo.do',

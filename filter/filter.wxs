@@ -13,7 +13,8 @@ var filter = {
         if (month < 10) month = "0" + month;
         if (day < 10) day = "0" + day;
         var array = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
-        var strDate = year + '-' + month + '-' + day + '(' + array[date] + ')' + ' ' + time;
+        // var strDate = year + '-' + month + '-' + day + '(' + array[date] + ')' + ' ' + time;
+         var strDate = year + '-' + month + '-' + day +  ' ' + time;
         return strDate;
     },
     getDay: function (value) {
@@ -80,9 +81,40 @@ var filter = {
         var host = 'http://www.gzlingren.com:8098/yangtianhe/';
         return host + path;
     },
-    getReturnPhoto: function (path) {
-        var host = 'http://120.79.36.152:10008';
-        return host + path;
-    }, 
+    getPlatform: function (flag) {
+        if (flag == 1) {
+            return '商城';
+        } else {
+            return '药房';
+        }
+    },
+    getOrderStatus: function (status) {
+        switch(status) {
+            case 'SYSTEM_CANCEL':
+                return '已取消';
+            case 'CUSTOMER_CANCEL':
+                return '已取消';
+            case 'WAIT_BUYER_PAY':
+                return '待付款';
+            case 'WAIT_GROUP':
+                return '等待成团';
+            case 'WAIT_SELLER_SEND_GOODS':
+                return '待发货';
+            case 'WAIT_CHECK':
+                return '待核销';
+            case 'WAIT_DELIVERY':
+                return '配送中';
+            case 'WAIT_BUYER_CONFIRM_GOODS':
+                return '待收货';
+            case 'EXPIRED':
+                return '已过期';
+            case 'TRADE_BUYER_SIGNED':
+                return '已签收';
+            case 'TRADE_FINISH':
+                return '已签收';
+            default: 
+               return '';
+        }
+    },
 };
 module.exports = filter;

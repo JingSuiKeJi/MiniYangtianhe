@@ -90,6 +90,7 @@ const methods = {
         Platform.getSecKill(self, {
             platformFlag: 1,
         }).then((ret) => {
+            if (!ret.data ) return;
             self.setData({
                 secSkill: ret.data
             });
@@ -144,7 +145,7 @@ const methods = {
     onClickTap: function(e) {
         const self = this;
         self.setData({
-            classifyId: e.target.dataset.id,
+            classifyId: e.currentTarget.dataset.id,
             page: 1
         });
         self.getPageData();

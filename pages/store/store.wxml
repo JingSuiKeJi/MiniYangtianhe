@@ -136,7 +136,7 @@
             <view class="ui-listItem_bottom">
                 <view class="ui-bottomItem_tap {{isFixed ? 'isFixed' : ''}}" id="aim" >
                     <scroll-view scroll-x class="ui-tapItem_scrollView">
-                        <view wx:for="{{tapList}}" wx:key="{{index}}" class="ui-tapScroll_item" bindtap="onClickTap" id="{{item.id}}">
+                        <view wx:for="{{tapList}}" wx:key="{{index}}" class="ui-tapScroll_item" bindtap="onClickTap" data-id="{{item.id}}">
                             <view class="ui-tapScroll_itemText" style="font-weight: {{classifyId == item.id ? '500' : '400'}};color: {{isFixed ? '#fff' : ''}}">
                                 {{item.title}}
                             </view>

@@ -23,6 +23,49 @@ class Order {
             data: reqData
         }, page);
     }
+    commentOrder(page, reqData) {
+        _g.dm.canLoadMore = 1;
+        return _g.ajax({
+            url: mini.order.commentOrder,
+            data: reqData
+        }, page);
+    }
+    myOrderList(page, reqData) {
+        _g.dm.canLoadMore = 1;
+        return _g.ajax({
+            url: mini.order.myOrderList,
+            data: reqData
+        }, page);
+    }
+    myOrderDetail(page, reqData) {
+        _g.dm.canLoadMore = 1;
+        return _g.ajax({
+            url: mini.order.myOrderDetail,
+            data: reqData
+        }, page);
+    }
+    cancelOrder(page, reqData) {
+        _g.dm.canLoadMore = 1;
+        return _g.ajax({
+            url: mini.order.cancelOrder,
+            data: reqData
+        }, page);
+    }
+    confirmOrder(page, reqData) {
+        _g.dm.canLoadMore = 1;
+        return _g.ajax({
+            url: mini.order.confirmOrder,
+            data: reqData
+        }, page);
+    }
+    prePay(page, reqData) {
+        _g.dm.canLoadMore = 1;
+        return _g.ajax({
+            url: mini.order.prePay,
+            data: reqData
+        }, page);
+    }
+    
 }
 
 module.exports = new Order();
