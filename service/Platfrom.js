@@ -121,6 +121,13 @@ class Platfrom {
             data: reqData
         }, page);
     }
+    uploadStep(page, reqData) {
+        _g.dm.canLoadMore = 1;
+        return _g.ajax({
+            url: mini.platfrom.uploadStep,
+            data: reqData
+        }, page);
+    }
 
 }
 

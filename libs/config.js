@@ -79,6 +79,7 @@ config.prototype = {
             getStepInfo: '/app/step/getStepInfo.do',
             uploadStep: '/app/step/uploadStep.do',
             getShareQR: '/app/common/getShareQR.do',
+            uploadStep: '/app/step/uploadStep.do',
         },
         user: {
             login: '/app/account/login.do',

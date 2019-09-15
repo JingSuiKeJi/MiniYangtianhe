@@ -262,6 +262,8 @@ page {
     margin-top: 82rpx;
     padding: 0 40rpx;
     background-color: #3CC7A4;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .ui-tapBox .ui-headBox_tap {
@@ -378,7 +380,7 @@ page {
 
 .ui-imageItem_swper {
     width: 100%;
-    max-height: 370rpx;
+    height: 370rpx;
 }
 
 .ui-classBox .ui-classBox_item {
