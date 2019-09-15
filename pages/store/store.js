@@ -29,6 +29,9 @@ const data = {
 // 页面onLoad方法
 const onLoad = function(self) {
     self.getData();
+    self.getTabBar().setData({
+        selected: 1
+    });
     // self.onScroll();
     event.on('login-suc', (ret) => {});
     event.on('logout-suc', (ret) => {});
@@ -196,6 +199,9 @@ const methods = {
         const self = this;
         _g.navigateTo({
             url: 'pages/search/brand',
+            param: {
+                platformFlag: 1
+            }
         }, self);
     },
     onResultTap: function(e) {

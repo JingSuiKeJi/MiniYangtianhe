@@ -317,6 +317,9 @@ const methods = {
         let self = this;
         _g.navigateTo({
             url: 'pages/search/brand',
+            param: {
+                platformFlag: 2
+            }
         }, self);
     },
     onTabTap: function(e) {
