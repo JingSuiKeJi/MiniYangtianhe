@@ -474,8 +474,6 @@ const methods = {
                 scrollTop: res[0].top
             });
         });
-
-
     },
     pageScroll: function(res) {
         let self = this;
@@ -489,6 +487,12 @@ const methods = {
                 isFixed: false,
             })
         }
+    },
+    onMapTap() {
+        const self = this;
+        _g.navigateTo({
+            url: 'pages/home/map'
+        }, self);
     }
 
 };

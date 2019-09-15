@@ -66,6 +66,8 @@ const methods = {
             if (ret.data.list && ret.data.list.length) {
                 if (self.data.page == 1) {
                     self.setData({
+                        // lon: ret.data.list[0].lon,
+                        // lat: ret.data.list[0].lat,
                         storeList: ret.data.list
                     });
                 } else {
@@ -91,7 +93,7 @@ const methods = {
     transList() {
         const self = this;
         self.setData({
-            markerList: _.map(self.data.storeList, (item, index)=>{
+            markerList: _.map(self.data.storeList, (item, index) => {
                 item.latitude = item.lat;
                 item.longitude = item.lon;
                 return item;
