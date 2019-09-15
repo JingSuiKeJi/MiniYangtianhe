@@ -65,6 +65,13 @@ class Order {
             data: reqData
         }, page);
     }
+    preOrderCart(page, reqData) {
+        _g.dm.canLoadMore = 1;
+        return _g.ajax({
+            url: mini.order.preOrderCart,
+            data: reqData
+        }, page);
+    }
     
 }
 

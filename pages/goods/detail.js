@@ -352,9 +352,9 @@ const methods = {
     onAddCart: function() {
         let self = this;
         let data = {
-            platformFlag: 1,
-            goodsId: 2,
-            cartNum: self.data.cartNum
+            platformFlag: self.data.goodsDetail.platformFlag,
+            goodsId: self.data.id,
+            num: self.data.num
         }
         if (self.data.platformFlag == 2) data.storeId = self.data.storeId;
         Goods.addCart(self, data).then((ret) => {
@@ -364,7 +364,9 @@ const methods = {
             });
             self.getCartList();
         }, (err) => {
-
+            _g.toast({
+                title: '加入购物车成功'
+            });
         });
     },
     //请求购物车列表
