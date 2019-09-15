@@ -3,7 +3,7 @@ const app = getApp();
 const _ = app.underscore;
 const _g = app.base;
 const _c = app.config;
-const Platfrom = require('../../service/Platfrom');
+const Platform = require('../../service/Platfrom');
 const User = require('../../service/User');
 // 初始化数据
   const data = {
@@ -41,7 +41,7 @@ const methods = {
     },
     getStepInfo: function () {
         let self = this;
-        Platfrom.getStepInfo(self, {
+        Platform.getStepInfo(self, {
         }).then((ret)=>{
             let stepInfo = ret.data.stepInfo;
             let  percent = stepInfo.todayStep/stepInfo.targetStep;

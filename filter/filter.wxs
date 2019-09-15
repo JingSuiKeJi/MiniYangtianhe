@@ -116,5 +116,15 @@ var filter = {
                return '';
         }
     },
+    getStatus: function (status) {
+        switch(status) {
+            case  1:
+                return '进行中';
+            case 2:
+                return '达成';
+            default: 
+               return '未达成';
+        }
+    }
 };
 module.exports = filter;

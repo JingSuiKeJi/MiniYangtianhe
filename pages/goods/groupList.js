@@ -5,6 +5,7 @@ const _ = app.underscore;
 const _g = app.base;
 const _c = app.config;
 const Platform = require('../../service/Platfrom');
+const Goods = require('../../service/Goods');
 // 初始化数据
 const data = {
   classfity: ['全部','中西药品','营养保健','养生花茶','情趣计生',],
@@ -26,13 +27,10 @@ const data = {
 // 页面onLoad方法
 const onLoad = function (self) {
     self.getData();
-	self.getPageData();
-	self.getClassifyList();
 };
 
 // 页面onShow方法
 const onShow = function (self) {
-    self.getData();
 };
 
 // 页面中的方法
@@ -40,22 +38,12 @@ const methods = {
 	getData:function(){
 		let self = this;
 		self.getOccasion();
-		// 拼团页应景图
-		// Platform.getCommonData(self, {
-		//     platformFlag:2,
-		//     storeId: 234567,
-		// }).then((ret)=>{
-		//     let data = ret.data;
-		//     self.setData({
-		//         tapImgUrl: data.occasion.imgUrl,
-		//     })
-		// },(err)=>{
-		
-		// });
+	    self.getClassifyList();
 	},
 	getOccasion: function () {
+		let self = this;
 		Platform.getOccasion(self, {
-		    platformFlag:2,
+		    platformFlag:1,
 		}).then((ret)=>{
 		    let data = ret.data;
 		    self.setData({
@@ -68,41 +56,43 @@ const methods = {
 	getPageData: function () {
 	    let self = this;
 		// 拼团列表
-	    Platform.getAssembleList(self, {
-	        platformFlag:2,
+	    Goods.getAssembleList(self, {
+	        platformFlag:1,
 	    	page:1,
-	    	pageSize:8,
+	    	pageSize:10,
 	    }).then((ret)=>{
 	        let data = ret.data;
 	        self.setData({
-	            list: data.list,
+	            allList: data.list,
 	        })
 	    },(err)=>{
 	    
 	    });
 	},
-	//榜单推荐分类列表
 	getClassifyList: function () {
 	    let self = this;
 	    Platform.getClassifyList(self, {
-	        platformFlag:2,
-	        storeId: 234567,
-	        level: 2
+	        platformFlag:1,
+	        level: 1
 	    }).then((ret)=>{
 	       let data = ret.data;
 	       self.setData({
-	         tapList: data,
-	         classifyId: data.id
-	       })
+			 classfity: data,
+	         classifyId: data[0].id
+		   });
+		   self.getPageData();
 	    },(err)=>{
 	
 	    });
 	},
   onSelectTap: function (e) {
-    let self = this;
+	let self = this;
+	let opts = e.currentTarget.dataset;
     self.setData({
-      isSelect: e.target.dataset.type
-    })
+	  isSelect: opts.type,
+	  classifyId: opts.id,
+	});
+	self.getPageData();
     
   },
   onSkipTap: function (e) {

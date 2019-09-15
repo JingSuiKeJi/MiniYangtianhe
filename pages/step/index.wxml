@@ -29,15 +29,15 @@
           </view>
           <view class="ui-stepContentBox">
               <view class="ui-contenItem" bindtap="onIllustrationTap">
-                 <view class="ui-contenItem__text">413<text >福气</text></view>
+                 <view class="ui-contenItem__text">{{stepInfo.points}}<text >福气</text></view>
                  <view class="ui-contenItem__title">累计福气</view>
               </view>
               <view class="ui-contenItem" bindtap="onCheckTap">
-                 <view class="ui-contenItem__text">13<text >位</text></view>
+                 <view class="ui-contenItem__text">{{stepInfo.leyouNum}}<text >位</text></view>
                  <view class="ui-contenItem__title">我的乐友</view>
               </view>
               <view class="ui-contenItem">
-                 <view class="ui-contenItem__text ui-contenItem__step" >2213<text >步数</text></view>
+                 <view class="ui-contenItem__text ui-contenItem__step" >{{stepInfo.totalStep}}<text >步数</text></view>
                  <view class="ui-contenItem__title">累计步数</view>
               </view>
           </view>
@@ -45,9 +45,9 @@
               <image src="{{filter.getLocalPhoto('step_historyIcon.png')}}"  class="ui-historyItem__icon"/>
               <view class="ui-historyItem__text">— 历史记录 —</view>
               <view class="ui-hirtoryItem__list" wx:for="{{list}}" wx:key="{{index}}" >
-                  <text class="ui-listItem__time">{{filter.getDay(createTime)}}</text>
+                  <text class="ui-listItem__time">{{filter.getDay(item.createTime)}}</text>
                   <text class="ui-listItem__step">{{item.step}}</text>
-                  <text class="ui-listItem__status" style="color: {{ (item.status== 1 ? '#20CAB4' : '' ) || (item.status== 3 ? '#999999' : '' )}}">{{item.text}}</text>
+                  <text class="ui-listItem__status" style="color: {{ (item.status== 1 ? '#20CAB4' : '' ) || (item.status== 3 ? '#999999' : '' )}}">{{filter.getStatus(item.status)}}</text>
               </view>
           </view>
           <view class="ui-bottomTex">为你加油，一起努力吧 ～</view>
