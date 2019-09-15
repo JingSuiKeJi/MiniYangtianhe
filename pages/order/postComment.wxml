@@ -8,14 +8,14 @@
 			<view class="ui-newsInfoBox" wx:for="{{storeList}}" wx:for-item="item" wx:key="idx">
 				<view class="ui-newsInfoItem">
 					<view class="ui-newsImg">
-						<image src="http://www.gzlingren.com:8098/yangtianhe/{{item.newsImg}}.png"></image>
+						<image src="{{filter.getPhoto(host,item.imgUrl)}}"></image>
 					</view>
 					<view class="ui-newsInfoDetail">
-						<text class="ui-newsName">{{item.newsName}}</text>
-						<text class="ui-newsWeight">{{item.newsWeight}}</text>
-						<text class="ui-newsMoney">¥{{item.newsMoney}}</text>
+						<text class="ui-newsName">{{item.title}}</text>
+						<text class="ui-newsWeight">{{item.specificationName}}</text>
+						<text class="ui-newsMoney">¥{{item.price}}</text>
 					</view>
-					<text class="ui-newsNum">x1</text>
+					<text class="ui-newsNum">x{{item.num}}</text>
 				</view>
 			</view>
 		</view>

@@ -32,17 +32,46 @@ const onUnload = function(self) {}
 const methods = {
 	getData: function (e) {
 		let self = this;
-		self.commentOrder();
+		self.myOrderDetail();
+	},
+	myOrderDetail: function () {
+		const self = this;
+        Order.myOrderDetail(self, {
+            orderId: self.data.orderId
+        }).then((ret) => {
+			self.setData({
+				storeList: ret.data.goodsList
+			});
+        }, (err) => {
+        });
 	},
     commentOrder: function (e) {
 		let self = this;
 		Order.commentOrder(self, {
 			orderId: self.data.orderId,
 			goodsId: self.data.goodsId,
-			imgUrls: '',
-			type: self.data.type
+			imgUrls: self.data.tempFilePaths.join(','),
+			type: self.data.type,
+			content: self.data.write,
         }).then((ret) => {
-			
+			wx.showToast({
+				mask:true,
+				title: '发布成功',
+				icon: 'success',
+				duration: 1000,
+				success:function(){
+					setTimeout(function () {
+						//延时跳转到评价成功
+						const orderStatus = '评价成功';
+						_g.navigateTo({
+							param:{
+						    	orderStatus:orderStatus
+						    },
+							url: 'pages/order/orderDetail',
+						}, self);
+					}, 400) //延迟时间
+				}
+			})
         }, (err) => {
         });	
 	},
@@ -115,24 +144,25 @@ const methods = {
 			duration: 1000,
 			success:function(){
 				setTimeout(function(){
-					wx.showToast({
-						mask:true,
-						title: '发布成功',
-						icon: 'success',
-						duration: 1000,
-						success:function(){
-							setTimeout(function () {
-								//延时跳转到评价成功
-								const orderStatus = '评价成功';
-								_g.navigateTo({
-									param:{
-								    	orderStatus:orderStatus
-								    },
-									url: 'pages/order/orderDetail',
-								}, self);
-							}, 400) //延迟时间
-						}
-					})
+					self.commentOrder();
+					// wx.showToast({
+					// 	mask:true,
+					// 	title: '发布成功',
+					// 	icon: 'success',
+					// 	duration: 1000,
+					// 	success:function(){
+					// 		setTimeout(function () {
+					// 			//延时跳转到评价成功
+					// 			const orderStatus = '评价成功';
+					// 			_g.navigateTo({
+					// 				param:{
+					// 			    	orderStatus:orderStatus
+					// 			    },
+					// 				url: 'pages/order/orderDetail',
+					// 			}, self);
+					// 		}, 400) //延迟时间
+					// 	}
+					// })
 				},1000)
 			}
 		})

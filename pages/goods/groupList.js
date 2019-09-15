@@ -39,10 +39,23 @@ const onShow = function (self) {
 const methods = {
 	getData:function(){
 		let self = this;
+		self.getOccasion();
 		// 拼团页应景图
-		Platform.getCommonData(self, {
+		// Platform.getCommonData(self, {
+		//     platformFlag:2,
+		//     storeId: 234567,
+		// }).then((ret)=>{
+		//     let data = ret.data;
+		//     self.setData({
+		//         tapImgUrl: data.occasion.imgUrl,
+		//     })
+		// },(err)=>{
+		
+		// });
+	},
+	getOccasion: function () {
+		Platform.getOccasion(self, {
 		    platformFlag:2,
-		    storeId: 234567,
 		}).then((ret)=>{
 		    let data = ret.data;
 		    self.setData({
@@ -57,7 +70,6 @@ const methods = {
 		// 拼团列表
 	    Platform.getAssembleList(self, {
 	        platformFlag:2,
-	        storeId: 234567,
 	    	page:1,
 	    	pageSize:8,
 	    }).then((ret)=>{
