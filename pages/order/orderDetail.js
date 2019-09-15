@@ -7,7 +7,7 @@ const _t = app.temps;
 const event = app.event;
 const Order = require('../../service/Order');
 let data = {
-	orderStatus:'交易成功',//存储上一个页面状态，默认评价成功
+	// orderStatus:'交易成功',//存储上一个页面状态，默认评价成功
 	storeList:[],
 	orderInfoList:[
 		{number:'54636465456165465',creationTime:'2019-01-25  14:30',paymentTime:'2019-01-25  14:30'}
@@ -31,11 +31,9 @@ let data = {
 	
 };
 const onLoad = function(self) {
-	//订单有效时间倒计时
-	self.downStartTime()
 	//接收上一个页面状态
 	self.setData({
-		orderStatus:self.data.orderStatus,
+		// orderStatus:self.data.orderStatus,
 		orderId: self.data.orderId
 	});
 	self.getData();
@@ -55,6 +53,7 @@ const methods = {
         }).then((ret) => {
 			let data = ret.data;
 			self.setData({
+				status: data.status,
 				orderAddress: data.orderAddress,
 				storeList: data.goodsList,
 				deliveryFee: data.deliveryFee,
@@ -66,13 +65,13 @@ const methods = {
 				orderDelivery: data.orderDelivery,
 				deliveryType: data.deliveryType//配送方式：1.快递 2.门店自提 3.立即配送 4.预约配送
 			});
+			if (data.payRestTime) self.downStartTime(data.payRestTime);
         }, (err) => {
         });
 	},
 	//订单支付倒计时
-	downStartTime:function () {
+	downStartTime:function (startTime) {
 		let self = this;
-		let startTime = self.data.startTime;
 		const timer = setInterval(function(){
 			self.setData({
 				startTime: startTime-1
@@ -256,7 +255,61 @@ const methods = {
 		}else {
 			return list[0].goodsId;
 		}
-	}
+	},
+	onCancelTap: function (e) {
+		let self = this;
+		_g.showModal({
+			title: '',
+			content: '确认要取消订单吗',
+			showCancel:  true,
+            confirmColor: '#FD3D2F',
+			cancelColor: '#007AFF',
+			confirm() {
+				self.cancelOrder();
+			}
+		});
+	},
+	cancelOrder: function () {
+		const self = this;
+        Order.cancelOrder(self, {
+            orderId: self.data.orderId
+        }).then((ret) => {
+			_g.toast({
+				title: '成功',
+			    icon: 'success',
+			})
+        }, (err) => {
+        });
+	},
+	onConfirmTap: function (e) {
+		let self = this;
+		self.setData({
+			orderId: e.currentTarget.dataset.orderid 
+		})
+		_g.showModal({
+			title: '',
+			content: '确认已收到商品吗',
+			showCancel:  true,
+            confirmColor: '#FD3D2F',
+			cancelColor: '#007AFF',
+			confirm() {
+				self.confirmOrder();
+				
+			}
+		});	
+	},
+	confirmOrder: function () {
+		const self = this;
+        Order.confirmOrder(self, {
+            orderId: self.data.orderId
+        }).then((ret) => {
+			_g.toast({
+				title: '收货成功',
+			    icon: 'success',
+			})
+        }, (err) => {
+        });
+	},
 }
 
 // 有引用template时定义

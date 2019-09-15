@@ -3,7 +3,7 @@ const app = getApp();
 const _ = app.underscore;
 const _g = app.base;
 const _c = app.config;
-const Platfrom = require('../../service/Platfrom');
+const Platform = require('../../service/Platfrom');
 const User = require('../../service/User');
 // 初始化数据
   const data = {
@@ -37,18 +37,22 @@ const User = require('../../service/User');
 const methods = {
     getData: function () {
         let self = this;
-        Platfrom.getStepInfo(self, {
+        self.getStepInfo();
+    },
+    getStepInfo: function () {
+        let self = this;
+        Platform.getStepInfo(self, {
         }).then((ret)=>{
             let stepInfo = ret.data.stepInfo;
             let  percent = stepInfo.todayStep/stepInfo.targetStep;
             let BMIIndex = Math.ceil(31 * percent);
             self.setData({
-                stepInfo: data.stepInfo,
+                stepInfo: stepInfo,
                 BMIIndex: BMIIndex
             });
-            self.data.btnShow(data.stepInfo.status);
+            self.btnShow(stepInfo.status);
         },(err)=>{
-        });
+        }); 
     },
     onIllustrationTap: function(e) {
         let self = this;
@@ -97,20 +101,52 @@ const methods = {
             blockList: blockList,
         })
     },
-    onStepTap: function(){
+    onStepTap: function() {
         let self = this;
-        if (self.data. stepInfo.status == 1) {
-            Platfrom.uploadStep(self,{
-                step: self.data.stepInfo.todayStep
-            }).then((ret) => {
-                self.getData();
-            },(err) => {
-             
-            })
+        if (self.data.stepInfo.status == 1) {
+            self.wxLogin();
         } else {
             return false;
         }
-        
+
+    },
+    wxLogin: function () {
+        let self = this;
+        wx.login({
+            success(res) {
+                if (res.code) {
+                    self.setData({
+                       code: res.code 
+                    })
+                    self.getWeRunData();
+                } else {
+                    console.log('登录失败！' + res.errMsg)
+                }
+            }
+        })
+    },
+    getWeRunData: function () {
+        const self = this;
+        wx.getWeRunData({
+            success (res) {
+                let data = {
+                    encryptedData: res.encryptedData,
+                    iv: res.iv,
+                    jsCode: self.data.code
+                };
+                self.uploadStep(data)
+            }
+          })
+          
+    },
+    uploadStep: function (data) {
+        let self = this;
+        Platform.uploadStep(self, data
+        ).then((ret) => {
+            self.getStepInfo();
+        }, (err) => {
+
+        })
     },
     btnShow: function (status) {
         let self = this;

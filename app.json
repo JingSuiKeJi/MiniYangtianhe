@@ -62,7 +62,8 @@
     "components/navBar/navBar",
     "pages/shop/blissVerifyDetail",
     "pages/pharmacy/customer",
-    "pages/card/card"
+    "pages/card/card",
+    "pages/goods/groupList"
   ],
   "tabBar": {
     "custom": true,

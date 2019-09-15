@@ -314,7 +314,7 @@ page {
 
 .ui-imageItem_swper {
     width: 100%;
-    max-height: 370rpx;
+    height: 370rpx;
 }
 
 .ui-classBox .ui-classBox_item {

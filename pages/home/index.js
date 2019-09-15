@@ -452,18 +452,51 @@ const methods = {
     onStepTap: function() {
         let self = this;
         if (self.data.stepInfo.status == 1) {
-            Platfrom.uploadStep(self, {
-                step: self.data.stepInfo.todayStep
-            }).then((ret) => {
-                self.getData();
-            }, (err) => {
-
-            })
+            self.wxLogin();
         } else {
             return false;
         }
 
     },
+    wxLogin: function () {
+        let self = this;
+        wx.login({
+            success(res) {
+                if (res.code) {
+                    self.setData({
+                       code: res.code 
+                    })
+                    self.getWeRunData();
+                } else {
+                    console.log('登录失败！' + res.errMsg)
+                }
+            }
+        })
+    },
+    getWeRunData: function () {
+        const self = this;
+        wx.getWeRunData({
+            success (res) {
+                let data = {
+                    encryptedData: res.encryptedData,
+                    iv: res.iv,
+                    jsCode: self.data.code
+                };
+                self.uploadStep(data)
+            }
+          })
+          
+    },
+    uploadStep: function (data) {
+        let self = this;
+        Platform.uploadStep(self, data
+        ).then((ret) => {
+            self.getCommonData();
+        }, (err) => {
+
+        })
+    },
+    
     onScroll: function() {
         const self = this;
         const query = wx.createSelectorQuery();
@@ -493,7 +526,7 @@ const methods = {
         _g.navigateTo({
             url: 'pages/home/map'
         }, self);
-    }
+    },
 
 };
 

@@ -135,17 +135,23 @@ const methods = {
 	//跳转到对应的状态页
 	onOrderDetailTap: function (options) {
 		let self = this;
-		const orderStatus = options.currentTarget.dataset.orderStatus;
-		if (orderStatus == '售后中' || orderStatus == '售后结束' || orderStatus == '已签收') {
-			return
-		} else {
-			_g.navigateTo({
-				param: {
-					orderStatus: orderStatus
-				},
-				url: 'pages/order/orderDetail',
-			}, self);
-		}
+        _g.navigateTo({
+			url: 'pages/order/orderDetail',
+			param: {
+				orderId: options.currentTarget.dataset.orderid
+			}
+		}, self);
+		// const orderStatus = options.currentTarget.dataset.orderStatus;
+		// if (orderStatus == '售后中' || orderStatus == '售后结束' || orderStatus == '已签收') {
+		// 	return
+		// } else {
+		// 	_g.navigateTo({
+		// 		param: {
+		// 			orderStatus: orderStatus
+		// 		},
+		// 		url: 'pages/order/orderDetail',
+		// 	}, self);
+		// }
 	},
 	//取消订单操作和模态框
 	showDialogBtn: function () {

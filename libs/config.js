@@ -80,6 +80,7 @@ config.prototype = {
             getStepInfo: '/app/step/getStepInfo.do',
             uploadStep: '/app/step/uploadStep.do',
             getShareQR: '/app/common/getShareQR.do',
+            uploadStep: '/app/step/uploadStep.do',
         },
         user: {
             login: '/app/account/login.do',
@@ -106,6 +107,7 @@ config.prototype = {
             getClientDetail:'/app/store/getClientDetail.do',
             getClientAddress:'/app/store/getClientAddress.do',
             getClientOrder:'/app/store/getClientOrder.do',
+            getLeyouList: '/app/step/getLeyouList.do',
         },
         goods: {
             getGoodsDetail: '/app/goods/getGoodsDetail.do',

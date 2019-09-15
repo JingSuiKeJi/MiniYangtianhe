@@ -15,11 +15,11 @@
                     <input type="text" placeholder="搜索你想要的商品" bindinput="onSearchTap" bindfocus="onSkipTap" value="{{inputValue}}" />
                 </view>
             </view>
-            <scroll-view scroll-x="{{true}}" scroll-y="{{false}}" class="ui-tapBox">
+            <view  class="ui-tapBox">
                 <view class="ui-tap__item" wx:for="{{hotSearch}}" wx:key="{{index}}" bindtap="onResultTap" data-id="{{item.id}}" data-value="{{item.title}}">
                     {{item.title}}
                 </view>
-            </scroll-view>
+            </view>
             <view class="ui-banner">
                 <view class="ui-banner_bgroundBox"></view>
                 <swiper current="currentIndex" autoplay interval="2000" duration="500" circular class="ui-banner_swiper" bindchange="onChangeTap">
