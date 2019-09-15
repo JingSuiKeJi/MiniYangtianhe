@@ -50,6 +50,7 @@ config.prototype = {
         checkLogin: 'checkLogin_{today}',
         systemInfo: 'systemInfo',
         storeInfo: 'storeInfo',
+        shareQRCode: 'shareQRCode',
     },
 
     pages: {
@@ -133,7 +134,8 @@ config.prototype = {
             myOrderDetail: '/app/order/myOrderDetail.do',
             cancelOrder: '/app//order/cancelOrder.do',
             confirmOrder: '/app//order/confirmOrder.do',
-            prePay: '/pay/order/prePay.do'
+            prePay: '/pay/order/prePay.do',
+            preOrderCart: '/app/preOrder/cart.do'
         },
         point: {
             getBaseInfo: '/app/points/getBaseInfo.do',

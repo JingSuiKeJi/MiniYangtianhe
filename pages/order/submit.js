@@ -70,57 +70,31 @@ const methods = {
             };
             if (postData.skuId) data.preGoods.skuId = postData.skuId;
             Order.preOrder(self, data).then((ret) => {
-                self.setData({
-                    orderAddressVo: ret.data.orderAddressVo,
-                    goodsVoList: ret.data.goodsVoList,
-                    orderStoreVO: ret.data.orderStoreVO,
-                    points: ret.data.points || 0,
-                    totalPrice: ret.data.totalPrice,
-                    num: ret.data.num,
-                    deliveryTime: ret.data.deliveryTime,
-                    deliveryRange: ret.data.deliveryRange
-                })
+                self.setPageData(ret.data);
             });
         } else if (self.data.from == 'cart') {
-
+            Order.preOrderCart(self, {
+                cartIds: self.data.postData.cartIds,
+                platformFlag: self.data.platformFlag
+            }).then((ret) => {
+                self.setPageData(ret.data);
+            });
         }
     },
+    setPageData(data) {
+        const self = this;
+        self.setData({
+            orderAddressVo: data.orderAddressVo,
+            goodsVoList: data.goodsVoList,
+            orderStoreVO: data.orderStoreVO,
+            points: data.points || 0,
+            totalPrice: data.totalPrice,
+            num: data.num,
+            deliveryTime: data.deliveryTime,
+            deliveryRange: data.deliveryRange
+        })
+    },
     getData: function() {
-        // let self = this;
-        // let param = {
-        //     platformFlag: self.data.platformFlag,
-        //     preGoods: {
-        //         goodsId: self.data.id,
-        //         skuId: self.data.skuId,
-        //         num: self.data.num
-        //     }
-        // }
-        // if (self.data.platformFlag == 2) {
-        //     _g.getLocation(self).then((data) => {
-        //         self.setData({
-        //             lat: data.latitude,
-        //             lon: data.longitude
-        //         })
-        //     });
-        //     param.lat = self.data.latitude;
-        //     param.lon = self.data.longitude;
-        // }
-        // Order.common(self, param).then((ret) => {
-        //     let data = ret;
-        //     let dataObj = {
-        //         infoList: data.orderAddressVo,
-        //         goodsList: data.goodsVoList,
-        //         points: data.points,
-        //         num: data.num,
-        //         totalPrice: data.totalPrice,
-        //     }
-        //     if (data.orderStoreVO.length) {
-        //         dataObj.orderStoreVO = data.orderStoreVO
-        //     }
-        //     self.setData(param);
-        // }, (err) => {
-
-        // });
     },
     onPostTap: function(e) {
         let self = this;
@@ -184,7 +158,6 @@ const methods = {
     onSubmitTap: function(e) {
         const self = this;
         let data = {
-            id: self.data.postData.id,
             num: self.data.num,
             skuId: '',
             addressId: self.data.orderAddressVo.id,
@@ -192,17 +165,19 @@ const methods = {
             dispatchingType: 1,
             remark: '',
             platformFlag: self.data.platformFlag,
-            buyType: 1
         };
 
+        if (self.data.from == 'goodsDetail') {
+            data.id = self.data.postData.id;
+            data.buyType = 1;
+        }
+        if (self.data.from == 'cart') {
+            data.cartIds = self.data.postData.cartIds;
+            data.buyType = 2;
+        }
+
         Order.placeOrder(self, data).then((ret) => {
-            if (self.data.from == 'goodsDetail') {
-                //TODO pay
-                // self.payStatus('success');
-                self.prePay(ret.data);
-            } else {
-                //
-            }
+            self.prePay(ret.data);
         }, (err) => {
             _g.showModal({
                 content: '提交订单失败',
@@ -237,7 +212,8 @@ const methods = {
                 title: '提示',
                 content: '支付失败',
                 confirm: function() {
-                    _g.navigateBack();
+                    self.payStatus('fail', id);
+                    // _g.navigateBack();
                 }
             });
         });
