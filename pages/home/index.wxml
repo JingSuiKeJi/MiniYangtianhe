@@ -2,8 +2,8 @@
 <view class=".ui-main">
     <navBar title="养乐药房" background="#3CC7A4" color="white" iconTheme="white">
         <view class="location" slot="left">
-            <view class="ui-addressIcon"></view>
-            <text class="ui-addressText">{{storeInfo.title}}</text>
+            <view class="ui-addressIcon" catchtap="onMapTap"></view>
+            <text class="ui-addressText" catchtap="onMapTap">{{storeInfo.title}}</text>
             <view class="icon"></view>
         </view>
     </navBar>
@@ -15,13 +15,11 @@
                     <input type="text" placeholder="搜索你想要的商品" bindinput="onSearchTap" bindfocus="onSkipTap" value="{{inputValue}}" />
                 </view>
             </view>
-            <view class="ui-tapBox">
-                <view class="ui-headBox_tap">
-                    <text wx:for="{{hotSearch}}" wx:key="{{index}}" bindtap="onResultTap" data-id="{{item.id}}" data-value="{{item.title}}">
-                        {{item.title}}
-                    </text>
+            <scroll-view scroll-x="{{true}}" scroll-y="{{false}}" class="ui-tapBox">
+                <view class="ui-tap__item" wx:for="{{hotSearch}}" wx:key="{{index}}" bindtap="onResultTap" data-id="{{item.id}}" data-value="{{item.title}}">
+                    {{item.title}}
                 </view>
-            </view>
+            </scroll-view>
             <view class="ui-banner">
                 <view class="ui-banner_bgroundBox"></view>
                 <swiper current="currentIndex" autoplay interval="2000" duration="500" circular class="ui-banner_swiper" bindchange="onChangeTap">
@@ -36,15 +34,15 @@
                 </view>
             </view>
             <view class="ui-activityBox">
-                <image src="{{filter.getLocalPhoto('activity.png')}}" mode="aspectFill"/>
+                <image src="{{filter.getLocalPhoto('activity.png')}}" mode="aspectFill" />
             </view>
         </view>
         <view class="ui-stepBox">
             <view class="ui-stepTapBox">
                 <view class="ui-stepTapBox_left">
-                    <image src="{{filter.getLocalPhoto('squareness.png')}}" mode="aspectFill"/>
+                    <image src="{{filter.getLocalPhoto('squareness.png')}}" mode="aspectFill" />
                     <view>
-                        <image src="{{filter.getLocalPhoto('run.png')}}" class="ui-leftItem_icon" mode="aspectFill"/>
+                        <image src="{{filter.getLocalPhoto('run.png')}}" class="ui-leftItem_icon" mode="aspectFill" />
                     </view>
                     <view class="ui-leftItem_text">养步乐</view>
                 </view>
@@ -59,17 +57,17 @@
                     <view class="ui-leftItem_loadText" bindtap="onStepTap">{{step}}</view>
                 </view>
                 <view class="ui-stepTapBox_right">今日排名：{{stepInfo.rank}}</view>
-                <image src="{{filter.getLocalPhoto('question_icon.png')}}" mode="aspectFill"/>
+                <image src="{{filter.getLocalPhoto('question_icon.png')}}" mode="aspectFill" />
             </view>
         </view>
         <view class="ui-noticeBox" wx:if="{{notion}}">
             <text>优选公告</text>
-            <text wx:for="{{notion}}">{{item.title}}</text>
+            <text wx:key="{{index}}" wx:for="{{notion}}">{{item.title}}</text>
         </view>
         <!-- 分类专区 -->
         <view>
             <view class="ui-yangleBox">
-                <image src="{{filter.getPhoto(host,tapImgUrl)}}" mode="aspectFill"/>
+                <image src="{{filter.getPhoto(host,tapImgUrl)}}" mode="aspectFill" />
             </view>
             <view class="ui-wrapBox">
                 <view class="ui-classBox">
@@ -77,7 +75,7 @@
                         <block wx:for="{{classList}}" wx:for-item="bannerItem" wx:key="{{index}}">
                             <swiper-item>
                                 <view class="ui-classBox_item" wx:for="{{bannerItem}}" wx:key="{{index}}" bindtap="onTabTap" data-id="{{item.id}}" data-isLink="{{item.isLink}}">
-                                    <image src="{{filter.getPhoto(host,item.imgUrl)}}" class="ui-classItem__img" data-id="{{item.id}}" data-isLink="{{item.isLink}}" mode="aspectFill"/>
+                                    <image src="{{filter.getPhoto(host,item.imgUrl)}}" class="ui-classItem__img" data-id="{{item.id}}" data-isLink="{{item.isLink}}" mode="aspectFill" />
                                     <text class="ui-classItem__text" data-id="{{item.id}}" data-isLink="{{item.isLink}}">{{item.title}}</text>
                                 </view>
                             </swiper-item>
@@ -91,7 +89,7 @@
         </view>
         <!-- 限时抢购和品牌甄选 -->
         <view class="ui-imgBox" wx:if="{{second != -1}}">
-            <image src="{{filter.getPhoto(host,activity[0].imgUrl)}}" mode="aspectFill" bindtap="onCheckActivity"  data-isLink="{{activity.isLink}}" />
+            <image src="{{filter.getPhoto(host,activity[0].imgUrl)}}" mode="aspectFill" bindtap="onCheckActivity" data-isLink="{{activity.isLink}}" />
             <view class="ui-buyBox">
                 <view class="ui-buyBox_top">
                     <view>优选限时购</view>
@@ -108,8 +106,8 @@
                 <view class="ui-buyBox_bottom" wx:if="{{goodsList.length}}">
                     <scroll-view scroll-x class="ui-bottomItem_scrollView">
                         <view wx:for="{{goodsList}}" wx:key="{{index}}" class="ui-scrollView_item" bindtap="onDetailTap" data-id="{{item.id}}" data-thirdid="{{goodsList.id}}">
-                            <image src="{{filter.getLocalPhoto('buy.png')}}" mode="aspectFill"/>
-                            <image src="{{filter.getPhoto(host,item.picUrl)}}"  mode="aspectFill"/>
+                            <image src="{{filter.getLocalPhoto('buy.png')}}" mode="aspectFill" />
+                            <image src="{{filter.getPhoto(host,item.picUrl)}}" mode="aspectFill" />
                             <view class="ui-scrollView_itemTitle">{{item.mainTitle}}</view>
                             <view class="ui-scrollView_itemNow">￥{{item.nowPrice}}</view>
                             <view class="ui-scrollView_itemPre">￥{{item.originPrice}}</view>
@@ -141,7 +139,7 @@
         <view class="ui-recomListBox">
             <view class="ui-listItem_top">推荐榜单</view>
             <view class="ui-listItem_bottom">
-                <view class="ui-bottomItem_tap {{isFixed ? 'isFixed' : ''}}" id="aim" >
+                <view class="ui-bottomItem_tap {{isFixed ? 'isFixed' : ''}}" id="aim">
                     <scroll-view scroll-x class="ui-tapItem_scrollView">
                         <view wx:for="{{tapList}}" wx:key="{{index}}" class="ui-tapScroll_item" bindtap="onClickTap" id="{{item.id}}">
                             <view class="ui-tapScroll_itemText" style="font-weight: {{classifyId == item.id ? '500' : '400'}};color: {{isFixed ? '#fff' : ''}}">
@@ -155,7 +153,7 @@
                     </view>
                     <view class="modals modals-bottom-dialog" hidden="{{hideModal}}" wx:if="{{tapList.length}}">
                         <view class="modals-cancel" bindtap="hideModal" catchtouchmove="true"></view>
-                        <view class="bottom-dialog-body bottom-pos" >
+                        <view class="bottom-dialog-body bottom-pos">
                             <view class="slideBox">
                                 <view class="ui-slideItem__left">
                                     <view class="ui-leftItem" wx:for="{{tapList}}" wx:key="{{index}}" bindtap="onClickTap" id="{{item.id}}">
@@ -163,7 +161,7 @@
                                     </view>
                                 </view>
                                 <view class="ui-slideItem__right">
-                                    <image src="{{filter.getLocalPhoto('index_slideUp.png')}}" class="ui-tapItem_upIcon" bindtap="hideModal" mode="aspectFill"/>
+                                    <image src="{{filter.getLocalPhoto('index_slideUp.png')}}" class="ui-tapItem_upIcon" bindtap="hideModal" mode="aspectFill" />
                                 </view>
                             </view>
                         </view>
