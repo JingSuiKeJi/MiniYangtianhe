@@ -253,27 +253,27 @@ const methods = {
 		self.hideConfirmReceipt();
 	},
 	//发表评论
-	onPostCommentTap: function () {
+	onPostCommentTap: function (e) {
 		let self = this;
+		let index = e.currentTarget.dataset.index;
 		_g.navigateTo({
 			url: 'pages/order/postComment',
 			param: {
-				orderId: self.data.orderId,
-				goodsId: self.getGoodsId(),
+				orderId: self.data.orderList[index].orderId,
+				goodsId: self.getGoodsId(self.data.orderList[index].goodsList),
 			}
 		}, self);
 	},
-	getGoodsId: function () {
+	getGoodsId: function (arr) {
 		var self = this;
 		let goodsId = [];
-		let list = self.data.storeList;
-		if (list.length>1) {
-			list.forEach(element => {
+		if (arr.length>1) {
+			arr.forEach(element => {
 			   goodsId.push(element.goodsId);
 			});
 			return goodsId.join(',');
 		}else {
-			return list[0].goodsId;
+			return arr[0].goodsId;
 		}
 	},
 	onPayTap: function (e) {

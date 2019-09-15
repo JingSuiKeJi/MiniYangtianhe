@@ -5,6 +5,7 @@ const _g = app.base;
 const _c = app.config;
 const _t = app.temps;
 const event = app.event;
+const Order = require('../../service/Order');
 let data = {
 	storeList:[//商品列表
 		{newsImg:'my_ce',newsName:"养生堂维C+维E",newsWeight:"250gx两盒装",newsMoney:'99.00'},
@@ -16,12 +17,35 @@ let data = {
 	write:'',//写评论
 	auto_height:false,//自适应高度
 	tempFilePaths:[],//本地照片地址
+	type: 1
 };
-const onLoad = function(self) {}
+const onLoad = function(self) {
+	self.setData({
+		orderId: self.data.orderId,
+		goodsId: self.data.goodsId,
+	});
+	self.getData();
+}
 const onShow = function(self) {}
 const onReady = function(self) {}
 const onUnload = function(self) {}
 const methods = {
+	getData: function (e) {
+		let self = this;
+		self.commentOrder();
+	},
+    commentOrder: function (e) {
+		let self = this;
+		Order.commentOrder(self, {
+			orderId: self.data.orderId,
+			goodsId: self.data.goodsId,
+			imgUrls: '',
+			type: self.data.type
+        }).then((ret) => {
+			
+        }, (err) => {
+        });	
+	},
 	//评论双向数据绑定
 	onWriteTap: function (e) {
 		const self = this;
@@ -49,30 +73,6 @@ const methods = {
 		const self = this;
 		self.setData({
 		  auto_height: true
-		})
-	},
-	//好评
-	onPraiseTap:function(){
-		const self = this;
-		const praise = !self.data.praise;
-		self.setData({
-			praise: praise
-		})
-	},
-	//中评
-	onMediumTap:function(){
-		const self = this;
-		const medium = !self.data.medium;
-		self.setData({
-			medium: medium
-		})
-	},
-	//差评
-	onBadTap:function(){
-		const self = this;
-		const bad = !self.data.bad;
-		self.setData({
-			bad: bad
 		})
 	},
 	//添加照片
@@ -139,6 +139,14 @@ const methods = {
 		setTimeout(function(){
 		  wx.hideToast()
 		},2000)
+	},
+	onChosePraise: function (e) {
+		let self = this;
+		let type = e.currentTarget.dataset.type;
+		if (type == self.data.type) return;
+		self.setData({
+			type: Number(type)
+		})
 	}
 }
 

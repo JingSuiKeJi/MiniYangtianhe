@@ -31,7 +31,7 @@
 					<view class="ui-newsInfoItem">
 						<view class="ui-newsImg"><image src="{{filter.getPhoto(host,GoodsItem.imgUrl)}}"></image></view>
 						<text class="ui-newsName">{{GoodsItem.title}}</text>
-						<text class="ui-newsWeight">{{GoodsItem.newsWeight}}</text>
+						<text class="ui-newsWeight">{{GoodsItem.specificationName}}</text>
 						<text class="ui-newsMoney">¥{{GoodsItem.price}}</text>
 						<text class="ui-newsNum">x{{GoodsItem.num}}</text>
 					</view>
@@ -60,10 +60,9 @@
 				</view>
 			</block>
 			<block wx:elif="{{item.status=='TRADE_BUYER_SIGNED'}}">
-              <!-- <block wx:elif="{{item.status=='WAIT_BUYER_PAY'}}"> -->
 				<view class="ui-handle">
                     <view class="btn-applyAfter btn-common" ><text>查看订单</text></view>
-					<view class="btn-evaluate btn-common" catchtap="onPostCommentTap"><text>评价</text></view>
+					<view class="btn-evaluate btn-common" catchtap="onPostCommentTap" data-index="{{index}}"><text>评价</text></view>
 				</view>
 			</block>
 			<block wx:elif="{{item.status=='WAIT_CHECK'}}">
