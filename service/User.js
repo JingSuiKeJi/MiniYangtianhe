@@ -157,6 +157,20 @@ class User {
 	        data: reqData
 	    }, page);
 	}
+	chooseDefault(page, reqData) {
+	    _g.dm.canLoadMore = 1;
+	    return _g.ajax({
+	        url: mini.user.chooseDefault,
+	        data: reqData
+	    }, page);
+	}
+	deleteAddress(page, reqData) {
+	    _g.dm.canLoadMore = 1;
+	    return _g.ajax({
+	        url: mini.user.deleteAddress,
+	        data: reqData
+	    }, page);
+	}
 }
 
 module.exports = new User();

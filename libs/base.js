@@ -175,6 +175,10 @@ base.prototype = {
                     }
                     tempsData[tempKey + 'Constant'] = tempOriginObj.data;
                 });
+                // if (!_g.getLS(_c.LSKeys.shareQRCode)) {
+                    // console.log(222222)
+                    // _g.getShareCode(self);
+                // }
                 self.setData(tempsData);
                 // 执行页面自定义的 onLoad 方法
                 onLoad && onLoad(self);
@@ -906,6 +910,8 @@ base.prototype = {
                         success: function(res) {
                             if (res.data.status == 0) {
                                 _g.dm.addr = res.data.result.address_component;
+                                _g.dm.addr.lon = _g.dm.lon;
+                                _g.dm.addr.lat = _g.dm.lat;
                             }
                             return resolve(_g.dm.addr);
                         },
@@ -1534,6 +1540,18 @@ base.prototype = {
         },(err)=>{
             //TODO login fail
 			opts.fail && opts.fail();
+        });
+    },
+    getShareCode(self) {
+        var _g = this;
+        const Platform = require('../service/Platfrom');
+        const userInfo = _g.getLS(_c.LSKeys.userInfo);
+        let page = 'pages/home/index?promoCode=' + userInfo.promoCode;
+        // console.log(page)
+        Platform.getShareQR(self, {
+            page: 'pages/home/index?promoCode=' + userInfo.promoCode
+        }).then((ret) => {
+        }, (err) => {
         });
     }
 };

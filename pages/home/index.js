@@ -39,6 +39,8 @@ const data = {
     hideModal: true, //模态框的状态  true-隐藏  false-显示
     animationData: {},
     isFixed: false,
+    nowStep: 0,
+    skillId: 0
 };
 
 // 页面onLoad方法
@@ -49,15 +51,22 @@ const onLoad = function(self) {
         })) {
         //已登录
         self.setLoginData();
-        self.getData();
     } else {
         //未登录
         self.getLocation();
     }
-    event.emit('login-suc', (data)=>{
+    event.on('login-suc', self, (data)=>{
         self.setLoginData();
     });
-    // event.on('logout-suc', (ret) => {});
+    event.on('refreshStep', self, (ret) => {
+        self.getCommonData();
+    });
+    event.on('refreshHomeData', self, (ret) => {
+        self.setData({
+            storeInfo: _g.getLS(_c.LSKeys.storeInfo)
+        });
+        self.getData();
+    });
 };
 
 const onReady = function(self) {
@@ -70,7 +79,8 @@ const onShow = function(self) {
 };
 
 const onUnload = function(self) {
-    
+    event.remove('refreshStep');
+    event.remove('login-suc');
 };
 
 // 页面中的方法
@@ -83,14 +93,19 @@ const methods = {
             userInfo: userInfo,
             storeInfo: userInfo.store
         });
+        if (!userInfo.store) {
+            self.getLocation();
+        } else {
+            self.getData();
+        }
     },
     getLocation() {
         const self = this;
         _g.getLocation().then((res) => {
             self.setData({
                 location: {
-                    lon: res.longitude,
-                    lat: res.latitude
+                    lon: res.lon,
+                    lat: res.lat
                 }
             });
             self.getStoreList();
@@ -131,6 +146,11 @@ const methods = {
             let stepInfo = data.stepInfo;
             let percent = stepInfo.todayStep / stepInfo.targetStep;
             let BMIIndex = Math.ceil(31 * percent);
+            if (self.data.nowStep == stepInfo.todayStep) {
+                _g.toast({
+                    title: '暂时没有获取到最新的微信运动数据, 请稍后再试'
+                });
+            }
             self.setData({
                 hotSearch: data.hotSearch,
                 banner: data.banner,
@@ -181,7 +201,8 @@ const methods = {
             let data = ret.data;
             if (!data.list ) return;
             self.setData({
-                goodsList: data.list
+                goodsList: data.list,
+                skillId: data.id
             });
             self.timeFormat(data.startTime, data.endTime);
         }, (err) => {});
@@ -494,9 +515,15 @@ const methods = {
         let self = this;
         Platform.uploadStep(self, data
         ).then((ret) => {
+            self.setData({
+                nowStep: self.data.stepInfo.todayStep
+            });
+            event.emit('refreshStep');
             self.getCommonData();
         }, (err) => {
-
+            _g.toast({
+                title: '上传步数失败'
+            });
         })
     },
     
@@ -526,9 +553,15 @@ const methods = {
     },
     onMapTap() {
         const self = this;
-        _g.navigateTo({
-            url: 'pages/home/map'
-        }, self);
+        if (self.data.userInfo.storeInfo) {
+            _g.navigateTo({
+                url: 'pages/home/map'
+            }, self);
+        } else {
+            _g.toast({
+                title: '已绑定门店'
+            });
+        }
     },
 
 };

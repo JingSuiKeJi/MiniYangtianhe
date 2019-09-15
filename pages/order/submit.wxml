@@ -27,7 +27,7 @@
             <view data-type="1">2小时内送达</view>
         </view>
         <view class="ui-postItem {{ type == 2 ? 'isSelectItem' : ''}}" bindtap="onPostTap" data-type="2">
-            <picker mode="multiSelector" data-type="2" bindchange="onPickerTap" value="{{pickerValue}}" range="{{timeList}}" class="ui-pickerBox">
+            <picker mode="selector" data-type="2" bindchange="onPickerTap" value="{{pickerValue}}" range="{{timeList}}" class="ui-pickerBox">
                 <view data-type="2" class="ui-pickerItem__text">预约配送</view>
                 <view data-type="2" class="ui-pickerItem__time">2小时外送达</view>
             </picker>

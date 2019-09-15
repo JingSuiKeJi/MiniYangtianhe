@@ -6,8 +6,7 @@
 	bindtap='onJumpToTap' data-opt="{{item}}">{{item=='hot'?'热':item}}</view>
 </view>
 <scroll-view  scroll-into-view="{{toView}}"  scroll-y="true"   scroll-with-animation="true" class="main">
-	<view id="hot">
-		<!-- 健康医药 -->
+	<!-- <view id="hot">
 		<view class="ui-brandSelectBox">
 		    <view class="ui-brandSelectItem_top" >健康医药</view>
 		    <view class="ui-brandSelectItem_bottom">
@@ -21,7 +20,6 @@
 		        </scroll-view> 
 		    </view>
 		</view>
-		<!-- 营养保健 -->
 		<view class="ui-brandSelectBox">
 		    <view class="ui-brandSelectItem_top" >营养保健</view>
 		    <view class="ui-brandSelectItem_bottom">
@@ -43,7 +41,6 @@
 		        </scroll-view> 
 		    </view>
 		</view>
-		<!-- 个护化妆 -->
 		<view class="ui-brandSelectBox">
 		    <view class="ui-brandSelectItem_top" >个护化妆</view>
 		    <view class="ui-brandSelectItem_bottom">
@@ -65,14 +62,14 @@
 		        </scroll-view> 
 		    </view>
 		</view>
-	</view>
+	</view> -->
 	<!-- 全部品牌 -->
     <view class="ui-allBrandBox">
         <view class="ui-allBrandItem__title">全部品牌</view>
         <view class="ui-allBrandItem" wx:for="{{list}}" wx:for-item="item" wx:key="{{index}}" id="{{item.initials}}">
-            <view class="ui-allBrandItem__sort">{{item.initials}}</view>
-            <view class="ui-allBrandItem__brand" wx:for="{{item.goodsInfo}}">
-                <image src="{{filter.getReturnPhoto(item.logoUrl)}}" class="ui-brand__goodsIcon"/>
+            <view class="ui-allBrandItem__sort" wx:if="{{item.showInitials}}">{{item.initials}}</view>
+            <view class="ui-allBrandItem__brand">
+                <image src="{{filter.getPhoto(host,item.logoUrl)}}" class="ui-brand__goodsIcon"/>
                 <text class="ui-brand__text">{{item.title}}</text>
             </view>
         </view>

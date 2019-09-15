@@ -16,14 +16,24 @@ const data = {
     deliveryTime: '',
     deliveryRange: '',
 
+    initTimes: [],
+    dispatchingTime: {
+        beignTime: 0,
+        endTime: 0
+    },
+
+    location: {
+        lon: 112.59000,
+        lat: 28.12000
+    },
 
     goodsList: [],
     postType: '请输入配送方式',
     type: -1,
     pickerValue: [0, 0],
     timeList: [
-        ['2019-07-25', '2019-07-26'],
-        ['12:00-13:00', '13:00-14:00']
+        // ['2019-07-25', '2019-07-26'],
+        // ['12:00-13:00', '13:00-14:00']
     ],
     postTime: '请选择配送时间',
     infoList: [],
@@ -41,10 +51,13 @@ const onLoad = function(self) {
     self.setData({
         platformFlag: self.data.platformFlag
     })
-    if (self.data.platformFlag == 1) {
+    // if (self.data.platformFlag == 1) {
         self.preOrder();
-    } else {
-        self.getLocation();
+    // } else {
+    //     self.getLocation();
+    // }
+    if (self.data.platformFlag == 2) {
+        self.getDeliveryTime();
     }
 };
 
@@ -57,6 +70,19 @@ const onUnload = function(self) {
 }
 // 页面中的方法
 const methods = {
+    getLocation() {
+        const self = this;
+        _g.getLocation().then((res) => {
+            self.setData({
+                location: {
+                    lon: res.lon,
+                    lat: res.lat
+                }
+            });
+        }, (err) => {
+
+        });
+    },
     preOrder() {
         const self = this;
         if (self.data.from == 'goodsDetail') {
@@ -80,6 +106,21 @@ const methods = {
                 self.setPageData(ret.data);
             });
         }
+    },
+    getDeliveryTime() {
+        const self = this;
+        Order.getDeliveryTime(self, {}).then((ret) => {
+            let list = _.map(ret.data, (item) => {
+                return  new Date(item.beignTime * 1000).Format('yyyy-MM-dd hh:mm') +
+                         '-' + 
+                         new Date(item.endTime * 1000).Format('yyyy-MM-dd hh:mm')
+            });
+
+            self.setData({
+                timeList: list,
+                initTimes: ret.data
+            })
+        }, (err) => {});
     },
     setPageData(data) {
         const self = this;
@@ -126,11 +167,14 @@ const methods = {
     onPickerTap: function(e) {
         let self = this;
         let pickerValue = e.detail.value;
-        let postTime = self.data.timeList[0][pickerValue[0]] + self.data.timeList[1][pickerValue[1]]
-        this.setData({
-            pickerValue: pickerValue,
-            postTime: postTime
-        })
+
+        self.setData({
+            dispatchingTime: {
+                beignTime: self.data.initTimes[pickerValue].beignTime,
+                endTime: self.data.initTimes[pickerValue].endTime,
+            },
+            pickerValue: pickerValue
+        });
     },
     onSelectTap: function(e) {
         let self = this;
@@ -163,9 +207,14 @@ const methods = {
             addressId: self.data.orderAddressVo.id,
             integralStatus: 2,
             dispatchingType: 1,
-            remark: '',
+            remark: self.data.remark,
             platformFlag: self.data.platformFlag,
         };
+
+        if (self.data.platformFlag == 2) {
+            data.dispatchingType = self.data.type;
+            data.dispatchingTime = self.data.dispatchingTime;
+        }
 
         if (self.data.from == 'goodsDetail') {
             data.id = self.data.postData.id;

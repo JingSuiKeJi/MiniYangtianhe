@@ -20,14 +20,14 @@
                     <text class="ui-consigneeAddressDetail">{{item.address}}</text>
                     <view class="ui-handleMemu" wx:if="{{!handle}}">
                         <view class="ui-common ui-selectDefault">
-                            <view data-id="{{item.currentId}}" class="ui-commonCheck {{currentCheck==item.currentId?'ui-check':'ui-noCheck'}}" bindtap="chooseMenu"></view>
+                            <view data-id="{{item.id}}" class="ui-commonCheck {{item.isDefault?'ui-check':'ui-noCheck'}}" catchtap="chooseMenu"></view>
                             <text class="ui-defaultText">默认地址</text>
                         </view>
-                        <view class="ui-common ui-compile" bindtap="onCompileTap">
+                        <view class="ui-common ui-compile" catchtap="onCompileTap">
                             <view class="ui-compileIcon"></view>
                             <text>编辑</text>
                         </view>
-                        <view class="ui-common ui-delete" bindtap="showDialogBtn">
+                        <view class="ui-common ui-delete" data-id="{{item.id}}" catchtap="showDialogBtn" wx:if="{{from != 'order'}}">
                             <view class="ui-deleteIcon"></view>
                             <text>删除</text>
                         </view>

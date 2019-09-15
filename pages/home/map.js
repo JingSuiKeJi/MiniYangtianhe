@@ -10,10 +10,7 @@ const Store = require('../../service/Store.js');
 const data = {
     lon: 113.403051,
     lat: 23.131432,
-    location: {
-        lon: 0,
-        lat: 0
-    },
+    storeInfo: {},
     // markerList: [{
     //     iconPath: '/images/step.png',
     //     id: 1,
@@ -28,10 +25,10 @@ const data = {
 
 // 页面onLoad方法
 const onLoad = function(self) {
+    self.setData({
+        storeInfo: _g.getLS('storeInfo')
+    })
     self.getLocation();
-    // self.setData({
-    //     markerList: 
-    // })
 };
 
 // 页面onShow方法
@@ -49,8 +46,8 @@ const methods = {
         const self = this;
         _g.getLocation().then((res) => {
             self.setData({
-                lon: res.longitude,
-                lat: res.latitude
+                lon: res.lon,
+                lat: res.lat
             });
             self.getStoreList(res);
         });
@@ -60,8 +57,8 @@ const methods = {
         Store.storeList(self, {
             page: self.data.page,
             pageSize: 20,
-            lon: self.data.longitude,
-            lat: self.data.latitude
+            lon: self.data.lon,
+            lat: self.data.lat
         }).then((ret) => {
             if (ret.data.list && ret.data.list.length) {
                 if (self.data.page == 1) {
@@ -108,6 +105,13 @@ const methods = {
     },
     bindregionchange(e) {
 
+    },
+    onStoreTap(e) {
+        const self = this;
+        const opts = e.currentTarget.dataset;
+        _g.setLS('storeInfo', self.data.storeList[opts.index]);
+        event.emit('refreshHomeData');
+        _g.navigateBack();
     }
 };
 

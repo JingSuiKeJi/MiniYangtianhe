@@ -72,6 +72,20 @@ class Order {
             data: reqData
         }, page);
     }
+    addressList(page, reqData) {
+        _g.dm.canLoadMore = 1;
+        return _g.ajax({
+            url: mini.order.addressList,
+            data: reqData
+        }, page);
+    }
+    getDeliveryTime(page, reqData) {
+        _g.dm.canLoadMore = 1;
+        return _g.ajax({
+            url: mini.order.getDeliveryTime,
+            data: reqData
+        }, page);
+    }
     
 }
 

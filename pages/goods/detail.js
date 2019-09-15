@@ -3,6 +3,7 @@ const app = getApp();
 const _ = app.underscore;
 const _g = app.base;
 const _c = app.config;
+const event = app.event;
 const Platform = require('../../service/Platfrom');
 const Goods = require('../../service/Goods');
 
@@ -362,10 +363,13 @@ const methods = {
             self.setData({
                 list: data
             });
-            self.getCartList();
-        }, (err) => {
             _g.toast({
                 title: '加入购物车成功'
+            });
+            event.emit('refreshCart');
+        }, (err) => {
+            _g.toast({
+                title: '加入购物车失败'
             });
         });
     },

@@ -1,8 +1,8 @@
 <!-- pages/store/cart.wxml -->
 <wxs module="filter" src="../../filter/filter.wxs"></wxs>
+<navBar ext-class="navPosition" title='购物车' iconTheme='black' color='black' background='white' back="{{true}}"></navBar>
 <view class="main" wx:if="{{userInfo}}">
-    <view class=" main__box" wx:if="{{(medecineList.length || storeList.length)}}">
-        <navBar ext-class="navPosition" title='购物车' iconTheme='black' color='black' background='white' back="{{true}}"></navBar>
+    <view class="main__box" wx:if="{{(medecineList.length || storeList.length)}}">
         <view class='tab-bottom'></view>
         <view class="ui-headerBox">
             <image src="{{filter.getLocalPhoto('cart_laba.png')}}" class="headerItem_labaIcon" />
@@ -88,16 +88,16 @@
             </view>
             <view class="ui-fixItem__btn" bindtap="onAccountTap">结算({{mediNum + storeNum}})</view>
         </view>
-        <!-- 购物车没有东西的情况下 -->
-        <view class="main ui-noBox"  wx:if="{{(!medecineList.length && !storeList.length)}}">
-            <image src="{{filter.getLocalPhote('cart_cart.png')}}" class="ui-cartIcon" />
-            <view class="ui-text">暂无选购</view>
-            <view>快去添加吧</view>
-        </view>
+    </view>
+    <!-- 购物车没有东西的情况下 -->
+    <view class="main ui-noBox" wx:if="{{(!medecineList.length && !storeList.length)}}">
+        <image src="{{filter.getLocalPhoto('cart_cart.png')}}" class="ui-cartIcon"></image>
+        <view class="ui-text">暂无选购</view>
+        <view>快去添加吧</view>
     </view>
 </view>
 <!-- 没有登陆的情况 -->
-<view class="main ui-noBox" wx:if="{{ !userInfo}}">
+<view class="main ui-noBox" wx:if="{{!userInfo}}">
     <view class="ui-noLogin__text">亲，您还没登陆哦～</view>
-    <view class="ui-loginBtn">立即登陆</view>
+    <button class="ui-loginBtn" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">立即登陆</button>
 </view>

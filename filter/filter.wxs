@@ -74,7 +74,7 @@ var filter = {
                 return avatar ? (host + avatar) : '';
             }
         } else {
-            return 'http://www.gzlingren.com:8098/libeika/images/account/icon-logo.png';
+            return 'http://www.gzlingren.com:8098/yangtianhe/my_ythAvatar.png';
         }
     },
     getLocalPhoto: function (path) {

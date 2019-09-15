@@ -3,6 +3,7 @@ const app = getApp();
 const _ = app.underscore;
 const _g = app.base;
 const _c = app.config;
+const event = app.event;
 const Goods = require('../../service/Goods');
 // 初始化数据
 const data = {
@@ -24,7 +25,6 @@ const data = {
 
 // 页面onLoad方法
 const onLoad = function(self) {
-    // let userInfo = _g.getLS(_c.LSKeys.userInfo);
     self.getTabBar().setData({
         selected: 3
     });
@@ -32,6 +32,15 @@ const onLoad = function(self) {
         userInfo: _g.getLS(_c.LSKeys.userInfo)
     })
     self.getData();
+    event.on('refreshCart', self, () => {
+        self.getData();
+    });
+    event.on('login-suc', self, (data) => {
+        self.setData({
+            userInfo: _g.getLS(_c.LSKeys.userInfo)
+        });
+        self.getData();
+    });
 };
 
 // 页面onShow方法
@@ -39,8 +48,8 @@ const onShow = function(self) {
 
 };
 const onUnload = function(self) {
-
-}
+    event.remove('refreshCart');
+};
 // 页面中的方法
 const methods = {
     getData: function() {

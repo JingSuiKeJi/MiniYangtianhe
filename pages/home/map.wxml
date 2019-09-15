@@ -15,12 +15,12 @@
 			<view class="ui-info">
 				<view class="ui-line">
 					<view class="ui-title">{{item.title}}</view>
-					<view class="ui-local">当前门店</view>
+					<view class="ui-local" wx:if="{{storeInfo.id == item.id}}">当前门店</view>
 				</view>
 				<view class="ui-distance">距离{{item.distance}}km</view>
 				<view class="ui-address">{{item.address}}</view>
 			</view>
-			<view class="ui-btn">进入此店</view>
+			<view class="ui-btn" catchtap="onStoreTap" data-index="{{index}}">进入此店</view>
 		</view>
 	</scroll-view>
 </view>

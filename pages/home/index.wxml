@@ -105,9 +105,14 @@
                 </view>
                 <view class="ui-buyBox_bottom" wx:if="{{goodsList.length}}">
                     <scroll-view scroll-x class="ui-bottomItem_scrollView">
-                        <view wx:for="{{goodsList}}" wx:key="{{index}}" class="ui-scrollView_item" bindtap="onDetailTap" data-id="{{item.id}}" data-thirdid="{{goodsList.id}}">
-                            <image src="{{filter.getLocalPhoto('buy.png')}}" mode="aspectFill" />
-                            <image src="{{filter.getPhoto(host,item.picUrl)}}" mode="aspectFill" />
+                        <view wx:for="{{goodsList}}" 
+                              wx:key="{{index}}" 
+                              class="ui-scrollView_item" 
+                              bindtap="onDetailTap" 
+                              data-id="{{item.id}}" 
+                              data-thirdid="{{skillId}}">
+                            <image src="{{filter.getLocalPhoto('buy.png')}}" mode="aspectFill"></image>
+                            <image src="{{filter.getPhoto(host,item.picUrl)}}" mode="aspectFill"></image>
                             <view class="ui-scrollView_itemTitle">{{item.mainTitle}}</view>
                             <view class="ui-scrollView_itemNow">￥{{item.nowPrice}}</view>
                             <view class="ui-scrollView_itemPre">￥{{item.originPrice}}</view>

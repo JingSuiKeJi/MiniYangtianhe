@@ -13,8 +13,12 @@ let data = {
 	handle: true,//切换管理状态下的背景颜色样式
 	currentCheck: 0,
 	showModal: false,
+	nowAddressId: 0
 };
 const onLoad = function (self) {
+	self.setData({
+		from: self.data.from
+	});
 	self.getPageData();
 }
 const onShow = function (self) {
@@ -28,6 +32,9 @@ const onUnload = function (self) { }
 const methods = {
 	getData() {
 		const self = this;
+		self.setData({
+			page: 1
+		});
 		self.getPageData();
 	},
 	// 接口: 收货地址列表
@@ -88,10 +95,15 @@ const methods = {
 	chooseMenu: function (options) {
 		const self = this;
 		const id = options.currentTarget.dataset.id;
-		//设置当前样式
-		self.setData({
-			currentCheck: id,
-		})
+		User.chooseDefault(self, {
+			addressId: id
+		}).then((ret) => {
+			self.getData();
+			//设置当前样式
+			self.setData({
+				currentCheck: id,
+			})
+		});
 	},
 	//编辑操作
 	onCompileTap: function () {
@@ -104,9 +116,11 @@ const methods = {
 		}, self);
 	},
 	//删除操作和模态框
-	showDialogBtn: function () {
-		this.setData({
-			showModal: true
+	showDialogBtn: function (e) {
+		const self = this;
+		self.setData({
+			showModal: true,
+			nowAddressId: e.currentTarget.dataset.id
 		})
 	},
 	hideModal: function () {
@@ -118,7 +132,17 @@ const methods = {
 		this.hideModal();
 	},
 	onConfirm: function () {
-		this.hideModal();
+		// this.hideModal();
+		const self = this;
+		User.deleteAddress(self, {
+			addressId: self.data.nowAddressId
+		}).then((ret)=>{
+			self.setData({
+				nowAddressId: 0,
+				showModal: false
+			});
+			self.getData();
+		});
 	},
 	// 完成
 	onCompleteTap: function () {
@@ -136,9 +160,9 @@ const methods = {
 		_g.getPrevPage().setData({
 			orderAddressVo: {
 				id: item.id,
-				phone: item.phone,
+				phone: item.receiverPhone,
 				address: item.address,
-				name: item.name,
+				name: item.receiverName,
 				distance: item.distance,
 				isDelivery: item.isDelivery,
 			}

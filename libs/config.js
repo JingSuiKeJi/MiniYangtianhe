@@ -108,6 +108,8 @@ config.prototype = {
             getClientAddress:'/app/store/getClientAddress.do',
             getClientOrder:'/app/store/getClientOrder.do',
             getLeyouList: '/app/step/getLeyouList.do',
+            chooseDefault: '/app/address/chooseDefault.do',
+            deleteAddress: '/app/address/delete.do',
         },
         goods: {
             getGoodsDetail: '/app/goods/getGoodsDetail.do',
@@ -137,7 +139,8 @@ config.prototype = {
             cancelOrder: '/app//order/cancelOrder.do',
             confirmOrder: '/app//order/confirmOrder.do',
             prePay: '/pay/order/prePay.do',
-            preOrderCart: '/app/preOrder/cart.do'
+            preOrderCart: '/app/preOrder/cart.do',
+            getDeliveryTime: '/app/preOrder/getDeliveryTime.do',
         },
         point: {
             getBaseInfo: '/app/points/getBaseInfo.do',

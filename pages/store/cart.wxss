@@ -1,11 +1,15 @@
 /* pages/store/cart.wxss */
+
 page {
     width: 100%;
     background-color: #F5F5F5;
 }
-.main,.main__box {
+
+.main,
+.main__box {
     width: 100%;
 }
+
 .ui-headerBox {
     width: 100%;
     height: 62rpx;
@@ -13,20 +17,23 @@ page {
     text-align: center;
     background-color: #FFF0F1;
 }
+
 .headerItem_labaIcon {
     width: 26rpx;
     height: 26rpx;
 }
+
 .headerItem_text {
-    font-size:24rpx;
-    font-family:PingFang-SC-Medium;
-    font-weight:500;
-    color:#F6959C;
-    line-height:24rpx;
-    margin: 20rpx ;
+    font-size: 24rpx;
+    font-family: PingFang-SC-Medium;
+    font-weight: 500;
+    color: #F6959C;
+    line-height: 24rpx;
+    margin: 20rpx;
     display: inline-block;
     vertical-align: top;
 }
+
 .headerItem_rightIcon {
     width: 12rpx;
     height: 18rpx;
@@ -34,16 +41,19 @@ page {
     vertical-align: top;
     margin-top: 24rpx;
 }
+
 .ui-contentBox {
     width: 100%;
-    background-color: #fff; 
+    background-color: #fff;
 }
+
 .ui-contentItem__tips {
     width: 100%;
     height: 80rpx;
     line-height: 76rpx;
     position: relative;
 }
+
 .ui-tipsItem__selectIcon {
     width: 40rpx;
     height: 40rpx;
@@ -51,27 +61,32 @@ page {
     margin-left: 30rpx;
     margin-right: 30rpx;
 }
+
 .ui-tipsItem__storeIcon {
     width: 30rpx;
     height: 30rpx;
     vertical-align: middle;
     margin-right: 30rpx;
 }
+
 .ui-tipsItem__storeName {
-    font-size:30rpx;
-    font-family:PingFangSC-Semibold;
-    font-weight:600;
-    color:#333333;
-    line-height:30rpx;
+    font-size: 30rpx;
+    font-family: PingFangSC-Semibold;
+    font-weight: 600;
+    color: #333333;
+    line-height: 30rpx;
 }
+
 .ui-tipsItem__text {
     position: absolute;
     right: 30rpx;
     /* top: 28rpx; */
 }
+
 .ui-contentItem__list {
     width: 100%;
 }
+
 .ui-contentItem__listBox {
     width: 100%;
     padding-bottom: 10rpx;
@@ -79,75 +94,80 @@ page {
     white-space: nowrap;
     overflow: hidden;
     border-top: 1rpx solid #F5F5F5;
-    
 }
+
 .ui-contentItem__listItem {
     display: inline-block;
     width: 100%;
     height: 100%;
     position: relative;
-    margin-right:0;
+    margin-right: 0;
     transition: all 0.4s;
     transform: translateX(110rpx);
     margin-left: -110rpx
 }
+
 .ui-listItem__selectIcon {
-    width:40rpx;
-    height: 40rpx; 
+    width: 40rpx;
+    height: 40rpx;
     margin: 13% 30rpx;
     vertical-align: top;
 }
+
 .ui-goodsBox {
     display: inline-block;
 }
+
 .ui-listItem__goodsIcon {
-    width:160rpx;
-    height: 160rpx; 
+    width: 160rpx;
+    height: 160rpx;
     margin-top: 40rpx;
     margin-bottom: 40rpx;
-
 }
+
 .ui-listItem__info {
     display: inline-block;
     vertical-align: top;
     margin-left: 30rpx;
 }
+
 .ui-infoItem__title {
     width: 400rpx;
-    font-size:26rpx;
-    font-family:PingFangSC;
-    font-weight:500;
-    color:#333333;
-    line-height:36rpx;
+    font-size: 26rpx;
+    font-family: PingFangSC;
+    font-weight: 500;
+    color: #333333;
+    line-height: 36rpx;
     margin-top: 50rpx;
     white-space: normal;
-
 }
+
 .ui-infoItem__scale {
     width: 400rpx;
-    font-size:20rpx;
-    font-family:PingFang-SC;
-    font-weight:400;
-    color:#999999;
-    line-height:20rpx;
+    font-size: 20rpx;
+    font-family: PingFang-SC;
+    font-weight: 400;
+    color: #999999;
+    line-height: 20rpx;
     margin-top: 38rpx;
-    margin-bottom: 20rpx; 
+    margin-bottom: 20rpx;
     white-space: normal;
+}
 
-}
 .ui-infoItem__price {
-   position: relative; 
-   width: 400rpx;
+    position: relative;
+    width: 400rpx;
 }
-.ui-infoItem__price > text{
-    font-size:26rpx;
-    font-family:PingFangSC;
-    font-weight:500;
-    color:#ED3D3B;
-    line-height:26rpx;
+
+.ui-infoItem__price>text {
+    font-size: 26rpx;
+    font-family: PingFangSC;
+    font-weight: 500;
+    color: #ED3D3B;
+    line-height: 26rpx;
     white-space: normal;
-    
 }
+
 .ui-listItem__del {
     width: 120rpx;
     height: 100%;
@@ -155,101 +175,111 @@ page {
     background-color: #20CAB4;
     display: inline-block;
     color: #fff;
-    font-size:24rpx;
-    font-family:PingFangSC;
-    font-weight:600;
+    font-size: 24rpx;
+    font-family: PingFangSC;
+    font-weight: 600;
     text-align: center;
     transform: translateX(120rpx);
     transition: all 0.4s;
     position: absolute;
 }
+
 .touch-move-active .ui-contentItem__listItem,
 .touch-move-active .ui-listItem__del {
     -webkit-transform: translateX(0);
     transform: translateX(0);
 }
+
 .ui-listItem__operatebBox {
     display: inline-block;
     position: absolute;
     top: 10rpx;
     right: 0;
 }
-.ui-listItem__operatebBox > image {
-    width:40rpx;
-    height: 40rpx; 
+
+.ui-listItem__operatebBox>image {
+    width: 40rpx;
+    height: 40rpx;
 }
+
 .operateItem__text {
     display: inline-block;
     margin: 9rpx 20rpx;
-     line-height:26rpx;
-    font-size:26rpx;
-    font-family:PingFangSC;
-    font-weight:500;
-    color:#333333;
+    line-height: 26rpx;
+    font-size: 26rpx;
+    font-family: PingFangSC;
+    font-weight: 500;
+    color: #333333;
     vertical-align: top;
 }
+
 .ui-storeBox {
     margin-top: 20rpx;
     margin-bottom: 260rpx
 }
+
 .ui-fixBox {
     position: fixed;
     bottom: 120rpx;
-	margin-top: 100rpx;
-	padding-top: 20rpx;
-	padding-bottom: 46rpx;
+    margin-top: 100rpx;
+    padding-top: 20rpx;
+    padding-bottom: 46rpx;
     width: 100%;
     background-color: #fff;
     box-sizing: border-box;
 }
+
 .ui-fixItem__selectIcon {
     width: 40rpx;
     height: 40rpx;
     vertical-align: top;
     margin: 33rpx 15rpx auto 30rpx;
 }
+
 .ui-fixItem__text {
-    font-size:26rpx;
-    font-family:PingFang-SC;
-    font-weight:400;
-    color:#333333;
-    line-height:26rpx;
+    font-size: 26rpx;
+    font-family: PingFang-SC;
+    font-weight: 400;
+    color: #333333;
+    line-height: 26rpx;
     display: inline-block;
     vertical-align: top;
     margin: 40rpx 130rpx auto 20rpx;
-
 }
+
 .ui-fixItem__allText {
-    font-size:28rpx;
-    font-family:PingFang-SC;
-    font-weight:500;
-    color:#666666;
-    line-height:28rpx;
+    font-size: 28rpx;
+    font-family: PingFang-SC;
+    font-weight: 500;
+    color: #666666;
+    line-height: 28rpx;
     display: inline-block;
     vertical-align: top;
     margin-top: 37rpx;
 }
+
 .ui-fixItem__price {
-    font-size:28rpx;
-    font-family:PingFangSC;
-    font-weight:600;
-    color:#ED3D3B;
-    line-height:28rpx;
+    font-size: 28rpx;
+    font-family: PingFangSC;
+    font-weight: 600;
+    color: #ED3D3B;
+    line-height: 28rpx;
     display: inline-block;
     vertical-align: top;
     margin-top: 37rpx;
     white-space: normal;
 }
+
 .ui-fixItem__btn {
     display: inline-block;
     width: 192rpx;
     height: 90rpx;
-    line-height:90rpx;
+    line-height: 90rpx;
     margin-left: 20rpx;
-    font-size:30rpx;
-    font-family:PingFangSC;
-    font-weight:600;
-    color:#fff;
+    font-size: 30rpx;
+    font-family: PingFangSC;
+    font-weight: 600;
+    color: #fff;
     background-image: url(http://www.gzlingren.com:8098/yangtianhe/cart_greenBtn.png);
     background-size: 192rpx 90rpx;
     text-align: center;
@@ -257,64 +287,71 @@ page {
     top: 20rpx;
     right: 20rpx;
 }
+
 .ui-textBox {
     margin-left: 20rpx;
 }
+
 .ui-fixItem__delectBtn {
-	position: absolute;
-	right: 20rpx;
-	top: 40rpx;
+    position: absolute;
+    right: 20rpx;
+    top: 40rpx;
     display: inline-block;
-    width:148rpx;
-    height:60rpx;
+    width: 148rpx;
+    height: 60rpx;
     /* line-height:60rpx; */
-    font-size:30rpx;
-    font-family:PingFangSC;
-    font-weight:400;
-    color:#FF5F55;
+    font-size: 30rpx;
+    font-family: PingFangSC;
+    font-weight: 400;
+    color: #FF5F55;
     text-align: center;
-    border-radius:30rpx;
-    border:2px solid #FF5F55;
+    border-radius: 30rpx;
+    border: 2px solid #FF5F55;
 }
+
 .ui-noBox {
     text-align: center;
-    background-color: #fff;
     position: relative;
 }
+
 .ui-cartIcon {
     width: 118rpx;
     height: 118rpx;
     margin-top: 400rpx;
 }
-.ui-noBox > view {
-    font-size:30rpx;
-    font-family:PingFangSC;
-    font-weight:400;
-    color:#999999;
-    line-height:42rpx;
+
+.ui-noBox>view {
+    font-size: 30rpx;
+    font-family: PingFangSC;
+    font-weight: 400;
+    color: #999999;
+    line-height: 42rpx;
 }
+
 .ui-noBox .ui-text {
     margin-top: 40rpx;
 }
+
 .ui-noBox .ui-noLogin__text {
-    font-size:30rpx;
-    font-family:PingFangSC;
-    font-weight:400;
-    color:#666666;
-    line-height:30rpx;
+    font-size: 30rpx;
+    font-family: PingFangSC;
+    font-weight: 400;
+    color: #666666;
+    line-height: 30rpx;
     position: absolute;
     top: 450rpx;
     left: 33%;
 }
+
 .ui-noBox .ui-loginBtn {
-    width:206rpx;
-    height:72rpx;
+    width: 206rpx;
+    height: 72rpx;
     line-height: 30rpx;
-    font-size:30rpx;
-    line-height:72rpx;
-    font-family:PingFangSC;
-    font-weight:400;
-    color:#fff;
+    font-size: 30rpx;
+    line-height: 72rpx;
+    font-family: PingFangSC;
+    font-weight: 400;
+    color: #fff;
     background-image: url(http://www.gzlingren.com:8098/yangtianhe/cart_noLogin.png);
     background-size: 118rpx 30rpx;
     text-align: center;
@@ -322,4 +359,3 @@ page {
     top: 550rpx;
     left: 32%;
 }
-
