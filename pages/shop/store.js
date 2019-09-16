@@ -49,7 +49,11 @@ const methods = {
 	//跳转到我的店员
 	onMyAssistantTap:function(){
 		let self = this;
+		const userInfo = self.data.userInfo;
 		_g.navigateTo({
+			param:{
+				storeId:userInfo.store.id,
+			},
 		    url: 'pages/shop/myAssistant',
 		}, self);
 	},

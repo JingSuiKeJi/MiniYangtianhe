@@ -171,6 +171,34 @@ class User {
 	        data: reqData
 	    }, page);
 	}
+	getVerifierList(page, reqData) {
+	    _g.dm.canLoadMore = 1;
+	    return _g.ajax({
+	        url: mini.user.getVerifierList,
+	        data: reqData
+	    }, page);
+	}
+	deleteVerifier(page, reqData) {
+	    _g.dm.canLoadMore = 1;
+	    return _g.ajax({
+	        url: mini.user.deleteVerifier,
+	        data: reqData
+	    }, page);
+	}
+	searchVerifier(page, reqData) {
+	    _g.dm.canLoadMore = 1;
+	    return _g.ajax({
+	        url: mini.user.searchVerifier,
+	        data: reqData
+	    }, page);
+	}
+	addVerifier(page, reqData) {
+	    _g.dm.canLoadMore = 1;
+	    return _g.ajax({
+	        url: mini.user.addVerifier,
+	        data: reqData
+	    }, page);
+	}
 }
 
 module.exports = new User();
