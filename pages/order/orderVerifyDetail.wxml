@@ -1,68 +1,71 @@
-<!-- <wxs module="filter" src="../../filter/filter.wxs"></wxs> -->
+<wxs module="filter" src="../../filter/filter.wxs"></wxs>
 <!--orderVerifyDetail.wxml-->
 <view class="container">
 	<view class="ui-main">
 		<view class="ui-storeAddressBox">
 			<view class="ui-store">
-				<text>天盈广场店</text>
-				<text>广东省广州市天河区天盈广场东塔3004</text>
+				<text>{{orderDetail.orderDelivery.storeName||orderDetail.orderVerifier.storeName||'暂无数据'}}</text>
+				<text>{{orderDetail.orderDelivery.address||orderDetail.orderVerifier.storeAddress}}</text>
 			</view>
-			<view class="btn-verify">未核销</view>
+			<view class="ui-verify {{orderDetail.status=='CHECKED'?'ui-red':''}} {{orderDetail.status=='EXPIRED'?'ui-grey':''}}"
+			>{{filter.getOrderStatus(orderDetail.status)}}</view>
 		</view>
 		
-		<view class="ui-consigneeAddressBox">
+		<view class="ui-consigneeAddressBox" wx:if="{{!(orderDetail.deliveryType==2)}}">
 			<view class="ui-landmarkIcon"></view>
 			<view class="ui-consignee">
 				<view class="ui-consigneeinfo">
-					<text>周周周</text>
-					<text>13414775964</text>
+					<text>{{orderDetail.orderDelivery.name||'暂无数据'}}</text>
+					<text>{{orderDetail.orderDelivery.phone}}</text>
 				</view>
-				<text class="ui-consigneeAddressDetial">广东省广州市天河区天盈广场东塔3004</text>
+				<text class="ui-consigneeAddressDetial">{{orderDetail.orderDelivery.address||'暂无数据'}}</text>
 			</view>
 		</view>
 		
 		<view class="ui-commodityInfo">
 			<text class="ui-title">商品信息</text>
-			<view class="ui-newsInfoBox" wx:for="{{storeList}}" wx:for-item="item" wx:key="idx">
+			<view class="ui-newsInfoBox" wx:for="{{orderDetail.goodsList}}" wx:for-item="item" wx:key="idx">
 				<view class="ui-newsInfoItem">
-					<view class="ui-newsImg"><image src="http://www.gzlingren.com:8098/yangtianhe/{{item.newsImg}}.png"></image></view>
+					<view class="ui-newsImg"><image src="{{filter.getPhoto(host,item.imgUrl)}}"></image></view>
 					<view class="ui-newsInfoDetail">
-						<text class="ui-newsName">{{item.newsName}}</text>
-						<text class="ui-newsWeight">{{item.newsWeight}}</text>
-						<text class="ui-newsMoney">¥{{item.newsMoney}}</text>
+						<text class="ui-newsName">{{item.title}}</text>
+						<text class="ui-newsWeight">{{item.specificationName}}</text>
+						<text class="ui-newsMoney">¥{{item.price}}</text>
 					</view>
-					<text class="ui-newsNum">x1</text>
+					<text class="ui-newsNum">x{{item.num}}</text>
 				</view>
 			</view>
 			<view class="ui-freight ui-commodityTextCommon">
 				<text>运费</text>
-				<text>¥0.00</text>
+				<text>¥{{orderDetail.deliveryFee}}</text>
 			</view>
 			<view class="ui-blissDeduction ui-commodityTextCommon">
 				<text>福气抵扣</text>
-				<text>-¥1.48</text>
+				<text>-¥{{orderDetail.pointsDeduction}}</text>
 			</view>
 			<view class="ui-actualPayment ui-commodityTextCommon">
 				<text>实付款</text>
-				<text>¥ 121.32</text>
+				<text>¥ {{orderDetail.payment}}</text>
 			</view>
 		</view>
 		
 		<view class="ui-verificationCode">
-			<view class="ui-codeIcon"><image src="http://www.gzlingren.com:8098/yangtianhe/my_closeOrderQR.png"></image></view>
-			<view class="ui-verificationNum">核销码：987456</view>
+			<view class="ui-codeIcon"><image src="{{filter.getPhoto(host,orderDetail.verificationCodeUrl)}}"></image></view>
+			<view class="ui-verificationNum" wx:if="{{orderDetail.status=='WAIT_CHECK'}}"><text>核销码：{{orderDetail.verificationCode}}</text></view>
+			<view class="ui-verificGrey" wx:if="{{orderDetail.status=='CHECKED'}}"><text>已核销</text></view>
+			<view class="ui-verificGrey" wx:if="{{orderDetail.status=='EXPIRED'}}"><text>已过期</text></view>
 		</view>
 		
 		<view class="ui-orderInfoBox">
 			<text>订单信息</text>
-			<text>配送时间：2019/07/01  16:00-18:00</text>
-			<text>订单编号：54636465456165465</text>
-			<text>创建时间：2019-01-25  14:30</text>
-			<text>付款时间：2019-01-25  14:30</text>
+			<text wx:if="{{orderDetail.orderDelivery}}">配送时间：{{orderDetail.orderDelivery.deliveryTime}}</text>
+			<text>订单编号：{{orderDetail.orderNo}}</text>
+			<text>创建时间：{{filter.getDate(orderDetail.creatrTime)}}</text>
+			<text>付款时间：{{filter.getDate(orderDetail.payTime)}}</text>
 		</view>
 		
-		<view class="ui-verificationFooter">
-			<view class="btn-verifyOrder">核销订单</view>
+		<view class="ui-verificationFooter" wx:if="{{orderDetail.status=='WAIT_CHECK'}}">
+			<view class="btn-verifyOrder" catchtap="onManualVerifyTap">核销订单</view>
 		</view>
 	</view>
 </view>

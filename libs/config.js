@@ -114,6 +114,11 @@ config.prototype = {
 			deleteVerifier:'/app/store/deleteVerifier.do',
 			searchVerifier:'/app/store/searchVerifier.do',
 			addVerifier:'/app/store/addVerifier.do',
+			getOrderList:'/app/store/getOrderList.do',
+			getOrderDetail:'/app/store/getOrderDetail.do',
+			verification:'/app/store/verification.do',
+			myCommentList: '/app/comment/list.do',
+            deleteComment: '/app/comment/delete.do'
         },
         goods: {
             getGoodsDetail: '/app/goods/getGoodsDetail.do',

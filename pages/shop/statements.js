@@ -5,6 +5,8 @@ const _g = app.base;
 const _c = app.config;
 const _t = app.temps;
 const event = app.event;
+const User = require('../../service/User');
+
 let data = {
 	weekList:['日','一','二','三','四','五','六'],
 	dateList:['14','15','16','17','18','19','20'],

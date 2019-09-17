@@ -1,4 +1,4 @@
-<!-- <wxs module="filter" src="../../filter/filter.wxs"></wxs> -->
+<wxs module="filter" src="../../filter/filter.wxs"></wxs>
 <!--application.wxml-->
 <view class="container">
 	<view class="ui-main">
@@ -10,36 +10,38 @@
 		</view>
 		
 		<view class="ui-menuBar">
-			<text wx:for="{{menuList}}" wx:for-item="item" wx:key="currentId" bindtap="chooseMenu"
+			<text wx:for="{{menuList}}" wx:for-item="item" wx:key="{{item.currentId}}" bindtap="chooseMenu"
 			data-id="{{item.currentId}}" class="ui-menuText {{currentCheck==item.currentId?'currentText currentBorder':''}}"
-			>{{item.name}}</text>
+			>{{filter.getOrderStatus(item.status)}}</text>
 		</view>
 		
-		<view class="ui-orderInfoBox" wx:for="{{orderList}}" wx:for-item="item" wx:key="idx"
-		wx:if="{{item.orderStatus==currentState}}">
+		<view class="ui-orderInfoBox" wx:for="{{orderList}}" wx:for-item="orderList" wx:for-index="idx" wx:key="{{idx}}"
+		wx:if="{{orderList.status==currentState}}">
 			<view class="ui-orderStatus">
-				<text class="ui-orderReferenceText">订单编号： {{item.orderReference}}</text>
-				<text class="ui-storeTetx" wx:if="{{item.store}}">{{item.store}}</text>
-				<text class="ui-orderStatusText" 
-				style="color: {{item.orderStatus=='售后中'?'#999999':''}};color: {{item.orderStatus=='售后结束'?'#999999':''}}"
-				>{{item.orderStatus}}</text>
+				<text class="ui-orderReferenceText">订单编号： {{orderList.orderNo}}</text>
+				<text class="ui-storeText" wx:if="{{orderList.deliveryType}}">{{filter.getDeliveryType(orderList.deliveryType)}}</text>
+				<text class="ui-orderStatusText">{{filter.getOrderStatus(orderList.status)}}</text>
 			</view>
-			<view class="ui-newsInfoBox" wx:for="{{item.storeList}}" wx:for-item="item" wx:key="idx">
+			<view class="ui-newsInfoBox" wx:for="{{orderList.goodsList}}" wx:for-item="goodsList" wx:key="idx">
 				<view class="ui-newsInfoItem">
-					<view class="ui-newsImg"><image src="http://www.gzlingren.com:8098/yangtianhe/{{item.newsImg}}.png"></image></view>
-					<text class="ui-newsName">{{item.newsName}}</text>
-					<text class="ui-newsWeight">{{item.newsWeight}}</text>
-					<text class="ui-newsMoney">¥{{item.newsMoney}}</text>
-					<text class="ui-newsNum">x1</text>
+					<view class="ui-newsImg"><image src="{{filter.getPhoto(host,goodsList.imgUrl)}}"></image></view>
+					<text class="ui-newsName">{{goodsList.title}}</text>
+					<text class="ui-newsWeight">{{goodsList.specificationName}}</text>
+					<text class="ui-newsMoney">¥{{goodsList.price}}</text>
+					<text class="ui-newsNum">x{{goodsList.num}}</text>
 				</view>
 			</view>
 			<view class="ui-total">
-				<text>共2件商品</text>
-				<text>总额：¥109.00</text>
+				<text>共{{orderList.num}}件商品</text>
+				<text>总额：¥{{orderList.totalPrice}}</text>
 			</view>
 			<view class="ui-detailBox">
-				<view class="btn-detail" catchtap="onOrderVerifyDetailTap">查看详情</view>
+				<view class="ui-detailBtn" catchtap="onOrderVerifyDetailTap" data-idx="{{idx}}">查看详情</view>
 			</view>
+		</view>
+		
+		<view class="ui-noOrderText ui-noDataBox" wx:if="{{!orderList.length}}">
+			<text>暂无数据</text>	
 		</view>
 		
 	</view>

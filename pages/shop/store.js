@@ -60,14 +60,22 @@ const methods = {
 	//跳转到订单管理
 	onOrderManageTap:function(){
 		let self = this;
+		const userInfo = self.data.userInfo;
 		_g.navigateTo({
+			param:{
+				storeId:userInfo.store.id,
+			},
 		    url: 'pages/shop/orderManage',
 		}, self);
 	},
 	//跳转到财务报表
 	onStatementsTap:function(){
 		let self = this;
+		const userInfo = self.data.userInfo;
 		_g.navigateTo({
+			param:{
+				storeId:userInfo.store.id,
+			},
 		    url: 'pages/shop/statements',
 		}, self);
 	},

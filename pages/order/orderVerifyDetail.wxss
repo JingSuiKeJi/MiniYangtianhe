@@ -46,7 +46,7 @@ page{
 	word-wrap: break-word;/*在长单词或URL地址内部进行换行*/
 }
 
-.btn-verify{
+.ui-verify{
 	width:100rpx;
 	height:44rpx;
 	background:linear-gradient(137deg,rgba(1,206,165,1) 0%,rgba(94,221,218,1) 100%);
@@ -58,6 +58,14 @@ page{
 	color:rgba(255,255,255,1);
 	line-height:44rpx;
 	text-align: center;
+}
+
+.ui-red{
+	background: #FF5F55 !important;
+}
+
+.ui-grey{
+	background: #CCCCCC !important;
 }
 
 .ui-consigneeAddressBox{
@@ -273,6 +281,9 @@ page{
 }
 
 .ui-verificationNum{
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	height:56rpx;
 	border-radius:40rpx;
 	border:2rpx solid rgba(102,102,102,1);
@@ -281,14 +292,28 @@ page{
 	font-weight:400;
 	color:rgba(109,109,109,1);
 	line-height:56rpx;
-	text-align: center;
 	margin-top: 14rpx;
 	padding: 0 24rpx;
 }
 
+.ui-verificGrey{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 14rpx;
+	width:128rpx;
+	height:56rpx;
+	background:rgba(216,216,216,1);
+	border-radius:30rpx;
+	font-size:24rpx;
+	font-family:PingFangSC;
+	font-weight:400;
+	color:rgba(255,255,255,1);
+}
+
 .ui-orderInfoBox{
 	margin-top: 20rpx;
-	height: 366rpx;
+	/* height: 366rpx; */
 	width: 100%;
 	background: #FFFFFF;
 	margin-bottom: 52rpx;
