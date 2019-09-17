@@ -1,5 +1,4 @@
-
-// js库引入
+/// js库引入
 const app = getApp();
 const _ = app.underscore;
 const _g = app.base;
