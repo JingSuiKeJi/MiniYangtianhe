@@ -1,25 +1,29 @@
-<!-- <wxs module="filter" src="../../filter/filter.wxs"></wxs> -->
+<wxs module="filter" src="../../filter/filter.wxs"></wxs>
 <!--myComment.wxml-->
 <view class="container">
 	<view class="ui-main">
-		<view class="ui-commentItems" wx:for="{{commentList}}" wx:for-index="idx" wx:key="idx" wx:for-item="item">
+		<view class="ui-commentItems" wx:for="{{commentList}}" wx:for-index="idx" wx:key="idx" wx:for-item="item" bindtap="deleteBtn" data-id="{{item.id}}">
 			<view class="ui-userInfo">
-				<view class="ui-avatar"><image src="http://www.gzlingren.com:8098/yangtianhe/my_ snapshoot.png"></image></view>
-				<text>木木掉线了</text>
-				<text>{{item.date}}</text>
+				<view class="ui-avatar"><image src="{{item.commentUser.avatar}}"></image></view>
+				<text>{{item.commentUser.nickname}}</text>
+				<text>{{filter.getDay(item.createTime)}}</text>
 			</view>
-			<text class="ui-commentText">{{item.write}}</text>
-			<view class="ui-commentImgBox" wx:if="{{item.commentImage}}">
-				<view class="ui-itemImg" wx:for="{{item.commentImage}}" wx:for-index="idx" wx:key="idx" wx:for-item="item"><image src="http://www.gzlingren.com:8098/yangtianhe/{{item.img}}.png"></image></view>
+			<text class="ui-commentText">{{item.content}}</text>
+			<view class="ui-commentImgBox" wx:if="{{item.imgUrls}}">
+				<view class="ui-itemImg" wx:for="{{filter.split(item.imgUrls)}}" wx:for-index="idx" wx:key="idx" wx:for-item="imgItem">
+					<image src="{{imgItem}}" mode="aspectFill"></image>
+				</view>
 			</view>
 			<view class="ui-goodsInfo">
-				<view class="ui-goodsImg"><image src="http://www.gzlingren.com:8098/yangtianhe/{{item.goodsImg}}.png"></image></view>
+				<view class="ui-goodsImg">
+					<image src="{{filter.getPhoto(host,item.commentGoods.picUrl)}}"></image>
+				</view>
 				<view class="ui-goodsDetail">
-					<text class="ui-goodsName">{{item.goodsName}}</text>
-					<text class="ui-goodsAmount">{{item.goodsAmount}}</text>
+					<text class="ui-goodsName">{{item.commentGoods.mainTitle}}</text>
+					<text class="ui-goodsAmount">{{item.commentGoods.secondTitle}}</text>
 					<view class="ui-priceComment">
-						<text>¥{{item.price}}</text>
-						<text>{{item.commentStatus}}</text>
+						<text>¥{{item.commentGoods.nowPrice}}</text>
+						<text>{{filter.getComment(item.type)}}</text>
 					</view>
 				</view>
 			</view>

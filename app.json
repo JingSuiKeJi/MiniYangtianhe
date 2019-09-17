@@ -63,7 +63,8 @@
     "pages/shop/blissVerifyDetail",
     "pages/pharmacy/customer",
     "pages/card/card",
-    "pages/goods/groupList"
+    "pages/goods/groupList",
+    "pages/card/rightsCard"
   ],
   "tabBar": {
     "custom": true,

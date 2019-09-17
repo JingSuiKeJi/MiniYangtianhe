@@ -1,24 +1,170 @@
-<!--pages/search/search.wxml-->
+<!-- pages/search/search.wxml -->
 <wxs module="filter" src="../../filter/filter.wxs"></wxs>
-<view class="contain">
-   <view class="main">
-      <view class="ui-searchBox">
-        <input type="text" placeholder="药品、炎症、品牌" class="ui-searchItem_input" bindinput="onGetInput"/>
-         <view class="ui-searchItem_text" bindtap="onSkipTap">搜索</view>
-         <image src="{{filter.getLocalPhoto('ic_search.png')}}" class="searchItem_icon"/>
-      </view>
-      <view class="ui-hotSearchBox">
-          <view class="ui-hotItem_title">热门搜索</view>
-          <view class="ui-hotItem_tag">
-              <view wx:for="{{tagList}}" class="ui-hotItem_tagBtn" data-title = "{{item.title}}" data-type = "1" bindtap="onSkipTap">{{item.title}}</view>
-          </view>
-         <view class="ui-hotItem_title">
-             <text >历史记录</text>
-             <image src="{{filter.getLocalPhoto('delect.png')}}" class="ui-hotItem_delectIcon" bindtap="onDelectTap"/>
-         </view>
-          <view class="ui-hotItem_hisTag" wx:if="{{hisList.length}}">
-              <view wx:for="{{hisList}}" class="ui-hotItem_hisTagBtn" data-title = "{{item}}" data-type = "1" bindtap="onSkipTap">{{item}}</view>
-          </view>
-      </view>
-   </view>
+<view class="ui-main">
+    <view class="ui-titleBox">开通权益福卡 享更多优惠</view>
+    <view class="ui-textBox">8000万用户的品质之选</view>
+    <image src="{{filter.getLocalPhoto('card__quanyi.png')}}" mode="aspectFill" class="ui-plusCard" />
+    <view class="ui-specialItem__title">—— 权益专场 ——</view>
+    <view class="ui-specialItem__EnglishTitle">The special rights and interests</view>
+    <view class="ui-specialItem">
+        <image src="{{filter.getLocalPhoto('card_quanyika.png')}}" mode="aspectFill" class="ui-specialItem__card" />
+        <view class="ui-specialItem__btn" bindtap="onSkipTap">立即进入</view>
+    </view>
+    <view class="ui-specialItem__title ui-lineTitle ">—— 线上福利 ——</view>
+    <view class="ui-specialItem__EnglishTitle ui-line__EnglishTitle">online benefits</view>
+    <view class="ui-lineBox">
+        <image src="{{filter.getLocalPhoto('card__bagIon.png')}}" mode="aspectFill" class="ui-line__Icon" />
+        <text class="ui-line__title">自购省钱</text>
+        <text class="ui-line__text">PLUS会员享受平台全类商品平均7.5折低价</text>
+        <image src="{{filter.getLocalPhoto('card__shengqiangou.png')}}" mode="aspectFill" class="ui-line__card" />
+    </view>
+    <view class="ui-lineBox">
+        <image src="{{filter.getLocalPhoto('card__moneyIcon.png')}}" mode="aspectFill" class="ui-line__moneyIcon" />
+        <text class="ui-line__title">分享赚钱</text>
+        <text class="ui-line__text">开通PLUS会员后分享赚取的收益平均提高4倍</text>
+        <image src="{{filter.getLocalPhoto('')}}card__sharemoney.png" mode="aspectFill" class="ui-line__card" />
+    </view>
+    <view class="ui-lineBox">
+        <view class="ui-lineItem__left">
+            <image src="{{filter.getLocalPhoto('card__huojian.png')}}" mode="aspectFill" class="ui-leftItem__rocketIcon" />
+            <text class="ui-leftItem__title">成长值加速</text>
+            <text class="ui-leftItem__text">PLUS会员可享受为期3个月的成长值1.1倍加速权益</text>
+            <image src="{{filter.getLocalPhoto('card__runIcon.png')}}" mode="aspectFill" class="ui-leftItem__card" />
+        </view>
+        <view class="ui-lineItem__right">
+            <image src="{{filter.getLocalPhoto('card__erji.png')}}" mode="aspectFill" class="ui-leftItem__rocketIcon" />
+            <text class="ui-leftItem__title">专属客服</text>
+            <text class="ui-leftItem__text">PLUS会员可享受一对一在线客服优先处理售后问题保障您的专属权益</text>
+            <image src="{{filter.getLocalPhoto('card__kefu.png')}}" mode="aspectFill" class="ui-leftItem__card" />
+        </view>
+    </view>
+    <view class="ui-specialItem__title ui-lineTitle ">—— 线下福利 ——</view>
+    <view class="ui-specialItem__EnglishTitle ui-line__EnglishTitle">offline welfare</view>
+    <view class="ui-lineBox">
+        <image src="{{filter.getLocalPhoto('card__eleCar.png')}}" mode="aspectFill" class="ui-line__moneyIcon" />
+        <text class="ui-line__title">优先配送</text>
+        <text class="ui-line__text">PULS会员享有极速配送服务，最快可1小时内到达</text>
+        <image src="{{filter.getLocalPhoto('card__peisong.png')}}" mode="aspectFill" class="ui-line__card" />
+    </view>
+    <view class="ui-lineBox">
+        <image src="{{filter.getLocalPhoto('card__coffee.png')}}" mode="aspectFill" class="ui-line__moneyIcon" />
+        <text class="ui-line__title">大型交流活动</text>
+        <text class="ui-line__content">PULS会员享有优先参与大型线下沙龙、高端酒会、年终奖晚宴等活动的权益</text>
+        <image src="{{filter.getLocalPhoto('')}}card__chatIcon.png" mode="aspectFill" class="ui-line__card" />
+    </view>
+    <view class="ui-specialItem__title ui-lineTitle ">—— 自购省钱 分享赚钱 ——</view>
+    <view class="ui-specialItem__EnglishTitle ui-line__EnglishTitle">
+        BUY FROM SAVE MONEY SHARE TO MAKE MONEY
+    </view>
+    <view class="ui-shareBox">
+        <image src="{{filter.getLocalPhoto('card__goIcon.png')}}" mode="aspectFill" class="ui-shareItem__card" />
+        <view class="ui-shareItem__count">
+            <view class="ui-countItem__top">
+                <image src="{{filter.getLocalPhoto('card__jisuanqi.png')}}" mode="aspectFill" class="ui-shareItem__bgIcon" />
+                <text class="ui-countItem__title">省钱计算器</text>
+                <text class="ui-countItem__text">数据来自2019年 PLUS店主的消费数据</text>
+            </view>
+            <view class="ui-countItem__bottom">
+                <view class="ui-bottomItem__title">PLUS会员平均可省</view>
+                <view class="ui-bottomItem__money">¥22989/年</view>
+                <view class="ui-bottomItem">
+                    <view class="ui-bottomItem__item">
+                        <text class="ui-bottomItem__text">全平台普通商品平均7.5折</text>
+                        <text class="ui-bottomItem__text ui-bottomItem__price">¥2753</text>
+                    </view>
+                    <view class="ui-bottomItem__littleTitle">数万全球爆款精品，PULS会员专享价</view>
+                </view>
+                <view class="ui-bottomItem">
+                    <view class="ui-bottomItem__item">
+                        <text class="ui-bottomItem__text">分享获得佣金</text>
+                        <text class="ui-bottomItem__text ui-bottomItem__price">¥8347</text>
+                    </view>
+                    <view class="ui-bottomItem__littleTitle">分享喜爱的商品给好友，可获得佣金</view>
+                </view>
+                <view class="ui-bottomItem">
+                    <view class="ui-bottomItem__item">
+                        <text class="ui-bottomItem__text">店主优惠券礼包</text>
+                        <text class="ui-bottomItem__text ui-bottomItem__price">¥4900</text>
+                    </view>
+                    <view class="ui-bottomItem__littleTitle">升级PLUS会员，定期赠送限量优惠券</view>
+                </view>
+                <view class="ui-bottomItem">
+                    <view class="ui-bottomItem__item">
+                        <text class="ui-bottomItem__text">PLUS免费专区，0元抢爆款</text>
+                        <text class="ui-bottomItem__text ui-bottomItem__price">¥5300</text>
+                    </view>
+                    <view class="ui-bottomItem__littleTitle">升级PLUS会员，免费领取大牌奖品</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="ui-infoBox">
+        <view class="ui-infoItem">
+            <view class="ui-infoItem__left">
+                <image src="{{filter.getLocalPhoto('card__person.png')}}" class="ui-leftItem__icon" />
+            </view>
+            <view class="ui-infoItem__right">
+                <view class="ui-rightItem__name">周玮玮</view>
+                <view class="ui-rightItem__text">
+                    2019年7月1日加入PULS会员，目前节省
+                    <text>1388</text>
+                    元, 赚取
+                    <text>2688</text>
+                    yuan
+                </view>
+            </view>
+        </view>
+        <image src="{{filter.getLocalPhoto('card__huiyuaCARD.png')}}" class="ui-plusIcon" />
+        <view class="ui-plusItem">
+            <view class="ui-plusItem__left">
+                <view class="ui-plusItem__title">PULS已为你节省</view>
+                <view class="ui-plusItem__money">5789元</view>
+            </view>
+            <view class="ui-plusItem__right">
+                <view class="ui-plusItem__title">PULS已为你赚取</view>
+                <view class="ui-plusItem__money">3786元</view>
+            </view>
+        </view>
+    </view>
+    <view class="ui-specialItem__title ui-lineTitle ">—— 任选一款 成为PULS ——</view>
+    <view class="ui-specialItem__EnglishTitle ui-line__EnglishTitle">
+        CHOOSE ONE OR BECOME PLUS
+    </view>
+    <view class="ui-goodsBox">
+        <view class="ui-goodsItem">
+            <image src="{{filter.getLocalPhoto('card__pulscard.png')}}" class="ui-plusItem__icon" />
+            <image src="{{filter.getLocalPhoto('e_c.png')}}" mode="aspectFill" class="ui-goodsItem__img" />
+            <view class="ui-goodsItem__title">养生堂全套保健品</view>
+            <view class="ui-goodsItem__price">¥298</view>
+        </view>
+        <view class="ui-goodsItem">
+            <image src="{{filter.getLocalPhoto('card__pulscard.png')}}" class="ui-plusItem__icon" />
+            <image src="{{filter.getLocalPhoto('e_c.png')}}" mode="aspectFill" class="ui-goodsItem__img" />
+            <view class="ui-goodsItem__title">养生堂全套保健品</view>
+            <view class="ui-goodsItem__price">¥298</view>
+        </view>
+        <view class="ui-goodsItem">
+            <image src="{{filter.getLocalPhoto('card__pulscard.png')}}" class="ui-plusItem__icon" />
+            <image src="{{filter.getLocalPhoto('e_c.png')}}" mode="aspectFill" class="ui-goodsItem__img" />
+            <view class="ui-goodsItem__title">养生堂全套保健品</view>
+            <view class="ui-goodsItem__price">¥298</view>
+        </view>
+        <view class="ui-goodsItem">
+            <image src="{{filter.getLocalPhoto('card__pulscard.png')}}" class="ui-plusItem__icon" />
+            <image src="{{filter.getLocalPhoto('e_c.png')}}" mode="aspectFill" class="ui-goodsItem__img" />
+            <view class="ui-goodsItem__title">养生堂全套保健品</view>
+            <view class="ui-goodsItem__price">¥298</view>
+        </view>
+        <view class="ui-moreBtn">查看更多专属礼包</view>
+    </view>
+    <view class="ui-bottomBox">
+        <view class="ui-bottomItem__content">
+            根据平台大数据分析预计每年为您节省
+            <text>2989</text>
+            元，PLUS会员购物平均可享受
+            <text>7.5</text>
+            折优惠
+        </view>
+        <view class="ui-bottomItem__btn">立即购买</view>
+    </view>
 </view>

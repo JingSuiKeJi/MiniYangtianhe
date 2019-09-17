@@ -4,25 +4,30 @@ const _ = app.underscore;
 const _g = app.base;
 const _c = app.config;
 const Goods = require('../../service/Goods');
+const Platfrom = require('../../service/Platfrom')
+
 // 初始化数据
 const data = {
-  type: 1,
-  baseUrl: '../../images/',
-   list: [
-     {
-        title: '红豆口味，清热解毒，男女老少都爱吃',
-        scale: '【4盒装】 [生和堂] 红豆龟苓膏 200gx4盒',
-        prePrice: '14.00',
-        nowPrice: '10.00' ,
-        count: '3125',
-        url: 'zhengqiwan.png'
-     }
-  ],
-
+    type: 0,
+    list: [
+        {
+            title: '红豆口味，清热解毒，男女老少都爱吃',
+            scale: '【4盒装】 [生和堂] 红豆龟苓膏 200gx4盒',
+            prePrice: '14.00',
+            nowPrice: '10.00',
+            count: '3125',
+            url: 'zhengqiwan.png'
+        }
+    ],
+    priceSort: 1
 };
-  
+
 // 页面onLoad方法
 const onLoad = function (self) {
+    self.setData({
+        brandId: self.data.id,
+        platformFlag: self.data.platformFlag
+    })
     self.getData();
 };
 
@@ -30,39 +35,87 @@ const onLoad = function (self) {
 const onShow = function (self) {
     self.getData();
 };
-const onUnload= function (self) {
-  
+const onUnload = function (self) {
+
 }
 // 页面中的方法
 const methods = {
-				getData: function () {
-				    let self = this;
-				    Goods.getBrandDetail(self, {
-				        brandId:234567,
-				    }).then((ret)=>{
-				        let data = ret.data;
-				        self.setData({
-				            backgroundUrl:data.backgroundUrl,
-				        })
-								console.log(data);
-				    },(err)=>{
-				
-				    });
-				},
-        onDetailTap: function (e) {
-          let self = this;
-          _g.navigateTo({
-            url: 'pages/goods/detail'
-          },self)
-        },
-        onChoseTap: function(e) {
-          let self = this;
-          self.setData({
-            type: e.target.dataset.type
-          });
-        },
+    getData: function () {
+        let self = this;
+        self.getBrandDetail();
+        self.getPageData();
+    },
+    getBrandDetail: function () {
+        let self = this;
+        Goods.getBrandDetail(self, {
+            brandId: self.data.brandId,
+        }).then((ret) => {
+            let data = ret.data;
+            self.setData({
+                backgroundUrl: data.backgroundUrl,
+                title: data.title,
+                logoUrl: data.logoUrl
+            })
+        }, (err) => {
+
+        });
+    },
+    getPageData: function (option) {
+        let self = this;
+        let param = {
+            brandId: self.data.brandId,
+            platformFlag: self.data.platformFlag,
+            page: self.data.page,
+            pageSize: 10,
+        }
+        if (option) {
+            _.extend(param, option);
+        }
+        Platfrom.getGoodsList(self, param
+        ).then((ret) => {
+            let data = ret.data;
+            self.setData({
+                list: data.list,
+                hasNextPage: data.hasNextPage
+            })
+        }, (err) => {
+
+        });
+    },
+    onDetailTap: function (e) {
+        let self = this;
+        _g.navigateTo({
+            url: 'pages/goods/detail',
+            param: {
+                id: e.currentTarget.dataset.id
+            }
+        }, self)
+    },
+    onChoseTap: function (e) {
+        let self = this;
+        let opts = e.currentTarget.dataset;
+        let data = {};
+        if (opts.type == self.data.type && opts.type == 1) {
+            data.priceSort = 2;
+        } else if (opts.type != self.data.type && opts.type == 1) {
+            self.setData({
+                type: 1
+            })
+            data.priceSort = 1;
+        } else if (opts.type == self.data.type) {
+            return;
+
+        } else {
+            data.soldNumSort = 2;
+            self.setData({
+                type: Number(opts.type)
+            })
+        }
+        self.getPageData(data);
+
+    },
 };
-  
+
 // 有引用template时定义
 const temps = {};
 

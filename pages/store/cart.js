@@ -70,23 +70,23 @@ const methods = {
         let medecineList = self.data.medecineList;
         let storeList = self.data.storeList;
         let index = e.target.dataset.index;
-        if (e.target.dataset.type == 1) {
-        	// 1: 门店
-            if (medecineList[index].count == 1) return;
-            medecineList[index].count = medecineList[index].count - 1;
-            self.setData({
-                medecineList: medecineList
-            });
-            self.getMonney('medecineList', 1);
-        } else {
-        	// 2: 商城
-            if (storeList[index].count == 1) return;
-            storeList[index].count = storeList[index].count - 1;
-            self.setData({
-                storeList: storeList
-            });
-            self.getMonney('storeList', 2);
-        }
+        // if (e.target.dataset.type == 1) {
+        // 	// 1: 门店
+        //     if (medecineList[index].count == 1) return;
+        //     medecineList[index].num = medecineList[index].num - 1;
+        //     self.setData({
+        //         medecineList: medecineList
+        //     });
+        //     self.getMonney('medecineList', 1);
+        // } else {
+        // 	// 2: 商城
+        //     if (storeList[index].num == 1) return;
+        //     storeList[index].num = storeList[index].num - 1;
+        //     self.setData({
+        //         storeList: storeList
+        //     });
+        //     self.getMonney('storeList', 2);
+        // }
         self.subtractNum({
         	list: e.target.dataset.type == 1 ? 'medecineList' : 'storeList',
         	index: index
@@ -98,19 +98,19 @@ const methods = {
         let medecineList = self.data.medecineList;
         let storeList = self.data.storeList;
         let index = e.target.dataset.index;
-        if (e.target.dataset.type == 1) {
-            medecineList[index].count = medecineList[index].count + 1;
-            self.setData({
-                medecineList: medecineList
-            });
-            self.getMonney('medecineList', 1);
-        } else {
-            storeList[index].count = storeList[index].count + 1;
-            self.setData({
-                storeList: storeList
-            });
-            self.getMonney('storeList', 2);
-        }
+        // if (e.target.dataset.type == 1) {
+        //     medecineList[index].count = medecineList[index].num + 1;
+        //     self.setData({
+        //         medecineList: medecineList
+        //     });
+        //     self.getMonney('medecineList', 1);
+        // } else {
+        //     storeList[index].num = storeList[index].num + 1;
+        //     self.setData({
+        //         storeList: storeList
+        //     });
+        //     self.getMonney('storeList', 2);
+        // }
         self.addNum({
         	list: e.target.dataset.type == 1 ? 'medecineList' : 'storeList',
         	index: index
@@ -217,7 +217,7 @@ const methods = {
             for (let index = 0; index < list.length; index++) {
                 if (list[index].isSelect) {
                     mediNum = mediNum + 1;
-                    mediTotal = mediTotal + list[index].count * list[index].price
+                    mediTotal = mediTotal + list[index].num * list[index].nowPrice
                 }
             }
             self.setData({
@@ -228,7 +228,7 @@ const methods = {
             for (let index = 0; index < list.length; index++) {
                 if (list[index].isSelect) {
                     storeNum = storeNum + 1;
-                    storeTotal = storeTotal + list[index].count * list[index].price;
+                    storeTotal = storeTotal + list[index].num * list[index].nowPrice;
                 }
             }
             self.setData({
@@ -387,7 +387,13 @@ const methods = {
                     Goods.batchDeleteCart(self, {
                         ids: ids
                     }).then((ret) => {
-                        self.getCartList()
+                        self.getCartList();
+                        self.setData({
+                            mediNum: 0, 
+                            storeNum: 0, 
+                            mediTotal: 0,
+                            storeTotal: 0,
+                        })
                     }, (err) => {});
                 } else if (res.cancel) {
 
@@ -398,6 +404,12 @@ const methods = {
     getCartList: function() {
         const self = this;
         self.getData();
+        self.setData({
+            mediNum: 0, 
+            storeNum: 0, 
+            mediTotal: 0,
+            storeTotal: 0,
+        })
         // Goods.cartList(self, {}).then((ret) => {
         //     let data = ret.data;
         //     self.setData({

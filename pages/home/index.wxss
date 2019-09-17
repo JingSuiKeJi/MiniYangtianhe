@@ -262,10 +262,13 @@ page {
     margin-top: 82rpx;
     padding: 0 40rpx;
     background-color: #3CC7A4;
+}
+.ui-tapBox__Item {
+    width: 90%;
+    height: 80rpx;
     white-space: nowrap;
     overflow: hidden;
 }
-
 .ui-tapBox .ui-headBox_tap {
     width: 100%;
     height: 100%;

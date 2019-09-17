@@ -23,16 +23,16 @@
                     <view class="ui-contentItem__listItem">
                         <image src="{{item.isSelect  ? filter.getLocalPhoto('cart_selestIcon.png')  : filter.getLocalPhoto('cart_selestEmptyIcon.png')}}" class="ui-listItem__selectIcon" bindtap="onChoseTap" data-type="1" data-index="{{index}}" />
                         <view class="ui-goodsBox">
-                            <image src="../../images/{{item.url}}" class="ui-listItem__goodsIcon" />
+                            <image src="{{filter.getPhoto(host, item.goodsImg)}}" class="ui-listItem__goodsIcon" />
                         </view>
                         <view class="ui-listItem__info">
-                            <view class="ui-infoItem__title">{{item.title}}</view>
-                            <view class="ui-infoItem__scale">{{item.scale}}</view>
+                            <view class="ui-infoItem__title">{{item.goodsTitle}}</view>
+                            <view class="ui-infoItem__scale">{{item.skuTitle || ''}}</view>
                             <view class="ui-infoItem__price">
-                                <text>¥{{item.price}}</text>
+                                <text>¥{{item.nowPrice}}</text>
                                 <view class="ui-listItem__operatebBox">
                                     <image src="{{filter.getLocalPhoto('goodsDetail_subtraction.png')}}" class="operateItem_subtractione" bindtap="onSubtractionTap" data-id="{{item.id}}" data-type="1" data-index="{{index}}" />
-                                    <text class="operateItem__text">{{item.count}}</text>
+                                    <text class="operateItem__text">{{item.num}}</text>
                                     <image src="{{filter.getLocalPhoto('goodsDetail_add.png')}}" class="operateItem_add" bindtap="onAddTap" data-id="{{item.id}}" data-type="1" data-index="{{index}}" />
                                 </view>
                             </view>

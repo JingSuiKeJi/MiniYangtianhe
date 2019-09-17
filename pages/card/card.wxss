@@ -1,1 +1,498 @@
-/* pages/card/card.wxss */
+@import "/libs/common.wxss";
+page {
+    width: 100%;
+    height: 100%;
+}
+
+.ui-main {
+    width: 100%;
+    /* height: 100%; */
+    /* background-image: url(http://www.gzlingren.com:8098/yangtianhe/card__backgroud.png); */
+    background-image: url(http://m.qpic.cn/psb?/V12Kdegv0qd4wf/HtCnRI2E3msXGnS54NHYUtoYSDqwpFV6W9armj0Jd4o!/b/dLgAAAAAAAAA&bo=7gL.GAAAAAADFzg!&rf=viewer_4&t=5);
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ui-titleBox {
+    margin-top: 66rpx;
+    font-size: 52rpx;
+    font-weight: 500;
+    color: #FFFFFFFF;
+    line-height: 52rpx;
+    text-shadow: 0px 4px 10px rgba(255, 170, 0, 0.5);
+}
+
+.ui-textBox {
+    width: 346rpx;
+    height: 56rpx;
+    margin-top: 30rpx;
+    font-size: 28rpx;
+    font-weight: 500;
+    color: #FFF;
+    line-height: 52rpx;
+    text-align: center;
+    border: 4px solid rgba(255, 255, 255, 1);
+}
+
+.ui-plusCard {
+    width: 750rpx;
+    height: 544rpx;
+}
+
+.ui-specialItem__title {
+    font-size: 36rpx;
+    font-weight: 500;
+    color: #FFFF;
+    line-height: 36rpx;
+}
+
+.ui-specialItem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 412rpx;
+    position: relative;
+}
+
+.ui-specialItem__EnglishTitle {
+    margin-top: 12rpx;
+    font-size: 22rpx;
+    font-family: PingFangSC;
+    font-weight: 500;
+    color: #FFFF;
+    line-height: 22rpx;
+}
+
+.ui-specialItem__btn {
+    width: 196rpx;
+    height: 64rpx;
+    line-height: 64rpx;
+    font-size: 28rpx;
+    font-family: PingFangSC;
+    font-weight: 500;
+    color: #FFFFFFFF;
+    background-color: #F24E54;
+    text-align: center;
+    border-radius: 40rpx;
+    position: absolute;
+    left: 112rpx;
+    bottom: 82rpx;
+}
+
+.ui-specialItem__card {
+    width: 718rpx;
+    height: 384rpx;
+    margin-top: 30rpx;
+}
+
+.ui-lineTitle {
+    margin-top: 64rpx;
+}
+
+.ui-line__card {
+    width: 686rpx;
+    height: 330rpx;
+}
+
+.ui-line__EnglishTitle {
+    margin-bottom: 44rpx;
+}
+
+.ui-lineBox {
+    width: 686rpx;
+    height: 330rpx;
+    margin-bottom: 20rpx;
+    position: relative;
+}
+
+.ui-line__Icon {
+    width: 48rpx;
+    height: 56rpx;
+    position: absolute;
+    top: 52rpx;
+    left: 52rpx;
+}
+
+.ui-line__title {
+    font-size: 36rpx;
+    font-family: PingFangSC;
+    font-weight: 500;
+    color: #333333;
+    line-height: 36rpx;
+    position: absolute;
+    top: 74rpx;
+    left: 144rpx;
+}
+
+.ui-line__text {
+    font-size: 26rpx;
+    font-family: PingFangSC;
+    font-weight: 400;
+    color: #333333;
+    line-height: 26rpx;
+    position: absolute;
+    top: 140rpx;
+    left: 54rpx;
+}
+
+.ui-line__moneyIcon {
+    width: 56rpx;
+    height: 56rpx;
+    position: absolute;
+    top: 52rpx;
+    left: 52rpx;
+}
+
+.ui-lineItem__left, .ui-lineItem__right {
+    display: inline-block;
+    width: 334rpx;
+    height: 330rpx;
+    position: relative;
+}
+
+.ui-lineItem__right {
+    margin-left: 18rpx;
+}
+
+.ui-leftItem__rocketIcon {
+    width: 56rpx;
+    height: 56rpx;
+    position: absolute;
+    top: 50rpx;
+    left: 36rpx;
+}
+
+.ui-leftItem__title {
+    font-size: 36rpx;
+    font-family: PingFangSC;
+    font-weight: 500;
+    color: #333333;
+    line-height: 36rpx;
+    position: absolute;
+    top: 70rpx;
+    left: 120rpx;
+}
+
+.ui-leftItem__text {
+    width: 264rpx;
+    height: 120rpx;
+    font-size: 26rpx;
+    font-family: PingFangSC;
+    font-weight: 400;
+    color: #333333;
+    line-height: 40rpx;
+    position: absolute;
+    top: 134rpx;
+    left: 36rpx;
+}
+
+.ui-leftItem__card {
+    width: 334rpx;
+    height: 330rpx;
+}
+
+.ui-line__content {
+    width: 580rpx;
+    font-size: 26rpx;
+    font-family: PingFangSC;
+    font-weight: 400;
+    color: #333333;
+    line-height: 40rpx;
+    position: absolute;
+    top: 140rpx;
+    left: 54rpx;
+}
+
+.ui-shareBox {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 718rpx;
+    height: 1166rpx;
+    /* background-image: url(http://www.gzlingren.com:8098/yangtianhe/card__bg.png); */
+    background-image: url(http://m.qpic.cn/psb?/V12Kdegv0qd4wf/hkrw.wUUQR0fU.C3MArJdm0p1DV.CuqJlQt88o0DPTE!/b/dL8AAAAAAAAA&bo=zgKOBAAAAAADF3Q!&rf=viewer_4&t=5);
+    background-size: cover;
+}
+
+.ui-shareItem__card {
+    width: 634rpx;
+    height: 210rpx;
+    margin-top: 62rpx;
+}
+.ui-shareItem__count {
+    width: 632rpx;
+    height: 784rpx;
+    margin-top: 40rpx;
+    background-color: #FFF;
+}
+.ui-countItem__top {
+    width: 634rpx;
+    height: 246rpx;
+    position: relative;
+}
+.ui-shareItem__bgIcon {
+    width: 634rpx;
+    height: 246rpx;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.ui-countItem__title {
+    font-size:48rpx;
+    font-family:PingFangSC;
+    font-weight:500;
+    color:#FFF4D6;
+    line-height:66rpx;
+    position: absolute;
+    top: 40rpx;
+    left: 54rpx;
+}
+.ui-countItem__text {
+    font-size:28rpx;
+    font-family:PingFang-SC;
+    font-weight:400;
+    color:#FFF4D6;
+    line-height:40rpx;
+    position: absolute;
+    top: 130rpx;
+    left: 54rpx;
+}
+.ui-countItem__bottom {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.ui-bottomItem__title {
+    font-size:32rpx;
+    font-family:PingFangSC;
+    font-weight:400;
+    color:#333333;
+    line-height:32rpx;
+}
+.ui-bottomItem__money {
+    margin-top: 20rpx;
+    font-size:28rpx;
+    font-family:PingFangSC;
+    font-weight:500;
+    color:#E02020;
+    line-height:28rpx;
+}
+.ui-bottomItem {
+    width: 562rpx;
+    margin-top: 32rpx;
+}
+.ui-bottomItem__item {
+    width: 100%;
+    height: 45rpx;
+}
+.ui-bottomItem__text {
+    font-size:28rpx;
+    font-family:PingFangSC;
+    font-weight:400;
+    color:#333333;
+    line-height:28rpx;
+    float: left;
+}
+.ui-bottomItem__price {
+    float: right;
+}
+.ui-bottomItem__littleTitle {
+    width: 100%;
+    font-size:20rpx;
+    font-family:PingFang-SC;
+    font-weight:400;
+    color:#777777;
+    line-height:20rpx;
+}
+.ui-infoBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 686rpx;
+    height: 410rpx;
+    background-color: #FFF;
+    position: relative;
+}
+.ui-infoItem {
+    display: flex;
+    width: 686rpx;
+    height: 236rpx;
+    /* background-image: url(http://www.gzlingren.com:8098/yangtianhe/card__orginbg.png); */
+    background-image: url(http://m.qpic.cn/psb?/V12Kdegv0qd4wf/nWLWdWzVjwgGANPhgstAOaxjA6YRnOmhy8WJEpntZmU!/b/dL8AAAAAAAAA&bo=rgLsAAAAAAADF3I!&rf=viewer_4&t=5);
+    background-size: cover;
+}
+.ui-leftItem__icon {
+    width: 120rpx;
+    height: 120rpx;
+    margin-top: 28rpx;
+    margin-left: 28rpx;
+}
+.ui-rightItem__name{
+    margin-top: 40rpx;
+    margin-left: 28rpx;
+    font-size:32rpx;
+    font-family:PingFangSC;
+    font-weight:400;
+    color:#333333;
+    line-height:32rpx;
+}
+.ui-rightItem__text {
+    margin-top: 10rpx;
+    margin-left: 28rpx;
+    font-size:20rpx;
+    font-family:PingFangSC;
+    font-weight:400;
+    color:#777777;
+    line-height:36rpx;
+}
+.ui-rightItem__text > text {
+    color: #ED3D3B;
+}
+.ui-plusIcon {
+    margin-top: -62rpx;
+    width: 646rpx;
+    height: 124rpx;
+}
+.ui-plusItem {
+    display: flex;
+    width: 100%;
+}
+.ui-plusItem__left,.ui-plusItem__right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+}
+.ui-plusItem__title{
+    margin-top: 20rpx;
+    font-size:24rpx;
+    font-family:PingFang-SC;
+    font-weight:400;
+    color:#999999;
+    line-height:24rpx;
+}
+.ui-plusItem__money {
+    margin-top: 16rpx;
+    font-size:28rpx;
+    font-family:PingFangSC;
+    font-weight:500;
+    color:#666666;
+    line-height:28rpx;
+}
+.ui-goodsBox {
+    width: 746rpx;
+    height: 940rpx;
+    /* background-image: url(http://www.gzlingren.com:8098/yangtianhe/card_backGround2x.png); */
+    background-image: url(http://m.qpic.cn/psb?/V12Kdegv0qd4wf/pd0u1LVbEgis1XT.dgqoAK3R*j*csvHmoxmaaBXCJ1A!/b/dL8AAAAAAAAA&bo=zgKQAwAAAAADJ10!&rf=viewer_4&t=5);
+    background-size: cover;
+}
+.ui-goodsItem {
+    display: inline-block;
+    width:304rpx;
+    height:328rpx;
+    margin-bottom: 20rpx;
+    margin-left: 30rpx;
+    background:#FFFFFFFF;
+    border-radius:8rpx;
+    text-align: center;
+    position: relative;
+}
+.ui-goodsItem:nth-child(1) {
+    margin-top: 58rpx;
+    margin-left: 50rpx;
+}
+.ui-goodsItem:nth-child(3) {
+    margin-left: 50rpx;
+}
+.ui-goodsItem__img {
+    display: inline-block;
+    width: 176rpx;
+    height: 176rpx;
+    margin-top: 60rpx;
+}
+.ui-goodsItem__title {
+    display: inline-block;
+    font-size:24rpx;
+    font-family:PingFangSC;
+    font-weight:500;
+    color:#333333;
+    line-height:24rpx;
+}
+.ui-goodsItem__price {
+    margin-top: 16rpx;
+    font-size:24rpx;
+    font-family:PingFangSC;
+    font-weight:500;
+    color:#ED3D3B;
+    line-height:24rpx;
+}
+.ui-plusItem__icon {
+    width: 56rpx;
+    height: 44rpx;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.ui-moreBtn {
+    width: 574rpx;
+    height: 84rpx;
+    margin-left: 60rpx;
+    margin-top: 44rpx;
+    line-height: 84rpx;
+    font-size:26rpx;
+    font-family:PingFangSC;
+    font-weight:500;
+    color:#333333;
+    background-color: #FFE59C;
+    border-radius: 40rpx;
+    text-align: center;
+}
+.ui-bottomBox {
+    margin-top: 138rpx;
+    margin-bottom: 0;
+    display: flex;
+    width: 100%;
+    height: 120rpx;
+    background-color: #444548;
+}
+.ui-bottomItem__content {
+    width: 472rpx;
+    height: 100%;
+    padding-top: 25rpx;
+    padding-left: 20rpx;
+    font-size:22rpx;
+    font-family:PingFangSC;
+    font-weight:500;
+    color:#FFF4D6;
+}
+.ui-bottomItem > text {
+    color:#ED3D3B;
+}
+.ui-bottomItem__btn {
+    margin-top: 30rpx;
+    width: 208rpx;
+    height: 76rpx;
+    font-size:36rpx;
+    font-family:PingFangSC;
+    font-weight:500;
+    color:#333333;
+    background-color: #FDDA92;
+    line-height:76rpx;
+    text-align: center;
+    border-radius: 40rpx;
+}
+.ui-goodsBox {
+    width: 686rpx;
+    background:#FFF1DE;
+    border-radius:16rpx;
+}
+.uigoodsItem {
+    display: inline-block;
+    width:312rpx;
+    height:412rpx;
+    background:#FFFF;
+    border-radius:16px;
+}

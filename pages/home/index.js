@@ -371,7 +371,10 @@ const methods = {
         let self = this;
         _g.navigateTo({
             url: 'pages/search/brandList',
-            param: { id: e.target.dataset.id }
+            param: { 
+                id: e.target.dataset.id,
+                platformFlag: 2
+            }
         }, self);
     },
     initBlock: function() {

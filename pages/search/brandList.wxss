@@ -192,3 +192,8 @@
     background-color: #F5F5F5; 
     z-index: 999;
 }
+.ui-noDaTaBox {
+    margin-top: 200rpx;
+    margin-left: 300rpx;
+    color: #999999;
+}

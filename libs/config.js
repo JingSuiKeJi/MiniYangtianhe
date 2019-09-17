@@ -110,6 +110,8 @@ config.prototype = {
             getLeyouList: '/app/step/getLeyouList.do',
             chooseDefault: '/app/address/chooseDefault.do',
             deleteAddress: '/app/address/delete.do',
+            myCommentList: '/app/comment/list.do',
+            deleteComment: '/app/comment/delete.do',
 			getVerifierList:'/app/store/getVerifierList.do',
 			deleteVerifier:'/app/store/deleteVerifier.do',
 			searchVerifier:'/app/store/searchVerifier.do',

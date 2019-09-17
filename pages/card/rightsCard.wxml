@@ -1,0 +1,47 @@
+<wxs module="filter" src="../../filter/filter.wxs"></wxs>
+<view class="ui-main">
+    <image src="../../images/rightsCard__banner.png" mode="aspectFill" class="ui-bannerImg" />
+    <view class="ui-centerBox">
+        <view class="ui-centerItem__titleBox">
+            <image src="../../images/rightsCard_title.png" mode="aspectFill" class="ui-centerItem__Img" />
+            <text class="ui-titleItem__text">权益专区</text>
+        </view>
+        <view class="ui-centerItem">
+            <image src="{{filter.getLocalPhoto('e_c.png')}}" mode="aspectFill" class="ui-goods__Img" />
+            <view class="ui-centerItem__goods">
+                <view class="ui-goodsItem__title">养生堂保健品全套</view>
+                <view class="ui-goodsItem__scale">维C+维E</view>
+                <view class="ui-goodsItem__price">
+                    <text>¥ 23.80</text>
+                    <image src="{{filter.getLocalPhoto('cart.png')}}" mode="aspectFill" class="ui-goods__cartImg" />
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="ui-goodsBox">
+        <view class="ui-goodsItem">
+            <image src="{{filter.getLocalPhoto('e_c.png')}}" mode="aspectFill" class="ui-goodsItem__Img" />
+            <view class="ui-goods__title">养生堂保健品全套</view>
+            <view class="ui-goods__price">
+                <text>¥ 23.80</text>
+                <image src="{{filter.getLocalPhoto('cart.png')}}" mode="aspectFill" class="ui-cartImg" />
+            </view>
+        </view>
+        <view class="ui-goodsItem">
+            <image src="{{filter.getLocalPhoto('e_c.png')}}" mode="aspectFill" class="ui-goodsItem__Img" />
+            <view class="ui-goods__title">养生堂保健品全套</view>
+            <view class="ui-goods__price">
+                <text>¥ 23.80</text>
+                <image src="{{filter.getLocalPhoto('cart.png')}}" mode="aspectFill" class="ui-cartImg" />
+            </view>
+        </view>
+        <view class="ui-goodsItem">
+            <image src="{{filter.getLocalPhoto('e_c.png')}}" mode="aspectFill" class="ui-goodsItem__Img" />
+            <view class="ui-goods__title">养生堂保健品全套</view>
+            <view class="ui-goods__price">
+                <text>¥ 23.80</text>
+                <image src="{{filter.getLocalPhoto('cart.png')}}" mode="aspectFill" class="ui-cartImg" />
+            </view>
+        </view>
+    </view>
+</view>
