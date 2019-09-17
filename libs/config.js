@@ -111,7 +111,11 @@ config.prototype = {
             chooseDefault: '/app/address/chooseDefault.do',
             deleteAddress: '/app/address/delete.do',
             myCommentList: '/app/comment/list.do',
-            deleteComment: '/app/comment/delete.do'
+            deleteComment: '/app/comment/delete.do',
+			getVerifierList:'/app/store/getVerifierList.do',
+			deleteVerifier:'/app/store/deleteVerifier.do',
+			searchVerifier:'/app/store/searchVerifier.do',
+			addVerifier:'/app/store/addVerifier.do',
         },
         goods: {
             getGoodsDetail: '/app/goods/getGoodsDetail.do',

@@ -9,7 +9,7 @@ const User = require('../../service/User');
 
 let data = {
 	nickname:'客户中心',//接收上一页选择的顾客用户名,默认客户中心
-	userId:'1',//接收上一页选择的顾客id，3为测试数据
+	userId:'1',//接收上一页选择的顾客id，1为测试数据
 	clientInfo:{},//客户信息
 	nowMonth:'',//当前月
 	addressList:[],
