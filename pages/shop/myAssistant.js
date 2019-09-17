@@ -172,11 +172,11 @@ const methods = {
 			storeId:checkStoreId,
 			userId:checkUserId,
 		}).then((ret) => {
-			console.log("添加成功");
+			self.getDataPage()
 		}, (err) => {
 			console.log("添加失败");
 		});
-		// self.hideModal();
+		self.hideModal();
 	},
 	//check状态切换
 	onCheckStatusTap:function(options){

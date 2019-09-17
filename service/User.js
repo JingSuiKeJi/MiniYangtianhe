@@ -214,6 +214,41 @@ class User {
 	        data: reqData
 	    }, page);
 	}
+	getOrderList(page, reqData) {
+	    _g.dm.canLoadMore = 1;
+	    return _g.ajax({
+	        url: mini.user.getOrderList,
+	        data: reqData
+	    }, page);
+	}
+	getOrderDetail(page, reqData) {
+	    _g.dm.canLoadMore = 1;
+	    return _g.ajax({
+	        url: mini.user.getOrderDetail,
+	        data: reqData
+	    }, page);
+	}
+	verification(page, reqData) {
+	    _g.dm.canLoadMore = 1;
+	    return _g.ajax({
+	        url: mini.user.verification,
+	        data: reqData
+	    }, page);
+	}
+	myCommentList(page, reqData) {
+	    _g.dm.canLoadMore = 1;
+	    return _g.ajax({
+	        url: mini.user.myCommentList,
+	        data: reqData
+	    }, page);
+	}
+	deleteComment(page, reqData) {
+	    _g.dm.canLoadMore = 1;
+	    return _g.ajax({
+	        url: mini.user.deleteComment,
+	        data: reqData
+	    }, page);
+	}
 }
 
 module.exports = new User();

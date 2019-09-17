@@ -112,10 +112,36 @@ var filter = {
                 return '已签收';
             case 'TRADE_FINISH':
                 return '已签收';
+			case 'CHECKED':
+			    return '已核销';
             default: 
                return '';
         }
     },
+	getPlatformFlag: function (status) {// 平台标识
+	    switch(status) {
+	        case 1:
+	            return '商城';
+	        case 2:
+	            return '药房';
+	        default: 
+	           return '';
+	    }
+	},
+	getDeliveryType: function (status) {// 配送方式
+	    switch(status) {
+	        case 1:
+	            return '快递';
+	        case 2:
+	            return '自提';
+			case 3:
+				return '配送';
+			case 4:
+				return '配送';
+	        default: 
+	           return '';
+	    }
+	},
     getStatus: function (status) {
         switch(status) {
             case  1:

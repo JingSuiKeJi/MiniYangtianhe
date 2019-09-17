@@ -115,9 +115,9 @@ page{
 	top: 46rpx;
 }
 
-.ui-orderStatus .ui-storeTetx{
+.ui-orderStatus .ui-storeText{
 	position: absolute;
-	width:68rpx;
+	padding: 0 12rpx;
 	height:40rpx;
 	background:linear-gradient(136deg,rgba(1,206,165,1) 0%,rgba(94,221,218,1) 100%);
 	border-radius:4rpx;
@@ -127,7 +127,7 @@ page{
 	color:rgba(255,255,255,1);
 	line-height:40rpx;
 	text-align: center;
-	left:544rpx;
+	right:138rpx;
 	margin-top: 40rpx;
 }
 
@@ -157,7 +157,7 @@ page{
 	width:160rpx;
 	height:160rpx;
 	border-radius:4rpx;
-	/* background:#CCCCCC ; */
+	background:#CCCCCC ;
 	margin: 40rpx 0 0 40rpx;
 }
 
@@ -248,7 +248,7 @@ page{
 	position: relative;
 }
 
-.btn-detail{
+.ui-detailBtn{
 	position: absolute;
 	width:148rpx;
 	height:60rpx;
@@ -262,4 +262,27 @@ page{
 	color:rgba(102,102,102,1);
 	line-height:60rpx;
 	text-align: center;
+}
+
+.ui-noOrderText{
+	margin-top: 36rpx;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	width:150rpx;
+	height:84rpx;
+}
+
+.ui-noOrderText text{
+	font-size:30rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(153,153,153,1);
+	line-height:42rpx;
+}
+
+.ui-noDataBox {
+	margin-top: 200rpx;
+	margin-left: 300rpx;
 }
