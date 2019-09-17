@@ -127,7 +127,7 @@
 					<view class="ui-inputInviterInfo" wx:else>
 						<input class="ui-inputBox" type="text" placeholder="请输入邀请人ID" value="{{inviterId}}" confirm-type="done" bindinput ="inviterIdInput"/>
 						<!-- 清空文字 -->
-						<view class="ui-empty" bindtap="onEmpty"></view>
+						<view class="ui-emptyCircle" bindtap="onEmpty"></view>
 						<view class="ui-cutOff"></view>
 						<view class="ui-save" bindtap="onSaveInviterInfo">保存</view>
 					</view>
