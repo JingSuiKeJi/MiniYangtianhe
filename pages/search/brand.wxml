@@ -68,7 +68,7 @@
         <view class="ui-allBrandItem__title">全部品牌</view>
         <view class="ui-allBrandItem" wx:for="{{list}}" wx:for-item="item" wx:key="{{index}}" id="{{item.initials}}">
             <view class="ui-allBrandItem__sort" wx:if="{{item.showInitials}}">{{item.initials}}</view>
-            <view class="ui-allBrandItem__brand">
+            <view class="ui-allBrandItem__brand" bindtap="onDetailTap" data-id="{{item.id}}">
                 <image src="{{filter.getPhoto(host,item.logoUrl)}}" class="ui-brand__goodsIcon"/>
                 <text class="ui-brand__text">{{item.title}}</text>
             </view>

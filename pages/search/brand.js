@@ -39,7 +39,8 @@ const data = {
 // 页面onLoad方法
 const onLoad = function(self) {
     self.setData({
-        storeId: _g.getLS('storeInfo').id
+        storeId: _g.getLS('storeInfo').id,
+        platformFlag: self.data.platformFlag
     });
     self.getData();
 };
@@ -104,7 +105,11 @@ const methods = {
     onDetailTap: function(e) {
         let self = this;
         _g.navigateTo({
-            url: 'pages/search/brandList'
+            url: 'pages/search/brandList',
+            param: { 
+                id: e.currentTarget.dataset.id,
+                platformFlag: self.data.platformFlag
+            }
         }, self)
     },
     //锚点跳转

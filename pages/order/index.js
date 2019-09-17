@@ -40,7 +40,7 @@ const methods = {
 	getPageData: function (value) {
 		let self = this;
 		let param = {
-			page: 1,
+			page: self.data.page,
 			pageSize: 10,
 			type: self.data.currentCheck + 1,//1.全部 2.待付款 3.待发货 4.代收贷 5.已签收 
 		}

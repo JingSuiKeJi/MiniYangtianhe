@@ -3,10 +3,10 @@
 <view class="contain">
    <view class="main">
        <view class="ui-headerBox">
-           <image src="../../images/brand_banner.png" class="ui-headerItem__banner" />
+           <image src="{{filter.getPhoto(host,backgroundUrl)}}" mode="aspectFill" class="ui-headerItem__banner" />
            <vie class="ui-infoBox">
-                <image src="{{filter.getReturnPhoto(backgroundUrl)}}" class="ui-infoItem__brandImg"/>
-                <text class="ui-headerItem__text">汤臣倍健</text>
+                <image src="{{filter.getPhoto(host,logoUrl)}}" mode="aspectFill" class="ui-infoItem__brandImg"/>
+                <text class="ui-headerItem__text">{{title}}</text>
            </vie>
        </view>
        <view class="ui-background"></view>
@@ -14,39 +14,40 @@
             <view class="ui-content_tap">
                 <view class="ui-tapItem_price" bindtap="onChoseTap" data-type="1">
                    
-                        <text class="ui-tapItem_text" bindtap="onChoseTap" data-type="1" style="color: {{type == 1 ? '#20CAB4' : ''}}" >价格</text>
-                        <image  src="{{type == 1 ? filter.getLocalPhoto('sort.png') : filter.getLocalPhoto('graySort.png')}}" class="ui-priceItem_img" bindtap="onChoseTap" data-type="1"/>
-                         <image wx:if="{{type == 1}}"  src="{{filter.getLocalPhoto('index_icon.png')}}"  class="ui-tapItem_icon"/>
+                        <text class="ui-tapItem_text"  style="color: {{type == 1 ? '#20CAB4' : ''}}" >价格</text>
+                        <image  src="{{type == 1 ? filter.getLocalPhoto('sort.png') : filter.getLocalPhoto('graySort.png')}}" class="ui-priceItem_img" mode="aspectFill" />
+                         <image wx:if="{{type == 1}}"  src="{{filter.getLocalPhoto('index_icon.png')}}" mode="aspectFill" class="ui-tapItem_icon"/>
                    
                     
                 </view>
                 <view class="ui-tapItem_count" bindtap="onChoseTap" data-type="2">
-                    
-                        <text class="ui-tapItem_text" bindtap="onChoseTap" data-type="2" style="color: {{type == 2 ? '#20CAB4' : ''}}">数量{{value}}</text>
-                        <image wx:if="{{type == 2}}" src="{{filter.getLocalPhoto('index_icon.png')}}"  class="ui-tapItem_icon"/>
+                        <text class="ui-tapItem_text"  style="color: {{type == 2 ? '#20CAB4' : ''}}">数量{{value}}</text>
+                        <image wx:if="{{type == 2}}" src="{{filter.getLocalPhoto('index_icon.png')}}" mode="aspectFill" class="ui-tapItem_icon"/>
                    
                     
                 </view>  
             </view>
-            <view >
-                 <view class="ui-content_item" wx:for="{{list}}">
+            <view wx:if="{{list.length}}">
+                 <view class="ui-content_item" wx:for="{{list}}" wx:key="{{index}}" bindtap="onDetailTap" data-id="{{item.id}}">
                     <view class="ui-contentItem_left">
-                        <image src="{{filter.getLocalPhoto(item.url) }}" bindtap="onDetailTap"/>
+                        <image src="{{filter.getPhoto(host,item.picUrl) }}" mode="aspectFill"/>
                     </view>
                     <view class="ui-contentItem_right">
-                        <view class="ui-content_title">{{item.title}}</view>
-                        <view class="ui-content_scale">{{item.scale}} </view>
+                        <view class="ui-content_title">{{item.secondTitle}}</view>
+                        <view class="ui-content_scale">{{item.mainTitle}} </view>
                         <view class="ui-content_price">
-                            <text>原价￥{{item.prePrice}}</text>
-                            <text>已售{{item.count}}件</text>
+                            <text>原价￥{{item.originPrice}}</text>
+                            <text>已售{{item.soldNum + item.virtualNum}}件</text>
                         </view>
                         <view class="ui-content_reward">
                             <text >￥{{item.nowPrice}}</text>
-                            <image src="{{filter.getLocalPhoto('cart.png')}}" bindtap="onAddtap"/>
+                            <image src="{{filter.getLocalPhoto('cart.png')}}" mode="aspectFill" bindtap="onAddtap"/>
                         </view>
                     </view>
                   </view>   
-            </view>    
+            </view>
+            <view wx:if="{{!list.length}}" class="ui-noDaTaBox">暂无数据</view>
+          
       </view>
      
    </view>

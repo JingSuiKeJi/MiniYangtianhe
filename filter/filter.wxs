@@ -125,6 +125,19 @@ var filter = {
             default: 
                return '未达成';
         }
+    },
+    split: function (string) {
+        return string.split(',');
+    },
+    getComment: function (status) {
+        switch(status) {
+            case 1:
+                return '好评';
+            case 2:
+                return '中评';
+            default: 
+               return '差评';
+        }
     }
 };
 module.exports = filter;

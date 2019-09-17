@@ -171,6 +171,21 @@ class User {
 	        data: reqData
 	    }, page);
 	}
+	myCommentList(page, reqData) {
+	    _g.dm.canLoadMore = 1;
+	    return _g.ajax({
+	        url: mini.user.myCommentList,
+	        data: reqData
+	    }, page);
+	}
+	deleteComment(page, reqData) {
+	    _g.dm.canLoadMore = 1;
+	    return _g.ajax({
+	        url: mini.user.deleteComment,
+	        data: reqData
+	    }, page);
+	}
+
 }
 
 module.exports = new User();
