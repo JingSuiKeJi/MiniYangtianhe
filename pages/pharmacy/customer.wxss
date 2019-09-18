@@ -109,8 +109,8 @@ page{
 	left: 40rpx;
 	width: 80rpx;
 	height: 80rpx;
-	background: #CCCCCC;
-	border-radius: 80rpx;
+	/* background: #CCCCCC;
+	border-radius: 80rpx; */
 }
 
 .ui-avatar image{
@@ -138,4 +138,14 @@ page{
 
 .ui-items text:nth-child(4){
 	right: 58rpx;
+}
+.ui-noDataBox {
+	margin-top: 200rpx;
+	margin-left: 300rpx;
+	font-size: 26rpx;
+	font-family: PingFangSC;
+	font-weight: 400;
+	color: rgba(153,153,153,1);
+	line-height: 26rpx;
+
 }

@@ -19,7 +19,7 @@
 		wx:for="{{orderList}}" wx:for-item="item" wx:key="{{index}}"> -->
 		<view  class="ui-orderInfoBox" 
 		wx:for="{{orderList}}" wx:for-item="item" wx:key="{{index}}" wx:if="{{orderList.length}}">
-			<view bindtap="onOrderDetailTap" data-order-Status="{{item.orderStatus}}" data-orderid="{{item.orderId}}">
+			<view bindtap="onOrderDetailTap"  data-orderid="{{item.orderId}}">
 				<view class="ui-orderStatus">
 					<text class="ui-orderReferenceText">订单编号： {{item.orderNo}}</text>
 					<text class="ui-storeTetx" wx:if="{{item.platformFlag}}">{{filter.getPlatform(item.platformFlag)}}</text>
@@ -61,7 +61,7 @@
 			</block>
 			<block wx:elif="{{item.status=='TRADE_BUYER_SIGNED'}}">
 				<view class="ui-handle">
-                    <view class="btn-applyAfter btn-common" ><text>查看订单</text></view>
+                    <view class="btn-applyAfter btn-common" bindtap="onOrderDetailTap"  data-orderid="{{item.orderId}}"><text>查看订单</text></view>
 					<view class="btn-evaluate btn-common" catchtap="onPostCommentTap" data-index="{{index}}"><text>评价</text></view>
 				</view>
 			</block>

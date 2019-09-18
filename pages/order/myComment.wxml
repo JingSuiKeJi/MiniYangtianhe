@@ -2,7 +2,7 @@
 <!--myComment.wxml-->
 <view class="container">
 	<view class="ui-main">
-		<view class="ui-commentItems" wx:for="{{commentList}}" wx:for-index="idx" wx:key="idx" wx:for-item="item" bindtap="deleteBtn" data-id="{{item.id}}">
+		<view class="ui-commentItems" wx:for="{{commentList}}" wx:for-index="idx" wx:key="idx" wx:for-item="item" >
 			<view class="ui-userInfo">
 				<view class="ui-avatar"><image src="{{item.commentUser.avatar}}"></image></view>
 				<text>{{item.commentUser.nickname}}</text>

@@ -4,32 +4,33 @@
 	<navBar title='订单详情' background='white' color='black' iconTheme='black' back="{{true}}"></navBar>
 	<view class="ui-main">
 		<view class="ui-orderStatusBox">
-			<view class="ui-timeLimit" wx:if="{{filter.getOrderStatus(status)=='待付款'}}"><text>订单还剩{{minutes<10?'0'+minutes:minutes}}分{{seconds<10?'0'+seconds:seconds}}秒关闭，请尽快支付</text></view>
-			<view class="ui-orderStatus" wx:if="{{filter.getOrderStatus(status)=='待付款'}}">
+			<view class="ui-timeLimit" wx:if="{{status=='WAIT_BUYER_PAY'}}"><text>订单还剩{{minutes<10?'0'+minutes:minutes}}分{{seconds<10?'0'+seconds:seconds}}秒关闭，请尽快支付</text></view>
+			<view class="ui-orderStatus" wx:if="{{status=='WAIT_BUYER_PAY'}}">
 				<view class="ui-StatusIcon ui-notPaymentIcon"></view>
-				<text class="ui-StatusText">代付款</text>
+				<text class="ui-StatusText">待付款</text>
 			</view>
-			<view class="ui-orderStatus" wx:if="{{filter.getOrderStatus(status)=='待发货'}}">
+			<view class="ui-orderStatus" wx:if="{{status=='WAIT_SELLER_SEND_GOODS'}}">
 				<view class="ui-StatusIcon ui-waitShipmentsIcon"></view>
 				<text class="ui-StatusText">待发货</text>
 			</view>
-			<view class="ui-orderStatus" wx:if="{{filter.getOrderStatus(status)=='待收货'}}">
+			<view class="ui-orderStatus" wx:if="{{status=='WAIT_BUYER_CONFIRM_GOODS'}}">
 				<view class="ui-StatusIcon ui-waitReceivingIcon"></view>
 				<text class="ui-StatusText">待收货</text>
 			</view>
-			<view class="ui-orderStatus" wx:if="{{filter.getOrderStatus(status)=='待核销'}}">
-				<view class="ui-verificCodeIcon"></view>
-				<view class="btn-waitVerific"><text>核销码：987456</text></view>
+			<view class="ui-orderStatus" wx:if="{{status=='WAIT_CHECK'}}">
+				<!-- <view class="ui-verificCodeIcon"></view> -->
+				<image src="{{verificationCodeUrl}}" mode="aspectFill" class="ui-verificCodeIcon"/>
+				<view class="btn-waitVerific"><text>核销码：{{data.verificationCode}}</text></view>
 			</view>
-			<view class="ui-orderStatus" wx:if="{{filter.getOrderStatus(status)=='已核销'}}">
+			<view class="ui-orderStatus" wx:if="{{status=='CHECKED'}}">
 				<view class="ui-verificCodeIcon"></view>
 				<view class="btn-alreadyVerific"><text>已核销</text></view>
 			</view>
-			<view class="ui-orderStatus" wx:if="{{orderStatus=='交易成功'}}">
+			<view class="ui-orderStatus" wx:if="{{status=='TRADE_FINISH' || status=='TRADE_FINISH' || status=='TRADE_BUYER_SIGNED'}}">
 				<view class="ui-StatusIcon ui-tradeSuccessfully"></view>
 				<text class="ui-StatusText">交易成功</text>
 			</view>
-			<view class="ui-orderStatus" wx:if="{{filter.getOrderStatus(status)=='已取消'}}">
+			<view class="ui-orderStatus" wx:if="{{status=='CHECKED' }}">
 				<view class="ui-StatusIcon ui-closeDeal"></view>
 				<text class="ui-StatusText">交易关闭</text>
 			</view>
@@ -39,8 +40,8 @@
 			</view>
 		</view>
 		<!-- 配送或自提信息 -->
-		<block wx:if="{{(filter.getOrderStatus(status)=='待核销')||(filter.getOrderStatus(status)=='已核销')}}">
-			<view wx:if="{{takeState==4}}" class="ui-verificInfoBox" wx:for="{{orderDelivery}}" wx:for-item="item" wx:key="idx">
+		<view wx:if="{{status=='WAIT_CHECK' || status=='CHECKED'}}" class="ui-pastBox">
+			<view wx:if="{{deliveryType == 3 || deliveryType == 4}}" class="ui-verificInfoBox" wx:for="{{orderDelivery}}" wx:for-item="item" wx:key="idx">
 				<text class="ui-orderInfoTitle">{{item.title}}</text>
 				<view class="ui-infoCommon">
 					<text>配送地址</text>
@@ -70,9 +71,9 @@
 					<text>{{item.storeAddress}}</text>
 				</view>
 			</view>
-		</block>
+		</view>
 		
-		<view wx:if="{{!(filter.getOrderStatus(status)=='待核销')&&!(filter.getOrderStatus(status)=='已核销')&&!(orderStatus=='评价成功')}}" class="ui-consigneeAddressBox">
+		<view wx:if="{{orderAddress}}" class="ui-consigneeAddressBox">
 			<view class="ui-landmarkIcon"></view>
 			<view class="ui-consignee" >
 				<view class="ui-consigneeinfo">
@@ -98,7 +99,7 @@
 					<text class="ui-newsNum">x{{item.num}}</text>
 				</view>
 			</view>
-			<view wx:if="{{filter.getOrderStatus(status)=='待发货'||filter.getOrderStatus(status)=='待收货'||orderStatus=='交易成功'}}" class="btn-applyAfterSales" bindtap="onApplyAfterSales">申请售后</view>
+			<view wx:if="{{status=='WAIT_SELLER_SEND_GOODS'||status=='WAIT_BUYER_CONFIRM_GOODS'||orderStatus=='交易成功'}}" class="btn-applyAfterSales" bindtap="onApplyAfterSales">申请售后</view>
 			<view class="ui-freight ui-commodityTextCommon">
 				<text>运费</text>
 				<text>¥{{deliveryFee}}</text>
@@ -117,33 +118,33 @@
 			<text>订单信息</text>
 			<text>订单编号：{{orderNo}}</text>
 			<text>创建时间：{{filter.getDate(creatrTime)}}</text>
-			<text wx:if="{{(filter.getOrderStatus(status)!='待付款')}}">付款时间：{{filter.getDate(payTime)}}</text>
+			<text wx:if="{{payTime}}">付款时间：{{filter.getDate(payTime)}}</text>
 		</view>
 		
 		<view wx:if="{{!(orderStatus=='评价成功')}}" class="ui-verificationFooter">
-			<block  wx:if="{{filter.getOrderStatus(status)=='待付款'}}">
+			<block  wx:if="{{status=='WAIT_BUYER_PAY'}}">
 				<view class="btn-common btn-grey" bindtap="onCancelTap"><text>取消订单</text></view>
 				<view class="btn-common btn-green" catchtap="onPayMoneyTap"><text>立即支付</text></view>
 			</block>
-			<block wx:if="{{filter.getOrderStatus(status)=='待收货'}}">
+			<block wx:if="{{status=='WAIT_BUYER_CONFIRM_GOODS'}}">
 				<view class="btn-common btn-grey" catchtap="onCheckLogisticsTap"><text>查看物流</text></view>
 				<view class="btn-common btn-green" catchtap="onConfirmTap"><text>确认收货</text></view>
 			</block>
-			<block wx:if="{{filter.getOrderStatus(status)=='待发货'}}">
+			<block wx:if="{{status=='WAIT_SELLER_SEND_GOODS'}}">
 				<view class="btn-common btn-grey" bindtap="onCancelTap"><text>取消订单</text></view>
 				<view class="btn-common btn-grey btn-greyRight"><text>提醒发货</text></view>
 			</block>
-			<block wx:if="{{filter.getOrderStatus(status)=='交易成功'}}">
-				<view class="btn-common btn-grey"><text>返回首页</text></view>
+			<block wx:if="{{status=='TRADE_BUYER_SIGNED'}}">
+				<view class="btn-common btn-grey" bindtap="onBackTap"><text>返回首页</text></view>
 				<view class="btn-common btn-grey btn-greyRight" catchtap="onPostCommentTap"><text>立即评价</text></view>
 			</block>
-			<block wx:if="{{orderStatus=='交易关闭'}}">
+			<block wx:if="{{status=='CUSTOMER_CANCEL'}}">
 				<view class="btn-common btn-single" catchtap="onDeleteTap"><text>删除订单</text></view>
 			</block>
-			<block wx:if="{{filter.getOrderStatus(status)=='待核销'}}">
+			<block wx:if="{{status=='WAIT_CHECK'}}">
 				<view class="btn-common btn-single" catchtap="onApplyafterSaleTap"><text>申请售后</text></view>
 			</block>
-			<block wx:if="{{filter.getOrderStatus(status)=='已核销'}}">
+			<block wx:if="{{status=='CHECKED'}}">
 				<view class="btn-common btn-grey" catchtap="onApplyafterSaleTap"><text>申请售后</text></view>
 				<view class="btn-common btn-grey btn-greyRight" catchtap="onPostCommentTap"><text>评价</text></view>
 			</block>
@@ -151,7 +152,7 @@
 		
 		<!-- 评价成功 -->
 		<view wx:if="{{orderStatus=='评价成功'}}" class="ui-commentFooter">
-			<view class="btn-commentCommon btn-backHome"><text>返回首页</text></view>
+			<view class="btn-commentCommon btn-backHome" bindtap="onBackTap"><text>返回首页</text></view>
 			<view class="btn-commentCommon btn-checkComment" catchtap="onCheckCommentTap"><text>查看评价</text></view>
 		</view>
 		

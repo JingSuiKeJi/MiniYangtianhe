@@ -17,7 +17,7 @@ var filter = {
          var strDate = year + '-' + month + '-' + day +  ' ' + time;
         return strDate;
     },
-    getDay: function (value) {
+    getDay: function (value,type) {
         if ((value + '').length < 13) value *= 1000;
         var d = getDate(value);
         // d.setTime(value);
@@ -31,6 +31,7 @@ var filter = {
         if (month < 10) month = "0" + month;
         if (day < 10) day = "0" + day;
         var strDate = year + '-' + month + '-' + day;
+        if (type) strDate = year + '年' + month + '月' + day + '日';
         return strDate;
     },
     countDown: function(endTime, startTime, type) {
@@ -163,6 +164,28 @@ var filter = {
                 return '中评';
             default: 
                return '差评';
+        }
+    },
+    getWithdrawStatus: function (status) {
+        switch(status) {
+            case 1:
+                return '处理中';
+            case 2:
+                return '通过';
+            default: 
+               return '驳回';
+        }
+    },
+    getDistrStatus: function (status) {
+        switch(status) {
+            case 1:
+                return '一级佣金';
+            case 2:
+                return '二级佣金';
+            case 3:
+                return '分红';    
+            default: 
+               return '提现';
         }
     }
 };

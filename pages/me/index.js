@@ -147,7 +147,8 @@ const methods = {
     //跳转到分享海报
     onPersonalTap: function() {
         let self = this;
-		const userInfo = self.data.userInfo;
+        const userInfo = self.data.userInfo;
+        if (!_g.checkLogin({type: 2})) return;
         _g.navigateTo({
 			param:{
 				avatar:userInfo.avatar,
@@ -159,6 +160,7 @@ const methods = {
     //跳转到福气明细
     onBlissDetailTap: function() {
         let self = this;
+        if (!_g.checkLogin({type: 2})) return;
         _g.navigateTo({
             url: 'pages/me/blissDetail',
         }, self);
@@ -166,6 +168,7 @@ const methods = {
     //跳转到优惠券
     onDiscountsTap: function() {
         let self = this;
+        if (!_g.checkLogin({type: 2})) return;
         _g.navigateTo({
             url: 'pages/pharmacy/discounts',
         }, self);
@@ -173,6 +176,7 @@ const methods = {
     //跳转到门店申请
     onStoreApplicationTap: function() {
         let self = this;
+        if (!_g.checkLogin({type: 2})) return;
         _g.navigateTo({
             url: 'pages/me/storeApplication',
         }, self);
@@ -180,6 +184,7 @@ const methods = {
     //跳转到收益中心
     onRevenueTap: function() {
         let self = this;
+        if (!_g.checkLogin({type: 2})) return;
         _g.navigateTo({
             url: 'pages/pharmacy/revenue',
         }, self);
@@ -187,6 +192,7 @@ const methods = {
     //跳转到我的订单
     onMyOrderTap: function() {
         let self = this;
+        if (!_g.checkLogin({type: 2})) return;
         _g.navigateTo({
             url: 'pages/order/index',
         }, self);
@@ -194,6 +200,7 @@ const methods = {
     //跳转到待支付
     onPayTap: function() {
         let self = this;
+        if (!_g.checkLogin({type: 2})) return;
         _g.navigateTo({
             param: {
                 currentCheck: 1
@@ -204,6 +211,7 @@ const methods = {
     //跳转到待发货
     onShippingTap: function() {
         let self = this;
+        if (!_g.checkLogin({type: 2})) return;
         _g.navigateTo({
             param: {
                 currentCheck: 2
@@ -214,6 +222,7 @@ const methods = {
     //跳转到待收货
     onReceivingTap: function() {
         let self = this;
+        if (!_g.checkLogin({type: 2})) return;
         _g.navigateTo({
             param: {
                 currentCheck: 3
@@ -224,6 +233,7 @@ const methods = {
     //跳转到已签收
     onSignedTap: function() {
         let self = this;
+        if (!_g.checkLogin({type: 2})) return;
         _g.navigateTo({
             param: {
                 currentCheck: 4
@@ -234,6 +244,7 @@ const methods = {
     //跳转到售后订单
     onAfterSaleTap: function() {
         let self = this;
+        if (!_g.checkLogin({type: 2})) return;
         _g.navigateTo({
             url: 'pages/order/afterSale',
         }, self);
@@ -241,6 +252,7 @@ const methods = {
     //跳转到门店中心
     onStoreTap: function() {
         let self = this;
+        if (!_g.checkLogin({type: 2})) return;
         _g.navigateTo({
             url: 'pages/shop/store',
         }, self);
@@ -248,6 +260,7 @@ const methods = {
     //跳转到我的评论
     onMyCommentTap: function() {
         let self = this;
+        if (!_g.checkLogin({type: 2})) return;
         _g.navigateTo({
             url: 'pages/order/myComment',
         }, self);
@@ -255,6 +268,7 @@ const methods = {
     //跳转到地址管理
     onAddressHandleTap: function() {
         let self = this;
+        if (!_g.checkLogin({type: 2})) return;
         _g.navigateTo({
             url: 'pages/me/myAddress',
         }, self);
@@ -262,6 +276,7 @@ const methods = {
     //跳转到消息通知
     onMessageInformTap: function() {
         let self = this;
+        if (!_g.checkLogin({type: 2})) return;
         _g.navigateTo({
             url: 'pages/me/messageInform',
         }, self);
@@ -270,6 +285,7 @@ const methods = {
     onBindingWeChat: function() {
         let self = this;
         const userInfo = self.data.userInfo;
+        if (!_g.checkLogin({type: 2})) return;
         _g.navigateTo({
             param: {wxNo: userInfo.wxNo},
             url: 'pages/me/bindingWeChat',
@@ -279,11 +295,12 @@ const methods = {
     onBindingPhone: function() {
         let self = this;
         const userInfo = self.data.userInfo;
+        if (!_g.checkLogin({type: 2})) return;
         _g.navigateTo({
             param: {phone: userInfo.phone},
             url: 'pages/me/bindingPhone',
         }, self);
-    }
+    },
 }
 
 // 有引用template时定义

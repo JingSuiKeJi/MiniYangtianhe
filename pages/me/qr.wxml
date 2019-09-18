@@ -1,11 +1,11 @@
-<!-- <wxs module="filter" src="../../filter/filter.wxs"></wxs> -->
+<wxs module="filter" src="../../filter/filter.wxs"></wxs>
 <!--qr.wxml-->
 <view class="container">
 	<view class="ui-main">
 		<view class="ui-qrBox">
-			<view class="ui-headPortrait"></view>
-			<text class="ui-personalId">命运的杰克</text>
-			<view class="ui-qrInfo"></view>
+			<image src="{{userInfo.avatar}}" mode="aspectFill" class="ui-headPortrait"/>
+			<text class="ui-personalId">{{userInfo.nickname}}</text>
+			<image src="{{filter.getAvatar(host,shareQR)}}" mode="aspectFill" class="ui-qrInfo" wx:if="{{shareQR}}"/>
 		</view>
 		<view class="btn-savePoster"></view>
 		<text class="ui-savePosterText">保存海报</text>
