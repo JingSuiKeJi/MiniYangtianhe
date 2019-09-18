@@ -10,7 +10,7 @@ const User = require('../../service/User');
 let data = {
 	hasNextPage:true,
 	page:1,
-	storeId:1,//接收上一页选择的顾客id，1为测试数据
+	storeId:1,//接收上一页门店id，1为测试数据
 	assistantList:[
 		// {userAvatar:'my_infoBoxAvatar',nickname:'于此长歌',oneLevelTeamNum:10,twoLevelTeamNum:25,totalMoney:1244,id:1},
 		// {userAvatar:'my_infoBoxAvatar',nickname:'邻家小姐姐',oneLevelTeamNum:10,twoLevelTeamNum:25,totalMoney:1244,id:2},
@@ -26,7 +26,7 @@ let data = {
 		// {userAvatar:'my_infoBoxAvatar',nickname:'邻家小姐姐',oneLevelTeamNum:10,twoLevelTeamNum:25,totalMoney:1244,id:12}
 	],
 	nameId:'',//店员id/昵称
-	checkStoreId:'',
+	// checkStoreId:'',
 	checkUserId:'',
 	addList:[
 		// {addAvatar:'my_infoBoxAvatar',nickname:'邻家钢铁侠',type:1},
@@ -153,8 +153,8 @@ const methods = {
 		  showModal: false,
 		  nameId:'',
 		  addList:[],
-		  checkStoreId:[],
-		  checkUserId:[],
+		  // checkStoreId:'',
+		  checkUserId:'',
 		});
 	},
 	onCancel: function () {
@@ -164,12 +164,13 @@ const methods = {
 	//确认添加店员
 	onConfirm: function () {
 		const self = this;
-		const checkStoreId = parseInt(self.data.checkStoreId);
+		// const checkStoreId = parseInt(self.data.checkStoreId);
 		const checkUserId = parseInt(self.data.checkUserId);
-		// console.log(23,checkStoreId,checkUserId);
+		const storeId = self.data.storeId;
+		console.log(23,storeId,checkUserId);
 		//添加店员
 		User.addVerifier(self, {
-			storeId:checkStoreId,
+			storeId:storeId,
 			userId:checkUserId,
 		}).then((ret) => {
 			self.getDataPage()
@@ -193,7 +194,7 @@ const methods = {
 		// addList[idx].check = !addList[idx].check; //当前点击的位置为true即选中
 		self.setData({
 			addList:addList,
-			checkStoreId:addList[idx].storeId,
+			// checkStoreId:addList[idx].storeId,
 			checkUserId:addList[idx].userid,
 		})
 		// const checkStoreId = self.data.checkStoreId;

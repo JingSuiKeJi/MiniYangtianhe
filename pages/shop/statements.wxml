@@ -1,80 +1,103 @@
-<!-- <wxs module="filter" src="../../filter/filter.wxs"></wxs> -->
+<wxs module="filter" src="../../filter/filter.wxs"></wxs>
 <!--statements.wxml-->
 <view class="container">
 	<navBar title='财务报表' background='linear-gradient(137deg,rgba(1,206,165,1) 0%,rgba(94,221,218,1) 100%)' color='white' iconTheme='white' back="{{true}}"></navBar>
 	<view class="ui-main">
-		<view class="ui-shortCalendar">
+		<!-- 完整日历 -->
+		<view class="ui-calendarBox" wx:if="{{calendarFlag==true}}">
+			<calendar cell-size="23" weeks-type="cn" days-color="{{dayStyle}}" show-more-days="true" binddayClick="dayClick"/>
+			<view class="ui-showHidden ui-pullUp" catchtap="onPullUpTap"></view>
+		</view>
+		
+		<!-- 单行日历 -->
+		<view class="ui-shortCalendar" wx:else>
 			<view class="ui-weekText">
 				<text wx:for="{{weekList}}" wx:for-item="item" wx:key="idx">
 					{{item}}
 				</text>
 			</view>
 			<view class="ui-dateText">
-				<view bindtap="onChooseDate" class="ui-dateCircleBg {{currentDataState==item?'ui-dateCircleBgHhover':''}}" data-id="{{index}}" wx:for="{{dateList}}" wx:for-item="item" wx:key="idx">	
+				<view bindtap="onChooseDate" class="ui-dateCircleBg {{currentData==item?'ui-dateCircleBgHhover':''}}" data-id="{{index}}" wx:for="{{dateList}}" wx:for-item="item" wx:key="{{index}}">	
 					<text>{{item}}</text>
 				</view>
 			</view>
-			<view class="ui-pullDown"></view>
+			<view class="ui-pullDown" catchtap="onPullDownTap"></view>
 		</view>
 		
+		<!-- 营业额 -->
 		<view class="ui-history">
 			<view class="ui-historyStatus">
-				<text bindtap="onChooseToday" class="{{todayFlag?'ui-historyStatusTextHover':''}}">当天</text>
-				<text bindtap="onChooseWeek" class="{{weekFlag?'ui-historyStatusTextHover':''}}">一周</text>
-				<text bindtap="onChooseMonth" class="{{monthFlag?'ui-historyStatusTextHover':''}}">一个月</text>
+				<text bindtap="onChooseStatus" wx:for="{{statusList}}" wx:for-index="idx" wx:key="{{idx}}" wx:for-item="item" data-type="{{item.type}}"
+				class="{{currentType==item.type?'ui-historyStatusTextHover':''}}"
+				>{{item.status}}</text>
 			</view>
-			<text wx:if="{{todayFlag}}" class="ui-historyDateDetail">2019/07/17</text>
-			<text wx:elif="{{weekFlag}}" class="ui-historyDateDetail">2019/07/17-2019/07/23</text>
-			<text wx:elif="{{monthFlag}}" class="ui-historyDateDetail">2019/07/01-2019/07/31</text>
+			<text wx:if="{{currentType==1}}" class="ui-historyDateDetail">{{reportList.startDay}}</text>
+			<text wx:else class="ui-historyDateDetail">{{reportList.startDay}}-{{reportList.endDay}}</text>
 			<view class="ui-historyOperation">
 				<view class="ui-historyOperationItem">
 					<text class="ui-itemTitle">实收营业额</text>
 					<view>
 						<text>¥</text>
-						<text>3555.00</text>
+						<text>{{reportList.totalShouldPayment}}</text>
 					</view>
 				</view>
 				<view class="ui-historyOperationItem">
 					<text class="ui-itemTitle">应收营业额</text>
 					<view>
 						<text>¥</text>
-						<text>4000.00</text>
+						<text>{{reportList.totalPayment}}</text>
 					</view>
 				</view>
 				<view class="ui-historyOperationItem">
 					<text class="ui-itemTitle">福气金额</text>
 					<view>
 						<text>¥</text>
-						<text>300.00</text>
+						<text>{{reportList.totalPointsMoney}}</text>
 					</view>
 				</view>
 				<view class="ui-historyOperationItem">
 					<text class="ui-itemTitle">订单数</text>
-					<text class="ui-orderNum">280</text>
+					<text class="ui-orderNum">{{reportList.totalOrderNum}}</text>
 				</view>
 			</view>
 		</view>
 		
 		<view class="ui-detailReport">
 			<text class="ui-detailReportTitle">报表明细</text>
-			<block wx:if="{{detailReportList}}">
-			<view class="ui-detailReportInfoBox" wx:for="{{detailReportList}}" wx:for-item="item" wx:key="idx">
-				<view class="ui-detailReportInfoItem">
-					<view class="ui-detailReportTime">
-						<text>{{item.year}}</text>
-						<text>{{item.time}}</text>
-					</view>
-					<view class="ui-detailListInfo">
-						<view class="ui-detailListInfoItem" wx:for="{{item.detailList}}" wx:for-item="item" wx:key="idx">
-							<text>{{item.incident}}</text>
-							<text>{{item.price}}</text>
+			<block wx:if="{{reportList.financeList.length>0}}">
+				<view class="ui-detailReportInfoBox" wx:for="{{reportList.financeList}}" wx:for-item="item" wx:key="idx">
+					<view class="ui-detailReportInfoItem">
+						<view class="ui-detailReportTime">
+							<text>{{item.day}}</text>
+							<text>{{item.time}}</text>
+						</view>
+						<view class="ui-detailListInfo">
+							<view class="ui-detailListInfoItem" wx:if="{{!item.shouldPayment}}">
+								<text>{{currentType==1?'应收订单金额':'当天应收金额'}}</text>
+								<text>¥{{item.shouldPayment}}</text>
+							</view>
+							<view class="ui-detailListInfoItem" wx:if="{{!item.payment}}">
+								<text>{{currentType==1?'实收订单金额':'当天实收金额'}}</text>
+								<text>¥1{{item.payment}}</text>
+							</view>
+							<view class="ui-detailListInfoItem" wx:if="{{!item.pointsMoney}}">
+								<text>福气抵扣金额</text>
+								<text>¥{{item.pointsMoney}}</text>
+							</view>
+							<view class="ui-detailListInfoItem" wx:if="{{!item.points}}">
+								<text>抵扣福气数</text>
+								<text>{{item.points}}</text>
+							</view>
+							<view class="ui-detailListInfoItem" wx:if="{{!item.orderNum}}">
+								<text>订单数</text>
+								<text>{{item.orderNum}}</text>
+							</view>
 						</view>
 					</view>
 				</view>
-			</view>
 			</block>
 			<block wx:else>
-			<view class="ui-blank"></view>
+				<view class="ui-blank"></view>
 			</block>
 			<view class="ui-detailFooter"></view>
 		</view>

@@ -8,7 +8,7 @@ const event = app.event;
 const User = require('../../service/User');
 
 let data = {
-	storeId:1,//接收上一页选择的顾客id，1为测试数据
+	storeId:1,//接收上一页门店id，1为测试数据
 	menuList:[
 		{status:"WAIT_CHECK",currentId:0},
 		{status:"TRADE_BUYER_SIGNED",currentId:1},
