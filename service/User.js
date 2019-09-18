@@ -249,6 +249,13 @@ class User {
 	        data: reqData
 	    }, page);
 	}
+	getFinanceInfo(page, reqData) {
+		_g.dm.canLoadMore = 1;
+		return _g.ajax({
+			url: mini.user.getFinanceInfo,
+			data: reqData
+		}, page);
+	}
 }
 
 module.exports = new User();

@@ -91,6 +91,9 @@ const methods = {
 				self.setData({
 					result: result,
 				})
+				_g.navigateTo({
+				    url: 'pages/me/blissVerific',
+				}, self);
 			},
 			fail: res => {
 				// 接口调用失败

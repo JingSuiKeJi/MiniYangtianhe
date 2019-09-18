@@ -9,7 +9,54 @@ page{
 .ui-main {
     width: 100%;
 }
+/* 日历 */
+.ui-calendarBox{
+	background: #FFFFFF;
+	padding-bottom: 20rpx;
+	padding-top: 10rpx;
+}
 
+.calendar-header{
+	padding-top: 10rpx;
+}
+
+.calendar--calendar-weeks{
+	color: #CCCCCC;
+}
+
+.calendar--calendar-cell.calendar--cell-rounded{
+	margin-bottom:20rpx;
+}
+
+/* .calendar--calendar-cell.calendar--cell-rounded:after{
+	position: absolute;
+	content: "";
+	width:8rpx;
+	height:8rpx;
+	background:rgba(29,196,188,1);
+	border-radius: 8rpx;
+	margin-top: 38rpx;
+} */
+
+.ui-showHidden{
+	position: absolute;
+	right: 38rpx;
+	width: 64rpx;
+	height: 64rpx;
+	transform: translateY(-12rpx);
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+}
+
+.ui-pullUp{
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_pullUp.png');
+}
+
+/* .ui-pulDown{
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_pulDown.png');
+} */
+/* 单行日历 */
 .ui-shortCalendar{
 	position: relative;
 	width: 100%;
@@ -79,16 +126,17 @@ page{
 	color: #FFFFFF;
 }
 
-.ui-dateCircleBgHhover:after{
+/* .ui-dateCircleBgHhover:after{
 	position: absolute;
 	content: "";
 	width:8rpx;
 	height:8rpx;
+	border-radius: 50%;
 	background:rgba(29,196,188,1);
-	top: 68rpx;
+	top: 60rpx;
 	right: 50%;
 	transform: translateX(50%);
-}
+} */
 
 .ui-pullDown{
 	width: 64rpx;
@@ -101,7 +149,7 @@ page{
 	right: 38rpx;
 	transform: translateY(-50%);
 }
-
+/* 营业额 */
 .ui-history{
 	width:100%;
 	height:300rpx;
