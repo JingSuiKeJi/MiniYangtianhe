@@ -120,7 +120,15 @@ config.prototype = {
 			getOrderDetail:'/app/store/getOrderDetail.do',
 			verification:'/app/store/verification.do',
 			myCommentList: '/app/comment/list.do',
-            deleteComment: '/app/comment/delete.do'
+            deleteComment: '/app/comment/delete.do',
+            getBaseInfo: '/app/distribution/getBaseInfo.do',
+            getClientList: '/app/distribution/getClientList.do',
+            distributionList: '/app/distribution/getRecordList.do',
+            withdrawRecordList: '/app/withdraw/getRecordList.do',
+            count: '/app/withdraw/count.do',
+            apply: '/app/withdraw/apply.do',
+            withdrawDetail: '/app/withdraw/detail.do',
+            getFinanceInfo:'/app/store/getFinanceInfo.do',
         },
         goods: {
             getGoodsDetail: '/app/goods/getGoodsDetail.do',

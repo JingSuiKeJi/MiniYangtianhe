@@ -25,14 +25,14 @@ const onLoad = function (self) {
         goodsId: self.data.goodsId,
         platformFlag: self.data.platformFlag,
     }
-   if (self.data.storeId) data.store = self.data.storeId;
-   self.setData(data)
+   self.setData(data);
+   self.getData();
   
 };
 
 // 页面onShow方法
 const onShow = function (self) {
-   self.getData();
+
 };
 const onUnload= function (self) {
     
@@ -42,7 +42,7 @@ const methods = {
     getData: function () {
         let self = this;
         Goods.getCommentList(self, {
-            goodsId: 2
+            goodsId: 51
         }).then((ret)=>{
             let data = ret.data;
             self.setData({

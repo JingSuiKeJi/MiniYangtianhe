@@ -65,7 +65,8 @@ const methods = {
 						const orderStatus = '评价成功';
 						_g.navigateTo({
 							param:{
-						    	orderStatus:orderStatus
+								   orderId : orderId,
+								   param: 'postComment'
 						    },
 							url: 'pages/order/orderDetail',
 						}, self);

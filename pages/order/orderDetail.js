@@ -31,11 +31,14 @@ let data = {
 	
 };
 const onLoad = function(self) {
-	//接收上一个页面状态
-	self.setData({
-		// orderStatus:self.data.orderStatus,
+	let data = {
 		orderId: self.data.orderId
-	});
+   }
+   if (self.data.from) {
+	   data.from = self.data.from
+   }
+	//接收上一个页面状态
+	self.setData(data);
 	self.getData();
 }
 const onShow = function(self) {}
@@ -63,7 +66,10 @@ const methods = {
 				creatrTime: data.creatrTime,
 				payTime: data.payTime,
 				orderDelivery: data.orderDelivery,
-				deliveryType: data.deliveryType//配送方式：1.快递 2.门店自提 3.立即配送 4.预约配送
+				deliveryType: data.deliveryType,//配送方式：1.快递 2.门店自提 3.立即配送 4.预约配送
+				verificationCodeUrl: data.verificationCodeUrl,
+				verificationCode: data.verificationCode,
+				orderVerifier: data.orderVerifier
 			});
 			if (data.payRestTime) self.downStartTime(data.payRestTime);
         }, (err) => {
@@ -95,19 +101,37 @@ const methods = {
 	},
 	//支付
 	onPayMoneyTap:function(){
-		// wx.requestPayment({
-		// 	'timeStamp':self.data.timeStamp,
-		// 	'nonceStr': self.data.nonceStr,
-		// 	'package': 'prepay_id='+self.data.prepay_id,
-		// 	'signType': 'MD5',
-		// 	'paySign': self.data._paySignjs,
-		// 	'success':function(res){
-		// 		console.log(res);
-		// 	},
-		// 	'fail':function(res){
-		// 		console.log('fail:'+JSON.stringify(res));
-		// 	}
-		// })
+		let self = this;
+		self.prePay();
+	},
+	prePay(orderId) {
+        const self = this;
+        Order.prePay(self, {
+            orderId: self.data.orderId
+        }).then((ret) => {
+			ret.data.package = ret.data.package.replace(/\s*/g,'');
+            let payInfo = ret.data;
+            payInfo.success = function() {
+                //TODO check pay status
+                _g.showModal({
+                    title: '提示',
+                    content: '支付成功',
+                    confirm: function() {
+                        self.payStatus();
+                    }
+                });
+            };
+            payInfo.fail = function() {
+                _g.showModal({
+                    title: '提示',
+                    content: '支付失败',
+                });
+            };
+            _g.requestPayment(payInfo);
+
+        }, (err) => {
+
+        });
 	},
 	//取消订单操作和模态框
 	showDialogBtn: function () {
@@ -283,9 +307,6 @@ const methods = {
 	},
 	onConfirmTap: function (e) {
 		let self = this;
-		self.setData({
-			orderId: e.currentTarget.dataset.orderid 
-		})
 		_g.showModal({
 			title: '',
 			content: '确认已收到商品吗',
@@ -306,10 +327,18 @@ const methods = {
 			_g.toast({
 				title: '收货成功',
 			    icon: 'success',
-			})
+			});
+			self.getData();
         }, (err) => {
         });
 	},
+	onBackTap: function () {
+		let self = this;
+		_g.switchTab({
+			self: self,
+			url: 'pages/home/index'
+		});
+	}
 }
 
 // 有引用template时定义

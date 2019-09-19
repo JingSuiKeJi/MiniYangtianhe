@@ -139,25 +139,25 @@ const methods = {
     },
     onPostTap: function(e) {
         let self = this;
-        let type = e.target.dataset.type;
+        let type = e.currentTarget.dataset.type;
         if (self.data.type == type) return;
         switch (type) {
-            case '1':
+            case '3':
                 self.setData({
                     postType: '立即配送',
-                    type: 1
+                    type: 3
+                });
+                break;
+            case '4':
+                self.setData({
+                    postType: '预约配送',
+                    type: 4
                 });
                 break;
             case '2':
                 self.setData({
-                    postType: '预约配送',
-                    type: 2
-                });
-                break;
-            case '3':
-                self.setData({
                     postType: '到店自取',
-                    type: 3
+                    type: 2
                 });
                 break;
             default:
@@ -169,6 +169,7 @@ const methods = {
         let pickerValue = e.detail.value;
 
         self.setData({
+            postTime: self.data.timeList[pickerValue],
             dispatchingTime: {
                 beignTime: self.data.initTimes[pickerValue].beignTime,
                 endTime: self.data.initTimes[pickerValue].endTime,
@@ -224,7 +225,6 @@ const methods = {
             data.cartIds = self.data.postData.cartIds;
             data.buyType = 2;
         }
-
         Order.placeOrder(self, data).then((ret) => {
             self.prePay(ret.data);
         }, (err) => {

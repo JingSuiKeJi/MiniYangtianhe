@@ -249,6 +249,55 @@ class User {
 	        data: reqData
 	    }, page);
 	}
+	getBaseInfo(page, reqData) {
+	    _g.dm.canLoadMore = 1;
+	    return _g.ajax({
+	        url: mini.user.getBaseInfo,
+	        data: reqData
+	    }, page);
+	}
+	getClientList(page, reqData) {
+	    _g.dm.canLoadMore = 1;
+	    return _g.ajax({
+	        url: mini.user.getClientList,
+	        data: reqData
+	    }, page);
+	}
+	distributionList(page, reqData) {
+	    _g.dm.canLoadMore = 1;
+	    return _g.ajax({
+	        url: mini.user.distributionList,
+	        data: reqData
+	    }, page);
+	}
+	withdrawRecordList(page, reqData) {
+	    _g.dm.canLoadMore = 1;
+	    return _g.ajax({
+	        url: mini.user.withdrawRecordList,
+	        data: reqData
+	    }, page);
+	}
+	count(page, reqData) {
+	    _g.dm.canLoadMore = 1;
+	    return _g.ajax({
+	        url: mini.user.count,
+	        data: reqData
+	    }, page);
+	}
+	apply(page, reqData) {
+	    _g.dm.canLoadMore = 1;
+	    return _g.ajax({
+	        url: mini.user.apply,
+	        data: reqData
+	    }, page);
+	}
+	withdrawDetail(page, reqData) {
+	    _g.dm.canLoadMore = 1;
+	    return _g.ajax({
+	        url: mini.user.withdrawDetail,
+	        data: reqData
+		}, page);
+	}
 	getFinanceInfo(page, reqData) {
 		_g.dm.canLoadMore = 1;
 		return _g.ajax({

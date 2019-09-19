@@ -8,7 +8,7 @@
 			<view>申请提交成功，我们将尽快给您处理。</view>
 			<view>
 				<text>提现金额：</text>
-				<text>¥2929.00</text>
+				<text>¥{{money}}</text>
 			</view>
 		</view>
 		<view class="ui-btnFooter">

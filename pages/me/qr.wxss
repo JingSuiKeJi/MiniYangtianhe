@@ -25,11 +25,6 @@ page{
 	height:120rpx;
 	background:rgba(234,234,234,1);
 	margin: 40rpx 0 0 40rpx;
-	border-radius: 60rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_qrHeader.png');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size:cover;
 }
 
 .ui-personalId{
@@ -48,10 +43,6 @@ page{
 	width:520rpx;
 	height:470rpx;
 	margin: 166rpx 0 0 82rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_qrCode.png');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
 }
 
 .btn-savePoster{

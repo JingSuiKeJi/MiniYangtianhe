@@ -1485,6 +1485,9 @@ base.prototype = {
             if (opts.type == 1) {
                 return false
             } else if (opts.type == 2) {
+                _g.toast({
+                    title: '请先登录'
+                })
                 // _g.openWin({
                 //     self: opts.self,
                 //     url: 'pages/account/login'
