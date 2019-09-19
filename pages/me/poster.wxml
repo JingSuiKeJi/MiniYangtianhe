@@ -5,7 +5,7 @@
 	<view class="ui-main">
 		<view class="ui-posterBox">
 			<view class="ui-posterBackground">
-				<image src="{{poster}}" mode="aspectFill"></image>
+				<image src="{{filter.getPhoto(host,poster)}}" mode="aspectFill"></image>
 				<view class="ui-personalIcon"><image src="{{filter.getAvatar(host,avatar)}}" mode="aspectFill"></image></view>
 				<text class="ui-personalIdText">{{nickname}}</text>
 			</view>

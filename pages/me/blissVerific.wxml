@@ -1,4 +1,4 @@
-<!-- <wxs module="filter" src="../../filter/filter.wxs"></wxs> -->
+<wxs module="filter" src="../../filter/filter.wxs"></wxs>
 <!--blissVerific.wxml-->
 <view class="container">
 	<navBar title='使用福气' background='#F5F5F5' color='black' iconTheme='black' back="{{true}}"></navBar>
@@ -7,7 +7,7 @@
 		
 		<view class="ui-blissBox">
 			<text class="ui-blissText">福气</text>
-			<view class="ui-blissIcon"></view>
+			<view class="ui-blissIcon"><image src="{{filter.getLocalPhoto('my_newBlissIcon.png')}}" mode="aspectFill"></image></view>
 			<view class="ui-blissInput"><input type="number" focus="true" value="{{bissNum}}" bindinput="bissNumInput"/></view>
 			<text class="ui-canUseNum">可用福气数2929</text>
 		</view>
@@ -20,7 +20,7 @@
 		<view class="modal-cancel" bindtap="onCancel"></view>
 		<view class="modal-flex">
 			<view class="modal-title">使用福气</view>
-			<view class="modal-blissIcon"></view>
+			<view class="modal-blissIcon"><image src="{{filter.getLocalPhoto('my_newBlissIcon.png')}}" mode="aspectFill"></image></view>
 			<view class="modal-blissNum">{{bissNum}}</view>
 			<view class="modal-cutOff"></view>
 			<view class="btn-confirm" bindtap="onConfirm">确认核销</view>

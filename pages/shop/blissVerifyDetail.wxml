@@ -1,59 +1,73 @@
-<!-- <wxs module="filter" src="../../filter/filter.wxs"></wxs> -->
+<wxs module="filter" src="../../filter/filter.wxs"></wxs>
 <!--blissVerifyDetail.wxml-->
 <view class="container">
 	<navBar title='福气核销明细' background='white' color='black' iconTheme='black' back="{{true}}"></navBar>
 	<view class="ui-main">
-		<!-- 短日历 -->
-		<view class="ui-shortCalendar">
+		<!-- 完整日历 -->
+		<view class="ui-calendarBox" wx:if="{{calendarFlag==true}}">
+			<calendar cell-size="23" weeks-type="cn" days-color="{{dayStyle}}" show-more-days="true" binddayClick="dayClick"/>
+			<view class="ui-showHidden ui-pullUp" catchtap="onPullUpTap"></view>
+		</view>
+		
+		<!-- 单行日历 -->
+		<view class="ui-shortCalendar" wx:else>
 			<view class="ui-weekText">
 				<text wx:for="{{weekList}}" wx:for-item="item" wx:key="idx">
 					{{item}}
 				</text>
 			</view>
 			<view class="ui-dateText">
-				<view bindtap="onChooseDate" class="ui-dateCircleBg {{currentDateState==item?'ui-dateCircleBgHhover':''}}" data-id="{{index}}" wx:for="{{dateList}}" wx:for-item="item" wx:key="idx">	
+				<view bindtap="onChooseDate" class="ui-dateCircleBg {{currentData==item?'ui-dateCircleBgHhover':''}}" 
+				data-id="{{index}}" wx:for="{{dateList}}" wx:for-item="item" wx:key="{{index}}">	
 					<text>{{item}}</text>
 				</view>
 			</view>
-			<view class="ui-pullDown"></view>
+			<view class="ui-pullDown" catchtap="onPullDownTap"></view>
 		</view>
+		
 		<!-- 当天/一周/一个月，福气历史总数 -->
 		<view class="ui-history">
 			<view class="ui-historyStatus">
-				<text bindtap="onChooseToday" class="{{todayFlag?'ui-historyStatusTextHover':''}}">当天</text>
-				<text bindtap="onChooseWeek" class="{{weekFlag?'ui-historyStatusTextHover':''}}">一周</text>
-				<text bindtap="onChooseMonth" class="{{monthFlag?'ui-historyStatusTextHover':''}}">一个月</text>
+				<text bindtap="onChooseStatus" wx:for="{{statusList}}" wx:for-index="idx" wx:key="{{idx}}" wx:for-item="item" data-type="{{item.type}}"
+				class="{{currentType==item.type?'ui-historyStatusTextHover':''}}"
+				>{{item.status}}</text>
 			</view>
-			<text wx:if="{{todayFlag}}" class="ui-historyDateDetail">2019/07/17</text>
-			<text wx:elif="{{weekFlag}}" class="ui-historyDateDetail">2019/07/11-2019/07/17</text>
-			<text wx:elif="{{monthFlag}}" class="ui-historyDateDetail">2019/07/01-2019/07/31</text>
+			<text wx:if="{{currentType==1}}" class="ui-historyDateDetail">{{blissList.startDate}}</text>
+			<text wx:else class="ui-historyDateDetail">{{blissList.startDate}}-{{blissList.endDate}}</text>
 			<view class="ui-historyOperation">
 				<view class="ui-historyOperationItem">
 					<text class="ui-itemTitle">福气总核销数</text>
 					<view class="ui-numCommon">
-						<text class="ui-moneyText">12880</text>
+						<text class="ui-moneyText">{{blissList.totalPoints}}</text>
 					</view>
 				</view>
 				<view class="ui-historyOperationItem">
 					<text class="ui-itemTitle">福气金额</text>
 					<view class="ui-numCommon">
 						<text class="ui-moneySymbol">¥</text>
-						<text class="ui-moneyText">128.80</text>
+						<text class="ui-moneyText">{{blissList.totalPointsMoney}}</text>
 					</view>
 				</view>
 			</view>
 		</view>
 		<!-- 福气核销明细 -->
-		<view class="ui-detailBox"  wx:if="{{todayFlag==item.todayFlag|weekFlag==item.weekFlag||monthFlag==item.monthFlag}}"
-		wx:for="{{detailBlissList}}" wx:for-item="item" wx:key="{{index}}">
+		<view class="ui-detailBox"
+		wx:for="{{blissList.verifierDayList}}" wx:for-item="item" wx:key="{{index}}">
 			<view class="ui-data">
 				<text>{{item.date}}</text>
 			</view>
-			<view class="ui-detailItems" wx:for="{{item.detailList}}" wx:for-item="item" wx:key="{{index}}">
-				<text>{{item.detailDate}}</text>
-				<text>{{item.name}}</text>
-				<text>核销{{item.verifyNum}}福气</text>
-			</view>
+			<block wx:if="{{item.verifierList.length>0}}">
+				<view class="ui-detailItems" wx:for="{{item.verifierList}}" wx:for-item="lessItem" wx:key="{{index}}">
+					<text>{{filter.getDateOrTime(lessItem.createTime,3)}}</text>
+					<text>{{lessItem.nickname}}</text>
+					<text>核销{{lessItem.points}}福气</text>
+				</view>
+			</block>
+			<block wx:else>
+				<view class="ui-detailItems">
+					<text>暂无数据</text>
+				</view>
+			</block>
 		</view>
 	</view>
 </view>

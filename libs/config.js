@@ -120,7 +120,10 @@ config.prototype = {
 			getOrderDetail:'/app/store/getOrderDetail.do',
 			verification:'/app/store/verification.do',
 			myCommentList: '/app/comment/list.do',
-            deleteComment: '/app/comment/delete.do'
+            deleteComment: '/app/comment/delete.do',
+			getFinanceInfo:'/app/store/getFinanceInfo.do',
+			getVerifierInfo:'/app/store/getVerifierInfo.do',
+			getVerifierQR:'/app/store/getVerifierQR.do',
         },
         goods: {
             getGoodsDetail: '/app/goods/getGoodsDetail.do',

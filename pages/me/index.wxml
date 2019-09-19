@@ -137,7 +137,7 @@
 			    <text>收益中心</text>
 				<view class="ui-moreIcon"></view>
 			</view>
-            <view class="ui-itemBox" catchtap="onStoreApplicationTap">
+            <view class="ui-itemBox" catchtap="onStoreApplicationTap" wx:if="{{userInfo.verifier.length==0||userInfo.verifier==null}}">
                 <text>门店申请</text>
 				<view class="ui-moreIcon"></view>
             </view>
@@ -153,7 +153,7 @@
                 <text>消息通知</text>
 				<view class="ui-moreIcon"></view>
             </view>
-            <view class="ui-itemBox" catchtap="onStoreTap">
+            <view class="ui-itemBox" catchtap="onStoreTap" wx:if="{{userInfo.verifier.length>0}}">
                 <text>门店中心</text>
 				<view class="ui-moreIcon"></view>
 			</view>

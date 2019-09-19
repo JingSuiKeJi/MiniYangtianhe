@@ -7,7 +7,7 @@
 }
 .ui-main {
     width: 100%;
-	margin-bottom: 136rpx;
+	margin-bottom: 146rpx;
 }
 
 .tab-bottom{

@@ -18,14 +18,23 @@
             <view class="ui-withdraw__title">福气明细</view>
             <block wx:if="{{withdrawlist.length > 0}}">
                 <view class="ui-withdrawInfoItem">
-                    <view class="ui-withdrawDetail" wx:for="{{withdrawlist}}" wx:for-index="idx" wx:key="idx" wx:for-item="item" style="color: {{item.money>0?'#666666':'#20CAB4'}};">
-                        <text>{{filter.getDay(item.createTime)}}</text>
+                    <view class="ui-withdrawDetail" wx:for="{{withdrawlist}}" wx:for-index="idx" wx:key="idx" wx:for-item="item" style="color: {{item.type==1?'#666666':'#20CAB4'}};">
+                        <text>{{filter.getDateOrTime(item.createTime,3)}}</text>
                         <text>{{item.points}}</text>
-                        <text class="ui-presentedTextBox" wx:if="{{item.id}}">
-                            <text>{{item.type}}</text>
-                            <text>{{item.id}}</text>
-                        </text>
-                        <text wx:else>{{item.type}}</text>
+						<block wx:if="{{item.type==1}}">
+							<text class="ui-presentedTextBox" wx:if="{{item.id}}">
+							    <text style="color: {{item.type==1?'#666666':''}};">{{filter.getIncomeType(item.incomeType)}}</text>
+							    <text>{{item.id}}</text>
+							</text>
+							<text wx:else style="color: {{item.type==1?'#666666':''}};">{{filter.getIncomeType(item.incomeType)}}</text>
+						</block>
+                        <block wx:if="{{item.type==2}}">
+                        	<text class="ui-presentedTextBox" wx:if="{{item.id}}">
+                        	    <text style="color: {{item.type==1?'#666666':''}};">{{filter.getExpenditureType(item.expenditureType)}}</text>
+                        	    <text>{{item.id}}</text>
+                        	</text>
+                        	<text wx:else style="color: {{item.type==1?'#666666':''}};">{{filter.getExpenditureType(item.expenditureType)}}</text>
+                        </block>
                     </view>
                 </view>
             </block>
