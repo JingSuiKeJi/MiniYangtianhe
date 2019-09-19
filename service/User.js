@@ -296,7 +296,14 @@ class User {
 	    return _g.ajax({
 	        url: mini.user.withdrawDetail,
 	        data: reqData
-	    }, page);
+		}, page);
+	}
+	getFinanceInfo(page, reqData) {
+		_g.dm.canLoadMore = 1;
+		return _g.ajax({
+			url: mini.user.getFinanceInfo,
+			data: reqData
+		}, page);
 	}
 }
 

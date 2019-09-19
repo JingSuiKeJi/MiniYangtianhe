@@ -57,9 +57,9 @@ page{
 	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_pullUp.png');
 }
 
-.ui-pulDown{
+/* .ui-pulDown{
 	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_pulDown.png');
-}
+} */
 
 /* 商品足迹列表 */
 .ui-footmarkBox{
