@@ -13,7 +13,7 @@
 				<view class="ui-StatusIcon ui-waitShipmentsIcon"></view>
 				<text class="ui-StatusText">待发货</text>
 			</view>
-			<view class="ui-orderStatus" wx:if="{{status=='WAIT_BUYER_CONFIRM_GOODS'}}">
+			<view class="ui-orderStatus" wx:if="{{status=='WAIT_BUYER_CONFIRM_GOODS' || status=='WAIT_DELIVERY'}}">
 				<view class="ui-StatusIcon ui-waitReceivingIcon"></view>
 				<text class="ui-StatusText">待收货</text>
 			</view>
@@ -40,40 +40,41 @@
 			</view>
 		</view>
 		<!-- 配送或自提信息 -->
-		<view wx:if="{{status=='WAIT_CHECK' || status=='CHECKED'}}" class="ui-pastBox">
-			<view wx:if="{{deliveryType == 3 || deliveryType == 4}}" class="ui-verificInfoBox" wx:for="{{orderDelivery}}" wx:for-item="item" wx:key="idx">
+        <!-- wx:if="{{status=='WAIT_CHECK' || status=='CHECKED'}}" -->
+		<view  class="ui-pastBox">
+			<view wx:if="{{deliveryType == 3 || deliveryType == 4}}" class="ui-verificInfoBox" >
 				<text class="ui-orderInfoTitle">{{item.title}}</text>
 				<view class="ui-infoCommon">
 					<text>配送地址</text>
-					<text>{{item.address+ item.name+item.phone }}</text>
+					<text>{{orderDelivery.address + orderDelivery.name + orderDelivery.phone }}</text>
 				</view>
 				<view class="ui-infoCommon">
 					<text>配送时间</text>
-					<text>{{item.deliveryTime}}</text>
+					<text>{{orderDelivery.deliveryTime}}</text>
 				</view>
 				<view class="ui-infoCommon">
 					<text>店铺地址</text>
-					<text>{{item.storeAddress}}</text>
+					<text>{{orderDelivery.storeAddress}}</text>
 				</view>
 			</view>
-			<view wx:if="{{deliveryType==2}}" class="ui-verificInfoBox" wx:for="{{orderDelivery}}" wx:for-item="item" wx:key="idx">
+			<view wx:if="{{deliveryType==2}}" class="ui-verificInfoBox" >
 				<text class="ui-orderInfoTitle">自提信息</text>
 				<view class="ui-infoCommon">
 					<text>供货门店</text>
-					<text>{{item.storeName}}</text>
+					<text>{{orderVerifier.storeName}}</text>
 				</view>
 				<view class="ui-infoCommon">
 					<text>订单有效期</text>
-					<text>{{item.deliveryTime}}</text>
+					<text>{{filter.getDay(orderVerifier.expiredStartTime) + '~' + filter.getDay(orderVerifier.expiredEndTime)}}</text>
 				</view>
 				<view class="ui-infoCommon">
 					<text>店铺地址</text>
-					<text>{{item.storeAddress}}</text>
+					<text>{{orderVerifier.storeAddress}}</text>
 				</view>
 			</view>
 		</view>
 		
-		<view wx:if="{{orderAddress}}" class="ui-consigneeAddressBox">
+		<view wx:if="{{deliveryType == 1}}" class="ui-consigneeAddressBox">
 			<view class="ui-landmarkIcon"></view>
 			<view class="ui-consignee" >
 				<view class="ui-consigneeinfo">
@@ -99,7 +100,7 @@
 					<text class="ui-newsNum">x{{item.num}}</text>
 				</view>
 			</view>
-			<view wx:if="{{status=='WAIT_SELLER_SEND_GOODS'||status=='WAIT_BUYER_CONFIRM_GOODS'||orderStatus=='交易成功'}}" class="btn-applyAfterSales" bindtap="onApplyAfterSales">申请售后</view>
+			<view wx:if="{{status=='WAIT_SELLER_SEND_GOODS'||status=='WAIT_BUYER_CONFIRM_GOODS'}}" class="btn-applyAfterSales" bindtap="onApplyAfterSales">申请售后</view>
 			<view class="ui-freight ui-commodityTextCommon">
 				<text>运费</text>
 				<text>¥{{deliveryFee}}</text>
@@ -121,12 +122,12 @@
 			<text wx:if="{{payTime}}">付款时间：{{filter.getDate(payTime)}}</text>
 		</view>
 		
-		<view wx:if="{{!(orderStatus=='评价成功')}}" class="ui-verificationFooter">
+		<view wx:if="{{from !='postComment'}}" class="ui-verificationFooter">
 			<block  wx:if="{{status=='WAIT_BUYER_PAY'}}">
 				<view class="btn-common btn-grey" bindtap="onCancelTap"><text>取消订单</text></view>
 				<view class="btn-common btn-green" catchtap="onPayMoneyTap"><text>立即支付</text></view>
 			</block>
-			<block wx:if="{{status=='WAIT_BUYER_CONFIRM_GOODS'}}">
+			<block wx:if="{{status=='WAIT_BUYER_CONFIRM_GOODS' || status=='WAIT_DELIVERY'}}">
 				<view class="btn-common btn-grey" catchtap="onCheckLogisticsTap"><text>查看物流</text></view>
 				<view class="btn-common btn-green" catchtap="onConfirmTap"><text>确认收货</text></view>
 			</block>
@@ -151,7 +152,7 @@
 		</view>
 		
 		<!-- 评价成功 -->
-		<view wx:if="{{orderStatus=='评价成功'}}" class="ui-commentFooter">
+		<view wx:if="{{from=='postComment'}}" class="ui-commentFooter">
 			<view class="btn-commentCommon btn-backHome" bindtap="onBackTap"><text>返回首页</text></view>
 			<view class="btn-commentCommon btn-checkComment" catchtap="onCheckCommentTap"><text>查看评价</text></view>
 		</view>

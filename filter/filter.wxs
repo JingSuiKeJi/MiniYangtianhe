@@ -187,6 +187,6 @@ var filter = {
             default: 
                return '提现';
         }
-    }
+    },
 };
 module.exports = filter;

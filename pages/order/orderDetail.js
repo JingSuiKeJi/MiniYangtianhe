@@ -31,11 +31,14 @@ let data = {
 	
 };
 const onLoad = function(self) {
-	//接收上一个页面状态
-	self.setData({
-		// orderStatus:self.data.orderStatus,
+	let data = {
 		orderId: self.data.orderId
-	});
+   }
+   if (self.data.from) {
+	   data.from = self.data.from
+   }
+	//接收上一个页面状态
+	self.setData(data);
 	self.getData();
 }
 const onShow = function(self) {}
@@ -65,7 +68,8 @@ const methods = {
 				orderDelivery: data.orderDelivery,
 				deliveryType: data.deliveryType,//配送方式：1.快递 2.门店自提 3.立即配送 4.预约配送
 				verificationCodeUrl: data.verificationCodeUrl,
-				verificationCode: data.verificationCode
+				verificationCode: data.verificationCode,
+				orderVerifier: data.orderVerifier
 			});
 			if (data.payRestTime) self.downStartTime(data.payRestTime);
         }, (err) => {

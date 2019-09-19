@@ -22,18 +22,18 @@
     </view>
     <view class="postBox" wx:if="{{platformFlag == 2}}">
         <view class="ui-postItem__text">配送方式</view>
-        <view class="ui-postItem {{ type ==1 ? 'isSelectItem' : ''}}" bindtap="onPostTap" data-type="1">
-            <view data-type="1">立即配送</view>
-            <view data-type="1">2小时内送达</view>
+        <view class="ui-postItem {{ type ==3 ? 'isSelectItem' : ''}}" bindtap="onPostTap" data-type="3">
+            <view >立即配送</view>
+            <view >2小时内送达</view>
         </view>
-        <view class="ui-postItem {{ type == 2 ? 'isSelectItem' : ''}}" bindtap="onPostTap" data-type="2">
-            <picker mode="selector" data-type="2" bindchange="onPickerTap" value="{{pickerValue}}" range="{{timeList}}" class="ui-pickerBox">
-                <view data-type="2" class="ui-pickerItem__text">预约配送</view>
-                <view data-type="2" class="ui-pickerItem__time">2小时外送达</view>
+        <view class="ui-postItem {{ type == 4 ? 'isSelectItem' : ''}}" bindtap="onPostTap" data-type="4">
+            <picker mode="selector" data-type="4" bindchange="onPickerTap" value="{{pickerValue}}" range="{{timeList}}" class="ui-pickerBox">
+                <view  class="ui-pickerItem__text">预约配送</view>
+                <view  class="ui-pickerItem__time">2小时外送达</view>
             </picker>
         </view>
-        <view class="ui-postItem {{ type ==3 ? 'isSelectItem' : ''}} " bindtap="onPostTap" data-type="3">
-            <view data-type="3" style="margin-top: 40rpx">到店自提</view>
+        <view class="ui-postItem {{ type ==2 ? 'isSelectItem' : ''}} " bindtap="onPostTap" data-type="2">
+            <view  style="margin-top: 40rpx">到店自提</view>
         </view>
     </view>
     <view class="ui-storeAddressBox" wx:if="{{platformFlag == 2}}">

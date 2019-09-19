@@ -799,5 +799,8 @@ page{
 	color:rgba(102,102,102,1);
 }
 .ui-pastBox {
-	display: flex;
+	/* height: 200rpx;
+	font-size: 30rpx; */
+	background-color: #fff;
+	
 }
