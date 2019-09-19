@@ -23,7 +23,6 @@ const data = {
 const onLoad = function(self) {
     self.getData();
     self.initBlock();
-    self.getPageData();
     event.on('refreshStep', self, (ret) => {
         self.getData();
     });
@@ -44,6 +43,7 @@ const methods = {
     getData: function() {
         let self = this;
         self.getStepInfo();
+        self.getPageData();
     },
     getStepInfo: function() {
         let self = this;
@@ -146,7 +146,7 @@ const methods = {
     uploadStep: function(data) {
         let self = this;
         Platform.uploadStep(self, data).then((ret) => {
-            self.getStepInfo();
+            self.getData();
         }, (err) => {
 
         })
