@@ -589,7 +589,7 @@ page {
 }
 
 .ui-brandItem_scrollView {
-    height: 440RPX;
+    height: 220rpx;
     white-space: nowrap;
     display: inline-block;
 }

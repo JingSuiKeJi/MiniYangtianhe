@@ -119,9 +119,6 @@ page {
 .ui-tel {
 	height: 128rpx;
 }
-
-.ui-area {}
-
 .ui-areaMoreIcon {
 	position: absolute;
 	right: 40rpx;
