@@ -3,10 +3,26 @@
 <view class="container">
 	<navBar title='客户足迹' background='linear-gradient(137deg,rgba(1,206,165,1) 0%,rgba(94,221,218,1) 100%)' color='white' iconTheme='white' back="{{true}}"></navBar>
     <view class="ui-main">
-		<!-- 日历 -->
-		<view class="ui-calendarBox">
+		<!-- 完整日历 -->
+		<view class="ui-calendarBox" wx:if="{{calendarFlag==true}}">
 			<calendar cell-size="23" weeks-type="cn" days-color="{{dayStyle}}" show-more-days="true" binddayClick="dayClick"/>
-			<view class="ui-showHidden ui-pullUp"></view>
+			<view class="ui-showHidden ui-pullUp" catchtap="onPullUpTap"></view>
+		</view>
+		
+		<!-- 单行日历 -->
+		<view class="ui-shortCalendar" wx:else>
+			<view class="ui-weekText">
+				<text wx:for="{{weekList}}" wx:for-item="item" wx:key="idx">
+					{{item}}
+				</text>
+			</view>
+			<view class="ui-dateText">
+				<view bindtap="onChooseDate" class="ui-dateCircleBg {{currentData==item?'ui-dateCircleBgHhover':''}}" 
+				data-id="{{index}}" wx:for="{{dateList}}" wx:for-item="item" wx:key="{{index}}">	
+					<text>{{item}}</text>
+				</view>
+			</view>
+			<view class="ui-pullDown" catchtap="onPullDownTap"></view>
 		</view>
 		
 		<!-- 商品足迹列表 -->
@@ -15,7 +31,7 @@
 			<view class="ui-footmarkItem" wx:for="{{dateList}}" wx:for-item="item" wx:key="idx">
 				<view class="ui-datebox">
 					<view wx:if="{{showAndHideCheck}}" catchtap="onSelectAllIcontap" class="ui-select {{slectAllIcon==true?'ui-checkIcon':'ui-unCheckIcon'}}"></view>
-					<text class="ui-dateText">{{item.date}}</text>
+					<text class="ui-dateShow">{{item.date}}</text>
 				</view>
 				<view class="ui-footmarkList">
 					<view class="ui-ListItems" wx:for="{{imgAndPriceList}}" wx:for-item="item" wx:key="idx">

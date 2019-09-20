@@ -305,6 +305,20 @@ class User {
 			data: reqData
 		}, page);
 	}
+	getVerifierInfo(page, reqData) {
+		_g.dm.canLoadMore = 1;
+		return _g.ajax({
+			url: mini.user.getVerifierInfo,
+			data: reqData
+		}, page);
+	}
+	getVerifierQR(page, reqData) {
+		_g.dm.canLoadMore = 1;
+		return _g.ajax({
+			url: mini.user.getVerifierQR,
+			data: reqData
+		}, page);
+	}
 }
 
 module.exports = new User();

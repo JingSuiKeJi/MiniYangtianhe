@@ -43,7 +43,8 @@ const data = {
     isBuy: false,
     title: '', //头部标题
     goodsDetail: {},
-    num: 1
+    num: 1,
+    canvasUrl: ''
 };
 
 // 页面onLoad方法
@@ -62,6 +63,11 @@ const onLoad = function(self) {
             title: '养天和优选'
         })
     }
+    event.on('goods-detail-shareEvent', self, (data) => {
+        self.setData({
+            canvasUrl: data.canvasUrl
+        });
+    });
 };
 
 // 页面onShow方法
@@ -69,7 +75,7 @@ const onShow = function(self) {
     self.getData();
 };
 const onUnload = function(self) {
-
+    event.remove('goods-detail-shareEvent', self);
 }
 // 页面中的方法
 const methods = {

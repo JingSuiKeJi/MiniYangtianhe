@@ -242,12 +242,16 @@ page{
 }
 
 .ui-freight text:last-child{
-	color:rgba(51,51,51,1);
+	color:rgba(51,51,51,1) !important;
 }
 
 .ui-freight{
 	margin-top: 20rpx;
 	
+}
+
+.ui-bottom{
+	margin-bottom: 20rpx;
 }
 
 .ui-blissDeduction{

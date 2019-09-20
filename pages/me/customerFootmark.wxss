@@ -60,6 +60,99 @@ page{
 /* .ui-pulDown{
 	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_pulDown.png');
 } */
+/* 单行日历 */
+.ui-shortCalendar{
+	position: relative;
+	width: 100%;
+	background: #FFFFFF;
+}
+
+.ui-weekText{
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.ui-weekText text{
+	margin-bottom: 40rpx;
+	width:30rpx;
+	height:30rpx;
+	line-height: 30rpx;
+	font-size:30rpx;
+	font-family:PingFang-SC-Medium;
+	font-weight:500;
+	color:rgba(204,204,204,1);
+}
+
+.ui-weekText text:first-child{
+	margin-left: 47rpx;
+}
+
+.ui-weekText text:last-child{
+	margin-right: 47rpx;
+}
+
+.ui-dateText{
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.ui-dateCircleBg{
+	position: relative;
+	width:46rpx;
+	height:46rpx;
+	border-radius: 46rpx;
+	font-size:30rpx;
+	font-family:PingFangSC-Medium;
+	font-weight:500;
+	color:rgba(51,51,51,1);
+	line-height:46rpx;
+	margin-top: 20rpx;
+	margin-bottom: 56rpx;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.ui-dateCircleBg:first-child{
+	margin-left: 40rpx;
+}
+
+.ui-dateCircleBg:last-child{
+	margin-right: 40rpx;
+}
+
+.ui-dateCircleBgHhover{
+	background:rgba(29,196,188,1);
+	color: #FFFFFF;
+}
+
+/* .ui-dateCircleBgHhover:after{
+	position: absolute;
+	content: "";
+	width:8rpx;
+	height:8rpx;
+	border-radius: 50%;
+	background:rgba(29,196,188,1);
+	top: 60rpx;
+	right: 50%;
+	transform: translateX(50%);
+} */
+
+.ui-pullDown{
+	width: 64rpx;
+	height: 64rpx;
+	position: absolute;
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_pulDown.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+	right: 38rpx;
+	transform: translateY(-50%);
+}
 
 /* 商品足迹列表 */
 .ui-footmarkBox{
@@ -110,7 +203,7 @@ page{
 	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_unCheck.png');
 }
 
-.ui-dateText{
+.ui-dateShow{
 	height:26rpx;
 	font-size:26rpx;
 	font-family:PingFangSC-Regular;

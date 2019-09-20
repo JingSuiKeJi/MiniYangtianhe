@@ -43,13 +43,15 @@ page{
 
 .ui-blissIcon{
 	position: absolute;
-	width:46rpx;
-	height:36rpx;
-	margin: 48rpx 0 0 120rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_happyCloud.png');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
+	width:48rpx;
+	height:48rpx;
+	margin: 40rpx 0 0 124rpx;
+	/* background: #CCCCCC; */
+}
+
+.ui-blissIcon image{
+	width: 100%;
+	height: 100%;
 }
 
 .ui-blissInput{
@@ -154,13 +156,15 @@ page{
 }
 
 .modal-blissIcon{
-	width: 46rpx;
-	height: 36rpx;
-	margin-top: 18rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_happyCloud.png');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
+	width: 48rpx;
+	height: 48rpx;
+	margin-top: 20rpx;
+	/* background: #CCCCCC; */
+}
+
+.modal-blissIcon image{
+	width: 100%;
+	height: 100%;
 }
 
 .modal-blissNum{
