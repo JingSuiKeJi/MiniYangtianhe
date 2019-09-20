@@ -153,33 +153,33 @@ page {
 }
 
 .ui-sendItem_title {
-    width: 90%;
+    width: 600rpx;
+    margin-bottom: 20rpx;
     font-size: 36rpx;
     font-family: PingFangSC-Medium;
     font-weight: 500;
     color: #333333;
-    line-height: 36rpx;
-    margin-bottom: 20rpx;
-    display: inline-block;
+    line-height: 1.5;
 }
 
 .ui-sendTime__titleBox {
+    display: flex;
     width: 100%;
     margin-bottom: 16rpx;
-    display: flex;
+    align-items: center;
 }
 
 .ui-sendTime__shareBox {
-    width: 10%;
-    margin-top: -10rpx;
-    display: inline-block;
-    border-left: 1rpx solid #D8D8D8;
+    width: 64rpx;
+    margin-left: auto;
     text-align: center;
+    border-left: 1rpx solid #D8D8D8;
 }
 
 .ui-sendTime__shareIcon {
     width: 48rpx;
     height: 48rpx;
+    margin: 0 0 10rpx 16rpx;
 }
 
 .ui-sendTime__shareText {

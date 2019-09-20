@@ -128,6 +128,13 @@ class Platfrom {
             data: reqData
         }, page);
     }
+    formId(page, reqData) {
+        _g.dm.canLoadMore = 1;
+        return _g.ajax({
+            url: mini.platfrom.formId,
+            data: reqData
+        }, page);
+    }
 
 }
 
