@@ -17,7 +17,7 @@ var filter = {
          var strDate = year + '-' + month + '-' + day +  ' ' + time;
         return strDate;
     },
-    getDay: function (value) {
+    getDay: function (value,type) {
         if ((value + '').length < 13) value *= 1000;
         var d = getDate(value);
         // d.setTime(value);
@@ -31,32 +31,9 @@ var filter = {
         if (month < 10) month = "0" + month;
         if (day < 10) day = "0" + day;
         var strDate = year + '-' + month + '-' + day;
+        if (type) strDate = year + '年' + month + '月' + day + '日';
         return strDate;
     },
-	getDateOrTime: function (value,type) {
-	    if ((value + '').length < 13) value *= 1000;
-	    var d = getDate(value);
-	    var year = d.getFullYear();
-	    var month = d.getMonth() + 1;
-	    var day = d.getDate();
-	    var timeStr = d.toTimeString();
-	    var time = timeStr.substring(0, timeStr.indexOf('+'));
-	    time = time.substring(0, time.length - 4);
-	    var date = d.getDay();
-	    if (month < 10) month = "0" + month;
-	    if (day < 10) day = "0" + day;
-	    var array = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
-	    var strDate = year + '/' + month + '/' + day;
-		var strTime = time;
-		var strDateDot = year + '.' + month + '.' + day;
-		if(type==1){
-			return strDate;
-		}else if(type==2){
-			return strTime;
-		}else if(type==3){
-			return strDateDot;
-		}
-	},
     countDown: function(endTime, startTime, type) {
         // return startTime;
         function format(time) {
@@ -189,35 +166,28 @@ var filter = {
                return '差评';
         }
     },
-	getIncomeType: function (status) {// 收入类型
-	    switch(status) {
-	        case 1:
-	            return '充值';
-	        case 2:
-	            return '赠送';
-			case 3:
-				return '退款';
-			case 4:
-				return '养步乐自完成奖励';
-			case 5:
-				return '养步乐一级奖励';
-			case 6:
-				return '养步乐二级奖励';
-	        default: 
-	           return '';
-	    }
-	},
-	getExpenditureType: function (status) {// 收入类型
-	    switch(status) {
-	        case 1:
-	            return '订单消费（商品抵扣）';
-	        case 2:
-	            return '福气核销';
-			case 3:
-				return '赠送';
-	        default: 
-	           return '';
-	    }
-	},
+    getWithdrawStatus: function (status) {
+        switch(status) {
+            case 1:
+                return '处理中';
+            case 2:
+                return '通过';
+            default: 
+               return '驳回';
+        }
+    },
+    getDistrStatus: function (status) {
+        switch(status) {
+            case 1:
+                return '一级佣金';
+            case 2:
+                return '二级佣金';
+            case 3:
+                return '分红';    
+            default: 
+               return '提现';
+        }
+    },
+    
 };
 module.exports = filter;

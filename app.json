@@ -64,7 +64,8 @@
     "pages/pharmacy/customer",
     "pages/card/card",
     "pages/goods/groupList",
-    "pages/card/rightsCard"
+    "pages/card/rightsCard",
+    "pages/card/detail"
   ],
   "tabBar": {
     "custom": true,

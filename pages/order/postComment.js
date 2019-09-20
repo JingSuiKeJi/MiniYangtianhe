@@ -66,7 +66,7 @@ const methods = {
 						_g.navigateTo({
 							param:{
 								   orderId : orderId,
-								   param: 'postComment'
+								   from: 'postComment'
 						    },
 							url: 'pages/order/orderDetail',
 						}, self);
