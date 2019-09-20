@@ -385,8 +385,8 @@ page {
 .ui-goodsBox {
     width: 746rpx;
     height: 940rpx;
-    /* background-image: url(http://www.gzlingren.com:8098/yangtianhe/card_backGround2x.png); */
-    background-image: url(http://m.qpic.cn/psb?/V12Kdegv0qd4wf/pd0u1LVbEgis1XT.dgqoAK3R*j*csvHmoxmaaBXCJ1A!/b/dL8AAAAAAAAA&bo=zgKQAwAAAAADJ10!&rf=viewer_4&t=5);
+    background-image: url(http://www.gzlingren.com:8098/yangtianhe/card_backGround2x.png);
+    /* background-image: url(http://m.qpic.cn/psb?/V12Kdegv0qd4wf/pd0u1LVbEgis1XT.dgqoAK3R*j*csvHmoxmaaBXCJ1A!/b/dL8AAAAAAAAA&bo=zgKQAwAAAAADJ10!&rf=viewer_4&t=5); */
     background-size: cover;
 }
 .ui-goodsItem {
@@ -394,7 +394,7 @@ page {
     width:304rpx;
     height:328rpx;
     margin-bottom: 20rpx;
-    margin-left: 30rpx;
+    margin-left: 25rpx;
     background:#FFFFFFFF;
     border-radius:8rpx;
     text-align: center;
@@ -402,10 +402,13 @@ page {
 }
 .ui-goodsItem:nth-child(1) {
     margin-top: 58rpx;
-    margin-left: 50rpx;
+    margin-left: 53rpx;
+}
+.ui-goodsItem:nth-child(2) {
+    margin-top: 58rpx;
 }
 .ui-goodsItem:nth-child(3) {
-    margin-left: 50rpx;
+    margin-left: 53rpx;
 }
 .ui-goodsItem__img {
     display: inline-block;
@@ -439,7 +442,7 @@ page {
 .ui-moreBtn {
     width: 574rpx;
     height: 84rpx;
-    margin-left: 60rpx;
+    margin-left: 80rpx;
     margin-top: 44rpx;
     line-height: 84rpx;
     font-size:26rpx;
@@ -483,16 +486,4 @@ page {
     line-height:76rpx;
     text-align: center;
     border-radius: 40rpx;
-}
-.ui-goodsBox {
-    width: 686rpx;
-    background:#FFF1DE;
-    border-radius:16rpx;
-}
-.uigoodsItem {
-    display: inline-block;
-    width:312rpx;
-    height:412rpx;
-    background:#FFFF;
-    border-radius:16px;
 }

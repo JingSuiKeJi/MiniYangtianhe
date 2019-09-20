@@ -49,6 +49,24 @@
             <text>7.5</text>
             折优惠
         </view>
-        <view class="ui-bottomItem__btn">立即购买</view>
+        <view class="ui-bottomItem__btn" bindtap="showModal">立即购买</view>
+    </view>
+    <view class="modals modals-bottom-dialog" hidden="{{hideModal}}">
+        <view class="modals-cancel" bindtap="hideModal"></view>
+        <view class="bottom-dialog-body ">
+            <view class="ui-modalItem__top">
+                <image src="../../images/cardDetail__userIcon.png" mode="aspectFill" class="ui-modalsItem__userIcon" />
+                <view class="ui-modalsItem__text">您的ID为9671357515</view>
+                <view class="ui-modalsItem__title">购买后将为此ID开通PLUS权益</view>
+                <view class="ui-modalsItem__title">确定为此ID账号开通么？</view>
+            </view>
+            <view class="ui-modalItem__bottom">
+                <view class="ui-bottomItem__left" bindtap="hideModal">取消购买</view>
+                <view class="ui-bottomItem__right" bindtap="onBuyTap">确定购买</view>
+            </view>
+        </view>
+        <view class="ui-cancelBox">
+            <image src="{{filter.getLocalPhoto('bargain_list_delect.png')}}" class="ui-cancelIcon" bindtap="hideModal" />
+        </view>
     </view>
 </view>

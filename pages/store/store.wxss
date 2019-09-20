@@ -198,25 +198,24 @@ page {
 
 .ui-tapBox {
     width: 100%;
-    margin-top: 82rpx;
     height: 80rpx;
+    margin-top: 82rpx;
+    padding: 0 40rpx;
     background-color: #FF7274;
 }
-
-.ui-tapBox .ui-headBox_tap {
+.ui-tapBox__Item {
     width: 100%;
-    height: 100%;
-    padding: 0 40rpx;
+    height: 80rpx;
+    white-space: nowrap;
     overflow: hidden;
 }
-
-.ui-headBox_tap text {
+.ui-tap__item {
     display: inline-block;
     font-size: 26rpx;
     font-family: PingFangSC-Regular;
     font-weight: 400;
     color: #ffff;
-    line-height: 80rpx;
+    /* line-height: 80rpx; */
     margin-right: 40rpx;
 }
 

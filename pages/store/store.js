@@ -27,29 +27,29 @@ const data = {
 };
 
 // 页面onLoad方法
-const onLoad = function(self) {
+const onLoad = function (self) {
     self.getData();
     self.getTabBar().setData({
         selected: 1
     });
     // self.onScroll();
-    event.on('login-suc', (ret) => {});
-    event.on('logout-suc', (ret) => {});
+    event.on('login-suc', (ret) => { });
+    event.on('logout-suc', (ret) => { });
 };
 
 // 页面onShow方法
-const onShow = function(self) {
+const onShow = function (self) {
 };
-const onUnload = function(self) {
+const onUnload = function (self) {
 
 }
-const onReady = function(self) {
+const onReady = function (self) {
     self.onScroll();
-  
+
 }
 // 页面中的方法
 const methods = {
-    getData: function() {
+    getData: function () {
         const self = this;
         self.getClassifyList();
         self.getCommonData();
@@ -93,12 +93,12 @@ const methods = {
         Platform.getSecKill(self, {
             platformFlag: 1,
         }).then((ret) => {
-            if (!ret.data ) return;
+            if (!ret.data) return;
             self.setData({
                 secSkill: ret.data
             });
             self.timeFormat(ret.data.startTime, ret.data.endTime);
-        }, (err) => {});
+        }, (err) => { });
     },
     getBrandList() {
         const self = this;
@@ -112,60 +112,69 @@ const methods = {
                 self.setData({
                     singleBrandList: data
                 });
-               
+
             } else {
-                 let length = Math.ceil(data.length / 2);
+                let length = Math.ceil(data.length / 2);
                 for (var index = 0; index < 2; index++) {
-                    BrandList[index] = data.slice(index * length, (index + 1) * length );
+                    BrandList[index] = data.slice(index * length, (index + 1) * length);
                 }
                 self.setData({
                     brandList: BrandList
                 });
             }
-           
-            
-        }, (err) => {});
+
+
+        }, (err) => { });
     },
-    onMoreTap: function(e) {
+    onMoreTap: function (e) {
         const self = this;
         _g.navigateTo({
             url: 'pages/goods/groupList'
         }, self)
     },
-    onSkipTap: function() {
+    onSkipTap: function () {
         const self = this;
         _g.navigateTo({
             url: 'pages/search/search',
             param: { platformFlag: 1 }
         }, self);
     },
-    onChangeTap: function(e) {
+    onChangeTap: function (e) {
         const self = this;
         self.setData({
             currentIndex: e.detail.current
         })
     },
-    onClickTap: function(e) {
+    onClickTap: function (e) {
         const self = this;
-        self.setData({
-            classifyId: e.currentTarget.dataset.id,
-            page: 1
-        });
+        let data = {
+            classifyId: e.currentTarget.dataset.type,
+        }
+        //点击下拉列表时使scroll-view的自动滑动到相对应的view
+        if (!self.data.hideModal) {
+            data.toView = '_' + e.currentTarget.dataset.type;
+        }
+        // self.setData({
+        //     classifyId: e.currentTarget.dataset.id,
+        //     page: 1
+        // });
+        self.setData(data);
         self.getPageData();
+        self.hideModal();
     },
-    onSlideTap: function(e) {
+    onSlideTap: function (e) {
         const self = this;
         self.setData({
             hideModal: !self.data.hideModal
         })
     },
-    onClassifyTap: function(e) {
+    onClassifyTap: function (e) {
         const self = this;
         self.setData({
             classifyType: e.detail.current,
         });
     },
-    onTabTap: function(e) {
+    onTabTap: function (e) {
         const self = this;
         const id = e.target.dataset.id;
         if (e.target.dataset.isLink == 2) return;
@@ -177,7 +186,7 @@ const methods = {
             }
         });
     },
-    onDetailTap: function(e) {
+    onDetailTap: function (e) {
         const self = this;
         const opts = e.currentTarget.dataset;
         _g.navigateTo({
@@ -188,17 +197,17 @@ const methods = {
             }
         }, self);
     },
-    onBrandsTap: function(e) {
+    onBrandsTap: function (e) {
         const self = this;
         _g.navigateTo({
             url: 'pages/search/brandList',
-            param: { 
-                id: e.target.dataset.id ,
+            param: {
+                id: e.target.dataset.id,
                 platformFlag: 1
             }
         }, self);
     },
-    onAllBrandsTap: function(e) {
+    onAllBrandsTap: function (e) {
         const self = this;
         _g.navigateTo({
             url: 'pages/search/brand',
@@ -207,7 +216,7 @@ const methods = {
             }
         }, self);
     },
-    onResultTap: function(e) {
+    onResultTap: function (e) {
         const self = this;
         _g.navigateTo({
             url: 'pages/search/detailList',
@@ -218,26 +227,26 @@ const methods = {
             }
         }, self);
     },
-    onCheckBanner: function(e) {
+    onCheckBanner: function (e) {
         const self = this;
         let index = e.target.dataset.index;
         if (e.target.dataset.isLink == 2) return;
-        self.map(self.data.banner,index);
+        self.map(self.data.banner, index);
     },
-    map: function(arr, index) {
+    map: function (arr, index) {
         let self = this;
         _g.navigateTo({
             url: 'pages' + arr[index].pageUrl,
         }, self);
-        
+
     },
-    onListTap: function(e) {
+    onListTap: function (e) {
         const self = this;
         let id = e.target.dataset.id;
         if (e.target.dataset.isLink == 2) return;
         self.map(self.data.classList, id);
     },
-    showClassify: function(arr) {
+    showClassify: function (arr) {
         const self = this;
         var classList = [];
         var length = Math.ceil(arr.length / 10);
@@ -248,13 +257,13 @@ const methods = {
             classList: classList
         });
     },
-    onCheckActivity: function(e) {
+    onCheckActivity: function (e) {
         const self = this;
         if (e.target.dataset.isLink == 2) return;
-        self.map(self.data.activity,0);
+        self.map(self.data.activity, 0);
     },
     //限时抢购
-    timeFormat: function(startTime, endTime) {
+    timeFormat: function (startTime, endTime) {
         const self = this;
         let nowDate = new Date();
         let curTime = nowDate.getTime(); //指定日期距离1970年的毫秒数
@@ -290,7 +299,7 @@ const methods = {
         }
     },
     // 抢购的时间
-    time: function(second) {
+    time: function (second) {
         let day = Math.floor(second / 86400); //还剩几天
         second = second % 86400; // 剩余的秒数
         let hour = Math.floor(second / 3600); //还剩几个小时
@@ -308,7 +317,7 @@ const methods = {
         })
     },
     //榜单推荐分类列表
-    getClassifyList: function() {
+    getClassifyList: function () {
         const self = this;
         Platform.getClassifyList(self, {
             platformFlag: 1,
@@ -326,7 +335,7 @@ const methods = {
 
         });
     },
-    getPageData: function() {
+    getPageData: function () {
         const self = this;
         Platform.getRecommend(self, {
             platformFlag: 1,
@@ -343,7 +352,7 @@ const methods = {
         });
     },
     // 显示遮罩层
-    showModal: function() {
+    showModal: function () {
         let self = this;
         self.setData({
             hideModal: false
@@ -351,32 +360,35 @@ const methods = {
     },
 
     // 隐藏遮罩层
-    hideModal: function() {
+    hideModal: function () {
         var self = this;
         self.setData({
             hideModal: true,
         })
     },
-    onScroll: function() {
+    onScroll: function () {
         const self = this;
         const query = wx.createSelectorQuery();
-        query.select('#aim').boundingClientRect();
-        query.selectViewport().scrollOffset();
-        query.exec(function(res) {
-            self.setData({
-                scrollTop: res[0].top
-            });
-        })
-       
+        setTimeout(() => {
+            query.select('#aim').boundingClientRect();
+            query.selectViewport().scrollOffset();
+            query.exec(function (res) {
+                self.setData({
+                    scrollTop: res[0].top
+                });
+            })
+        }, 1000)
+
+
     },
-    pageScroll: function(res) {
+    pageScroll: function (res) {
         let self = this;
         let top = self.data.scrollTop + 900;
         if (res.scrollTop >= top) {
             self.setData({
                 isFixed: true,
             });
-           
+
         } else {
             self.setData({
                 isFixed: false,
