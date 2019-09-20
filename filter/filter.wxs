@@ -214,26 +214,32 @@ var filter = {
                return '提现';
         }
     },
-    getPlatformFlag: function (status) {// 平台标识
+    getIncomeType: function (status) {// 收入类型
 		switch(status) {
 			case 1:
-				return '商城';
+				return '充值';
 			case 2:
-				return '药房';
+				return '赠送';
+			case 3:
+				return '退款';
+			case 4:
+				return '养步乐自完成奖励';
+			case 5:
+				return '养步乐一级奖励';
+			case 6:
+				return '养步乐二级奖励';				
 			default: 
 			   return '';
 		}
 	},
-	getDeliveryType: function (status) {// 配送方式
+	getExpenditureType: function (status) {// 支出类型
 		switch(status) {
 			case 1:
-				return '快递';
+				return '订单消费（商品抵扣）';
 			case 2:
-				return '自提';
-		  case 3:
-			 return '配送';
-		  case 4:
-			 return '配送';
+				return '福气核销';
+			case 3:
+				return '赠送';
 			default: 
 			   return '';
 		}
