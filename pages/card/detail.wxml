@@ -30,7 +30,14 @@
     <view class="ui-rightsBox">
         <view class="ui-rightsItem__top">
             <text class="ui-topItem__icon"></text>
-             <text class="ui-topItem__text"></text>
+             <text class="ui-topItem__text">PLUS会员6大专属权益</text>
+        </view>
+        <view class="ui-rightsItem__bottom">
+            <view class="ui-bottomItem" wx:for="{{iocnList}}" wx:key="{{index}}">
+                <image src="{{filter.getLocalPhoto(item.url)}}" mode="aspectFill" class="ui-bottomItem__icon"/>
+                <view class="ui-bottomItem__text">{{item.text}}</view>
+            </view>
+            
         </view>
     </view>
     <!-- <view class="ui-bottomBox">

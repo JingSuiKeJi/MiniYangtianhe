@@ -5,29 +5,55 @@ const _g = app.base;
 const _c = app.config;
 // 初始化数据
 const data = {
-  goodList: [
-    {
-      url: 'my_tea.png',
-      price: '88',
-    },
-    {
-      url: 'my_tea.png',
-      price: '88',
-    },
-    {
-      url: 'my_tea.png',
-      price: '88',
-    },
-    {
-      url: 'my_tea.png',
-      price: '88',
-    },
-    {
-      url: 'my_tea.png',
-      price: '88',
-    },
-  ],
-  type: 0,
+    goodList: [
+        {
+            url: 'my_tea.png',
+            price: '88',
+        },
+        {
+            url: 'my_tea.png',
+            price: '88',
+        },
+        {
+            url: 'my_tea.png',
+            price: '88',
+        },
+        {
+            url: 'my_tea.png',
+            price: '88',
+        },
+        {
+            url: 'my_tea.png',
+            price: '88',
+        },
+    ],
+    type: 0,
+    iconList: [
+        {
+            url: 'card__coffee.png',
+            text: '自购省钱',
+        },
+        {
+            url: 'card__coffee.png',
+            text: '自购省钱',
+        },
+        {
+            url: 'card__coffee.png',
+            text: '自购省钱',
+        },
+        {
+            url: 'card__coffee.png',
+            text: '自购省钱',
+        },
+        {
+            url: 'card__coffee.png',
+            text: '自购省钱',
+        },
+        {
+            url: 'card__coffee.png',
+            text: '自购省钱',
+        },
+    ],
 };
 
 // 页面onLoad方法
@@ -49,10 +75,10 @@ const methods = {
 
     },
     onClickTap: function (e) {
-       let self = this;
-       self.setData({
-         type: Number(e.currentTarget.dataset.type)
-       })
+        let self = this;
+        self.setData({
+            type: Number(e.currentTarget.dataset.type)
+        })
     }
 
 };
