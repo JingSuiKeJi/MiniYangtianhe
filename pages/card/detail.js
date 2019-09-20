@@ -30,27 +30,27 @@ const data = {
     type: 0,
     iconList: [
         {
-            url: 'card__coffee.png',
+            url: 'capty.png',
             text: '自购省钱',
         },
         {
-            url: 'card__coffee.png',
+            url: 'capty.png',
             text: '自购省钱',
         },
         {
-            url: 'card__coffee.png',
+            url: 'capty.png',
             text: '自购省钱',
         },
         {
-            url: 'card__coffee.png',
+            url: 'capty.png',
             text: '自购省钱',
         },
         {
-            url: 'card__coffee.png',
+            url: 'capty.png',
             text: '自购省钱',
         },
         {
-            url: 'card__coffee.png',
+            url: 'capty.png',
             text: '自购省钱',
         },
     ],

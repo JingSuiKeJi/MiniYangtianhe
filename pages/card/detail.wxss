@@ -141,9 +141,9 @@ page {
 }
 .ui-rightsItem__top {
     display: flex;
-   align-items: center;
+    align-items: center;
     width: 100%;
-    height: 70rpx;
+    height: 90rpx;
 }
 .ui-topItem__icon {
     margin-left: 40rpx;
@@ -176,21 +176,24 @@ page {
     color:#999999;
     line-height:24rpx;
 }
-
-
-
-
-
-
-
-
-
-
-
-
+.ui-imgBox {
+    margin-bottom: 160rpx;
+}
+.goodsItem__detailIcon {
+    width: 750rpx;
+    height: 962rpx;
+}
+.goodsItem__introIcon {
+    width: 750rpx;
+    height: 732rpx;
+}
+.goodsItem__lifeIcon {
+    width: 750rpx;
+    height: 504rpx;
+}
 .ui-bottomBox {
-    /* margin-top: 138rpx; */
-    margin-bottom: 0;
+    position: fixed;
+    bottom: 0;
     display: flex;
     width: 100%;
     height: 120rpx;
