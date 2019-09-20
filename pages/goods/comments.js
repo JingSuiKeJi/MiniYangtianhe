@@ -42,7 +42,7 @@ const methods = {
     getData: function () {
         let self = this;
         Goods.getCommentList(self, {
-            goodsId: 51
+            goodsId: self.data.goodsId
         }).then((ret)=>{
             let data = ret.data;
             self.setData({
