@@ -49,3 +49,25 @@ view {
     color: #999;
     text-align: center;
 }
+
+button {
+    display: block;
+    line-height: 1;
+    font-size: 0;
+    padding: 0;
+    border: none;
+    background-color: #fff;
+    border-radius: 0;
+}
+
+button::hover {
+    border-style: none;
+}
+
+button:after {
+    border-style: none;
+}
+
+button::after {
+    border-style: none;
+}

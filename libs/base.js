@@ -1444,15 +1444,15 @@ base.prototype = {
     postFormId: function(opts) {
         if (opts.formId == 'the formId is a mock one') return;
         const _g = this;
-//         const Platform = require('../service/Platform');
-//         Platform.formId(opts.self, {
-//             formId: opts.formId,
-//             showToast: false
-//         }).then(function(ret) {
-// 
-//         }, function(error) {
-//             _g.logErrorMsg(error);
-//         });
+        const Platform = require('../service/Platfrom');
+        Platform.formId(opts.self, {
+            formId: opts.formId,
+            showToast: false
+        }).then(function(ret) {
+
+        }, function(error) {
+            _g.logErrorMsg(error);
+        });
     },
     getAuthorize: function (opts, callback) {
         wx.getSetting({

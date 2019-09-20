@@ -42,12 +42,12 @@
                 </view>
                 <view class="ui-sendTime__titleBox">
                     <view class="ui-sendItem_title">{{goodsDetail.mainTitle}}</view>
-                    <view class="ui-sendTime__shareBox" 
-                        catchtap="onShareTap"
-                        wx:if="{{type ==1 || type == 3 || type == 4 ||type == 7 || type == 2}}">
-                        <image src="{{filter.getLocalPhoto('detail_shareIcon.png')}}" class="ui-sendTime__shareIcon" bindtap="onShareTap" data-type="1" />
-                        <view class="ui-sendTime__shareText">分享</view>
-                    </view>
+                    <form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onShareTap" wx:if="{{type ==1 || type == 3 || type == 4 ||type == 7 || type == 2}}">
+                        <button formType="submit" class="ui-sendTime__shareBox">
+                            <image src="{{filter.getLocalPhoto('detail_shareIcon.png')}}" class="ui-sendTime__shareIcon" bindtap="onShareTap" data-type="1" />
+                            <view class="ui-sendTime__shareText">分享</view>
+                        </button>
+                    </form>
                 </view>
                 <view class="ui-sendTime_introduce" wx:if="{{type ==1 || type == 3 || type == 4 ||type == 7 || type == 2}}">{{goodsDetail.secondTitle}}</view>
                 <view class="ui-sendItem_sales" wx:if="{{type == 5 || type == 5}}">销量:200</view>
