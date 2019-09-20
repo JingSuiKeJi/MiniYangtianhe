@@ -227,3 +227,11 @@
         </view>
     </scroll-view>
 </view>
+<shareGoods
+    goodsDetail="{{goodsDetail}}"
+    host="{{host}}"
+    shareEvent="goods-detail-shareEvent"
+
+>
+        
+</shareGoods>
