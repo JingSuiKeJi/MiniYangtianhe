@@ -1,0 +1,113 @@
+.ui-shareBox {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.3);
+	overflow: hidden;
+	z-index: 1000;
+}
+
+.ui-share__bg {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.3);
+}
+
+.ui-share__bd {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 472rpx;
+	height: 840rpx;
+	margin: auto;
+}
+
+.ui-share__canvas {
+	display: block;
+	position: absolute;
+	left: -999px;
+	width: 472rpx;
+	height: 840rpx;
+	background-color: #f1f1f1;
+}
+
+.ui-share__image {
+	width: 472rpx;
+	height: 840rpx;
+}
+
+.ui-download__img {
+    position: absolute;
+    top: -999rpx;
+    left: 0;
+}
+
+.ui-share__btn {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	background-color: #fff;
+	border-radius: 20rpx 20rpx 0 0;
+}
+
+.ui-share__btnText {
+	height: 116rpx;
+	line-height: 116rpx;
+	text-align: center;
+	font-size: 34rpx;
+	color: #999;
+}
+
+.ui-share__btnText text {
+	color: #ED3D3B;
+}
+
+.ui-share__list {
+	display: flex;
+	padding: 0 188rpx 20rpx 188rpx;
+}
+
+.ui-share__item {
+	flex: 1;
+	align-items: center;
+	width: 110rpx;
+}
+
+.ui-share__itemIcon {
+	display: block;
+	width: 88rpx;
+	height: 88rpx;
+	margin: 0 auto 20rpx auto;
+}
+
+.ui-share__itemText {
+	font-size: 26rpx;
+	color: #666;
+	text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
