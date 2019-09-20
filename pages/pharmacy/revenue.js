@@ -19,11 +19,11 @@ const onUnload = function (self) { }
 const methods = {
 	getData: function (e) {
 		let self = this;
-		self.getBaseInfo();
+		self.getCommissionBaseInfo();
 	},
-	getBaseInfo: function () {
+	getCommissionBaseInfo: function () {
 		let self = this;
-		User.getBaseInfo(self, {
+		User.getCommissionBaseInfo(self, {
         }).then((ret) => {
             self.setData({
 				rewardInfo: ret.data

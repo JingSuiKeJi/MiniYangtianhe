@@ -22,15 +22,20 @@ const methods = {
 	},
 	getPageData: function () {
 		let self = this;
-		User.getClientList(self, {
+		User.getCommissionClientList(self, {
 			page: self.data.page,
 			pageSize: 10,
 			level: self.data.selectLevel
 		}).then((ret) => {
-			self.setData({
-				clientList: ret.data.list,
-				hasNextPage: ret.data.hasNextPage
-			})
+			if (self.data.page == 1) {
+	    		self.setData({
+	    			clientList: ret.data.list
+	    		});
+    		} else {
+    			self.setData({
+	    			clientList: self.data.clientList.concat(ret.data.list)
+	    		});
+			}
 		}, (err) => {
 
 		});
