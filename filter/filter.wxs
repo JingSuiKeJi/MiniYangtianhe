@@ -14,7 +14,7 @@ var filter = {
         if (day < 10) day = "0" + day;
         var array = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
         // var strDate = year + '-' + month + '-' + day + '(' + array[date] + ')' + ' ' + time;
-         var strDate = year + '-' + month + '-' + day +  ' ' + time;
+        var strDate = year + '-' + month + '-' + day +  ' ' + time;
         return strDate;
     },
     getDay: function (value,type) {
@@ -34,6 +34,32 @@ var filter = {
         if (type) strDate = year + '年' + month + '月' + day + '日';
         return strDate;
     },
+	getDateOrTime: function (value,type) {
+	    if ((value + '').length < 13) value *= 1000;
+	    var d = getDate(value);
+	    // d.setTime(value);
+	    var year = d.getFullYear();
+	    var month = d.getMonth() + 1;
+	    var day = d.getDate();
+	    var timeStr = d.toTimeString();
+	    var time = timeStr.substring(0, timeStr.indexOf('+'));
+	    time = time.substring(0, time.length - 4);
+	    var date = d.getDay();
+	    if (month < 10) month = "0" + month;
+	    if (day < 10) day = "0" + day;
+	    var array = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
+	    // var strDate = year + '-' + month + '-' + day + '(' + array[date] + ')' + ' ' + time;
+	    var strDate = year + '-' + month + '-' + day;
+		var strTime = time;
+		var strDateDot = year + '.' + month + '.' + day;
+		if(type==1){
+			return strDate
+		}else if(type==2){
+			return strTime
+		}else if(type==3){
+			return strDateDot
+		}
+	},
     countDown: function(endTime, startTime, type) {
         // return startTime;
         function format(time) {
@@ -188,6 +214,29 @@ var filter = {
                return '提现';
         }
     },
-    
+    getPlatformFlag: function (status) {// 平台标识
+		switch(status) {
+			case 1:
+				return '商城';
+			case 2:
+				return '药房';
+			default: 
+			   return '';
+		}
+	},
+	getDeliveryType: function (status) {// 配送方式
+		switch(status) {
+			case 1:
+				return '快递';
+			case 2:
+				return '自提';
+		  case 3:
+			 return '配送';
+		  case 4:
+			 return '配送';
+			default: 
+			   return '';
+		}
+	},
 };
 module.exports = filter;
