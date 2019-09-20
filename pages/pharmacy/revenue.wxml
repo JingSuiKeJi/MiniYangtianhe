@@ -1,18 +1,20 @@
-<!-- <wxs module="filter" src="../../filter/filter.wxs"></wxs> -->
+<wxs module="filter" src="../../filter/filter.wxs"></wxs>
 <!--revenue.wxml-->
 <view class="container">
 	<view class="ui-main">
 		<view class="ui-backGorund"></view>
 		
 		<view class="ui-infoBox">
-			<view class="ui-itemImgBox"></view>
+		    <image src="{{userInfo.avatar}}" mode="aspectFill" class="ui-itemImgBox"/>
+			<!-- <view class="ui-itemImgBox"></view> -->
 			<view class="ui-textBox">
-				<text>命运的杰克</text>
-				<text>所属门店：天盈广场店</text>
+				<text>{{userInfo.nickname}}</text>
+				<text>所属门店：{{userInfo.store.title}}</text>
 			</view>
-			<view class="ui-vipBox">
-				<view class="vipIcon"></view>
-				<text>VIP1</text>
+			<view class="ui-vipBox" wx:if="{{userInfo.distribution.sort}}">
+			    <image src="{{userInfo.distribution.sort == 1 ? filter.getLocalPhoto('my_distributionLevel.png') : filter.getLocalPhoto('my_distributionLevel2.png')}}"  mode="aspectFill" class="vipIcon"/>
+				<!-- <view class="vipIcon"></view> -->
+				<text>VIP{{userInfo.distribution.sort}}</text>
 			</view>
 		</view>
 	
@@ -22,21 +24,21 @@
 					<view class="withdrawIcon"></view>
 					<view>可提现佣金</view>
 				</view>
-				<view>59.00</view>
-				<view>待结算 11.23元</view>
+				<view>{{rewardInfo.money}}</view>
+				<view>待结算 {{rewardInfo.waitMoney}}元</view>
 			</view>
 			<view class="ui-cut"></view>
 			<view class="ui-commissionItem">
 				<view>
-					<text>2213.00</text>
+					<text>{{rewardInfo.totalMoney}}</text>
 					<text>累计佣金</text>
 				</view>
 				<view>
-					<text>2213</text>
+					<text>{{rewardInfo.clientOrderNum}}</text>
 					<text>分销订单</text>
 				</view>
 				<view bindtap="onCheckCustom">
-					<text>5416</text>
+					<text>{{rewardInfo.clientNum}}</text>
 					<text>我的客户</text>
 				</view>
 			</view>
