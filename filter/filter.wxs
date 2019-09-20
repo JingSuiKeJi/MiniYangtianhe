@@ -202,18 +202,28 @@ var filter = {
                return '驳回';
         }
     },
-    getDistrStatus: function (status) {
+    getCommissionIncome: function (status) {
         switch(status) {
             case 1:
                 return '一级佣金';
             case 2:
                 return '二级佣金';
             case 3:
-                return '分红';    
+                return '分红';
+			case 4:
+			    return '提现';
             default: 
-               return '提现';
+               return '';
         }
     },
+	getCommissionExpenditure: function (status) {
+	    switch(status) {
+	        case 1:
+	            return '提现';
+	        default: 
+	           return '';
+	    }
+	},
     getIncomeType: function (status) {// 收入类型
 		switch(status) {
 			case 1:

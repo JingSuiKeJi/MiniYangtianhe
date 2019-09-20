@@ -249,24 +249,24 @@ class User {
 	        data: reqData
 	    }, page);
 	}
-	getBaseInfo(page, reqData) {
+	getCommissionBaseInfo(page, reqData) {
 	    _g.dm.canLoadMore = 1;
 	    return _g.ajax({
-	        url: mini.user.getBaseInfo,
+	        url: mini.user.getCommissionBaseInfo,
 	        data: reqData
 	    }, page);
 	}
-	getClientList(page, reqData) {
+	getCommissionClientList(page, reqData) {
 	    _g.dm.canLoadMore = 1;
 	    return _g.ajax({
-	        url: mini.user.getClientList,
+	        url: mini.user.getCommissionClientList,
 	        data: reqData
 	    }, page);
 	}
-	distributionList(page, reqData) {
+	getCommissionRecordList(page, reqData) {
 	    _g.dm.canLoadMore = 1;
 	    return _g.ajax({
-	        url: mini.user.distributionList,
+	        url: mini.user.getCommissionRecordList,
 	        data: reqData
 	    }, page);
 	}
