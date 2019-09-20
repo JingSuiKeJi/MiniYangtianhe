@@ -44,7 +44,9 @@ const data = {
     title: '', //头部标题
     goodsDetail: {},
     num: 1,
-    canvasUrl: ''
+    canvasUrl: '',
+    authorizeHidden: true,
+    hideShareDialog: true
 };
 
 // 页面onLoad方法
@@ -69,6 +71,28 @@ const onLoad = function(self) {
         });
     });
 };
+
+const onReady = function (self) {
+    setTimeout(function () {
+        self.poster = self.selectComponent('#poster');
+        self.poster.onHideShareTap = function () {
+            self.setData({
+                hideShareDialog: true
+            });
+        }
+        self.authorize = self.selectComponent('#authorize');
+        self.authorize.onCancelTap = function() {
+            self.setData({
+                authorizeHidden: true
+            });
+        }
+    }, 1000);
+    event.on('goods-detail-openAuthorize', self, function(data) {
+        self.setData({
+            authorizeHidden: false
+        });
+    });
+}
 
 // 页面onShow方法
 const onShow = function(self) {
@@ -399,10 +423,22 @@ const methods = {
     },
     onShareAppMessage() {
         const self = this;
+        const userInfo = _g.getLS(_c.LSKeys.userInfo);
+        let path = 'pages/goods/detail?id=' + self.data.id;
+        if (userInfo) {
+            path += '&promoCode=' + userInfo.promoCode;
+        }
         return {
             title: self.data.goodsDetail.mainTitle,
-            path: 'pages/goods/detail?id=' + self.data.id
+            path: path,
+            imageUrl: self.data.canvasUrl
         }
+    },
+    onShareTap() {
+        const self = this;
+        self.setData({
+            hideShareDialog: false
+        });
     }
 };
 
@@ -413,6 +449,7 @@ const temps = {};
 const initPage = _g.initPage({
     data: data,
     onLoad: onLoad,
+    onReady: onReady,
     onShow: onShow,
     methods: methods,
     onUnload: onUnload

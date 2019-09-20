@@ -1,1 +1,23 @@
-<view></view>
+<wxs module="filter" src="../../filter/filter.wxs"></wxs>
+<view class="ui-shareBox" style="left: {{hideShareDialog ? '-999px' : '0'}}">
+    <view class="ui-share__bg" hidden="{{hideShareDialog}}" bindtap="onHideShareTap"></view>
+    <view class="ui-share__bd">
+        <canvas canvas-id="share" class="ui-share__canvas"></canvas>
+        <image class="ui-share__image" src="{{canvasUrl}}"></image>
+    </view>
+    <view class="ui-share__btn">
+        <view class="ui-share__btnText">分享好友下单
+            <text>赚1.34元</text>
+        </view>
+        <view class="ui-share__list">
+            <button open-type="share" class="ui-share__item" style="background-color: #fff;border: none;display: block;">
+                <image class="ui-share__itemIcon" src="{{filter.getLocalPhoto('icon-wechat.png')}}"></image>
+                <view class="ui-share__itemText">分享好友</view>
+            </button>
+            <view class="ui-share__item" catchtap="onSaveTap">
+                <image class="ui-share__itemIcon" src="{{filter.getLocalPhoto('icon-save.png')}}"></image>
+                <view class="ui-share__itemText">保存海报</view>
+            </view>
+        </view>
+    </view>
+</view>

@@ -42,7 +42,9 @@
                 </view>
                 <view class="ui-sendTime__titleBox">
                     <view class="ui-sendItem_title">{{goodsDetail.mainTitle}}</view>
-                    <view class="ui-sendTime__shareBox" wx:if="{{type ==1 || type == 3 || type == 4 ||type == 7 || type == 2}}">
+                    <view class="ui-sendTime__shareBox" 
+                        catchtap="onShareTap"
+                        wx:if="{{type ==1 || type == 3 || type == 4 ||type == 7 || type == 2}}">
                         <image src="{{filter.getLocalPhoto('detail_shareIcon.png')}}" class="ui-sendTime__shareIcon" bindtap="onShareTap" data-type="1" />
                         <view class="ui-sendTime__shareText">分享</view>
                     </view>
@@ -147,7 +149,7 @@
             </view>
             <view class="ui-tapItem ui-nowBuyBox" bindtap="showModal" wx:if="{{type == 5}}">立即购买</view>
         </view>
-        <view class="modals modals-bottom-dialog" hidden="{{hideModal}}">
+        <!-- <view class="modals modals-bottom-dialog" hidden="{{hideModal}}">
             <view class="modals-cancel" bindtap="hideModal" catchtouchmove="true"></view>
             <view class="bottom-dialog-body bottom-pos" animation="{{animationData}}">
                 <view class="ui-modelBox">
@@ -175,8 +177,6 @@
                             <view class="ui-modelTop_center">
                                 <view class="ui-centerItem_price">
                                     ¥{{goodsDetail.nowPrice}}
-                                    <!-- <text class="ui-priceItem_text" wx:if="{{ScaleType==0 && type ==1 || type == 3 || type == 4 ||type == 7 }}">赚</text>
-                                        <text class="ui-priceItem_earnMoney" wx:if="{{ScaleType==0 && type ==1 || type == 3 || type == 4 ||type == 7}}">¥0.32</text> -->
                                 </view>
                                 <view class="ui-centerItem_scale" wx:if="{{type ==1 || type == 3 || type == 4 ||type == 7}}"> {{scale}}</view>
                                 <view class="ui-centerItem_scale" wx:if="{{type == 5}}"> 250g x 10包</view>
@@ -201,7 +201,6 @@
                                 <text class="ui-countItem__text">{{num}}</text>
                                 <image src="{{filter.getLocalPhoto('goodsDetail_add.png')}}" class="ui-countItem__icon" bindtap="onChangeCount" data-type="2" />
                             </view>
-                            <!-- <view class="ui-middleItem_btn" bindtap="onSelectTap" data-scale="250g x 10包" style="background-color: {{isSelect ? '#21D2B2' : ''}}">250g x 10包</view> -->
                         </view>
                         <view class="ui-tapBox" wx:if="{{type ==1 || type == 3 || type == 4 ||type == 7 ||  type == 2}}">
                             <view class="ui-tapItem_imgBox">
@@ -212,11 +211,9 @@
                             <view class="ui-tapItem">
                                 <view class="ui-tapItem_singleBuy" wx:if="{{type ==1 || type == 3 || type == 4 ||type == 7 ||  type == 2}}">
                                     <view class="ui-tapItem_word ui-tapItem_addWord" bindtap="onAddCart" data-scaletype="0">加入购物车</view>
-                                    <!-- <view class=" ui-tapItem_text" bindtap="onBuyTap" data-scaletype="0">立省¥0.53起</view> -->
                                 </view>
                                 <view class="ui-tapItem_togetherBuy" wx:if="{{type ==1 || type == 3 || type == 4 ||type == 7 ||  type == 2}}">
                                     <view class="ui-tapItem_word ui-tapItem_addWord" bindtap="onBuyTap" data-scaletype="0">立即购买</view>
-                                    <!-- <view class=" ui-tapItem_text"  >立赚¥0.53起</view> -->
                                 </view>
                             </view>
                         </view>
@@ -224,14 +221,23 @@
                     </view>
                 </view>
             </view>
-        </view>
+        </view> -->
     </scroll-view>
 </view>
 <shareGoods
+    id="poster"
     goodsDetail="{{goodsDetail}}"
     host="{{host}}"
+    thirdId="{{thirdId}}"
+    hideShareDialog="{{hideShareDialog}}"
+    eventNameAuth="goods-detail-openAuthorize"
     shareEvent="goods-detail-shareEvent"
-
->
-        
+    bind:onHideShareTap="onHideShareTap">
 </shareGoods>
+<authorize 
+    id="authorize" 
+    message="请问需要授权相册从而保存至本地" 
+    bind:onCancelTap="onCancelTap" 
+    eventName="goods-detail-authorize" 
+    isHidden="{{authorizeHidden}}">
+</authorize>
