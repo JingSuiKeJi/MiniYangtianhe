@@ -44,7 +44,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 6,
+			"current": 21,
 			"list": [
 				{
 					"id": -1,
@@ -92,6 +92,111 @@
 					"id": -1,
 					"name": "客户详情页",
 					"pathName": "pages/me/customerCenter",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "门店店员",
+					"pathName": "pages/shop/myAssistant",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "订单管理",
+					"pathName": "pages/shop/orderManage",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "订单详情页",
+					"pathName": "pages/order/orderVerifyDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "财务报表",
+					"pathName": "pages/shop/statements",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "客户足迹",
+					"pathName": "pages/me/customerFootmark",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "福气核销明细",
+					"pathName": "pages/shop/blissVerifyDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "福气核销二维码",
+					"pathName": "pages/shop/blissVerify",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的海报",
+					"pathName": "pages/me/poster",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "使用福气核销",
+					"pathName": "pages/me/blissVerific",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "门店二维码",
+					"pathName": "pages/shop/storeQRCode",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "养乐药房",
+					"pathName": "pages/home/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "养乐商城",
+					"pathName": "pages/store/store",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "购物车",
+					"pathName": "pages/store/cart",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "福气明细",
+					"pathName": "pages/me/blissDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "收益中心",
+					"pathName": "pages/pharmacy/revenue",
 					"query": "",
 					"scene": null
 				}
