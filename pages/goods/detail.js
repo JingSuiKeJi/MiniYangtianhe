@@ -30,7 +30,6 @@ const data = {
     isSelect: false,
     hideModal: true, //模态框的状态  true-隐藏  false-显示
     animationData: {},
-    flag: 0, //0商品详情页，1拼团页面,2 开团页面,3 限时购页面
     tabList: ['商品', '详情', '评价'],
     isTab: 0,
     scale: '请选择规格',
@@ -56,7 +55,8 @@ const onLoad = function(self) {
     const title = self.data.self;
     if (self.data.flag == 0 || self.data.flag == 3) {
         self.setData({
-            title: '商品详情'
+            title: '商品详情',
+            id: self.data.id
         })
     } else {
         self.setData({
@@ -94,7 +94,8 @@ const methods = {
         }
         Goods.getGoodsDetail(self, data).then((ret) => {
             self.setData({
-                goodsDetail: ret.data
+                goodsDetail: ret.data,
+                type: ret.data.type
             });
             // "goodsDetail.type": 1,   //1.普通 2.秒杀 3.权益卡附属 4.权益 5.拼团 6.砍价 7.推荐
             self.splitString(ret.data.goodImgs, 'bannerImgs');
@@ -113,9 +114,6 @@ const methods = {
             page: 1,
             pageSize: 5 //请求5条数据即可,不需要自己去切割
         }).then((ret) => {
-            // let data = ret.data;
-            // let commentList = data.list.slice(0, 5);
-            // let commentLength = data.list.length; //这里的评论长度展示应该是评论总数
             self.setData({
                 commentList: ret.data.list,
                 commentLength: ret.data.totalCount
@@ -300,19 +298,11 @@ const methods = {
     },
     onMoreComments: function(e) {
         let self = this;
-        let params = {
-            flag: 0, //确定是抢购、拼团、或者是商品
-            goodsId: 2,
-            platformFlag: 2,
-        }
-        if (self.data.storeId) params.storeId = self.data.storeId;
+        if (!self.data.commentLength) return;
         _g.navigateTo({
             url: 'pages/goods/comments',
             param: {
-                flag: 0, //确定是抢购、拼团、或者是商品
-                goodsId: 2,
-                platformFlag: 2,
-                storeId: self.data.storeId
+                goodsId:  self.data.id,
             }
         }, self)
     },
@@ -329,7 +319,7 @@ const methods = {
             id: self.data.goodsDetail.id,
             num: self.data.num,
         };
-            
+        if (!_g.checkLogin({type: 2})) return;   
         if (self.data.goodsDetail.skuId) data.skuId = self.data.goodsDetail.skuId;
         if (self.data.thirdId) data.thirdId = self.data.thirdId;
         _g.navigateTo({
@@ -363,6 +353,7 @@ const methods = {
             goodsId: self.data.id,
             num: self.data.num
         }
+        if (!_g.checkLogin({type: 2})) return;
         if (self.data.platformFlag == 2) data.storeId = self.data.storeId;
         Goods.addCart(self, data).then((ret) => {
             let data = ret.data;
@@ -393,15 +384,10 @@ const methods = {
     },
     onCartTap: function(e) {
         let self = this;
-        if (self.data.userName) {
+        if (!_g.checkLogin({type: 2})) return;
             wx.switchTab({
                 url: '../../pages/store/cart'
             });
-        } else {
-            _g.toast({
-                title: '请先登陆',
-            });
-        }
     },
     onShareTap: function(e) {
         let self = this;

@@ -24,7 +24,7 @@
                 <view class="ui-infoItem_left">
                     <text class="ui-leftItem_text" wx:if="{{type==5}}">2人团</text>
                     <view class="ui-priceBox">
-                        <!-- <text class="ui-priceBox_nowPrice" style="line-height: {{type == 5 ? '100rpx' : ''}}">￥{{goodsDetail.nowPrice}}</text> -->
+                        <text class="ui-priceBox_nowPrice" style="line-height: {{type ==5 ? '100rpx' : ''}}">￥{{goodsDetail.nowPrice}}</text>
                         <text class="ui-priceBox_singlePrice" wx:if="{{type == 5}}">单买价:￥19.00</text>
                         <text class="ui-priceBox_earnPrice" wx:if="{{goodsDetail.commission}}">赚¥{{goodsDetail.commission}}</text>
                     </view>

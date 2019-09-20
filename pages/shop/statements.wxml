@@ -17,7 +17,8 @@
 				</text>
 			</view>
 			<view class="ui-dateText">
-				<view bindtap="onChooseDate" class="ui-dateCircleBg {{currentData==item?'ui-dateCircleBgHhover':''}}" data-id="{{index}}" wx:for="{{dateList}}" wx:for-item="item" wx:key="{{index}}">	
+				<view bindtap="onChooseDate" class="ui-dateCircleBg {{currentData==item?'ui-dateCircleBgHhover':''}}" 
+				data-id="{{index}}" wx:for="{{dateList}}" wx:for-item="item" wx:key="{{index}}">	
 					<text>{{item}}</text>
 				</view>
 			</view>
@@ -31,8 +32,8 @@
 				class="{{currentType==item.type?'ui-historyStatusTextHover':''}}"
 				>{{item.status}}</text>
 			</view>
-			<text wx:if="{{currentType==1}}" class="ui-historyDateDetail">{{reportList.startDay}}</text>
-			<text wx:else class="ui-historyDateDetail">{{reportList.startDay}}-{{reportList.endDay}}</text>
+			<text wx:if="{{currentType==1}}" class="ui-historyDateDetail">{{reportList.startDate}}</text>
+			<text wx:else class="ui-historyDateDetail">{{reportList.startDate}}-{{reportList.endDate}}</text>
 			<view class="ui-historyOperation">
 				<view class="ui-historyOperationItem">
 					<text class="ui-itemTitle">实收营业额</text>
@@ -64,12 +65,12 @@
 		
 		<view class="ui-detailReport">
 			<text class="ui-detailReportTitle">报表明细</text>
-			<block wx:if="{{reportList.financeList.length>0}}">
-				<view class="ui-detailReportInfoBox" wx:for="{{reportList.financeList}}" wx:for-item="item" wx:key="idx">
+			<block wx:if="{{reportList.dayFinanceList.length>0||reportList.weekFinanceList.length>0}}">
+				<view class="ui-detailReportInfoBox" wx:for="{{currentType==1?reportList.dayFinanceList:reportList.weekFinanceList}}" wx:for-item="item" wx:key="idx">
 					<view class="ui-detailReportInfoItem">
 						<view class="ui-detailReportTime">
-							<text>{{item.day}}</text>
-							<text>{{item.time}}</text>
+							<text>{{currentType==1?filter.getDateOrTime(item.createTime,1):item.date}}</text>
+							<text>{{currentType==1?filter.getDateOrTime(item.createTime,2):item.week}}</text>
 						</view>
 						<view class="ui-detailListInfo">
 							<view class="ui-detailListInfoItem" wx:if="{{!item.shouldPayment}}">
@@ -78,15 +79,15 @@
 							</view>
 							<view class="ui-detailListInfoItem" wx:if="{{!item.payment}}">
 								<text>{{currentType==1?'实收订单金额':'当天实收金额'}}</text>
-								<text>¥1{{item.payment}}</text>
+								<text>¥{{item.payment}}</text>
 							</view>
 							<view class="ui-detailListInfoItem" wx:if="{{!item.pointsMoney}}">
 								<text>福气抵扣金额</text>
-								<text>¥{{item.pointsMoney}}</text>
+								<text>¥{{item.deductionPointsMoney}}</text>
 							</view>
 							<view class="ui-detailListInfoItem" wx:if="{{!item.points}}">
 								<text>抵扣福气数</text>
-								<text>{{item.points}}</text>
+								<text>{{item.deductionPoints}}</text>
 							</view>
 							<view class="ui-detailListInfoItem" wx:if="{{!item.orderNum}}">
 								<text>订单数</text>
@@ -97,7 +98,7 @@
 				</view>
 			</block>
 			<block wx:else>
-				<view class="ui-blank"></view>
+				<view class="ui-blank"><text>暂无数据</text></view>
 			</block>
 			<view class="ui-detailFooter"></view>
 		</view>

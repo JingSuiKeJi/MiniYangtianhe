@@ -35,6 +35,10 @@
 					<text class="ui-newsNum">x{{item.num}}</text>
 				</view>
 			</view>
+			<view class="ui-freight ui-commodityTextCommon ui-bottom">
+				<text>商品合计</text>
+				<text>¥{{orderDetail.totalPrice}}</text>
+			</view>
 			<view class="ui-freight ui-commodityTextCommon">
 				<text>运费</text>
 				<text>¥{{orderDetail.deliveryFee}}</text>

@@ -1,0 +1,46 @@
+<wxs module="filter" src="../../filter/filter.wxs"></wxs>
+<view class="ui-main">
+    <view class="ui-headBox">
+        <view class="ui-headItem__info">
+            <image src="{{filter.getLocalPhoto('my_qrHeader.png')}}" mode="aspectFill" class="ui-infoItem__icon" />
+            <view class="ui-infoItem">
+                <view class="ui-infoItem__name">周玮玮</view>
+                <view class="ui-infoItem__text">邀请您成为PLUS会员</view>
+            </view>
+        </view>
+    </view>
+    <view class="ui-scrollViewBox " >
+        <scroll-view scroll-x class="ui-scrollView">
+            <view wx:for="{{goodList}}" wx:key="{{index}}" 
+             class="ui-tapScroll_item" 
+             style="box-shadow: {{index == type ? '0rpx 2rpx 20rpx 0rpx rgba(255,214,101,0.4)' : '' }}"
+             bindtap="onClickTap" data-type="{{index}}">
+                <image src="{{filter.getLocalPhoto(item.url)}}" mode="aspectFill" class="ui-scrollView__goodsIcon"/>
+                <view class="ui-scrollView__price" >￥{{item.price}}</view>
+                <view class="ui-scrollView__Icon" hidden="{{index != type}}"></view>
+            </view>
+        </scroll-view>
+    </view>
+    <view class="ui-goodsMainBox">
+        <image src="{{filter.getLocalPhoto('my_tea.png')}}" mode="aspectFill" class="goodsItem__icon" />
+         <view class="goodsItem__price" >￥299</view>
+        <view class="goodsItem__text">养生堂全套保健品</view>
+    </view>
+    <view class="ui-contentBox">*购买任意专属礼包套餐，就能获得超值礼包和PLUS会员权益</view>
+    <view class="ui-rightsBox">
+        <view class="ui-rightsItem__top">
+            <text class="ui-topItem__icon"></text>
+             <text class="ui-topItem__text"></text>
+        </view>
+    </view>
+    <!-- <view class="ui-bottomBox">
+        <view class="ui-bottomItem__content">
+            根据平台大数据分析预计每年为您节省
+            <text>2989</text>
+            元，PLUS会员购物平均可享受
+            <text>7.5</text>
+            折优惠
+        </view>
+        <view class="ui-bottomItem__btn">立即购买</view>
+    </view> -->
+</view>

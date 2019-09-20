@@ -57,6 +57,7 @@ page{
 .ui-qrInfo image{
 	width:520rpx;
 	height:470rpx;
+	/* background: #CCCCCC; */
 }
 
 .ui-qrInfo text{

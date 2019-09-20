@@ -111,21 +111,33 @@ const methods = {
 	//跳转到门店二维码
 	onStoreQRCodeTap:function(){
 		let self = this;
+		const userInfo = self.data.userInfo;
 		_g.navigateTo({
+			param:{
+				userInfo:userInfo,
+			},
 		    url: 'pages/shop/storeQRCode',
 		}, self);
 	},
 	//跳转到福气核销
 	onBlissVerifyTap:function(){
 		let self = this;
+		const userInfo = self.data.userInfo;
 		_g.navigateTo({
+			param:{
+				userInfo:userInfo,
+			},
 		    url: 'pages/shop/blissVerify',
 		}, self);
 	},
 	//跳转到福气核销明细
 	onBlissVerifyDetailTap:function(){
 		let self = this;
+		const userInfo = self.data.userInfo;
 		_g.navigateTo({
+			param:{
+				storeId:userInfo.store.id,
+			},
 		    url: 'pages/shop/blissVerifyDetail',
 		}, self);
 	},
