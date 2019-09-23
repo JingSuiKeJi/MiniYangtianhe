@@ -101,7 +101,7 @@
     <view class="ui-infoBox">
         <view class="ui-infoItem">
             <view class="ui-infoItem__left">
-                <image src="{{filter.getLocalPhoto('card__person.png')}}" class="ui-leftItem__icon" />
+                <image src="{{filter.getLocalPhoto('my_qrHeader.png')}}" class="ui-leftItem__icon" />
             </view>
             <view class="ui-infoItem__right">
                 <view class="ui-rightItem__name">周玮玮</view>
@@ -131,7 +131,7 @@
         CHOOSE ONE OR BECOME PLUS
     </view>
     <view class="ui-goodsBox">
-        <view class="ui-goodsItem">
+        <view class="ui-goodsItem" bindtap="onDetailTap">
             <image src="{{filter.getLocalPhoto('card__pulscard.png')}}" class="ui-plusItem__icon" />
             <image src="{{filter.getLocalPhoto('e_c.png')}}" mode="aspectFill" class="ui-goodsItem__img" />
             <view class="ui-goodsItem__title">养生堂全套保健品</view>
@@ -155,7 +155,7 @@
             <view class="ui-goodsItem__title">养生堂全套保健品</view>
             <view class="ui-goodsItem__price">¥298</view>
         </view>
-        <view class="ui-moreBtn">查看更多专属礼包</view>
+        <view class="ui-moreBtn" bindtap="onSkipTap">查看更多专属礼包</view>
     </view>
     <view class="ui-bottomBox">
         <view class="ui-bottomItem__content">

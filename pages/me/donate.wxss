@@ -1,0 +1,84 @@
+page {
+    background-color: #F5F5F5;
+}
+.ui-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.ui-contentBox {
+    display: flex;
+    width:686rpx;
+    height:520rpx;
+    padding: auto 32rpx;
+    background:#FFFFFF;
+    border-radius:16rpx;
+    align-items: center;
+}
+.ui-contentItem__top {
+    display: flex;
+    width: 100%;
+    height: 100rpx;
+    align-items: center;
+    border-bottom: 1rpx solid #F5F5F5;
+}
+.ui-contentItem__text {
+    font-size:26rpx;
+    font-family:PingFangSC-Regular,PingFangSC;
+    font-weight:400;
+    color:#333333;
+    line-height:26rpx;
+}
+.ui-contentItem__num {
+    font-size:26rpx;
+    font-family:PingFangSC-Regular,PingFangSC;
+    font-weight:400;
+    color:#FF5F55;
+    line-height:26rpx;
+}
+.ui-contentItem {
+    display: flex;
+    width: 100%;
+    height: 160rpx;
+    align-items: center;
+    border-bottom: 1rpx solid #F5F5F5;
+}
+.ui-contentItem__title {
+    font-size:32rpx;
+    font-family:PingFangSC-Regular,PingFangSC;
+    font-weight:400;
+    color:#3D3D3D;
+    line-height:32rpx;
+}
+.ui-contentItem__nput {
+    width: 300rpx;
+    font-size:28rpx;
+    font-family:PingFangSC-Regular,PingFangSC;
+    font-weight:400;
+    color:#CCCCCC;
+    line-height:28rpx;
+}
+.ui-contentItem__Icon {
+    width: 56rpx;
+    height: 56rpx;
+}
+.ui-contentItem__text {
+    font-size:28rpx;
+    font-family:PingFangSC-Regular,PingFangSC;
+    font-weight:400;
+    color:#20CAB4;
+    line-height:28rpx;
+}
+.ui-btn {
+    width: 314rpx;
+    height: 92rpx;
+    margin-top: 38rpx;
+    line-height: 92rpx;
+    font-size:30rpx;
+    font-family:PingFangSC-Medium,PingFangSC;
+    font-weight:500;
+    color: #ffff;
+    line-height:30rpx;
+    letter-spacing:2rpx;
+
+}

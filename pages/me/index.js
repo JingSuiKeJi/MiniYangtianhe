@@ -253,6 +253,9 @@ const methods = {
         if (!_g.checkLogin({type: 2})) return;
         _g.navigateTo({
             url: 'pages/me/myAddress',
+            param: {
+                from: 'index'
+            }
         }, self);
     },
     //跳转到消息通知

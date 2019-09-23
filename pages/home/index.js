@@ -44,18 +44,18 @@ const data = {
 };
 
 // 页面onLoad方法
-const onLoad = function(self) {
+const onLoad = function (self) {
     self.initBlock();
     if (_g.checkLogin({
-            type: 1
-        })) {
+        type: 1
+    })) {
         //已登录
         self.setLoginData();
     } else {
         //未登录
         self.getLocation();
     }
-    event.on('login-suc', self, (data)=>{
+    event.on('login-suc', self, (data) => {
         self.setLoginData();
     });
     event.on('refreshStep', self, (ret) => {
@@ -69,16 +69,17 @@ const onLoad = function(self) {
     });
 };
 
-const onReady = function(self) {
+const onReady = function (self) {
     self.onScroll();
+
 }
 
 // 页面onShow方法
-const onShow = function(self) {
+const onShow = function (self) {
     // self.getData();
 };
 
-const onUnload = function(self) {
+const onUnload = function (self) {
     event.remove('refreshStep');
     event.remove('login-suc');
 };
@@ -161,7 +162,7 @@ const methods = {
                 tabList: data.navigation,
                 notion: data.notion
             });
-            
+
             self.btnShow(data.stepInfo.status);
             self.showClassify(data.navigation);
         }, (err) => {
@@ -183,15 +184,15 @@ const methods = {
             } else {
                 let length = Math.ceil(data.length / 2);
                 for (var index = 0; index < 2; index++) {
-                    BrandList[index] = data.slice(index * length, (index + 1) * length );
+                    BrandList[index] = data.slice(index * length, (index + 1) * length);
                 }
                 self.setData({
                     brandList: BrandList
                 });
             }
-            
-           
-        }, (err) => {});
+
+
+        }, (err) => { });
     },
     getSecKill() {
         const self = this;
@@ -199,16 +200,16 @@ const methods = {
             platformFlag: 2,
         }).then((ret) => {
             let data = ret.data;
-            if (!data.list ) return;
+            if (!data.list) return;
             self.setData({
                 goodsList: data.list,
                 skillId: data.id
             });
             self.timeFormat(data.startTime, data.endTime);
-        }, (err) => {});
+        }, (err) => { });
     },
     //榜单推荐分类列表
-    getClassifyList: function() {
+    getClassifyList: function () {
         let self = this;
         Platform.getClassifyList(self, {
             platformFlag: 2,
@@ -225,7 +226,7 @@ const methods = {
         });
     },
 
-    btnShow: function(status) {
+    btnShow: function (status) {
         let self = this;
         switch (status) {
             case 1:
@@ -246,7 +247,7 @@ const methods = {
         }
     },
 
-    onSkipTap: function() {
+    onSkipTap: function () {
         let self = this;
         _g.navigateTo({
             url: 'pages/search/search',
@@ -256,7 +257,7 @@ const methods = {
         }, self);
     },
     //限时抢购
-    timeFormat: function(startTime, endTime) {
+    timeFormat: function (startTime, endTime) {
         let self = this;
         let nowDate = new Date();
         let curTime = nowDate.getTime(); //指定日期距离1970年的毫秒数
@@ -292,7 +293,7 @@ const methods = {
         }
     },
     // 抢购的时间
-    time: function(second) {
+    time: function (second) {
         let day = Math.floor(second / 86400); //还剩几天
         second = second % 86400; // 剩余的秒数
         let hour = Math.floor(second / 3600); //还剩几个小时
@@ -309,32 +310,38 @@ const methods = {
             time: time
         })
     },
-    onChangeTap: function(e) {
+    onChangeTap: function (e) {
         let self = this;
         self.setData({
             currentIndex: e.detail.current
         })
     },
-    onClassifyTap: function(e) {
+    onClassifyTap: function (e) {
         let self = this;
         self.setData({
             classifyType: e.detail.current,
         });
     },
-    onClickTap: function(e) {
+    onClickTap: function (e) {
         let self = this;
-        self.setData({
-            classifyId: e.currentTarget.id,
-        });
+        let data = {
+            classifyId: e.currentTarget.dataset.type,
+        }
+        //点击下拉列表时使scroll-view的自动滑动到相对应的view
+        if (!self.data.hideModal) {
+            data.toView = '_' + e.currentTarget.dataset.type;
+        }
+        self.setData(data);
         self.getPageData();
+        self.hideModal();
     },
-    onSlideTap: function(e) {
+    onSlideTap: function (e) {
         let self = this;
         self.setData({
             hideModal: !self.data.hideModal
         })
     },
-    onAllBrandsTap: function(e) {
+    onAllBrandsTap: function (e) {
         let self = this;
         _g.navigateTo({
             url: 'pages/search/brand',
@@ -343,7 +350,7 @@ const methods = {
             }
         }, self);
     },
-    onTabTap: function(e) {
+    onTabTap: function (e) {
         let self = this;
         let id = e.target.dataset.id;
         if (e.target.dataset.isLink == 2) return;
@@ -354,9 +361,9 @@ const methods = {
                 }, self);
             }
         });
-      
+
     },
-    onDetailTap: function(e) {
+    onDetailTap: function (e) {
         let self = this;
         const opts = e.currentTarget.dataset;
         _g.navigateTo({
@@ -367,17 +374,17 @@ const methods = {
             }
         }, self);
     },
-    onBrandsTap: function(e) {
+    onBrandsTap: function (e) {
         let self = this;
         _g.navigateTo({
             url: 'pages/search/brandList',
-            param: { 
+            param: {
                 id: e.target.dataset.id,
                 platformFlag: 2
             }
         }, self);
     },
-    initBlock: function() {
+    initBlock: function () {
         let self = this;
         var blockList = [];
         for (var i = 0; i < 31; i++) {
@@ -405,7 +412,7 @@ const methods = {
 
         })
     },
-    showClassify: function(arr) {
+    showClassify: function (arr) {
         let self = this;
         var classList = [];
         var length = Math.ceil(arr.length / 10);
@@ -416,26 +423,26 @@ const methods = {
             classList: classList
         });
     },
-    onGoTap: function(e) {
+    onGoTap: function (e) {
         let self = this;
         let index = e.target.dataset.index;
         if (e.target.dataset.isLink == 2) return;
         self.map(self.data.banner, index);
     },
-    onCheckActivity: function(e) {
+    onCheckActivity: function (e) {
         let self = this;
         if (e.target.dataset.isLink == 2) return;
-        self.map(self.data.activity,0);
+        self.map(self.data.activity, 0);
     },
-    map: function(arr, index) {
+    map: function (arr, index) {
         let self = this;
         _g.navigateTo({
             url: 'pages' + arr[index].pageUrl,
         }, self);
-        
+
     },
     // 显示遮罩层
-    showModal: function() {
+    showModal: function () {
         let self = this;
         self.setData({
             hideModal: false
@@ -443,13 +450,13 @@ const methods = {
     },
 
     // 隐藏遮罩层
-    hideModal: function() {
+    hideModal: function () {
         var self = this;
         self.setData({
             hideModal: true,
         })
     },
-    getPageData: function() {
+    getPageData: function () {
         let self = this;
         Platform.getRecommend(self, {
             platformFlag: 2,
@@ -465,7 +472,7 @@ const methods = {
 
         });
     },
-    onResultTap: function(e) {
+    onResultTap: function (e) {
         let self = this;
         _g.navigateTo({
             url: 'pages/search/detailList',
@@ -476,7 +483,7 @@ const methods = {
             }
         }, self);
     },
-    onStepTap: function() {
+    onStepTap: function () {
         let self = this;
         if (self.data.stepInfo.status == 1) {
             self.wxLogin();
@@ -491,7 +498,7 @@ const methods = {
             success(res) {
                 if (res.code) {
                     self.setData({
-                       code: res.code 
+                        code: res.code
                     })
                     self.getWeRunData();
                 } else {
@@ -503,7 +510,7 @@ const methods = {
     getWeRunData: function () {
         const self = this;
         wx.getWeRunData({
-            success (res) {
+            success(res) {
                 let data = {
                     encryptedData: res.encryptedData,
                     iv: res.iv,
@@ -511,8 +518,8 @@ const methods = {
                 };
                 self.uploadStep(data)
             }
-          })
-          
+        })
+
     },
     uploadStep: function (data) {
         let self = this;
@@ -529,21 +536,25 @@ const methods = {
             });
         })
     },
-    
-    onScroll: function() {
+
+    onScroll: function () {
         const self = this;
         const query = wx.createSelectorQuery();
-        query.select('#aim').boundingClientRect();
-        query.selectViewport().scrollOffset();
-        query.exec(function(res) {
-            self.setData({
-                scrollTop: res[0].top
+        if (!self.data.tapList.length) return;
+        setTimeout(() => {
+            query.select('#aim').boundingClientRect();
+            query.selectViewport().scrollOffset();
+            query.exec(function (res) {
+                self.setData({
+                    scrollTop: res[0].top
+                });
             });
-        });
+        }, 1000);
+
     },
-    pageScroll: function(res) {
+    pageScroll: function (res) {
         let self = this;
-        let top = self.data.scrollTop - 80;
+        let top = self.data.scrollTop-80;
         if (res.scrollTop >= top) {
             self.setData({
                 isFixed: true,

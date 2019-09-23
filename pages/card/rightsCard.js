@@ -26,10 +26,16 @@ const methods = {
 
     },
     onSkipTap: function () {
-       let self = this;
-       _g.navigateTo({
-        url: 'pages/card/rightsCard',
-    }, self);
+        let self = this;
+        _g.navigateTo({
+            url: 'pages/card/rightsCard',
+        }, self);
+    },
+    onDetailTap: function (e) {
+        let self = this;
+        _g.navigateTo({
+            url: 'pages/card/detail',
+        }, self);
     }
 
 };

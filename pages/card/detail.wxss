@@ -12,26 +12,33 @@ page {
 .ui-headBox {
     display: flex;
     width: 750rpx;
-    height: 410rpx;
+    height: 280rpx;
+   
     background-image: url(http://www.gzlingren.com:8098/yangtianhe/cardDetail_bg.png);
     background-size: cover;
     justify-content: center;
-    align-items: center;
+  
 }
 
 .ui-headItem__info {
-    width: 686rpxrpx;
+    display: flex;
+    width: 686rpx;
     height: 108rpx;
+    margin-top: 38rpx;
     background-image: url(http://www.gzlingren.com:8098/yangtianhe/cardDetail__black_bg.png);
     background-size: 100%;
+
 }
 
 .ui-infoItem__icon {
     width: 88rpx;
     height: 88rpx;
+    margin: 10rpx 20rpx auto 24rpx;
 }
 
 .ui-infoItem__name {
+    margin-top: 20rpx;
+    margin-left: 14rpx;
     font-size: 30rpx;
     font-family: PingFangSC;
     font-weight: 400;
@@ -43,10 +50,13 @@ page {
     font-size: 24rpx;
     font-family: PingFangSC;
     font-weight: 400;
-    color: #FFD88F0B;
+    color: #D88F0B;
     line-height: 24rpx;
 }
-
+.ui-scrollViewBox {
+    position: relative;
+    top: -50rpx;
+}
 .ui-scrollView {
     white-space: nowrap;
     width: 100%;
@@ -92,6 +102,7 @@ page {
     display: flex;
     width: 100%;
     height: 740rpx;
+    margin-top: -50rpx;
     background: #ffffff;
     justify-content: center;
     align-items: center;
@@ -134,12 +145,66 @@ page {
     line-height:24rpx;
     background: #FFF0F1;
 }
-
-
-
+.ui-rightsBox {
+    width:750rpx;
+    height:422rpx;
+    background:#FFFFFFFF;
+}
+.ui-rightsItem__top {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 90rpx;
+}
+.ui-topItem__icon {
+    margin-left: 40rpx;
+    margin-right: 30rpx;
+    width:6rpx;
+    height:32rpx;
+    background:#FFD665;
+    border-radius:4rpx; 
+}
+.ui-topItem__text {
+    font-size:36rpx;
+    font-family:PingFang-SC;
+    font-weight:500;
+    color:#FFD665;
+    line-height:36rpx;
+}
+.ui-bottomItem {
+    display: inline-block;
+    margin-left: 80rpx;
+    margin-right: 70rpx;
+}
+.ui-bottomItem__icon{
+    width: 84rpx;
+    height: 84rpx;
+}
+.ui-bottomItem__text {
+    font-size:24rpx;
+    font-family:PingFang-SC;
+    font-weight:500;
+    color:#999999;
+    line-height:24rpx;
+}
+.ui-imgBox {
+    margin-bottom: 160rpx;
+}
+.goodsItem__detailIcon {
+    width: 750rpx;
+    height: 962rpx;
+}
+.goodsItem__introIcon {
+    width: 750rpx;
+    height: 732rpx;
+}
+.goodsItem__lifeIcon {
+    width: 750rpx;
+    height: 504rpx;
+}
 .ui-bottomBox {
-    /* margin-top: 138rpx; */
-    margin-bottom: 0;
+    position: fixed;
+    bottom: 0;
     display: flex;
     width: 100%;
     height: 120rpx;
@@ -187,4 +252,100 @@ page {
     height: 412rpx;
     background: #FFFF;
     border-radius: 16px;
+}
+.modals{
+    position:fixed;
+    z-index: 999;
+    top:0; 
+    left: 0; 
+    right:0;
+    bottom: 0;
+}
+.modals-cancel{
+    position:absolute; 
+    z-index:1000; 
+    top:0; 
+    left: 0; 
+    right:0; 
+    bottom: 0; 
+    background-color: rgba(0,0,0,.3);
+}
+.bottom-dialog-body{
+    width: 588rpx;
+    height: 632rpx;
+    background-color: #fff;
+    /* background-image: url(http://www.gzlingren.com:8098/yangtianhe/bargain_list_bgIcon.png);
+    background-size: 564rpx 678rpx; */
+    border-radius:16rpx;
+    position:absolute; 
+    z-index:10001; 
+    top:20%;
+    left:90rpx; 
+    overflow: auto;
+   
+}
+
+
+
+.ui-cancelBox {
+    position: absolute;
+    top:180rpx;
+    right:90rpx; 
+}
+.ui-cancelBox  .ui-cancelIcon {
+    width: 40rpx;
+    height: 40rpx;
+}
+.ui-modalItem__top {
+    display: flex;
+    width: 100%;
+    height: 540rpx;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.ui-modalsItem__userIcon {
+    width: 332rpx;
+    height: 210rpx;
+}
+.ui-modalsItem__text {
+    margin-top: 62rpx;
+    font-size:32rpx;
+    font-family:PingFang-SC;
+    font-weight:500;
+    color:#3D3D3D;
+    line-height:32rpx;
+}
+.ui-modalsItem__title {
+    margin-top: 12rpx;
+    font-size:24rpx;
+    font-family:PingFang-SC;
+    font-weight:500;
+    color:#3D3D3D;
+    line-height:24rpx;
+}
+.ui-modalItem__bottom {
+    display: flex;
+    width: 100%;
+    height: 92rpx; 
+}
+.ui-bottomItem__left {
+    width: 50%;
+    height: 92rpx; 
+    font-size:30rpx;
+    font-family:PingFang-SC;
+    font-weight:500;
+    color:#999999;
+    line-height:92rpx;
+    text-align: center;
+}
+.ui-bottomItem__right {
+    width: 50%;
+    height: 92rpx; 
+    font-size:30rpx;
+    font-family:PingFang-SC;
+    font-weight:500;
+    color:#FFAA00;
+    line-height:92rpx;
+    text-align: center;
 }
