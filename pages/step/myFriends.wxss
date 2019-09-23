@@ -17,11 +17,49 @@ page {
     background-size: cover; 
     overflow: auto;
 }
+.ui-searchBox {
+    width: 100%;
+    padding: 20rpx 40rpx 20rpx 40rpx;
+    white-space: nowrap;
+    position: relative;
+}
+.ui-searchItem_input {
+    width: 574rpx;
+    height: 68rpx;
+    font-size:26rpx;
+    font-family:PingFang-SC-Medium;
+    font-weight:500;
+    display: inline-block;
+    color:#919191;
+    line-height: 26rpx;
+    padding-left: 70rpx;
+    border-radius:34rpx;
+    background-color:#FAFAFA;
+}
+ .searchItem_icon {
+    width: 32rpx;
+    height: 32rpx;
+    position: absolute;
+    top: 38rpx;
+    left: 55rpx;
+}
+ .ui-searchItem_text {
+    font-size:28rpx;
+    font-family:PingFang-SC-Medium;
+    font-weight:500;
+    color:#666666;
+    line-height:28rx;
+    display: inline-block;
+    line-height: 56rpx;
+    vertical-align: top;
+    text-align: center;
+    margin-left: 30rpx;
+}
 .ui-topBtnBox {
     width: 90%;
     height: 88rpx ;
     margin: 0 auto;
-    margin-top: 42rpx;
+    /* margin-top: 42rpx; */
     white-space: nowrap;
 }
 .ui-topBtnBox > view {

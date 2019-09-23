@@ -42,21 +42,14 @@ const data = {
     // points: 148, //可用积分
     num: 0, //商品总数
     totalPrice: 22, //总价
-    couponId: 0
+    couponId: 0,
 };
 
 // 页面onLoad方法
-const onLoad = function(self) {
-    let data = {
+const onLoad = function (self) {
+    self.setData({
         platformFlag: self.data.platformFlag,
-    }
-    if (self.data.from == 'cart') {
-        data.postData = self.data.postData;
-    }else if (self.data.from == 'discounts') {
-        data.couponId = self.data.couponId;
-        data.preGodosReqs = self.data.preGodosReqs;
-    }
-    self.setData(data);
+    });
     self.preOrder();
     if (self.data.platformFlag == 2) {
         self.getDeliveryTime();
@@ -64,10 +57,15 @@ const onLoad = function(self) {
 };
 
 // 页面onShow方法
-const onShow = function(self) {
-
+const onShow = function (self) {
+    self.setData({
+        couponId: self.data.couponId,
+        preGodosReqs: self.data.preGodosReqs,
+        platformFlag: self.data.platformFlag,
+    });
+     self.preferentialPolicies();
 };
-const onUnload = function(self) {
+const onUnload = function (self) {
 
 }
 // 页面中的方法
@@ -109,42 +107,24 @@ const methods = {
                 self.setPageData(ret.data);
                 self.getGoodsInfo(ret.data.goodsVoList);
             });
-        }else {
+        } else {
             self.selectCoupon();
         }
     },
-    //优惠卷选择
-    selectCoupon: function () {
+    preferentialPolicies: function () {
         let self = this;
         let param = {
             couponId: self.data.couponId,
             preGodosReqs: self.data.preGodosReqs,
             platformFlag: self.data.platformFlag,
-            
+
         }
-        if (self.data.pointsFlag ) {
+        if (self.data.pointsFlag) {
             param.integralSwitch = 1;
         } else {
             param.integralSwitch = 2;
         }
-        Order.selectCoupon(self, param).then((ret) => {
-            self.setPageData(ret.data);
-        });
-    },
-    //积分选择
-    selectIntegral: function () {
-        let self = this;
-        let param = {
-            couponId: self.data.couponId,
-            preGodosReqs: self.data.preGodosReqs,
-            platformFlag: self.data.platformFlag,
-        }
-        if (self.data.pointsFlag ) {
-            param.integralSwitch = 1;
-        } else {
-            param.integralSwitch = 2;
-        }
-        Order.selectIntegral(self, param).then((ret) => {
+        Order.preferentialPolicies(self, param).then((ret) => {
             self.setPageData(ret.data);
         });
     },
@@ -152,16 +132,16 @@ const methods = {
         const self = this;
         Order.getDeliveryTime(self, {}).then((ret) => {
             let list = _.map(ret.data, (item) => {
-                return  new Date(item.beignTime * 1000).Format('yyyy-MM-dd hh:mm') +
-                         '-' + 
-                         new Date(item.endTime * 1000).Format('yyyy-MM-dd hh:mm')
+                return new Date(item.beignTime * 1000).Format('yyyy-MM-dd hh:mm') +
+                    '-' +
+                    new Date(item.endTime * 1000).Format('yyyy-MM-dd hh:mm')
             });
 
             self.setData({
                 timeList: list,
                 initTimes: ret.data
             })
-        }, (err) => {});
+        }, (err) => { });
     },
     setPageData(data) {
         const self = this;
@@ -179,14 +159,15 @@ const methods = {
             pointsPrice: data.pointsPrice
         }
         if (data.couponPrice) {
-            option.couponPrice = data.couponPrice,
-            option.couponId = data.couponId
+            option.couponPrice = data.couponPrice;
+            option.couponId = data.couponId;
+            // option.deductionStatus = data.deductionStatus;
         }
         self.setData(option);
     },
-    getData: function() {
+    getData: function () {
     },
-    onPostTap: function(e) {
+    onPostTap: function (e) {
         let self = this;
         let type = e.currentTarget.dataset.type;
         if (self.data.type == type) return;
@@ -213,7 +194,7 @@ const methods = {
                 break;
         }
     },
-    onPickerTap: function(e) {
+    onPickerTap: function (e) {
         let self = this;
         let pickerValue = e.detail.value;
 
@@ -226,13 +207,13 @@ const methods = {
             pickerValue: pickerValue
         });
     },
-    onSelectTap: function(e) {
+    onSelectTap: function (e) {
         let self = this;
         if (!self.data.points) return;
         self.setData({
             pointsFlag: !self.data.pointsFlag
         });
-        self.selectIntegral();
+        self.preferentialPolicies();
     },
     payStatus(type, id) {
         const self = this;
@@ -250,7 +231,7 @@ const methods = {
             }, self);
         }
     },
-    onSubmitTap: function(e) {
+    onSubmitTap: function (e) {
         const self = this;
         let data = {
             num: self.data.num,
@@ -290,27 +271,27 @@ const methods = {
         const self = this;
         Order.prePay(self, {
             orderId: id
-        }).then((ret)=>{
+        }).then((ret) => {
             let payInfo = ret.data;
-            payInfo.success = function() {
+            payInfo.success = function () {
                 //TODO check pay status
                 self.payStatus('success', id);
             };
-            payInfo.fail = function() {
+            payInfo.fail = function () {
                 _g.showModal({
                     title: '提示',
                     content: '支付失败',
-                    confirm: function() {
+                    confirm: function () {
                         self.payStatus('fail', id);
                     }
                 });
             };
             _g.requestPayment(payInfo);
-        },err=>{
+        }, err => {
             _g.showModal({
                 title: '提示',
                 content: '支付失败',
-                confirm: function() {
+                confirm: function () {
                     self.payStatus('fail', id);
                     // _g.navigateBack();
                 }
@@ -328,13 +309,13 @@ const methods = {
     //         }
     //     }, self);
     // },
-    getInputValue: function(e) {
+    getInputValue: function (e) {
         let self = this;
         self.setData({
             remark: e.detail.value
         })
     },
-    onAddressTap: function(e) {
+    onAddressTap: function (e) {
         let self = this;
         _g.navigateTo({
             url: 'pages/me/myAddress',
@@ -347,14 +328,14 @@ const methods = {
         let self = this;
         if (!self.data.couponNum) return;
         _g.navigateTo({
-           url: 'pages/pharmacy/discounts' ,
-           param: {
-               from: 'submit',
-               preGodosReqs: self.data.preGodosReqs,
-               platformFlag: self.data.platformFlag,
+            url: 'pages/pharmacy/discounts',
+            param: {
+                from: 'submit',
+                preGodosReqs: self.data.preGodosReqs,
+                platformFlag: self.data.platformFlag,
 
-           }
-        },self)
+            }
+        }, self)
     },
     getGoodsInfo: function (data) {
         let self = this;
@@ -366,9 +347,9 @@ const methods = {
                 num: item.num
             })
         });
-       self.setData({
-           preGodosReqs: preGodosReqs
-       })
+        self.setData({
+            preGodosReqs: preGodosReqs
+        })
     }
 }
 

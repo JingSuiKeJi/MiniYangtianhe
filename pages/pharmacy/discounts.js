@@ -117,15 +117,12 @@ const methods = {
 	onUseTap: function (e) {
 		let self = this;
 		if (self.data.from) {
-			_g.navigateTo({
-				url: 'pages/order/submit' ,
-				param: {
-					from: 'discounts',
-					couponId: Number(e.currentTarget.id),
-					platformFlag: self.data.platformFlag,
-					preGodosReqs: self.data.preGodosReqs,
-				}
-			 },self)
+			_g.getPrevPage().setData({
+				couponId: Number(e.currentTarget.id),
+				platformFlag: self.data.platformFlag,
+			    preGodosReqs: self.data.preGodosReqs,
+			});
+			_g.navigateBack();
 		}
 	}
 }

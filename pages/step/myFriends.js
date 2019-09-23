@@ -16,11 +16,18 @@ const data = {
             text: '未完成',
         }
     ],
+    title: '我的乐友'
 };
 
 // 页面onLoad方法
 const onLoad = function (self) {
-    self.getData();   
+    self.getData();  
+    if(self.data.from) {
+        self.setData({
+            from: self.data.from,
+            title: '赠送福气'
+        })
+    }
 
 };
 
@@ -59,6 +66,16 @@ const methods = {
             type: Number(e.target.dataset.type)
         });
         self.getPageData();
+    },
+    onGetInput: function (e) {
+        let self = this;
+        self.setData({
+            value: e.detail.value
+        })
+    },
+    onSkipTap: function (e) {
+        let self = this;
+        
     }
 };
 

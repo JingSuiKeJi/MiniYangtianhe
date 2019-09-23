@@ -3,20 +3,20 @@
     <view class="ui-contentBox">
         <view class="ui-contentItem__top">
             <view class="ui-contentItem__text">可赠送福气数</view>
-            <text class="ui-contentItem__num">2929</text>
+            <text class="ui-contentItem__num">{{pointsNum}}</text>
         </view>
         <view class="ui-contentItem">
             <view class="ui-contentItem__title">赠送给</view>
-            <input type="text" value="{{nickName}}" bindinput="onGetInput" placeholder="请输入要赠送的用户ID" class="ui-contentItem__input" />
-            <image src="../../images/donate__listIcon.png" class="ui-contentItem__Icon" />
+            <input type="text" value="{{nickName}}" bindinput="onGetInput" placeholder="请输入要赠送的用户ID" class="ui-contentItem__input ui-nameInput" />
+            <image src="../../images/donate__listIcon.png" class="ui-contentItem__Icon" bindtap="onSkipsTap"/>
         </view>
         <view class="ui-contentItem">
             <view class="ui-contentItem__title">福气数量</view>
-            <input type="text" value="{{nickName}}" bindinput="onGetInput" placeholder="请输入要赠送的用户ID" class="ui-contentItem__input" />
+            <input type="number" value="{{num}}" bindinput="onGetNum" placeholder="请输入要赠送的福气数量" class="ui-contentItem__input" />
         </view>
         <view class="ui-contentItem__top">
-            <view class="ui-contentItem__text">今日比例：1RMB：100福气</view>
+            <view class="ui-contentItem__text">今日比例：{{money}}RMB：{{points}}福气</view>
         </view>
     </view>
-    <view class="ui-btn">赠送</view>
+    <view class="ui-btn" bindtap="onDonateTap">赠送</view>
 </view>

@@ -162,9 +162,9 @@ config.prototype = {
             prePay: '/pay/order/prePay.do',
             preOrderCart: '/app/preOrder/cart.do',
             getDeliveryTime: '/app/preOrder/getDeliveryTime.do',
-            goodsCouponList: '/app/preOrder/CouponList.do',
-            selectCoupon: '/app/preOrder/selectCoupon.do',
-            selectIntegral:'/app/preOrder/selectIntegral.do',
+            goodsCouponList: '/app/preOrder/couponList.do',
+            preferentialPolicies: '/app/preOrder/preferentialPolicies.do'
+
         },
         point: {
             getBaseInfo: '/app/points/getBaseInfo.do',

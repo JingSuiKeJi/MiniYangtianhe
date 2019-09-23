@@ -86,7 +86,8 @@
     <view class="ui-pointsBox">
         <view class="ui-pointesItem">
             <image src="{{filter.getLocalPhoto('order_tongqian.png')}}" class="ui-pointesItem__Icon" />
-            <text class="ui-pointesItem__text">{{points ? '可用' + points + '福气抵用' + pointsPrice + '元' : '暂无可抵用积分'}}</text>
+            <text class="ui-pointesItem__text">{{points && !deductionStatus ? '可用' + points + '福气抵用' + pointsPrice + '元' : '暂无可抵用积分'}}</text>
+            <text class="ui-pointesItem__text">{{ deductionStatus ?  '暂无需要抵扣的金额' : ''}}</text>
             <image src="{{pointsFlag ? filter.getLocalPhoto('cart_selestIcon.png'): filter.getLocalPhoto('cart_selestEmptyIcon.png')}}" class="ui-pointesItem__selestIcon" bindtap="onSelectTap" wx:if="{{points}}"></image>
         </view>
     </view>
