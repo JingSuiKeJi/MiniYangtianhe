@@ -125,6 +125,9 @@ config.prototype = {
 			getFinanceInfo:'/app/store/getFinanceInfo.do',
 			getVerifierInfo:'/app/store/getVerifierInfo.do',
 			getVerifierQR:'/app/store/getVerifierQR.do',
+			getCommissionBaseInfo:'/app/distribution/getBaseInfo.do',
+			getCommissionClientList:'/app/distribution/getClientList.do',
+			getCommissionRecordList:'/app/distribution/getRecordList.do',
         },
         goods: {
             getGoodsDetail: '/app/goods/getGoodsDetail.do',

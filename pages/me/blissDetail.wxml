@@ -20,7 +20,7 @@
                 <view class="ui-withdrawInfoItem">
                     <view class="ui-withdrawDetail" wx:for="{{withdrawlist}}" wx:for-index="idx" wx:key="idx" wx:for-item="item" style="color: {{item.type==1?'#666666':'#20CAB4'}};">
                         <text>{{filter.getDateOrTime(item.createTime,3)}}</text>
-                        <text>{{item.points}}</text>
+                        <text>{{item.type==1?'+':'-'}}{{item.points}}</text>
 						<block wx:if="{{item.type==1}}">
 							<text class="ui-presentedTextBox" wx:if="{{item.id}}">
 							    <text style="color: {{item.type==1?'#666666':''}};">{{filter.getIncomeType(item.incomeType)}}</text>

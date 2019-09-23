@@ -18,7 +18,8 @@
 					style="color: {{item.type == 1 ? '#666666':'#20CAB4'}};">
 						<text>{{filter.getDay(item.createTime)}}</text>
 						<text>{{item.type == 1 ? '+' : '-'}}{{item.money}}</text>
-						<text>{{filter.getDistrStatus(item.incomeType)}}</text>
+						<text wx:if="{{item.type == 1}}">{{filter.getCommissionIncome(item.incomeType)}}</text>
+						<text wx:if="{{item.type == 2}}">{{filter.getCommissionExpenditure(item.incomeType)}}</text>
 					</view>
 				</view>
 			</block>
