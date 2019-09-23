@@ -194,6 +194,7 @@ page{
 }
 
 .ui-inputCompany{
+	width: 646rpx;
 	height:30rpx;
 	font-size:30rpx;
 	font-family:PingFangSC-Regular;

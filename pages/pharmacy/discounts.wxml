@@ -8,9 +8,9 @@
 			<text class="{{outOfDate?'ui-memuHover':''}}" bindtap="onOutOfDateTap">已过期({{outOfDateNum}})</text>
 		</view>
 		
-		<block wx:if="{{InvalidList||waitUseList||usedList}}">
+		<view  wx:if="{{InvalidList||waitUseList||usedList}}" class="ui-blockBox">
 			<view wx:if="{{toBeUsed}}" class="ui-discountsBox">
-				<view class="ui-discountsItems" wx:for="{{InvalidList}}" wx:for-index="idx" wx:key="idx" wx:for-item="item">
+				<view class="ui-discountsItems" wx:for="{{waitUseList}}" wx:for-index="idx" wx:key="idx" wx:for-item="item">
 					<view class="ui-price">
 						<view class="ui-priceInfo">
 							<text class="toBeUsedColor">¥</text>
@@ -24,12 +24,12 @@
 						<text>{{filter.getDay(item.startTime)}}至{{filter.getDay(item.endTime)}}</text>
 						<text>全场通用</text>
 					</view>
-					<view class="btn-immediateUse">立即使用</view>
+					<view class="btn-immediateUse" id="{{item.id}}" bindtap="onUseTap">立即使用</view>
 				</view>
 			</view>
 			
 			<view wx:if="{{haveBeenUsed}}" class="ui-discountsBox">
-				<view class="ui-discountsItems" wx:for="{{waitUseList}}" wx:for-index="idx" wx:key="idx" wx:for-item="item">
+				<view class="ui-discountsItems" wx:for="{{usedList}}" wx:for-index="idx" wx:key="idx" wx:for-item="item">
 					<view class="ui-price">
 						<view class="ui-priceInfo">
 							<text class="elseColor">¥</text>
@@ -48,7 +48,7 @@
 			</view>
 			
 			<view wx:if="{{outOfDate}}" class="ui-discountsBox">
-				<view class="ui-discountsItems" wx:for="{{usedList}}" wx:for-index="idx" wx:key="idx" wx:for-item="item">
+				<view class="ui-discountsItems" wx:for="{{InvalidList}}" wx:for-index="idx" wx:key="idx" wx:for-item="item">
 					<view class="ui-price">
 						<view class="ui-priceInfo">
 							<text class="elseColor">¥</text>
@@ -65,7 +65,7 @@
 					<view class="ui-outOfDate">已过期</view>
 				</view>
 			</view>
-		</block>
+		</view>
 		
 		<view wx:else class="ui-blank">
 			<view class="ui-blankIcon"></view>

@@ -38,24 +38,26 @@ const data = {
     postTime: '请选择配送时间',
     infoList: [],
     pointsFlag: true, //有积分可用
-    flag: true, //有优惠卷可用,
-    isSelect: false, //是否使用积分
     remark: '',
     // points: 148, //可用积分
     num: 0, //商品总数
     totalPrice: 22, //总价
+    couponId: 0
 };
 
 // 页面onLoad方法
 const onLoad = function(self) {
-    self.setData({
-        platformFlag: self.data.platformFlag
-    })
-    // if (self.data.platformFlag == 1) {
-        self.preOrder();
-    // } else {
-    //     self.getLocation();
-    // }
+    let data = {
+        platformFlag: self.data.platformFlag,
+    }
+    if (self.data.from == 'cart') {
+        data.postData = self.data.postData;
+    }else if (self.data.from == 'discounts') {
+        data.couponId = self.data.couponId;
+        data.preGodosReqs = self.data.preGodosReqs;
+    }
+    self.setData(data);
+    self.preOrder();
     if (self.data.platformFlag == 2) {
         self.getDeliveryTime();
     }
@@ -97,6 +99,7 @@ const methods = {
             if (postData.skuId) data.preGoods.skuId = postData.skuId;
             Order.preOrder(self, data).then((ret) => {
                 self.setPageData(ret.data);
+                self.getGoodsInfo(ret.data.goodsVoList);
             });
         } else if (self.data.from == 'cart') {
             Order.preOrderCart(self, {
@@ -104,8 +107,46 @@ const methods = {
                 platformFlag: self.data.platformFlag
             }).then((ret) => {
                 self.setPageData(ret.data);
+                self.getGoodsInfo(ret.data.goodsVoList);
             });
+        }else {
+            self.selectCoupon();
         }
+    },
+    //优惠卷选择
+    selectCoupon: function () {
+        let self = this;
+        let param = {
+            couponId: self.data.couponId,
+            preGodosReqs: self.data.preGodosReqs,
+            platformFlag: self.data.platformFlag,
+            
+        }
+        if (self.data.pointsFlag ) {
+            param.integralSwitch = 1;
+        } else {
+            param.integralSwitch = 2;
+        }
+        Order.selectCoupon(self, param).then((ret) => {
+            self.setPageData(ret.data);
+        });
+    },
+    //积分选择
+    selectIntegral: function () {
+        let self = this;
+        let param = {
+            couponId: self.data.couponId,
+            preGodosReqs: self.data.preGodosReqs,
+            platformFlag: self.data.platformFlag,
+        }
+        if (self.data.pointsFlag ) {
+            param.integralSwitch = 1;
+        } else {
+            param.integralSwitch = 2;
+        }
+        Order.selectIntegral(self, param).then((ret) => {
+            self.setPageData(ret.data);
+        });
     },
     getDeliveryTime() {
         const self = this;
@@ -124,7 +165,7 @@ const methods = {
     },
     setPageData(data) {
         const self = this;
-        self.setData({
+        let option = {
             orderAddressVo: data.orderAddressVo,
             goodsVoList: data.goodsVoList,
             orderStoreVO: data.orderStoreVO,
@@ -132,8 +173,16 @@ const methods = {
             totalPrice: data.totalPrice,
             num: data.num,
             deliveryTime: data.deliveryTime,
-            deliveryRange: data.deliveryRange
-        })
+            deliveryRange: data.deliveryRange,
+            couponNum: data.couponNum,
+            payPrice: data.payPrice,
+            pointsPrice: data.pointsPrice
+        }
+        if (data.couponPrice) {
+            option.couponPrice = data.couponPrice,
+            option.couponId = data.couponId
+        }
+        self.setData(option);
     },
     getData: function() {
     },
@@ -181,8 +230,9 @@ const methods = {
         let self = this;
         if (!self.data.points) return;
         self.setData({
-            isSelect: !self.data.isSelect
-        })
+            pointsFlag: !self.data.pointsFlag
+        });
+        self.selectIntegral();
     },
     payStatus(type, id) {
         const self = this;
@@ -292,6 +342,33 @@ const methods = {
                 from: 'order'
             }
         }, self);
+    },
+    onChoseCoupon: function (e) {
+        let self = this;
+        if (!self.data.couponNum) return;
+        _g.navigateTo({
+           url: 'pages/pharmacy/discounts' ,
+           param: {
+               from: 'submit',
+               preGodosReqs: self.data.preGodosReqs,
+               platformFlag: self.data.platformFlag,
+
+           }
+        },self)
+    },
+    getGoodsInfo: function (data) {
+        let self = this;
+        let preGodosReqs = [];
+        _.each(data, (item) => {
+            preGodosReqs.push({
+                goodsId: item.goodsId,
+                kuId: 0,//没有规格时暂时传0
+                num: item.num
+            })
+        });
+       self.setData({
+           preGodosReqs: preGodosReqs
+       })
     }
 }
 

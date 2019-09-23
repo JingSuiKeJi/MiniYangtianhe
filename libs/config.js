@@ -27,6 +27,7 @@ config.prototype = {
      * 服务器地址
      */
     host: {
+        // test: '192.168.199.108:9537',
         // test: 'http://123.207.33.101:10008', // 测试
         test: 'http://120.79.36.152:10008', // 测试
         pro: '', // 生产
@@ -102,7 +103,6 @@ config.prototype = {
             getCompanyList:'/app/store/getCompanyList.do',
             apply:'/app/store/apply.do',
             msgToggle:'/app/user/msgToggle.do',
-            getCouponList:'/app/user/getCouponList.do',
             getBaseInfo:'/app/store/getBaseInfo.do',
             getClientList:'/app/store/getClientList.do',
             getClientDetail:'/app/store/getClientDetail.do',
@@ -127,7 +127,10 @@ config.prototype = {
 			getVerifierQR:'/app/store/getVerifierQR.do',
 			getCommissionBaseInfo:'/app/distribution/getBaseInfo.do',
 			getCommissionClientList:'/app/distribution/getClientList.do',
-			getCommissionRecordList:'/app/distribution/getRecordList.do',
+            getCommissionRecordList:'/app/distribution/getRecordList.do',
+
+
+            
         },
         goods: {
             getGoodsDetail: '/app/goods/getGoodsDetail.do',
@@ -159,6 +162,9 @@ config.prototype = {
             prePay: '/pay/order/prePay.do',
             preOrderCart: '/app/preOrder/cart.do',
             getDeliveryTime: '/app/preOrder/getDeliveryTime.do',
+            goodsCouponList: '/app/preOrder/CouponList.do',
+            selectCoupon: '/app/preOrder/selectCoupon.do',
+            selectIntegral:'/app/preOrder/selectIntegral.do',
         },
         point: {
             getBaseInfo: '/app/points/getBaseInfo.do',

@@ -86,6 +86,27 @@ class Order {
             data: reqData
         }, page);
     }
+    goodsCouponList(page, reqData) {
+		_g.dm.canLoadMore = 1;
+		return _g.ajax({
+			url: mini.order.goodsCouponList,
+			data: reqData
+		}, page);
+	}
+	selectCoupon(page, reqData) {
+		_g.dm.canLoadMore = 1;
+		return _g.ajax({
+			url: mini.order.selectCoupon,
+			data: reqData
+		}, page);
+	}
+	selectIntegral(page, reqData) {
+		_g.dm.canLoadMore = 1;
+		return _g.ajax({
+			url: mini.order.selectIntegral,
+			data: reqData
+		}, page);
+	}
     
 }
 

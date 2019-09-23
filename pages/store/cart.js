@@ -345,7 +345,7 @@ const methods = {
 
             _.each(selectedList, (item) => {
         		if (item.isSelect) {
-        			ids.push(item.id);
+                    ids.push(item.id)
         		}
         	});
             _g.navigateTo({
@@ -356,7 +356,7 @@ const methods = {
                 	postData: {
                 		cartIds: ids.join(),
                 		platformFlag: data.mediNum ? 2 : 1,
-                	}
+                    }
                 }
             }, self)
 

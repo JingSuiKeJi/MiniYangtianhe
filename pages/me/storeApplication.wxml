@@ -80,7 +80,7 @@
 				<view class="modal-title">选择公司</view>
 				<view class="modal-companyBox">
 					<text class="modal-items" wx:for="{{list}}" wx:for-item="item" wx:key="idx"
-					bindtap="onConfirm" data-company="{{item.contactName}}" data-id="{{item.id}}">{{item.contactName}}</text>
+					bindtap="onConfirm" data-company="{{item.companyName}}" data-id="{{item.id}}">{{item.companyName}}</text>
 				</view>
 			</scroll-view>
 			

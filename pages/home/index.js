@@ -540,6 +540,7 @@ const methods = {
     onScroll: function () {
         const self = this;
         const query = wx.createSelectorQuery();
+        if (!self.data.tapList.length) return;
         setTimeout(() => {
             query.select('#aim').boundingClientRect();
             query.selectViewport().scrollOffset();
