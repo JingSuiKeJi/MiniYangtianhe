@@ -25,13 +25,19 @@ const methods = {
     },
     getPageData: function () {
         let self = this;
-        User.distributionList(self, {
+        User.getCommissionRecordList(self, {
             page: self.data.page,
             pageSize: 10
         }).then((ret) => {
-            self.setData({
-                withdrawlist: ret.data.list,
-			});
+			if (self.data.page == 1) {
+	    		self.setData({
+	    			withdrawlist: ret.data.list
+	    		});
+    		} else {
+    			self.setData({
+	    			withdrawlist: self.data.withdrawlist.concat(ret.data.list)
+	    		});
+    		}
         }, (err) => {
            
         });

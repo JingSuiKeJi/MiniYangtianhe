@@ -57,9 +57,9 @@ page {
 }
 
 .ui-common textarea {
-	position: relative;
-	margin-left: 50rpx;
-	width: 400rpx;
+	position: absolute;
+	margin-left: 170rpx;
+	width: 450rpx;
 	font-size: 30rpx;
 	font-family: PingFang-SC-Regular;
 	font-weight: 400;
@@ -82,43 +82,41 @@ page {
 }
 
 .ui-areaPicker__text {
+	position: absolute;
 	width: 490rpx;
-	height: 70rpx;
-	margin-top: 58rpx;
-	padding-left: 55rpx;
-	transform: translateY(-12rpx);
+	margin-left: 170rpx;
 	font-size: 30rpx;
 	color: rgba(51, 51, 51, 1);
-	/* background-color: aqua; */
 }
 
 .ui-area {
-	padding-bottom: 10rpx;
 	height: 130rpx;
 }
 
 .is-area {
-	margin-top: 20rpx;
+	/* margin-top: 20rpx; */
 }
 
 .ui-addressDetailText {
+	display: flex;
+	align-items: center;
+	margin-top: 5rpx;
 	width: 450rpx;
 	height: 110rpx;
-	margin-top: 58rpx;
-	transform: translateY(12rpx);
 }
 
 .ui-addressDetail {
-	padding-bottom: 30rpx;
+	padding-bottom: 80rpx;
 }
 
 .is-address__detail {
-	margin-top: 40rpx;
+	margin-top: 50rpx;
 }
 
 .ui-tel {
 	height: 128rpx;
 }
+
 .ui-areaMoreIcon {
 	position: absolute;
 	right: 40rpx;
