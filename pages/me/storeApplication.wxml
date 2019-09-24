@@ -69,8 +69,12 @@
 				</view>
 				<input class="ui-inputCommon" bindinput="onBusinessLicenseTap" type="text" value="{{businessLicense}}" placeholder="请输入门店营业执照号码" placeholder-style="color:#666666;"/>
 			</view>
+			<!-- bindtap="showDialogBtn" -->
 			<view class="ui-belongCompany" bindtap="showDialogBtn">
 				<input class="ui-inputCompany" disabled="true" bindinput="onCompanyTap" type="text" data-id="{{companyId}}" value="{{company}}" placeholder="所属分公司" placeholder-style="color:#666666;"/>
+				<!-- <picker mode="selector"  bindchange="onPickerTap" value="{{pickerValue}}" range="{{list}}" class="ui-pickerBox">
+					
+               </picker> -->
 				<view class="ui-pullDownIcon"></view>
 			</view>
 			

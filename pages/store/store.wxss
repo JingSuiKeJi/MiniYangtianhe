@@ -498,16 +498,35 @@ page {
 }
 
 .ui-brandSelectItem_top {
+    display: flex;
+    align-items: center;
     width: 100%;
     height: 108rpx;
-    line-height: 108rpx;
+    /* line-height: 108rpx; */
     font-family: PingFangSC-Medium;
     font-weight: 500;
     color: #333333;
     padding-left: 30rpx;
+    padding-right: 30rpx;
     font-size: 32rpx;
 }
-
+.ui-topItem_moreBrand {
+    margin-left: auto;
+}
+.ui-topItem__moreText {
+    font-size:22rpx;
+    font-family:PingFangSC-Semibold,PingFangSC;
+    font-weight:600;
+    color:#BBBBBB;
+    line-height:22rpx;
+}
+.ui-topItem_moreIcon {
+    width: 24rpx;
+    height: 24rpx;
+    margin-top: 18rpx;
+    display: inline-block;
+    vertical-align: top;
+}
 .ui-brandSelectItem_bottom {
     width: 100;
     padding-left: 20rpx;
@@ -515,7 +534,7 @@ page {
 }
 
 .ui-brandItem_scrollView {
-    height: 440RPX;
+    height: 220rpx;
     white-space: nowrap;
     display: inline-block;
 }

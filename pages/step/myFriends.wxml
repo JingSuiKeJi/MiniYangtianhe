@@ -1,26 +1,50 @@
-<!--pages/step/myFriends.wxml-->
+<!-- pages/step/myFriends.wxml -->
+<wxs module="filter" src="../../filter/filter.wxs"></wxs>
 <view class="contain">
-	<navBar title='我的乐友' background='white' color='black' iconTheme='black' back="{{true}}"></navBar>
-	<view class="main">
-       <view class="ui-topBtnBox">
-           <view class="ui-leftBtn" 
-              style="background-color: {{type == 1 ? '#C2F1F2' : ''}}"
-              bindtap="onChoseTap" 
-              data-type="1">一级乐友</view>
-           <view class="ui-rightBtn" 
-              style="background-color: {{type == 2 ? '#C2F1F2' : ''}}"
-              bindtap="onChoseTap" 
-              data-type="2">二级乐友</view>
-       </view>
-       <view class="ui-listBox">
-           <view class="ui-listItem" wx:for="{{list}}" wx:key="{{index}}">
-               <view class="ui-listItem__imgBox">
-                   <image src="{{filter.getPhoto(host,item.avatar)}}" class="ui-listItem__icon"/>
+    <navBar title='{{title}}' background='white' color='black' iconTheme='black' back="{{true}}"></navBar>
+    <view class="main">
+        <view class="ui-searchBox" wx:if="{{from}}">
+            <input type="text" placeholder="请输入受赠人ID" class="ui-searchItem_input" bindinput="onGetInput" value="{{value}}" />
+            <view class="ui-searchItem_text" bindtap="onSkipTap">搜索</view>
+            <image src="{{filter.getLocalPhoto('ic_search.png')}}" class="searchItem_icon" />
+        </view>
+        <view class="ui-topBtnBox">
+            <view class="ui-leftBtn" style="background-color: {{type == 1 ? '#C2F1F2' : ''}}" bindtap="onChoseTap" data-type="1">
+                一级乐友
+            </view>
+            <view class="ui-rightBtn" style="background-color: {{type == 2 ? '#C2F1F2' : ''}}" bindtap="onChoseTap" data-type="2">
+                二级乐友
+            </view>
+        </view>
+        <view class="ui-listBox">
+            <view class="ui-listItem" wx:for="{{list}}" wx:key="{{index}}" bindtap="showModal">
+                <view class="ui-listItem__imgBox">
+                    <image src="{{filter.getPhoto(host,item.avatar)}}" class="ui-listItem__icon" />
+                </view>
+                <view class="ui-listItem__name" style="color: {{item.status ==0 ? '#3D3D3D' : ''}}">
+                    {{item.nickname}}
+                </view>
+                <view class="ui-listItem__step" style="color: {{item.status ==0 ? '#999999' : ''}}">
+                    {{item.todayStep}}
+                </view>
+                <view class="ui-listItem__text" style="color: {{item.status ==0 ? '#999999' : ''}}">
+                    {{item.status == 1 ? '已达成' : '未达成'}}
+                </view>
+            </view>
+        </view>
+        <view class="modals modals-bottom-dialog" hidden="{{hideModal}}">
+            <view class="modals-cancel" bindtap="hideModal"></view>
+            <view class="bottom-dialog-body ">
+               <view class="ui-contentBox">
+                   <view class="ui-contentItem__title">确认赠送给</view>
+                   <image src="{{filter.getLocalPhoto('my_ snapshoot.png')}}" mode="aspectFill" class="ui-contentItem__icon"/>
+                   <view class="ui-contentItem__text">邻家小姐姐</view>
                </view>
-               <view class="ui-listItem__name" style="color: {{item.status ==0 ? '#3D3D3D' : ''}}">{{item.nickname}}</view>
-               <view class="ui-listItem__step" style="color: {{item.status ==0 ? '#999999' : ''}}">{{item.todayStep}}</view>
-               <view class="ui-listItem__text" style="color: {{item.status ==0 ? '#999999' : ''}}">{{item.status == 1 ? '已达成' : '未达成'}}</view>
-           </view>
-       </view>
-   </view>
+               <view class="ui-btnBox">
+                   <view class="ui-btnItem__cancel" bindtap="hideModal">取消</view>
+                   <view class="ui-btnItem__sure" bindtap="onSureTap">确定</view>
+               </view>
+            </view>
+        </view>
+    </view>
 </view>

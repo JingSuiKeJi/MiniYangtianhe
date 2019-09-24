@@ -192,7 +192,17 @@ const methods = {
         if (self.data.hasNextPage) {
     	   self.onReachBottom();
         }
-    }
+    },
+    onDonateTap: function () {
+        let self = this;
+        if (!self.data.points) return;
+		_g.navigateTo({
+			url: 'pages/me/donate',
+			param: {
+				points: self.data.points
+			}
+		}, self); 
+	 }
 };
 
 // 有引用template时定义

@@ -149,11 +149,11 @@
             </view>
             <view class="ui-tapItem ui-nowBuyBox" bindtap="showModal" wx:if="{{type == 5}}">立即购买</view>
         </view>
-        <!-- <view class="modals modals-bottom-dialog" hidden="{{hideModal}}">
+        <view class="modals modals-bottom-dialog" hidden="{{hideModal}}">
             <view class="modals-cancel" bindtap="hideModal" catchtouchmove="true"></view>
             <view class="bottom-dialog-body bottom-pos" animation="{{animationData}}">
                 <view class="ui-modelBox">
-                    <view class="ui-shareBox" wx:if="{{modelType}}">
+                    <!-- <view class="ui-shareBox" >
                         <view class="ui-shareItem__text">分享好友下单
                             <text>赚1.34元</text>
                         </view>
@@ -168,8 +168,8 @@
                             </view>
                         </view>
                         <view class="ui-shareItem__text" bindtap="hideModal">取消</view>
-                    </view>
-                    <view class="ui-modelContent " wx:else>
+                    </view> -->
+                    <view class="ui-modelContent ">
                         <view class="ui-model_top">
                             <view class="ui-modelTop_left">
                                 <image src="{{filter.getPhoto(host, goodsDetail.picUrl)}}" class="ui-leftImg_goodsIcon" />
@@ -221,7 +221,7 @@
                     </view>
                 </view>
             </view>
-        </view> -->
+        </view>
     </scroll-view>
 </view>
 <shareGoods

@@ -12,7 +12,7 @@
                 </view>
             </view>
             <view class="btn-withdraw btn-common" bindtap="showDialogBtn">充值</view>
-            <view class="btn-presented btn-common" bindtap="showPresentedBtn">赠送</view>
+            <view class="btn-presented btn-common" bindtap="onDonateTap">赠送</view>
         </view>
         <scroll-view class="ui-withdrawInfoBox" scroll-y="true" bindscrolltolower="scrollTolower">
             <view class="ui-withdraw__title">福气明细</view>

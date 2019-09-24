@@ -6,22 +6,98 @@ const _c = app.config;
 const _t = app.temps;
 const event = app.event;
 const User = require('../../service/User');
-const Order = require('../../service/Order')
+const Order = require('../../service/Order');
+const Point = require('../../service/Point.js');
 
 let data = {
 
 };
 const onLoad = function (self) {
+    let data = {};
+    if (self.data.points) {
+        data.pointsNum = self.data.points
+    }
+    if (self.data.memberId) {
+        data.memberId = self.data.memberId
+    }
+    self.setData(data);
+    self.getData();
+}
+const onShow = function (self) { 
 
 }
-const onShow = function (self) { }
 const onReady = function (self) { }
 const onUnload = function (self) { }
 const methods = {
     getData: function () {
         let self = this;
+        self.getBase();
+    },
+    gift: function () {
+        let self = this;
+        Point.gift(self, {
+        	points: self.data.num,
+        	memberId: self.data.memberId
+        }).then((ret) => {
+        	self.hidePresentedModal();
+        	_g.toast({
+        		title: '赠送成功'
+            });
+            _g.navigateTo({
+                url: 'pages/me/finish',
+            },self)
+        }, (err)=>{
+        	_g.toast({
+        		title: '赠送失败'
+        	});
+        	self.hidePresentedModal();
+        });
+    },
+    getBase() {
+        const self = this;
+        Point.getBaseInfo(self, {}).then((ret) => {
+            self.setData({
+                money: ret.data.setting.pointsExchangeVO.money*100,
+                points: ret.data.setting.pointsExchangeVO.points*100
+            });
+        });
+    },
+    onDonateTap: function () {
+        let self = this;
+        if (!self.data.nickName){
+            _g.toast({title: '请选择要赠送的用户'});
+            return;
+        } 
+        if (!self.data.num) {
+            _g.toast({title: '请输入要赠送的福气数量'});
+            return;
+        }
+        // self.gift();
 
     },
+    onSkipsTap: function (e) {
+        let self = this;
+        _g.navigateTo({
+            url: 'pages/step/myFriends',
+            param: {
+                from: 'donate'
+            }
+        },self)
+    },
+    onGetNum: function (e) {
+        let self = this;
+        self.setData({
+            num: e.detail.value
+        })
+    },
+    onGetInput: function (e) {
+        let self = this;
+        self.setData({
+            nickName: e.detail.value
+        })
+    },
+
+
 
 }
 

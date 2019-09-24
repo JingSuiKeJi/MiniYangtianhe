@@ -93,17 +93,10 @@ class Order {
 			data: reqData
 		}, page);
 	}
-	selectCoupon(page, reqData) {
+    preferentialPolicies(page, reqData) {
 		_g.dm.canLoadMore = 1;
 		return _g.ajax({
-			url: mini.order.selectCoupon,
-			data: reqData
-		}, page);
-	}
-	selectIntegral(page, reqData) {
-		_g.dm.canLoadMore = 1;
-		return _g.ajax({
-			url: mini.order.selectIntegral,
+			url: mini.order.preferentialPolicies,
 			data: reqData
 		}, page);
 	}

@@ -121,7 +121,13 @@
             </view>
         </view>
         <view class="ui-brandSelectBox" wx:if="{{brandList[0].length || brandList[1].length || singleBrandList.length}}">
-            <view class="ui-brandSelectItem_top" bindtap="onAllBrandsTap">品牌甄选</view>
+            <view class="ui-brandSelectItem_top" bindtap="onAllBrandsTap">
+                <text >品牌甄选</text>
+                <view class="ui-topItem_moreBrand" >
+                    <text class="ui-topItem__moreText">查看更多</text>
+                    <image src="{{filter.getLocalPhoto('home_index_rightIcon.png')}}" class="ui-topItem_moreIcon" mode="aspectFill"/>
+                </view>
+            </view>
             <view class="ui-brandSelectItem_bottom">
                 <scroll-view scroll-x class="ui-brandItem_scrollView" wx:if="{{brandList[0].length || singleBrandList.length}}">
                     <view class="ui-brandScroll_itemTop">
