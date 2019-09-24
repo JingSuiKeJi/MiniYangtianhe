@@ -156,12 +156,10 @@ const methods = {
             deliveryRange: data.deliveryRange,
             couponNum: data.couponNum,
             payPrice: data.payPrice,
-            pointsPrice: data.pointsPrice
-        }
-        if (data.couponPrice) {
-            option.couponPrice = data.couponPrice;
-            option.couponId = data.couponId;
-            // option.deductionStatus = data.deductionStatus;
+            pointsPrice: data.pointsPrice,
+            deductionStatus: data.deductionStatus,
+            couponId : data.couponId,
+            couponPrice: data.couponPrice
         }
         self.setData(option);
     },

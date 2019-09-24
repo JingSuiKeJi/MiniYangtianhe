@@ -246,9 +246,9 @@ const methods = {
                 // areaName: '',
             },
             fail (err) {
-            	self.setData({
-		            authorizeHidden: false
-		        });
+            	// self.setData({
+		        //     authorizeHidden: false
+		        // });
             }
         })
     },

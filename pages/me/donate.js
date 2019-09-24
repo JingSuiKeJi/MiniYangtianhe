@@ -42,7 +42,10 @@ const methods = {
         	self.hidePresentedModal();
         	_g.toast({
         		title: '赠送成功'
-        	});
+            });
+            _g.navigateTo({
+                url: 'pages/me/finish',
+            },self)
         }, (err)=>{
         	_g.toast({
         		title: '赠送失败'

@@ -92,26 +92,22 @@ page {
 .ui-area {
 	height: 130rpx;
 }
-
-.is-area {
-	/* margin-top: 20rpx; */
-}
-
 .ui-addressDetailText {
-	display: flex;
-	align-items: center;
-	margin-top: 5rpx;
+	margin-top: 25rpx;
 	width: 450rpx;
-	height: 110rpx;
+	height: 90rpx;
 }
 
 .ui-addressDetail {
-	padding-bottom: 80rpx;
+	display: flex;
+	align-items: center;
+	height: 150rpx;
+	/* padding-bottom: 80rpx; */
 }
 
-.is-address__detail {
+/* .is-address__detail {
 	margin-top: 50rpx;
-}
+} */
 
 .ui-tel {
 	height: 128rpx;

@@ -9,20 +9,22 @@ const data = {
     type: 1,
     list: [
         {
-            url: 'mafriends_personal.png',
-            name: '命运的杰克命运',
-            step: '25725步',
+            avatar: 'mafriends_personal.png',
+            nickname: '命运的杰克命运',
+            todayStep: '25725步',
             status: 1,//1完成 0 未完成
             text: '未完成',
         }
     ],
-    title: '我的乐友'
+    title: '我的乐友',
+    hideModal: true, //true-隐藏  false-显示
+    nimationData: {},//
 };
 
 // 页面onLoad方法
 const onLoad = function (self) {
     self.getData();  
-    if(self.data.from) {
+    if (self.data.from) {
         self.setData({
             from: self.data.from,
             title: '赠送福气'
@@ -41,11 +43,11 @@ const onUnload = function (self) {
 // 页面中的方法
 const methods = {
     getData: function () {
-       let self = this; 
-       self.getPageData();
+        let self = this;
+        self.getPageData();
     },
     getPageData: function () {
-        let self = this; 
+        let self = this;
         User.getLeyouList(self, {
             page: 1,
             pageSize: 10,
@@ -75,8 +77,31 @@ const methods = {
     },
     onSkipTap: function (e) {
         let self = this;
-        
+
+    },
+    showModal: function () {
+        var self = this;
+        if (!self.data.from) return;
+        self.setData({
+            hideModal: false
+        })
+    },
+    // 隐藏遮罩层
+    hideModal: function () {
+        var self = this;
+        self.setData({
+            hideModal: true
+        })
+    },
+    onSureTap: function (e) {
+        let self = this;
+        //返回上一个页面，并传参
+        _g.getPrevPage().setData({
+        });
+        _g.navigateBack();
     }
+
+
 };
 
 // 有引用template时定义

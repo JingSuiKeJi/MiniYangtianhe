@@ -192,7 +192,10 @@ page{
 	background:rgba(255,255,255,1);
 	border-bottom:2rpx solid rgba(0,0,0,0.1);
 }
-
+.ui-pickerBox {
+	width: 100%;
+	height: 100%;
+}
 .ui-inputCompany{
 	width: 646rpx;
 	height:30rpx;

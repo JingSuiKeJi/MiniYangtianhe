@@ -2,12 +2,12 @@
 <navBar title='填写订单' background='white' color='black' iconTheme='black' back="{{true}}"></navBar>
 <view class="main">
     <view class="ui-headerBox">
-        <image src="{{filter.getLocalPhoto('cart_laba.png')}}" class="headerItem_labaIcon" />
+        <image src="{{filter.getLocalPhoto('cart_laba.png')}}" class="headerItem_labaIcon" mode="aspectFill"/>
         <text class="headerItem_text">点击成为PLUS会员，享更多权限优惠！ </text>
-        <image src="{{filter.getLocalPhoto('cart_right.png')}}" class="headerItem_rightIcon" />
+        <image src="{{filter.getLocalPhoto('cart_right.png')}}" class="headerItem_rightIcon" mode="aspectFill"/>
     </view>
     <view class="ui-addressBox" bindtap="onAddressTap">
-        <image src="{{filter.getLocalPhoto('my_landmarkIcon.png')}}" class="ui-addressItem__addressIcon" />
+        <image src="{{filter.getLocalPhoto('my_landmarkIcon.png')}}" class="ui-addressItem__addressIcon" mode="aspectFill"/>
         <view class="ui-addressItem__detail" wx:if="{{orderAddressVo.id}}">
             <view class="ui-detailItem__info">
                 <text class="ui-infoItem__name">{{orderAddressVo.name}}</text>
@@ -17,7 +17,7 @@
         </view>
         <view wx:if="{{!orderAddressVo.id}}">
             <text class="ui-addressItem__text">添加收货地址</text>
-            <image src="{{filter.getLocalPhoto('my_icMore.png')}}" class="ui-addressItem__moreIcon" />
+            <image src="{{filter.getLocalPhoto('my_icMore.png')}}" class="ui-addressItem__moreIcon" mode="aspectFill"/>
         </view>
     </view>
     <view class="postBox" wx:if="{{platformFlag == 2}}">
@@ -40,7 +40,7 @@
         <text class="ui-storeAddress__name">{{orderStoreVO.name}}</text>
         <text class="ui-storeAddress__addre">{{orderStoreVO.address}}</text>
         <text class="ui-storeAddress__distance">距离{{orderStoreVO.distance}}km</text>
-        <image src="{{filter.getLocalPhoto('my_icMore.png')}}" class="ui-storeAddress__rightItem" />
+        <image src="{{filter.getLocalPhoto('my_icMore.png')}}" class="ui-storeAddress__rightItem" mode="aspectFill"/>
     </view>
     <view class="ui-orderBox">
         <view class="ui-orderItem" wx:for="{{goodsVoList}}" wx:key="{{index}}">
@@ -68,7 +68,7 @@
         </view>
         <view class="ui-orderItem__post" wx:if="{{platformFlag == 2}}">
             <text class="ui-postItem__title">配送时间</text>
-            <text class="ui-postItem__text">{{postTime}}</text>
+            <text class="ui-postItem__text ui-postItem__postTime">{{postTime}}</text>
         </view>
         <view class="ui-orderItem__post">
             <text class="ui-postItem__title">订单备注</text>
@@ -85,20 +85,21 @@
     </view>
     <view class="ui-pointsBox">
         <view class="ui-pointesItem">
-            <image src="{{filter.getLocalPhoto('order_tongqian.png')}}" class="ui-pointesItem__Icon" />
-            <text class="ui-pointesItem__text">{{points && !deductionStatus ? '可用' + points + '福气抵用' + pointsPrice + '元' : '暂无可抵用积分'}}</text>
-            <text class="ui-pointesItem__text">{{ deductionStatus ?  '暂无需要抵扣的金额' : ''}}</text>
-            <image src="{{pointsFlag ? filter.getLocalPhoto('cart_selestIcon.png'): filter.getLocalPhoto('cart_selestEmptyIcon.png')}}" class="ui-pointesItem__selestIcon" bindtap="onSelectTap" wx:if="{{points}}"></image>
+            <image src="{{filter.getLocalPhoto('order_tongqian.png')}}" class="ui-pointesItem__Icon" mode="aspectFill"/>
+            <text class="ui-pointesItem__text" wx:if="{{points}}">{{ '可用' + points + '福气抵用' + pointsPrice + '元'}}</text>
+            <text class="ui-pointesItem__text" wx:if="{{deductionStatus != 1 && points==0}}">暂无可抵用积分</text>
+            <text class="ui-pointesItem__text" wx:if="{{deductionStatus == 1 && points==0}}">暂无需要抵扣的金额</text>
+            <image src="{{pointsFlag ? filter.getLocalPhoto('cart_selestIcon.png'): filter.getLocalPhoto('cart_selestEmptyIcon.png')}}" mode="aspectFill" class="ui-pointesItem__selestIcon" bindtap="onSelectTap" wx:if="{{points}}"></image>
         </view>
     </view>
     <view class="ui-pointsBox ui-ticketBox" bindtap="onChoseCoupon">
         <view class="ui-pointesItem">
-            <image src="{{filter.getLocalPhoto('order_money.png')}}" class="ui-pointesItem__moneyIcon" />
+            <image src="{{filter.getLocalPhoto('order_money.png')}}" class="ui-pointesItem__moneyIcon" mode="aspectFill"/>
             <text class="ui-pointesItem__text">优惠劵</text>
             <view class="ui-pointesItem__moreBox">
                 <text class="ui-pointesItem__pageNum" wx:if="{{!couponNum }}">无优惠卷</text>
                 <text class="ui-pointesItem__pageNum" wx:if="{{couponNum}}">- ￥ {{couponPrice}}</text>
-                <image src="{{filter.getLocalPhoto('my_icMore.png')}}" class="ui-pointesItem__MoreIcon" wx:if="{{couponNum}}" />
+                <image src="{{filter.getLocalPhoto('my_icMore.png')}}" class="ui-pointesItem__MoreIcon" wx:if="{{couponNum}}" mode="aspectFill"/>
             </view>
         </view>
     </view>

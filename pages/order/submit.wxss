@@ -123,6 +123,13 @@ page {
     line-height:30rpx;
     display: inline-block;
 }
+.ui-postItem__postTime {
+    width: 500rpx;
+    margin-top: 15rpx;
+    display: inline-block;
+    vertical-align: top;
+
+}
 .ui-postItem {
     display: inline-block;
     width: 152rpx;

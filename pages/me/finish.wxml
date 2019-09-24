@@ -1,0 +1,18 @@
+<wxs module="filter" src="../../filter/filter.wxs"></wxs>
+<view class="ui-main">
+    <view class="ui-topBox">
+        <view class="ui-topItem__title">赠送成功</view>
+        <view class="ui-topItem__num">1000</view>
+        <view class="ui-topItem__text">福气</view>
+        <view class="ui-topItem__date">
+            <view class="ui-topItem__dateText">赠送日期</view>
+            <view class="ui-topItem__time">2019-01-01 12:00 </view>
+        </view>
+        <view class="ui-topItem">
+            <view class="ui-topItem__dateText">接收人</view>
+            <view class="ui-topItem__time">邻家小姐姐</view>
+        </view>
+    </view>
+     <view class="ui-backgroundBox"></view>
+    <view class="ui-btn">完成</view>
+</view>

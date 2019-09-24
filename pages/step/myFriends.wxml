@@ -4,7 +4,7 @@
     <navBar title='{{title}}' background='white' color='black' iconTheme='black' back="{{true}}"></navBar>
     <view class="main">
         <view class="ui-searchBox" wx:if="{{from}}">
-            <input type="text" placeholder="请输入受赠人ID" class="ui-searchItem_input" bindinput="onGetInput" value="{{value}}"/>
+            <input type="text" placeholder="请输入受赠人ID" class="ui-searchItem_input" bindinput="onGetInput" value="{{value}}" />
             <view class="ui-searchItem_text" bindtap="onSkipTap">搜索</view>
             <image src="{{filter.getLocalPhoto('ic_search.png')}}" class="searchItem_icon" />
         </view>
@@ -17,7 +17,7 @@
             </view>
         </view>
         <view class="ui-listBox">
-            <view class="ui-listItem" wx:for="{{list}}" wx:key="{{index}}">
+            <view class="ui-listItem" wx:for="{{list}}" wx:key="{{index}}" bindtap="showModal">
                 <view class="ui-listItem__imgBox">
                     <image src="{{filter.getPhoto(host,item.avatar)}}" class="ui-listItem__icon" />
                 </view>
@@ -30,6 +30,20 @@
                 <view class="ui-listItem__text" style="color: {{item.status ==0 ? '#999999' : ''}}">
                     {{item.status == 1 ? '已达成' : '未达成'}}
                 </view>
+            </view>
+        </view>
+        <view class="modals modals-bottom-dialog" hidden="{{hideModal}}">
+            <view class="modals-cancel" bindtap="hideModal"></view>
+            <view class="bottom-dialog-body ">
+               <view class="ui-contentBox">
+                   <view class="ui-contentItem__title">确认赠送给</view>
+                   <image src="{{filter.getLocalPhoto('my_ snapshoot.png')}}" mode="aspectFill" class="ui-contentItem__icon"/>
+                   <view class="ui-contentItem__text">邻家小姐姐</view>
+               </view>
+               <view class="ui-btnBox">
+                   <view class="ui-btnItem__cancel" bindtap="hideModal">取消</view>
+                   <view class="ui-btnItem__sure" bindtap="onSureTap">确定</view>
+               </view>
             </view>
         </view>
     </view>

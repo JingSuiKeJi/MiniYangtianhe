@@ -9,7 +9,7 @@
 				<!-- 头像 -->
                 <view class="ui-itemImgBox">
 					<image class="ui-haveAvatar" wx:if="{{isLogin}}" src="{{filter.getAvatar(host,userInfo.avatar)}}" mode="aspectFill"></image>
-					<image class="ui-noAvatar" wx:else src="http://www.gzlingren.com:8098/yangtianhe/my_personalIcon.png"></image>
+					<image class="ui-noAvatar" wx:else src="http://www.gzlingren.com:8098/yangtianhe/my_personalIcon.png" mode="aspectFill"></image>
 				</view>
 				<!-- id -->
 				<block wx:if="{{isLogin}}">
@@ -27,24 +27,32 @@
                    
 				</view> -->
 				<!-- 使用福气 -->
-				<view class="ui-useBlisses" bindtap="onBlissDetailTap">
-					<view class="ui-sueBlissesIcon"></view>
-					<text>使用福气</text>
-				</view>
+				<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onBlissDetailTap" >
+					<button formType="submit" class="ui-useBlisses">
+						<view class="ui-sueBlissesIcon"></view>
+						<text>使用福气</text>
+					</button>
+                </form>
 				<!-- 绑定信息 -->
 				<view class="ui-contact">
-					<view class="ui-contactItem" catchtap="onBindingWeChat">
-						<view class="ui-iconContact"></view>
-						<text>{{userInfo.wxNo?'修改微信':'绑定微信'}}</text>
-					</view>
-					<view class="ui-contactItem" catchtap="onBindingPhone">
-						<view class="ui-iconContact"></view>
-						<text>{{userInfo.phone?'修改手机':'绑定手机'}}</text>
-					</view>
-					<view class="ui-contactItem" catchtap="onPersonalTap">
-						<view class="ui-iconContact"></view>
-						<text>分享海报</text>
-					</view>
+					<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onBindingWeChat" >
+						<button formType="submit" class="ui-contactItem">
+							<image src="{{filter.getLocalPhoto('my_weChatIcon.png')}}" mode="aspectFill" class="ui-iconContact"/>
+						    <text>{{userInfo.wxNo?'修改微信':'绑定微信'}}</text>
+						</button>
+                    </form> 
+					 <form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onBindingPhone" >
+						<button formType="submit" class="ui-contactItem">
+							<image src="{{filter.getLocalPhoto('my_phone.png')}}" mode="aspectFill" class="ui-iconContact"/>
+						    <text>{{userInfo.phone?'修改手机':'绑定手机'}}</text>
+						</button>
+                    </form>
+					 <form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onPersonalTap" >
+						<button formType="submit" class="ui-contactItem">
+							<image src="{{filter.getLocalPhoto('my_share.png')}}" mode="aspectFill" class="ui-iconContact"/>
+						    <text>分享海报</text>
+						</button>
+                    </form>
 				</view>
             </view>
 			
@@ -56,71 +64,91 @@
 			</view>
 			
 			<view class="ui-incomeItems">
-				<view class="ui-incomeItem" catchtap="onBlissDetailTap">
-					<text>{{userInfo.points||0}}</text>
-					<text>福气</text>
-				</view>
-				<view class="ui-incomeItem" catchtap="onDiscountsTap">
-					<text>{{userInfo.couponNum||0}}</text>
-					<text>优惠券</text>
-				</view>
-				<view class="ui-incomeItem" catchtap="onRevenueTap">
-					<text>{{userInfo.money||0}}</text>
-					<text>收益</text>
-				</view>
+				<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onBlissDetailTap" class="ui-incomeItem">
+					<button formType="submit" >
+						<text>{{userInfo.points||0}}</text>
+					    <text>福气</text>
+					</button>
+				</form>
+				<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onDiscountsTap" class="ui-incomeItem">
+					<button formType="submit" >
+						<text>{{userInfo.couponNum||0}}</text>
+					    <text>优惠券</text>
+					</button>
+				</form>
+				<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onRevenueTap"  class="ui-incomeItem">
+					<button formType="submit" >
+						<text>{{userInfo.money||0}}</text>
+					    <text>收益</text>
+					</button>
+				</form>
 			</view>
 			
         </view>
 		
 		<view class="ui-feedbackInfo">
-			<view class="ui-orderAll">
-				<text class="ui-orderText">我的订单</text>
-				<view class="ui-orderCheck" bindtap="onMyOrderTap">
-					<text>全部订单</text>
-					<view class="ui-checkMoreOrder"></view>
+			<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onMyOrderTap" >
+				<button formType="submit" class="ui-orderAll">
+					<text class="ui-orderText">我的订单</text>
+				    <view class="ui-orderCheck" >
+						<text>全部订单</text>
+						<view class="ui-checkMoreOrder"></view>
 				</view>
-			</view>
+				</button>
+			</form>
 			<view class="ui-orderStatus">
-				<view class="ui-feedbackItem" bindtap="onPayTap">
-					<view wx:if="{{userInfo.orderNum.waitPayNum>0}}" class="ui-notification" 
-					style="{{userInfo.orderNum.waitPayNum>9?'padding:6rpx 8rpx 6rpx 8rpx':''}}"><text>{{userInfo.orderNum.waitPayNum}}</text></view>
-					<view class="ui-iconFeedback"></view>
-					<text class="ui-orderText">待支付</text>
-				</view>
-				<view class="ui-feedbackItem" bindtap="onShippingTap">
-					<view wx:if="{{userInfo.orderNum.waitSendGoodsNum>0}}" class="ui-notification" 
-					style="{{userInfo.orderNum.waitSendGoodsNum>9?'padding:6rpx 8rpx 6rpx 8rpx':''}}"><text>{{userInfo.orderNum.waitSendGoodsNum}}</text></view>
-					<view class="ui-iconFeedback"></view>
-					<text class="ui-orderText">待发货</text>
-				</view>
-				<view class="ui-feedbackItem" bindtap="onReceivingTap">
-					<view wx:if="{{userInfo.orderNum.waitConfirmGoodsNum>0}}" class="ui-notification" 
-					style="{{userInfo.orderNum.waitConfirmGoodsNum>9?'padding:6rpx 8rpx 6rpx 8rpx':''}}"><text>{{userInfo.orderNum.waitConfirmGoodsNum}}</text></view>
-					<view class="ui-iconFeedback"></view>
-					<text class="ui-orderText">待收货</text>
-				</view>
-				<view class="ui-feedbackItem" bindtap="onSignedTap">
-					<view wx:if="{{userInfo.orderNum.finishNum>0}}" class="ui-notification" 
-					style="{{userInfo.orderNum.finishNum>9?'padding:6rpx 8rpx 6rpx 8rpx':''}}"><text>{{userInfo.orderNum.finishNum}}</text></view>
-					<view class="ui-iconFeedback"></view>
-					<text class="ui-orderText">已签收</text>
-				</view>
-				<view class="ui-feedbackItem" bindtap="onAfterSaleTap">
-					<view class="ui-iconFeedback"></view>
-					<text class="ui-orderText">售后</text>
-				</view>
+                <form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onPayTap" class="ui-feedbackItem">
+					<button formType="submit" >
+						<view wx:if="{{userInfo.orderNum.waitPayNum>0}}" class="ui-notification" 
+						style="{{userInfo.orderNum.waitPayNum>9?'padding:6rpx 8rpx 6rpx 8rpx':''}}"><text>{{userInfo.orderNum.waitPayNum}}</text></view>
+						<view class="ui-iconFeedback"></view>
+						<text class="ui-orderText">待支付</text>
+					</button>
+			    </form>
+				<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onShippingTap" class="ui-feedbackItem">
+					<button formType="submit" >
+						<view wx:if="{{userInfo.orderNum.waitSendGoodsNum>0}}" class="ui-notification" 
+						style="{{userInfo.orderNum.waitSendGoodsNum>9?'padding:6rpx 8rpx 6rpx 8rpx':''}}"><text>{{userInfo.orderNum.waitSendGoodsNum}}</text></view>
+						<view class="ui-iconFeedback"></view>
+						<text class="ui-orderText">待发货</text>
+					</button>
+			    </form>
+				<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onReceivingTap" class="ui-feedbackItem">
+					<button formType="submit" >
+						<view wx:if="{{userInfo.orderNum.waitConfirmGoodsNum>0}}" class="ui-notification" 
+						style="{{userInfo.orderNum.waitConfirmGoodsNum>9?'padding:6rpx 8rpx 6rpx 8rpx':''}}"><text>{{userInfo.orderNum.waitConfirmGoodsNum}}</text></view>
+						<view class="ui-iconFeedback"></view>
+						<text class="ui-orderText">待收货</text>
+					</button>
+			    </form>
+				<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onSignedTap" class="ui-feedbackItem">
+					<button formType="submit" >
+						<view wx:if="{{userInfo.orderNum.finishNum>0}}" class="ui-notification" 
+						style="{{userInfo.orderNum.finishNum>9?'padding:6rpx 8rpx 6rpx 8rpx':''}}"><text>{{userInfo.orderNum.finishNum}}</text></view>
+						<view class="ui-iconFeedback"></view>
+						<text class="ui-orderText">已签收</text>
+					</button>
+			    </form>
+				<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onAfterSaleTap" class="ui-feedbackItem">
+					<button formType="submit" >
+						<view class="ui-iconFeedback"></view>
+					   <text class="ui-orderText">售后</text>
+					</button>
+			    </form>
 			</view>
 		</view>
 
         <view class="ui-textItem">
 			<view class="ui-itemBox">
-				<view class="ui-blockInviter" bindtap="onDevelopInviterInfo">
-			    <text>我的邀请人</text>
-				<view class="{{showInvite==false?'ui-moreIcon':'ui-dropDown'}}"></view>
-				</view>
+				<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onDevelopInviterInfo"  >
+					<button formType="submit" class="ui-blockInviter">
+						<text class="ui-item__text">我的邀请人</text>
+					    <view class="{{showInvite==false?'ui-moreIcon':'ui-dropDown'}}"></view>
+					</button>
+			    </form>
 				<view class="ui-inviter" wx:if="{{showInvite}}">
 					<view class="ui-inviterInfo" wx:if="{{userInfo.inviter.id}}">
-						<view class="ui-inviterInfoAvatar"><image src="{{userInfo.inviter.avatar}}"></image></view>
+						<view class="ui-inviterInfoAvatar"><image src="{{userInfo.inviter.avatar}}"  mode="aspectFill"></image></view>
 						<text class="ui-inviterNikeName">{{userInfo.inviter.nickname}}</text>
 						<text class="ui-inviterWxName">微信号：{{userInfo.inviter.wxNo}}</text>
 					</view>
@@ -133,33 +161,46 @@
 					</view>
 				</view>
 			</view>
-			<view class="ui-itemBox" catchtap="onRevenueTap">
-			    <text>收益中心</text>
-				<view class="ui-moreIcon"></view>
-			</view>
-            <view class="ui-itemBox" catchtap="onStoreApplicationTap" wx:if="{{userInfo.verifier.length==0||userInfo.verifier==null}}">
-                <text>门店申请</text>
-				<view class="ui-moreIcon"></view>
-            </view>
-			 <view class="ui-itemBox" catchtap="onMyCommentTap">
-			    <text>我的评价</text>
-				<view class="ui-moreIcon"></view>
-			</view>
-            <view class="ui-itemBox" catchtap="onAddressHandleTap">
-                <text>地址管理</text>
-				<view class="ui-moreIcon"></view>
-            </view>
-            <view class="ui-itemBox" catchtap="onMessageInformTap">
-                <text>消息通知</text>
-				<view class="ui-moreIcon"></view>
-            </view>
-            <view class="ui-itemBox" catchtap="onStoreTap" wx:if="{{userInfo.verifier.length>0}}">
-                <text>门店中心</text>
-				<view class="ui-moreIcon"></view>
-			</view>
+			<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onRevenueTap"  >
+				<button formType="submit" class="ui-itemBox">
+					<text>收益中心</text>
+				    <view class="ui-moreIcon"></view>
+				</button>
+			</form>
+			<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onStoreApplicationTap"  wx:if="{{userInfo.verifier.length==0||userInfo.verifier==null}}">
+				<button formType="submit" class="ui-itemBox" >
+					<text>门店申请</text>
+				    <view class="ui-moreIcon"></view>
+				</button>
+			</form>
+			<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onMyCommentTap"  >
+				<button formType="submit" class="ui-itemBox" >
+					<text>我的评价</text>
+				    <view class="ui-moreIcon"></view>
+				</button>
+			</form>
+			<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onAddressHandleTap"  >
+				<button formType="submit" class="ui-itemBox" >
+					 <text>地址管理</text>
+				     <view class="ui-moreIcon"></view>
+				</button>
+			</form>
+			<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onMessageInformTap"  >
+				<button formType="submit" class="ui-itemBox" >
+					<text>消息通知</text>
+				    <view class="ui-moreIcon"></view>
+				</button>
+			</form>
+			<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onStoreTap"  >
+				<button formType="submit" class="ui-itemBox" >
+					 <text>门店中心</text>
+				     <view class="ui-moreIcon"></view>
+				</button>
+			</form>
         </view>
-		
-		<view wx:if="{{isLogin}}" class="ui-LogOut" bindtap='onLogOutTap'>退出登录</view>
+		<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onLogOutTap"  wx:if="{{isLogin}}">
+			<button formType="submit" class="ui-LogOut" >退出登录</button>
+		</form>
 		<!--弹窗-->
 		<!-- <view class="modal-mask" bindtap="hideModal" catchtouchmove="true" wx:if="{{showModal}}"></view>
 		<view class="modal-dialog" wx:if="{{showModal}}">
