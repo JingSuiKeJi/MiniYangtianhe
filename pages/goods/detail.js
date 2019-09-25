@@ -18,13 +18,13 @@ const data = {
     }],
     type: 1,
     personList: [{
-            url: 'people.png',
-            name: 'Amy',
-        },
-        {
-            url: 'people.png',
-            name: 'Amy',
-        }
+        url: 'people.png',
+        name: 'Amy',
+    },
+    {
+        url: 'people.png',
+        name: 'Amy',
+    }
     ],
     top: 200,
     isSelect: false,
@@ -34,7 +34,7 @@ const data = {
     isTab: 0,
     scale: '请选择规格',
     cartNum: 2,
-    scaleList: ['250g x 10包', ],
+    scaleList: ['250g x 10包',],
     scaleIndex: -1,
     toView: 'header',
     modelType: 0,
@@ -50,19 +50,18 @@ const data = {
 };
 
 // 页面onLoad方法
-const onLoad = function(self) {
+const onLoad = function (self) {
     self.getCartList();
     self.getData();
     self.moveBarrage();
-    const title = self.data.self;
-    if (self.data.flag == 0 || self.data.flag == 3) {
+    if (self.data.type == 5) {
         self.setData({
-            title: '商品详情',
-            id: self.data.id
+            title: '养天和优选',
         })
     } else {
         self.setData({
-            title: '养天和优选'
+            title: '商品详情',
+
         })
     }
     event.on('goods-detail-shareEvent', self, (data) => {
@@ -81,13 +80,13 @@ const onReady = function (self) {
             });
         }
         self.authorize = self.selectComponent('#authorize');
-        self.authorize.onCancelTap = function() {
+        self.authorize.onCancelTap = function () {
             self.setData({
                 authorizeHidden: true
             });
         }
     }, 1000);
-    event.on('goods-detail-openAuthorize', self, function(data) {
+    event.on('goods-detail-openAuthorize', self, function (data) {
         self.setData({
             authorizeHidden: false
         });
@@ -95,15 +94,15 @@ const onReady = function (self) {
 }
 
 // 页面onShow方法
-const onShow = function(self) {
+const onShow = function (self) {
     self.getData();
 };
-const onUnload = function(self) {
+const onUnload = function (self) {
     event.remove('goods-detail-shareEvent', self);
 }
 // 页面中的方法
 const methods = {
-    getData: function() {
+    getData: function () {
         const self = this;
         self.getGoodsDetail();
         self.getCommentList();
@@ -129,7 +128,7 @@ const methods = {
                 //需要知道是门店商品还是商城的商品
                 self.getAssembleList();
             }
-        }, (err) => {});
+        }, (err) => { });
     },
     getCommentList() {
         const self = this;
@@ -166,45 +165,45 @@ const methods = {
 
         });
     },
-    onChangeTap: function(e) {
+    onChangeTap: function (e) {
         let self = this;
         self.setData({
             currentIndex: e.detail.current + 1,
         })
     },
-    onCancelTap: function(e) {
+    onCancelTap: function (e) {
         let self = this;
         self.hideModal();
     },
-    onSureTap: function(e) {
+    onSureTap: function (e) {
         let self = this;
         self.onBuyTap();
         self.hideModal();
     },
-    onMoreTap: function(e) {
+    onMoreTap: function (e) {
         let self = this;
         _g.navigateTo({
             url: 'pages/goods/more'
         }, self)
     },
-    onJoinTap: function(e) {
+    onJoinTap: function (e) {
         let self = this;
         _g.navigateTo({
             url: 'pages/goods/join'
         }, self)
     },
-    onClickTap: function(e) {
+    onClickTap: function (e) {
         let self = this;
         self.setData({
             type: e.target.dataset.type,
         })
     },
-    onPageScroll: function(e) { //监听页面滚动
+    onPageScroll: function (e) { //监听页面滚动
         this.setData({
             scrollTop: e.scrollTop
         })
     },
-    moveBarrage: function() {
+    moveBarrage: function () {
         let self = this;
         let length = self.data.personList.length;
         let dis = (length - 1) * 76 + 300;
@@ -215,7 +214,7 @@ const methods = {
             second
         });
     },
-    onSelectTap: function(e) {
+    onSelectTap: function (e) {
         let index = e.target.dataset.index;
         let self = this;
         self.setData({
@@ -225,7 +224,7 @@ const methods = {
         });
     },
     // 显示遮罩层
-    showModal: function() {
+    showModal: function () {
         let self = this;
 
         self.setData({
@@ -236,13 +235,13 @@ const methods = {
             timingFunction: 'ease', //动画的效果 默认值是linear
         })
         this.animation = animation
-        setTimeout(function() {
+        setTimeout(function () {
             self.fadeIn(); //调用显示动画
         }, 200);
     },
 
     // 隐藏遮罩层
-    hideModal: function() {
+    hideModal: function () {
         var self = this;
         var animation = wx.createAnimation({
             duration: 800, //动画的持续时间 默认400ms   数值越大，动画越慢   数值越小，动画越快
@@ -250,7 +249,7 @@ const methods = {
         })
         this.animation = animation
         self.fadeDown(); //调用隐藏动画   
-        setTimeout(function() {
+        setTimeout(function () {
             self.setData({
                 hideModal: true,
                 modelType: 0,
@@ -260,19 +259,19 @@ const methods = {
     },
 
     //动画集
-    fadeIn: function() {
+    fadeIn: function () {
         this.animation.translateY(0).step()
         this.setData({
             animationData: this.animation.export()
         })
     },
-    fadeDown: function() {
+    fadeDown: function () {
         this.animation.translateY(500).step()
         this.setData({
             animationData: this.animation.export(),
         })
     },
-    onChoseTap: function(e) {
+    onChoseTap: function (e) {
         let index = e.target.dataset.index;
         let self = this;
         if (index == self.data.isTab) return;
@@ -294,11 +293,11 @@ const methods = {
             })
         }
     },
-    onOpenPlus: function(e) {
+    onOpenPlus: function (e) {
         let self = this;
         console.log('开通会员')
     },
-    onChangeCount: function(e) {
+    onChangeCount: function (e) {
         let self = this;
         if (e.target.dataset.type == 1) {
             if (self.data.num == 1) return;
@@ -313,37 +312,37 @@ const methods = {
             })
         }
     },
-    onShowTap: function(e) {
+    onShowTap: function (e) {
         let self = this;
         self.setData({
             ScaleType: e.target.dataset.scaletype
         });
         self.showModal();
     },
-    onMoreComments: function(e) {
+    onMoreComments: function (e) {
         let self = this;
         if (!self.data.commentLength) return;
         _g.navigateTo({
             url: 'pages/goods/comments',
             param: {
-                goodsId:  self.data.id,
+                goodsId: self.data.id,
             }
         }, self)
     },
-    onBackTap: function(e) {
+    onBackTap: function (e) {
         let self = this;
         wx.switchTab({
             url: '../../pages/home/index'
         });
     },
-    onBuyTap: function(e) {
+    onBuyTap: function (e) {
         let self = this;
         let data = {
             platformFlag: self.data.goodsDetail.platformFlag,
             id: self.data.goodsDetail.id,
             num: self.data.num,
         };
-        if (!_g.checkLogin({type: 2})) return;   
+        if (!_g.checkLogin({ type: 2 })) return;
         if (self.data.goodsDetail.skuId) data.skuId = self.data.goodsDetail.skuId;
         if (self.data.thirdId) data.thirdId = self.data.thirdId;
         _g.navigateTo({
@@ -355,13 +354,13 @@ const methods = {
             },
         }, self);
     },
-    onCartTap: function(e) {
+    onCartTap: function (e) {
         let self = this;
         wx.switchTab({
             url: '../../pages/store/cart'
         });
     },
-    splitString: function(str, key) {
+    splitString: function (str, key) {
         let self = this;
         let picList = [];
         picList = str.split(',')
@@ -370,14 +369,14 @@ const methods = {
         })
 
     },
-    onAddCart: function() {
+    onAddCart: function () {
         let self = this;
         let data = {
             platformFlag: self.data.goodsDetail.platformFlag,
             goodsId: self.data.id,
             num: self.data.num
         }
-        if (!_g.checkLogin({type: 2})) return;
+        if (!_g.checkLogin({ type: 2 })) return;
         if (self.data.platformFlag == 2) data.storeId = self.data.storeId;
         Goods.addCart(self, data).then((ret) => {
             let data = ret.data;
@@ -387,6 +386,7 @@ const methods = {
             _g.toast({
                 title: '加入购物车成功'
             });
+            self.getCartList();
             event.emit('refreshCart');
         }, (err) => {
             _g.toast({
@@ -395,25 +395,33 @@ const methods = {
         });
     },
     //请求购物车列表
-    getCartList: function() {
+    getCartList: function () {
         let self = this;
         Goods.cartList(self, {}).then((ret) => {
             let data = ret.data;
+            let total = 0;
+            if ( data.mallShopCartList && data.mallShopCartList.length  ) {
+                total += data.mallShopCartList.length
+            }
+            if (data.storeShopCartList && data.storeShopCartList.length ) {
+                total += data.storeShopCartList.length
+            }
             self.setData({
-                // total: data.length  ////////////这里报错注意一下
+                total: total
             });
+
         }, (err) => {
 
         });
     },
-    onCartTap: function(e) {
+    onCartTap: function (e) {
         let self = this;
-        if (!_g.checkLogin({type: 2})) return;
-            wx.switchTab({
-                url: '../../pages/store/cart'
-            });
+        if (!_g.checkLogin({ type: 2 })) return;
+        wx.switchTab({
+            url: '../../pages/store/cart'
+        });
     },
-    onShareTap: function(e) {
+    onShareTap: function (e) {
         let self = this;
         let opts = e.currentTarget.dataset;
         self.setData({

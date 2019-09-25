@@ -13,6 +13,9 @@ let data = {
 	centerInfo:{},//门店中心信息
 };
 const onLoad = function(self) {
+	self.setData({
+		level: self.data.level
+	})
 	self.getMyInfo();
 	self.getData();
 }

@@ -1,8 +1,8 @@
 <!--pages/goods/myBargain.wxml-->
 <wxs module="filter" src="../../filter/filter.wxs"></wxs>
-<view class="contain">
+<view class="ui-contain">
 	<navBar title='xxx的砍价' background='white' color='black' iconTheme='black' back="{{true}}"></navBar>
-    <view class="main">
+    <view class="ui-main">
         <view class="ui-rulesBtn" bindtap="showModal" data-type="1">活动规则</view>
         <view class="ui-infoBox">
              <view class="ui-infoItem_iconBox">
@@ -68,7 +68,7 @@
         </view>
          <view class="modals modals-bottom-dialog" hidden="{{hideModal}}">
             <view class="modals-cancel" bindtap="hideModal" ></view>
-            <view class="bottom-dialog-body " wx:if="{{type==2}}">
+            <view class="bottom-dialog-body " wx:if="{{type == 2}}">
                 <image src="{{filter.getLocalPhoto('redPacket.png')}}"  class="ui-redPacket_icon"/>
                  <view class="ui-model_text">
                      <text class="ui-textItem_text">你帮TA砍了</text>
@@ -80,7 +80,7 @@
                  <image src="{{filter.getLocalPhoto('model_redBtn.png')}}" class="ui-model_btnIcon"/>
                  <view class="ui-model_btn" bindtap="onMoreTap">看看其他商品</view>
             </view>
-            <view class="bottom-dialog-body "  wx:if="{{type==1}}" style="overflow: auto">
+            <view class="bottom-dialog-body "  wx:if="{{type == 1}}" style="overflow: auto">
                <view class="ui-titleBox">
                    <text class="ui-titleItem_icon">//</text>
                    <text class="ui-titleItem_text">活动规则</text>

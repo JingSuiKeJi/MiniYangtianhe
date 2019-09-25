@@ -130,6 +130,9 @@
     white-space: nowrap;
     border-bottom: 1rpx solid #F1F1F1;
 }
+.ui-bottom_item:first-child {
+    border-top: 1rpx solid #F1F1F1;
+}
 .ui-bottomItem_left {
     display: inline-block;
     position: relative;
@@ -200,7 +203,7 @@
     display: inline-block;
 }
 .ui-lineBox .ui-greenLine {
-    width: 140rpx;
+    /* width: 140rpx; */
     height: 8rpx;
     background-color: #1DC4BC;
     border-radius:4rpx;

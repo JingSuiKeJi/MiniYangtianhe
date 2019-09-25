@@ -27,7 +27,7 @@ config.prototype = {
      * 服务器地址
      */
     host: {
-        // test: '192.168.199.108:9537',
+        // test: 'http://192.168.199.108:9537',
         // test: 'http://123.207.33.101:10008', // 测试
         test: 'http://120.79.36.152:10008', // 测试
         pro: '', // 生产
@@ -146,6 +146,7 @@ config.prototype = {
             getCommentList: '/app/goods/getCommentList.do',
             getBrandDetail:'/app/brand/getBrandDetail.do',
             getHotSearchList: '/app/home/getHotSearchList.do',
+            listCut: '/app/cut/listCut.do'
         },
         store: {
             storeList: '/app/home/getStoreList.do',

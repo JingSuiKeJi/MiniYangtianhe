@@ -26,13 +26,14 @@ const onLoad = function(self) {
     	});
         self.getMyInfo();
     }
-
+    
     event.on('login-suc', self, (data) => {
         let userInfo = data.userInfo;
         self.setData({
             userInfo: userInfo, //用户信息
-        })
+        });
     });
+    
 };
 
 const onShow = function(self) {
@@ -106,6 +107,7 @@ const methods = {
     //显示隐藏邀请人信息
     onDevelopInviterInfo: function() {
         const self = this;
+        if (!_g.checkLogin({type: 2})) return;
         self.setData({
             showInvite: !self.data.showInvite
         });
@@ -237,6 +239,9 @@ const methods = {
         if (!_g.checkLogin({type: 2})) return;
         _g.navigateTo({
             url: 'pages/shop/store',
+            param: {
+                level: self.data.userInfo.verifier.level
+            }
         }, self);
     },
     //跳转到我的评论

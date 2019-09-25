@@ -92,6 +92,13 @@ class Goods {
             data: reqData
         }, page);
     }
+    listCut(page, reqData) {
+        _g.dm.canLoadMore = 1;
+        return _g.ajax({
+            url: mini.goods.listCut,
+            data: reqData
+        }, page);
+    }
     
 }
 
