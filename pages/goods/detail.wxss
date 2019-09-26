@@ -225,11 +225,15 @@ page {
 .ui-sendItem_transform>text:nth-child(2) {
     margin-left: 20rpx;
 }
-
-.ui-plusImgBox .ui-plusIcon {
+.ui-plusImgBox {
     width: 710rpx;
     height: 114rpx;
     margin-left: -20rpx;
+}
+.ui-plusImgBox .ui-plusIcon {
+    width: 710rpx;
+    height: 114rpx;
+    flex-direction: column
 }
 
 .ui-choseBox {

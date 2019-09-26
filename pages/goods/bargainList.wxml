@@ -16,34 +16,34 @@
            </view>
         </view>
         <view class="ui-contentBox">
-            <view class="ui-content_top">
+            <!-- <view class="ui-content_top">
                 <scroll-view scroll-x="{{true}}" class="ui-scrollView">
                     <view wx:for="{{classfity}}" class="ui-scrollView_item" bindtap="onSelectTap" data-type="{{index}}">
                         <view class="ui-scroll_text" style="color: {{isSelect == index ? '#20CAB4' : ''}}"  bindtap="onSelectTap" data-type="{{index}}">{{item}}</view>
                         <view class="ui-scroll_icon" style="background: {{isSelect == index ? '#20CAB4' : ''}};margin-left: {{index == 0 ? '0' : ''}}"></view>
                     </view>
                 </scroll-view>
-            </view>
+            </view> -->
             <view class="ui-content_botttom">
-                <view class="ui-bottom_item" wx:for="{{allList}}">
+                <view class="ui-bottom_item" wx:for="{{list}}" wx:key="{{index}}" data-id="{{item.goodsId}}" data-thirdid ="{{item.activityId}}">
                      <view class="ui-bottomItem_left">
-                       <image src="{{filter.getLocalPhoto(item.url)}}" bindtap="onSkipTap"/>
-                       <view class="ui-timeBox">距离下架 09:11:13</view>
+                       <image src="{{filter.getPhoto(host,item.imgUrl)}}" bindtap="onSkipTap"/>
+                       <view class="ui-timeBox">距离下架 {{filter.countDown(item.endTime,curTime)}}</view>
                     </view>
                     <view class="ui-bottomItem_right">
                       <view class="ui-rightItem_title">{{item.title}}</view>
-                      <view class="ui-rightItem_useful">{{item.useful}}</view>
-                      <view class="ui-rightItem_info">仅剩{{item.scale}}件</view>
+                      <view class="ui-rightItem_useful">{{item.subTitle}}</view>
+                      <view class="ui-rightItem_info">仅剩{{item.remainStock}}件</view>
                       <view class="ui-lineBox">
                           <text class="ui-grayLine"></text>
-                           <text class="ui-greenLine"></text>
+                           <text class="ui-greenLine" style="width: {{width}}"></text>
                       </view>
                       <view class="ui-rightItem_price">
                           <text class="ui-rightItem_priceText">￥{{item.nowPrice}}</text>
-                          <text class="ui-rightItem_preText">￥{{item.prePrice}}</text>
-                          <view class="ui-rightItem_button" >疯狂砍价</view>
+                          <text class="ui-rightItem_preText">￥{{item.originalPrice}}</text>
+                          <view class="ui-rightItem_button"  bindtap="onDetailTap">疯狂砍价</view>
                       </view>
-                      <view class="ui-rightItem_num">{{item.personNum}}人已经砍价低价</view>
+                      <view class="ui-rightItem_num">{{item.successNumber}}人已经砍价低价</view>
                     </view>
                 </view>
                

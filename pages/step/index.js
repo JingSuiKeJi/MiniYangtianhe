@@ -9,12 +9,7 @@ const User = require('../../service/User');
 // 初始化数据
 const data = {
     step: '上传步数',
-    list: [{
-        time: '2019.07.01',
-        step: '1234步',
-        status: 2, //0 进行中， 1 未达成 ， 2 完成
-        text: '进行中'
-    }, ],
+    list: [],
     BMIIndex: 0,
     test: 1
 };
@@ -174,14 +169,17 @@ const methods = {
     getPageData: function() {
         let self = this;
         User.getRecordList(self, {
-            page: 1,
+            page: self.data.page,
             pageSize: 10
         }).then((ret) => {
             let data = ret.data;
-            self.setData({
-                list: data.list,
-                hasNextPage: data.hasNextPage
-            });
+            if (data.list && data.list.length) {
+                self.setData({
+                    list: data.list,
+                    hasNextPage: data.hasNextPage
+                });
+            }
+           
 
         }, (err) => {});
     },

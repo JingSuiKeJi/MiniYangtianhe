@@ -193,8 +193,23 @@ page{
 	border-bottom:2rpx solid rgba(0,0,0,0.1);
 }
 .ui-pickerBox {
-	width: 100%;
-	height: 100%;
+	display: flex;
+	align-items: center;
+	width:686rpx;
+	height:112rpx;
+	position: relative;
+}
+.ui-emptyBox {
+	padding-top: 25rpx; 
+	font-size:30rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(102,102,102,1);
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
 }
 .ui-inputCompany{
 	width: 646rpx;
@@ -207,13 +222,17 @@ page{
 }
 
 .ui-pullDownIcon{
-	margin-right: 20rpx;
+	/* margin-right: 20rpx; */
 	width: 32rpx;
 	height: 32rpx;
 	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_iconDown.png');
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: contain;
+	position: absolute;
+	top: 33rpx;
+	right: 20rpx;
+
 }
 
 .btn-submit{

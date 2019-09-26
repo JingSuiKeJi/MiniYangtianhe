@@ -28,6 +28,7 @@ let data = {
     address: '', //choose Location 返回的详细地址
     showAddress: '',//choose Location 返回的name
     houseNumber: '', //详细地址
+    company: '所属分公司'
 };
 const onLoad = function(self) {
     self.getData();
@@ -281,15 +282,24 @@ const methods = {
                 
             },
             fail(err) {
-                self.setData({
-                    authorizeHidden: false
-                });
+                // self.setData({
+                //     authorizeHidden: false
+                // });
             }
         })
     },
     rejectAuthLocation() {
         _g.showModal({
             content: '请开启定位用于选择配送地址'
+        });
+    },
+    onPickerChange: function (e) {
+        let self = this;
+        let index = e.detail.value
+        this.setData({
+            company: self.data.list[index].companyName,
+            companyId: self.data.list[index].id
+
         });
     }
 }

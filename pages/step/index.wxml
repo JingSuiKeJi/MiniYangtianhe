@@ -49,7 +49,7 @@
             <view class="ui-historyBox">
                 <image src="{{filter.getLocalPhoto('step_historyIcon.png')}}" class="ui-historyItem__icon" />
                 <view class="ui-historyItem__text">— 历史记录 —</view>
-                <view class="ui-hirtoryItem__list" wx:for="{{list}}" wx:key="{{index}}">
+                <view class="ui-hirtoryItem__list" wx:for="{{list}}" wx:key="{{index}}" wx:if="{{list.length}}">
                     <text class="ui-listItem__time">{{filter.getDay(item.createTime)}}</text>
                     <text class="ui-listItem__step">{{item.step}}</text>
                     <text class="ui-listItem__status" style="color: {{ (item.status== 1 ? '#20CAB4' : '' ) || (item.status== 3 ? '#999999' : '' )}}">{{filter.getStatus(item.status)}}</text>

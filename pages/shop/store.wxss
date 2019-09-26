@@ -94,6 +94,9 @@
 	height:56rpx;
 	background:linear-gradient(82deg,rgba(255,221,129,1) 0%,rgba(255,199,129,1) 100%);
 	border-radius:150rpx 0rpx 0rpx 150rpx;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .ui-personBox text{
@@ -103,8 +106,6 @@
 	font-family:PingFangSC-Medium;
 	font-weight:500;
 	color:rgba(61,61,61,1);
-	line-height:40rpx;
-	margin: 8rpx 0 0 20rpx;
 }
 
 .ui-commissionBox{

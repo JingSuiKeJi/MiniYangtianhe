@@ -14,7 +14,7 @@
 				<text>所属门店：{{userInfo.store.title}}</text>
 			</view>
 			<view class="ui-personBox">
-				<text>店长/店员</text>
+				<text>{{level == 1 ? '店长' : '店员'}}</text>
 			</view>
 		</view>
 	

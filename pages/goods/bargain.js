@@ -33,7 +33,7 @@ const methods = {
       showModal: function (e) {
         let self = this;
         self.setData({
-          type: e.target.dataset.type,
+          type: Number(e.target.dataset.type),
           hideModal:false
         })
       },
