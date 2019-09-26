@@ -63,7 +63,7 @@ const onShow = function (self) {
         preGodosReqs: self.data.preGodosReqs,
         platformFlag: self.data.platformFlag,
     });
-     self.preferentialPolicies();
+    // self.preferentialPolicies();
 };
 const onUnload = function (self) {
 
@@ -85,7 +85,7 @@ const methods = {
     },
     preOrder() {
         const self = this;
-        if (self.data.from == 'goodsDetail') {
+        if (self.data.from == 'goodsDetail' || self.data.from == 'myBargain' || self.data.from == 'bargain') {
             let postData = self.data.postData;
             let data = {
                 preGoods: {
@@ -111,6 +111,7 @@ const methods = {
             self.selectCoupon();
         }
     },
+    
     preferentialPolicies: function () {
         let self = this;
         let param = {
@@ -158,7 +159,7 @@ const methods = {
             payPrice: data.payPrice,
             pointsPrice: data.pointsPrice,
             deductionStatus: data.deductionStatus,
-            couponId : data.couponId,
+            couponId: data.couponId,
             couponPrice: data.couponPrice
         }
         self.setData(option);
@@ -233,7 +234,7 @@ const methods = {
         const self = this;
         let data = {
             num: self.data.num,
-            skuId: '',
+            skuId: 0,
             addressId: self.data.orderAddressVo.id,
             integralStatus: 2,
             dispatchingType: 1,
@@ -246,13 +247,16 @@ const methods = {
             data.dispatchingTime = self.data.dispatchingTime;
         }
 
-        if (self.data.from == 'goodsDetail') {
+        if (self.data.from == 'goodsDetail' || self.data.from == 'bargain' || self.data.from == 'myBargain') {
             data.id = self.data.postData.id;
             data.buyType = 1;
         }
         if (self.data.from == 'cart') {
             data.cartIds = self.data.postData.cartIds;
             data.buyType = 2;
+        }
+        if (self.data.thirdId) {
+            data.thirdId = self.data.thirdId;
         }
         Order.placeOrder(self, data).then((ret) => {
             self.prePay(ret.data);

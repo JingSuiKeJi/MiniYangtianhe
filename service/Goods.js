@@ -99,6 +99,34 @@ class Goods {
             data: reqData
         }, page);
     }
+    cutDetail(page, reqData) {
+        _g.dm.canLoadMore = 1;
+        return _g.ajax({
+            url: mini.goods.cutDetail,
+            data: reqData
+        }, page);
+    }
+    createCut(page, reqData) {
+        _g.dm.canLoadMore = 1;
+        return _g.ajax({
+            url: mini.goods.createCut,
+            data: reqData
+        }, page);
+    }
+    helpCut(page, reqData) {
+        _g.dm.canLoadMore = 1;
+        return _g.ajax({
+            url: mini.goods.helpCut,
+            data: reqData
+        }, page);
+    }
+    myCut(page, reqData) {
+        _g.dm.canLoadMore = 1;
+        return _g.ajax({
+            url: mini.goods.myCut,
+            data: reqData
+        }, page);
+    }
     
 }
 

@@ -1539,7 +1539,10 @@ base.prototype = {
                 });
             } else {
 				opts.suc && opts.suc();
-			}
+            }
+            if (self.onOperation) {
+                self.onOperation();
+            }
         },(err)=>{
             //TODO login fail
 			opts.fail && opts.fail();

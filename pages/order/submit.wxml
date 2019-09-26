@@ -92,11 +92,11 @@
             <image src="{{pointsFlag ? filter.getLocalPhoto('cart_selestIcon.png'): filter.getLocalPhoto('cart_selestEmptyIcon.png')}}" mode="aspectFill" class="ui-pointesItem__selestIcon" bindtap="onSelectTap" wx:if="{{points}}"></image>
         </view>
     </view>
-    <view class="ui-pointsBox ui-ticketBox" bindtap="onChoseCoupon">
-        <view class="ui-pointesItem">
+    <view class="ui-pointsBox ui-ticketBox" bindtap="onChoseCoupon" hidden="{{from == myBargain}}">
+        <view class="ui-pointesItem" >
             <image src="{{filter.getLocalPhoto('order_money.png')}}" class="ui-pointesItem__moneyIcon" mode="aspectFill"/>
             <text class="ui-pointesItem__text">优惠劵</text>
-            <view class="ui-pointesItem__moreBox">
+            <view class="ui-pointesItem__moreBox" >
                 <text class="ui-pointesItem__pageNum" wx:if="{{!couponNum }}">无优惠卷</text>
                 <text class="ui-pointesItem__pageNum" wx:if="{{couponNum}}">- ￥ {{couponPrice}}</text>
                 <image src="{{filter.getLocalPhoto('my_icMore.png')}}" class="ui-pointesItem__MoreIcon" wx:if="{{couponNum}}" mode="aspectFill"/>

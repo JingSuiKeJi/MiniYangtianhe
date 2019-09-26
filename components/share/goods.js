@@ -100,6 +100,16 @@ Component({
                     thirdId: newVal
                 });
             }
+        },
+        userCutId: {
+            type: Number,
+            value: 0,
+            observer(newVal, oldVal, changedPath) {
+                const self = this;
+                self.setData({
+                    userCutId: newVal
+                });
+            }
         }
     },
     ready() {
@@ -125,6 +135,7 @@ Component({
         canvasUrl: '',
         shareEvent: '',
         thirdId: '',
+        userCutId: 0,
         hideShareDialog: true
     },
     methods: {
