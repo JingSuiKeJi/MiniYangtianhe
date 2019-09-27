@@ -147,11 +147,11 @@ const methods = {
             let stepInfo = data.stepInfo;
             let percent = stepInfo.todayStep / stepInfo.targetStep;
             let BMIIndex = Math.ceil(31 * percent);
-            if (self.data.nowStep == stepInfo.todayStep) {
-                _g.toast({
-                    title: '暂时没有获取到最新的微信运动数据, 请稍后再试'
-                });
-            }
+            // if (self.data.nowStep == stepInfo.todayStep) {
+            //     _g.toast({
+            //         title: '暂时没有获取到最新的微信运动数据, 请稍后再试'
+            //     });
+            // }
             self.setData({
                 hotSearch: data.hotSearch,
                 banner: data.banner,
@@ -358,6 +358,9 @@ const methods = {
             if (id == element.id) {
                 _g.navigateTo({
                     url: 'pages' + element.pageUrl,
+                    param: {
+                        platformFlag: 2
+                    }
                 }, self);
             }
         });

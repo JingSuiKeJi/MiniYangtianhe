@@ -182,6 +182,9 @@ const methods = {
             if (id == element.id) {
                 _g.navigateTo({
                     url: 'pages' + element.pageUrl,
+                    param: {
+                        platformFlag: 1
+                    }
                 }, self);
             }
         });

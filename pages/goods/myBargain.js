@@ -109,8 +109,8 @@ const methods = {
                     platformFlag: self.data.platformFlag
                 },
                 platformFlag: self.data.platformFlag,
-                from: 'myBargain',
-                thirdId: list[index].activityId,
+                from: 'bargain',
+                thirdId: list[index].userCutId,
             }
         }, self)
     },

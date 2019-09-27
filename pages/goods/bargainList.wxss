@@ -54,7 +54,7 @@
     height: 200rpx;
     /* border: 1rpx solid red; */
     position: absolute;
-    top: 100rpx;
+    top: 250rpx;
     left: 25rpx; 
     overflow: hidden;
 }

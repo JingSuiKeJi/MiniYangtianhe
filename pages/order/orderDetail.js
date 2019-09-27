@@ -64,7 +64,7 @@ const methods = {
 				payment: data.payment,
 				orderNo: data.orderNo,
 				creatrTime: data.creatrTime,
-				payTime: data.payTime,
+				payRestTime: data.payRestTime,
 				orderDelivery: data.orderDelivery,
 				deliveryType: data.deliveryType,//配送方式：1.快递 2.门店自提 3.立即配送 4.预约配送
 				verificationCodeUrl: data.verificationCodeUrl,

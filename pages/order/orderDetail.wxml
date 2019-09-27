@@ -119,7 +119,7 @@
 			<text>订单信息</text>
 			<text>订单编号：{{orderNo}}</text>
 			<text>创建时间：{{filter.getDate(creatrTime)}}</text>
-			<text wx:if="{{payTime}}">付款时间：{{filter.getDate(payTime)}}</text>
+			<text wx:if="{{payRestTime}}">付款时间：{{filter.getDate(payRestTime)}}</text>
 		</view>
 		
 		<view wx:if="{{from !='postComment'}}" class="ui-verificationFooter">

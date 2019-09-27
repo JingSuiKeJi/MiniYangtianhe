@@ -9,12 +9,12 @@
             <image src="{{filter.getLocalPhoto('bargain_left_icon.png')}}" class="ui-bargain_leftIcon" bindtap="onBargainTap"/>
             <text class="ui-myBargain_text" bindtap="onBargainTap">我的砍价</text>  
         </view>
-        <!-- <view class="ui-showBox" >
+        <view class="ui-showBox" >
            <view class="ui-showBox_btn" wx:for="{{personList}}"  style="top: {{top + 'rpx'}};transition: all {{second}}s linear 0s;"> 
-              <image src="../../images/{{item.url}}" class="ui-btnItem_icon"/>
+              <image src="{{filter.getLocalPhoto(item.url)}}" class="ui-btnItem_icon"/>
               <view class="ui-btnItem_text"> {{item.name}} 正在发起砍价挑战</view>
            </view>
-        </view> -->
+        </view>
         <view class="ui-contentBox">
             <!-- <view class="ui-content_top">
                 <scroll-view scroll-x="{{true}}" class="ui-scrollView">

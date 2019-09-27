@@ -239,9 +239,9 @@ const methods = {
         if (!_g.checkLogin({type: 2})) return;
         _g.navigateTo({
             url: 'pages/shop/store',
-            param: {
-                level: self.data.userInfo.verifier.level
-            }
+            // param: {
+            //     level: self.data.userInfo.verifier.level
+            // }
         }, self);
     },
     //跳转到我的评论
