@@ -21,7 +21,7 @@ const data = {
 // 页面onLoad方法
 const onLoad = function (self) {
     let data = {
-        flag: self.data.flag,
+        type: self.data.type,
         goodsId: self.data.goodsId,
         platformFlag: self.data.platformFlag,
     }
@@ -119,9 +119,22 @@ const methods = {
     }, 
     onBuyTap: function (e) {
         let self = this;
+        let data = {
+            platformFlag: self.data.platformFlag,
+            id: self.data.goodsId,
+            num: self.data.num,
+            skuId: 0
+        };
+        if (!_g.checkLogin({ type: 2 })) return;
+        if (self.data.thirdId) data.thirdId = self.data.thirdId;
         _g.navigateTo({
-            url: 'pages/pay/order'
-        },self);
+            url: 'pages/order/submit',
+            param: {
+                postData: data,
+                platformFlag: self.data.platformFlag,
+                from: 'goodsDetail'
+            },
+        }, self);
         
     },
     onChangeCount: function (e) {
@@ -157,6 +170,7 @@ const methods = {
             goodsId: 2,
             cartNum: self.data.cartNum
         }
+        if (!_g.checkLogin({ type: 2 })) return;
         if (self.data.platformFlag == 2) data.storeId = self.data.storeId;
         Goods.addCart(self, data
         ).then((ret)=>{

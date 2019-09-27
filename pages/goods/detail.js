@@ -120,6 +120,14 @@ const methods = {
                 goodsDetail: ret.data,
                 type: ret.data.type
             });
+            self.getCurrentTime();
+            clearInterval(self.data.timer);
+            let timer = setInterval(() => {
+                self.getCurrentTime()
+            }, 1000);
+            self.setData({
+                timer: timer
+            })
             // "goodsDetail.type": 1,   //1.普通 2.秒杀 3.权益卡附属 4.权益 5.拼团 6.砍价 7.推荐
             self.splitString(ret.data.goodImgs, 'bannerImgs');
             self.splitString(ret.data.description, 'goodsImgs');
@@ -129,6 +137,13 @@ const methods = {
                 self.getAssembleList();
             }
         }, (err) => { });
+    },
+    getCurrentTime: function () {
+        let self = this;
+        let curTime = new Date().getTime() / 1000;
+        self.setData({
+            curTime: curTime
+        })
     },
     getCommentList() {
         const self = this;
@@ -326,6 +341,8 @@ const methods = {
             url: 'pages/goods/comments',
             param: {
                 goodsId: self.data.id,
+                type: self.data.type, 
+                platformFlag: self.data.goodsDetail.platformFlag, 
             }
         }, self)
     },

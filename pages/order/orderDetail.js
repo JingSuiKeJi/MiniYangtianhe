@@ -78,11 +78,16 @@ const methods = {
 	//订单支付倒计时
 	downStartTime:function (startTime) {
 		let self = this;
+        if (startTime == 0) {
+			clearTimeout(timer);
+			// wx.navigateBack()
+			return
+		}
 		const timer = setInterval(function(){
 			self.setData({
 				startTime: startTime-1
 			});
-			self.downStartTime();
+			self.downStartTime(self.data.startTime);
 			clearTimeout(timer);
 		},1000)
 		const minutes = parseInt(startTime%3600/60);//剩余分钟数
@@ -93,11 +98,7 @@ const methods = {
 		self.setData({
 			seconds:seconds
 		})
-		if (startTime == 0) {
-			clearTimeout(timer);
-			// wx.navigateBack()
-			return
-		}
+		
 	},
 	//支付
 	onPayMoneyTap:function(){

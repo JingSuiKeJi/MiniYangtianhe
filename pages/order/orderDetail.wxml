@@ -19,8 +19,9 @@
 			</view>
 			<view class="ui-orderStatus" wx:if="{{status=='WAIT_CHECK'}}">
 				<!-- <view class="ui-verificCodeIcon"></view> -->
-				<image src="{{filter.getPhoto(host,verificationCodeUrl)}}" mode="aspectFill" class="ui-verificCodeIcon"/>
-				<view class="btn-waitVerific"><text>核销码：{{verificationCode}}</text></view>
+				<image src="{{filter.getPhoto(host,verificationCodeUrl)}}" mode="aspectFit" class="ui-verificCodeIcon"/>
+				<view class="btn-waitVerific">核销码</view>
+				<view class="btn-waitVerific">{{verificationCode}}</view>
 			</view>
 			<view class="ui-orderStatus" wx:if="{{status=='CHECKED'}}">
 				<view class="ui-verificCodeIcon"></view>

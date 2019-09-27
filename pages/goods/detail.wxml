@@ -32,7 +32,7 @@
                 </view>
                 <view class="ui-infoItem_right" wx:if="{{type == 2 || type == 5}}">
                     <view class="ui-rightItem_text">距活动结束：</view>
-                    <view class="ui-rightItem_title">13:54:18</view>
+                    <view class="ui-rightItem_title">{{filter.countDown(goodsDetail.endTime,curTime)}}</view>
                 </view>
             </view>
             <view class="ui-marketBox">

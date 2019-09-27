@@ -62,7 +62,7 @@ const methods = {
         if (opts.type == '1') {
             param.value = opts.title;
         } else {
-            if (!self.data.value) return;
+            // if (!self.data.value) return;
             param.value = self.data.value;
             self.setHisttory(self.data.value);
         }

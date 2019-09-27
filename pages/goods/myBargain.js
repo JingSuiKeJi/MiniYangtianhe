@@ -49,7 +49,7 @@ const methods = {
         Goods.myCut(self, {
             status: self.data.status,
             page: self.data.page,
-            pageSize: 10
+            pageSize: 15
         }).then((ret) => {
             let data = ret.data;
             self.setData({

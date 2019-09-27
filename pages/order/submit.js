@@ -63,7 +63,7 @@ const onShow = function (self) {
         preGodosReqs: self.data.preGodosReqs,
         platformFlag: self.data.platformFlag,
     });
-    // self.preferentialPolicies();
+    self.preferentialPolicies();
 };
 const onUnload = function (self) {
 

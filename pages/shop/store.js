@@ -88,28 +88,38 @@ const methods = {
 		// 允许从相机和相册扫码
 		wx.scanCode({
 			// onlyFromCamera:false,
-			scanType:['qrCode','barCode'],
+			scanType:['qrCode'],
 			success: res => {
 				var result = res.result;
-				self.setData({
-					result: result,
-				})
-				_g.navigateTo({
-				    url: 'pages/me/blissVerific',
-				}, self);
+				// self.setData({
+				// 	result: result,
+				// });
+				// console.log(5555,ret);
+				self.verifyOrder(result);
 			},
 			fail: res => {
-				// 接口调用失败
-				// wx.showToast({
-				// 	icon: 'none',
-				// 	title: '接口调用失败！'
-				// })
+				_g.toast({
+					title: '扫码失败'
+				})
 			},
 			complete: res => {
-				// 接口调用结束
-				
 			}
 		})
+	},
+	verifyOrder: function(result) {
+		let self = this;
+		User.verifyOrder(self, {
+			virifyCode: result
+		}).then((ret) => {
+			_g.navigateTo({
+				url: 'pages/order/orderVerifyDetail',
+				param: {
+					orderId: ret.data
+				}
+			},self);
+		}, (err) => {
+			console.log(666);
+		});
 	},
 	//跳转到门店二维码
 	onStoreQRCodeTap:function(){

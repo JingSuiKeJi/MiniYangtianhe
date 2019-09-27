@@ -12,7 +12,7 @@ const data = {
      tapList: ['默认','价格','销量'],
      page: 1,
      priceSort: 1,// 价格排序 1 是升序，2是降序
-     value: '你好'
+     value: ''
 };
 
 // 页面onLoad方法
@@ -101,7 +101,7 @@ const methods = {
         let data = {
             platformFlag: self.data.platformFlag,
             page: self.data.page,
-            pageSize: 10,
+            pageSize: 15,
             keyword: self.data.value,
         }
         if (self.data.classifyId) {
