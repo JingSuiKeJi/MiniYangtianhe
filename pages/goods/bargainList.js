@@ -9,18 +9,6 @@ const Goods = require('../../service/Goods')
 const data = {
     classfity: ['全部', '中西药品', '营养保健', '养生花茶', '情趣计生',],
     isSelect: 0,
-    allList: [
-        {
-            url: 'renshen.png',
-            title: '中药人参红枣',
-            useful: '补血活血，调经止痛，润肠通便。用于血虚萎黄，眩晕心悸，月经不调，经闭痛…月经不调',
-            prePrice: '19.00',
-            scale: '3124',
-            nowPrice: '9.99',
-            personNum: '245'
-
-        }
-    ],
     personList: [
         {
             url: 'people.png',
@@ -34,6 +22,7 @@ const data = {
     top: 200,
     hideModal: true, //模态框的状态  true-隐藏  false-显示
     animationData: {},//
+    platformFlag: 1
 };
 
 // 页面onLoad方法
@@ -57,7 +46,7 @@ const methods = {
     getArticle: function () {
         let self = this;
         Platfrom.getArticle(self, {
-            type: 'pointsRule'
+            type: 'assembleRule'
         }).then((ret) => {
             let data = ret.data;
             self.setData({
@@ -70,7 +59,7 @@ const methods = {
     getPageData: function (e) {
         let self = this;
         Goods.listCut(self, {
-            platformFlag: 1,
+            platformFlag: self.data.platformFlag,
             page: self.data.page,
             pageSize: 10
         }).then((ret) => {
@@ -97,6 +86,30 @@ const methods = {
         }, (err) => {
         });
     },
+    createCut: function (thirdId,goodsId) {
+        let self = this;
+        Goods.createCut(self, {
+            cutId: thirdId,
+            goodsId: goodsId
+        }).then((ret) => {
+            _g.navigateTo({
+                url: 'pages/goods/bargain',
+                param: {
+                    goodsId: goodsId,
+                    userCutId: ret.data,
+                    platformFlag: self.data.platformFlag,
+                }
+            }, self)
+
+        }, (err) => {
+        });
+    },
+    onDetailTap: function (e) {
+        let self = this;
+        let opt = e.currentTarget.dataset;
+        if (!_g.checkLogin({ type: 2 })) return;
+        self.createCut(opt.cutid,opt.goodsid);
+    },
     getCurrentTime: function () {
         let self = this;
         let curTime = new Date().getTime() / 1000;
@@ -113,13 +126,19 @@ const methods = {
     },
     onSkipTap: function (e) {
         let self = this;
+        let opt = e.currentTarget.dataset
         _g.navigateTo({
-            url: 'pages/goods/bargain',
+            url: 'pages/goods/detail',
+            param: {
+                id: opt.id,
+                thirdId : opt.thirdid
+            }
         }, self)
     },
 
     onBargainTap: function (e) {
         let self = this;
+        if (!_g.checkLogin({ type: 2 })) return;
         _g.navigateTo({
             url: 'pages/goods/myBargain',
         }, self)
@@ -148,13 +167,6 @@ const methods = {
         that.setData({
             hideModal: true
         })
-    },
-    onDetailTap: function () {
-        let self = this;
-        _g.navigateTo({
-            url: 'pages/goods/bargain'
-        }, self)
-
     },
 };
 

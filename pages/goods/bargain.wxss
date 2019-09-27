@@ -12,7 +12,8 @@ page{
     width: 100%;
     height: 100%;
     background-image: url(http://www.gzlingren.com:8098/yangtianhe/myBargain_bgIcon.png);
-    background-size: cover;
+    background-size: 100% 2096rpx;
+    background-attachment: scroll;    
     position: relative;
     flex-direction: column;
     align-items: center;
@@ -43,9 +44,12 @@ page{
     left: -20rpx;
 }
 .ui-infoBox .ui-infoItem_iconBox {
-    position: relative; 
-    top: -66rpx;
-    left: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: -30rpx;
+
 }
 .ui-infoItem_iconBox .ui-infoItem_perIcon {
     width: 132rpx;
@@ -102,6 +106,7 @@ page{
     font-family:PingFangSC-Regular;
     font-weight:400;
     color:#999999;
+    margin-left: 10rpx;
 }
 .ui-goodsItem_right .ui-rightItem_text {
     font-size:22rpx;
@@ -146,10 +151,13 @@ page{
     margin-left: 10rpx;
     margin-right: 10rpx;
 }
-.ui-bargainBox .ui-bargainItem_middle {
+ .ui-bargainItem_middle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
 }
-.ui-bargainItem_middle .ui-middleItem_text {
+ .ui-middleItem_text {
     display: inline-block;
     font-size:28rpx;
     font-family:PingFangSC-Medium;
@@ -159,32 +167,52 @@ page{
     vertical-align: top;
     margin: 5rpx 20rpx auto 20rpx;
 }
-.ui-bargainItem_middle .ui-middleItem_origeIcon {
+
+ .ui-slideBox {
     width: 426rpx;
     height: 32rpx;
+    background-color: #FFEFC6;
+    border-radius: 20rpx;
+    position: relative;
 }
-.ui-bargainItem_middle .ui-middleItem_deepIcon {
-    width: 274rpx;
-    height: 50rpx;
+ .ui-middleItem_deepIcon {
+    /* width: 274rpx; */
+    height: 32rpx;
+    background-color: #FFAB36;
+    border-radius: 20rpx 0 0 20rpx;
     position: absolute;
-    top: 2rpx;
-    left: 135rpx;
+    top: 0;
+    left: 0;
 }
-.ui-bargainItem_middle .ui-middleItem_knifeIcon {
+ .ui-knifeBox {
+    display: flex;
+    width: 35rpx;
+    height: 35rpx;
+    position: absolute;
+    top: -10rpx;
+    /* left: 272rpx; */
+    border: 9rpx solid #FFAB36;
+    border-radius: 50%; 
+    box-sizing: content-box;
+    align-items: center;
+    justify-content: center;
+}
+.ui-middleItem_knifeIcon {
     width: 46rpx;
     height: 30rpx;
-    position: absolute;
-    top: 10rpx;
-    left: 366rpx;
 }
-.ui-bargainBox .ui-bargainItem {
-    text-align: center;
+ .ui-bargainItem {
+    display: flex;
+    align-items: center;
+    /* text-align: center; */
     white-space: nowrap;
     margin-top: 40rpx;
 }
-.ui-bargainItem .ui-leftBtn {
+ .ui-leftBtn {
      width: 300rpx;
      height: 100rpx;
+     margin-left: 15px;
+     margin-right: 15rpx;
      background-image: url(http://www.gzlingren.com:8098/yangtianhe/myBargain_oringeBtn.png);
      background-size: 300rpx 100rpx;
      text-align: center;
@@ -195,7 +223,7 @@ page{
      font-weight:400;
      color:#ffffff;
 }
-.ui-bargainItem .ui-rightBtn {
+ .ui-rightBtn {
     width: 300rpx;
     height: 100rpx;
     background-image: url(http://www.gzlingren.com:8098/yangtianhe/myBargain_deepOriBtn.png);
@@ -208,7 +236,7 @@ page{
     font-weight:400;
     color:#ffffff;
 }
-.ui-infoBox .ui-bargain_text {
+ .ui-bargain_text {
     width: 100%;
     height: 108rpx;
     font-size:24rpx;
@@ -260,6 +288,17 @@ page{
     margin: 0 auto;
     padding-bottom: 30rpx;
 }
+.ui-noDataBox {
+    width: 90%;
+    margin: 0 auto;
+    font-size: 32rpx;
+    font-family: PingFangSC-Medium;
+    font-weight: 500;
+    color: #cccccc;
+    text-align: center;
+
+    padding-bottom: 30rpx;
+}
 .ui-contentItem_child {
      width: 100%;
      border-bottom: 1rpx solid #F5F5F5;
@@ -285,7 +324,7 @@ page{
     height: 64rpx;
     margin: auto 20rpx;
     vertical-align: middle;
-    margin-top: 30rpx;
+    margin-top: 20rpx;
 }
 .ui-childItem .ui-centerItem_text {
     font-size:26rpx;

@@ -16,7 +16,7 @@ const data = {
         time: '00:46:56',
         num: 1,
     }],
-    type: 1,
+    type: 6,
     personList: [{
         url: 'people.png',
         name: 'Amy',
@@ -46,7 +46,7 @@ const data = {
     num: 1,
     canvasUrl: '',
     authorizeHidden: true,
-    hideShareDialog: true
+    hideShareDialog: true,
 };
 
 // 页面onLoad方法

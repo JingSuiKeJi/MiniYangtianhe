@@ -96,6 +96,7 @@
     top: 100rpx;
 }
 .ui-lineBox {
+    position: relative;
     margin-top: -7rpx;
 }
 .ui-lineBox .ui-grayLine {
@@ -104,14 +105,19 @@
     background-color: #EAEAEA;
     border-radius:4rpx;
     display: inline-block;
+    position: absolute;
+    left: 0;
+    top: 30rpx;
 }
 .ui-lineBox .ui-greenLine {
-    width: 140rpx;
+    /* width: 140rpx; */
     height: 8rpx;
     background-color: #1DC4BC;
     border-radius:4rpx;
     display: inline-block;
-    margin-left: -200rpx;
+    position: absolute;
+    left: 0;
+    top: 30rpx;
 }
 .ui-rightItem_price {
     position: relative;
@@ -154,5 +160,8 @@
     font-weight:400;
     color:#1DC4BC;
     line-height:22rpx;
-    margin-left: 130rpx;
+    margin-left: 95rpx;
+    position: absolute;
+    right: 25rpx;
+    top: 20rpx;
 }

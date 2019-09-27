@@ -146,7 +146,11 @@ config.prototype = {
             getCommentList: '/app/goods/getCommentList.do',
             getBrandDetail:'/app/brand/getBrandDetail.do',
             getHotSearchList: '/app/home/getHotSearchList.do',
-            listCut: '/app/cut/listCut.do'
+            listCut: '/app/cut/listCut.do',
+            cutDetail: '/app/cut/details.do',
+            createCut: '/app/cut/createCut.do',
+            helpCut: '/app/cut/helpCut.do',
+            myCut: '/app/cut/myCut.do',
         },
         store: {
             storeList: '/app/home/getStoreList.do',
