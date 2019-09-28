@@ -123,7 +123,11 @@ const methods = {
             self.getCurrentTime();
             clearInterval(self.data.timer);
             let timer = setInterval(() => {
-                self.getCurrentTime()
+                if (self.data.goodsDetail.endTime == self.data.curTime) {
+                    clearInterval(self.data.timer); 
+                    return;
+                }
+                self.getCurrentTime();
             }, 1000);
             self.setData({
                 timer: timer
