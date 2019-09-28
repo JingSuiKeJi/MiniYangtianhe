@@ -44,7 +44,7 @@
                 </view>
                 <view class="ui-bargainItem">
                      <!-- <view class="ui-leftBtn" bindtap="onHelpTap" wx:if="{{!list.isOneSelf &&  list.status == 1}}">帮好友砍一刀</view> -->
-                     <button class="ui-leftBtn" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo" >帮好友砍一刀</button>
+                     <button class="ui-leftBtn" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo" wx:if="{{!list.isOneSelf &&  list.status == 1}}">帮好友砍一刀</button>
                     <view class="ui-leftBtn" bindtap="onShareTap" wx:if="{{list.isOneSelf && list.status == 1}}">喊好友砍一刀</view>
                      <view class="ui-leftBtn" bindtap="onSubmitTap" wx:if="{{list.isOneSelf && list.status == 2}}">砍价完成去购买</view>
                      <view class="ui-leftBtn"  wx:if="{{list.status == 4}}">活动结束</view>

@@ -74,6 +74,7 @@ page {
 
 .ui-priceBox {
     position: relative;
+    margin-top: 20rpx;
 }
 
 .ui-priceBox .ui-priceBox_nowPrice {
@@ -90,7 +91,7 @@ page {
     font-weight: 400;
     color: #fff;
     position: relative;
-    top: -3rpx;
+    top: -20rpx;
     margin-left: 20rpx;
     text-decoration: line-through;
 }
@@ -101,23 +102,27 @@ page {
     font-weight: bold;
     color: #fff;
     line-height: 30rpx;
-    margin-left: 20rpx;
+    margin-top: 20rpx;
 }
 
 .ui-infoItem_right {
+    display: flex;
     width: 30%;
     height: 100%;
     background-color: #69DDD9;
-    display: inline-block;
-    text-align: center;
+    /* display: inline-block;
+    text-align: center; */
     font-size: 24rpx;
     font-family: PingFangSC-Regular;
     font-weight: 400;
     color: #fff;
-    vertical-align: top;
+    /* vertical-align: top; */
     position: absolute;
     top: 0;
     right: 0;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .ui-rightItem_text {

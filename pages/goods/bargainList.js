@@ -11,12 +11,12 @@ const data = {
     isSelect: 0,
     personList: [
         {
-            url: 'people.png',
+            url: 'my_ snapshoot.png',
             name: 'Amy',
         },
         {
-            url: 'people.png',
-            name: 'Amy',
+            url: 'my_infoBoxAvatar.png',
+            name: 'Mia'
         }
     ],
     top: 200,
@@ -40,7 +40,7 @@ const onShow = function (self) {
 const methods = {
     getData: function (e) {
         let self = this;
-        // self.getArticle();
+        self.getArticle();
         self.getPageData();
     },
     getArticle: function () {
@@ -141,6 +141,9 @@ const methods = {
         if (!_g.checkLogin({ type: 2 })) return;
         _g.navigateTo({
             url: 'pages/goods/myBargain',
+            param: {
+                platformFlag: self.data.platformFlag, 
+            }
         }, self)
     },
     moveBarrage: function () {

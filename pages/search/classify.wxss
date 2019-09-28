@@ -100,22 +100,28 @@ page{
     padding: 20rpx auto;
 }
 .ui-contentBox {
-     text-align: center;
-     display: inline-block;
-     white-space: normal;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    display: inline-block;
+    white-space: normal;
 }
 .ui-classItem_content {
    width: 550rpx;
-   display: inline-block;
+   display: flex;
    vertical-align: top;
    white-space: normal;
+   /* align-items: center;
+   justify-content: center;
+   flex-direction: column; */
    position: absolute;
    left: 20%;
 }
 .ui-classItem_content .ui-contentItem_img {
     width: 156rpx;
     height: 156rpx;
-    margin: 0rpx 20rpx 0rpx 20rpx;
+    /* margin: 0rpx 20rpx 0rpx 20rpx; */
 }
 .ui-classItem_content .ui-contentItem__text {
     font-size:26rpx;

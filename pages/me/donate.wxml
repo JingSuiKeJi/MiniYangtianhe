@@ -7,7 +7,7 @@
         </view>
         <view class="ui-contentItem">
             <view class="ui-contentItem__title">赠送给</view>
-            <input type="text" value="{{nickName}}" bindinput="onGetInput" placeholder="请输入要赠送的用户ID" class="ui-contentItem__input ui-nameInput" />
+            <input type="text" value="{{memberId}}" bindinput="onGetInput" placeholder="请输入要赠送的用户ID" class="ui-contentItem__input ui-nameInput" />
             <image src="../../images/donate__listIcon.png" class="ui-contentItem__Icon" bindtap="onSkipsTap"/>
         </view>
         <view class="ui-contentItem">

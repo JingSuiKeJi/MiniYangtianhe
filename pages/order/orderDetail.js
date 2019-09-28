@@ -64,7 +64,7 @@ const methods = {
 				payment: data.payment,
 				orderNo: data.orderNo,
 				creatrTime: data.creatrTime,
-				payTime: data.payTime,
+				payRestTime: data.payRestTime,
 				orderDelivery: data.orderDelivery,
 				deliveryType: data.deliveryType,//配送方式：1.快递 2.门店自提 3.立即配送 4.预约配送
 				verificationCodeUrl: data.verificationCodeUrl,
@@ -78,11 +78,16 @@ const methods = {
 	//订单支付倒计时
 	downStartTime:function (startTime) {
 		let self = this;
+        if (startTime == 0) {
+			clearTimeout(timer);
+			// wx.navigateBack()
+			return
+		}
 		const timer = setInterval(function(){
 			self.setData({
 				startTime: startTime-1
 			});
-			self.downStartTime();
+			self.downStartTime(self.data.startTime);
 			clearTimeout(timer);
 		},1000)
 		const minutes = parseInt(startTime%3600/60);//剩余分钟数
@@ -93,11 +98,7 @@ const methods = {
 		self.setData({
 			seconds:seconds
 		})
-		if (startTime == 0) {
-			clearTimeout(timer);
-			// wx.navigateBack()
-			return
-		}
+		
 	},
 	//支付
 	onPayMoneyTap:function(){

@@ -667,6 +667,7 @@ page {
 }
 
 .ui-contentItem_right .ui-content_title {
+    height: 72rpx;
     font-size: 26rpx;
     font-family: PingFangSC-Medium;
     font-weight: 500;
@@ -675,19 +676,23 @@ page {
 }
 
 .ui-contentItem_right .ui-content_scale {
+    height: 64rpx;
     font-size: 22rpx;
     font-family: PingFangSC-Medium;
     font-weight: 500;
     color: #999999;
     line-height: 32rpx;
-    margin-top: 10rpx;
+    margin-top: 14rpx;
     -webkit-line-clamp: 2;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
 }
-
+.ui-content_price {
+    margin-top: 8rpx;
+    margin-bottom: 10rpx;
+}
 .ui-content_price>text:nth-child(1) {
     font-size: 22rpx;
     font-family: PingFangSC-Regular;

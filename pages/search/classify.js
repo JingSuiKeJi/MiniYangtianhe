@@ -75,6 +75,7 @@ const methods = {
         let opts = e.target.dataset;
         let param = {
             platformFlag: self.data.platformFlag,
+            flag: 1
         }
         switch (opts.type) {
             case '1':
@@ -89,7 +90,7 @@ const methods = {
                     param.value = self.data.value;
                     break;
         }
-        if (param.value == undefined) return;
+        // if (param.value == undefined) return;
         _g.navigateTo({
             url: 'pages/search/detailList',
             param: param

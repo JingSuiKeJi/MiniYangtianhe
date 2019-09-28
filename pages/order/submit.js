@@ -63,7 +63,7 @@ const onShow = function (self) {
         preGodosReqs: self.data.preGodosReqs,
         platformFlag: self.data.platformFlag,
     });
-    // self.preferentialPolicies();
+    self.preferentialPolicies();
 };
 const onUnload = function (self) {
 
@@ -85,7 +85,7 @@ const methods = {
     },
     preOrder() {
         const self = this;
-        if (self.data.from == 'goodsDetail' || self.data.from == 'myBargain' || self.data.from == 'bargain') {
+        if (self.data.from == 'goodsDetail' ||  self.data.from == 'bargain') {
             let postData = self.data.postData;
             let data = {
                 preGoods: {
@@ -234,7 +234,7 @@ const methods = {
         const self = this;
         let data = {
             num: self.data.num,
-            skuId: 0,
+            skuId: 0,//暂时传0
             addressId: self.data.orderAddressVo.id,
             integralStatus: 2,
             dispatchingType: 1,
@@ -247,7 +247,7 @@ const methods = {
             data.dispatchingTime = self.data.dispatchingTime;
         }
 
-        if (self.data.from == 'goodsDetail' || self.data.from == 'bargain' || self.data.from == 'myBargain') {
+        if (self.data.from == 'goodsDetail' || self.data.from == 'bargain' ) {
             data.id = self.data.postData.id;
             data.buyType = 1;
         }

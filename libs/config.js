@@ -119,7 +119,7 @@ config.prototype = {
 			addVerifier:'/app/store/addVerifier.do',
 			getOrderList:'/app/store/getOrderList.do',
 			getOrderDetail:'/app/store/getOrderDetail.do',
-			verification:'/app/store/verification.do',
+			verification:'/app/order/verifyOrder.do',
 			myCommentList: '/app/comment/list.do',
             deleteComment: '/app/comment/delete.do',
 			getFinanceInfo:'/app/store/getFinanceInfo.do',
@@ -128,7 +128,7 @@ config.prototype = {
 			getCommissionBaseInfo:'/app/distribution/getBaseInfo.do',
 			getCommissionClientList:'/app/distribution/getClientList.do',
             getCommissionRecordList:'/app/distribution/getRecordList.do',
-
+            verifyOrder: '/app/order/findVerifyOrder.do',
 
             
         },

@@ -85,8 +85,8 @@
             </view>
         </view>
         <!-- 限时抢购和品牌甄选 -->
-        <view class="ui-imgBox" wx:if="{{secSkill.list && secSkill.list.length}}">
-            <image src="{{filter.getPhoto(host,activity[0].imgUrl)}}" mode="aspectFill" bindtap="onCheckActivity"  data-isLink="{{activity.isLink}}" />
+        <view class="ui-imgBox" wx:if="{{activity && activity.length}}">
+            <image src="{{filter.getPhoto(host,activity[0].imgUrl)}}" mode="aspectFill" bindtap="onCheckActivity"  data-isLink="{{activity[0].isLink}}" />
             <view class="ui-buyBox">
                 <view class="ui-buyBox_top">
                     <view>优选限时购</view>

@@ -64,7 +64,7 @@ const methods = {
     },
     onDonateTap: function () {
         let self = this;
-        if (!self.data.nickName){
+        if (!self.data.memberId){
             _g.toast({title: '请选择要赠送的用户'});
             return;
         } 
@@ -72,7 +72,7 @@ const methods = {
             _g.toast({title: '请输入要赠送的福气数量'});
             return;
         }
-        // self.gift();
+        self.gift();
 
     },
     onSkipsTap: function (e) {
@@ -93,12 +93,10 @@ const methods = {
     onGetInput: function (e) {
         let self = this;
         self.setData({
-            nickName: e.detail.value
+            memberId: e.detail.value
         })
     },
-
-
-
+    
 }
 
 // 有引用template时定义

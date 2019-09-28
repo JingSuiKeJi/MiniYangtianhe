@@ -12,13 +12,13 @@
             <image src="{{filter.getLocalPhoto('classfity_rightIcon.png')}}" class="ui-tipItem__icon" data-type="1" />
         </view>
         <view class="ui-classifyBox">
-            <view class="ui-classItem_tips">
-                <view class="ui-tipsItem__List" wx:for="{{classifyList}}" bindtap="onChoseTap" data-id="{{item.id}}" data-title="{{item.title}}" style="background-color: {{ id == item.id ? '#fff' : ''}}">
+            <view class="ui-classItem_tips" wx:if="{{classifyList.length}}">
+                <view class="ui-tipsItem__List" wx:for="{{classifyList}}" wx:key="{{index}}" bindtap="onChoseTap" data-id="{{item.id}}" data-title="{{item.title}}" style="background-color: {{ id == item.id ? '#fff' : ''}}">
                     {{item.title}}
                 </view>
             </view>
-            <view class="ui-classItem_content">
-                <view class="ui-contentBox" wx:for="{{contentList}}">
+            <view class="ui-classItem_content" wx:if="{{contentList.length}}">
+                <view class="ui-contentBox" wx:for="{{contentList}}" wx:key="{{index}}">
                     <image src="{{filter.getPhoto(host,item.imgUrl)}}" data-id="{{item.id}}" data-title="{{item.title}}" data-type="2" bindtap="onSkipTap" class="ui-contentItem_img" />
                     <view class="ui-contentItem__text">{{item.title}}</view>
                 </view>

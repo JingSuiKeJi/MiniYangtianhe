@@ -49,7 +49,7 @@ const methods = {
         Goods.myCut(self, {
             status: self.data.status,
             page: self.data.page,
-            pageSize: 10
+            pageSize: 15
         }).then((ret) => {
             let data = ret.data;
             self.setData({
@@ -109,8 +109,8 @@ const methods = {
                     platformFlag: self.data.platformFlag
                 },
                 platformFlag: self.data.platformFlag,
-                from: 'myBargain',
-                thirdId: list[index].activityId,
+                from: 'bargain',
+                thirdId: list[index].userCutId,
             }
         }, self)
     },

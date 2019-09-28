@@ -129,14 +129,19 @@ const methods = {
     onMoreTap: function (e) {
         const self = this;
         _g.navigateTo({
-            url: 'pages/goods/groupList'
+            url: 'pages/goods/groupList',
+            param: { 
+                platformFlag: 1 
+            }
         }, self)
     },
     onSkipTap: function () {
         const self = this;
         _g.navigateTo({
             url: 'pages/search/search',
-            param: { platformFlag: 1 }
+            param: { 
+                platformFlag: 1 
+            }
         }, self);
     },
     onChangeTap: function (e) {
@@ -176,12 +181,15 @@ const methods = {
     },
     onTabTap: function (e) {
         const self = this;
-        const id = e.target.dataset.id;
-        if (e.target.dataset.isLink == 2) return;
+        const opts = e.currentTarget.dataset;
+        if (opts.isLink == 2) return;
         self.data.tabList.forEach(element => {
-            if (id == element.id) {
+            if (opts.id == element.id) {
                 _g.navigateTo({
-                    url: 'pages' + element.pageUrl,
+                    url: 'pages'+element.pageUrl,
+                    param: {
+                        platformFlag: 1
+                    }
                 }, self);
             }
         });
@@ -236,7 +244,10 @@ const methods = {
     map: function (arr, index) {
         let self = this;
         _g.navigateTo({
-            url: 'pages' + arr[index].pageUrl,
+            url: 'pages' +'/goods/detail',
+            param: {
+                platformFlag: 1
+            }
         }, self);
 
     },
@@ -259,7 +270,7 @@ const methods = {
     },
     onCheckActivity: function (e) {
         const self = this;
-        if (e.target.dataset.isLink == 2) return;
+        if (e.currentTarget.dataset.isLink == 2) return;
         self.map(self.data.activity, 0);
     },
     //限时抢购
