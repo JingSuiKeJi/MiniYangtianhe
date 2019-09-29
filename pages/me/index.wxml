@@ -129,12 +129,12 @@
 						<text class="ui-orderText">已签收</text>
 					</button>
 			    </form>
-				<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onAfterSaleTap" class="ui-feedbackItem">
+				<!-- <form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onAfterSaleTap" class="ui-feedbackItem">
 					<button formType="submit" >
 						<view class="ui-iconFeedback"></view>
 					   <text class="ui-orderText">售后</text>
 					</button>
-			    </form>
+			    </form> -->
 			</view>
 		</view>
 
