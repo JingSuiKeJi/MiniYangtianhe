@@ -39,7 +39,7 @@
 			<view class="modal-title">添加店员</view>
 			<view class="modal-blissNumInputBox">
 				<text>店员ID：</text>
-				<input type="number" value="{{nameId}}" placeholder="请输入店员ID/昵称" placeholder-class="placeType" cursor-spacing="484rpx" bindinput="onSearchVerifierTap"/>
+				<input type="text" value="{{nameId}}" placeholder="请输入店员ID/昵称" placeholder-class="placeType" cursor-spacing="484rpx" bindinput="onSearchVerifierTap"/>
 				<view class="modal-pullDown"></view>
 			</view>
 			<view class="modal-addListBox" wx:if="{{addList.length > 0}}">

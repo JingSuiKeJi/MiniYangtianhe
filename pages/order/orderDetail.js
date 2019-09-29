@@ -40,10 +40,15 @@ const onLoad = function(self) {
 	//接收上一个页面状态
 	self.setData(data);
 	self.getData();
+	event.on('updateOrder', self, ()=>{
+		self.getData();
+	})
 }
 const onShow = function(self) {}
 const onReady = function(self) {}
-const onUnload = function(self) {}
+const onUnload = function(self) {
+	event.remove('updateOrder', self);
+}
 const methods = {
 	getData: function () {
 	   let self = this;	
@@ -69,7 +74,8 @@ const methods = {
 				deliveryType: data.deliveryType,//配送方式：1.快递 2.门店自提 3.立即配送 4.预约配送
 				verificationCodeUrl: data.verificationCodeUrl,
 				verificationCode: data.verificationCode,
-				orderVerifier: data.orderVerifier
+				orderVerifier: data.orderVerifier,
+				isComment: data.isComment
 			});
 			if (data.payRestTime) self.downStartTime(data.payRestTime);
         }, (err) => {
