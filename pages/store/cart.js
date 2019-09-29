@@ -32,8 +32,8 @@ const onLoad = function(self) {
         userInfo: _g.getLS(_c.LSKeys.userInfo)
     })
     if (_g.checkLogin({
-        type: 1
-    })) {
+            type: 1
+        })) {
         self.getData();
     }
     event.on('refreshCart', self, () => {
@@ -45,14 +45,14 @@ const onLoad = function(self) {
         });
         self.getData();
     });
-   
+
 };
 
 // 页面onShow方法
 const onShow = function(self) {
     if (_g.checkLogin({
-        type: 1
-    })) {
+            type: 1
+        })) {
         self.getData();
     }
 };
@@ -70,12 +70,12 @@ const methods = {
             let param = {};
             if (data.mallShopCartList) {
                 param.storeList = data.mallShopCartList;
-            }else{
+            } else {
                 param.storeList = [];
             }
             if (data.storeShopCartList) {
                 param.medecineList = data.storeShopCartList;
-            }else{
+            } else {
                 param.medecineList = [];
             }
             self.setData(param);
@@ -90,7 +90,7 @@ const methods = {
         let storeList = self.data.storeList;
         let index = e.target.dataset.index;
         // if (e.target.dataset.type == 1) {
-        // 	// 1: 门店
+        //  // 1: 门店
         //     if (medecineList[index].count == 1) return;
         //     medecineList[index].num = medecineList[index].num - 1;
         //     self.setData({
@@ -98,7 +98,7 @@ const methods = {
         //     });
         //     self.getMonney('medecineList', 1);
         // } else {
-        // 	// 2: 商城
+        //  // 2: 商城
         //     if (storeList[index].num == 1) return;
         //     storeList[index].num = storeList[index].num - 1;
         //     self.setData({
@@ -107,10 +107,9 @@ const methods = {
         //     self.getMonney('storeList', 2);
         // }
         self.subtractNum({
-        	list: e.target.dataset.type == 1 ? 'medecineList' : 'storeList',
-        	index: index
+            list: e.target.dataset.type == 1 ? 'medecineList' : 'storeList',
+            index: index
         });
-
     },
     onAddTap: function(e) {
         let self = this;
@@ -131,8 +130,8 @@ const methods = {
         //     self.getMonney('storeList', 2);
         // }
         self.addNum({
-        	list: e.target.dataset.type == 1 ? 'medecineList' : 'storeList',
-        	index: index
+            list: e.target.dataset.type == 1 ? 'medecineList' : 'storeList',
+            index: index
         });
 
     },
@@ -361,24 +360,24 @@ const methods = {
         } else {
             let selectedList = [];
             if (data.mediNum) {
-            	selectedList = self.data.medecineList;
+                selectedList = self.data.medecineList;
             } else {
-            	selectedList = self.data.storeList;
+                selectedList = self.data.storeList;
             }
 
             _.each(selectedList, (item) => {
-        		if (item.isSelect) {
+                if (item.isSelect) {
                     ids.push(item.id)
-        		}
-        	});
+                }
+            });
             _g.navigateTo({
                 url: 'pages/order/submit',
                 param: {
-                	from: 'cart',
-                	platformFlag: data.mediNum ? 2 : 1,
-                	postData: {
-                		cartIds: ids.join(),
-                		platformFlag: data.mediNum ? 2 : 1,
+                    from: 'cart',
+                    platformFlag: data.mediNum ? 2 : 1,
+                    postData: {
+                        cartIds: ids.join(),
+                        platformFlag: data.mediNum ? 2 : 1,
                     }
                 }
             }, self)
@@ -399,7 +398,7 @@ const methods = {
         } else {
             ids = medIds || storeIds;
         }
-        console.log(44,ids);
+        console.log(44, ids);
         wx.showModal({
             content: '确认删除该商品？',
             confirmText: '删除',
@@ -413,8 +412,8 @@ const methods = {
                     }).then((ret) => {
                         self.getCartList();
                         self.setData({
-                            mediNum: 0, 
-                            storeNum: 0, 
+                            mediNum: 0,
+                            storeNum: 0,
                             mediTotal: 0,
                             storeTotal: 0,
                         })
@@ -429,8 +428,8 @@ const methods = {
         const self = this;
         self.getData();
         self.setData({
-            mediNum: 0, 
-            storeNum: 0, 
+            mediNum: 0,
+            storeNum: 0,
             mediTotal: 0,
             storeTotal: 0,
         })
@@ -445,28 +444,32 @@ const methods = {
     },
     //数量加 1 接口
     addNum: function(opts) {
-    	const self = this;
-    	const key = opts.list + '[' + opts.index + '].num';
+        const self = this;
+        const key = opts.list + '[' + opts.index + '].num';
         Goods.addNum(self, {
             id: self.data[opts.list][opts.index].id
         }).then((ret) => {
-        	self.setData({
-        		[key]: ++self.data[opts.list][opts.index].num
-        	});
+            self.setData({
+                [key]: ++self.data[opts.list][opts.index].num
+            });
+            self.getMonney(opts.list, opts.list == 'medecineList' ? 1 : 2);
         }, (err) => {
 
         });
     },
     //数量减 1 接口
     subtractNum: function(opts) {
-    	const self = this;
-    	const key = opts.list + '[' + opts.index + '].num';
+        const self = this;
+        const key = opts.list + '[' + opts.index + '].num';
         Goods.subtractNum(self, {
             id: self.data[opts.list][opts.index].id
         }).then((ret) => {
             self.setData({
-        		[key]: --self.data[opts.list][opts.index].num
-        	});
+                [key]: --self.data[opts.list][opts.index].num
+            });
+
+            self.getMonney(opts.list, opts.list == 'medecineList' ? 1 : 2);
+
         }, (err) => {
 
         });
@@ -484,24 +487,24 @@ const methods = {
         });
         return idsArr.join(',');
     },
-    onDetailTap: function (e) {
-       let self = this; 
-       let opts = e.currentTarget.dataset;
-       if (opts.type == 1) {
-        _g.navigateTo({
-            url: 'pages/goods/detail',
-            param: {
-                id: self.data.medecineList[opts.index].goodsId,
-            }
-        }, self);
-       }else if (opts.type == 2) {
-        _g.navigateTo({
-            url: 'pages/goods/detail',
-            param: {
-                id: self.data.storeList[opts.index].goodsId,
-            }
-        }, self);
-       }
+    onDetailTap: function(e) {
+        let self = this;
+        let opts = e.currentTarget.dataset;
+        if (opts.type == 1) {
+            _g.navigateTo({
+                url: 'pages/goods/detail',
+                param: {
+                    id: self.data.medecineList[opts.index].goodsId,
+                }
+            }, self);
+        } else if (opts.type == 2) {
+            _g.navigateTo({
+                url: 'pages/goods/detail',
+                param: {
+                    id: self.data.storeList[opts.index].goodsId,
+                }
+            }, self);
+        }
 
     }
 

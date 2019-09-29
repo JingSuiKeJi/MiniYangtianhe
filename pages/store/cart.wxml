@@ -67,7 +67,7 @@
                                 <view class="ui-listItem__operatebBox">
                                     <image src="{{filter.getLocalPhoto('goodsDetail_subtraction.png')}}" class="operateItem_subtractione" catchtap="onSubtractionTap" data-id="{{item.id}}" data-index="{{index}}" data-type="2" />
                                     <text class="operateItem__text">{{item.num}}</text>
-                                    <image src="{{filter.getLocalPhoto('goodsDetail_add.png')}}" class="operateItem_add" catchtap="catchtap" data-id="{{item.id}}" data-index="{{index}}" data-type="2" />
+                                    <image src="{{filter.getLocalPhoto('goodsDetail_add.png')}}" class="operateItem_add" catchtap="onAddTap" data-id="{{item.id}}" data-index="{{index}}" data-type="2" />
                                 </view>
                             </view>
                         </view>

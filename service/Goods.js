@@ -19,7 +19,8 @@ class Goods {
         _g.dm.canLoadMore = 1;
         return _g.ajax({
             url: mini.goods.addCart,
-            data: reqData
+            data: reqData,
+            lock: true
         }, page);
     }
     cartList(page, reqData) {
@@ -40,7 +41,8 @@ class Goods {
         _g.dm.canLoadMore = 1;
         return _g.ajax({
             url: mini.goods.subtractNum,
-            data: reqData
+            data: reqData,
+            lock: true
         }, page);
     }
     deleteCart(page, reqData) {
