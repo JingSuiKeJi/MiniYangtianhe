@@ -43,7 +43,7 @@
 					</view>
 				</view>
 				<view class="ui-historyOperationItem">
-					<text class="ui-itemTitle">应收营业额</text>
+					<text class="ui-itemTitle">实收营业额</text>
 					<view>
 						<text>¥</text>
 						<text>{{reportList.totalPayment}}</text>
@@ -74,7 +74,7 @@
 						</view>
 						<view class="ui-detailListInfo">
 							<view class="ui-detailListInfoItem" wx:if="{{!item.shouldPayment}}">
-								<text>{{currentType==1?'应收订单金额':'当天应收金额'}}</text>
+								<text>{{currentType==1?'订单金额':'当天应收金额'}}</text>
 								<text>¥{{item.shouldPayment}}</text>
 							</view>
 							<view class="ui-detailListInfoItem" wx:if="{{!item.payment}}">
