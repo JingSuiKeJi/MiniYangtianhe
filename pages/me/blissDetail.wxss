@@ -182,6 +182,14 @@
 	margin-top: 8rpx;
 }
 
+.ui-typeColor{
+	color: #666666 !important;
+}
+
+.ui-idColor{
+	color: #999999 !important;
+}
+
 /* 充值模态框 */
 .modal-mask {
 	width: 100%;

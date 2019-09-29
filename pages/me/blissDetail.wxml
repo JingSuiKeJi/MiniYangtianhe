@@ -23,17 +23,17 @@
                         <text>{{item.type==1?'+':'-'}}{{item.points}}</text>
 						<block wx:if="{{item.type==1}}">
 							<text class="ui-presentedTextBox" wx:if="{{item.incomeType==2}}">
-							    <text style="color: {{item.type==1?'#666666':''}};">{{filter.getIncomeType(item.incomeType)}}</text>
-							    <text>{{item.id}}</text>
+							    <text>{{filter.getIncomeType(item.incomeType)}}</text>
+							    <text class="ui-idColor">ID:{{item.id}}</text>
 							</text>
-							<text wx:else style="color: {{item.type==1?'#666666':''}};">{{filter.getIncomeType(item.incomeType)}}</text>
+							<text wx:else>{{filter.getIncomeType(item.incomeType)}}</text>
 						</block>
                         <block wx:if="{{item.type==2}}">
                         	<text class="ui-presentedTextBox" wx:if="{{item.expenditureType==3}}">
-                        	    <text style="color: {{item.type==1?'#666666':''}};">{{filter.getExpenditureType(item.expenditureType)}}</text>
-                        	    <text>{{item.id}}</text>
+                        	    <text class="ui-typeColor">{{filter.getExpenditureType(item.expenditureType)}}</text>
+                        	    <text class="ui-idColor">ID:{{item.id}}</text>
                         	</text>
-                        	<text wx:else style="color: {{item.type==1?'#666666':''}};">{{filter.getExpenditureType(item.expenditureType)}}</text>
+                        	<text wx:else class="ui-typeColor">{{filter.getExpenditureType(item.expenditureType)}}</text>
                         </block>
                     </view>
                 </view>
