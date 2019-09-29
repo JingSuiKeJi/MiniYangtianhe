@@ -244,6 +244,7 @@ page {
 
 .ui-banner_swiper {
     width: 90%;
+    margin-top: -40rpx;
 }
 
 .ui-banner_image {
@@ -692,7 +693,7 @@ page {
 }
 .ui-content_price {
     margin-top: 8rpx;
-    margin-bottom: 10rpx;
+    margin-bottom: 16rpx;
 }
 .ui-content_price>text:nth-child(1) {
     font-size: 22rpx;
