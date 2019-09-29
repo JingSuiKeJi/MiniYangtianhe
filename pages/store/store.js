@@ -419,6 +419,9 @@ const methods = {
             case 1:
                 _g.navigateTo({
                     url: 'pages/goods/detail',
+                    param: {
+                        id:data.otherId 
+                    }
                 }, self);
                 break;
             case 2:

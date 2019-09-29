@@ -76,7 +76,7 @@ const onReady = function (self) {
 
 // 页面onShow方法
 const onShow = function (self) {
-    // self.getData();
+    self.getData();
 };
 
 const onUnload = function (self) {
@@ -597,6 +597,9 @@ const methods = {
             case 1:
                 _g.navigateTo({
                     url: 'pages/goods/detail',
+                    param: {
+                        id:data.otherId 
+                    }
                 }, self);
                 break;
             case 2:
