@@ -87,6 +87,13 @@ class User {
 	        data: reqData
 	    }, page);
 	}
+	bindRecommend(page, reqData) {
+	    _g.dm.canLoadMore = 1;
+	    return _g.ajax({
+	        url: mini.user.bindRecommend,
+	        data: reqData
+	    }, page);
+	}
 	msgToggle(page, reqData) {
 	    _g.dm.canLoadMore = 1;
 	    return _g.ajax({
