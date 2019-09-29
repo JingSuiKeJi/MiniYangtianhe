@@ -102,8 +102,8 @@
             <view class="ui-detailAssessBox">
                 <scroll-view scroll-x style="height: 265rpx;" wx:if="{{commentLength}}">
                     <view class="ui-detailAssess_item" wx:for="{{commentList}}" wx:key="index">
-                        <image src="../../images/{{item.url}}" class="ui-assessItem_icon" mode="aspectFill"/>
-                        <view class="ui-assessItem_userName">{{item.name}}</view>
+                        <image src="{{filter.getAvatar(host,item.commentUser.avatar)}}" class="ui-assessItem_icon" mode="aspectFill"/>
+                        <view class="ui-assessItem_userName">{{item.commentUser.nickname}}</view>
                         <view class="ui-assessItem_content">{{item.content}}</view>
                     </view>
                 </scroll-view>
