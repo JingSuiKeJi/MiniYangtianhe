@@ -121,7 +121,7 @@ const methods = {
             couponId: self.data.couponId,
             preGodosReqs: self.data.preGodosReqs,
             platformFlag: self.data.platformFlag,
-
+			addressId: self.data.orderAddressVo.id,
         }
         if (self.data.pointsFlag) {
             param.integralStatus = 1;

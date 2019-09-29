@@ -49,10 +49,19 @@ const methods = {
 		}
 		Order.myOrderList(self, param).then((ret) => {
 			let data = ret.data;
-			self.setData({
-				orderList: data.list,
-				hasNextPage: data.hasNextPage
-			})
+			if (self.data.page == 1) {
+	    		self.setData({
+	    			orderList: ret.data.list
+	    		});
+    		} else {
+    			self.setData({
+	    			orderList: self.data.orderList.concat(ret.data.list)
+	    		});
+    		}
+			// self.setData({
+			// 	orderList: data.list,
+			// 	hasNextPage: data.hasNextPage
+			// })
         }, (err) => {
 
         });

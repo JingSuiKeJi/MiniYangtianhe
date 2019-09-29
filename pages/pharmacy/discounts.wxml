@@ -24,7 +24,7 @@
 						<text>{{filter.getDay(item.startTime)}}至{{filter.getDay(item.endTime)}}</text>
 						<text>全场通用</text>
 					</view>
-					<view class="btn-immediateUse" id="{{item.couponId}}" bindtap="onUseTap" wx:if="{{(item.useStatus && from) || !from}}">立即使用</view>
+					<view class="btn-immediateUse" id="{{item.id}}" data-idx="{{idx}}" bindtap="onUseTap" wx:if="{{(item.useStatus && from) || !from}}">立即使用</view>
 					<view class=" btn-useBtn" wx:if="{{!item.useStatus && from }}">立即使用</view>
 				</view>
 			</view>

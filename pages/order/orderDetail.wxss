@@ -89,11 +89,16 @@ page{
 	height: 300rpx;
 }
 
+.ui-verificCodeIcon image{
+	width: 100%;
+	height: 100%;
+}
+
 .btn-waitVerific{
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin-top: 14rpx;
+	margin-top: 26rpx;
 	/* padding-bottom: 44rpx; */
 	height:24rpx;
 	font-size:24rpx;
@@ -121,7 +126,7 @@ page{
 	justify-content: center;
 	align-items: center;
 	margin-top: 14rpx;
-	margin-bottom: 44rpx;
+	margin-bottom: -40rpx;
 	width:128rpx;
 	height:56rpx;
 	background:rgba(216,216,216,1);
@@ -536,7 +541,7 @@ page{
 .ui-logisticsDialog {
 	position: fixed;
 	z-index: 9999;
-	top: 44rpx;
+	top: 200rpx;
 	left: 50%;
 	width:614rpx;
 	height:940rpx;
@@ -549,7 +554,7 @@ page{
 .ui-closeLogisticsIcon{
 	position: fixed;
 	z-index: 9999;
-	top: 1024rpx;
+	top: 1220rpx;
 	left: 50%;
 	transform: translateX(-50%);
 	width: 64rpx;
