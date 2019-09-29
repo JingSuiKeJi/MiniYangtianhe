@@ -404,9 +404,12 @@ const methods = {
             self.setData({
                 list: data
             });
-            _g.toast({
-                title: '加入购物车成功'
-            });
+            setTimeout(function() {
+            	_g.toast({
+            	    title: '添加购物车成功',
+            		duration: 1500,
+            	});
+            }, 500);
             self.getCartList();
             event.emit('refreshCart');
         }, (err) => {
