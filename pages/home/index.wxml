@@ -73,10 +73,10 @@
             </view>
             <view class="ui-wrapBox">
                 <view class="ui-classBox">
-                    <swiper duration="500" class="ui-imageItem_swper" bindchange="onClassifyTap">
+                    <swiper duration="500" class="ui-imageItem_swper" bindchange="onClassifyTap" >
                         <block wx:for="{{classList}}" wx:for-item="bannerItem" wx:key="{{index}}">
                             <swiper-item>
-                                <view class="ui-classBox_item" wx:for="{{bannerItem}}" wx:key="{{index}}" bindtap="onTabTap" data-id="{{item.id}}" data-isLink="{{item.isLink}}">
+                                <view class="ui-classBox_item" wx:for="{{bannerItem}}" wx:key="{{index}}" bindtap="onTabTap" data-index="{{item.index}}" data-isLink="{{item.isLink}}">
                                     <image src="{{filter.getPhoto(host,item.imgUrl)}}" class="ui-classItem__img" data-id="{{item.id}}" data-isLink="{{item.isLink}}" mode="aspectFill" />
                                     <text class="ui-classItem__text" data-id="{{item.id}}" data-isLink="{{item.isLink}}">
                                         {{item.title}}
