@@ -125,7 +125,7 @@
 		</view>
 		
 		<view wx:if="{{from !='postComment'}}" class="ui-verificationFooter">
-			<block  wx:if="{{status=='WAIT_BUYER_PAY'}}">
+			<block  wx:if="{{status=='WAIT_BUYER_PAY'}}" >
 				<view class="btn-common btn-grey" bindtap="onCancelTap"><text>取消订单</text></view>
 				<view class="btn-common btn-green" catchtap="onPayMoneyTap"><text>立即支付</text></view>
 			</block>

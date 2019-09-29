@@ -118,7 +118,8 @@ const methods = {
                     title: '提示',
                     content: '支付成功',
                     confirm: function() {
-                        self.payStatus();
+						self.payStatus();
+						self.getData();
                     }
                 });
             };
