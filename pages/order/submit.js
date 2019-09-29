@@ -29,7 +29,7 @@ const data = {
 
     goodsList: [],
     postType: '请输入配送方式',
-    type: -1,
+    type: 1,
     pickerValue: [0, 0],
     timeList: [
         // ['2019-07-25', '2019-07-26'],
@@ -121,7 +121,8 @@ const methods = {
             couponId: self.data.couponId,
             preGodosReqs: self.data.preGodosReqs,
             platformFlag: self.data.platformFlag,
-			addressId: self.data.orderAddressVo.id,
+            addressId: self.data.orderAddressVo.id,
+            deliveryType: self.data.type
         }
         if (self.data.pointsFlag) {
             param.integralStatus = 1;
@@ -187,6 +188,7 @@ const methods = {
                     postType: '立即配送',
                     type: 3
                 });
+                self.preferentialPolicies();
                 break;
             case '4':
                 self.setData({
@@ -199,6 +201,7 @@ const methods = {
                     postType: '到店自取',
                     type: 2
                 });
+                self.preferentialPolicies();
                 break;
             default:
                 break;
@@ -216,6 +219,7 @@ const methods = {
             },
             pickerValue: pickerValue
         });
+        self.preferentialPolicies();
     },
     onSelectTap: function (e) {
         let self = this;
