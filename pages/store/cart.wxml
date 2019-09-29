@@ -21,10 +21,10 @@
             </view>
             <view class="ui-contentItem__list">
                 <view class="ui-contentItem__listBox {{item.isTouchMove ? 'touch-move-active' : ''}}" 
-				wx:for="{{medecineList}}" data-index="{{index}}" data-type="1" bindtouchstart="touchstart" bindtouchmove="touchmove" wx:key="{{item.id}}" bindtap="onDetailTap">
+				wx:for="{{medecineList}}" data-index="{{index}}" data-type="1" bindtouchstart="touchstart" bindtouchmove="touchmove" wx:key="{{item.id}}" >
                     <view class="ui-contentItem__listItem">
                         <image src="{{item.isSelect  ? filter.getLocalPhoto('cart_selestIcon.png')  : filter.getLocalPhoto('cart_selestEmptyIcon.png')}}" class="ui-listItem__selectIcon" catchtap="onChoseTap" data-type="1" data-index="{{index}}" />
-                        <view class="ui-goodsBox">
+                        <view class="ui-goodsBox" bindtap="onDetailTap" data-index="{{index}}" data-type="1">
                             <image src="{{filter.getPhoto(host, item.goodsImg)}}" class="ui-listItem__goodsIcon" />
                         </view>
                         <view class="ui-listItem__info">
@@ -53,10 +53,10 @@
                 <text class="ui-tipsItem__storeName">养乐商城</text>
             </view>
             <view class="ui-contentItem__list">
-                <view class="ui-contentItem__listBox {{item.isTouchMove ? 'touch-move-active' : ''}}" wx:for="{{storeList}}" data-index="{{index}}" data-type="2" bindtouchstart="touchstart" bindtouchmove="touchmove" wx:key="{{item.id}}" bindtap="onDetailTap">
+                <view class="ui-contentItem__listBox {{item.isTouchMove ? 'touch-move-active' : ''}}" wx:for="{{storeList}}" data-index="{{index}}" data-type="2" bindtouchstart="touchstart" bindtouchmove="touchmove" wx:key="{{item.id}}" >
                     <view class="ui-contentItem__listItem">
                         <image src="{{item.isSelect ? filter.getLocalPhoto('cart_selestIcon.png') : filter.getLocalPhoto('cart_selestEmptyIcon.png')}}" class="ui-listItem__selectIcon" catchtap="onChoseTap" data-type="2" data-index="{{index}}" />
-                        <view class="ui-goodsBox">
+                        <view class="ui-goodsBox" bindtap="onDetailTap" data-index="{{index}}" data-type="2">
                             <image src="{{filter.getPhoto(host, item.goodsImg)}}" class="ui-listItem__goodsIcon" mode="aspectFill"></image>
                         </view>
                         <view class="ui-listItem__info">
@@ -67,7 +67,7 @@
                                 <view class="ui-listItem__operatebBox">
                                     <image src="{{filter.getLocalPhoto('goodsDetail_subtraction.png')}}" class="operateItem_subtractione" catchtap="onSubtractionTap" data-id="{{item.id}}" data-index="{{index}}" data-type="2" />
                                     <text class="operateItem__text">{{item.num}}</text>
-                                    <image src="{{filter.getLocalPhoto('goodsDetail_add.png')}}" class="operateItem_add" bindtap="catchtap" data-id="{{item.id}}" data-index="{{index}}" data-type="2" />
+                                    <image src="{{filter.getLocalPhoto('goodsDetail_add.png')}}" class="operateItem_add" catchtap="catchtap" data-id="{{item.id}}" data-index="{{index}}" data-type="2" />
                                 </view>
                             </view>
                         </view>
