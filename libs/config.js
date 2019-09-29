@@ -168,7 +168,8 @@ config.prototype = {
             preOrderCart: '/app/preOrder/cart.do',
             getDeliveryTime: '/app/preOrder/getDeliveryTime.do',
             goodsCouponList: '/app/preOrder/couponList.do',
-            preferentialPolicies: '/app/preOrder/preferentialPolicies.do'
+            preferentialPolicies: '/app/preOrder/preferentialPolicies.do',
+            
 
         },
         point: {

@@ -3,7 +3,7 @@
 <view class="contain">
    <view class="main">
       <view class="ui-searchBox">
-            <input type="text"  class="ui-searchItem_input" bindinput="onGetInput" value="{{value}}"/>
+            <input type="text"  class="ui-searchItem_input" bindinput="onGetInput" value="{{value}}"  bindconfirm="onSkipTap"/>
             <view class="ui-searchItem_text" bindtap="onSkipTap">搜索</view>
             <image src="{{filter.getLocalPhoto('ic_search.png')}}" class="searchItem_icon"/>
       </view>

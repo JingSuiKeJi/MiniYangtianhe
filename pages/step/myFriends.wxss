@@ -11,8 +11,8 @@ page {
 .main {
     width: 100%;
     height: 100%; 
-    /* background-image: url(http://www.gzlingren.com:8098/yangtianhe/wyFriends_bgIcon.png); */
-    background-image: url(http://a4.qpic.cn/psb?/V12Kdegv0qd4wf/Ni.xLf.8bE4X3R7e9Hi6UchaA3rPyd5aOw*E5LwuqxQ!/m/dL8AAAAAAAAAnull&bo=7gI2BQAAAAADB*0!&rf=photolist&t=5);
+    background-image: url(http://www.gzlingren.com:8098/yangtianhe/wyFriends_bgIcon.png);
+    /* background-image: url(http://a4.qpic.cn/psb?/V12Kdegv0qd4wf/Ni.xLf.8bE4X3R7e9Hi6UchaA3rPyd5aOw*E5LwuqxQ!/m/dL8AAAAAAAAAnull&bo=7gI2BQAAAAADB*0!&rf=photolist&t=5); */
     background-attachment: scroll;
     background-size: cover; 
     overflow: auto;
@@ -74,6 +74,13 @@ page {
     letter-spacing:2rpx;
     text-align: center;
     background-color: #ffffff;
+
+}
+.ui-leftBtn {
+    border-radius:  16rpx 0 0 16rpx;
+}
+.ui-rightBtn {
+    border-radius: 0 16rpx 16rpx 0;
 }
 .ui-listBox {
     width: 90%;

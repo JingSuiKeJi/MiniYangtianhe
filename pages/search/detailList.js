@@ -18,7 +18,6 @@ const data = {
 // 页面onLoad方法
 const onLoad = function (self) {
     let data = {
-         value: self.data.value,
          platformFlag: self.data.platformFlag
     }
     if (self.data.flag) {
@@ -63,12 +62,14 @@ const methods = {
             switch(self.data.priceSort) {
                 case 1:
                     self.setData({
-                        priceSort: 2
+                        priceSort: 2,
+                        list: []
                     });
                     break;
                 default:
                     self.setData({
-                        priceSort: 1
+                        priceSort: 1,
+                        list: []
                     });
             } 
         } else if (opts.type == self.data.type) {
@@ -77,7 +78,8 @@ const methods = {
             self.setData({
                 type: opts.type,
                 priceSort: 1,
-                soldNumSort: 1
+                soldNumSort: 1,
+                list: []
           });
         }
         self.getPageData();  
@@ -120,12 +122,12 @@ const methods = {
         ).then((ret)=>{
            let param = ret.data;
            self.setData({
-               list: param.list
+               list: self.data.list.concat(param.list)
            });
         },(err)=>{
         });
     },
-    onSkipTap: function () {
+    onSkipTap: function (e) {
         let self = this;
         self.getPageData();
     },

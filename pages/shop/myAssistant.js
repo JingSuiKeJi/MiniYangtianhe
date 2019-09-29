@@ -114,8 +114,8 @@ const methods = {
 					addList: self.data.addList.concat(ret.data.list)
 				});
 			}
-			// const addList = self.data.addList;
-			// console.log(123,addList);
+			const addList = self.data.addList;
+			console.log(123,addList);
 		},(err) => {
 			console.log("获取失败");
 		});
@@ -185,16 +185,17 @@ const methods = {
 		//当前索引
 		const idx = options.currentTarget.dataset.idx;
 		//获取列表
+        console.log(444,addList[idx].check);
 		const addList = self.data.addList;
 		//排他
 		for (var i = 0; i < addList.length; i++) {
 			addList[i].check = false;
 			addList[idx].check = true;
 		}
-		// addList[idx].check = !addList[idx].check; //当前点击的位置为true即选中
+		addList[idx].check = !addList[idx].check; //当前点击的位置为true即选中
 		self.setData({
 			addList:addList,
-			// checkStoreId:addList[idx].storeId,
+			checkStoreId:addList[idx].storeId,
 			checkUserId:addList[idx].userid,
 		})
 		// const checkStoreId = self.data.checkStoreId;
