@@ -118,7 +118,7 @@ const methods = {
 		let self = this;
 		if (self.data.from) {
 			_g.getPrevPage().setData({
-				couponId: Number(e.currentTarget.id),
+				couponId: Number(e.currentTarget.dataset.id),
 				platformFlag: self.data.platformFlag,
 			    preGodosReqs: self.data.preGodosReqs,
 			});

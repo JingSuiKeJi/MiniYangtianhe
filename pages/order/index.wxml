@@ -53,7 +53,7 @@
 				<view class="ui-handle">
 					<button class="btn-cancelShipments btn-common" open-type="contact" lang="zh_CN" ><text>提醒发货</text></button>
 					<!-- <view class="btn-cancelShipments btn-common" catchtap="onAlertTap"><text>提醒发货</text></view> -->
-					<view class="btn-cancelShipments btn-marginLeft btn-common" bindtap="onCancelTap"  data-orderid="{{item.orderId}}"><text>取消订单</text></view>
+					<!-- <view class="btn-cancelShipments btn-marginLeft btn-common" bindtap="onCancelTap"  data-orderid="{{item.orderId}}"><text>取消订单</text></view> -->
 				</view>
 			</block>
 			<block wx:elif="{{item.status=='WAIT_BUYER_CONFIRM_GOODS'}}">
