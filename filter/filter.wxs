@@ -245,7 +245,7 @@ var filter = {
 	getExpenditureType: function (status) {// 支出类型
 		switch(status) {
 			case 1:
-				return '订单消费（商品抵扣）';
+				return '抵扣商品';
 			case 2:
 				return '福气核销';
 			case 3:

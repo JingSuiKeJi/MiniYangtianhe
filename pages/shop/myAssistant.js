@@ -115,7 +115,7 @@ const methods = {
 				});
 			}
 			const addList = self.data.addList;
-			console.log(123,addList);
+			// console.log(123,addList);
 		},(err) => {
 			console.log("获取失败");
 		});
@@ -153,7 +153,6 @@ const methods = {
 		  showModal: false,
 		  nameId:'',
 		  addList:[],
-		  // checkStoreId:'',
 		  checkUserId:'',
 		});
 	},
@@ -164,10 +163,9 @@ const methods = {
 	//确认添加店员
 	onConfirm: function () {
 		const self = this;
-		// const checkStoreId = parseInt(self.data.checkStoreId);
 		const checkUserId = parseInt(self.data.checkUserId);
 		const storeId = self.data.storeId;
-		console.log(23,storeId,checkUserId);
+		// console.log(23,storeId,checkUserId);
 		//添加店员
 		User.addVerifier(self, {
 			storeId:storeId,
@@ -185,19 +183,20 @@ const methods = {
 		//当前索引
 		const idx = options.currentTarget.dataset.idx;
 		//获取列表
-        console.log(444,addList[idx].check);
 		const addList = self.data.addList;
 		//排他
-		for (var i = 0; i < addList.length; i++) {
-			addList[i].check = false;
-			addList[idx].check = true;
-		}
+		// for (var i = 0; i < addList.length; i++) {
+		// 	addList[i].check = false;
+		// 	addList[idx].check = true;
+		// }
 		addList[idx].check = !addList[idx].check; //当前点击的位置为true即选中
 		self.setData({
 			addList:addList,
 			checkStoreId:addList[idx].storeId,
-			checkUserId:addList[idx].userid,
+			checkUserId:addList[idx].id,
 		})
+		// console.log(456,addList);
+		// console.log(333,self.data.addList[idx].check);
 		// const checkStoreId = self.data.checkStoreId;
 		// const checkUserId = self.data.checkUserId;
 		// if(addList[idx].check==true){
