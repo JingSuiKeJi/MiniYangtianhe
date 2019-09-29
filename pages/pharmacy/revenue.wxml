@@ -11,10 +11,10 @@
 				<text>{{userInfo.nickname}}</text>
 				<text>所属门店：{{userInfo.store.title}}</text>
 			</view>
-			<view class="ui-vipBox" wx:if="{{userInfo.distribution.sort}}">
-			    <image src="{{userInfo.distribution.sort == 1 ? filter.getLocalPhoto('my_distributionLevel.png') : filter.getLocalPhoto('my_distributionLevel2.png')}}"  mode="aspectFill" class="vipIcon"/>
+			<view class="ui-vipBox">
+			    <!-- <image src="{{userInfo.distribution.sort == 1 ? filter.getLocalPhoto('my_distributionLevel.png') : filter.getLocalPhoto('my_distributionLevel2.png')}}"  mode="aspectFill" class="vipIcon"/> -->
 				<!-- <view class="vipIcon"></view> -->
-				<text>VIP{{userInfo.distribution.sort}}</text>
+				<text>{{userInfo.distribution.title}}</text>
 			</view>
 		</view>
 	

@@ -161,7 +161,7 @@
 					</view>
 				</view>
 			</view>
-			<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onRevenueTap"  >
+			<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onRevenueTap" wx:if="{{userInfo.verifier}}">
 				<button formType="submit" class="ui-itemBox">
 					<text>收益中心</text>
 				    <view class="ui-moreIcon"></view>
