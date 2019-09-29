@@ -76,6 +76,8 @@
 
 .ui-vipBox{
 	position: absolute;
+	display: flex;
+	justify-content: center;
 	top: 24rpx;
 	right: 0;
 	width:150rpx;
@@ -90,15 +92,11 @@
 	left: 20rpx;
 	width: 44rpx;
 	height: 44rpx;
-	/* background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_distributionLevel.png');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover; */
 }
 
 .ui-vipBox text{
 	position: absolute;
-	left: 74rpx;
+	/* left: 74rpx; */
 	height:28rpx;
 	font-size:28rpx;
 	font-family:PingFangSC-Regular;

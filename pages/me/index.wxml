@@ -129,12 +129,12 @@
 						<text class="ui-orderText">已签收</text>
 					</button>
 			    </form>
-				<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onAfterSaleTap" class="ui-feedbackItem">
+				<!-- <form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onAfterSaleTap" class="ui-feedbackItem">
 					<button formType="submit" >
 						<view class="ui-iconFeedback"></view>
 					   <text class="ui-orderText">售后</text>
 					</button>
-			    </form>
+			    </form> -->
 			</view>
 		</view>
 
@@ -161,7 +161,7 @@
 					</view>
 				</view>
 			</view>
-			<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onRevenueTap"  >
+			<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onRevenueTap" wx:if="{{userInfo.verifier}}">
 				<button formType="submit" class="ui-itemBox">
 					<text>收益中心</text>
 				    <view class="ui-moreIcon"></view>
