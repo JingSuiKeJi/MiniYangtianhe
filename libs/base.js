@@ -253,9 +253,10 @@ base.prototype = {
             },
             onGotUserInfo: function (e) {
                 const self = this;
+                if (e.detail.errMsg == 'getUserInfo:fail auth deny') return;
 				const  isLogin = self.data.isLogin;
 				self.setData({
-					isLogin:true
+					isLogin: true
 				})
                 const detail = e.detail;
                 wx.login({
