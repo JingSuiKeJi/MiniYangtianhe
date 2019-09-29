@@ -22,10 +22,10 @@
 			<view class="ui-withdrawItem">
 				<view>
 					<view class="withdrawIcon"></view>
-					<view>可提现佣金</view>
+					<view>累计营业额</view>
 				</view>
 				<view>{{centerInfo.money}}</view>
-				<view>待结算 {{centerInfo.waitMoney}}元</view>
+				<view>待结算营业额 {{centerInfo.waitMoney}}元</view>
 			</view>
 			<view class="ui-cut"></view>
 			<view class="ui-commissionItem">
