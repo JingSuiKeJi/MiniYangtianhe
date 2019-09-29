@@ -459,6 +459,11 @@ base.prototype = {
                             _g.rmLS(_c.LSKeys.sessionKey);
                             _g.rmLS(_c.LSKeys.userInfo);
                             _g.wxLogin(opts);
+                        } else {
+                            _g.toast({
+                                title: res.data.message,
+                                duration: 3000
+                            });
                         }
                         return reject(res.data);
                     }
