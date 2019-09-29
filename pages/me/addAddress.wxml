@@ -29,7 +29,7 @@
 		</view>
 		<view class="ui-common ui-addressDetail">
 			<text class="is-address__detail">门牌号</text>
-			<textarea class="ui-addressDetailText" placeholder="街道、楼牌号等详细地址" value="{{houseNumber}}" bindinput="onAddressDetailTap"/>
+			<textarea class="ui-addressDetailText" placeholder="街道、楼牌号等详细地址" value="{{addressList.houseNumber?addressList.houseNumber:houseNumber}}" bindinput="onAddressDetailTap"/>
 		</view>
 		
 	</view>
