@@ -79,8 +79,8 @@ const methods = {
         let self = this;
 
     },
-    showModal: function () {
-        var self = this;
+    showModal: function (e) {
+        let  self = this;
         if (!self.data.from) return;
         self.setData({
             hideModal: false
@@ -88,7 +88,7 @@ const methods = {
     },
     // 隐藏遮罩层
     hideModal: function () {
-        var self = this;
+        let self = this;
         self.setData({
             hideModal: true
         })

@@ -214,3 +214,17 @@ page{
 	color:rgba(153,153,153,1);
 	line-height:42rpx;
 }
+.btn-useBtn {
+	position: absolute;
+	top: 72rpx;
+	right: 32rpx;
+	width: 128rpx;
+	height: 48rpx;
+	font-size:22rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(255,255,255,1);
+	line-height:48rpx;
+	text-align: center;
+	background-color: #CCCCCC;
+}

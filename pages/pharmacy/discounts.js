@@ -41,7 +41,7 @@ const methods = {
 				preGodosReqs: self.data.preGodosReqs,
 				status: self.data.currentIndex
 			}).then((ret) => {
-				let data = ret.data;
+				let data = ret.data.list;
 				switch (self.data.currentIndex) {
 					case 1:
 						self.setData({

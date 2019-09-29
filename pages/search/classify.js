@@ -96,6 +96,10 @@ const methods = {
             param: param
         }, self);
     },
+    onFinishTap: function (e) {
+        let self = this;
+        self.data.onSkipTap();
+    },
     onChoseTap: function (e) {
         let self = this;
         let opts = e.target.dataset;

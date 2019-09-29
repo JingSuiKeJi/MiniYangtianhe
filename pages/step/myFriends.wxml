@@ -17,18 +17,18 @@
             </view>
         </view>
         <view class="ui-listBox">
-            <view class="ui-listItem" wx:for="{{list}}" wx:key="{{index}}" bindtap="showModal">
+            <view class="ui-listItem" wx:for="{{list}}" wx:key="{{index}}" bindtap="showModal" data-index="{{index}}">
                 <view class="ui-listItem__imgBox">
                     <image src="{{filter.getPhoto(host,item.avatar)}}" class="ui-listItem__icon" />
                 </view>
                 <view class="ui-listItem__name" style="color: {{item.status ==0 ? '#3D3D3D' : ''}}">
                     {{item.nickname}}
                 </view>
-                <view class="ui-listItem__step" style="color: {{item.status ==0 ? '#999999' : ''}}">
+                <view class="ui-listItem__step" style="color: {{item.status ==0 ? '#999999' : ''}}" hidden="{{from}}">
                     {{item.todayStep}}
                 </view>
-                <view class="ui-listItem__text" style="color: {{item.status ==0 ? '#999999' : ''}}">
-                    {{item.status == 1 ? '已达成' : '未达成'}}
+                <view class="ui-listItem__text" style="color: {{item.status ==0 ? '#999999' : ''}}" hidden="{{from}}">
+                    {{item.status == 2 ? '已达成' : '未达成' }}
                 </view>
             </view>
         </view>

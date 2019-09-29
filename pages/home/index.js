@@ -331,6 +331,9 @@ const methods = {
         if (!self.data.hideModal) {
             data.toView = '_' + e.currentTarget.dataset.type;
         }
+        self.setData({
+            list: []
+        })
         self.setData(data);
         self.getPageData();
         self.hideModal();
@@ -469,7 +472,7 @@ const methods = {
         }).then((ret) => {
             let data = ret.data;
             self.setData({
-                list: data.list,
+                list: self.data.list(data.list),
             })
         }, (err) => {
 

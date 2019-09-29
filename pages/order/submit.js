@@ -163,6 +163,7 @@ const methods = {
             couponPrice: data.couponPrice
         }
         self.setData(option);
+        console.log(444,self.data.couponId);
     },
     getData: function () {
     },
@@ -240,6 +241,7 @@ const methods = {
             dispatchingType: 1,
             remark: self.data.remark,
             platformFlag: self.data.platformFlag,
+            couponId: self.data.couponId,
         };
 
         if (self.data.platformFlag == 2) {
@@ -258,6 +260,11 @@ const methods = {
         if (self.data.thirdId) {
             data.thirdId = self.data.thirdId;
         }
+        if (self.data.pointsFlag) {
+            data.integralSwitch = 1;
+        } else {
+            data.integralSwitch = 2;
+        }
         Order.placeOrder(self, data).then((ret) => {
             self.prePay(ret.data);
         }, (err) => {
@@ -274,21 +281,40 @@ const methods = {
         Order.prePay(self, {
             orderId: id
         }).then((ret) => {
-            let payInfo = ret.data;
-            payInfo.success = function () {
-                //TODO check pay status
-                self.payStatus('success', id);
-            };
-            payInfo.fail = function () {
-                _g.showModal({
-                    title: '提示',
-                    content: '支付失败',
-                    confirm: function () {
-                        self.payStatus('fail', id);
-                    }
-                });
-            };
-            _g.requestPayment(payInfo);
+             let payInfo = ret.data;
+            if (payInfo.type == 1) {
+                payInfo.success = function () {
+                    //TODO check pay status
+                    self.payStatus('success', payInfo.orderId);
+                };
+                payInfo.fail = function () {
+                    _g.showModal({
+                        title: '提示',
+                        content: '支付失败',
+                        confirm: function () {
+                            self.payStatus('fail', payInfo.orderId);
+                        }
+                    });
+                };
+                _g.requestPayment(payInfo);
+               
+            }else if (payInfo.type == 2) {
+                self.payStatus('success', payInfo.orderId);
+            }
+            // payInfo.success = function () {
+            //     //TODO check pay status
+            //     self.payStatus('success', id);
+            // };
+            // payInfo.fail = function () {
+            //     _g.showModal({
+            //         title: '提示',
+            //         content: '支付失败',
+            //         confirm: function () {
+            //             self.payStatus('fail', id);
+            //         }
+            //     });
+            // };
+            // _g.requestPayment(payInfo);
         }, err => {
             _g.showModal({
                 title: '提示',
