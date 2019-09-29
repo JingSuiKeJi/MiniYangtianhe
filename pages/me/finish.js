@@ -6,10 +6,12 @@ const _c = app.config;
 const _t = app.temps;
 const event = app.event;
 let data = {
-
+     list: {}
 };
 const onLoad = function (self) {
-
+    self.setData({
+        list: self.data.list
+    })
 }
 const onShow = function (self) {
 
@@ -21,7 +23,13 @@ const methods = {
     let self = this;
 
   },
-
+  onSkipsTap: function (e) {
+     let self = this;
+     _g.navigateBack(2);
+    //  _g.navigateTo({
+    //     url: 'pages/me/blissDetail',
+    // },self)
+  }
 
 
 

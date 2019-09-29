@@ -54,6 +54,9 @@ const onLoad = function (self) {
     if (self.data.platformFlag == 2) {
         self.getDeliveryTime();
     }
+    event.on('preferentialPolicies',self,()=>{
+        self.preferentialPolicies();
+    })
 };
 
 // 页面onShow方法
@@ -63,10 +66,10 @@ const onShow = function (self) {
         preGodosReqs: self.data.preGodosReqs,
         platformFlag: self.data.platformFlag,
     });
-    self.preferentialPolicies();
+    // self.preferentialPolicies();
 };
 const onUnload = function (self) {
-
+     event.remove('preferentialPolicies',self);
 }
 // 页面中的方法
 const methods = {
@@ -121,9 +124,9 @@ const methods = {
 
         }
         if (self.data.pointsFlag) {
-            param.integralSwitch = 1;
+            param.integralStatus = 1;
         } else {
-            param.integralSwitch = 2;
+            param.integralStatus = 2;
         }
         Order.preferentialPolicies(self, param).then((ret) => {
             self.setPageData(ret.data);
@@ -265,9 +268,9 @@ const methods = {
             data.thirdId = self.data.thirdId;
         }
         if (self.data.pointsFlag) {
-            data.integralSwitch = 1;
+            data.integralStatus = 1;
         } else {
-            data.integralSwitch = 2;
+            data.integralStatus = 2;
         }
         Order.placeOrder(self, data).then((ret) => {
             self.prePay(ret.data);
@@ -303,7 +306,7 @@ const methods = {
                 _g.requestPayment(payInfo);
                
             }else if (payInfo.type == 2) {
-                self.payStatus('success', payInfo.orderId);
+                self.payStatus('success', id);
             }
             // payInfo.success = function () {
             //     //TODO check pay status

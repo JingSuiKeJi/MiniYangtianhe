@@ -79,7 +79,7 @@ const methods = {
     },
     onSkipTap: function (e) {
         let self = this;
-
+        self.getData();
     },
     showModal: function (e) {
 		let  self = this;

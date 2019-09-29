@@ -39,18 +39,19 @@ const methods = {
         	points: self.data.num,
         	memberId: self.data.memberId
         }).then((ret) => {
-        	self.hidePresentedModal();
         	_g.toast({
         		title: '赠送成功'
             });
             _g.navigateTo({
                 url: 'pages/me/finish',
+                param: {
+                   list: ret.data 
+                }
             },self)
         }, (err)=>{
         	_g.toast({
         		title: '赠送失败'
         	});
-        	self.hidePresentedModal();
         });
     },
     getBase() {
