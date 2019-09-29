@@ -70,7 +70,7 @@
             </text>
             <text class="ui-postItem__constItem" wx:if="{{deliveryFee}}">
                 <text class="ui-postItem__cost">运费</text>
-                <text class="ui-postItem__price">￥ {{deliveryFee}}</text>
+                <text class="ui-postItem__price">￥ {{type==2?0:deliveryFee}}</text>
             </text>
         </view>
         <view class="ui-orderItem__post" wx:if="{{platformFlag == 2}}">
