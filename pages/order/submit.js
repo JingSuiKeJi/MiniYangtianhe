@@ -4,7 +4,7 @@ const _ = app.underscore;
 const _g = app.base;
 const _c = app.config;
 const Order = require('../../service/Order');
-
+const event = app.event;
 // 初始化数据
 const data = {
     orderAddressVo: {},
@@ -240,6 +240,8 @@ const methods = {
     },
     onSubmitTap: function (e) {
         const self = this;
+        console.log(55,self.data.postData);
+
         let data = {
             num: self.data.num,
             skuId: 0,//暂时传0
@@ -258,6 +260,7 @@ const methods = {
 
         if (self.data.from == 'goodsDetail' || self.data.from == 'bargain' ) {
             data.id = self.data.postData.id;
+            console.log(self.data.postData.id)
             data.buyType = 1;
         }
         if (self.data.from == 'cart') {
@@ -292,20 +295,21 @@ const methods = {
             if (payInfo.type == 1) {
                 payInfo.success = function () {
                     //TODO check pay status
-                    self.payStatus('success', payInfo.orderId);
+                    self.payStatus('success', id);
                 };
                 payInfo.fail = function () {
                     _g.showModal({
                         title: '提示',
                         content: '支付失败',
                         confirm: function () {
-                            self.payStatus('fail', payInfo.orderId);
+                            self.payStatus('fail', id);
                         }
                     });
                 };
                 _g.requestPayment(payInfo);
                
             }else if (payInfo.type == 2) {
+                console.log(33,id)
                 self.payStatus('success', id);
             }
             // payInfo.success = function () {

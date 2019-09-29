@@ -471,9 +471,12 @@ const methods = {
             classifyId: self.data.classifyId
         }).then((ret) => {
             let data = ret.data;
-            self.setData({
-                list: self.data.list(data.list),
-            })
+            if (ret.data.list && ret.data.list.length) {
+                self.setData({
+                   list: self.data.list.concat(data.list),
+                })
+            }
+            
         }, (err) => {
 
         });
@@ -583,6 +586,38 @@ const methods = {
             });
         }
     },
+    onGoTap: function (data) {
+        let self = this;
+        switch (data.type) {
+            case 1:
+                _g.navigateTo({
+                    url: 'pages/goods/detail'
+                }, self);
+                break;
+            case 2:
+                _g.navigateTo({
+                    url: 'pages/search/classify'
+                }, self);
+                break;
+            case 3:
+                _g.navigateTo({
+                    url: 'pages/home/map'
+                }, self);
+                break;
+            case 4:
+                _g.navigateTo({
+                    url: 'pages/home/map'
+                }, self);
+                break;
+            case 5:
+                _g.navigateTo({
+                    url: 'pages/home/map'
+                }, self);
+                break;             
+            default:
+                break;
+        }
+    }
 
 };
 
