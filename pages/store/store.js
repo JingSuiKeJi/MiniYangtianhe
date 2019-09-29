@@ -75,14 +75,17 @@ const methods = {
             platformFlag: 1,
         }).then((ret) => {
             let data = ret.data;
-            self.setData({
+            let opts = {
                 hotSearch: data.hotSearch,
                 banner: data.banner,
                 tapImgUrl: data.occasion.imgUrl,
-                activity: data.activity[0],
                 navigation: data.navigation,
                 notion: data.notion
-            })
+            }
+            if (data.activity.length) {
+                opts.activity = data.activity[0];
+             }
+            self.setData(opts);
             self.showClassify(data.navigation);
         }, (err) => {
 
