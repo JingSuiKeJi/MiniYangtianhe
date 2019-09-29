@@ -13,7 +13,8 @@ class Order {
         _g.dm.canLoadMore = 1;
         return _g.ajax({
             url: mini.order.placeOrder,
-            data: reqData
+            data: reqData,
+            lock: true
         }, page);
     }
     preOrder(page, reqData) {
@@ -62,7 +63,8 @@ class Order {
         _g.dm.canLoadMore = 1;
         return _g.ajax({
             url: mini.order.prePay,
-            data: reqData
+            data: reqData,
+            lock: true
         }, page);
     }
     preOrderCart(page, reqData) {

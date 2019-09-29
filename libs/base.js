@@ -357,6 +357,10 @@ base.prototype = {
     ajax: function(opts, self) {
         var _g = this;
         var self = self || opts.self;
+        if (_g.dm.lock) return;
+        if (opts.lock) {
+            _g.dm.lock = true;
+        }
         if (opts.hideToast == false) {
             opts.hideToast = false;
         } else {
@@ -445,6 +449,7 @@ base.prototype = {
                 header: { 'content-type': 'application/x-www-form-urlencoded' },
 
                 success: function(res) {
+                    _g.dm.lock = false;
                     // 网络请求错误
                     if (res.statusCode != 200) {
                         _g.logger('~~~~~ wx.request ', res);
@@ -496,6 +501,7 @@ base.prototype = {
                     return resolve(res.data);
                 },
                 fail: function(err) {
+                    _g.dm.lock = false;
                     _g.logger('response err: ', err);
                     _g.dm.canLoadMore = 1;
                     opts.error && opts.error(err);
