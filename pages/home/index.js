@@ -181,14 +181,13 @@ const methods = {
         }).then((ret) => {
             let data = ret.data;
             let BrandList = [];
-            if (data.length < 5) {
+            if (data.length < 12) {
                 self.setData({
                     singleBrandList: data
                 });
             } else {
-                let length = Math.ceil(data.length / 2);
                 for (var index = 0; index < 2; index++) {
-                    BrandList[index] = data.slice(index * length, (index + 1) * length);
+                    BrandList[index] = data.slice(index * 12, (index + 1) * 12);
                 }
                 self.setData({
                     brandList: BrandList

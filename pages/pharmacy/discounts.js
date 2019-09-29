@@ -46,16 +46,19 @@ const methods = {
 					case 1:
 						self.setData({
 							waitUseList: data,
+							list: data
 						});
 						break;
 					case 2:
 						self.setData({
 							usedList: data,
+							list: data
 						});
 						break;
 					default:
 						self.setData({
 							InvalidList: data,
+							list: data
 						});
 						break;
 				}

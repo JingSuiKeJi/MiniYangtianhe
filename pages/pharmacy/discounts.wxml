@@ -3,9 +3,9 @@
 <view class="container">
 	<view class="ui-main">
 		<view class="ui-memuBox">
-			<text class="{{toBeUsed?'ui-memuHover':''}}" bindtap="onToBeUsedTap">待使用({{BeUsedNum}})</text>
-			<text class="{{haveBeenUsed?'ui-memuHover':''}}" bindtap="onHaveBeenUsedTap">已使用({{BeenUsedNum}})</text>
-			<text class="{{outOfDate?'ui-memuHover':''}}" bindtap="onOutOfDateTap">已过期({{outOfDateNum}})</text>
+			<text class="{{toBeUsed?'ui-memuHover':''}}" bindtap="onToBeUsedTap">待使用({{from ? list.notUseNum : BeUsedNum}})</text>
+			<text class="{{haveBeenUsed?'ui-memuHover':''}}" bindtap="onHaveBeenUsedTap">已使用({{from ? list.usedNum: BeenUsedNum}})</text>
+			<text class="{{outOfDate?'ui-memuHover':''}}" bindtap="onOutOfDateTap">已过期({{from ?  list.overdueNum: outOfDateNum}})</text>
 		</view>
 		
 		<view  wx:if="{{InvalidList||waitUseList||usedList}}" class="ui-blockBox">
