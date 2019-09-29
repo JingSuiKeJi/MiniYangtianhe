@@ -17,9 +17,10 @@
 					<view class="ui-withdrawDetail" wx:for="{{withdrawlist}}" wx:for-index="idx" wx:key="idx" wx:for-item="item"
 					style="color: {{item.type == 1 ? '#666666':'#20CAB4'}};">
 						<text>{{filter.getDay(item.createTime)}}</text>
-						<text>{{item.type == 1 ? '+' : '-'}}{{item.money}}</text>
-						<text wx:if="{{item.type == 1}}">{{filter.getCommissionIncome(item.incomeType)}}</text>
-						<text wx:if="{{item.type == 2}}">{{filter.getCommissionExpenditure(item.incomeType)}}</text>
+						<text>{{item.type == 1 ? '+' : '-'}}{{item.commission}}</text>
+						<!-- <text wx:if="{{item.type == 1}}">{{filter.getCommissionIncome(item.incomeType)}}</text>
+						<text wx:if="{{item.type == 2}}">{{filter.getCommissionExpenditure(item.incomeType)}}</text> -->
+						<text>{{item.description}}</text>
 					</view>
 				</view>
 			</block>

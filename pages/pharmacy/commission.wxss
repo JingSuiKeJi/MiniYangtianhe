@@ -104,6 +104,7 @@
 }
 
 .ui-withdrawDetail{
+	display: flex;
 	width:622rpx;
 	height:96rpx;
 	background:rgba(255,255,255,1);
@@ -114,7 +115,8 @@
 }
 
 .ui-withdrawDetail text{
-	width: 100%;
+	/*width: 100%;*/
+	flex: 1;
 	height:36rpx;
 	font-size:26rpx;
 	font-family:PingFangSC-Regular;
@@ -130,5 +132,6 @@
 }
 
 .ui-withdrawDetail text:nth-child(3){
+	flex: 1.5;
 	text-align: right;
 }
