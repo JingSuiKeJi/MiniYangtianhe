@@ -106,11 +106,14 @@ const methods = {
 		});
 	},
 	//编辑操作
-	onCompileTap: function () {
+	onCompileTap: function (e) {
 		let self = this;
+		const index = e.currentTarget.dataset.index;
+		// console.log(index,self.data.addressList[index]);
 		_g.navigateTo({
 			param:{
-				title:'编辑'
+				title:'编辑',
+				addressList:self.data.addressList[index]
 			},
 			url: 'pages/me/addAddress',
 		}, self);
