@@ -466,6 +466,10 @@ const methods = {
             self.setData({
                 hideShareDialog: false
             });
+        } else {
+            _g.toast({
+                title: '请先登录'
+            })
         }
     }
 };
