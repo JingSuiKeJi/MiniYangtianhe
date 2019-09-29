@@ -7,6 +7,7 @@ page {
 
 .main,
 .main__box {
+	position: relative;
     width: 100%;
 }
 
@@ -89,8 +90,9 @@ page {
 
 .ui-tipsItem__text {
     position: absolute;
+	z-index: 999;
     right: 30rpx;
-    /* top: 28rpx; */
+    top: 58rpx;
 }
 
 .ui-contentItem__list {
