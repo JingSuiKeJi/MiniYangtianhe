@@ -463,6 +463,7 @@ base.prototype = {
                         if ([4000, 4001, 4005, 4006].indexOf(res.data.code) > -1) {
                             _g.rmLS(_c.LSKeys.sessionKey);
                             _g.rmLS(_c.LSKeys.userInfo);
+                            opts.self = self;
                             _g.wxLogin(opts);
                         } else {
                             _g.toast({
@@ -1571,6 +1572,24 @@ base.prototype = {
         }).then((ret) => {
         }, (err) => {
         });
+    },
+    wxLogin(opts) {
+        const _g = this;
+        wx.getUserInfo({
+            success(res) {
+                let detail = res;
+                wx.login({
+                    success(res) {
+                        if (res.code) {
+                            detail.code = res.code;
+                            _g.setLogin(self, detail);
+                        } else {
+                            console.log('登录失败！' + res.errMsg)
+                        }
+                    }
+                })
+            }
+        })
     }
 };
 
