@@ -18,7 +18,8 @@ const data = {
     ],
     title: '我的乐友',
     hideModal: true, //true-隐藏  false-显示
-    nimationData: {},//
+	nimationData: {},//
+	value: '',
 };
 
 // 页面onLoad方法
@@ -51,7 +52,8 @@ const methods = {
         User.getLeyouList(self, {
             page: 1,
             pageSize: 10,
-            level: self.data.type,
+			level: self.data.type,
+			memberId: self.data.value
 
         }).then((ret) => {
             let data = ret.data;
@@ -80,10 +82,11 @@ const methods = {
 
     },
     showModal: function (e) {
-        let  self = this;
+		let  self = this;
         if (!self.data.from) return;
         self.setData({
-            hideModal: false
+			hideModal: false,
+			index: e.currentTarget.dataset.index
         })
     },
     // 隐藏遮罩层
@@ -94,9 +97,11 @@ const methods = {
         })
     },
     onSureTap: function (e) {
-        let self = this;
+		let self = this;
+		let index = self.data.index;
         //返回上一个页面，并传参
         _g.getPrevPage().setData({
+			memberId: self.data.list[index].memberId
         });
         _g.navigateBack();
     }

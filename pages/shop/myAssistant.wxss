@@ -89,12 +89,14 @@ page{
 
 .ui-userInfo .ui-userId{
 	height:22rpx;
+	width: 160rpx;
+	overflow: hidden;
 	font-size:22rpx;
 	font-family:PingFangSC-Regular;
 	font-weight:400;
 	color:rgba(51,51,51,1);
 	line-height:22rpx;
-}
+  }
 
 .ui-userInfo .ui-userVipLevel{
 	width: 44rpx;

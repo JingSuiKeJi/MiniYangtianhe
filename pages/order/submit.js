@@ -37,7 +37,7 @@ const data = {
     ],
     postTime: '请选择配送时间',
     infoList: [],
-    pointsFlag: true, //有积分可用
+    pointsFlag: false, //有积分可用
     remark: '',
     // points: 148, //可用积分
     num: 0, //商品总数
@@ -162,8 +162,12 @@ const methods = {
             couponId: data.couponId,
             couponPrice: data.couponPrice
         }
+        if (data.points) {
+            option.pointsFlag = true;
+        }else {
+            option.pointsFlag = false;
+        }
         self.setData(option);
-        console.log(444,self.data.couponId);
     },
     getData: function () {
     },
