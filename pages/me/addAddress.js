@@ -39,13 +39,17 @@ let data = {
     // areaId: '',
     // areaName: '',
     title: '',
+	addressList:{},
     authorizeHidden: true
 };
 const onLoad = function(self) {
     const title = self.data.title;
+    const addressList = self.data.addressList;
     self.setData({
-        title: title
+        title: title,
+		addressList:addressList,
     });
+	// console.log(123456,addressList);
 
 }
 const onShow = function(self) {}
