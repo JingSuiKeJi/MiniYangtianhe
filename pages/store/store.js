@@ -423,7 +423,7 @@ const methods = {
                 break;
             case 2:
                 //搜索结果
-                param.brandId = data.otherId;
+                param.classifyId = data.otherId;
                 _g.navigateTo({
                     url: 'pages/search/detailList',
                     param: param

@@ -61,7 +61,7 @@
 		</view>
 		
 		<!-- 发布按钮 -->
-		<view wx:if="{{!write||!tempFilePaths.length==1}}" class="btn-postComment grey">发布</view>
+		<view wx:if="{{!write}}" class="btn-postComment grey">发布</view>
 		<view wx:else class="btn-postComment green" bindtap="onPostCommentTap">发布</view>
 	</view>
 </view>

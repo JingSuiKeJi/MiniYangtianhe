@@ -47,10 +47,11 @@ const onLoad = function(self) {
 
 // 页面onShow方法
 const onShow = function(self) {
-
+    self.getData();
 };
 const onUnload = function(self) {
     event.remove('refreshCart');
+    event.remove('login-suc');
 };
 // 页面中的方法
 const methods = {
@@ -389,8 +390,9 @@ const methods = {
         } else if (medIds && storeIds) {
             ids = medIds + ',' + storeIds
         } else {
-            ids = medIds + storeIds
+            ids = medIds || storeIds;
         }
+        console.log(44,ids);
         wx.showModal({
             content: '确认删除该商品？',
             confirmText: '删除',
@@ -475,6 +477,26 @@ const methods = {
         });
         return idsArr.join(',');
     },
+    onDetailTap: function (e) {
+       let self = this; 
+       let opts = e.currentTarget.dataset;
+       if (opts.type == 1) {
+        _g.navigateTo({
+            url: 'pages/goods/detail',
+            param: {
+                id: self.data.medecineList[opts.index].goodsId,
+            }
+        }, self);
+       }else if (opts.type == 2) {
+        _g.navigateTo({
+            url: 'pages/goods/detail',
+            param: {
+                id: self.data.storeList[opts.index].goodsId,
+            }
+        }, self);
+       }
+
+    }
 
 };
 
