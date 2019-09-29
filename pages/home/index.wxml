@@ -76,7 +76,7 @@
                     <swiper duration="500" class="ui-imageItem_swper" bindchange="onClassifyTap" >
                         <block wx:for="{{classList}}" wx:for-item="bannerItem" wx:key="{{index}}">
                             <swiper-item>
-                                <view class="ui-classBox_item" wx:for="{{bannerItem}}" wx:key="{{index}}" bindtap="onTabTap" data-index="{{item.index}}" data-isLink="{{item.isLink}}">
+                                <view class="ui-classBox_item" wx:for="{{bannerItem}}" wx:key="{{index}}" bindtap="onTabTap" data-id="{{item.id}}" data-isLink="{{item.isLink}}">
                                     <image src="{{filter.getPhoto(host,item.imgUrl)}}" class="ui-classItem__img" data-id="{{item.id}}" data-isLink="{{item.isLink}}" mode="aspectFill" />
                                     <text class="ui-classItem__text" data-id="{{item.id}}" data-isLink="{{item.isLink}}">
                                         {{item.title}}
@@ -93,7 +93,7 @@
         </view>
         <!-- 限时抢购和品牌甄选 -->
         <view class="ui-imgBox" wx:if="{{second != -1}}">
-            <image src="{{filter.getPhoto(host,activity[0].imgUrl)}}" mode="aspectFill" bindtap="onCheckActivity" data-isLink="{{activity.isLink}}" />
+            <image src="{{filter.getPhoto(host,activity.imgUrl)}}" mode="aspectFill" bindtap="onCheckActivity" data-isLink="{{activity.isLink}}" wx:if="{{ activity && activity.length}}"/>
             <view class="ui-buyBox">
                 <view class="ui-buyBox_top">
                     <view>优选限时购</view>

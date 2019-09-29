@@ -156,11 +156,12 @@ const methods = {
                 hotSearch: data.hotSearch,
                 banner: data.banner,
                 tapImgUrl: data.occasion.imgUrl,
-                activity: data.activity,
+                activity: data.activity[0],
                 stepInfo: stepInfo,
                 BMIIndex: BMIIndex,
                 tabList: data.navigation,
-                notion: data.notion
+                notion: data.notion,
+                navigation: data.navigation
             });
 
             self.btnShow(data.stepInfo.status);
@@ -356,17 +357,13 @@ const methods = {
     onTabTap: function (e) {
         let self = this;
         let opts = e.currentTarget.dataset;
-        let index = e.currentTarget.dataset.index;
         if (opts.isLink == 2) return;
-        self.data.tabList.forEach(element => {
-            if (id == element.id) {
-                _g.navigateTo({
-                    url: 'pages' + element.pageUrl,
-                    param: {
-                        platformFlag: 2
-                    }
-                }, self);
+        _.each(self.data.navigation, (item) => {
+             if (item.id == opts.id) {
+                self.onPageTap(item);
+                return;
             }
+           
         });
 
     },
@@ -432,14 +429,15 @@ const methods = {
     },
     onGoTap: function (e) {
         let self = this;
-        let index = e.currentTarget.dataset.index;
-        if (e.target.dataset.isLink == 2) return;
+        let opts = e.currentTarget.dataset;
+        let index = opts.index;
+        if (opts.isLink == 2) return;
         self.onPageTap(self.data.banner[index]);
     },
     onCheckActivity: function (e) {
         let self = this;
-        if (e.target.dataset.isLink == 2) return;
-        self.map(self.data.activity, 0);
+        if (e.currentTarget.dataset.isLink == 2) return;
+        self.onPageTap(self.data.activity);
     },
     map: function (arr, index) {
         let self = this;

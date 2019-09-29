@@ -35,8 +35,13 @@ const methods = {
 			self.setData({
 				orderDetail: ret.data
 			});
+			_g.toast({
+				title: '核销订单成功'
+			})
         }, (err) => {
-            console.log("获取失败");
+            _g.toast({
+				title: err
+			})
         });
 	},
 	//手动核销
@@ -52,7 +57,8 @@ const methods = {
 				    orderId: orderId,
 					verificationCode:self.data.orderDetail.verificationCode,
 				}).then((ret) => {
-					self.getData()
+					self.getData();
+				
 				}, (err) => {
 				     _g.toast({
 				        title: '手动核销失败',

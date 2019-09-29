@@ -64,9 +64,13 @@
         <view class="ui-orderItem__post">
             <text class="ui-postItem__title">配送方式</text>
             <text class="ui-postItem__text">{{platformFlag == 1 ? '快递配送' : postType}}</text>
-            <text class="ui-postItem__constItem">
+            <text class="ui-postItem__constItem" wx:if="{{!deliveryFee}}">
                 <text class="ui-postItem__cost">免邮</text>
                 <text class="ui-postItem__price">￥ 0.00</text>
+            </text>
+            <text class="ui-postItem__constItem" wx:if="{{deliveryFee}}">
+                <text class="ui-postItem__cost">运费</text>
+                <text class="ui-postItem__price">￥ {{deliveryFee}}</text>
             </text>
         </view>
         <view class="ui-orderItem__post" wx:if="{{platformFlag == 2}}">
