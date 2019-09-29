@@ -72,6 +72,7 @@ const methods = {
                 param.medecineList = [];
             }
             self.setData(param);
+			console.log(123456,self.data.medecineList,self.data.storeList);
         }, (err) => {
 
         });

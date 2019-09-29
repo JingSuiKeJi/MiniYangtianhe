@@ -3,6 +3,9 @@
 <navBar ext-class="navPosition" title='购物车' iconTheme='black' color='black' background='white' back="{{true}}"></navBar>
 <view class='tab-bottom'></view>
 <view class="main" wx:if="{{userInfo}}">
+	<text class="ui-tipsItem__storeName ui-tipsItem__text" bindtap="onMgtTap" wx:if="{{medecineList.length || storeList.length}}">
+	    {{isMgt ? '完成' : '管理'}}
+	</text>
     <view class="main__box" wx:if="{{(medecineList.length || storeList.length)}}">
         <view class='tab-bottom'></view>
         <view class="ui-headerBox">
@@ -10,17 +13,15 @@
             <text class="headerItem_text">点击成为PLUS会员，享更多权限优惠！</text>
             <image src="{{filter.getLocalPhoto('cart_right.png')}}" class="headerItem_rightIcon" />
         </view>
-        <view class="ui-contentBox">
+        <view class="ui-contentBox" wx:if="{{medecineList.length>0}}">
             <view class="ui-contentItem__tips">
                 <image src="{{medicineFlag ? filter.getLocalPhoto('cart_selestIcon.png') : filter.getLocalPhoto('cart_selestEmptyIcon.png')}}" class="ui-tipsItem__selectIcon" bindtap="onAllTap" data-type="1" />
                 <image src="{{filter.getLocalPhoto('cart_storeIcon.png')}}" class="ui-tipsItem__storeIcon" />
                 <text class="ui-tipsItem__storeName">养乐药房</text>
-                <text class="ui-tipsItem__storeName ui-tipsItem__text" bindtap="onMgtTap">
-                    {{isMgt ? '完成' : '管理'}}
-                </text>
             </view>
             <view class="ui-contentItem__list">
-                <view class="ui-contentItem__listBox {{item.isTouchMove ? 'touch-move-active' : ''}}" wx:for="{{medecineList}}" data-index="{{index}}" data-type="1" bindtouchstart="touchstart" bindtouchmove="touchmove" wx:key="{{item.id}}" bindtap="onDetailTap" >
+                <view class="ui-contentItem__listBox {{item.isTouchMove ? 'touch-move-active' : ''}}" 
+				wx:for="{{medecineList}}" data-index="{{index}}" data-type="1" bindtouchstart="touchstart" bindtouchmove="touchmove" wx:key="{{item.id}}" bindtap="onDetailTap">
                     <view class="ui-contentItem__listItem">
                         <image src="{{item.isSelect  ? filter.getLocalPhoto('cart_selestIcon.png')  : filter.getLocalPhoto('cart_selestEmptyIcon.png')}}" class="ui-listItem__selectIcon" catchtap="onChoseTap" data-type="1" data-index="{{index}}" />
                         <view class="ui-goodsBox">
@@ -45,7 +46,7 @@
                 </view>
             </view>
         </view>
-        <view class="ui-contentBox ui-storeBox">
+        <view class="ui-contentBox {{medecineList.length>0?'ui-storeBox':''}}" wx:if="{{storeList.length>0}}">
             <view class="ui-contentItem__tips">
                 <image src="{{storeFlag ? filter.getLocalPhoto('cart_selestIcon.png') : filter.getLocalPhoto('cart_selestEmptyIcon.png')}}" class="ui-tipsItem__selectIcon" bindtap="onAllTap" data-type="2" />
                 <image src="{{filter.getLocalPhoto('cart_storeIcon.png')}}" class="ui-tipsItem__storeIcon" />
