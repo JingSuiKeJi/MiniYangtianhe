@@ -33,8 +33,8 @@
                         <image src="{{filter.getPhoto(host,item.picUrl) }}" mode="aspectFill"/>
                     </view>
                     <view class="ui-contentItem_right">
-                        <view class="ui-content_title">{{item.secondTitle}}</view>
-                        <view class="ui-content_scale">{{item.mainTitle}} </view>
+                        <view class="ui-content_title">{{item.mainTitle}}</view>
+                        <view class="ui-content_scale">{{item.secondTitle}} </view>
                         <view class="ui-content_price">
                             <text>原价￥{{item.originPrice}}</text>
                             <text>已售{{item.soldNum + item.virtualNum}}件</text>
