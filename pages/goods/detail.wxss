@@ -768,6 +768,7 @@ page {
 .ui-assessItem_icon {
     width: 52rpx;
     height: 52rpx;
+	border-radius: 50%;
     margin: 20rpx;
 }
 
@@ -780,7 +781,7 @@ page {
     line-height: 31rpx;
     vertical-align: top;
     display: inline-block;
-    margin-top: 25rpx;
+    margin-top: 30rpx;
     white-space: normal;
 }
 
