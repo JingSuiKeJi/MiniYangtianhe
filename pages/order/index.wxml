@@ -1,99 +1,107 @@
 <wxs module="filter" src="../../filter/filter.wxs"></wxs>
 <!--application.wxml-->
 <view class="container">
-	<view wx:if="{{orderList}}" class="ui-main">
-		<view class="ui-searchOrder">
-			<view class="ui-searchBox">
-				<view class="ui-searchIcon"></view>
-				<input class="ui-searchInput" type="text" placeholder="搜索订单" bindconfirm="onInputTap" />
-			</view>
-		</view>
-		
-		<view class="ui-menuBar">
-			<text wx:for="{{menuList}}" wx:for-item="item" wx:key="currentId" bindtap="chooseMenu"
-			class="ui-menuText {{currentCheck==item.currentId?'currentText currentBorder':''}}" 
-			data-id="{{item.currentId}}"
-			>{{item.name}}</text>
-		</view>
-		<!-- <view wx:if="{{currentCheck==item.flagId||currentCheck==item.all}}" class="ui-orderInfoBox" 
+    <view wx:if="{{orderList}}" class="ui-main">
+        <view class="ui-searchOrder">
+            <view class="ui-searchBox">
+                <view class="ui-searchIcon"></view>
+                <input class="ui-searchInput" type="text" placeholder="搜索订单" bindconfirm="onInputTap" />
+            </view>
+        </view>
+        <view class="ui-menuBar">
+            <text wx:for="{{menuList}}" wx:for-item="item" wx:key="currentId" bindtap="chooseMenu" class="ui-menuText {{currentCheck==item.currentId?'currentText currentBorder':''}}" data-id="{{item.currentId}}">{{item.name}}</text>
+        </view>
+        <!-- <view wx:if="{{currentCheck==item.flagId||currentCheck==item.all}}" class="ui-orderInfoBox" 
 		wx:for="{{orderList}}" wx:for-item="item" wx:key="{{index}}"> -->
-		<view  class="ui-orderInfoBox" 
-		wx:for="{{orderList}}" wx:for-item="item" wx:key="{{index}}" wx:if="{{orderList.length}}">
-			<view bindtap="onOrderDetailTap"  data-orderid="{{item.orderId}}">
-				<view class="ui-orderStatus">
-					<text class="ui-orderReferenceText">订单编号： {{item.orderNo}}</text>
-					<text class="ui-storeTetx" wx:if="{{item.platformFlag}}">{{filter.getPlatform(item.platformFlag)}}</text>
-					<text class="ui-orderStatusText" 
-					style="color: {{item.status=='售后中' || item.status=='售后结束' ? '#999999' : ''}}"
-					>{{filter.getOrderStatus(item.status)}}</text>
-				</view>
-				<view class="ui-newsInfoBox" wx:for="{{item.goodsList}}" wx:for-item="GoodsItem" wx:key="idx">
-					<view class="ui-newsInfoItem">
-						<view class="ui-newsImg"><image src="{{filter.getPhoto(host,GoodsItem.imgUrl)}}"></image></view>
-						<text class="ui-newsName">{{GoodsItem.title}}</text>
-						<!-- <text class="ui-newsWeight">{{GoodsItem.specificationName}}</text> -->
-						<text class="ui-newsWeight"></text>
-						<text class="ui-newsMoney">¥{{GoodsItem.price}}</text>
-						<text class="ui-newsNum">x{{GoodsItem.num}}</text>
-					</view>
-				</view>
-				<view class="ui-total">
-					<text>共{{item.num}}件商品</text>
-					<text>总额：¥{{item.totalPrice}}</text>
-				</view>
-			</view>
-			<block wx:if="{{item.status=='WAIT_BUYER_PAY'}}">
-				<!-- <block wx:if="{{item.status=='WAIT_'}}"> -->
-				<view class="ui-handle">
-					<view class="btn-cancelPay btn-common" bindtap="onCancelTap"  data-orderid="{{item.orderId}}"><text>取消订单</text></view>
-					<view class="btn-pay btn-common" bindtap="onPayTap" data-orderid="{{item.orderId}}"><text>立即支付</text></view>
-				</view>
-			</block>
-			<block wx:elif="{{item.status=='WAIT_SELLER_SEND_GOODS'}}">
-				<view class="ui-handle">
-					<button class="btn-cancelShipments btn-common" open-type="contact" lang="zh_CN" ><text>提醒发货</text></button>
-					<!-- <view class="btn-cancelShipments btn-common" catchtap="onAlertTap"><text>提醒发货</text></view> -->
-					<!-- <view class="btn-cancelShipments btn-marginLeft btn-common" bindtap="onCancelTap"  data-orderid="{{item.orderId}}"><text>取消订单</text></view> -->
-				</view>
-			</block>
-			<block wx:elif="{{item.status=='WAIT_BUYER_CONFIRM_GOODS'}}">
-				<view class="ui-handle">
-					<view class="btn-comfirmRec btn-common" catchtap="onConfirmTap" data-orderid="{{item.orderId}}"><text>确认收货</text></view>
-				</view>
-			</block>
-			<block wx:elif="{{item.status=='TRADE_BUYER_SIGNED'}}">
-				<view class="ui-handle">
-                    <view class="btn-applyAfter btn-common" bindtap="onOrderDetailTap"  data-orderid="{{item.orderId}}"><text>查看订单</text></view>
-					<view class="btn-evaluate btn-common" catchtap="onPostCommentTap" data-index="{{index}}"><text>评价</text></view>
-				</view>
-			</block>
-			<block wx:elif="{{item.status=='WAIT_CHECK'}}" >
-				<view class="ui-handle" bindtap="onOrderDetailTap"  data-orderid="{{item.orderId}}">
-					<view class="btn-applyAfter btn-common"><text>核销码</text></view>
-				</view>
-			</block>
-			<block wx:else>
-			</block>
-		</view>
-		<!-- 确认收货 -->
-		<view class="modal-mask" bindtap="hideConfirmReceipt" catchtouchmove="true" wx:if="{{confirmReceipt}}"></view>
-		<view class="modal-dialog" wx:if="{{confirmReceipt}}" catchtouchmove="true">
-			<view class="modal-title">确认已收到商品吗？</view>
-			<view class="modal-footer">
-				<view class="btn-cancel" bindtap="onCancelConfirmReceipt" data-status="cancelConfirmReceipt">取消</view>
-				<view class="btn-confirm" bindtap="onConfirmConfirmReceipt" data-status="confirmConfirmReceipt">确定</view>
-			</view>
-		</view>
-		<view class="ui-noOrderText ui-noDataBox" wx:if="{{!orderList.length}}">
-			<text>暂无数据</text>	
-		</view>
-	</view>
-	
-	<view wx:if="{{!orderList}}" class="ui-notOrder">
-		<view class="ui-notOrderIcon"></view>
-		<view class="ui-noOrderText">
-			<text>没有订单</text>
-			<text>要不去逛逛</text>
-		</view>
-	</view>
+        <view class="ui-orderInfoBox" wx:for="{{orderList}}" wx:for-item="item" wx:key="{{index}}" wx:if="{{orderList.length}}">
+            <view bindtap="onOrderDetailTap" data-orderid="{{item.orderId}}">
+                <view class="ui-orderStatus">
+                    <text class="ui-orderReferenceText">订单编号： {{item.orderNo}}</text>
+                    <text class="ui-storeTetx" wx:if="{{item.platformFlag}}">{{filter.getPlatform(item.platformFlag)}}</text>
+                    <text class="ui-orderStatusText" style="color: {{item.status=='售后中' || item.status=='售后结束' ? '#999999' : ''}}">{{filter.getOrderStatus(item.status)}}</text>
+                </view>
+                <view class="ui-newsInfoBox" wx:for="{{item.goodsList}}" wx:for-item="GoodsItem" wx:key="idx">
+                    <view class="ui-newsInfoItem">
+                        <view class="ui-newsImg">
+                            <image src="{{filter.getPhoto(host,GoodsItem.imgUrl)}}"></image>
+                        </view>
+                        <text class="ui-newsName">{{GoodsItem.title}}</text>
+                        <!-- <text class="ui-newsWeight">{{GoodsItem.specificationName}}</text> -->
+                        <text class="ui-newsWeight"></text>
+                        <text class="ui-newsMoney">¥{{GoodsItem.price}}</text>
+                        <text class="ui-newsNum">x{{GoodsItem.num}}</text>
+                    </view>
+                </view>
+                <view class="ui-total">
+                    <text>共{{item.num}}件商品</text>
+                    <text>总额：¥{{item.totalPrice}}</text>
+                </view>
+            </view>
+            <block wx:if="{{item.status=='WAIT_BUYER_PAY'}}">
+                <!-- <block wx:if="{{item.status=='WAIT_'}}"> -->
+                <view class="ui-handle">
+                    <view class="btn-cancelPay btn-common" bindtap="onCancelTap" data-orderid="{{item.orderId}}">
+                        <text>取消订单</text>
+                    </view>
+                    <view class="btn-pay btn-common" bindtap="onPayTap" data-orderid="{{item.orderId}}">
+                        <text>立即支付</text>
+                    </view>
+                </view>
+            </block>
+            <block wx:elif="{{item.status=='WAIT_SELLER_SEND_GOODS'}}">
+                <view class="ui-handle">
+                    <button class="btn-cancelShipments btn-common" open-type="contact" lang="zh_CN">
+                        <text>提醒发货</text>
+                    </button>
+                    <!-- <view class="btn-cancelShipments btn-common" catchtap="onAlertTap"><text>提醒发货</text></view> -->
+                    <!-- <view class="btn-cancelShipments btn-marginLeft btn-common" bindtap="onCancelTap"  data-orderid="{{item.orderId}}"><text>取消订单</text></view> -->
+                </view>
+            </block>
+            <block wx:elif="{{item.status=='WAIT_BUYER_CONFIRM_GOODS'}}">
+                <view class="ui-handle">
+                    <view class="btn-comfirmRec btn-common" catchtap="onConfirmTap" data-orderid="{{item.orderId}}">
+                        <text>确认收货</text>
+                    </view>
+                </view>
+            </block>
+            <block wx:elif="{{item.status=='TRADE_BUYER_SIGNED'}}">
+                <view class="ui-handle">
+                    <view class="btn-applyAfter btn-common" bindtap="onOrderDetailTap" data-orderid="{{item.orderId}}">
+                        <text>查看订单</text>
+                    </view>
+                    <view class="btn-evaluate btn-common" catchtap="onPostCommentTap" data-index="{{index}}" wx:if="{{item.isComment==0}}">
+                        <text>评价</text>
+                    </view>
+                </view>
+            </block>
+            <block wx:elif="{{item.status=='WAIT_CHECK'}}">
+                <view class="ui-handle" bindtap="onOrderDetailTap" data-orderid="{{item.orderId}}">
+                    <view class="btn-applyAfter btn-common">
+                        <text>核销码</text>
+                    </view>
+                </view>
+            </block>
+            <block wx:else>
+            </block>
+        </view>
+        <!-- 确认收货 -->
+        <view class="modal-mask" bindtap="hideConfirmReceipt" catchtouchmove="true" wx:if="{{confirmReceipt}}"></view>
+        <view class="modal-dialog" wx:if="{{confirmReceipt}}" catchtouchmove="true">
+            <view class="modal-title">确认已收到商品吗？</view>
+            <view class="modal-footer">
+                <view class="btn-cancel" bindtap="onCancelConfirmReceipt" data-status="cancelConfirmReceipt">取消</view>
+                <view class="btn-confirm" bindtap="onConfirmConfirmReceipt" data-status="confirmConfirmReceipt">确定</view>
+            </view>
+        </view>
+        <view class="ui-noOrderText ui-noDataBox" wx:if="{{!orderList.length}}">
+            <text>暂无数据</text>
+        </view>
+    </view>
+    <view wx:if="{{!orderList}}" class="ui-notOrder">
+        <view class="ui-notOrderIcon"></view>
+        <view class="ui-noOrderText">
+            <text>没有订单</text>
+            <text>要不去逛逛</text>
+        </view>
+    </view>
 </view>
