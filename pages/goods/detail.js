@@ -445,14 +445,6 @@ const methods = {
             url: '../../pages/store/cart'
         });
     },
-    onShareTap: function (e) {
-        let self = this;
-        let opts = e.currentTarget.dataset;
-        self.setData({
-            modelType: opts.type
-        })
-        self.showModal();
-    },
     onShareAppMessage() {
         const self = this;
         const userInfo = _g.getLS(_c.LSKeys.userInfo);
@@ -468,9 +460,13 @@ const methods = {
     },
     onShareTap() {
         const self = this;
-        self.setData({
-            hideShareDialog: false
-        });
+        if (_g.checkLogin({
+            type: 1
+        })) {
+            self.setData({
+                hideShareDialog: false
+            });
+        }
     }
 };
 

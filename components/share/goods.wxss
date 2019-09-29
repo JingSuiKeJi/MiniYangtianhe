@@ -54,13 +54,16 @@
 	bottom: 0;
 	left: 0;
 	width: 100%;
+	padding-top: 20rpx;
 	background-color: #fff;
 	border-radius: 20rpx 20rpx 0 0;
 }
 
 .ui-share__btnText {
-	height: 116rpx;
-	line-height: 116rpx;
+	height: 60rpx;
+	line-height: 60rpx;
+	/*height: 116rpx;
+	line-height: 116rpx;*/
 	text-align: center;
 	font-size: 34rpx;
 	color: #999;
@@ -72,7 +75,7 @@
 
 .ui-share__list {
 	display: flex;
-	padding: 0 188rpx 20rpx 188rpx;
+	padding: 0 188rpx 10rpx 188rpx;
 }
 
 .ui-share__item {

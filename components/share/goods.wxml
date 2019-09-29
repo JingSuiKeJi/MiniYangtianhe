@@ -6,7 +6,7 @@
         <image class="ui-share__image" src="{{canvasUrl}}"></image>
     </view>
     <view class="ui-share__btn">
-        <view class="ui-share__btnText">分享好友下单
+        <view class="ui-share__btnText" hidden="{{true}}">分享好友下单
             <text>赚1.34元</text>
         </view>
         <view class="ui-share__list">
