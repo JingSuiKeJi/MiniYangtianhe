@@ -152,17 +152,20 @@ const methods = {
             //         title: '暂时没有获取到最新的微信运动数据, 请稍后再试'
             //     });
             // }
-            self.setData({
+             let opts = {
                 hotSearch: data.hotSearch,
                 banner: data.banner,
                 tapImgUrl: data.occasion.imgUrl,
-                activity: data.activity[0],
                 stepInfo: stepInfo,
                 BMIIndex: BMIIndex,
                 tabList: data.navigation,
                 notion: data.notion,
                 navigation: data.navigation
-            });
+             }
+             if (data.activity.length) {
+                opts.activity = data.activity[0];
+             }
+            self.setData(opts);
 
             self.btnShow(data.stepInfo.status);
             self.showClassify(data.navigation);
