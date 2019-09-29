@@ -1582,7 +1582,7 @@ base.prototype = {
                     success(res) {
                         if (res.code) {
                             detail.code = res.code;
-                            _g.setLogin(self, detail);
+                            _g.setLogin(opts.self, detail);
                         } else {
                             console.log('登录失败！' + res.errMsg)
                         }
