@@ -359,9 +359,15 @@ const methods = {
             classifyId: self.data.classifyId
         }).then((ret) => {
             let data = ret.data;
-            self.setData({
-                list: self.data.list.concat(data.list)
-            })
+            if (self.data.page == 1) {
+                self.setData({
+                    list: data.list
+                })
+            } else {
+                self.setData({
+                    list: self.data.list.concat(data.list)
+                })
+            }
         }, (err) => {
 
         });
