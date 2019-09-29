@@ -7,7 +7,7 @@ const _c = app.config;
 const Goods = require('../../service/Goods');
 // 初始化数据
 const data = {
-    url: 'http://120.79.36.152/share/html/protocol/index_frame.html?type=article&id='
+    url: 'http://120.79.36.152/share/html/protocol/index_frame.html?type=notice&id='
 };
 
 // 页面onLoad方法

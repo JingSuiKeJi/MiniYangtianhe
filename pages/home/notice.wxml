@@ -1,4 +1,4 @@
 <view class="ui-main">
     <!-- <web-view src="{{'http://120.79.36.152/share/html/protocol/index_frame.html?type=article&id='+id}}" /> -->
-    <web-view src="http://120.79.36.152/share/html/protocol/index_frame.html?type=article&id=6" />
+    <web-view src="http://120.79.36.152/share/html/protocol/index_frame.html?type=notice&id=6" />
 </view>

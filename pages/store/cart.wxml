@@ -22,7 +22,7 @@
             <view class="ui-contentItem__list">
                 <view class="ui-contentItem__listBox {{item.isTouchMove ? 'touch-move-active' : ''}}" wx:for="{{medecineList}}" data-index="{{index}}" data-type="1" bindtouchstart="touchstart" bindtouchmove="touchmove" wx:key="{{item.id}}" bindtap="onDetailTap" >
                     <view class="ui-contentItem__listItem">
-                        <image src="{{item.isSelect  ? filter.getLocalPhoto('cart_selestIcon.png')  : filter.getLocalPhoto('cart_selestEmptyIcon.png')}}" class="ui-listItem__selectIcon" bindtap="onChoseTap" data-type="1" data-index="{{index}}" />
+                        <image src="{{item.isSelect  ? filter.getLocalPhoto('cart_selestIcon.png')  : filter.getLocalPhoto('cart_selestEmptyIcon.png')}}" class="ui-listItem__selectIcon" catchtap="onChoseTap" data-type="1" data-index="{{index}}" />
                         <view class="ui-goodsBox">
                             <image src="{{filter.getPhoto(host, item.goodsImg)}}" class="ui-listItem__goodsIcon" />
                         </view>

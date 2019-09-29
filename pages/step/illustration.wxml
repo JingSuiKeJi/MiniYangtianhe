@@ -3,6 +3,8 @@
 <view class="ui-main">
     <view class="ui-content" >
         <view class="ui-content_title">Q：{{rules.title}}</view>
-        <view class="ui-content_answer"><text >A：</text>{{rules.content}}</view>
+        <view class="ui-content_answer"><text >A：</text>
+         <web-view src="http://120.79.36.152/share/html/protocol/index_frame.html?type=cutRule&id=cutRule" />
+        </view>
     </view>
 </view>
