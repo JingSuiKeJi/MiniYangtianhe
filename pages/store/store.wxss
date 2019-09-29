@@ -13,7 +13,8 @@ page {
 
 .main {
     width: 100%;
-    margin-bottom: 166rpx;
+    /*margin-bottom: 166rpx;*/
+    margin-bottom: 300rpx;
 }
 
 .ui-noticeBox {
