@@ -20,7 +20,8 @@ class Platfrom {
         _g.dm.canLoadMore = 1;
         return _g.ajax({
             url: mini.platfrom.getCommonData,
-            data: reqData
+            data: reqData,
+            showToast: false
         }, page);
     }
     getSecKill(page, reqData) {
@@ -125,7 +126,8 @@ class Platfrom {
         _g.dm.canLoadMore = 1;
         return _g.ajax({
             url: mini.platfrom.uploadStep,
-            data: reqData
+            data: reqData,
+            showToast: false
         }, page);
     }
     formId(page, reqData) {

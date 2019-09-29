@@ -103,6 +103,11 @@ const methods = {
     onStepTap: function() {
         let self = this;
         if (self.data.stepInfo.status == 1) {
+            wx.showLoading({
+                mask: true,
+                title: '正在上传步数',
+                success() {}
+            });
             self.wxLogin();
         } else {
             return false;
@@ -142,6 +147,11 @@ const methods = {
         let self = this;
         Platform.uploadStep(self, data).then((ret) => {
             self.getData();
+            wx.hideLoading();
+            _g.toast({
+                title: '上传步数成功',
+                duration: 3000
+            });
         }, (err) => {
 
         })

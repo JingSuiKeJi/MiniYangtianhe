@@ -497,6 +497,11 @@ const methods = {
     onStepTap: function () {
         let self = this;
         if (self.data.stepInfo.status == 1) {
+            wx.showLoading({
+                mask: true,
+                title: '正在上传步数',
+                success() {}
+            });
             self.wxLogin();
         } else {
             return false;
@@ -540,6 +545,11 @@ const methods = {
                 nowStep: self.data.stepInfo.todayStep
             });
             event.emit('refreshStep');
+            wx.hideLoading();
+            _g.toast({
+                title: '上传步数成功',
+                duration: 3000
+            });
             self.getCommonData();
         }, (err) => {
             _g.toast({
