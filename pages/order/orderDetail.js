@@ -310,6 +310,7 @@ const methods = {
 				title: '成功',
 			    icon: 'success',
 			})
+			self.redirectTo('交易关闭');
         }, (err) => {
         });
 	},
@@ -346,6 +347,17 @@ const methods = {
 			self: self,
 			url: 'pages/home/index'
 		});
+	},
+	redirectTo: function(orderStatus) {
+	    let self = this;
+	    _g.redirectTo({
+	        url: 'pages/order/orderDetail',
+	        param: {
+	            orderId: self.data.orderId,
+	            orderStatus: orderStatus,
+	            from: 'index'
+	        }
+	    }, self);
 	}
 }
 
