@@ -19,7 +19,8 @@
 					<text>*</text>
 				</view>
 				<textarea class="ui-introduceText" placeholder="请输入门店介绍信息"  value="{{introduce}}" bindinput="onIntroduceTap"
-				cols="686rpx" maxlength="1000" auto-height="{{auto_height}}" bindblur='areablur' bindfocus='areafocus'/>
+				cols="686rpx" maxlength="1000" auto-height="{{auto_height}}" bindblur='areablur' bindfocus='areafocus' 
+					disabled="{{status == 1 || status == 2}}"/>
 			</view>
 		</view>
 		
@@ -29,14 +30,18 @@
 					<text>门店编码</text>
 					<text>*</text>
 				</view>
-				<input class="ui-inputCommon" bindinput="onEncodingTap" type="text" value="{{encoding}}" placeholder="请输入门店编码" placeholder-style="color:#666666;"/>
+				<input class="ui-inputCommon" bindinput="onEncodingTap" type="text" value="{{encoding}}" 
+					placeholder="请输入门店编码" placeholder-style="color:#666666;"
+					disabled="{{status == 1 || status == 2}}"/>
 			</view>
 			<view class="ui-itemCommon">
 				<view class="ui-titleCommon">
 					<text>门店名称</text>
 					<text>*</text>
 				</view>
-				<input class="ui-inputCommon" bindinput="onStoreNameTap" type="text" value="{{storeName}}" placeholder="请输入名称" placeholder-style="color:#666666;"/>
+				<input class="ui-inputCommon" bindinput="onStoreNameTap" type="text" value="{{storeName}}" 
+					placeholder="请输入名称" placeholder-style="color:#666666;"
+					disabled="{{status == 1 || status == 2}}"/>
 			</view>
 			<view class="ui-itemCommon">
 				<view class="ui-titleCommon">
@@ -44,8 +49,6 @@
 					<text>*</text>
 				</view>
 				<view class="ui-addressText" catchtap="onMapTap">{{address || '请选择地址'}}</view>
-				<!-- <textarea class="ui-addressText" bindinput="onAddressTap" placeholder="请输入地址" placeholder-style="color:#666666;" value="{{address}}" bindinput="onAddressTap"
-				cols="686rpx" maxlength="110" auto-height="{{auto_height}}" bindblur='areablur' bindfocus='areafocus'/> -->
 			</view>
 			<view class="ui-itemCommon">
 				<view class="ui-titleCommon">
@@ -53,21 +56,26 @@
 					<text>*</text>
 				</view>
 				<textarea class="ui-addressText" bindinput="onAddressTap" placeholder="请输入详细地址" placeholder-style="color:#666666;" value="{{houseNumber}}" bindinput="onAddressTap"
-				cols="686rpx" maxlength="110" auto-height="{{auto_height}}" bindblur='areablur' bindfocus='areafocus'/>
+					cols="686rpx" maxlength="110" auto-height="{{auto_height}}" bindblur='areablur' bindfocus='areafocus'
+					disabled="{{status == 1 || status == 2}}"/>
 			</view>
 			<view class="ui-itemCommon">
 				<view class="ui-titleCommon">
 					<text>联系方式</text>
 					<text>*</text>
 				</view>
-				<input class="ui-inputCommon" bindinput="onStoreTelTap" type="number" value="{{storeTel}}" placeholder="请输入手机号码" placeholder-style="color:#666666;"/>
+				<input class="ui-inputCommon" bindinput="onStoreTelTap" type="number" value="{{storeTel}}" 
+					placeholder="请输入手机号码" placeholder-style="color:#666666;"
+					disabled="{{status == 1 || status == 2}}"/>
 			</view>
 			<view class="ui-itemCommon">
 				<view class="ui-titleCommon">
 					<text>营业执照</text>
 					<text>*</text>
 				</view>
-				<input class="ui-inputCommon" bindinput="onBusinessLicenseTap" type="text" value="{{businessLicense}}" placeholder="请输入门店营业执照号码" placeholder-style="color:#666666;"/>
+				<input class="ui-inputCommon" bindinput="onBusinessLicenseTap" type="text" value="{{businessLicense}}" 
+					placeholder="请输入门店营业执照号码" placeholder-style="color:#666666;"
+					disabled="{{status == 1 || status == 2}}"/>
 			</view>
 			<view class="ui-belongCompany" >
 				<picker bindchange="onPickerChange"  range="{{list}}" range-key="{{'companyName'}}" class="ui-pickerBox">

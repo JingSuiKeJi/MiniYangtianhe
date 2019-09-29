@@ -167,7 +167,7 @@
 				    <view class="ui-moreIcon"></view>
 				</button>
 			</form>
-			<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onStoreApplicationTap"  >
+			<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onStoreApplicationTap" wx:if="{{!userInfo.verifier}}">
 				<button formType="submit" class="ui-itemBox" >
 					<text>门店申请</text>
 				    <view class="ui-moreIcon"></view>

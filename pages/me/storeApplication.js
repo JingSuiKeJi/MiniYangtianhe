@@ -6,6 +6,7 @@ const _c = app.config;
 const _t = app.temps;
 const event = app.event;
 const User = require('../../service/User');
+const Store = require('../../service/Store');
 
 let data = {
     photo: '', //照片地址
@@ -28,7 +29,9 @@ let data = {
     address: '', //choose Location 返回的详细地址
     showAddress: '',//choose Location 返回的name
     houseNumber: '', //详细地址
-    company: '所属分公司'
+    company: '所属分公司',
+    status: 0,
+    id: 0
 };
 const onLoad = function(self) {
     self.getData();
@@ -59,6 +62,43 @@ const onUnload = function(self) {
     event.remove('me-storeApplication-authorize');
 }
 const methods = {
+    getDetail() {
+        const self = this;
+        Store.applyDetail(self, {
+            storeAuditId: self.data.storeAuditId
+        }).then((ret)=>{
+            if (!_.isEmpty(ret.data)) {
+                self.setData({
+                    address: ret.data.address,
+                    introduce: ret.data.description,
+                    encoding: ret.data.storeNo,
+                    storeName: ret.data.title,
+                    storeTel: ret.data.phone,
+                    businessLicense: ret.data.businessLicense,
+                    companyId: ret.data.companyId,
+                    lon: ret.data.lon,
+                    lat: ret.data.lat,
+                    provinceName: ret.data.proviceName,
+                    cityName: ret.data.cityName,
+                    areaName: ret.data.areaName,
+                    showAddress: ret.data.showAddress,
+                    houseNumber: ret.data.houseNumber,
+                    status: ret.data.status,
+                    photo: ret.data.imgUrls,
+                    id: ret.data.id
+                });
+                let companyItem = {};
+                companyItem = _.find(self.data.list, (item) => {
+                    return item.id == ret.data.companyId;
+                });
+                self.setData({
+                    company: companyItem.companyName
+                })
+
+            }
+            
+        })
+    },
     getData: function() {
         const self = this;
         User.getCompanyList(self, {
@@ -68,7 +108,8 @@ const methods = {
             let list = ret.data.list;
             self.setData({
                 list: list
-            })
+            });
+            self.getDetail();
         }, (err) => {
             console.log("获取失败");
         });
@@ -76,18 +117,12 @@ const methods = {
     //上传本地图片或拍照
     onChooseImageTap: function() {
         const self = this;
-        // wx.chooseImage({
-        // 	count: 1,
-        // 	sizeType: ['original', 'compressed'],
-        // 	sourceType: ['album', 'camera'],
-        // 	success (res) {
-        // 		// tempFilePath可以作为img标签的src属性显示图片
-        // 		const tempFilePaths = res.tempFilePaths
-        // 		self.setData({
-        // 			tempFilePaths:tempFilePaths
-        // 		})
-        // 	}
-        // })
+        if (self.data.status == 1 || self.data.status == 2) {
+            _g.toast({
+                title: self.data.status == 1 ? '门店信息审核中,无法修改' : '门店审核已通过,无法修改',
+            })
+            return
+        }
         _g.chooseImage({
             success: function(ret) {
                 _g.onUpload({
@@ -118,7 +153,6 @@ const methods = {
     //双向绑定门店介绍
     onIntroduceTap: function(e) {
         const self = this;
-        // const introduce = self.data.introduce;
         self.setData({
             introduce: e.detail.value
         })
@@ -205,6 +239,13 @@ const methods = {
         const self = this;
         const phoneReg = /^1[0-9]{10}$/;
 
+        if (self.data.status == 1 || self.data.status == 2) {
+            _g.toast({
+                title: self.data.status == 1 ? '门店信息审核中,无法修改' : '门店审核已通过,无法修改',
+            })
+            return
+        }
+
         if (!phoneReg.test(self.data.storeTel)) {
             _g.toast({
                 title: '请输入正确的手机号码'
@@ -229,23 +270,45 @@ const methods = {
             address: self.data.address,
             showAddress: self.data.showAddress,
         };
-        
-        User.apply(self, data).then((ret) => {
-            _g.showModal({
-                content: '提交成功',
-                confirm() {
-                    _g.navigateBack();
-                }
+
+        if (!self.data.id) {
+            User.apply(self, data).then((ret) => {
+                _g.showModal({
+                    content: '提交成功',
+                    confirm() {
+                        _g.navigateBack();
+                    }
+                });
+            }, (err) => {
+                _g.showModal({
+                    content: '提交失败,请重试!',
+                });
             });
-        }, (err) => {
-            _g.showModal({
-                content: '提交失败,请重试!',
+        } else {
+            data.id = self.data.id;
+            Store.updateApply(self, data).then((ret) => {
+                _g.showModal({
+                    content: '提交成功',
+                    confirm() {
+                        _g.navigateBack();
+                    }
+                });
+            }, (err) => {
+                _g.showModal({
+                    content: '提交失败,请重试!',
+                });
             });
-        });
+        }
     },
     // 微信 获取 经纬度:
     onMapTap() {
         const self = this;
+        if (self.data.status == 1 || self.data.status == 2) {
+            _g.toast({
+                title: self.data.status == 1 ? '门店信息审核中,无法修改' : '门店审核已通过,无法修改',
+            })
+            return
+        }
         _g.getAuthorize({
             type: 'scope.userLocation'
         }, (ret) => {
@@ -295,6 +358,12 @@ const methods = {
     },
     onPickerChange: function (e) {
         let self = this;
+        if (self.data.status == 1 || self.data.status == 2) {
+            _g.toast({
+                title: self.data.status == 1 ? '门店信息审核中,无法修改' : '门店审核已通过,无法修改',
+            })
+            return
+        }
         let index = e.detail.value
         this.setData({
             company: self.data.list[index].companyName,
