@@ -47,7 +47,7 @@ const onLoad = function(self) {
 
 // 页面onShow方法
 const onShow = function(self) {
-    self.getData();
+    // self.getData();
 };
 const onUnload = function(self) {
     event.remove('refreshCart');
