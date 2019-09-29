@@ -23,7 +23,7 @@
                             <view data-id="{{item.id}}" class="ui-commonCheck {{item.isDefault?'ui-check':'ui-noCheck'}}" catchtap="chooseMenu"></view>
                             <text class="ui-defaultText">默认地址</text>
                         </view>
-                        <view class="ui-common ui-compile" catchtap="onCompileTap">
+                        <view class="ui-common ui-compile" catchtap="onCompileTap" data-index="{{idx}}">
                             <view class="ui-compileIcon"></view>
                             <text>编辑</text>
                         </view>

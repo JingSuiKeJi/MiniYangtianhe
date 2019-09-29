@@ -29,6 +29,7 @@ const methods = {
 	getData: function() {
 		let self = this;
 		User.getPoster(self, {
+			type: 1
 		}).then((ret) => {
 			let poster = ret.data.poster;//海报地址
 			self.setData({
