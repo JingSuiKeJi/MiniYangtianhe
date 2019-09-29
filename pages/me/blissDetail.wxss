@@ -182,10 +182,6 @@
 	margin-top: 8rpx;
 }
 
-.ui-typeColor{
-	color: #666666 !important;
-}
-
 .ui-idColor{
 	color: #999999 !important;
 }

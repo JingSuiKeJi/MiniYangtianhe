@@ -30,10 +30,10 @@
 						</block>
                         <block wx:if="{{item.type==2}}">
                         	<text class="ui-presentedTextBox" wx:if="{{item.expenditureType==3}}">
-                        	    <text class="ui-typeColor">{{filter.getExpenditureType(item.expenditureType)}}</text>
+                        	    <text>{{filter.getExpenditureType(item.expenditureType)}}</text>
                         	    <text class="ui-idColor">ID:{{item.id}}</text>
                         	</text>
-                        	<text wx:else class="ui-typeColor">{{filter.getExpenditureType(item.expenditureType)}}</text>
+                        	<text wx:else>{{filter.getExpenditureType(item.expenditureType)}}</text>
                         </block>
                     </view>
                 </view>
