@@ -25,7 +25,6 @@ const data = {
 
 // 页面onLoad方法
 const onLoad = function(self) {
-    self.getData();
     self.getTabBar().setData({
         selected: 3
     });
