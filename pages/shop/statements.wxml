@@ -36,7 +36,7 @@
 			<text wx:else class="ui-historyDateDetail">{{reportList.startDate}}-{{reportList.endDate}}</text>
 			<view class="ui-historyOperation">
 				<view class="ui-historyOperationItem">
-					<text class="ui-itemTitle">实收营业额</text>
+					<text class="ui-itemTitle">订单总额</text>
 					<view>
 						<text>¥</text>
 						<text>{{reportList.totalShouldPayment}}</text>

@@ -39,8 +39,10 @@
     <view class="ui-storeAddressBox" wx:if="{{platformFlag == 2}}">
         <text class="ui-storeAddress__name">{{orderStoreVO.name}}</text>
         <text class="ui-storeAddress__addre">{{orderStoreVO.address}}</text>
-        <text class="ui-storeAddress__distance">距离{{orderStoreVO.distance}}km</text>
-        <image src="{{filter.getLocalPhoto('my_icMore.png')}}" class="ui-storeAddress__rightItem" mode="aspectFill"/>
+        <view class="ui-storeAddress__distanceBox">
+			<text class="ui-storeAddress__distance">距离{{orderStoreVO.distance}}km</text>
+			<image src="{{filter.getLocalPhoto('my_icMore.png')}}" class="ui-storeAddress__rightItem" mode="aspectFill"/>
+		</view>
     </view>
     <view class="ui-orderBox">
         <view class="ui-orderItem" wx:for="{{goodsVoList}}" wx:key="{{index}}">
@@ -51,7 +53,8 @@
             </view>
             <view class="ui-orderItem__info">
                 <view class="ui-infoItem__title">{{item.title}}</view>
-                <view class="ui-infoItem__scale">{{item.specificationName}}</view>
+                <!-- <view class="ui-infoItem__scale">{{item.specificationName}}</view> -->
+                <view class="ui-infoItem__scale"></view>
                 <view class="ui-infoItem__price">
                     <text class="ui-priceItem__price">￥{{item.price}}</text>
                     <text class="ui-priceItem__num">x{{item.num}}</text>

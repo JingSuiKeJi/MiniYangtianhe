@@ -87,6 +87,8 @@ page {
     margin-top: 10rpx;
 }
 .ui-addressItem__text {
+	margin-top:-115rpx;
+	margin-left:100rpx;
     width: 70%;
     font-size:30rpx;
     font-family:PingFangSC;
@@ -95,7 +97,6 @@ page {
     line-height:37rpx;
     display: inline-block;
     vertical-align: top;
-    margin-top: 65rpx;
 
 }
 .ui-addressItem__moreIcon {
@@ -184,13 +185,16 @@ page {
     vertical-align: top;
     margin-top: 35rpx;
 }
-.ui-storeAddress__addre {
+/* .ui-storeAddress__addre {
     width: 45%;
+} */
+.ui-storeAddress__distanceBox{
+	display: inline-block;
 }
+
 .ui-storeAddress__distance {
-    
     margin-left: 15rpx;
-    margin-top: 30rpx;
+    margin-top: 35rpx;
     font-size:20rpx;
     font-family:PingFangSC;
     font-weight:400;
@@ -198,7 +202,6 @@ page {
     line-height:20rpx;
     display: inline-block;
     vertical-align: top;
-    margin-top: 35rpx;
 }
 .ui-storeAddress__rightItem {
     width: 24rpx;
