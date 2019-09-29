@@ -122,6 +122,7 @@ const methods = {
 				platformFlag: self.data.platformFlag,
 			    preGodosReqs: self.data.preGodosReqs,
 			});
+			event.emit('preferentialPolicies');
 			_g.navigateBack();
 		}
 	}

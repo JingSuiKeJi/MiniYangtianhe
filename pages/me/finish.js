@@ -9,7 +9,9 @@ let data = {
      list: {}
 };
 const onLoad = function (self) {
-
+    self.setData({
+        list: self.data.list
+    })
 }
 const onShow = function (self) {
 
@@ -23,9 +25,10 @@ const methods = {
   },
   onSkipsTap: function (e) {
      let self = this;
-     _g.navigateTo({
-        url: 'pages/me/blissDetail',
-    },self)
+     _g.navigateBack(2);
+    //  _g.navigateTo({
+    //     url: 'pages/me/blissDetail',
+    // },self)
   }
 
 

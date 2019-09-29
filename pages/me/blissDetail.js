@@ -28,7 +28,9 @@ const onLoad = function(self) {
     self.getBase();
     self.getPageData();
 };
-const onShow = function(self) {};
+const onShow = function(self) {
+    self.getBase();
+};
 const onReady = function(self) {};
 const onUnload = function(self) {};
 const methods = {
