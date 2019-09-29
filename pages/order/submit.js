@@ -164,7 +164,8 @@ const methods = {
             deductionStatus: data.deductionStatus,
             couponId: data.couponId,
             couponPrice: data.couponPrice,
-            integralStatus: data.integralStatus
+            integralStatus: data.integralStatus,
+            deliveryFee: data.deliveryFee,
         }
         //显示积分开关
         if (data.integralStatus == 1) {

@@ -79,8 +79,8 @@ const methods = {
                 hotSearch: data.hotSearch,
                 banner: data.banner,
                 tapImgUrl: data.occasion.imgUrl,
-                activity: data.activity,
-                tabList: data.navigation,
+                activity: data.activity[0],
+                navigation: data.navigation,
                 notion: data.notion
             })
             self.showClassify(data.navigation);
@@ -183,18 +183,15 @@ const methods = {
         });
     },
     onTabTap: function (e) {
-        const self = this;
-        const opts = e.currentTarget.dataset;
+        let self = this;
+        let opts = e.currentTarget.dataset;
         if (opts.isLink == 2) return;
-        self.data.tabList.forEach(element => {
-            if (opts.id == element.id) {
-                _g.navigateTo({
-                    url: 'pages'+element.pageUrl,
-                    param: {
-                        platformFlag: 1
-                    }
-                }, self);
+        _.each(self.data.navigation, (item) => {
+             if (item.id == opts.id) {
+                self.onPageTap(item);
+                return;
             }
+           
         });
     },
     onDetailTap: function (e) {
@@ -239,10 +236,11 @@ const methods = {
         }, self);
     },
     onCheckBanner: function (e) {
-        const self = this;
-        let index = e.target.dataset.index;
-        if (e.target.dataset.isLink == 2) return;
-        self.map(self.data.banner, index);
+        let self = this;
+        let opts = e.currentTarget.dataset;
+        let index = opts.index;
+        if (opts.isLink == 2) return;
+        self.onPageTap(self.data.banner[index]);
     },
     map: function (arr, index) {
         let self = this;
@@ -274,7 +272,7 @@ const methods = {
     onCheckActivity: function (e) {
         const self = this;
         if (e.currentTarget.dataset.isLink == 2) return;
-        self.map(self.data.activity, 0);
+        self.onPageTap(self.data.activity);
     },
     //限时抢购
     timeFormat: function (startTime, endTime) {
@@ -407,6 +405,56 @@ const methods = {
             self.setData({
                 isFixed: false,
             })
+        }
+    },
+    onPageTap: function (data) {
+        let self = this;
+        let param = {
+            platformFlag: 1
+        };
+        switch (data.linkType) {
+            case 1:
+                _g.navigateTo({
+                    url: 'pages/goods/detail',
+                }, self);
+                break;
+            case 2:
+                //搜索结果
+                param.brandId = data.otherId;
+                _g.navigateTo({
+                    url: 'pages/search/detailList',
+                    param: param
+                }, self);
+                break;
+            case 3:
+                //拼团首页
+                _g.navigateTo({
+                    url: 'pages/goods/groupList',
+                    param: param
+                }, self);
+                break;
+            case 4:
+                //砍价页面
+                _g.navigateTo({
+                    url: 'pages/goods/bargainList',
+                    param: param
+                }, self);
+                break;
+            case 5:
+                //权益卡首页
+                _g.navigateTo({
+                    url: 'pages/card/card',
+                    param: param
+                }, self);
+                break; 
+            case 6:
+                //全部分类
+                _g.navigateTo({
+                    url: 'pages/search/classify'
+                }, self);
+                break;                
+            default:
+                break;
         }
     }
 

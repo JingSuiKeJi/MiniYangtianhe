@@ -103,6 +103,7 @@ page {
     color: #fff;
     line-height: 30rpx;
     margin-top: 20rpx;
+    margin-left: 16rpx;
 }
 
 .ui-infoItem_right {
