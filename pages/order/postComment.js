@@ -47,13 +47,16 @@ const methods = {
 	},
     commentOrder: function (e) {
 		let self = this;
-		Order.commentOrder(self, {
+		let param = {
 			orderId: self.data.orderId,
 			goodsId: self.data.goodsId,
-			imgUrls: self.data.tempFilePaths.join(','),
 			type: self.data.type,
 			content: self.data.write,
-        }).then((ret) => {
+		}
+		if (self.data.tempFilePaths.length) {
+			param.imgUrls = self.data.tempFilePaths.join(',');
+		}
+		Order.commentOrder(self, param).then((ret) => {
 			wx.showToast({
 				mask:true,
 				title: '发布成功',
@@ -146,24 +149,22 @@ const methods = {
 			success:function(){
 				setTimeout(function(){
 					self.commentOrder();
-					// wx.showToast({
-					// 	mask:true,
-					// 	title: '发布成功',
-					// 	icon: 'success',
-					// 	duration: 1000,
-					// 	success:function(){
-					// 		setTimeout(function () {
-					// 			//延时跳转到评价成功
-					// 			const orderStatus = '评价成功';
-					// 			_g.navigateTo({
-					// 				param:{
-					// 			    	orderStatus:orderStatus
-					// 			    },
-					// 				url: 'pages/order/orderDetail',
-					// 			}, self);
-					// 		}, 400) //延迟时间
-					// 	}
-					// })
+					wx.showToast({
+						mask:true,
+						title: '发布成功',
+						icon: 'success',
+						duration: 1000,
+						success:function(){
+							setTimeout(function () {
+								_g.navigateTo({
+									param:{
+										 orderId: self.data.orderId,
+								    },
+									url: 'pages/order/orderDetail',
+								}, self);
+							}, 400) //延迟时间
+						}
+					})
 				},1000)
 			}
 		})

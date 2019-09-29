@@ -76,7 +76,7 @@ const onReady = function (self) {
 
 // 页面onShow方法
 const onShow = function (self) {
-    // self.getData();
+    self.getData();
 };
 
 const onUnload = function (self) {
@@ -591,17 +591,20 @@ const methods = {
     onPageTap: function (data) {
         let self = this;
         let param = {
-            platformFlag: 1
+            platformFlag: 2
         };
         switch (data.linkType) {
             case 1:
                 _g.navigateTo({
                     url: 'pages/goods/detail',
+                    param: {
+                        id:data.otherId 
+                    }
                 }, self);
                 break;
             case 2:
                 //搜索结果
-                param.brandId = data.otherId;
+                param.classifyId = data.otherId;
                 _g.navigateTo({
                     url: 'pages/search/detailList',
                     param: param
@@ -637,6 +640,15 @@ const methods = {
             default:
                 break;
         }
+    },
+    onNoticTap: function (e) {
+        let self = this;
+        _g.navigateTo({
+            url: 'pages/home/notice',
+            param: {
+                id: e.currentTarget.dataset.id
+            }
+        }, self);
     }
 
 };

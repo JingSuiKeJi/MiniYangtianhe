@@ -67,7 +67,8 @@
     "pages/card/rightsCard",
     "pages/card/detail",
     "pages/me/donate",
-    "pages/me/finish"
+    "pages/me/finish",
+    "pages/home/notice"
   ],
   "tabBar": {
     "custom": true,

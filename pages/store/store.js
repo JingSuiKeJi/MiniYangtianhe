@@ -419,11 +419,14 @@ const methods = {
             case 1:
                 _g.navigateTo({
                     url: 'pages/goods/detail',
+                    param: {
+                        id:data.otherId 
+                    }
                 }, self);
                 break;
             case 2:
                 //搜索结果
-                param.brandId = data.otherId;
+                param.classifyId = data.otherId;
                 _g.navigateTo({
                     url: 'pages/search/detailList',
                     param: param
