@@ -178,8 +178,8 @@
                                 <view class="ui-centerItem_price">
                                     ¥{{goodsDetail.nowPrice}}
                                 </view>
-                                <view class="ui-centerItem_scale" wx:if="{{type ==1 || type == 3 || type == 4 ||type == 7}}"> {{scale}}</view>
-                                <view class="ui-centerItem_scale" wx:if="{{type == 5}}"> 250g x 10包</view>
+                                <!-- <view class="ui-centerItem_scale" wx:if="{{type ==1 || type == 3 || type == 4 ||type == 7}}"> {{scale}}</view>
+                                <view class="ui-centerItem_scale" wx:if="{{type == 5}}"> 250g x 10包</view> -->
                             </view>
                             <view class="ui-modelTop_cancel" bindtap="onCancelTap">
                                 <image src="{{filter.getLocalPhoto('choseScale_delectIcon.png')}}" mode="aspectFill" class="ui-cancel_delectIcon" />
