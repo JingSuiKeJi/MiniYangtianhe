@@ -31,7 +31,11 @@ const onLoad = function(self) {
     self.setData({
         userInfo: _g.getLS(_c.LSKeys.userInfo)
     })
-    self.getData();
+    if (_g.checkLogin({
+        type: 1
+    })) {
+        self.getData();
+    }
     event.on('refreshCart', self, () => {
         self.getData();
     });
@@ -46,7 +50,11 @@ const onLoad = function(self) {
 
 // 页面onShow方法
 const onShow = function(self) {
-    // self.getData();
+    if (_g.checkLogin({
+        type: 1
+    })) {
+        self.getData();
+    }
 };
 const onUnload = function(self) {
     event.remove('refreshCart');
@@ -71,6 +79,7 @@ const methods = {
                 param.medecineList = [];
             }
             self.setData(param);
+			console.log(123456,self.data.medecineList,self.data.storeList);
         }, (err) => {
 
         });
