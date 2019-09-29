@@ -355,8 +355,9 @@ const methods = {
     },
     onTabTap: function (e) {
         let self = this;
-        let id = e.target.dataset.id;
-        if (e.target.dataset.isLink == 2) return;
+        let opts = e.currentTarget.dataset;
+        let index = e.currentTarget.dataset.index;
+        if (opts.isLink == 2) return;
         self.data.tabList.forEach(element => {
             if (id == element.id) {
                 _g.navigateTo({
@@ -431,9 +432,9 @@ const methods = {
     },
     onGoTap: function (e) {
         let self = this;
-        let index = e.target.dataset.index;
+        let index = e.currentTarget.dataset.index;
         if (e.target.dataset.isLink == 2) return;
-        self.map(self.data.banner, index);
+        self.onPageTap(self.data.banner[index]);
     },
     onCheckActivity: function (e) {
         let self = this;
@@ -586,34 +587,52 @@ const methods = {
             });
         }
     },
-    onGoTap: function (data) {
+    onPageTap: function (data) {
         let self = this;
-        switch (data.type) {
+        let param = {
+            platformFlag: 1
+        };
+        switch (data.linkType) {
             case 1:
                 _g.navigateTo({
-                    url: 'pages/goods/detail'
+                    url: 'pages/goods/detail',
                 }, self);
                 break;
             case 2:
+                //搜索结果
+                param.brandId = data.otherId;
                 _g.navigateTo({
-                    url: 'pages/search/classify'
+                    url: 'pages/search/detailList',
+                    param: param
                 }, self);
                 break;
             case 3:
+                //拼团首页
                 _g.navigateTo({
-                    url: 'pages/home/map'
+                    url: 'pages/goods/groupList',
+                    param: param
                 }, self);
                 break;
             case 4:
+                //砍价页面
                 _g.navigateTo({
-                    url: 'pages/home/map'
+                    url: 'pages/goods/bargainList',
+                    param: param
                 }, self);
                 break;
             case 5:
+                //权益卡首页
                 _g.navigateTo({
-                    url: 'pages/home/map'
+                    url: 'pages/card/card',
+                    param: param
                 }, self);
-                break;             
+                break; 
+            case 6:
+                //全部分类
+                _g.navigateTo({
+                    url: 'pages/search/classify'
+                }, self);
+                break;                
             default:
                 break;
         }

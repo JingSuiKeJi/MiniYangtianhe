@@ -163,11 +163,13 @@ const methods = {
             pointsPrice: data.pointsPrice,
             deductionStatus: data.deductionStatus,
             couponId: data.couponId,
-            couponPrice: data.couponPrice
+            couponPrice: data.couponPrice,
+            integralStatus: data.integralStatus
         }
-        if (data.points) {
+        //显示积分开关
+        if (data.integralStatus == 1) {
             option.pointsFlag = true;
-        }else {
+        }else if(data.integralStatus == 2) {
             option.pointsFlag = false;
         }
         self.setData(option);
