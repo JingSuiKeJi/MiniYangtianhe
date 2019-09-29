@@ -227,4 +227,5 @@ page{
 	line-height:48rpx;
 	text-align: center;
 	background-color: #CCCCCC;
+	border-radius:25rpx;  
 }

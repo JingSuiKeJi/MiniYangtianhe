@@ -22,14 +22,14 @@
                         <text>{{filter.getDateOrTime(item.createTime,3)}}</text>
                         <text>{{item.type==1?'+':'-'}}{{item.points}}</text>
 						<block wx:if="{{item.type==1}}">
-							<text class="ui-presentedTextBox" wx:if="{{item.id}}">
+							<text class="ui-presentedTextBox" wx:if="{{item.incomeType==2}}">
 							    <text style="color: {{item.type==1?'#666666':''}};">{{filter.getIncomeType(item.incomeType)}}</text>
 							    <text>{{item.id}}</text>
 							</text>
 							<text wx:else style="color: {{item.type==1?'#666666':''}};">{{filter.getIncomeType(item.incomeType)}}</text>
 						</block>
                         <block wx:if="{{item.type==2}}">
-                        	<text class="ui-presentedTextBox" wx:if="{{item.id}}">
+                        	<text class="ui-presentedTextBox" wx:if="{{item.expenditureType==3}}">
                         	    <text style="color: {{item.type==1?'#666666':''}};">{{filter.getExpenditureType(item.expenditureType)}}</text>
                         	    <text>{{item.id}}</text>
                         	</text>
