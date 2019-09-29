@@ -161,13 +161,13 @@
 					</view>
 				</view>
 			</view>
-			<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onRevenueTap" hidden="{{userInfo.verifier==null||userInfo.verifier==''}}">
+			<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onRevenueTap" hidden="{{!userInfo.distribution}}">
 				<button formType="submit" class="ui-itemBox">
 					<text>收益中心</text>
 				    <view class="ui-moreIcon"></view>
 				</button>
 			</form>
-			<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onStoreApplicationTap"  hidden="{{userInfo.distribution.length==0||userInfo.distribution==null}}">
+			<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onStoreApplicationTap"  >
 				<button formType="submit" class="ui-itemBox" >
 					<text>门店申请</text>
 				    <view class="ui-moreIcon"></view>
