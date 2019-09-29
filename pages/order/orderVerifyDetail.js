@@ -47,15 +47,14 @@ const methods = {
 	//手动核销
 	onManualVerifyTap:function(){
 		const self = this;
-		const orderId = orderId;
+		// console.log(self.data.orderDetail.verificationCode)
 		_g.showModal({
 			title: '核销订单',
 			content: '确定手动核销订单？',
 			showCancel: true,
 			confirm() {
 				User.verification(self, {
-				    orderId: orderId,
-					verificationCode:self.data.orderDetail.verificationCode,
+					virifyCode:self.data.orderDetail.verificationCode,
 				}).then((ret) => {
 					self.getData();
 				

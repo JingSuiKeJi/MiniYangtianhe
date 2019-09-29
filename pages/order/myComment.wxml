@@ -9,7 +9,7 @@
 				<text>{{filter.getDay(item.createTime)}}</text>
 			</view>
 			<text class="ui-commentText">{{item.content}}</text>
-			<view class="ui-commentImgBox" wx:if="{{item.imgUrls}}">
+			<view class="ui-commentImgBox" wx:if="{{!(item.imgUrls==0) }}">
 				<view class="ui-itemImg" wx:for="{{filter.split(item.imgUrls)}}" wx:for-index="idx" wx:key="idx" wx:for-item="imgItem">
 					<image src="{{imgItem}}" mode="aspectFill"></image>
 				</view>
