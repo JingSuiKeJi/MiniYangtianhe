@@ -76,7 +76,7 @@ const onReady = function (self) {
 
 // 页面onShow方法
 const onShow = function (self) {
-    self.getData();
+    // self.getData();
 };
 
 const onUnload = function (self) {
@@ -474,9 +474,15 @@ const methods = {
         }).then((ret) => {
             let data = ret.data;
             if (ret.data.list && ret.data.list.length) {
-                self.setData({
-                   list: self.data.list.concat(data.list),
-                })
+                if (self.data.page == 1) {
+                    self.setData({
+                       list: data.list,
+                    })
+                } else {
+                    self.setData({
+                       list: self.data.list.concat(data.list),
+                    })
+                }
             }
             
         }, (err) => {
