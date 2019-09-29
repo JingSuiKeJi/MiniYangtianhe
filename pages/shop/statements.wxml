@@ -89,7 +89,7 @@
 								<text>抵扣福气数</text>
 								<text>{{item.deductionPoints}}</text>
 							</view>
-							<view class="ui-detailListInfoItem" wx:if="{{!item.orderNum}}">
+							<view class="ui-detailListInfoItem" wx:if="{{item.orderNum>0}}">
 								<text>订单数</text>
 								<text>{{item.orderNum}}</text>
 							</view>
