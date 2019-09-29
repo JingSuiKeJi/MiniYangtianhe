@@ -19,19 +19,19 @@
 			</view>
 			<view class="ui-orderStatus" wx:if="{{status=='WAIT_CHECK'}}">
 				<!-- <view class="ui-verificCodeIcon"></view> -->
-				<image src="{{filter.getPhoto(host,verificationCodeUrl)}}" mode="aspectFit" class="ui-verificCodeIcon"/>
+				<view class="ui-verificCodeIcon"><image src="{{filter.getPhoto(host,verificationCodeUrl)}}" mode="aspectFit"/></view>
 				<view class="btn-waitVerific">核销码</view>
 				<view class="btn-waitVerific">{{verificationCode}}</view>
 			</view>
 			<view class="ui-orderStatus" wx:if="{{status=='CHECKED'}}">
-				<view class="ui-verificCodeIcon"></view>
+				<view class="ui-verificCodeIcon"><image src="{{filter.getPhoto(host,verificationCodeUrl)}}" mode="aspectFit"></image></view>
 				<view class="btn-alreadyVerific"><text>已核销</text></view>
 			</view>
 			<view class="ui-orderStatus" wx:if="{{status=='TRADE_FINISH' || status=='TRADE_FINISH' || status=='TRADE_BUYER_SIGNED'}}">
 				<view class="ui-StatusIcon ui-tradeSuccessfully"></view>
 				<text class="ui-StatusText">交易成功</text>
 			</view>
-			<view class="ui-orderStatus" wx:if="{{status=='CHECKED' }}">
+			<view class="ui-orderStatus" wx:if="{{status=='CUSTOMER_CANCEL' }}">
 				<view class="ui-StatusIcon ui-closeDeal"></view>
 				<text class="ui-StatusText">交易关闭</text>
 			</view>
@@ -134,7 +134,7 @@
 				<view class="btn-common btn-green" catchtap="onConfirmTap"><text>确认收货</text></view>
 			</block>
 			<block wx:if="{{status=='WAIT_SELLER_SEND_GOODS'}}">
-				<view class="btn-common btn-grey" bindtap="onCancelTap"><text>取消订单</text></view>
+				<!-- <view class="btn-common btn-grey" bindtap="onCancelTap"><text>取消订单</text></view> -->
 				<view class="btn-common btn-grey btn-greyRight"><text>提醒发货</text></view>
 			</block>
 			<block wx:if="{{status=='TRADE_BUYER_SIGNED'}}">
