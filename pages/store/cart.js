@@ -25,6 +25,7 @@ const data = {
 
 // 页面onLoad方法
 const onLoad = function(self) {
+    self.getData();
     self.getTabBar().setData({
         selected: 3
     });
@@ -41,6 +42,7 @@ const onLoad = function(self) {
         });
         self.getData();
     });
+   
 };
 
 // 页面onShow方法
@@ -56,10 +58,19 @@ const methods = {
         const self = this;
         // if (!self.userInfo) return;
         Goods.cartList(self, {}).then((ret) => {
-            self.setData({
-            	storeList: ret.data.mallShopCartList,
-            	medecineList: ret.data.storeShopCartList
-            })
+            let data = ret.data;
+            let param = {};
+            if (data.mallShopCartList) {
+                param.storeList = data.mallShopCartList;
+            }else{
+                param.storeList = [];
+            }
+            if (data.storeShopCartList) {
+                param.medecineList = data.storeShopCartList;
+            }else{
+                param.medecineList = [];
+            }
+            self.setData(param);
         }, (err) => {
 
         });
@@ -153,13 +164,15 @@ const methods = {
         let self = this;
         if (e.target.dataset.type == 1) {
             self.setData({
-                medicineFlag: !self.data.medicineFlag
+                medicineFlag: !self.data.medicineFlag,
+                allSelect: !self.data.medicineFlag
             })
             self.selectTap('medicineFlag', 'medecineList');
             self.getMonney('medecineList', 1);
         } else {
             self.setData({
-                storeFlag: !self.data.storeFlag
+                storeFlag: !self.data.storeFlag,
+                allSelect: !self.data.storeFlag
             })
             self.selectTap('storeFlag', 'storeList');
             self.getMonney('storeList', 2);
@@ -188,6 +201,7 @@ const methods = {
     selectTap: function(flag, arr) {
         let self = this;
         let list = self.data[arr];
+        if (!list.length) return;
         for (let index = 0; index < list.length; index++) {
             list[index].isSelect = self.data[flag];
         }
@@ -213,6 +227,7 @@ const methods = {
         let mediTotal = 0;
         let storeTotal = 0;
         let list = self.data[arr];
+        if (!list.length) return;
         if (type == 1) {
             for (let index = 0; index < list.length; index++) {
                 if (list[index].isSelect) {
@@ -452,6 +467,7 @@ const methods = {
         let self = this;
         let aimArr = self.data[arr];
         let idsArr = [];
+        if (!aimArr.length) return;
         aimArr.forEach((item) => {
             if (item.isSelect) {
                 idsArr.push(item.id)
