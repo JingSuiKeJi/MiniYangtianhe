@@ -30,7 +30,7 @@ config.prototype = {
         // test: 'http://192.168.199.108:9537',
         // test: 'http://123.207.33.101:10008', // 测试
         test: 'http://120.79.36.152:10008', // 测试
-        pro: '', // 生产
+        pro: 'https://app.yth-yx.com', // 生产
         dev: 'http://localhost:9528', // 开发
     },
 
