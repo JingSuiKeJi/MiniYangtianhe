@@ -5,12 +5,12 @@
 	<view class="ui-main">
 		<view class="ui-common ui-name">
 			<text>姓名</text>
-			<input type="text" placeholder="输入收货人姓名" value="{{addressList.receiverName?addressList.receiverName:name}}" bindinput="onNameTap"/>
+			<input type="text" placeholder="输入收货人姓名" value="{{name}}" bindinput="onNameTap"/>
 		</view>
 		
 		<view class="ui-common ui-tel">
 			<text>手机号码</text>
-			<input type="number" placeholder="输入手机号码" value="{{addressList.receiverPhone?addressList.receiverPhone:tel}}" bindinput="onTelTap"/>
+			<input type="number" placeholder="输入手机号码" value="{{tel}}" bindinput="onTelTap"/>
 		</view>
 		
 		<!-- <picker mode="multiSelector" range="{{showRegion}}" bindcolumnchange="columnChange" value="{{[provinceIndex, cityIndex, areaIndex]}}" bindcancel="onCancelPickerTap" bindchange="onConfirmPickerTap"> -->
@@ -25,11 +25,11 @@
 		<!-- </picker> -->
 		<view class="ui-common ui-area" catchtap="onMapTap">
 			<text class="is-area">地址</text>
-			<view class="ui-areaPicker__text">{{addressList.address?addressList.address:showAddress}}</view>
+			<view class="ui-areaPicker__text">{{address}}</view>
 		</view>
 		<view class="ui-common ui-addressDetail">
 			<text class="is-address__detail">门牌号</text>
-			<textarea class="ui-addressDetailText" placeholder="街道、楼牌号等详细地址" value="{{addressList.houseNumber?addressList.houseNumber:houseNumber}}" bindinput="onAddressDetailTap"/>
+			<textarea class="ui-addressDetailText" placeholder="街道、楼牌号等详细地址" value="{{houseNumber}}" bindinput="onAddressDetailTap"/>
 		</view>
 		
 	</view>

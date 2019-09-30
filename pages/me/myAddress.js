@@ -113,7 +113,8 @@ const methods = {
 		_g.navigateTo({
 			param:{
 				title:'编辑',
-				addressList:self.data.addressList[index]
+				addressList:self.data.addressList[index],
+				change:true,
 			},
 			url: 'pages/me/addAddress',
 		}, self);

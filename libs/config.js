@@ -91,6 +91,7 @@ config.prototype = {
             getLeyouList: '/app/step/getLeyouList.do',
             getRecordList: '/app/step/getRecordList.do',
             getAddressAdd: '/app/address/add.do', 
+			update:'/app/address/update.do',
             getAddressList: '/app/address/list.do',
 			bindWX:'/app/user/bindWX.do',
 			sendCode:'/app/user/sendCode.do',
