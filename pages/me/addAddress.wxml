@@ -25,7 +25,7 @@
 		<!-- </picker> -->
 		<view class="ui-common ui-area" catchtap="onMapTap">
 			<text class="is-area">地址</text>
-			<view class="ui-areaPicker__text">{{address}}</view>
+			<view class="ui-areaPicker__text">{{addressDetail || '请选择地址'}}</view>
 		</view>
 		<view class="ui-common ui-addressDetail">
 			<text class="is-address__detail">门牌号</text>

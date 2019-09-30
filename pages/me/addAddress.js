@@ -16,7 +16,7 @@ let data = {
     addressDetail: '',
     houseNumber: '',
     selectLocation: {
-    	lon: 0,
+        lon: 0,
         lat: 0
     },
     provinceName: '',
@@ -39,64 +39,64 @@ let data = {
     // areaId: '',
     // areaName: '',
     title: '',
-	addressList:{},
+    addressList: {},
     authorizeHidden: true,
-	id:0,
-	change:false,
+    id: 0,
+    change: false,
 };
 const onLoad = function(self) {
-    const title = self.data.title;
-    const addressList = self.data.addressList;
-	const selectLocation = self.data.selectLocation;
-	const newLon = "selectLocation.lon";
-	const newLat = "selectLocation.lat";
-    self.setData({
-        title: title,
-		addressList:addressList,
-		name:addressList.receiverName,
-		tel:addressList.receiverPhone,
-		showAddress:addressList.showAddress,
-		houseNumber:addressList.houseNumber,
-		set:addressList.isDefault == 0 ? false : true,
-		id:addressList.id,
-		[newLon]:addressList.lon,
-		[newLat]:addressList.lat,
-		cityName:addressList.cityName,
-		areaName:addressList.areaName,
-		provinceName:addressList.provinceName,
-		address:addressList.address,
-		change:self.data.change,
-    });
-	// console.log(123456,addressList);
-
+    if (!_.isEmpty(self.data.addressList)) {
+        const title = self.data.title;
+        const addressList = self.data.addressList;
+        const selectLocation = self.data.selectLocation;
+        const newLon = "selectLocation.lon";
+        const newLat = "selectLocation.lat";
+        self.setData({
+            title: title,
+            addressList: addressList,
+            name: addressList.receiverName,
+            tel: addressList.receiverPhone,
+            showAddress: addressList.showAddress,
+            houseNumber: addressList.houseNumber,
+            set: addressList.isDefault == 0 ? false : true,
+            id: addressList.id,
+            [newLon]: addressList.lon,
+            [newLat]: addressList.lat,
+            cityName: addressList.cityName,
+            areaName: addressList.areaName,
+            provinceName: addressList.provinceName,
+            addressDetail: addressList.address,
+            change: self.data.change,
+        });
+    }
 }
 const onShow = function(self) {}
 
 const onReady = function(self) {
-	self.authorize = self.selectComponent('#authorize');
+    self.authorize = self.selectComponent('#authorize');
     self.authorize.onCancelTap = function() {
         self.setData({
             authorizeHidden: true
         });
-    	self.rejectAuthLocation();
+        self.rejectAuthLocation();
     }
     event.on('me-addAddress-authorize', self, function(e) {
-    	self.setData({
+        self.setData({
             authorizeHidden: true
         });
-    	if (e.detail.authSetting['scope.userLocation']) {
-    		//开启成功
-    		self.openMap();
-    	} else {
-    		//开启失败
-    		self.rejectAuthLocation();
-    	}
-        
+        if (e.detail.authSetting['scope.userLocation']) {
+            //开启成功
+            self.openMap();
+        } else {
+            //开启失败
+            self.rejectAuthLocation();
+        }
+
     });
 }
 
 const onUnload = function(self) {
-	event.remove('me-addAddress-authorize');
+    event.remove('me-addAddress-authorize');
 }
 
 const methods = {
@@ -114,7 +114,7 @@ const methods = {
         self.setData({
             name: e.detail.value
         })
-		console.log(e);
+        console.log(e);
     },
     //双向绑定手机
     onTelTap: function(e) {
@@ -201,135 +201,134 @@ const methods = {
             return
         }
         // 接口: 新增/编辑收货地址
-		if(self.data.change){
-			User.update(self, {
-				id:self.data.id,
-			    receiverName: self.data.name,
-			    receiverPhone: self.data.tel,
-			    lon: self.data.lon,
-			    lat: self.data.lat,
-			    address: self.data.address||self.data.addressDetail,
-			    houseNumber: self.data.houseNumber,
-			    showAddress: self.data.showAddress,
-			    isDefault: self.data.set == false ? 0 : 1,
-			    provinceName: self.data.provinceName,
-			    cityName: self.data.cityName,
-			    areaName: self.data.areaName,
-			}).then(function(ret) {
-				self.setData({
-					change:false
-				})
-				_g.toast({
-					title: '编辑收货地址成功',
-					mask: true,
-					success() {
-						_g.navigateBack();
-					}
-				});
-			});
-		}else{
-			User.getAddressAdd(self, {
-			    receiverName: self.data.name,
-			    receiverPhone: self.data.tel,
-			    lon: self.data.selectLocation.lon,
-			    lat: self.data.selectLocation.lat,
-			    address: self.data.addressDetail,
-			    houseNumber: self.data.houseNumber,
-			    showAddress: self.data.showAddress,
-			    isDefault: self.data.set == false ? 0 : 1,
-			    provinceName: self.data.provinceName,
-			    cityName: self.data.cityName,
-			    areaName: self.data.areaName,
-			}).then(function(ret) {
-				_g.toast({
-					title: '添加收货地址成功',
-					mask: true,
-					success() {
-						_g.navigateBack();
-					}
-				});
-			});
-		}
+        if (self.data.change) {
+            User.update(self, {
+                id: self.data.id,
+                receiverName: self.data.name,
+                receiverPhone: self.data.tel,
+                lon: self.data.lon,
+                lat: self.data.lat,
+                address: self.data.addressDetail,
+                houseNumber: self.data.houseNumber,
+                showAddress: self.data.showAddress,
+                isDefault: self.data.set == false ? 0 : 1,
+                provinceName: self.data.provinceName,
+                cityName: self.data.cityName,
+                areaName: self.data.areaName,
+            }).then(function(ret) {
+                self.setData({
+                    change: false
+                })
+                _g.toast({
+                    title: '编辑收货地址成功',
+                    mask: true,
+                    success() {
+                        _g.navigateBack();
+                    }
+                });
+            });
+        } else {
+            User.getAddressAdd(self, {
+                receiverName: self.data.name,
+                receiverPhone: self.data.tel,
+                lon: self.data.selectLocation.lon,
+                lat: self.data.selectLocation.lat,
+                address: self.data.addressDetail,
+                houseNumber: self.data.houseNumber,
+                showAddress: self.data.showAddress,
+                isDefault: self.data.set == false ? 0 : 1,
+                provinceName: self.data.provinceName,
+                cityName: self.data.cityName,
+                areaName: self.data.areaName,
+            }).then(function(ret) {
+                _g.toast({
+                    title: '添加收货地址成功',
+                    mask: true,
+                    success() {
+                        _g.navigateBack();
+                    }
+                });
+            });
+        }
     },
-	// getAddress(addId,addTitle){
-	// 	const self = this;
-	// 	User.getAddressAdd(self, {
-	// 		id:addId,
-	// 	    receiverName: self.data.name,
-	// 	    receiverPhone: self.data.tel,
-	// 	    lon: self.data.selectLocation.lon,
-	// 	    lat: self.data.selectLocation.lat,
-	// 	    address: self.data.addressDetail,
-	// 	    houseNumber: self.data.houseNumber,
-	// 	    showAddress: self.data.showAddress,
-	// 	    isDefault: self.data.set == false ? 0 : 1,
-	// 	    provinceName: self.data.provinceName,
-	// 	    cityName: self.data.cityName,
-	// 	    areaName: self.data.areaName,
-	// 	}).then(function(ret) {
-	// 		_g.toast({
-	// 			title: 0?'新增成功':'编辑成功',
-	// 			mask: true,
-	// 			success() {
-	// 				_g.navigateBack();
-	// 			}
-	// 		});
-	// 	});
-	// },
+    // getAddress(addId,addTitle){
+    //  const self = this;
+    //  User.getAddressAdd(self, {
+    //      id:addId,
+    //      receiverName: self.data.name,
+    //      receiverPhone: self.data.tel,
+    //      lon: self.data.selectLocation.lon,
+    //      lat: self.data.selectLocation.lat,
+    //      address: self.data.addressDetail,
+    //      houseNumber: self.data.houseNumber,
+    //      showAddress: self.data.showAddress,
+    //      isDefault: self.data.set == false ? 0 : 1,
+    //      provinceName: self.data.provinceName,
+    //      cityName: self.data.cityName,
+    //      areaName: self.data.areaName,
+    //  }).then(function(ret) {
+    //      _g.toast({
+    //          title: 0?'新增成功':'编辑成功',
+    //          mask: true,
+    //          success() {
+    //              _g.navigateBack();
+    //          }
+    //      });
+    //  });
+    // },
     // 微信 获取 经纬度:
     onMapTap() {
         const self = this;
         _g.getAuthorize({
             type: 'scope.userLocation'
         }, (ret) => {
-        	if (ret) {
-        		self.openMap();
-        	} else if (_.isUndefined(ret)) {
-        		self.openMap();
-        	} else {
-        		self.setData({
-		            authorizeHidden: false
-		        });
-        	}
+            if (ret) {
+                self.openMap();
+            } else if (_.isUndefined(ret)) {
+                self.openMap();
+            } else {
+                self.setData({
+                    authorizeHidden: false
+                });
+            }
         });
     },
     openMap() {
-    	const self = this;
-    	wx.chooseLocation({
+        const self = this;
+        wx.chooseLocation({
             success(ret) {
-            	console.log(ret)
                 self.setData({
-                	showAddress: ret.name,
-                	addressDetail: ret.address,
-                	selectLocation: {
-                		lon: ret.longitude,
-                		lat: ret.latitude
-                	}
+                    showAddress: ret.name,
+                    addressDetail: ret.address,
+                    selectLocation: {
+                        lon: ret.longitude,
+                        lat: ret.latitude
+                    }
                 });
-                _g.getLocationDetail(ret.longitude, ret.latitude).then((res)=>{
+                _g.getLocationDetail(ret.longitude, ret.latitude).then((res) => {
                     self.setData({
                         provinceName: res.province,
                         cityName: res.city,
                         areaName: res.district
                     })
-                },(err)=>{
+                }, (err) => {
 
                 })
                 // provinceName: '',
                 // cityName: '',
                 // areaName: '',
             },
-            fail (err) {
-            	// self.setData({
-		        //     authorizeHidden: false
-		        // });
+            fail(err) {
+                // self.setData({
+                //     authorizeHidden: false
+                // });
             }
         })
     },
     rejectAuthLocation() {
-    	_g.showModal({
-    		content: '请开启定位用于选择配送地址'
-    	});
+        _g.showModal({
+            content: '请开启定位用于选择配送地址'
+        });
     },
 }
 
