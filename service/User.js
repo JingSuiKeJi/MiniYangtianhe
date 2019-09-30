@@ -59,6 +59,13 @@ class User {
 	        data: reqData
 	    }, page);
 	}
+	update(page, reqData) {
+	    _g.dm.canLoadMore = 1;
+	    return _g.ajax({
+	        url: mini.user.update,
+	        data: reqData
+	    }, page);
+	}
 	bindWX(page, reqData) {
 	    _g.dm.canLoadMore = 1;
 	    return _g.ajax({
