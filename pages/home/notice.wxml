@@ -1,4 +1,6 @@
-<view class="ui-main">
-    <!-- <web-view src="{{'http://120.79.36.152/share/html/protocol/index_frame.html?type=article&id='+id}}" /> -->
-    <web-view src="http://120.79.36.152/share/html/protocol/index_frame.html?type=notice&id=6" />
+<view class="container">
+	<navBar title="{{title}}" background='white' color='black' iconTheme='black' back="{{true}}"></navBar>
+	<view class="ui-main">
+	    <web-view src="{{url}}"></web-view>
+	</view>
 </view>
