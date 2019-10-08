@@ -58,7 +58,8 @@ page{
 }
 .ui-tipBox {
     width: 100%;
-    text-align: center;
+    margin-left: 220rpx;
+    /* text-align: center; */
     position: relative;
 }
 .ui-tipBox .ui-tipItem__text {
@@ -87,6 +88,7 @@ page{
 
 }
 .ui-classItem_tips .ui-tipsItem__List {
+    display: flex;
     width: 100%;
     min-height: 90rpx;
     text-align: center;
@@ -96,14 +98,17 @@ page{
     color:#999999;
     white-space: normal;
     padding: 20rpx auto;
+    justify-content: center;
+    align-items: center;
 }
 .ui-contentBox {
+    margin-top: 40rpx;
     font-size: 0;
     text-align: center;
     display:inline-block;
     white-space: normal;
     margin-left: 20rpx;
-    margin-bottom: 40rpx;
+    /* margin-bottom: 40rpx; */
 
 }
 .ui-classItem_content {

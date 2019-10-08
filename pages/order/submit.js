@@ -182,6 +182,12 @@ const methods = {
         let self = this;
         let type = e.currentTarget.dataset.type;
         if (self.data.type == type) return;
+        if (!self.data.orderAddressVo ) {
+            _g.toast({
+                title: '请先选择地址'
+            })
+            return;
+        }
         switch (type) {
             case '3':
                 self.setData({

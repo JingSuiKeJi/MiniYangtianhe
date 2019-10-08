@@ -3,7 +3,7 @@
 <view class="container">
 	<navBar title='我的海报' background='white' color='black' iconTheme='black' back="{{true}}"></navBar>
 	<view class="ui-main">
-		<view class="ui-posterBox">
+		<!-- <view class="ui-posterBox">
 			<view class="ui-posterBackground">
 				<image src="{{filter.getPhoto(host,poster)}}" mode="aspectFill"></image>
 				<view class="ui-personalIcon"><image src="{{filter.getAvatar(host,avatar)}}" mode="aspectFill"></image></view>
@@ -14,21 +14,29 @@
 				<view class="ui-qrCode"></view>
 				<text class="ui-explainText">|长按识别小程序码|</text>
 			</view>
-		</view>
+		</view> -->
 		
-		<view class="ui-posterShare" bindtap="showDialogBtn">分享我的专属海报</view>
+		<!-- <view class="ui-posterShare" bindtap="showDialogBtn">分享我的专属海报</view> -->
 		
-		<!--弹窗-->
 		<view class="modal-mask" bindtap="hideModal" catchtouchmove="true" wx:if="{{showModal}}"></view>
 		<view class="modal-dialog" wx:if="{{showModal}}">
-			<view class="btn-friendsShare btn-common" bindtap="onFriendsShare">
+			<button open-type="share" class="btn-friendsShare btn-common" style="background-color: #fff;border: none;display: block;">
+                <image class="ui-wxImg" src="{{filter.getLocalPhoto('icon-wechat.png')}}"></image>
+                <text class="ui-wxText">分享好友</text>
+            </button>
+			<!-- <view class="btn-friendsShare btn-common" bindtap="onFriendsShare">
 				<view class="ui-wxImg"></view>
 				<text class="ui-wxText">分享好友</text>
-			</view>
+			</view> -->
 			<view class="btn-saveImage btn-common" bindtap="onSaveImage">
 				<view class="ui-saveImg"></view>
 				<text class="ui-saveText">保存图片</text>
 			</view>
 		</view>
-  </view>
+		<view class="ui-share__bd">
+			<canvas canvas-id="share" class="ui-share__canvas" ></canvas>
+			<image class="ui-share__image" src="{{canvasUrl}}" show-menu-by-longpress="true"></image>
+        </view>
+		<view class="ui-posterShare" bindtap="showDialogBtn">分享我的专属海报</view>
+	</view>
 </view>

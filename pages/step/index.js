@@ -28,7 +28,7 @@ const onLoad = function(self) {
 
 // 页面onShow方法
 const onShow = function(self) {
-
+    event.emit('refreshStep');
 };
 const onUnload = function(self) {
     event.remove('refreshStep');
@@ -102,17 +102,13 @@ const methods = {
     },
     onStepTap: function() {
         let self = this;
-        if (self.data.stepInfo.status == 1) {
-            wx.showLoading({
-                mask: true,
-                title: '正在上传步数',
-                success() {}
-            });
-            self.wxLogin();
-        } else {
-            return false;
-        }
-
+        if (self.data.stepInfo.status != 1) return;
+        wx.showLoading({
+            mask: true,
+            title: '正在上传步数',
+            success() {}
+        });
+        self.wxLogin();
     },
     wxLogin: function() {
         let self = this;
@@ -171,7 +167,7 @@ const methods = {
                 break;
             default:
                 self.setData({
-                    step: '领取积分'
+                    step: ''
                 });
                 break;
         }
@@ -180,7 +176,7 @@ const methods = {
         let self = this;
         User.getRecordList(self, {
             page: self.data.page,
-            pageSize: 10
+            pageSize: 15
         }).then((ret) => {
             let data = ret.data;
             if (data.list && data.list.length) {

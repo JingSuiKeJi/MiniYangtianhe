@@ -148,10 +148,14 @@ page{
 }
 
 .ui-wxImg{
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_posterShare.png');
+	/* background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_posterShare.png');
 	background-repeat: no-repeat;
 	background-position: center center;
-	background-size: cover;
+	background-size: cover; */
+	display: block;
+	width: 88rpx;
+	height: 88rpx;
+	margin: 0 auto 20rpx auto;
 }
 
 .ui-saveImg{
@@ -170,4 +174,26 @@ page{
 	line-height:26rpx;
 	text-align: center;
 	margin-top: 20rpx;
+}
+.ui-share__bd {
+	width: 542rpx;
+	height: 964rpx;
+	margin: auto;
+	margin-top: 32rpx;
+	position: relative;
+}
+.ui-share__canvas {
+	/* position: absolute;
+	top: 0;
+	left: 0; */
+	width: 542rpx;
+	height: 964rpx;
+	background-color: #fff;
+}
+.ui-share__image {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 542rpx;
+	height: 964rpx;
 }

@@ -166,7 +166,6 @@ Component({
                     self.setData({
                         shareCode: res
                     });
-                    console.log(4444,self.data.shareCode);
                     self.checkDownload();
                 });
                 
@@ -260,10 +259,9 @@ Component({
                 bgImg: self.data.bgThumb.path,
                 qrCode: '',
                 size: '',
-                shareCode: self.data.shareQR
+                shareCode: self.data.shareCode
             };
             const ctx = wx.createCanvasContext('share',self)
-
             ctx.setFillStyle('#ffffff')
             //画背景
             ctx.drawImage(poster.bgImg, 0, 0, calculate(poster.width), calculate(poster.height))
@@ -312,7 +310,7 @@ Component({
 
             //分享二维码
             // ctx.save()
-            ctx.drawImage(poster.shareCode.path, calculate(32), calculate(454), calculate(200), calculate(200))
+            ctx.drawImage(poster.shareCode.path, calculate(240), calculate(600), calculate(200), calculate(200))
             
             ctx.draw(true,(res)=>{
                 wx.canvasToTempFilePath({
