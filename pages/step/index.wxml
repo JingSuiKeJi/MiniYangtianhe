@@ -24,7 +24,7 @@
                 </view>
                 <view class="ui-stepTapBox_right">今日排名 ：{{stepInfo.rank}}</view>
                 <view class="ui-stepTapBox_aimStepBox">目标{{stepInfo.targetStep}}步</view>
-                <image src="{{filter.getLocalPhoto('step_questionIcon.png')}}" class="ui-stepTapBox__questionIcon" bindtap="onIllustrateTap"></image>
+                <image src="{{filter.getLocalPhoto('step_questionIcon.png')}}" class="ui-stepTapBox__questionIcon" bindtap="onIllustrateTap" mode="aspectFill"></image>
             </view>
             <view class="ui-stepContentBox">
                 <view class="ui-contenItem" bindtap="onIllustrationTap">

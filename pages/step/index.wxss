@@ -22,8 +22,9 @@ page {
 	position: relative;
 }
 .ui-stepTapBox {
+    display: flex;
+    justify-content: center;
     margin: 0 auto;
-    width: 90%;
     position: relative;
 }
 
@@ -35,6 +36,7 @@ page {
     border-radius:0px 38px 38px 0px;
     position: absolute;
     top: 36rpx;
+    left: 0;
 }
 .ui-stepTapBox_left .ui-leftItem_icon {
     width: 40rpx;
@@ -55,7 +57,6 @@ page {
     width: 322rpx;
     height: 286rpx;
     margin-top: 60rpx;
-    margin-left: 27%;
     display: inline-block;
     text-align: center;
     /* margin-left: 220rpx;
@@ -118,8 +119,8 @@ page {
     background:linear-gradient(137deg,rgba(1,206,165,1) 0%,rgba(94,221,218,1) 100%);
     border-radius:0 24rpx 0 24rpx;
     position: absolute;
-    top: 36rpx;
-    right: 30rpx;
+    top: 38rpx;
+    right: 32rpx;
 }
 .ui-stepTapBox_aimStepBox {
     width:184rpx;
@@ -134,8 +135,8 @@ page {
     background:linear-gradient(270deg,rgba(130,214,245,1) 0%,rgba(75,172,231,1) 100%);
     border-radius:0 24rpx 0 24rpx;
     position: absolute;
-    top: 100rpx;
-    right: 30rpx;
+    top: 104rpx;
+    right: 32rpx;
 }
 
 .ui-stepTapBox .ui-stepTapBox__questionIcon {
