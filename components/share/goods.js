@@ -136,14 +136,16 @@ Component({
         shareEvent: '',
         thirdId: '',
         userCutId: 0,
-        hideShareDialog: true
+        hideShareDialog: true,
+        shareCode: {}
     },
     methods: {
         checkDownload() {
             const self = this;
             if (!_.isEmpty(self.data.picThumb) &&
                 !_.isEmpty(self.data.bgThumb) &&
-                !_.isEmpty(self.data.avatarThumb)) {
+                !_.isEmpty(self.data.avatarThumb) &&
+                !_.isEmpty(self.data.shareCode)) {
                 self.drawPoster();
             }
         },
@@ -158,7 +160,16 @@ Component({
                 scene: sence,
                 page: 'pages/goods/detail'
             }).then((ret) => {
-
+                self.downloadImg({
+                    imgUrl: self.data.host +  ret.data.shareQR
+                }, (res) => {
+                    self.setData({
+                        shareCode: res
+                    });
+                    console.log(4444,self.data.shareCode);
+                    self.checkDownload();
+                });
+                
             }, (err) => {
 
             });
@@ -248,7 +259,8 @@ Component({
                 // picUrl:  self.data.host + self.data.goodsDetail.picUrl,
                 bgImg: self.data.bgThumb.path,
                 qrCode: '',
-                size: ''
+                size: '',
+                shareCode: self.data.shareQR
             };
             const ctx = wx.createCanvasContext('share',self)
 
@@ -298,7 +310,10 @@ Component({
             ctx.clip()
             ctx.drawImage(poster.avatar, calculate(22), calculate(44), calculate(60), calculate(60))
 
-
+            //分享二维码
+            // ctx.save()
+            ctx.drawImage(poster.shareCode.path, calculate(32), calculate(454), calculate(200), calculate(200))
+            
             ctx.draw(true,(res)=>{
                 wx.canvasToTempFilePath({
                     x: 0,
