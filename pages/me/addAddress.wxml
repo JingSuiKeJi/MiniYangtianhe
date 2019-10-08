@@ -39,7 +39,7 @@
 		<view type="text" class="ui-set {{set?'ui-setOpen':'ui-setOff'}}" catchtap="onSetTap"></view>
 	</view>
 	
-	<view class="btn-save cant" catchtap="onSaveTap" wx:if="{{!name||!tel||!showAddress||!houseNumber}}">保存</view>
+	<view class="btn-save cant" catchtap="onSaveTap" wx:if="{{!name||!tel||!addressDetail||!houseNumber}}">保存</view>
 	<view class="btn-save can" catchtap="onSaveTap" wx:else>保存</view>
 </view>
 <authorize 
