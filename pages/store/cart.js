@@ -50,6 +50,9 @@ const onLoad = function(self) {
 
 // 页面onShow方法
 const onShow = function(self) {
+    self.setData({
+        userInfo: _g.getLS(_c.LSKeys.userInfo)
+    })
     if (_g.checkLogin({
             type: 1
         })) {

@@ -101,5 +101,5 @@
 <!-- 没有登陆的情况 -->
 <view class="main ui-noBox" wx:if="{{!userInfo}}">
     <view class="ui-noLogin__text">亲，您还没登陆哦～</view>
-    <button class="ui-loginBtn" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">立即登陆</button>
+    <button class="ui-loginBtn" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">立即登</button>
 </view>

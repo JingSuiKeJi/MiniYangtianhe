@@ -593,15 +593,18 @@ const methods = {
     },
     onMapTap() {
         const self = this;
-        if (self.data.userInfo.storeInfo) {
-            _g.navigateTo({
-                url: 'pages/home/map'
-            }, self);
-        } else {
-            _g.toast({
-                title: '已绑定门店'
-            });
-        }
+        _g.navigateTo({
+            url: 'pages/home/map'
+        }, self);
+        // if (self.data.userInfo.storeInfo) {
+        //     _g.navigateTo({
+        //         url: 'pages/home/map'
+        //     }, self);
+        // } else {
+        //     _g.toast({
+        //         title: '已绑定门店'
+        //     });
+        // }
     },
     onPageTap: function (data) {
         let self = this;
@@ -649,7 +652,8 @@ const methods = {
             case 6:
                 //全部分类
                 _g.navigateTo({
-                    url: 'pages/search/classify'
+                    url: 'pages/search/classify',
+                    param: param
                 }, self);
                 break;                
             default:

@@ -40,6 +40,9 @@ const onShow = function(self) {
     if (_g.checkLogin({
             type: 1
         })) {
+        self.setData({
+            isLogin: true
+        });
         self.getMyInfo();
     }
 };

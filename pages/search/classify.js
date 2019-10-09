@@ -26,6 +26,16 @@ const onShow = function (self) {
 const onUnload = function (self) {
 
 }
+const onReady = function (self) {
+    const systemInfo = _g.getLS(_c.LSKeys.systemInfo);
+    const windowHeight = systemInfo.windowHeight;
+    const height = (750-170) * windowHeight / 750 ;
+    console.log(777,windowHeight,height,systemInfo)
+    self.setData({
+        height:  height
+    })
+
+}
 // 页面中的方法
 const methods = {
     getData: function () {
@@ -120,6 +130,7 @@ const initPage = _g.initPage({
     onLoad: onLoad,
     onShow: onShow,
     methods: methods,
-    onUnload: onUnload
+    onUnload: onUnload,
+    onReady: onReady
 });
 Page(initPage);

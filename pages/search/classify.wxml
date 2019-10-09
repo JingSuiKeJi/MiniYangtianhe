@@ -11,7 +11,7 @@
             <text class="ui-tipItem__text">{{title}}</text>
             <image src="{{filter.getLocalPhoto('classfity_rightIcon.png')}}" class="ui-tipItem__icon" data-type="1" />
         </view>
-        <view class="ui-classifyBox">
+        <view class="ui-classifyBox" style="height: {{height + 'px'}}">
             <scroll-view scroll-y class="ui-classItem_tips" wx:if="{{classifyList.length}}">
                 <view class="ui-tipsItem__List" wx:for="{{classifyList}}" wx:key="{{index}}" bindtap="onChoseTap" data-id="{{item.id}}" data-title="{{item.title}}" style="background-color: {{ id == item.id ? '#fff' : ''}}">
                     {{item.title}}
