@@ -12,7 +12,7 @@ const data = {
     lat: 23.131432,
     storeInfo: {},
     // markerList: [{
-    //     iconPath: '/images/step.png',
+    //     iconPath: '/images/mapIcon.png',
     //     id: 1,
     //     latitude: 23.131432,
     //     longitude: 113.403051,
@@ -63,8 +63,8 @@ const methods = {
             if (ret.data.list && ret.data.list.length) {
                 if (self.data.page == 1) {
                     self.setData({
-                        // lon: ret.data.list[0].lon,
-                        // lat: ret.data.list[0].lat,
+                        lon: ret.data.list[0].lon,
+                        lat: ret.data.list[0].lat,
                         storeList: ret.data.list
                     });
                 } else {
@@ -93,12 +93,13 @@ const methods = {
             markerList: _.map(self.data.storeList, (item, index) => {
                 item.latitude = item.lat;
                 item.longitude = item.lon;
+                item.iconPath = '/images/mapIcon.png';
+                item.id = index;
                 return item;
             })
-        })
+        });
     },
     onBubbleTap(e) {
-
     },
     bindupdated(e) {
 

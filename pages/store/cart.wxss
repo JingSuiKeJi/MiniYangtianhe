@@ -357,6 +357,7 @@ page {
 }
 
 .ui-noBox .ui-loginBtn {
+    display: flex;
     width: 206rpx;
     height: 72rpx;
     font-size: 30rpx;
@@ -370,4 +371,6 @@ page {
     position: absolute;
     top: 550rpx;
     left: 34%;
+    justify-content: center;
+    align-items: center;
 }

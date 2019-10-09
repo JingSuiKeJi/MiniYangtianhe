@@ -7,7 +7,7 @@
     	markers="{{markerList}}"
     	bindcallouttap="onBubbleTap"
     	bindupdated="bindupdated"
-    	bindregionchange="bindregionchange"
+		bindregionchange="bindregionchange"
     	subkey="YLTBZ-SPSRO-PPIWR-SKAML-PNQ72-CWBWC">
 	</map>
 	<scroll-view class="ui-list" lower-threshold="0" scroll-y="{{true}}" scroll-x="{{false}}">
