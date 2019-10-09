@@ -36,6 +36,9 @@ App({
                 self.base.setLS('bar2Bottom', bar2Bottom);
             }
         });
+        self.base.rmLS('posterThumb');
+        self.base.rmLS('avatarThumb');
+        self.base.rmLS('myPosterUrl');
     },
 	globalData: {
 		//状态栏高度

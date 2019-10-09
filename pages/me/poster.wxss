@@ -115,7 +115,7 @@ page{
 	background:rgba(0,0,0,1);
 	opacity: 0.5;
 	overflow: hidden;
-	z-index: 9000;
+	z-index: 100;
 	color: #fff;
 }
 
@@ -183,9 +183,11 @@ page{
 	position: relative;
 }
 .ui-share__canvas {
-	/* position: absolute;
+	 /*position: absolute;
 	top: 0;
 	left: 0; */
+	position: relative;
+	top: 9999px;
 	width: 542rpx;
 	height: 964rpx;
 	background-color: #fff;

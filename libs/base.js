@@ -107,6 +107,7 @@ base.prototype = {
             data: options.data || {},
             onLoad: function(options) {
                 var self = this;
+                wx.hideShareMenu();
                 if (self.route !== _c.pages.home.index) {
                     self.setData({
                         host: _g.getHost()
@@ -118,10 +119,15 @@ base.prototype = {
                     console.log(scene);
                     const sceneData = _g.getDataByUrl(scene);
                     console.log(sceneData);
-                    if(sceneData.promoCode) _g.setLS(_c.LSKeys.promoCode, sceneData.promoCode, _c.promoCodeExpireTime);
-                    if(sceneData.cutPriceId) {
+                    if(sceneData.p) {
+                        sceneData.promoCode = sceneData.p;
+                    }
+                    if(sceneData.promoCode) {
+                        _g.setLS(_c.LSKeys.promoCode, sceneData.promoCode, _c.promoCodeExpireTime)
+                    }
+                    if (sceneData.t) {
                         self.setData({
-                            cutPriceId: sceneData.cutPriceId
+                            thirdId: sceneData.t
                         });
                     }
                     if (sceneData.id) {
@@ -129,6 +135,16 @@ base.prototype = {
                             id: sceneData.id
                         });
                     }
+                    // if (sceneData.c) {
+                    //     self.setData({
+                    //         thirdId: sceneData.t
+                    //     });
+                    // }
+                    // if(sceneData.cutPriceId) {
+                    //     self.setData({
+                    //         cutPriceId: sceneData.cutPriceId
+                    //     });
+                    // }
                 }
                 // 原始方式/分享页面传递单数兼容
                 if (_g.j2s(options) != '{}') {
@@ -150,13 +166,13 @@ base.prototype = {
                 if (self.data.recallUserId) {
                     _g.setLS(_c.LSKeys.recallUserId, self.data.recallUserId, _c.promoCodeExpireTime);
                 }
-                if (self.route == 'pages/goods/cutDetail') {
-                    if (!_.isUndefined(options.cutPriceId)) {
-                        self.setData({
-                            cutPriceId: options.cutPriceId
-                        });
-                    }
-                }
+                // if (self.route == 'pages/goods/cutDetail') {
+                //     if (!_.isUndefined(options.cutPriceId)) {
+                //         self.setData({
+                //             cutPriceId: options.cutPriceId
+                //         });
+                //     }
+                // }
 
                 self.data.prePageUrl = _g.dm.prePageUrl || ''; // 前一个页面的url路径
                 self.data.openTimes = 0; // 页面打开次数 默认0
