@@ -29,7 +29,7 @@ const onUnload = function (self) {
 const onReady = function (self) {
     const systemInfo = _g.getLS(_c.LSKeys.systemInfo);
     const windowHeight = systemInfo.windowHeight;
-    const height = (750-170) * windowHeight / 750 ;
+    const height = (750-160) * windowHeight / 750 ;
     console.log(777,windowHeight,height,systemInfo)
     self.setData({
         height:  height
