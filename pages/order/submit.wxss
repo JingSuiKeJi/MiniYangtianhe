@@ -7,7 +7,7 @@ page {
 .ui-main {
     width: 100%;
     height: 100%;
-    
+    padding-bottom: 300rpx;
 }
 .ui-headerBox {
     width: 100%;
@@ -360,8 +360,13 @@ page {
     box-sizing: border-box;
     
 }
-.ui-ticketBox {
+/* .ui-ticketBox {
     margin-bottom: 124rpx;
+} */
+.ui-couponBox {
+    width: 100%;
+    background-color: #F5F5F5;
+    padding-bottom: 124rpx;
 }
 .ui-pointesItem {
     width: 100%;

@@ -1,6 +1,6 @@
 <view class="container">
+ <!-- <navBar title='{{title}}' background='white' color='black' iconTheme='black' back="{{true}}" class="ui-navBar"></navBar> -->
 	<view class="ui-main">
-       <navBar title='{{title}}' background='white' color='black' iconTheme='black' back="{{true}}"></navBar>
-	    <web-view src="{{url}}"></web-view>
+	    <web-view src="{{url}}" class="ui-webView"></web-view>
 	</view>
 </view>

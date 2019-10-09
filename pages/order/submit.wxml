@@ -103,17 +103,20 @@
             <image src="{{pointsFlag ? filter.getLocalPhoto('cart_selestIcon.png'): filter.getLocalPhoto('cart_selestEmptyIcon.png')}}" mode="aspectFit" class="ui-pointesItem__selestIcon" bindtap="onSelectTap" wx:if="{{points}}"></image>
         </view>
     </view>
-    <view class="ui-pointsBox ui-ticketBox" bindtap="onChoseCoupon" >
-        <view class="ui-pointesItem" >
-            <image src="{{filter.getLocalPhoto('order_money.png')}}" class="ui-pointesItem__moneyIcon" mode="aspectFit"/>
-            <text class="ui-pointesItem__text">优惠劵</text>
-            <view class="ui-pointesItem__moreBox" >
-                <text class="ui-pointesItem__pageNum" wx:if="{{!couponNum }}">无优惠卷</text>
-                <text class="ui-pointesItem__pageNum" wx:if="{{couponNum}}">- ￥ {{couponPrice}}</text>
-                <image src="{{filter.getLocalPhoto('my_icMore.png')}}" class="ui-pointesItem__MoreIcon" wx:if="{{couponNum}}" mode="aspectFit"/>
+    <view class="ui-couponBox">
+        <view class="ui-pointsBox ui-ticketBox" bindtap="onChoseCoupon" >
+            <view class="ui-pointesItem" >
+                <image src="{{filter.getLocalPhoto('order_money.png')}}" class="ui-pointesItem__moneyIcon" mode="aspectFit"/>
+                <text class="ui-pointesItem__text">优惠劵</text>
+                <view class="ui-pointesItem__moreBox" >
+                    <text class="ui-pointesItem__pageNum" wx:if="{{!couponNum }}">无优惠卷</text>
+                    <text class="ui-pointesItem__pageNum" wx:if="{{couponNum}}">- ￥ {{couponPrice}}</text>
+                    <image src="{{filter.getLocalPhoto('my_icMore.png')}}" class="ui-pointesItem__MoreIcon" wx:if="{{couponNum}}" mode="aspectFit"/>
+                </view>
             </view>
         </view>
     </view>
+    
     <view class="ui-payBox">
         <text class="ui-payItem__num">共{{num}}件</text>
         <text class="ui-payItem__text">合计：</text>
