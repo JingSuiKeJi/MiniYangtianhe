@@ -33,8 +33,7 @@ const onLoad = function (self) {
         selected: 1
     });
     // self.onScroll();
-    event.on('login-suc', (ret) => { });
-    event.on('logout-suc', (ret) => { });
+    // event.on('login-suc', self, (ret) => { });
 };
 
 // 页面onShow方法

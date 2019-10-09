@@ -97,7 +97,7 @@ config.prototype = {
 			sendCode:'/app/user/sendCode.do',
             bindPhone:'/app/user/bindPhone.do',
 			bindRecommend:'/app/user/bindRecommend.do',
-            getPoster:'/app/user/getPoster.do',
+            getPoster:'/app/common/getPoster.do',
             msgToggle:'/app/user/msgToggle.do',
             getCouponList:'/app/user/getCouponList.do',
             getCompanyList:'/app/store/getCompanyList.do',

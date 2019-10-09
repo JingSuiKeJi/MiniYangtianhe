@@ -285,19 +285,22 @@ Component({
             ctx.fillText('都是值得买的好货，别错过', calculate(108), calculate(82+16))
             ctx.setFillStyle('#ED3D3B')
             ctx.setFontSize(calculate(26))
-            ctx.fillText('¥'+poster.nowPrice, calculate(44), calculate(614+26))
+            ctx.fillText(`¥${poster.nowPrice}`, calculate(44), calculate(614+26))
             ctx.setFillStyle('#999')
             ctx.setFontSize(calculate(16))
-            ctx.fillText('¥'+poster.originPrice, calculate(44), calculate(644+24))
+            ctx.fillText(`¥${poster.originPrice}`, calculate(44), calculate(644+24))
             ctx.setFillStyle('#333')
             ctx.setFontSize(calculate(20))
             ctx.fillText(poster.title, calculate(44), calculate(682+20))
-            ctx.setFillStyle('#999')
-            ctx.setFontSize(calculate(16))
-            ctx.fillText(poster.size, calculate(44), calculate(720+16))
-            ctx.setFillStyle('#333333')
-            ctx.setFontSize(calculate(12))
-            ctx.fillText(poster.size, calculate(328), calculate(746+12))
+            ctx.setFillStyle('#333')
+            ctx.setFontSize(calculate(20))
+            ctx.fillText('长按或扫描购买', calculate(284), calculate(770+20))
+            // ctx.setFillStyle('#999')
+            // ctx.setFontSize(calculate(16))
+            // ctx.fillText(poster.size, calculate(44), calculate(720+16))
+            // ctx.setFillStyle('#333333')
+            // ctx.setFontSize(calculate(12))
+            // ctx.fillText(poster.size, calculate(328), calculate(746+12))
 
             //商品图片
             ctx.drawImage(poster.picUrl, calculate(20), calculate(134), calculate(432), calculate(442))
@@ -309,8 +312,7 @@ Component({
             ctx.drawImage(poster.avatar, calculate(22), calculate(44), calculate(60), calculate(60))
 
             //分享二维码
-            // ctx.save()
-            ctx.drawImage(poster.shareCode.path, calculate(240), calculate(600), calculate(200), calculate(200))
+            ctx.drawImage(poster.shareCode.path, calculate(280), calculate(620), calculate(150), calculate(150))
             
             ctx.draw(true,(res)=>{
                 wx.canvasToTempFilePath({
