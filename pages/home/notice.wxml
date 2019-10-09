@@ -1,6 +1,7 @@
-<view class="container">
- <!-- <navBar title='{{title}}' background='white' color='black' iconTheme='black' back="{{true}}" class="ui-navBar"></navBar> -->
-	<view class="ui-main">
+<wxs module="filter" src="../../filter/filter.wxs"></wxs>
+<view class="ui-contain">
+	<!-- <navBar title='详情' background='white' color='black' iconTheme='black' back="{{true}}"></navBar> -->
+    <view class="ui-main">
 	    <web-view src="{{url}}" class="ui-webView"></web-view>
 	</view>
 </view>

@@ -22,7 +22,8 @@ const data = {
     top: 200,
     hideModal: true, //模态框的状态  true-隐藏  false-显示
     animationData: {},//
-    platformFlag: 1
+    platformFlag: 1,
+    ruleUrl: 'http://120.79.36.152/share/html/protocol/index_frame.html?type=article&id=cutRule'
 };
 
 // 页面onLoad方法
@@ -159,15 +160,18 @@ const methods = {
     },
     // 显示遮罩层
     showModal: function () {
-        var that = this;
-        that.setData({
-            hideModal: false
-        })
+        const self = this;
+        _g.navigateTo({
+            url: 'pages/home/notice',
+            param: {
+                urlParam: `type=article&id=cutRule`
+            }
+        }, self);
     },
     // 隐藏遮罩层
     hideModal: function () {
-        var that = this;
-        that.setData({
+        var self = this;
+        self.setData({
             hideModal: true
         })
     },

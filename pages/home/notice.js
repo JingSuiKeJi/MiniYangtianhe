@@ -8,15 +8,22 @@ const Goods = require('../../service/Goods');
 // 初始化数据
 const data = {
 	title: '公告详情',
-    url: 'http://120.79.36.152/share/html/protocol/index_frame.html?type=notice&id='
+    webPage: 'http://120.79.36.152/share/html/protocol/index_frame.html?',
+    url: ''
+    // url: 'http://120.79.36.152/share/html/protocol/index_frame.html?type=notice&id='
 };
 
 // 页面onLoad方法
 const onLoad = function (self) {
-    self.setData({
-        url: `${self.data.url}${self.data.id}`
+    wx.setNavigationBarColor({
+        frontColor: '#000000',
+        backgroundColor: '#ffffff',
+        animation: true,
     })
-    console.log(self.data.url)
+    self.setData({
+        url: `${self.data.webPage}${self.data.urlParam}`
+    });
+    
 };
 
 // 页面onShow方法

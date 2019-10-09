@@ -31,6 +31,9 @@ const onLoad = function (self) {
             canvasUrl: data.canvasUrl
         });
     });
+    event.on('goods-bargain-authorize', self, (data) => {
+        self.savePicToAlbum();
+    });
 };
 const onReady = function (self) {
     setTimeout(function () {
@@ -58,6 +61,7 @@ const onShow = function (self) {
 };
 const onUnload = function (self) {
     event.remove('goods-bargain-shareEvent', self);
+    event.remove('goods-bargain-authorize', self);
 }
 // 页面中的方法
 const methods = {
@@ -136,18 +140,24 @@ const methods = {
     },
     // 显示遮罩层
     showModal: function (e) {
-        let self = this;
-        if (e) {
-            self.setData({
-                type: Number(e.currentTarget.dataset.type),
-                hideModal: false
-            })
-        } else {
-            self.setData({
-                type: 2,
-                hideModal: false
-            })
-        }
+        const self = this;
+        _g.navigateTo({
+            url: 'pages/home/notice',
+            param: {
+                urlParam: `type=article&id=cutRule`
+            }
+        }, self);
+        // if (e) {
+        //     self.setData({
+        //         type: Number(e.currentTarget.dataset.type),
+        //         hideModal: false
+        //     })
+        // } else {
+        //     self.setData({
+        //         type: 2,
+        //         hideModal: false
+        //     })
+        // }
 
     },
     // 隐藏遮罩层
@@ -211,6 +221,27 @@ const methods = {
                 thirdId: self.data.userCutId,
             }
         }, self)
+    },
+    savePicToAlbum() {
+        const self = this;
+        wx.saveImageToPhotosAlbum({
+            filePath: self.data.canvasUrl,
+            success(res) {
+                _g.toast({
+                    icon: 'success',
+                    title: '图片保存成功'
+                });
+            },
+            fail(err) {
+                _g.toast({
+                    title: '图片保存失败'
+                });
+            }
+        });
+        self.setData({
+            hideShareDialog: true,
+            authorizeHidden: true
+        });
     }
 };
 

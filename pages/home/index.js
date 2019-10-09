@@ -661,7 +661,8 @@ const methods = {
         _g.navigateTo({
             url: 'pages/home/notice',
             param: {
-                id: e.currentTarget.dataset.id
+                id: e.currentTarget.dataset.id,
+                urlParam: `type=notice&id=${e.currentTarget.dataset.id}`
             }
         }, self);
     }

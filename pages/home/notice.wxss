@@ -1,7 +1,8 @@
-/* pages/home/notice.wxss */
+ /*pages/home/notice.wxss */
+ @import "/libs/common.wxss";
 .ui-webView {
     z-index: -1;
 }
 .ui-navBar {
-    z-index: 999999
+    z-index: 9999
 }
