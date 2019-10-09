@@ -38,6 +38,10 @@ Component({
                             });
                             self.checkDownload();
                         });
+                    } else if (_g.getLS('goodsPosterBg')) {
+                        self.setData({
+                            bgThumb: _g.getLS('goodsPosterBg')
+                        });
                     } else {
                         self.downloadImg({
                             imgUrl: 'http://www.gzlingren.com:8098/yangtianhe/' + 'bg-share.png'
@@ -125,13 +129,19 @@ Component({
     ready() {
         const self = this;
         const userInfo = _g.getLS(_c.LSKeys.userInfo);
-        if (userInfo && userInfo.avatar) {
+        if (_g.getLS('avatarThumb')) {
+            self.setData({
+                avatarThumb: _g.getLS('avatarThumb')
+            });
+            self.checkDownload();
+        } else if (userInfo && userInfo.avatar) {
             self.downloadImg({
                 imgUrl: userInfo.avatar,
             }, (res) => {
                 self.setData({
                     avatarThumb: res
                 });
+                _g.setLS('avatarThumb', res);
                 self.checkDownload();
             });
         }
@@ -219,7 +229,6 @@ Component({
                     self.savePicToAlbum();
                 } else if (!result) {
                     if (_g.checkSDKVersion('2.3.0')) {
-                        console.log("3333");
                         event.emit(self.data.eventNameAuth);
                     } else {
                         _g.showModal({

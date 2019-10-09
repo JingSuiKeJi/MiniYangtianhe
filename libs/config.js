@@ -8,7 +8,7 @@ config.prototype = {
 
     debug: true,
     // debug: false,
-    version: '0.0.1', // 版本号 正式: v1.0.0 体验: v0.0.1
+    version: '1.0.0', // 版本号 正式: v1.0.0 体验: v0.0.1
     appName: '养天和', // 内容展示小程序
 
     tokenKey: '',
