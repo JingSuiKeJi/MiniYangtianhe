@@ -11,7 +11,33 @@ const data = {
     step: '上传步数',
     list: [],
     BMIIndex: 0,
-    test: 1
+    test: 1,
+    fridensList: [
+        {
+            url: 'gold.png',
+            picUrl: 'my_ snapshoot.png',
+            nickName: '一个小妮子',
+            step: 18989
+        },
+        {
+            url: 'gold.png',
+            picUrl: 'my_ snapshoot.png',
+            nickName: '一个小妮子',
+            step: 18989
+        },
+        {
+            url: 'gold.png',
+            picUrl: 'my_ snapshoot.png',
+            nickName: '一个小妮子',
+            step: 18989
+        },
+        {
+            url: 'gold.png',
+            picUrl: 'my_ snapshoot.png',
+            nickName: '一个小妮子',
+            step: 18989
+        }
+    ]
 };
 
 // 页面onLoad方法

@@ -460,7 +460,8 @@ const methods = {
             case 6:
                 //全部分类
                 _g.navigateTo({
-                    url: 'pages/search/classify'
+                    url: 'pages/search/classify',
+                    param: param
                 }, self);
                 break;                
             default:

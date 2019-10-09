@@ -341,3 +341,59 @@ page {
 	height: 25rpx;
 	background:#F9F9F9;
 }
+.ui-friendsLiItem {
+    display: flex;
+    height: 128rpx;
+    align-items: center;
+}
+.ui-friendsLiItem__img {
+    width: 48rpx;
+    height: 48rpx;
+}
+.ui-friendsLiItem__icon {
+    width: 80rpx;
+    height: 80rpx;
+    margin-left: 20rpx;
+}
+.ui-friendsLiItem__nickName {
+    font-size:26rpx;
+    font-family:PingFangSC-Regular,PingFangSC;
+    font-weight:400;
+    color:#333333;
+    line-height:36rpx;
+    margin-left: 20rpx;
+}
+.ui-friendsLiItem__step {
+    font-size:26rpx;
+    font-family:PingFangSC-Medium,PingFangSC;
+    font-weight:500;
+    color:#EA6363;
+    line-height:36rpx;
+    margin-left: auto;
+}
+.ui-moreList {
+    display: flex;
+    width: 250rpx;
+    height: 72rpx;
+    font-size:30rpx;
+    font-family:PingFangSC-Medium,PingFangSC;
+    font-weight:500;
+    color:#C55300;
+    line-height:30rpx;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 40rpx;
+}
+.ui-ui-friendsLiItem__index {
+    display: flex;
+    width: 48rpx;
+    height: 48rpx;
+    font-size:48rpx;
+    font-family:DINPro-Medium,DINPro;
+    font-weight:500;
+    color:#999999;
+    line-height:62px;
+    align-items: center;
+    justify-content: center;
+}

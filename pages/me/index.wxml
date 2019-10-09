@@ -20,7 +20,7 @@
 				</block>
                 
 				<!-- 登录 -->
-				<block wx:else>
+				<block wx:if="{{!isLogin}}">
 					<button class="btn-login" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">登录</button>
 				</block>
 				<!-- <view class="btn-login" bindtap="showDialogBtn" wx:else>登录
