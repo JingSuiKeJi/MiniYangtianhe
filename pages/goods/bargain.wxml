@@ -6,13 +6,13 @@
         <!-- <view class="ui-rulesBtn" bindtap="showModal" data-type="1">活动规则</view> -->
         <view class="ui-infoBox">
              <view class="ui-infoItem_iconBox">
-                <image src="{{filter.getPhoto(host,list.avatar)}}" class="ui-infoItem_perIcon" mode="aspectFill"/>
+                <image src="{{filter.getPhoto(host,list.avatar)}}" class="ui-infoItem_perIcon" mode="aspectFill"></image>
                 <view class="ui-infoItem_name">{{title}}</view>
             </view>
             <view class="ui-infoItem_leftBtn">距离结束：{{filter.countDown(list.endTime,curTime)}}</view>
             <view class="ui-goodsBox">
                 <view class="ui-goodsItem_left">
-                    <image src="{{filter.getPhoto(host,list.imgUrl)}}" class="ui-leftItem_goodsImg" mode="aspectFill"/>
+                    <image src="{{filter.getPhoto(host,list.imgUrl)}}" class="ui-leftItem_goodsImg" mode="aspectFill"></image>
                 </view>
                  <view class="ui-goodsItem_right">
                       <view class="ui-rightItem_title">{{list.title}}</view>

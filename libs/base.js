@@ -135,16 +135,11 @@ base.prototype = {
                             id: sceneData.id
                         });
                     }
-                    // if (sceneData.c) {
-                    //     self.setData({
-                    //         thirdId: sceneData.t
-                    //     });
-                    // }
-                    // if(sceneData.cutPriceId) {
-                    //     self.setData({
-                    //         cutPriceId: sceneData.cutPriceId
-                    //     });
-                    // }
+                    if (sceneData.c) {
+                        self.setData({
+                            userCutId: sceneData.c
+                        });
+                    }
                 }
                 // 原始方式/分享页面传递单数兼容
                 if (_g.j2s(options) != '{}') {
@@ -163,9 +158,10 @@ base.prototype = {
                 if (self.data.promoCode) {
                     _g.setLS(_c.LSKeys.promoCode, self.data.promoCode, _c.promoCodeExpireTime);
                 }
-                if (self.data.recallUserId) {
-                    _g.setLS(_c.LSKeys.recallUserId, self.data.recallUserId, _c.promoCodeExpireTime);
-                }
+                
+                // if (self.data.recallUserId) {
+                //     _g.setLS(_c.LSKeys.recallUserId, self.data.recallUserId, _c.promoCodeExpireTime);
+                // }
                 // if (self.route == 'pages/goods/cutDetail') {
                 //     if (!_.isUndefined(options.cutPriceId)) {
                 //         self.setData({

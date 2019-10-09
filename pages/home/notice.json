@@ -1,8 +1,9 @@
 {
   "navigationStyle": "custom",
+  "enablePullDownRefresh":false,
   "usingComponents": {
     "navBar": "/components/navBar/navBar",
     "shareGoods": "/components/share/goods"
   },
-  "navigationBarTextStyle":"black"
+  "navigationBarTitleText": "详情"
 }

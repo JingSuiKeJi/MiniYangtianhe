@@ -110,6 +110,16 @@ Component({
                     userCutId: newVal
                 });
             }
+        },
+        eventNameAuth: {
+            type: String,
+            value: '',
+            observer(newVal, oldVal, changedPath) {
+                const self = this;
+                self.setData({
+                    eventNameAuth: newVal
+                });
+            }
         }
     },
     ready() {
@@ -155,10 +165,16 @@ Component({
             let sence = 'p=' + _g.getLS(_c.LSKeys.userInfo).promoCode;
             sence += '&id=' + self.data.goodsDetail.id;
             sence += '&t=' + self.data.thirdId;
-
+            if (self.data.userCutId) sence += '&c=' + self.data.userCutId;
+            let path = '';
+            if (!self.data.userCutId) {
+                path = 'pages/goods/detail';
+            } else {
+                path = 'pages/goods/bargain';
+            }
             Platform.getShareQR(self, {
                 scene: sence,
-                page: 'pages/goods/detail'
+                page: path
             }).then((ret) => {
                 self.downloadImg({
                     imgUrl: self.data.host +  ret.data.shareQR
@@ -203,6 +219,7 @@ Component({
                     self.savePicToAlbum();
                 } else if (!result) {
                     if (_g.checkSDKVersion('2.3.0')) {
+                        console.log("3333");
                         event.emit(self.data.eventNameAuth);
                     } else {
                         _g.showModal({
