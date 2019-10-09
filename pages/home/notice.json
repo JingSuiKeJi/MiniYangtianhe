@@ -1,5 +1,8 @@
 {
+  "navigationStyle": "custom",
   "usingComponents": {
-    "navBar": "/components/navBar/navBar"
-  }
+    "navBar": "/components/navBar/navBar",
+    "shareGoods": "/components/share/goods"
+  },
+  "navigationBarTextStyle":"black"
 }

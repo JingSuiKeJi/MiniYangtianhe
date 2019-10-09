@@ -1,1 +1,7 @@
 /* pages/home/notice.wxss */
+.ui-webView {
+    z-index: -1;
+}
+.ui-navBar {
+    z-index: 999999
+}
