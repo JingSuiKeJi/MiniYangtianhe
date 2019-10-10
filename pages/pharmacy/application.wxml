@@ -1,34 +1,32 @@
 <wxs module="filter" src="../../filter/filter.wxs"></wxs>
 <!--application.wxml-->
 <view class="container">
-	<navBar title='提现申请' background='white' color='black' iconTheme='black' back="{{true}}"></navBar>
-	<view class="ui-main">
-		<view class="ui-withdrawPanelBox">
-			<view class="ui-cashOutUpBox">
-				<text>可提现佣金</text>
-				<text>¥{{value}}</text>
-			</view>
-			<view class="ui-cutOff"></view>
-			<text class="ui-moneyTitle">提现金额</text>
-			<view class="ui-payBox">
-				<text class="ui-moneySign">￥</text>
-				<input type="number" value="{{money}}" class="ui-inputBox" bindchange="bindMoneyChange" placeholder="请输入你需要提现的金额" placeholder-class="ui-inputPlaceholderStay" />
-				<text class="ui-allDistill" bindtap="onAllTap">全部提现</text>
-			</view>
-			<view class="ui-serviceChargeBox">
-				<text>手续费</text>
-				<text>{{fee}}元</text>
-			</view>
-			<view class="ui-cashOutDownBox"></view>
-			<view class="ui-actualAmountBox">
-				<text>实际提现金额</text>
-				<text>¥{{realMoney}}</text>
-			</view>
-		</view>
-		
-		<view class="btn-withdraw" bindtap="showDialogBtn">提现</view>
-		
-		<view class="ui-withdrawalPromptBox">
+    <navBar title='提现申请' background='white' color='black' iconTheme='black' back="{{true}}"></navBar>
+    <view class="ui-main">
+        <view class="ui-withdrawPanelBox">
+            <view class="ui-cashOutUpBox">
+                <view class="ui-cashOutUpBox__left">可提现佣金<text>¥{{value}}</text></view>
+                <view class="ui-rule__btn" catchtap="onRuleTap">提现规则</view>
+            </view>
+            <view class="ui-cutOff"></view>
+            <text class="ui-moneyTitle">提现金额</text>
+            <view class="ui-payBox">
+                <text class="ui-moneySign">￥</text>
+                <input type="number" value="{{money}}" class="ui-inputBox" bindinput="inputValue" placeholder="请输入你需要提现的金额" placeholder-class="ui-inputPlaceholderStay" />
+                <text class="ui-allDistill" bindtap="onAllTap">全部提现</text>
+            </view>
+            <view class="ui-serviceChargeBox">
+                <text>手续费</text>
+                <text>{{fee}}元</text>
+            </view>
+            <view class="ui-cashOutDownBox"></view>
+            <view class="ui-actualAmountBox">
+                <text>实际提现金额</text>
+                <text>¥{{realMoney}}</text>
+            </view>
+        </view>
+        <view class="btn-withdraw" bindtap="showDialogBtn">提现</view>
+        <!-- <view class="ui-withdrawalPromptBox">
 			<view class="ui-promptTitle">
 				<text></text>
 				<text>提现申请提示</text>
@@ -38,29 +36,24 @@
 				<text>2.提现会收取手续费；</text>
 				<text>3.如要联系客服请拔打1234，工作人员会按照先后顺序进行处理；</text>
 			</view>
-		</view>
-		
-		<view class="ui-withdrawalRecord">
-			<block wx:if="{{recordList.length > 0}}">
-				<view class="ui-withdrawInfoItem">
-					<view class="ui-withdrawDetail" wx:for="{{recordList}}" wx:for-index="idx" wx:key="idx" wx:for-item="item">
-						<text>{{filter.getDay(item.createTime)}}</text>
-						<text style="color: {{item.status== 2 ?'#20CAB4':''}};">- {{item.realMoney}}</text>
-						<text style="color: {{item.status== 2?'#20CAB4':''}};color: {{item.status== 3 ?'#CCCCCC':''}}"
-						>{{filter.getWithdrawStatus(item.status)}}</text>
-					</view>
-				</view>
-			</block>
-		</view>
-	</view>
-	
-	<!--弹窗-->
-	<view class="modal-mask" bindtap="hideModal" catchtouchmove="true" wx:if="{{showModal}}"></view>
-	<view class="modal-dialog" wx:if="{{showModal}}">
-		<view class="modal-title">确认提交申请</view>
-		<view class="modal-footer">
-			<view class="btn-cancel" bindtap="onCancel" data-status="cancel">取消</view>
-			<view class="btn-confirm" bindtap="onConfirm" data-status="confirm">提交</view>
-		</view>
-	</view>
+		</view> -->
+        <view class="ui-withdrawalRecord" wx:if="{{recordList.length}}">
+            <view class="ui-withdrawInfoItem">
+                <view class="ui-withdrawDetail" wx:for="{{recordList}}" wx:key="{{index}}" catchtap="onRecordTap" data-index="{{index}}">
+                    <text>{{filter.getDay(item.createTime)}}</text>
+                    <text style="color: {{item.status== 2 ?'#20CAB4':''}};">- {{item.realMoney}}</text>
+                    <text style="color: {{item.status== 2?'#20CAB4':''}};color: {{item.status== 3 ?'#CCCCCC':''}}">{{filter.getWithdrawStatus(item.status)}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <!--弹窗-->
+    <view class="modal-mask" bindtap="hideModal" catchtouchmove="true" wx:if="{{showModal}}"></view>
+    <view class="modal-dialog" wx:if="{{showModal}}">
+        <view class="modal-title">确认提交申请</view>
+        <view class="modal-footer">
+            <view class="btn-cancel" bindtap="onCancel" data-status="cancel">取消</view>
+            <view class="btn-confirm" bindtap="onConfirm" data-status="confirm">提交</view>
+        </view>
+    </view>
 </view>

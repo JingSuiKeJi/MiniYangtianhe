@@ -131,9 +131,13 @@ config.prototype = {
 			getCommissionClientList:'/app/distribution/getClientList.do',
             getCommissionRecordList:'/app/distribution/getRecordList.do',
             verifyOrder: '/app/order/findVerifyOrder.do',
-            rankingList: '/app/step/rankingList.do'
-
-            
+            rankingList: '/app/step/rankingList.do',
+        },
+        withdraw: {
+            apply: '/app/withdraw/apply.do',
+            getRecordList: '/app/withdraw/getRecordList.do',
+            count: '/app/withdraw/count.do',
+            detail: '/app/withdraw/detail.do'
         },
         goods: {
             getGoodsDetail: '/app/goods/getGoodsDetail.do',

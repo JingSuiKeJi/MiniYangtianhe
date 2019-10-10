@@ -18,21 +18,19 @@
 					<text>提交成功</text>
 					<text>{{filter.getDate(list.createTime)}}</text>
 				</view>
-				
 				<view class="ui-progress ui-progressBarSuccess"></view>
 				
 				<view class="ui-processingProgressItems">
 					<view class="ui-successIcon"></view>
 					<text>处理中</text>
-					<text>{{filter.getDate(currTime)}}</text>
 				</view>
-				
 				<view class="ui-progress ui-progressBarNotHeight {{list.status == 1 ? 'ui-progressBarNot':'ui-progressBarSuccess'}}"></view>
-				
 				<view class="ui-processingProgressItems">
-					<view class="{{list.status == 1 ? 'ui-notSuccessIcon':'ui-successIcon'}}"></view>
-					<text style="color:{{list.status == 1 ? '':'#20CAB4'}}">提现成功</text>
-					<text wx:if="{{list.updateTime }}">{{filter.getDate(list.updateTime)}}</text>
+					<view class="{{list.status == 1 ? 'ui-notSuccessIcon' : ''}}"></view>
+					<view class="{{list.status == 2 ? 'ui-successIcon' : ''}}"></view>
+					<view class="{{list.status == 3 ? 'ui-notSuccessIcon' : ''}}"></view>
+					<text style="color:{{list.status == 1 ? '':'#20CAB4'}}" wx:if="{{list.status != 1}}">提现{{list.status == 2 ? '成功' : '失败'}}</text>
+					<text wx:if="{{list.status != 1}}">{{filter.getDate(list.updateTime)}}</text>
 				</view>
 			</view>
 		</view>

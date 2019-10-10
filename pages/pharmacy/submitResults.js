@@ -6,12 +6,15 @@ const _c = app.config;
 const _t = app.temps;
 const event = app.event;
 const User = require('../../service/User');
-let data = {};
+const data = {
+    money: 10
+};
 const onLoad = function(self) {
     self.setData({
+        money: self.data.money,
         withdrawId: self.data.withdrawId 
     });
-    self.getData();
+    // self.getData();
 }
 const onShow = function(self) {}
 const onReady = function(self) {}

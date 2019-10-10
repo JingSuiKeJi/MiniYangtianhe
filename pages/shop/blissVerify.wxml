@@ -5,7 +5,7 @@
 		<view class="ui-qrBox">
 			<view class="ui-addressBox">
 				<text>{{userInfo.store.title}}</text>
-				<text>广州市天河区天盈广场东塔</text>
+				<text>{{userInfo.store.address}}</text>
 			</view>
 			<view class="ui-qrInfo">
 				<image src="{{filter.getPhoto(host,qrUrl)}}" mode="aspectFill"></image>

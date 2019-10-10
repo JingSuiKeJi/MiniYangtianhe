@@ -157,10 +157,19 @@ page{
 	background-size: cover;
 }
 
+.ui-failIcon {
+	width: 36rpx;
+	height: 36rpx;
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_workedDel.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+}
+
 .ui-notSuccessIcon{
 	width: 36rpx;
 	height: 36rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_ processed.png');
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_processed.png');
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: cover;

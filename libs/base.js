@@ -140,6 +140,11 @@ base.prototype = {
                             userCutId: sceneData.c
                         });
                     }
+                    if (sceneData.s) {
+                        self.setData({
+                            storeId: sceneData.s
+                        });
+                    }
                 }
                 // 原始方式/分享页面传递单数兼容
                 if (_g.j2s(options) != '{}') {
@@ -472,7 +477,7 @@ base.prototype = {
                     if (res.data.code != 200) {
                         _g.logger('~~~~~ wx.request ', res.data);
                         _g.dm.canLoadMore = 1;
-                        if ([4000, 4001, 4005, 4006, 1000].indexOf(res.data.code) > -1) {
+                        if ([4000, 4001, 4005, 4006].indexOf(res.data.code) > -1) {
                             _g.rmLS(_c.LSKeys.sessionKey);
                             _g.rmLS(_c.LSKeys.userInfo);
                             opts.self = self;
@@ -1540,7 +1545,7 @@ base.prototype = {
             encryptedData: opts.encryptedData,
             iv: opts.iv,
             promoCode: _g.getLS('promoCode') || '',
-            storeId: 1
+            storeId: _g.getLS('storeInfo').id
         }).then((ret) => {
             _g.setLS(_c.LSKeys.sessionKey, ret.data.sessionKey);
             _g.getMyInfo(self, {

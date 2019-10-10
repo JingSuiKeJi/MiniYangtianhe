@@ -6,63 +6,97 @@ const _c = app.config;
 const _t = app.temps;
 const event = app.event;
 const User = require('../../service/User');
+const Withdraw = require('../../service/Withdraw');
+// let timer = 0;
 let data = {
 	showModal: false,
-	value: '',
+	value: 0,
 	fee: 0,
+	realMoney: 0,
+	money: ''
 };
 const onLoad = function (self) {
-	self.setData({
-		value: self.data.money,
-		realMoney:self.data.money 
-	});
+	// self.setData({
+	// 	value: self.data.money,
+	// 	realMoney:self.data.money 
+	// });
 	self.getData();
 };
-const onShow = function (self) { };
+const onShow = function (self) {
+	self.getData();
+};
 const onReady = function (self) { };
 const onUnload = function (self) { };
 const methods = {
 	getData: function () {
 		let self = this;
+		self.getMoney();
 		self.getPageData();
 	},
+	getMoney() {
+		const self = this;
+		User.getCommissionBaseInfo(self, {}).then(({data})=>{
+			self.setData({
+				value: data.money,
+				money: ''
+			});
+		});
+	},
     apply: function () {
-		let self = this;
-		if (!self.data.money) {
+		const self = this;
+		const money = self.data.money;
+		if (!money) {
 			_g.toast({
 				title: '请输入提现金额'
 			});
 			return false;
 		}
-		User.apply(self, {
-			money: self.data.money
+		Withdraw.apply(self, {
+			money: money
         }).then((ret) => {
+        	self.setData({
+        		money: 0,
+        		realMoney: 0,
+        		fee: 0
+        	});
 			_g.navigateTo({
 				url: 'pages/pharmacy/submitResults',
 				param: {
-					withdrawId: ret.data.id
+					withdrawId: ret.data.id,
+					money: money
 				}
 			}, self);
         }, (err) => {
-           
+           _g.toast({
+				title: '申请提现失败,请重新申请',
+				duration: 3000
+           })
         });
 	},
 	count: function () {
 		let self = this;
-		User.count(self, {
-			money: self.data.money
-        }).then((ret) => {
-            self.setData({
-				fee: ret.data.fee,
-				realMoney: ret.data.realMoney
-			})
-        }, (err) => {
-           
-        });
+		if (self.data.money) {
+			Withdraw.count(self, {
+				money: self.data.money || 0
+	        }).then((ret) => {
+	        	self.setData({
+	        		fee: ret.data.fee,
+	        		realMoney: ret.data.realMoney
+	        	});
+	        }, (err) => {
+	           self.count();
+	        });
+		} else {
+			self.setData({
+        		money: 0,
+        		realMoney: 0,
+        		fee: 0
+        	});
+		}
 	},
 	getPageData: function () {
 		let self = this;
-		User.withdrawRecordList(self, {
+		Withdraw.getRecordList(self, {
 			page: self.data.page,
 			pageSize: 10,
         }).then((ret) => {
@@ -73,6 +107,22 @@ const methods = {
         }, (err) => {
            
         });
+	},
+	inputValue(e) {
+		const self = this;
+		if (e.detail.value >= self.data.value) {
+			self.setData({
+				money: self.data.money
+			});
+		} else {
+			self.setData({
+				money: e.detail.value
+			});
+		}
+		clearInterval(self.data.timer);
+		self.data.timer = setTimeout(()=>{
+			self.count();
+		}, 500);
 	},
 	bindMoneyChange: function (e) {
 		let self = this;
@@ -115,7 +165,24 @@ const methods = {
 			money: self.data.value
 		});
 		self.count();
-		
+	},
+	onRecordTap(e) {
+		const self = this;
+		_g.navigateTo({
+            url: 'pages/pharmacy/applicationDetails',
+            param: {
+                withdrawId: self.data.recordList[e.currentTarget.dataset.index].id
+            }
+	    }, self);
+	},
+	onRuleTap() {
+		const self = this;
+		_g.navigateTo({
+            url: 'pages/home/notice',
+            param: {
+                urlParam: `type=article&id=withdrawRule`
+            }
+        }, self);
 	}
 };
 

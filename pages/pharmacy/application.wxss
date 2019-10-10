@@ -19,15 +19,30 @@ page{
 	margin: 32rpx 0 0 32rpx;
 }
 
+
+
 .ui-cashOutUpBox{
 	position: absolute;
-	height:26rpx;
+	display: flex;
+	align-items: center;
+	width: 100%;
+	height: 106rpx;
+	padding-right: 28rpx;
 	font-size:26rpx;
-	font-family:PingFangSC-Regular;
-	font-weight:400;
-	color:rgba(51,51,51,1);
-	line-height:26rpx;
-	margin: 48rpx 0 0 32rpx;
+	font-weight: 400;
+	color: #333333;
+}
+
+.ui-cashOutUpBox__left {
+	margin-left: 32rpx;
+}
+
+.ui-cashOutUpBox__left text {
+	margin-left: 44rpx;
+}
+
+.ui-rule__btn {
+	margin-left: auto;
 }
 
 .ui-cutOff{

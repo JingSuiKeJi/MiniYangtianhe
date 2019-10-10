@@ -94,7 +94,7 @@ const methods = {
                 item.latitude = item.lat;
                 item.longitude = item.lon;
                 item.iconPath = '/images/mapIcon.png';
-                item.id = index;
+                // item.id = index;
                 return item;
             })
         });
@@ -110,9 +110,32 @@ const methods = {
     onStoreTap(e) {
         const self = this;
         const opts = e.currentTarget.dataset;
-        _g.setLS('storeInfo', self.data.storeList[opts.index]);
-        event.emit('refreshHomeData');
-        _g.navigateBack();
+        const storeInfo = self.data.storeList[opts.index];
+        
+        if (!_g.checkLogin({
+            type: 1
+        })) {
+            _g.setLS('storeInfo', storeInfo);
+            event.emit('refreshHomeData');
+            _g.navigateBack();
+        } else {
+            self.setStore(storeInfo);
+        }
+    },
+    setStore(storeInfo) {
+        const self = this;
+        Store.selectStore(self, {
+            selectStoreId: storeInfo.id,
+            lon: self.data.lon,
+            lat: self.data.lat,
+        }).then((ret)=>{
+            _g.getMyInfo(self, {
+                suc() {
+                    event.emit('refreshHomeData');
+                    _g.navigateBack();
+                }
+            })
+        });
     }
 };
 

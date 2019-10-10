@@ -62,10 +62,14 @@ const onLoad = function (self) {
         self.getCommonData();
     });
     event.on('refreshHomeData', self, (ret) => {
-        self.setData({
-            storeInfo: _g.getLS(_c.LSKeys.storeInfo)
-        });
-        self.getData();
+        if (self.data.isLogin) {
+            self.setLoginData();
+        } else {
+            self.setData({
+                storeInfo: _g.getLS(_c.LSKeys.storeInfo)
+            });
+            self.getData();
+        }
     });
 };
 

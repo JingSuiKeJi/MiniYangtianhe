@@ -5,8 +5,9 @@ const _g = app.base;
 const _c = app.config;
 const _t = app.temps;
 const event = app.event;
-const User = require('../../service/User');
-const Platfrom = require('../../service/Platfrom');
+// const User = require('../../service/User');
+// const Platfrom = require('../../service/Platfrom');
+const Withdraw = require('../../service/Withdraw');
 let data = {
 	currentStatus:false,//当前受理状态
 };
@@ -23,11 +24,11 @@ const methods = {
     getData: function () {
         let self = this;
         self.withdrawDetail();
-        self.getCurrTime();
+        // self.getCurrTime();
      },
      withdrawDetail: function () {
          let self =  this;
-         User.withdrawDetail(self, {
+         Withdraw.detail(self, {
              withdrawId: self.data.withdrawId 
          }).then((ret) => {
              self.setData({
@@ -37,17 +38,17 @@ const methods = {
             
          });
      },
-     getCurrTime: function name() {
-        let self =  this;
-        Platfrom.getCurrTime(self, {
-        }).then((ret) => {
-            self.setData({
-                currTime: ret.data.currTime
-            })
-        }, (err) => {
+     // getCurrTime: function name() {
+     //    let self =  this;
+     //    Platfrom.getCurrTime(self, {
+     //    }).then((ret) => {
+     //        self.setData({
+     //            currTime: ret.data.currTime
+     //        })
+     //    }, (err) => {
            
-        });
-     }
+     //    });
+     // }
 }
 
 // 有引用template时定义

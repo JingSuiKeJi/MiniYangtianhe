@@ -30,6 +30,13 @@ class Store {
             data: reqData
         }, page);
     }
+    selectStore(page, reqData) {
+        _g.dm.canLoadMore = 1;
+        return _g.ajax({
+            url: mini.store.selectStore,
+            data: reqData
+        }, page);
+    }
 }
 
 module.exports = new Store();

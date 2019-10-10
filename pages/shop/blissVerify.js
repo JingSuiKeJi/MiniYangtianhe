@@ -5,7 +5,8 @@ const _g = app.base;
 const _c = app.config;
 const _t = app.temps;
 const event = app.event;
-const User = require('../../service/User');
+// const User = require('../../service/User');
+const Platfrom = require('../../service/Platfrom');
 
 let data = {
 	userInfo:{},//接收上一页用户信息
@@ -26,16 +27,16 @@ const methods = {
 	getData:function(){
 		const self = this;
 		const storeId = self.data.userInfo.store.id;
-		User.getVerifierQR(self, {
-	        storeId:storeId,
-	    }).then((ret) => {
-			const qr = ret.data.qrUrl;
-			self.setData({
-				qrUrl:qr
-			})
-	    }, (err) => {
-	        console.log("获取失败");
-	    });
+		let sence = `p=${_g.getLS(_c.LSKeys.userInfo).promoCode}&s=${storeId}`;
+        let path = 'pages/me/blissVerific';
+        Platfrom.getShareQR(self, {
+            scene: sence,
+            page: path
+        }).then((ret) => {
+            self.setData({
+            	qrUrl: ret.data.shareQR
+            })
+        });
 	},
 }
 
