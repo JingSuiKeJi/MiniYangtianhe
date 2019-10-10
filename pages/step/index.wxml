@@ -50,7 +50,7 @@
                 </view>
             </view>
             <view class="ui-historyBox">
-                <image src="{{filter.getLocalPhoto('step_historyIcon.png')}}" class="ui-historyItem__icon" />
+                <!-- <image src="{{filter.getLocalPhoto('step_historyIcon.png')}}" class="ui-historyItem__icon" /> -->
                 <view class="ui-historyItem__text">— 历史记录 —</view>
                 <view class="ui-hirtoryItem__list" wx:for="{{list}}" wx:key="{{index}}" wx:if="{{list.length}}">
                     <text class="ui-listItem__time">{{filter.getDay(item.createTime)}}</text>
@@ -59,9 +59,9 @@
                         {{filter.getStatus(item.status)}}
                     </text>
                 </view>
+                 <view class="ui-noData__text"  wx:if="{{!list.length}}">暂无数据</view>
             </view>
-            <!-- <view class="ui-historyBox ui-friendsListBox">
-                
+            <view class="ui-historyBox ui-friendsListBox">  
                 <view class=" ui-friendsListItem__text">— 乐友排行榜 —</view>
                 <view class="ui-friendsLiItem__item" wx:for="{{fridensList}}" wx:key="{{index}}" wx:if="{{fridensList.length}}" style="background-color:{{ item.isMe ? '#F5F5F5' : ''}}">
                     <view class="ui-friendsLiItem " >
@@ -76,9 +76,10 @@
                         <view class="ui-friendsLiItem__step">{{item.todayStep + '步'}}</view>
                     </view>
                 </view>
-                <view class="ui-moreList" bindtap="onMoreTap">查看更多排名</view>
-            </view> -->
-            <view class="ui-bottomTex">为你加油，一起努力吧 ～</view>
+                <view class="ui-moreList" bindtap="onMoreTap" wx:if="{{fridensList.length}}">查看更多排名</view>
+                <view class="ui-noData__text"  wx:if="{{!fridensList.length}}">暂无数据</view>
+            </view>
         </view>
+        <view class="ui-bottomTex">为你加油，一起努力吧 ～</view>
     </view>
 </view>

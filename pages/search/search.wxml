@@ -17,7 +17,7 @@
              <image src="{{filter.getLocalPhoto('delect.png')}}" class="ui-hotItem_delectIcon" bindtap="onDelectTap"/>
          </view>
           <view class="ui-hotItem_hisTag" wx:if="{{hisList.length}}">
-              <view wx:for="{{hisList}}" class="ui-hotItem_hisTagBtn" data-title = "{{item}}" data-type = "1" bindtap="onSkipTap">{{item}}</view>
+              <view wx:for="{{hisList}}" class="ui-hotItem_hisTagBtn" data-title = "{{item}}" data-type = "1" bindtap="onSkipTap" wx:if="{{item}}">{{item}}</view>
           </view>
       </view>
    </view>

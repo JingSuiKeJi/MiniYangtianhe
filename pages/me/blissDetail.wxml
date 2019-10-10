@@ -62,7 +62,7 @@
         </view>
     </view>
     <!-- 赠送弹窗信息 -->
-    <view class="modal-mask" bindtap="hideModal" catchtouchmove="true" wx:if="{{showPresentedBtn}}"></view>
+    <!-- <view class="modal-mask" bindtap="hideModal" catchtouchmove="true" wx:if="{{showPresentedBtn}}"></view>
     <view class="modal-dialog" wx:if="{{showPresentedBtn}}">
         <view class="modal-title">赠送</view>
         <view class="modal-blissNumInputBox">
@@ -81,5 +81,5 @@
             <view class="btn-cancel btn-presentedCancel" bindtap="onPresentedCancel" data-status="presentedcancel">取消</view>
             <view class="btn-confirm btn-presentedConfirm" bindtap="onPresentedConfirm" data-status="presentedconfirm">赠送</view>
         </view>
-    </view>
+    </view> -->
 </view>

@@ -76,6 +76,7 @@
 				<input class="ui-inputCommon" bindinput="onBusinessLicenseTap" type="text" value="{{businessLicense}}" 
 					placeholder="请输入门店营业执照号码" placeholder-style="color:#666666;"
 					disabled="{{status == 1 || status == 2}}"/>
+				<view class="ui-licensePhoto">添加门店营业执照图片</view>	
 			</view>
 			<view class="ui-belongCompany" >
 				<picker bindchange="onPickerChange"  range="{{list}}" range-key="{{'companyName'}}" class="ui-pickerBox">

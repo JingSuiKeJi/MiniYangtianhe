@@ -123,11 +123,15 @@ page{
     height: 156rpx;
 }
 .ui-classItem_content .ui-contentItem__text {
+    width: 156rpx;
     font-size:26rpx;
     font-family:PingFangSC-Regular;
     font-weight:400;
     color:#999999;
     line-height:26rpx;
     margin-top: 26rpx;
+    text-overflow: ellipsis;
+    white-space: nowrap; 
+    overflow: hidden;
     
 }

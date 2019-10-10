@@ -315,3 +315,6 @@ page{
 	line-height:98rpx;
 	text-align: center;
 }
+.ui-licensePhoto {
+	
+}

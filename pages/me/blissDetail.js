@@ -8,13 +8,7 @@ const event = app.event;
 const Point = require('../../service/Point.js');
 
 let data = {
-    withdrawlist: [
-        // {createTime:"2019.07.01",money:"+50",type:"养步任务"},
-        // {createTime:"2019.07.01",money:"+5",type:"养步任务"},
-        // {createTime:"2019.07.01",money:"-50",type:"抵扣商品"},
-        // {createTime:"2019.07.01",money:"+50",type:"养步任务"},
-        // {createTime:"2019.07.01",money:"-50",type:"赠送",id:"-ID446688"}
-    ],
+    withdrawlist: [],
     showModal: false, //充值模态框显影
     showPresentedBtn: false, //赠送模态框显影
     setting: {},
@@ -25,7 +19,7 @@ let data = {
 
 };
 const onLoad = function(self) {
-    self.getBase();
+    // self.getBase();
     self.getPageData();
 };
 const onShow = function(self) {
