@@ -147,7 +147,7 @@ page {
     top: 200px;
 }
 .ui-stepContentBox {
-    width: 90%;
+    width: 686rpx;
     padding: 30rpx;
     white-space: nowrap;
     background-color: #fff;
@@ -192,7 +192,7 @@ page {
     right: 30rpx;
 }
 .ui-historyBox {
-    width: 90%;
+    width: 686rpx;
     padding: 100rpx 30rpx 40rpx 30rpx;
     margin-top: 100rpx;
     white-space: nowrap;
@@ -245,7 +245,7 @@ page {
 .ui-hirtoryItem__list .ui-listItem__status {
     position: absolute;
     right: 0;
-    top: 40rpx;
+    top: 10rpx;
 }
 .ui-bottomTex {
     width: 100%;
@@ -343,8 +343,10 @@ page {
 }
 .ui-friendsLiItem {
     display: flex;
+    width: 626rpx;
     height: 128rpx;
     align-items: center;
+    margin: 0 auto;
 }
 .ui-friendsLiItem__img {
     width: 48rpx;
@@ -354,6 +356,7 @@ page {
     width: 80rpx;
     height: 80rpx;
     margin-left: 20rpx;
+    border-radius: 50%;
 }
 .ui-friendsLiItem__nickName {
     font-size:26rpx;
@@ -380,12 +383,14 @@ page {
     font-weight:500;
     color:#C55300;
     line-height:30rpx;
+    background-image: url('http://www.gzlingren.com:8098/yangtianhe/moreListBtn.png');
+    background-size: 250rpx 72rpx;
     justify-content: center;
     align-items: center;
     margin: 0 auto;
     margin-top: 40rpx;
 }
-.ui-ui-friendsLiItem__index {
+.ui-friendsLiItem__index {
     display: flex;
     width: 48rpx;
     height: 48rpx;
@@ -396,4 +401,35 @@ page {
     line-height:62px;
     align-items: center;
     justify-content: center;
+}
+.rangkListItem__text {
+    width:150rpx;
+    height:30rpx;
+}
+.ui-friendsListBox {
+    /* display: flex; */
+    padding-left: 0;
+    padding-right: 0; 
+    justify-content: center;
+    flex-direction: column;
+}
+.ui-friendsLiItem__item {
+    width: 100%;
+    height: 128rpx;
+}
+.ui-friendsListItem__text {
+    display: flex;
+    width: 280rpx;
+    height: 72rpx;
+    margin-top: -200rpx;
+    font-size:30rpx;
+    font-family:PingFangSC-Medium;
+    font-weight:500;
+    color:#C55300;
+    background-image: url(http://www.gzlingren.com:8098/yangtianhe/leyou__listIcon.png);
+    background-size: 280rpx 72rpx;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: -120rpx;
 }

@@ -1,0 +1,111 @@
+page {
+    width: 100%;
+    height: 100%; 
+    background-color: #F5F5F5;
+}
+.ui-contain {
+    width: 100%;
+    height: 100%; 
+}
+.ui-main {
+    width: 100%;
+    height: 100%; 
+}
+.ui-myInfoBox {
+    width: 100%;
+    background-color: #fff;
+}
+.ui-myInfoItem__tap {
+    padding: 32rpx;
+    font-size:30rpx;
+    font-family:PingFangSC-Medium,PingFangSC;
+    font-weight:500;
+    color:#000000;
+    line-height:30rpx;
+    border-bottom: 1rpx solid #EEEEEE;
+}
+.ui-myInfoItem__info {
+    display: flex;
+    width: 100%;
+    height: 128rpx;
+    padding: 0 80rpx;
+    align-items: center;
+}
+.ui-myInfoItem__icon {
+    width: 48rpx;
+    height: 48rpx;
+}
+.ui-myInfoItem__img {
+    width: 80rpx;
+    height: 80px;
+    margin-left: 16rpx;
+    border-radius: 50%;
+}
+.ui-myInfoitem__word {
+    margin-left: 18rpx;
+}
+.ui-myInfoitem__name {
+    font-size:28rpx;
+    font-family:PingFangSC-Regular,PingFangSC;
+    font-weight:400;
+    color:#333333;
+    line-height:28rpx;
+}
+.ui-myInfoitem__top {
+    font-size:24rpx;
+    font-family:PingFangSC-Regular,PingFangSC;
+    font-weight:400;
+    color:#999999;
+    line-height:24rpx;
+    margin-top: 18rpx;
+}
+.ui-myInfoItem__step {
+    font-size:32rpx;
+    font-family:PingFangSC-Medium,PingFangSC;
+    font-weight:500;
+    color:#EA6363;
+    line-height:32rpx;
+    margin-left: auto;
+}
+.ui-listBox {
+    display: flex;
+    width: 100%;
+    background-color: #fff;
+    margin-top: 20rpx; 
+    flex-direction: column;
+}
+.ui-listItem {
+    width: 100%;
+    height: 128rpx;
+    display: flex;
+    justify-content: center;
+}
+.ui-listItem__info {
+    display: flex;
+    height: 100%;
+    width: 590rpx;
+    align-items: center;
+    border-bottom: 1rpx solid #EEEEEE;
+}
+.ui-noDataBox {
+    width: 100%;
+    height: 66rpx;
+    font-size:24rpx;
+    font-family:PingFangSC-Regular,PingFangSC;
+    font-weight:400;
+    color:#999999;
+    line-height: 66rpx;
+    text-align: center;
+}
+.ui-myInfoItem__index {
+    display: flex;
+    width: 48rpx;
+    height: 48rpx;
+    font-size:48rpx;
+    font-family:DINPro-Medium,DINPro;
+    font-weight:500;
+    color:#999999;
+    line-height:62rpx;
+    align-items: center;
+    justify-content: center;
+}
