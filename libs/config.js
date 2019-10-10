@@ -157,7 +157,8 @@ config.prototype = {
         store: {
             storeList: '/app/home/getStoreList.do',
             applyDetail: '/app/store/applyDetail.do',
-            updateApply: '/app/store/updateApply.do'
+            updateApply: '/app/store/updateApply.do',
+            selectStore: '/app/home/selectStore.do'
         },
         order: {
             placeOrder: '/app/order/placeOrder.do',
