@@ -1,0 +1,36 @@
+<wxs module="filter" src="../../filter/filter.wxs"></wxs>
+<view class="ui-contain">
+    <navBar title='今日排行榜' background='white' color='black' iconTheme='black' back="{{true}}"></navBar>
+    <view class="ui-main">
+        <view class="ui-myInfoBox">
+            <view class="ui-myInfoItem__tap">我的排名</view>
+            <view class="ui-myInfoItem__info">
+                <view class="ui-myInfoItem__icon"></view>
+                <image class="ui-myInfoItem__img" src="{{myStep.avatar}}" mode="aspectFit" />
+                <view class="ui-myInfoitem__word">
+                    <view class="ui-myInfoitem__name">{{myStep.nickname}}</view>
+                    <view class="ui-myInfoitem__top">第{{myStep.index}}名</view>
+                </view>
+                <view class="ui-myInfoItem__step">{{myStep.todayStep}}步</view>
+            </view>
+        </view>
+        <view class="ui-listBox">
+            <view class="ui-listItem" wx:for="{{list}}" wx:key="{{index}}" style="background-color:{{ item.isMe ? '#F5F5F5' : ''}}" wx:if="{{list.length}}">
+                <view class="ui-listItem__info" >
+                    <image class="ui-myInfoItem__icon" src="{{filter.getLocalPhoto('gold.png')}}" mode="aspectFit" wx:if="{{item.index == 1}}" />
+                    <image class="ui-myInfoItem__icon" src="{{filter.getLocalPhoto('tongpai.png')}}" mode="aspectFit" wx:if="{{item.index == 2}}" />
+                    <image class="ui-myInfoItem__icon" src="{{filter.getLocalPhoto('yinpai.png')}}" mode="aspectFit" wx:if="{{item.index == 3}}" />
+                    <view class="ui-myInfoItem__index" wx:if="{{item.index > 3}}">
+                        {{item.index}}
+                    </view>
+                    <image class="ui-myInfoItem__img" src="{{item.avatar}}" mode="aspectFit" />
+                    <view class="ui-myInfoitem__word">
+                        <view class="ui-myInfoitem__name">{{item.nickname}}</view>
+                    </view>
+                    <view class="ui-myInfoItem__step">{{item.todayStep + ' 步'}}</view>
+                </view>
+            </view>
+        </view>
+        <view class="ui-noDataBox">没有更多好友了</view>
+    </view>
+</view>

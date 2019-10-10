@@ -68,7 +68,8 @@
     "pages/card/detail",
     "pages/me/donate",
     "pages/me/finish",
-    "pages/home/notice"
+    "pages/home/notice",
+    "pages/step/rankingList"
   ],
   "tabBar": {
     "custom": true,

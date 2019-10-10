@@ -14,8 +14,8 @@ config.prototype = {
     tokenKey: '',
 
     // env: 'dev', // 切换版本(提交正式必须改为 pro): dev 开发 | test  测试 | pro 生产
-    // env: 'test', // 切换版本(提交正式必须改为 pro): dev 开发 | test  测试 | pro 生产
-    env: 'pro', // 切换版本(提交正式必须改为 pro): dev 开发 | test  测试 | pro 生产
+    env: 'test', // 切换版本(提交正式必须改为 pro): dev 开发 | test  测试 | pro 生产
+    // env: 'pro', // 切换版本(提交正式必须改为 pro): dev 开发 | test  测试 | pro 生产
 
     defaultPage: 1,// 页码 默认1
     defaultPageSize: 15,// 每页数 默认15
@@ -131,6 +131,7 @@ config.prototype = {
 			getCommissionClientList:'/app/distribution/getClientList.do',
             getCommissionRecordList:'/app/distribution/getRecordList.do',
             verifyOrder: '/app/order/findVerifyOrder.do',
+            rankingList: '/app/step/rankingList.do'
 
             
         },

@@ -65,6 +65,7 @@ const methods = {
         let self = this;
         self.getStepInfo();
         self.getPageData();
+        self.rankingList();
     },
     getStepInfo: function() {
         let self = this;
@@ -215,6 +216,29 @@ const methods = {
 
         }, (err) => {});
     },
+    rankingList: function() {
+        let self = this;
+        User.rankingList(self, {
+            page: self.data.page,
+            pageSize: 5
+        }).then((ret) => {
+            let data = ret.data;
+            if (data.list && data.list.length) {
+                self.setData({
+                    fridensList: data.list,
+                    hasNextPage: data.hasNextPage
+                });
+            }
+           
+
+        }, (err) => {});
+    },
+    onMoreTap: function (e) {
+        let self = this;
+        _g.navigateTo({
+            url: 'pages/step/rankingList'
+        },self)
+    }
 };
 
 // 有引用template时定义
