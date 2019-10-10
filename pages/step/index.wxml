@@ -61,8 +61,8 @@
                 </view>
             </view>
             <!-- <view class="ui-historyBox ui-friendsListBox">
-                <image src="{{filter.getLocalPhoto('step_historyIcon.png')}}" class="ui-historyItem__icon" />
-                <view class="ui-historyItem__text ui-friendsList">— 乐友排行榜 —</view>
+                
+                <view class=" ui-friendsListItem__text">— 乐友排行榜 —</view>
                 <view class="ui-friendsLiItem__item" wx:for="{{fridensList}}" wx:key="{{index}}" wx:if="{{fridensList.length}}" style="background-color:{{ item.isMe ? '#F5F5F5' : ''}}">
                     <view class="ui-friendsLiItem " >
                         <image src="{{filter.getLocalPhoto('gold.png')}}" mode="aspectFit" class="ui-friendsLiItem__img" wx:if="{{item.index == 1}}" />

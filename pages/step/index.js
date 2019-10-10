@@ -226,7 +226,6 @@ const methods = {
             if (data.list && data.list.length) {
                 self.setData({
                     fridensList: data.list,
-                    hasNextPage: data.hasNextPage
                 });
             }
            
