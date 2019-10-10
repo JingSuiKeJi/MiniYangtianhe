@@ -55,7 +55,7 @@
                     <text class="ui-listItem__status" style="color: {{ (item.status== 1 ? '#20CAB4' : '' ) || (item.status== 3 ? '#999999' : '' )}}">{{filter.getStatus(item.status)}}</text>
                 </view>
             </view>
-             <!-- <view class="ui-historyBox">
+             <view class="ui-historyBox">
                 <image src="{{filter.getLocalPhoto('step_historyIcon.png')}}" class="ui-historyItem__icon" />
                 <view class="ui-historyItem__text">— 乐友排行榜 —</view>
                 <view class="ui-friendsLiItem ui-hirtoryItem__list" wx:for="{{fridensList}}" wx:key="{{index}}" wx:if="{{fridensList.length}}">
@@ -68,8 +68,8 @@
                     <view class="ui-friendsLiItem__nickName">{{item.nickName}}</view>
                     <view class="ui-friendsLiItem__step">{{item.step + '步'}}</view>
                 </view>
-                <view class="ui-moreList">查看更多排名</view>
-            </view> -->
+                <view class="ui-moreList" bindtap="onMoreTap">查看更多排名</view>
+            </view>
             <view class="ui-bottomTex">为你加油，一起努力吧 ～</view>
         </view>
     </view>

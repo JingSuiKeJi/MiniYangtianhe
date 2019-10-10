@@ -1,0 +1,7 @@
+<wxs module="filter" src="../../filter/filter.wxs"></wxs>
+<view class="ui-contain">
+   <navBar title='今日排行榜' background='white' color='black' iconTheme='black' back="{{true}}"></navBar>
+   <view class="ui-main">
+      
+   </view>
+</view>

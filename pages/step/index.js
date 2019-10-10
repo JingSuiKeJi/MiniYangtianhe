@@ -215,6 +215,12 @@ const methods = {
 
         }, (err) => {});
     },
+    onMoreTap: function (e) {
+        let self = this;
+        _g.navigateTo({
+            url: 'pages/step/charts'
+        },self)
+    }
 };
 
 // 有引用template时定义
