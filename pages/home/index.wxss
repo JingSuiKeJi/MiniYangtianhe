@@ -401,13 +401,13 @@ page {
 }
 
 .ui-classBox_item .ui-classItem__text {
-    display: inline-block;
+    /*display: inline-block;*/
     font-size: 24rpx;
     font-family: PingFangSC-Light;
     font-weight: 300;
     color: #333333;
     margin-bottom: 20rpx;
-    vertical-align: top;
+    /*vertical-align: top;*/
 }
 
 .ui-classBox_icon {
