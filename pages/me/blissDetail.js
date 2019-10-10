@@ -19,7 +19,7 @@ let data = {
 
 };
 const onLoad = function(self) {
-    // self.getBase();
+    self.getBase();
     self.getPageData();
 };
 const onShow = function(self) {

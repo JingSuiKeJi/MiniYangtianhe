@@ -4,13 +4,13 @@
 	<view class="ui-main">
 		<view class="ui-photoBox">
 			<view class="ui-photoBg">
-				<view wx:if="{{!photo}}" class="ui-photoDashed" bindtap="onChooseImageTap">
+				<view wx:if="{{!photo}}" class="ui-photoDashed" bindtap="onChooseImageTap" data-type="1">
 					<view class="ui-takePhotosImg"></view>
 					<text class="ui-takePhotosText">添加门店相关图片</text>
 				</view>
 				<view class="ui-photoSelect" wx:else>
 					<image src="{{filter.getPhoto(host,photo)}}"></image>
-					<view class="ui-anewPhoto" bindtap="onChooseImageTap">重置照片</view>
+					<view class="ui-anewPhoto" bindtap="onChooseImageTap" data-type = "1">重置照片</view>
 				</view>
 			</view>
 			<view class="ui-storeIntroduce">
@@ -73,10 +73,17 @@
 					<text>营业执照</text>
 					<text>*</text>
 				</view>
-				<input class="ui-inputCommon" bindinput="onBusinessLicenseTap" type="text" value="{{businessLicense}}" 
+				<!-- <input class="ui-inputCommon" bindinput="onBusinessLicenseTap" type="text" value="{{businessLicense}}" 
 					placeholder="请输入门店营业执照号码" placeholder-style="color:#666666;"
-					disabled="{{status == 1 || status == 2}}"/>
-				<view class="ui-licensePhoto">添加门店营业执照图片</view>	
+					disabled="{{status == 1 || status == 2}}"/> -->
+                <view  class="ui-photoDashed ui-licenseBox" bindtap="onChooseImageTap" data-type="2" wx:if="{{!businessLicense}}">
+					<view class="ui-takePhotosImg"></view>
+					<text class="ui-takePhotosText">添加营业执照图片</text>
+                </view>
+				<view class="ui-photoSelect" wx:if="{{businessLicense}}">
+					<image src="{{filter.getPhoto(host,businessLicense)}}"></image>
+					<view class="ui-anewPhoto" bindtap="onChooseImageTap" data-type="2">重置照片</view>
+				</view>
 			</view>
 			<view class="ui-belongCompany" >
 				<picker bindchange="onPickerChange"  range="{{list}}" range-key="{{'companyName'}}" class="ui-pickerBox">

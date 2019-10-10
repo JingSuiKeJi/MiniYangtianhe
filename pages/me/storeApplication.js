@@ -115,7 +115,7 @@ const methods = {
         });
     },
     //上传本地图片或拍照
-    onChooseImageTap: function() {
+    onChooseImageTap: function(e) {
         const self = this;
         if (self.data.status == 1 || self.data.status == 2) {
             _g.toast({
@@ -123,15 +123,36 @@ const methods = {
             })
             return
         }
+        if (e.currentTarget.dataset.type == 1) {
+            self.choosePicture('photo');
+        } else {
+            self.choosePicture('businessLicense');
+        }
+        // _g.chooseImage({
+        //     success: function(ret) {
+        //         _g.onUpload({
+        //             imageList: ret.tempFilePaths,
+        //             success: function(ret) {
+        //                 self.setData({
+        //                     photo: ret[0]
+        //                 });
+        //             }
+        //         });
+        //     }
+        // });
+    },
+    choosePicture: function (value) {
+        const self = this;
         _g.chooseImage({
-            success: function(ret) {
+            success: function(ret) {   
                 _g.onUpload({
                     imageList: ret.tempFilePaths,
                     success: function(ret) {
                         self.setData({
-                            photo: ret[0]
+                            [value]: ret[0]
                         });
                     }
+                   
                 });
             }
         });
@@ -270,7 +291,6 @@ const methods = {
             address: self.data.address,
             showAddress: self.data.showAddress,
         };
-
         if (!self.data.id) {
             User.apply(self, data).then((ret) => {
                 _g.showModal({

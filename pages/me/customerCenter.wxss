@@ -76,9 +76,14 @@ page{
 	top: 38rpx;
 	width:160rpx;
 	height:56rpx;
+	font-size:28rpx;
+	font-family:PingFangSC-Medium,PingFangSC;
+	font-weight:500;
+	color:rgba(255,255,255,1);
+	line-height:56rpx;
 	background:linear-gradient(137deg,rgba(1,206,165,1) 0%,rgba(94,221,218,1) 100%);
 	border-radius:150rpx 0rpx 0rpx 150rpx;
-	display: flex;
+	text-align: center;
 }
 
 .ui-vipBackground view{
@@ -142,6 +147,8 @@ page{
 .ui-addressInfo{
 	width:686rpx;
 	margin: 20rpx 0 0 32rpx;
+	padding-bottom: 20rpx;
+
 }
 
 .ui-oaddressHeader{
@@ -179,7 +186,7 @@ page{
 }
 
 .ui-addressSet{
-	height: 102rpx;
+	/* height: 102rpx; */
 	width:100%;
 	background:rgba(255,255,255,1);
 	display: flex;
@@ -210,13 +217,13 @@ page{
 }
 
 .ui-addressDetail{
-	height:40rpx;
+	/* height:40rpx; */
 	font-size:26rpx;
 	font-family:PingFang-SC-Medium;
 	font-weight:500;
 	color:rgba(51,51,51,1);
 	line-height:40rpx;
-	margin:12rpx 0 0 36rpx;
+	padding: 12rpx 20rpx 0 36rpx;
 }
 
 .ui-addressFooter{
