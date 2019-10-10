@@ -1603,6 +1603,46 @@ base.prototype = {
                 })
             }
         })
+    },
+    getGoodsPosterBg(self) {
+        const _g = this;
+        const host = _c.host[_c.env];
+        const User = require('../service/User');
+        if (!_g.getLS('goodsPosterBg')) {
+            User.getPoster(self, {
+                type: 2
+            }).then(({data}) => {
+                if (data.poster) {
+                    wx.downloadFile({
+                        url: `${host}${data.poster}`,
+                        success(res) {
+                            if (res.statusCode === 200) {
+                                wx.getImageInfo({
+                                    src: res.tempFilePath,
+                                    success(res) {
+                                        _g.setLS('goodsPosterBg', res);
+                                    },
+                                    fail(err) {
+                                        wx.hideLoading();
+                                    }
+                                });
+                            }
+                        }
+                    });
+                }
+                // console.log()
+                // self.downloadImg({
+                //     imgUrl: self.data.host +  ret.data.poster
+                // }, (res) => {
+                //     self.setData({
+                //         picThumb: res
+                //     });
+                //     _g.setLS('posterThumb', res);
+                // });
+                // self.checkDownload();
+            }, (err) => {
+            });
+        }
     }
 };
 

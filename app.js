@@ -36,9 +36,12 @@ App({
                 self.base.setLS('bar2Bottom', bar2Bottom);
             }
         });
+        // getGoodsPosterBg
         self.base.rmLS('posterThumb');
         self.base.rmLS('avatarThumb');
         self.base.rmLS('myPosterUrl');
+        self.base.rmLS('goodsPosterBg');
+        self.base.getGoodsPosterBg(self);
     },
 	globalData: {
 		//状态栏高度
