@@ -8,7 +8,7 @@ const Goods = require('../../service/Goods');
 // 初始化数据
 const data = {
 	title: '公告详情',
-    webPage: 'http://120.79.36.152/share/html/protocol/index_frame.html?',
+    webPage: 'https://app.yth-yx.com/share/html/protocol/index_frame.html?',
     url: ''
     // url: 'http://120.79.36.152/share/html/protocol/index_frame.html?type=notice&id='
 };
