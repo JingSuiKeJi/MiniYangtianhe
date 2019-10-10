@@ -249,9 +249,9 @@
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "pages/step/charts",
-					"pathName": "pages/step/charts",
+					"id": 27,
+					"name": "pages/step/rankingList",
+					"pathName": "pages/step/rankingList",
 					"query": "platformFlag=1",
 					"scene": null
 				}

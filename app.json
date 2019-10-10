@@ -69,7 +69,7 @@
     "pages/me/donate",
     "pages/me/finish",
     "pages/home/notice",
-    "pages/step/charts"
+    "pages/step/rankingList"
   ],
   "tabBar": {
     "custom": true,
