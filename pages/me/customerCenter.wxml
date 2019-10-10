@@ -13,8 +13,8 @@
 					<text>所属门店：{{clientInfo.title}}</text>
 				</view>
 			</view>
-			<view class="ui-vipBackground">
-				<block wx:if="{{clientInfo.sort==1}}">
+			<view class="ui-vipBackground" wx:if="{{clientInfo.distributionTitle}}">{{clientInfo.distributionTitle}}
+				<!-- <block wx:if="{{clientInfo.sort==1}}">
 					<view class="ui-vipLevelIcon"><image src="http://www.gzlingren.com:8098/yangtianhe/my_distributionLevel.png"></image></view>
 					<view class="ui-levelNum">一级</view>
 				</block>
@@ -25,7 +25,7 @@
 				<block wx:if="{{clientInfo.sort==0||clientInfo.sort==null}}">
 					<view class="ui-vipLevelIcon"></view>
 					<view class="ui-levelNum"></view>
-				</block>
+				</block> -->
 			</view>
 			<view class="ui-userOperation">
 				<view class="ui-userOperationItemCommon ui-orderNum">
@@ -51,20 +51,20 @@
 					<view class="ui-moreIconCommon"></view>
 				</view>
 			</view>
-			<block wx:if="{{addressList}}">
+			<view wx:if="{{addressList}}">
 				<view class="ui-addressSet" wx:for="{{addressList}}" wx:for-item="item" wx:key="{{index}}">
 					<view class="ui-nameAndTel">
 						<text>{{item.receiverName}}</text>
 						<text>{{item.receiverPhone}}</text>
 					</view>
-					<text class="ui-addressDetail">{{item.provinceName}}{{item.cityName}}{{item.areaName}}{{item.address}}</text>
+					<view class="ui-addressDetail">{{item.provinceName}}{{item.cityName}}{{item.areaName}}{{item.address}}</view>
 				</view>
-			</block>
-			<block wx:else>
+			</view >
+			<view  wx:else>
 				<view class="ui-addressNotSet">
 					<text class="ui-fontSmallTextCommon">未设置收货地址</text>
 				</view>
-			</block>
+			</view >
 			<view class="ui-addressFooter"></view>
 		</view>
 		

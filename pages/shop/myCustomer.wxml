@@ -15,9 +15,9 @@
 				<view class="ui-userAvatar"><image src="{{filter.getAvatar(host,item.avatar)}}"></image></view>
 				<view class="ui-userInfo">
 					<view class="ui-userId">{{item.nickname}}</view>
-					<view class="ui-userVipLevel" wx:if="{{item.sort==1}}"><image src="http://www.gzlingren.com:8098/yangtianhe/my_distributionLevel.png"></image></view>
-					<view class="ui-userVipLevel" wx:if="{{item.sort==2}}"><image src="http://www.gzlingren.com:8098/yangtianhe/my_distributionLevel2.png"></image></view>
-					<view class="ui-userVipLevel" wx:if="{{item.sort==null||item.sort==0}}"></view>
+					<!-- <view class="ui-userVipLevel" wx:if="{{item.sort==1}}"><image src="http://www.gzlingren.com:8098/yangtianhe/my_distributionLevel.png"></image></view>
+					<view class="ui-userVipLevel" wx:if="{{item.sort==2}}"><image src="http://www.gzlingren.com:8098/yangtianhe/my_distributionLevel2.png"></image></view> -->
+					<view class="ui-userVipLevel" wx:if="{{item.distributionTitle}}">{{item.distributionTitle}}</view>
 				</view>
 				<view class="ui-userLevel">
 					<text>一级：{{item.oneLevelTeamNum}}</text>

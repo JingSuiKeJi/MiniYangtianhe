@@ -9,13 +9,8 @@ page {
     /* overflow: auto; */
 }
 .main {
-    width: 100%;
-    min-height: 83%; 
-    background-image: url(http://www.gzlingren.com:8098/yangtianhe/step_bgIcon.png);
+    background:linear-gradient(180deg,rgba(125,222,227,1) 0%,rgba(150,228,232,1) 46%,rgba(255,255,255,1) 100%);
     background-attachment: scroll;
-    background-size: 750rpx 1548rpx; 
-    background-position: 0 -127rpx;
-    /* overflow: auto; */
 }
 .ui-stepBox {
     width: 100%;
@@ -23,6 +18,10 @@ page {
 }
 .ui-stepTapBox {
     display: flex;
+    width: 750rpx;
+    height: 560rpx;
+    background-image: url(http://www.gzlingren.com:8098/yangtianhe/step__bgImage.png);
+    background-size: 750rpx 560rpx; 
     justify-content: center;
     margin: 0 auto;
     position: relative;
@@ -153,7 +152,7 @@ page {
     background-color: #fff;
     position: relative;
     margin: 0 auto;
-    margin-top: 90rpx;
+    margin-top: -90rpx;
     text-align: center;
     box-sizing: border-box;
     border-radius:16rpx;
@@ -212,14 +211,24 @@ page {
     top: -10rpx;
 }
 .ui-historyItem__text {
+    width: 240rpx;
+    height: 72rpx;
+    display: flex;
     font-size:30rpx;
     font-family:PingFangSC-Medium;
     font-weight:500;
     color:#C55300;
     line-height:42rpx;
-    position: absolute;
+    /* position: absolute;
     top: 0rpx;
-    left: 234rpx;
+    left: 234rpx; */
+    background-image: url(http://www.gzlingren.com:8098/yangtianhe/step_historyIcon.png);
+    background-size: 240rpx 72rpx;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: -120rpx;
+    margin-bottom: 20rpx;
 }
 .ui-hirtoryItem__list {
     height: 90rpx;
@@ -256,7 +265,6 @@ page {
     color:#fff;
     line-height:130rpx;
     text-align: center;
-    margin-bottom: 120rpx;
 }
 .modals{
     position:fixed;
@@ -345,6 +353,7 @@ page {
     display: flex;
     width: 626rpx;
     height: 128rpx;
+    border-bottom: 1rpx solid #E5E5E5;
     align-items: center;
     margin: 0 auto;
 }
@@ -412,6 +421,8 @@ page {
     padding-right: 0; 
     justify-content: center;
     flex-direction: column;
+    margin-bottom: 80rpx;
+
 }
 .ui-friendsLiItem__item {
     width: 100%;
@@ -432,4 +443,13 @@ page {
     align-items: center;
     margin: 0 auto;
     margin-top: -120rpx;
+    margin-bottom: 20rpx;
+}
+.ui-noData__text {
+    margin-top: 40rpx;
+    font-size:26rpx;
+    font-family:PingFangSC-Regular,PingFangSC;
+    font-weight:400;
+    color:#999999;
+    line-height:26rpx;
 }

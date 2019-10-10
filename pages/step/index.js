@@ -12,32 +12,7 @@ const data = {
     list: [],
     BMIIndex: 0,
     test: 1,
-    fridensList: [
-        {
-            url: 'gold.png',
-            picUrl: 'my_ snapshoot.png',
-            nickName: '一个小妮子',
-            step: 18989
-        },
-        {
-            url: 'gold.png',
-            picUrl: 'my_ snapshoot.png',
-            nickName: '一个小妮子',
-            step: 18989
-        },
-        {
-            url: 'gold.png',
-            picUrl: 'my_ snapshoot.png',
-            nickName: '一个小妮子',
-            step: 18989
-        },
-        {
-            url: 'gold.png',
-            picUrl: 'my_ snapshoot.png',
-            nickName: '一个小妮子',
-            step: 18989
-        }
-    ]
+    fridensList: []
 };
 
 // 页面onLoad方法
@@ -65,7 +40,7 @@ const methods = {
         let self = this;
         self.getStepInfo();
         self.getPageData();
-        self.rankingList();
+        // self.rankingList();
     },
     getStepInfo: function() {
         let self = this;
@@ -95,8 +70,14 @@ const methods = {
     onIllustrateTap: function(e) {
         let self = this;
         _g.navigateTo({
-            url: 'pages/step/illustration'
-        }, self)
+            url: 'pages/home/notice',
+            param: {
+                urlParam: `type=article&id=pointsRule`
+            }
+        }, self);
+        // _g.navigateTo({
+        //     url: 'pages/step/illustration'
+        // }, self)
     },
     initBlock: function() {
         let self = this;

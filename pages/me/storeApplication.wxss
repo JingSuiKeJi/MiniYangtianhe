@@ -66,8 +66,8 @@ page{
 
 .ui-photoSelect{
 	position: relative;
-	width: 100%;
-	height: 100%;
+	width:686rpx;
+	height:514rpx;
 }
 
 .ui-photoSelect image{
@@ -314,4 +314,13 @@ page{
 	color:rgba(51,51,51,1);
 	line-height:98rpx;
 	text-align: center;
+}
+.ui-licenseItem__photo {
+	/* margin-top: 48rpx; */
+	width: 80rpx;
+	height: 80rpx;
+}
+.ui-licenseBox {
+	margin: 20rpx auto;
+
 }

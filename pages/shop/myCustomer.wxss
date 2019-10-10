@@ -80,7 +80,7 @@ page{
 	height: 72rpx;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
+	justify-content: center;
 }
 
 .ui-userInfo .ui-userId{

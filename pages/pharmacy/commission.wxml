@@ -20,7 +20,7 @@
 						<text>{{item.type == 1 ? '+' : '-'}}{{item.commission}}</text>
 						<!-- <text wx:if="{{item.type == 1}}">{{filter.getCommissionIncome(item.incomeType)}}</text>
 						<text wx:if="{{item.type == 2}}">{{filter.getCommissionExpenditure(item.incomeType)}}</text> -->
-						<text>{{item.description}}</text>
+						<text>{{item.type == 1 ? '一级佣金' : '二级佣金'}}</text>
 					</view>
 				</view>
 			</block>
