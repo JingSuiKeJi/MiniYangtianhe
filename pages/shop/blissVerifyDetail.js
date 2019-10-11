@@ -69,7 +69,7 @@ const methods = {
 		User.getVerifierInfo(self, {
 	        storeId:storeId,
 			type:currentType,
-			dayTime:currentTimestamp
+			dayTime:Math.round(currentTimestamp / 1000)
 	    }).then((ret) => {
 			const list = ret.data;
 			self.setData({

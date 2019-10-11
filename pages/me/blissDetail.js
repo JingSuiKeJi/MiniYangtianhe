@@ -5,7 +5,7 @@ const _g = app.base;
 const _c = app.config;
 const _t = app.temps;
 const event = app.event;
-const Point = require('../../service/Point.js');
+const Point = require('../../service/Point');
 
 let data = {
     withdrawlist: [],
