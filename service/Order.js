@@ -101,8 +101,21 @@ class Order {
 			url: mini.order.preferentialPolicies,
 			data: reqData
 		}, page);
+    }
+    getAfterSale(page, reqData) {
+		_g.dm.canLoadMore = 1;
+		return _g.ajax({
+			url: mini.order.getAfterSale,
+			data: reqData
+		}, page);
 	}
-    
+    appayBefore(page, reqData) {
+		_g.dm.canLoadMore = 1;
+		return _g.ajax({
+			url: mini.order.appayBefore,
+			data: reqData
+		}, page);
+	}
 }
 
 module.exports = new Order();

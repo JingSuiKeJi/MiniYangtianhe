@@ -5,6 +5,7 @@ const _g = app.base;
 const _c = app.config;
 const _t = app.temps;
 const event = app.event;
+const Order = require('../../service/Order');
 let data = {
 	orderStatus:'',//上一个页面订单状态
 	takeState:'',//上一个页面在状态，自提/配送
@@ -15,17 +16,37 @@ let data = {
 };
 const onLoad = function(self) {
 	//接收上一个页面状态
-	const orderStatus = self.data.orderStatus;
 	const takeState = self.data.takeState;
 	self.setData({
-		orderStatus:orderStatus,
+		orderId: self.data.orderId,
 		takeState:takeState
-	})
+	});
+	self.getData();
 }
 const onShow = function(self) {}
 const onReady = function(self) {}
 const onUnload = function(self) {}
 const methods = {
+	getData: function () {
+		let self = this;
+        self.getAfterSale()
+	},
+    getAfterSale() {
+        const self = this;
+        Order.getAfterSale(self, {
+            orderId: self.data.orderId
+        }).then((ret) => {
+			let data = ret.data;
+			self.setData({
+				storeList: data.goodsVoList,
+				refundSwich: data.refundSwich,
+				salesReturnSwich: data.salesReturnSwich,
+				// exchangeGoodsSwich: data.exchangeGoodsSwich,
+			})
+        }, (err) => {
+
+        });
+	},
 	// 选择退款商品
 	onSelectTap:function(options){
 		let self = this;

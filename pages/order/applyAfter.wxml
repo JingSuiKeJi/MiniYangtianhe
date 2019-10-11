@@ -1,4 +1,4 @@
-<!-- <wxs module="filter" src="../../filter/filter.wxs"></wxs> -->
+<wxs module="filter" src="../../filter/filter.wxs"></wxs>
 <!--applyAfter.wxml-->
 <view class="container">
 	<view class="ui-main">
@@ -7,15 +7,17 @@
 			<view class="ui-newsInfoItem" wx:for="{{storeList}}" wx:for-item="item" wx:key="idx">
 				<view catchtap="onSelectTap" data-id="{{item.id}}" class="ui-selectCommon {{item.select?'ui-selectIcon':'ui-notSelectIcon'}}"></view>
 				<view class="ui-newsImg">
-					<image src="http://www.gzlingren.com:8098/yangtianhe/{{item.newsImg}}.png"></image>
+					<image src="{{filter.getPhoto(host,item.imgUrl)}}"></image>
 				</view>
 				<view class="ui-newsInfoDetail">
 					<view class="ui-newsName">
-						<text>{{item.newsName}}</text>
-						<text>x1</text>
+						<text>{{item.title}}</text>
+						<text>x{{item.num}}</text>
 					</view>
-					<text class="ui-newsWeight">{{item.newsWeight}}</text>
-					<text class="ui-newsMoney">¥{{item.newsMoney}}</text>
+					<!-- 没有规格时先让他为空 -->
+					<text class="ui-newsWeight"></text>
+					<!-- <text class="ui-newsWeight">{{item.specificationName}}</text> -->
+					<text class="ui-newsMoney">¥{{item.price}}</text>
 				</view>
 			</view>
 		</view>
@@ -23,7 +25,7 @@
 		<view class="ui-cutOff"></view>
 		
 		<!-- 退款类型 -->
-		<block wx:if="{{orderStatus=='待发货'||orderStatus=='已过期'||takeState=='自提'}}">
+		<!-- <block wx:if="{{orderStatus=='待发货'||orderStatus=='已过期'||takeState=='自提'}}">
 			<view class="ui-itemCommon" bindtap="onRefundTap">
 				<view class="ui-iconCommon ui-refundIcon"></view>
 				<view class="ui-reasonText">
@@ -32,10 +34,10 @@
 				</view>
 				<view class="ui-skipIcon"></view>
 			</view>
-		</block>
-		<block wx:else>
+		</block> -->
+		<block >
 			<view class="ui-refundHandleBox">
-				<view class="ui-itemCommon" bindtap="onRefundTap">
+				<view class="ui-itemCommon" bindtap="onRefundTap" wx:if="{{refundSwich}}">
 					<view class="ui-iconCommon ui-refundIcon"></view>
 					<view class="ui-reasonText">
 						<text>我要退款（无需退货）</text>
@@ -43,7 +45,7 @@
 					</view>
 					<view class="ui-skipIcon"></view>
 				</view>
-				<view class="ui-itemCommon" bindtap="onRefundGoodsTap">
+				<view class="ui-itemCommon" bindtap="onRefundGoodsTap" wx:if="{{salesReturnSwich}}">
 					<view class="ui-iconCommon ui-exchangeIcon"></view>
 					<view class="ui-reasonText">
 						<text>我要退货退款</text>
@@ -51,14 +53,14 @@
 					</view>
 					<view class="ui-skipIcon"></view>
 				</view>
-				<view class="ui-itemCommon" bindtap="onExchangeGoodsTap">
+				<!-- <view class="ui-itemCommon" bindtap="onExchangeGoodsTap" wx:if="{{exchangeGoodsSwich}}">
 					<view class="ui-iconCommon ui-returnIcon"></view>
 					<view class="ui-reasonText">
 						<text>我要换货</text>
 						<text>商品存在质量问题，联系客服协商换货</text>
 					</view>
 					<view class="ui-skipIcon"></view>
-				</view>
+				</view> -->
 			</view>
 		</block>
 		

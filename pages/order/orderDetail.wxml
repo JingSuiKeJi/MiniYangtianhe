@@ -110,7 +110,7 @@
                     <text class="ui-newsNum">x{{item.num}}</text>
                 </view>
             </view>
-            <view wx:if="{{status=='WAIT_SELLER_SEND_GOODS'||status=='WAIT_BUYER_CONFIRM_GOODS'}}" class="btn-applyAfterSales" bindtap="onApplyAfterSales">申请售后</view>
+            <view wx:if="{{status=='WAIT_SELLER_SEND_GOODS'||status=='WAIT_BUYER_CONFIRM_GOODS'}}" class="btn-applyAfterSales" bindtap="onApplyafterSaleTap">申请售后</view>
             <view class="ui-freight ui-commodityTextCommon">
                 <text>运费</text>
                 <text>¥{{deliveryFee}}</text>

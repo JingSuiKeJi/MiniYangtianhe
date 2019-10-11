@@ -235,10 +235,9 @@ const methods = {
 	//申请售后
 	onApplyafterSaleTap:function(){
 		let self = this;
-		const takeState = self.data.takeState;
 		_g.navigateTo({
 			param:{
-				takeState:takeState
+				orderId: self.data.orderId
 			},
 			url: 'pages/order/applyAfter',
 		}, self);
@@ -264,17 +263,17 @@ const methods = {
 			url: 'pages/order/myComment',
 		}, self);
 	},
-	//跳转到申请售后
-	onApplyAfterSales:function(){
-		let self = this;
-		const orderStatus = self.data.orderStatus;
-		_g.navigateTo({
-			param:{
-				orderStatus:orderStatus
-			},
-			url: 'pages/order/applyAfter',
-		}, self);
-	},
+	// //跳转到申请售后
+	// onApplyAfterSales:function(){
+	// 	let self = this;
+	// 	const orderStatus = self.data.orderStatus;
+	// 	_g.navigateTo({
+	// 		param:{
+	// 			orderStatus:orderStatus
+	// 		},
+	// 		url: 'pages/order/applyAfter',
+	// 	}, self);
+	// },
 	getGoodsId: function () {
 		var self = this;
 		let goodsId = [];
