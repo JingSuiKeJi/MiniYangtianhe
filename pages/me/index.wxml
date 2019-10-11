@@ -27,7 +27,7 @@
                    
 				</view> -->
 				<!-- 使用福气 -->
-				<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onBlissDetailTap" >
+				<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onScanTap" >
 					<button formType="submit" class="ui-useBlisses">
 						<view class="ui-sueBlissesIcon"></view>
 						<text>使用福气</text>

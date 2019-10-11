@@ -11,7 +11,7 @@ let data = {
     points: 0,
     showModal: false, //模态框显影
     bissNum: '', //核销额度
-    storeId: 27,
+    // storeId: 27,
 };
 const onLoad = function(self) {
     self.getBase();
@@ -67,14 +67,16 @@ const methods = {
         	points: self.data.bissNum,
         	storeId: self.data.storeId
         }).then((ret) => {
-        	setTimeout(()=>{
-        		_g.navigateBack();
-        	}, 3000);
-        	_g.toast({
-        		title: '核销成功',
-        		icon: 'success',
-        		duration: 5000
-        	});
+            _g.toast({
+                title: '核销成功',
+                icon: 'success',
+                duration: 4000,
+                success() {
+                	setTimeout(()=>{
+                		_g.navigateBack();
+                	}, 3000);
+                }
+            });
         })
         // _g.navigateTo({
         //     url: 'pages/me/blissDetail',

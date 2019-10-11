@@ -294,6 +294,24 @@ const methods = {
             url: 'pages/me/bindingPhone',
         }, self);
     },
+    onScanTap() {
+        const self = this;
+        //TODO open scan
+        wx.scanCode({
+            onlyFromCamera: true,
+            success (res) {
+                const scene = _g.getDataByUrl(res.path.split('?')[1]).scene;
+                const storeId = _g.getDataByUrl(scene).s;
+                const promoCode = _g.getDataByUrl(scene).p;
+                _g.navigateTo({
+                    url: 'pages/me/blissVerific',
+                    param: {
+                        storeId: storeId
+                    }
+                }, self);
+            }
+        });
+    }
 }
 
 // 有引用template时定义
