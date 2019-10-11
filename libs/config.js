@@ -179,6 +179,8 @@ config.prototype = {
             getDeliveryTime: '/app/preOrder/getDeliveryTime.do',
             goodsCouponList: '/app/preOrder/couponList.do',
             preferentialPolicies: '/app/preOrder/preferentialPolicies.do',
+            getAfterSale: '/app/afterSale/perview.do',
+            appayBefore: '/app/afterSale/appayBefore.do'
             
 
         },

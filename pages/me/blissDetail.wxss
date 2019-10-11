@@ -59,9 +59,9 @@
 .moneyInfo .ui-blissTextFlex .ui-blissIcon{
 	position: relative;
 	display: inline-block;
-	width: 38rpx;
-	height: 30rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_happyCloud.png');
+	width: 48rpx;
+	height: 38rpx;
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/fuqi__icon.png');
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: cover;

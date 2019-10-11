@@ -1,4 +1,4 @@
-<!-- <wxs module="filter" src="../../filter/filter.wxs"></wxs> -->
+<wxs module="filter" src="../../filter/filter.wxs"></wxs>
 <!--afterSale.wxml-->
 <view class="container">
 	<view wx:if="{{orderList}}" class="ui-main">

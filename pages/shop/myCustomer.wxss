@@ -93,9 +93,19 @@ page{
 }
 
 .ui-userInfo .ui-userVipLevel{
-	width: 44rpx;
-	height: 44rpx;
-	overflow: hidden;
+	display: flex;
+	width:120rpx;
+	height:40rpx;
+	margin-top: 12rpx;
+	font-size:20rpx;
+	font-family:PingFangSC-Regular,PingFangSC;
+	font-weight:400;
+	color:#999999;
+	/* line-height:20rpx; */
+	border-radius:8rpx;
+	border:2rpx solid rgba(221,221,221,1);
+	justify-content: center;
+	align-content: center;
 }
 
 .ui-userInfo .ui-userVipLevel image{
