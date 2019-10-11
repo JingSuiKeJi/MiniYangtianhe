@@ -115,6 +115,13 @@ class Order {
 			url: mini.order.appayBefore,
 			data: reqData
 		}, page);
+    }
+    afterSaleApply(page, reqData) {
+		_g.dm.canLoadMore = 1;
+		return _g.ajax({
+			url: mini.order.afterSaleApply,
+			data: reqData
+		}, page);
 	}
 }
 

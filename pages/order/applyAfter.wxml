@@ -5,7 +5,7 @@
 		<!-- 退款商品 -->
 		<view class="ui-newsInfoBox">
 			<view class="ui-newsInfoItem" wx:for="{{storeList}}" wx:for-item="item" wx:key="idx">
-				<view catchtap="onSelectTap" data-id="{{item.id}}" class="ui-selectCommon {{item.select?'ui-selectIcon':'ui-notSelectIcon'}}"></view>
+				<view catchtap="onSelectTap" data-index="{{index}}" class="ui-selectCommon {{item.select?'ui-selectIcon':'ui-notSelectIcon'}}"></view>
 				<view class="ui-newsImg">
 					<image src="{{filter.getPhoto(host,item.imgUrl)}}"></image>
 				</view>
