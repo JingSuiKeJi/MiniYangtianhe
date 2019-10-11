@@ -5,60 +5,109 @@ const _g = app.base;
 const _c = app.config;
 const _t = app.temps;
 const event = app.event;
+const Order = require('../../service/Order');
 let data = {
-	status:'申请退款',//上一个页面状态//默认申请退款//申请退款、申请退货、申请换货
-	storeList:[//商品列表
-		{newsImg:'my_ce',newsName:"养生堂维C+维E",newsWeight:"250gx两盒装",newsMoney:'99.00'},
-	],
-	notCargo:true,//未收到货
-	cargo:false,//一收到货
+	storeList:[],
 	showAfterModal:false,//选择售后原因模态框
 	reasonFlag:'',//选择当前售后原因
-	reasonTransfer:'',// 中转存
 	selectFinish:false,//确认选择
-	refundList:[
-		{reason:'包装损坏',reasonFlag:'1'},
-		{reason:'不想要了',reasonFlag:'2'},
-		{reason:'实物和商品不符',reasonFlag:'3'},
-		{reason:'我要换货',reasonFlag:'4'},
-		{reason:'各种不符',reasonFlag:'5'},
-		{reason:'其它',reasonFlag:'6'},
-	],
-	refundText:'',//售后原因
-	explainText:'',//退款说明
+	reason:'',//售后原因
+	description:'',//退款说明
 	tempFilePaths:[],//本地照片地址
 	showModal:false,//提交订单
+	status: 1,
 };
 const onLoad = function(self) {
-	//接收上一个页面状态
-	const status = self.data.status;
 	self.setData({
-		status:status
+		orderItemIds: self.data.orderItemIds
 	})
+	self.getData();
 	//动态修改导航栏名称 
 	wx.setNavigationBarTitle({
-		title: status,
+		title: title,
 	}) 
 }
 const onShow = function(self) {}
 const onReady = function(self) {}
 const onUnload = function(self) {}
 const methods = {
-	//未收到货
-	onNotCargoTap:function(){
-		const self = this;
-		self.setData({
-		  notCargo:true,
-		  cargo:false,
-		})
+	getData: function () {
+	   const self = this;
+       self.appayBefore();
 	},
-	//已收到货
-	onCargoTap:function(){
+	appayBefore: function () {
 		const self = this;
-		self.setData({
-		  cargo:true,
-		  notCargo:false,
-		})
+        Order.appayBefore(self, {
+            orderItemIds: self.data.orderItemIds
+        }).then((ret) => {
+			let data = ret.data;
+			let opts  = data.orderAfterSaleVO;
+			let causeList = _.map(data.causeList,(item)=> {
+				let param = {}
+				param.reason = item;
+				param.reasonFlag = false;
+				return param
+			})
+			let type = 0;
+			let title = '申请退款';
+			if (opts.refundSwich) {
+				type = 1;
+				title = '申请退款';
+			}
+			if (!opts.salesReturnSwich) {
+				type = 2
+				title = '申请退货';
+			}
+			if (opts.exchangeGoodsSwich) {
+				type = 3
+				title = '申请换货';
+			}
+			self.setData({
+				storeList: opts.goodsVoList,
+				totalPrice: opts.totalPrice,
+				causeList: causeList,
+				type: type,
+				title: title
+			})
+        }, (err) => {
+
+        });
+	},
+	afterSaleApply: function () {
+		let self = this;
+		let data = self.data;
+		let param = {
+			orderItemIds: data.orderItemIds,
+			type: data.type,
+			reason: data.reason,
+			imgUrl: data.tempFilePaths,
+			description: data.description,
+			type: data.type
+		}
+		if (data.type == 1) {
+			if (data.status == 1) {
+				param.status = 1;//未收到
+			} else {
+				param.status = 2;//已收到
+			}
+		}
+		if (data.type == 2) {
+			if (data.status == 1) {
+				param.status = 3;//未拆封
+			} else {
+				param.status = 4;//已拆封
+			}
+		}
+		Order.afterSaleApply(self, param).then((ret) => {
+			_g.navigateTo({
+				param:{
+					title:title
+	         	},
+				url: 'pages/order/afterDetails',
+			}, self);
+        }, (err) => {
+
+        });
 	},
 	//退款说明//失去焦点
 	areablur:function(){
@@ -77,38 +126,36 @@ const methods = {
 	//退款说明内容双向绑定
 	onExplainTap:function(e){
 		const self = this;
-		const explainText = self.data.explainText;
 		self.setData({
-			explainText: e.detail.value
+			description: e.detail.value
 		})
 	},
 	//添加照片
 	onChooseImgTap:function () {
-		let self = this;  
-		wx.chooseImage({  
-			count: 6, // 默认9  
-			sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有  
-			sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有  
-			success: function (res) {  
-				// 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片  
-				const newTemp = res.tempFilePaths;
-				const tempFilePaths = self.data.tempFilePaths
-				newTemp.forEach(function(val){
-					tempFilePaths.push(val)
-				})
-				self.setData({  
-					tempFilePaths:tempFilePaths
-				})
-			}  
-		})
+		let self = this; 
+		let  tempFilePaths =  self.data.tempFilePaths;
+		_g.chooseImage({
+            success: function(ret) {   
+                _g.onUpload({
+                    imageList: ret.tempFilePaths,
+                    success: function(ret) {
+						tempFilePaths.push(ret[0])
+                        self.setData({
+                            tempFilePaths: tempFilePaths
+						});
+                    }
+                   
+                });
+            }
+        });
 	},
 	//删除照片
 	onDeletePicTap:function(options){
 		const self = this;
-		const id = options.currentTarget.dataset.id;
+		const index = options.currentTarget.dataset.index;
 		const tempFilePaths = self.data.tempFilePaths
 		//删除
-		tempFilePaths.splice(id,1);
+		tempFilePaths.splice(index,1);
 		self.setData({  
 			tempFilePaths:tempFilePaths
 		})
@@ -131,29 +178,32 @@ const methods = {
 	//确认选择售后原因
 	onAfterConfirm: function () {
 		let self = this;
-		// 当前是否确认
-		let reasonTransfer = self.data.reasonTransfer;
+		let reason = '';
+	    _.each(self.data.causeList,(item)=> {
+            if (item.reasonFlag) {
+			  return reason = item.reason
+			}
+		})
 		self.setData({
-			refundText:reasonTransfer,
+			reason:reason
 		})
 		self.hideAfterModal()
 	},
 	//选择售后原因
 	onSelectReasonTap:function(options){
-		let self = this;
-		//当前索引
-		let id = options.currentTarget.dataset.id;
-		//当前选择
-		let selectReasonFlag = self.data.refundList[id].reasonFlag;
-		// 当前原因
-		let reason = options.currentTarget.dataset.reason;
-		//选择原因
+		let self = this; 
+		let causeList = self.data.causeList;
+		let index = options.currentTarget.dataset.index;
+		let idx = self.data.index;
+		if((index != self.data.index) && (idx >= 0)){
+			causeList[idx].reasonFlag = !causeList[idx].reasonFlag;
+			causeList[index].reasonFlag = !causeList[index].reasonFlag;
+		}else {
+			causeList[index].reasonFlag = !causeList[index].reasonFlag;
+		}
 		self.setData({
-			reasonFlag:selectReasonFlag
-		})
-		//选择原因存入中转reasonTransfer
-		self.setData({
-			reasonTransfer:reason,
+			causeList: causeList,
+			index: index
 		})
 	},
 	//提交模态框
@@ -173,15 +223,15 @@ const methods = {
 	//提交售后申请
 	onConfirm: function () {
 		let self = this;
-		const status = self.data.status;
-	    _g.navigateTo({
-			param:{
-				status:status
-         	},
-			url: 'pages/order/afterDetails',
-	    }, self);
+		self.afterSaleApply();
 		self.hideModal();
 	},
+	onStatusTap: function (e) {
+		let self = this;
+		self.setData({
+			status: e.currentTarget.dataset.status
+		})
+	}
 }
 
 // 有引用template时定义

@@ -37,8 +37,10 @@ const methods = {
             orderId: self.data.orderId
         }).then((ret) => {
 			let data = ret.data;
+			let goodsVoList = data.goodsVoList
+			// _.each(goodsVoList,(item)=> item.select = false);
 			self.setData({
-				storeList: data.goodsVoList,
+				storeList: goodsVoList,
 				refundSwich: data.refundSwich,
 				salesReturnSwich: data.salesReturnSwich,
 				// exchangeGoodsSwich: data.exchangeGoodsSwich,
@@ -50,15 +52,9 @@ const methods = {
 	// 选择退款商品
 	onSelectTap:function(options){
 		let self = this;
-		//获取索引
-		const id = options.currentTarget.dataset.id;
-		//获取列表
-		const storeList = self.data.storeList;
-		for(var i=0;i<storeList.length;i++){
-			if(storeList[i].id == id){
-				storeList[i].select = !storeList[i].select; //当前点击的位置为true即选中
-			}
-		}
+		let storeList = self.data.storeList;
+		let index = options.currentTarget.dataset.index;
+		storeList[index].select = !storeList[index].select;
 		self.setData({
 			storeList:storeList
 		})
@@ -66,9 +62,16 @@ const methods = {
 	//跳转到申请退款
 	onRefundTap:function(){
 		let self = this;
+		let orderItemIds = self.chooseIds();
+		if (!orderItemIds.length) {
+			_g.toast({
+				title: '请选择商品'
+			});
+			return
+		}
 		_g.navigateTo({
 			param:{
-				status:'申请退款'
+				orderItemIds: orderItemIds.join(',')
 			},
 			url: 'pages/order/applyRefund',
 		}, self);
@@ -76,9 +79,16 @@ const methods = {
 	//跳转到申请退款退货
 	onRefundGoodsTap:function(){
 		let self = this;
+		let orderItemIds = self.chooseIds();
+		if (!orderItemIds.length) {
+			_g.toast({
+				title: '请选择商品'
+			});
+			return
+		}
 		_g.navigateTo({
 			param:{
-				status:'申请退货'
+				orderItemIds: orderItemIds.join(',')
 			},
 			url: 'pages/order/applyRefund',
 		}, self);
@@ -93,6 +103,14 @@ const methods = {
 			url: 'pages/order/applyRefund',
 		}, self);
 	},
+	chooseIds: function () {
+		const self = this;
+		let ids = []
+		_.each(self.data.storeList,(item)=> {
+            if (item.select) ids.push(item.orderItemId);
+		})
+		return ids;
+	}
 }
 
 // 有引用template时定义
