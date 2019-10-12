@@ -16,7 +16,7 @@
                 二级乐友
             </view>
         </view>
-        <view class="ui-listBox">
+        <scroll-view scroll-y="true" class="ui-listBox" style="height: {{from ? '920rpx' : '1032rpx'}}">
             <view class="ui-listItem" wx:for="{{list}}" wx:key="{{index}}" bindtap="showModal" data-index="{{index}}">
                 <view class="ui-listItem__imgBox">
                     <image src="{{filter.getPhoto(host,item.avatar)}}" class="ui-listItem__icon" />
@@ -25,13 +25,13 @@
                     {{item.nickname}}
                 </view>
                 <view class="ui-listItem__step" style="color: {{item.status ==0 ? '#999999' : ''}}" hidden="{{from}}">
-                    {{item.todayStep}}
+                    {{item.todayStep + '步'}}
                 </view>
                 <view class="ui-listItem__text" style="color: {{item.status ==0 ? '#999999' : ''}}" hidden="{{from}}">
                     {{item.status == 2 ? '已达成' : '未达成' }}
                 </view>
             </view>
-        </view>
+        </scroll-view>
         <view class="modals modals-bottom-dialog" hidden="{{hideModal}}">
             <view class="modals-cancel" bindtap="hideModal"></view>
             <view class="bottom-dialog-body ">

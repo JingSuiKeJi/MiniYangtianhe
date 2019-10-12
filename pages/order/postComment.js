@@ -63,8 +63,11 @@ const methods = {
                 duration: 1000,
                 success: function() {
                     setTimeout(function() {
-                    	event.emit('updateOrder');
-                    	_g.navigateBack();
+                        event.emit('updateOrder');
+                        _g.navigateTo({
+                            url: 'pages/order/finishComment'
+                        },self);
+                    	// _g.navigateBack();
                     }, 400) //延迟时间
                 }
             })

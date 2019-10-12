@@ -40,7 +40,7 @@ const methods = {
         let self = this;
         self.getStepInfo();
         self.getPageData();
-        // self.rankingList();
+        self.rankingList();
     },
     getStepInfo: function() {
         let self = this;

@@ -9,10 +9,8 @@ const Order = require('../../service/Order');
 let data = {
 	orderStatus:'',//上一个页面订单状态
 	takeState:'',//上一个页面在状态，自提/配送
-	storeList:[//商品列表
-		{newsImg:'my_ce',newsName:"养生堂维C+维E",newsWeight:"250gx两盒装",newsMoney:'99.00',select:false,id:'0'},
-		{newsImg:'my_antiviral',newsName:"抗病毒口服液",newsWeight:"10gx12支",newsMoney:'23.80',select:false,id:'1'},
-	],
+	storeList:[],//商品列表
+	
 };
 const onLoad = function(self) {
 	//接收上一个页面状态

@@ -122,6 +122,20 @@ class Order {
 			url: mini.order.afterSaleApply,
 			data: reqData
 		}, page);
+    }
+    afterorderList(page, reqData) {
+		_g.dm.canLoadMore = 1;
+		return _g.ajax({
+			url: mini.order.afterorderList,
+			data: reqData
+		}, page);
+    }
+    afterorderDetails(page, reqData) {
+		_g.dm.canLoadMore = 1;
+		return _g.ajax({
+			url: mini.order.afterorderDetails,
+			data: reqData
+		}, page);
 	}
 }
 

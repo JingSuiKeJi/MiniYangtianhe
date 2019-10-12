@@ -22,10 +22,6 @@ const onLoad = function(self) {
 		orderItemIds: self.data.orderItemIds
 	})
 	self.getData();
-	//动态修改导航栏名称 
-	wx.setNavigationBarTitle({
-		title: title,
-	}) 
 }
 const onShow = function(self) {}
 const onReady = function(self) {}
@@ -54,7 +50,7 @@ const methods = {
 				type = 1;
 				title = '申请退款';
 			}
-			if (!opts.salesReturnSwich) {
+			if (opts.salesReturnSwich) {
 				type = 2
 				title = '申请退货';
 			}
@@ -80,10 +76,10 @@ const methods = {
 			orderItemIds: data.orderItemIds,
 			type: data.type,
 			reason: data.reason,
-			imgUrl: data.tempFilePaths,
 			description: data.description,
 			type: data.type
 		}
+		param.imgUrl = data.tempFilePaths.length ? data.tempFilePaths.join(',') : '';
 		if (data.type == 1) {
 			if (data.status == 1) {
 				param.status = 1;//未收到
@@ -100,10 +96,7 @@ const methods = {
 		}
 		Order.afterSaleApply(self, param).then((ret) => {
 			_g.navigateTo({
-				param:{
-					title:title
-	         	},
-				url: 'pages/order/afterDetails',
+				url: 'pages/order/afterSale',
 			}, self);
         }, (err) => {
 

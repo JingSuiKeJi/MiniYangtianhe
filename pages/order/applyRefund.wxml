@@ -84,7 +84,7 @@
 			<view class="ui-refundExplain">
 				<text class="ui-commonText" wx:if="{{type == 1}}">退款说明</text>
 				<text class="ui-commonText" wx:if="{{type == 2}}">退货说明</text>
-				<!-- <text class="ui-commonText" wx:else>{{title=='申请换货'?'申请换货':''}}</text> -->
+				<text class="ui-commonText" wx:if="{{type == 3}}">申请换货</text>
 				<textarea class="ui-explainText" placeholder="选填" value="{{description}}" bindinput="onExplainTap"
 				cols="400rpx" maxlength="300" auto-height="{{auto_height}}" bindblur='areablur' bindfocus='areafocus'/>
 			</view>

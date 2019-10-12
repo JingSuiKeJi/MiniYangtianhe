@@ -309,7 +309,8 @@ const methods = {
 				title: '成功',
 			    icon: 'success',
 			})
-			self.redirectTo('交易关闭');
+			self.getData();
+			// self.redirectTo('交易关闭');
         }, (err) => {
         });
 	},

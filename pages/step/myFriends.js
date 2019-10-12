@@ -7,15 +7,7 @@ const User = require('../../service/User');
 // 初始化数据
 const data = {
     type: 1,
-    list: [
-        {
-            avatar: 'mafriends_personal.png',
-            nickname: '命运的杰克命运',
-            todayStep: '25725步',
-            status: 1,//1完成 0 未完成
-            text: '未完成',
-        }
-    ],
+    list: [],
     title: '我的乐友',
     hideModal: true, //true-隐藏  false-显示
 	nimationData: {},//
@@ -50,8 +42,8 @@ const methods = {
     getPageData: function () {
         let self = this;
         User.getLeyouList(self, {
-            page: 1,
-            pageSize: 10,
+            page: 0,
+            // pageSize: 0,
 			level: self.data.type,
 			memberId: self.data.value
 

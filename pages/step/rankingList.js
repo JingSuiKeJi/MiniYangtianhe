@@ -31,15 +31,15 @@ const methods = {
     getPageData: function() {
         let self = this;
         User.rankingList(self, {
-            page: self.data.page,
-            pageSize: 20
+            page: 0,
+            // pageSize: 20
         }).then((ret) => {
             let data = ret.data;
             if (data.list && data.list.length) {
                 self.setData({
                     list: self.data.list.concat(data.list),
                     myStep: data.myStep,
-                    hasNextPage: data.hasNextPage
+                    // hasNextPage: data.hasNextPage
                 });
             }
            

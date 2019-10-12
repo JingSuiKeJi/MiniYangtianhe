@@ -1,0 +1,12 @@
+<wxs module="filter" src="../../filter/filter.wxs"></wxs>
+<view class="ui-main">
+    <view class="ui-topBox">
+        <image src="{{filter.getLocalPhoto('my_writeGroup.png')}}" mode="aspectFit" class="ui-topItem__img"/>
+        <view class="ui-topItem__text">评价成功</view>
+    </view>
+    <view class="ui-bgroundBox"></view>
+    <view class="ui-btnBox">
+        <view class="ui-leftItem" bindtap="onGoTap" data-type="0">返回首页</view>
+        <view class="ui-rightItem" bindtap="onGoTap" data-type="1">查看评价</view>
+    </view>
+</view>

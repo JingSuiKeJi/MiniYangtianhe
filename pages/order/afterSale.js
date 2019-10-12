@@ -5,6 +5,7 @@ const _g = app.base;
 const _c = app.config;
 const _t = app.temps;
 const event = app.event;
+const Order = require('../../service/Order');
 let data = {
 	menuList:[
 		{name:"已过期",currentId:1},
@@ -64,7 +65,7 @@ let data = {
 	],
 };
 const onLoad = function(self) {
-	
+	self.getPageData();
 };
 const onShow = function(self) {
 	
@@ -72,6 +73,18 @@ const onShow = function(self) {
 const onReady = function(self) {};
 const onUnload = function(self) {};
 const methods = {
+	getPageData: function (options) {
+	   let self = this;
+	   let param = {
+			page: self.data.page,
+			pageSize: 20
+	   }
+	   if (options.status) param.status = options.status;
+	   if (options.orderNo) param.orderNo = options.orderNo;
+        Order.afterorderList(self, param).then((ret) => {
+        }, (err) => {
+        });
+	},
 	//选择菜单状态
 	chooseMenu:function(options){
 		let self = this;
