@@ -369,11 +369,16 @@ page {
 }
 .ui-friendsLiItem__nickName {
     font-size:26rpx;
+    width: 250rpx;
     font-family:PingFangSC-Regular,PingFangSC;
     font-weight:400;
     color:#333333;
     line-height:36rpx;
     margin-left: 20rpx;
+    text-align: left;
+    /* overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; */
 }
 .ui-friendsLiItem__step {
     font-size:26rpx;

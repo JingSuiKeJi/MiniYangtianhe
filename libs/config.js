@@ -180,9 +180,10 @@ config.prototype = {
             goodsCouponList: '/app/preOrder/couponList.do',
             preferentialPolicies: '/app/preOrder/preferentialPolicies.do',
             getAfterSale: '/app/afterSale/perview.do',
-            appayBefore: '/app/afterSale/appayBefore.do',
+            appayBefore: '/app/afterSale/applyBefore.do',
             afterSaleApply: '/app/afterSale/apply.do',
-            
+            afterorderList: '/app/afterSale/orderList.do',
+            afterorderDetails: '/app/afterSale/orderDetails.do'
 
         },
         point: {

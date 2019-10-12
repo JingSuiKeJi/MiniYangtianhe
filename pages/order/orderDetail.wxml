@@ -94,7 +94,7 @@
             </view>
         </view>
         <!-- 商品信息 -->
-        <view wx:if="{{!(orderStatus=='评价成功')}}" class="ui-commodityInfo">
+        <view  class="ui-commodityInfo">
             <text class="ui-title">商品信息</text>
             <view class="ui-newsInfoBox">
                 <view class="ui-newsInfoItem" wx:for="{{storeList}}" wx:for-item="item" wx:key="idx">
@@ -125,7 +125,7 @@
             </view>
         </view>
         <!-- 订单信息 -->
-        <view wx:if="{{!(orderStatus=='评价成功')}}" class="ui-orderInfoBox" wx:for="{{orderInfoList}}" wx:for-item="item" wx:key="idx">
+        <view  class="ui-orderInfoBox" wx:for="{{orderInfoList}}" wx:for-item="item" wx:key="idx">
             <text>订单信息</text>
             <text>订单编号：{{orderNo}}</text>
             <text>创建时间：{{filter.getDate(creatrTime)}}</text>

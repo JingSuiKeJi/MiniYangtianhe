@@ -1,5 +1,5 @@
 <wxs module="filter" src="../../filter/filter.wxs"></wxs>
-<view class="ui-main">
+<view class="container">
     <navBar title="养乐药房" background="#3CC7A4" color="white" iconTheme="white">
         <view class="location" slot="left" wx:if="{{!storeInfo.isBind}}">
             <view class="ui-addressIcon" catchtap="onMapTap"></view>
