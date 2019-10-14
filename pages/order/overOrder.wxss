@@ -1,0 +1,378 @@
+@charset "UTF-8";
+@import "/libs/common.wxss";
+
+/**afterSale.wxss**/
+page{
+	background:rgba(245,245,245,1);
+	width: 100%;
+	height: 100%;
+}
+
+.ui-main {
+    width: 100%;
+	height: 100%;
+}
+
+.ui-searchOrder{
+	width: 100%;
+	height: 82rpx;
+	background: #FFFFFF;
+	border-top: #F5F5F5 solid 2rpx;
+}
+
+.ui-searchBox{
+	display: flex;
+	align-items: center;
+	width:686rpx;
+	height:64rpx;
+	background:rgba(248,248,248,1);
+	border-radius:12rpx;
+	margin: 18rpx 0 0 32rpx;
+}
+
+.ui-searchIcon{
+	margin-left: 20rpx;
+	height: 32rpx;
+	width: 32rpx;
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/ic_search.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+}
+
+.ui-searchInput{
+	margin-left: 24rpx;
+	width:520rpx;
+	height:26rpx;
+	font-size:26rpx;
+	font-family:PingFang-SC-Medium;
+	font-weight:500;
+	color:rgba(51,51,51,1);
+	line-height:26rpx;
+}
+
+.ui-menuBar{
+	width: 100%;
+	height:84rpx;
+	background:rgba(255,255,255,1);
+	border-bottom:#F5F5F5 solid 2rpx;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.ui-menuText{
+	position: relative;
+	width: 100%;
+	text-align: center;
+	font-size:26rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(153,153,153,1);
+	line-height:84rpx;
+}
+
+.currentText{
+	font-size:26rpx;
+	font-family:PingFangSC-Medium;
+	font-weight:500;
+	color:rgba(29,196,188,1);
+	line-height:84rpx;
+}
+
+.currentText:after{
+	position: absolute;
+	content: "";
+	width: 40rpx;
+	height: 6rpx;
+	background:#1DC4BC;
+	border-radius:3rpx;
+	top: 78rpx;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.ui-orderInfoBox{
+	background: #FFFFFF;
+	width: 100%;
+	margin-bottom: 20rpx;
+	border-bottom: 2rpx solid rgba(0,0,0,0.1);
+}
+
+.ui-orderStatus{
+	position: relative;
+	height: 108rpx;
+	background: #FFFFFF;
+	border-bottom:#F5F5F5 solid 2rpx;
+}
+
+.ui-orderStatus .ui-orderReferenceText{
+	position: absolute;
+	height:26rpx;
+	font-size:26rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(102,102,102,1);
+	line-height:26rpx;
+	left: 40rpx;
+	top: 46rpx;
+}
+
+.ui-orderStatus .ui-storeTetx{
+	position: absolute;
+	height:40rpx;
+	right:138rpx;
+	margin-top: 40rpx;
+	padding:0 12rpx;
+	background:linear-gradient(136deg,rgba(1,206,165,1) 0%,rgba(94,221,218,1) 100%);
+	border-radius:4rpx;
+	font-size:22rpx;
+	font-family:PingFangSC-Medium;
+	font-weight:500;
+	color:rgba(255,255,255,1);
+	line-height:40rpx;
+	text-align: center;
+}
+
+.ui-orderStatus .ui-orderStatusText{
+	height:26rpx;
+	font-size:26rpx;
+	font-family:PingFang-SC-Medium;
+	font-weight:500;
+	color:rgba(253,61,47,1);
+	line-height:26rpx;
+	position: absolute;
+	top: 46rpx;
+	right: 40rpx;
+}
+
+.ui-newsInfoBox{
+	width: 100%;
+}
+
+.ui-newsInfoItem{
+	width: 100%;
+	display: flex;
+}
+
+.ui-newsImg{
+	width:160rpx;
+	height:160rpx;
+	border-radius:4rpx;
+	margin: 40rpx 0 0 40rpx;
+}
+
+.ui-newsImg image{
+	height: 100%;
+	width: 100%;
+}
+
+.ui-newsDetail{
+	margin: 40rpx 0 0 20rpx;
+	display: flex;
+	flex-direction: column;
+}
+
+.ui-newsName{
+	height:36rpx;
+	font-size:26rpx;
+	font-family:PingFangSC-Medium;
+	font-weight:500;
+	color:rgba(51,51,51,1);
+	line-height:36rpx;
+}
+
+.ui-newsWeight{
+	display: flex;
+	justify-content: space-between;
+	margin-top: 48rpx;
+	width: 490rpx;
+	height:20rpx;
+}
+
+.ui-newsWeight text:first-child{
+	font-family:PingFang-SC-Regular;
+	font-size:20rpx;
+	font-weight:400;
+	color:rgba(153,153,153,1);
+	line-height:20rpx;
+}
+
+.ui-newsWeight text:last-child{
+	font-size:20rpx;
+	font-family:PingFangSC;
+	font-weight:600;
+	color:rgba(153,153,153,1);
+	line-height:20rpx;
+}
+
+.ui-newsMoney{
+	display: flex;
+	justify-content: space-between;
+	margin-top: 30rpx;
+	width: 490rpx;
+	height:26rpx;
+	font-size:26rpx;
+	font-family:PingFangSC;
+	font-weight:500;
+	line-height:26rpx;
+}
+
+.ui-newsMoney text:first-child{
+	color:#333333;
+}
+
+.ui-newsMoney text:last-child{
+	color:rgba(153,153,153,1);
+}
+
+.ui-total{
+	height: 100rpx;
+	width: 100%;
+	position: relative;
+}
+
+.ui-total .ui-goodsNum{
+	position: absolute;
+	height:30rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(51,51,51,1);
+	line-height:30rpx;
+	top: 42rpx;
+	left: 382rpx;
+}
+
+.ui-total .ui-goodsNum text:first-child{
+	font-size:26rpx;
+}
+
+.ui-total .ui-goodsNum text:last-child{
+	font-size:30rpx;
+}
+
+.ui-total .ui-MoneySum{
+	position: absolute;
+	height:30rpx;
+	font-size:26rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(51,51,51,1);
+	line-height:30rpx;
+	top: 40rpx;
+	right: 40rpx;
+}
+
+.ui-total .ui-MoneySum text:first-child{
+	margin-right: 26rpx;
+}
+
+.ui-handle{
+	height: 120rpx;
+	width: 100%;
+	border-top:#F5F5F5 solid 2rpx;
+	position: relative;
+}
+
+.btn-grey,.btn-checkLog,.btn-evaluate{
+	position: absolute;
+	display: inline-block;
+	width:148rpx;
+	height:60rpx;
+	border-radius:30rpx;
+	border:2px solid rgba(199,199,199,1);
+	top: 30rpx;
+	right: 208rpx;
+	font-size:26rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(102,102,102,1);
+	line-height:20rpx;
+}
+
+.btn-right{
+	position: absolute;
+	display: inline-block;
+	width:148rpx;
+	height:60rpx;
+	border-radius:30rpx;
+	top: 30rpx;
+	right: 40rpx;
+	font-size:26rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	line-height:20rpx;
+}
+
+.btn-green{
+	background:linear-gradient(137deg,rgba(1,206,165,1) 0%,rgba(94,221,218,1) 100%);
+	color:rgba(255,255,255,1);
+}
+
+.btn-gray{
+	border:2px solid rgba(199,199,199,1);
+	color:rgba(102,102,102,1);
+}
+
+.btn-applyAfter{
+	position: absolute;
+	display: inline-block;
+	width:148rpx;
+	height:60rpx;
+	top: 30rpx;
+	right: 40rpx;
+	font-size:26rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(102,102,102,1);
+	line-height:20rpx;
+	border-radius:30rpx;
+	border:2px solid rgba(199,199,199,1);
+}
+
+.btn-marginLeft{
+	right: 208rpx;
+}
+
+.btn-common{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.ui-notOrder{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	background: #FFFFFF;
+}
+
+.ui-notOrderIcon{
+	margin-top: 318rpx;
+	width: 118rpx;
+	height: 118rpx;
+	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_orderListIcon.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+}
+
+.ui-noOrderText{
+	margin-top: 36rpx;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	width:150rpx;
+	height:84rpx;
+}
+
+.ui-noOrderText text{
+	font-size:30rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(153,153,153,1);
+	line-height:42rpx;
+}

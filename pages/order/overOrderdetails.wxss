@@ -1,0 +1,259 @@
+page{
+	background:rgba(245,245,245,1);
+}
+
+.ui-main {
+    width: 100%;
+	height: 100%;
+}
+.ui-commodityInfo{
+	width: 100%;
+	background: #FFFFFF;
+	display: flex;
+	flex-direction: column;
+}
+
+.ui-title{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	height:106rpx;
+	border-bottom:2rpx solid rgba(241,241,241,1);
+}
+
+.ui-title text:first-child{
+	margin-left: 40rpx;
+	height:26rpx;
+	font-size:26rpx;
+	font-family:PingFangSC;
+	font-weight:400;
+	color:rgba(102,102,102,1);
+	line-height:26rpx;
+}
+
+.ui-title text:last-child{
+	margin-right: 40rpx;
+	height:26rpx;
+	font-size:26rpx;
+	font-family:PingFang-SC;
+	font-weight:500;
+	color:rgba(253,61,47,1);
+	line-height:26rpx;
+}
+
+.ui-newsInfoBox{
+	margin-top: 40rpx;
+	width: 100%;
+}
+
+.ui-newsInfoItem{
+	display: flex;
+	flex-direction: row;
+	position: relative;
+	margin-bottom: 40rpx;
+}
+
+.ui-newsInfoItem:last-child{
+	margin-bottom: 0;
+}
+
+.ui-newsImg{
+	width: 160rpx;
+	height: 160rpx;
+	margin-left:40rpx;
+}
+
+.ui-newsImg image{
+	width: 160rpx;
+	height: 160rpx;
+}
+
+.ui-newsInfoDetail{
+	width: 100%;
+	margin-left: 20rpx;
+	display: flex;
+	flex-direction: column;
+}
+
+.ui-newsName{
+	height:36rpx;
+	font-size:26rpx;
+	font-family:PingFangSC-Medium;
+	font-weight:500;
+	color:rgba(51,51,51,1);
+	line-height:36rpx;
+}
+
+.ui-newsWeight{
+	display: flex;
+	justify-content: space-between;
+	margin-top: 48rpx;
+	width: 100%;
+}
+
+.ui-newsWeight text{
+	height:20rpx;
+	font-size:20rpx;
+	font-family:PingFang-SC;
+	font-weight:400;
+	color:rgba(153,153,153,1);
+	line-height:20rpx;
+}
+
+.ui-newsWeight text:last-child{
+	margin-right: 42rpx;
+}
+
+.ui-newsMoney{
+	height:26rpx;
+	font-size:26rpx;
+	font-family:PingFangSC-Medium;
+	font-weight:500;
+	color:rgba(51,51,51,1);
+	line-height:26rpx;
+	margin-top:30rpx;
+}
+
+.ui-newsNum{
+	position: absolute;
+	right: 56rpx;
+	top: 154rpx;
+	height:22rpx;
+	font-size:22rpx;
+	font-family:PingFangSC-Medium;
+	font-weight:500;
+	color:rgba(153,153,153,1);
+	line-height:22rpx;
+}
+
+.btn-refund{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 20rpx 0 62rpx 562rpx;
+	width:148rpx;
+	height:60rpx;
+	border-radius:30rpx;
+	border:2rpx solid rgba(199,199,199,1);
+}
+.btn-refund text{
+	height:26rpx;
+	font-size:26rpx;
+	font-family:PingFangSC;
+	font-weight:400;
+	color:rgba(102,102,102,1);
+	line-height:26rpx;
+}
+
+.ui-commodityTextCommon{
+	display: flex;
+	justify-content: space-between;
+}
+
+.ui-commodityTextCommon text:first-child{
+	height:26rpx;
+	font-size:26rpx;
+	font-family:PingFang-SC-Medium;
+	font-weight:500;
+	color:rgba(51,51,51,1);
+	line-height:26rpx;
+	margin-left: 56rpx;
+}
+
+.ui-commodityTextCommon text:last-child{
+	height:28rpx;
+	font-size:28rpx;
+	font-family:PingFang-SC-Regular;
+	font-weight:400;
+	color:rgba(237,61,59,1);
+	line-height:28rpx;
+	margin-right: 56rpx;
+}
+
+.ui-commodityTextCommon text:last-child{
+	margin-bottom: -2rpx;
+}
+
+.ui-freight text:last-child{
+	color:rgba(51,51,51,1);
+}
+
+.ui-freight{
+	margin-top: 20rpx;
+	
+}
+
+.ui-blissDeduction{
+	margin-top: 44rpx;
+}
+
+.ui-actualPayment{
+	margin-top: 44rpx;
+	margin-bottom: 28rpx;
+}
+
+.ui-codeIcon image{
+	width: 100%;
+	height: 100%;
+}
+
+.ui-orderInfoBox{
+	width: 100%;
+	background: #FFFFFF;
+	margin-bottom: 52rpx;
+	display: flex;
+	flex-direction: column;
+	border-top: 2rpx solid rgba(241,241,241,1);
+}
+
+.ui-orderInfoBox text:first-child{
+	height:30rpx;
+	font-size:30rpx;
+	font-family:PingFangSC-Medium;
+	font-weight:500;
+	color:rgba(51,51,51,1);
+	line-height:30rpx;
+	margin: 40rpx 0 44rpx 40rpx;
+}
+
+.ui-orderInfoBox text:not(first-child){
+	height:26rpx;
+	font-size:26rpx;
+	font-family:PingFang-SC-Medium;
+	font-weight:500;
+	color:rgba(51,51,51,1);
+	line-height:26rpx;
+	margin: 0 0 40rpx 40rpx;
+}
+.ui-verificationFooter{
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	width: 100%;
+	height:104rpx;
+	background:rgba(255,255,255,1);
+    box-shadow:0rpx 0rpx 16rpx 0rpx rgba(0,0,0,0.08);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
+.btn-common{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width:148rpx;
+	height:60rpx;
+	border-radius:30rpx;
+	font-size:26rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	line-height:26rpx;
+}
+
+.btn-green{
+	margin-right: 40rpx;
+	background:linear-gradient(137deg,rgba(1,206,165,1) 0%,rgba(94,221,218,1) 100%);
+	color:#FFFFFF;
+}

@@ -311,6 +311,12 @@ const methods = {
                 }, self);
             }
         });
+    },
+    onOverOrderTap: function (e) {
+       let self = this;
+       _g.navigateTo({
+        url: 'pages/order/overOrder',
+    }, self);
     }
 }
 

@@ -1,0 +1,54 @@
+<wxs module="filter" src="../../filter/filter.wxs"></wxs>
+<!--afterDetails.wxml-->
+<view class="container">
+	<navBar title='过期订单详情' background='white' color='black' iconTheme='black' back="{{true}}"></navBar>
+	<view class="ui-main">
+		<block >
+			<view class="ui-commodityInfo">
+				<view class="ui-title">
+					<text>订单编号： {{list.orderNo}}</text>
+					<text>已过期</text>
+				</view>
+				<view class="ui-newsInfoBox">
+					<view class="ui-newsInfoItem" wx:for="{{list.goodsList}}" wx:key="{{index}}">
+						<view class="ui-newsImg">
+							<image src="{{filter.getPhoto(host,item.imgUrl)}}"></image>
+						</view>
+						<view class="ui-newsInfoDetail">
+							<text class="ui-newsName">{{item.title}}</text>
+							<view class="ui-newsWeight">
+								<text>{{item.specificationName}}</text>
+								<text>x{{item.num}}</text>
+							</view>
+							<text class="ui-newsMoney">¥{{item.price}}</text>
+						</view>
+					</view>
+				</view>
+				<view class="btn-refund" bindtap="onApplyRefundTap" data-orderid="{{list.orderId}}"><text>退款</text></view>
+				<view class="ui-freight ui-commodityTextCommon">
+					<text>运费</text>
+					<text>¥0.00</text>
+				</view>
+				<view class="ui-blissDeduction ui-commodityTextCommon">
+					<text>福气抵扣</text>
+					<text>-¥1.48</text>
+				</view>
+				<view class="ui-actualPayment ui-commodityTextCommon">
+					<text>实付款</text>
+					<text>¥ 121.32</text>
+				</view>
+			</view>
+			
+			<view class="ui-orderInfoBox" >
+				<text>订单信息</text>
+				<text>订单编号：{{list.number}}</text>
+				<text>创建时间：{{filter.getDate(list.creationTime)}}</text>
+				<text wx:if="{{list.payTime}}">付款时间：{{filter.getDate(list.payTime)}}</text>
+			</view>
+			
+			<view class="ui-verificationFooter">
+				<view class="btn-common btn-green" bindtap="onAfterApplicationTap"><text>申请售后</text></view>
+			</view>
+		</block>
+	</view>
+</view>

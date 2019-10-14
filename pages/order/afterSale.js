@@ -8,61 +8,14 @@ const event = app.event;
 const Order = require('../../service/Order');
 let data = {
 	menuList:[
-		{name:"已过期",currentId:1},
-		{name:"售后订单",currentId:2},
-		{name:"处理中",currentId:3},
-		{name:"已完成",currentId:4}
+		// {name:"已过期",currentId:1},
+		{name:"全部",currentId:1},
+		{name:"处理中",currentId:2},
+		{name:"已完成",currentId:3}
 	],
 	currentCheck: 1,
 	showModal: false,
-	orderList:[
-		{orderReference:54636465456165465,store:"拼团",orderStatus:"已过期",flagId:1,
-			storeList:[
-				{newsImg:"my_vce",newsName:"养生堂维C+维E",newsWeight:"250gx两盒装",newsMoney:99.00,goodsStatus:'已过期'},
-				{newsImg:"my_weImg",newsName:"红豆龟苓膏",newsWeight:"250gx两盒装",newsMoney:10.00,goodsStatus:'已过期'},
-			]
-		},
-		{orderReference:54636465456165465,store:"拼团",orderStatus:"已过期",flagId:1,
-			storeList:[
-				{newsImg:"my_vce",newsName:"养生堂维C+维E",newsWeight:"250gx两盒装",newsMoney:99.00,goodsStatus:'已过期'},
-			]
-		},
-		{orderReference:54636465456165465,orderStatus:"退款成功",flagId:2,
-			storeList:[
-				{newsImg:"my_vce",newsName:"养生堂维C+维E",newsWeight:"250gx两盒装",newsMoney:99.00,goodsStatus:'退货退款'},
-			]
-		},
-		{orderReference:54636465456165465,orderStatus:"退款失败",flagId:2,
-			storeList:[
-				{newsImg:"my_vce",newsName:"养生堂维C+维E",newsWeight:"250gx两盒装",newsMoney:99.00,goodsStatus:'仅退款'},
-			]
-		},
-		{orderReference:54636465456165465,orderStatus:"审核中",flagId:2,
-			storeList:[
-				{newsImg:"my_vce",newsName:"养生堂维C+维E",newsWeight:"250gx两盒装",newsMoney:99.00,goodsStatus:'换货'},
-			]
-		},
-		{orderReference:54636465456165465,orderStatus:"审核中",flagId:3,
-			storeList:[
-				{newsImg:"my_vce",newsName:"养生堂维C+维E",newsWeight:"250gx两盒装",newsMoney:99.00,goodsStatus:'退货退款'},
-			]
-		},
-		{orderReference:54636465456165465,orderStatus:"审核中",flagId:3,
-			storeList:[
-				{newsImg:"my_vce",newsName:"养生堂维C+维E",newsWeight:"250gx两盒装",newsMoney:99.00,goodsStatus:'仅退款'},
-			]
-		},
-		{orderReference:54636465456165465,orderStatus:"退款成功",flagId:4,
-			storeList:[
-				{newsImg:"my_vce",newsName:"养生堂维C+维E",newsWeight:"250gx两盒装",newsMoney:99.00,goodsStatus:'退货退款'},
-			]
-		},
-		{orderReference:54636465456165465,orderStatus:"退款失败",flagId:4,
-			storeList:[
-				{newsImg:"my_vce",newsName:"养生堂维C+维E",newsWeight:"250gx两盒装",newsMoney:99.00,goodsStatus:'仅退款'},
-			]
-		}
-	],
+	orderList:[],
 };
 const onLoad = function(self) {
 	self.getPageData();
@@ -77,48 +30,64 @@ const methods = {
 	   let self = this;
 	   let param = {
 			page: self.data.page,
-			pageSize: 20
+			pageSize: 20,
+			statsus: self.data.currentCheck,
+			orderNo: self.data.inputValue
+			
 	   }
-	   if (options.status) param.status = options.status;
-	   if (options.orderNo) param.orderNo = options.orderNo;
         Order.afterorderList(self, param).then((ret) => {
+			self.setData({
+				orderList: self.data.orderList.concat(ret.data.list)
+			})
         }, (err) => {
+			
         });
 	},
 	//选择菜单状态
 	chooseMenu:function(options){
 		let self = this;
-		//当前选择
-		const id = options.currentTarget.dataset.id;
-		//列表
-		const orderList = self.data.orderList;
 		//设置当前样式
 		self.setData({
-			currentCheck:id,
-		})
+			currentCheck:options.currentTarget.dataset.id,
+			page: 1,
+            orderList: []
+		});
+		self.getPageData();
 	},
 	//跳转到对应的状态页
 	onOrderDetailTap:function(options){
 		let self = this;
-		//订单状态
-		const orderStatus = options.currentTarget.dataset.orderStatus;
-		const flagId = options.currentTarget.dataset.flagId;
-		const goodsStatus = options.currentTarget.dataset.goodsStatus;
-			_g.navigateTo({
-				param:{
-			    	orderStatus:orderStatus,
-					flagId:flagId,
-					goodsStatus:goodsStatus,
-			    },
-				url: 'pages/order/afterDetails',
-			}, self);
+		_g.navigateTo({
+			param:{
+				id:options.currentTarget.dataset.id,
+		    },
+			url: 'pages/order/afterDetails',
+		}, self);
 	},
 	//跳转到申请售后
-	onAfterApplicationTap:function(){
+	onAfterApplicationTap:function(e){
 		let self = this;
 		_g.navigateTo({
+			param: {
+				orderId: e.currentTarget.dataset.orderid
+			},
 			url: 'pages/order/applyAfter',
 		}, self);
+	},
+	onInputTap: function (e) {
+		let self = this;
+		self.setData({
+			inputValue: e.detail.value 
+		});
+	},
+	onConfirmTap: function (e) {
+		let self = this;
+		self.setData({
+			inputValue: e.detail.value,
+			page: 1,
+			orderList: []
+		});
+		self.getPageData();
 	}
 }
 

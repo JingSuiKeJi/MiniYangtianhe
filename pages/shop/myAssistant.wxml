@@ -15,10 +15,10 @@
 				<view class="ui-userAvatar"><image src="{{filter.getPhoto(host,item.avatar)}}"></image></view>
 				<view class="ui-userInfo">
 					<view class="ui-userId">{{item.nickname}}</view>
-					<view class="ui-userVipLevel">
-						<image wx:if="{{item.sort==1}}" src="http://www.gzlingren.com:8098/yangtianhe/my_distributionLevel.png"></image>
+					<view class="ui-userVipLevel">{{item.distributionTitle}}
+						<!-- <image wx:if="{{item.sort==1}}" src="http://www.gzlingren.com:8098/yangtianhe/my_distributionLevel.png"></image>
 						<image wx:if="{{item.sort==2}}" src="http://www.gzlingren.com:8098/yangtianhe/my_distributionLevel.png"></image>
-						<image wx:if="{{clientInfo.sort==0||clientInfo.sort==null}}" src=""></image>
+						<image wx:if="{{clientInfo.sort==0||clientInfo.sort==null}}" src=""></image> -->
 					</view>
 				</view>
 				<view class="ui-userLevel">

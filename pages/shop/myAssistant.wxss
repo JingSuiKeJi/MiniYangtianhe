@@ -99,9 +99,17 @@ page{
   }
 
 .ui-userInfo .ui-userVipLevel{
-	width: 44rpx;
-	height: 44rpx;
-	overflow: hidden;
+	display: flex;
+	width:100rpx;
+	height:40rpx;
+	margin-top: 12rpx;
+	padding-left: 10rpx;
+	font-size:20rpx;
+	font-family:PingFangSC-Regular,PingFangSC;
+	font-weight:400;
+	color:#999999;
+	border-radius:8rpx;
+	border:2rpx solid rgba(221,221,221,1);
 }
 
 .ui-userInfo .ui-userVipLevel image{
