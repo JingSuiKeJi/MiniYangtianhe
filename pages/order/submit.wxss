@@ -453,15 +453,14 @@ page {
 }
 .ui-payItem__orderText {
     display: inline-block;
-   width: 192rpx;
-   height: 80rpx;
-   line-height:80rpx;
-   font-size:30rpx;
-   font-family:PingFangSC;
-   font-weight:600;
-   color:#fff;
-   /* background-image: url(http://www.gzlingren.com:8098/yangtianhe/cart_greenBtn.png); */
-    background-image: url(http://m.qpic.cn/psb?/V12Kdegv0qd4wf/0ERQRzton3fzX2ygXoLLA9CGSAgzV3OH3SPALYBmjNQ!/b/dD4BAAAAAAAA&bo=wABQAAAAAAADF6I!&rf=viewer_4&t=5);
+    width: 192rpx;
+    height: 80rpx;
+    line-height:80rpx;
+    font-size:30rpx;
+    font-family:PingFangSC;
+    font-weight:600;
+    color:#fff;
+    background-image: url(http://www.gzlingren.com:8098/yangtianhe/cart_greenBtn.png);
     background-size: 192rpx 80rpx;
     text-align: center;
 }

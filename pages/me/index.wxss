@@ -284,12 +284,14 @@
 	display: flex;
 	flex-direction: column;
 	width:686rpx;
-	height:212rpx;
+	/* height:212rpx; */
 	background:rgba(255,255,255,1);
 	box-shadow:0rpx 4rpx 16rpx 0rpx rgba(0,0,0,0.05);
 	border-radius:16rpx;
 	margin-top: 110rpx;
 	margin-left: 32rpx;
+	padding-bottom: 40rpx;
+
 }
 
 .ui-orderAll{
@@ -769,4 +771,40 @@
 .getUserInfoBtn {
 	widows: 100%;
 	color: red;
+}
+.ui-overOrderBox {
+	display: flex;
+	width: 614rpx;
+	height: 84rpx;
+	margin: 0 auto;
+	margin-top: 24rpx;
+	background:rgba(255,240,241,1);
+    border-radius:12rpx;
+	align-items: center;
+	justify-content: center;
+
+}
+.ui-overOrderItem__img {
+	width: 52rpx;
+	height: 52rpx;
+	margin-left: 24rpx;
+}
+.ui-overOrderItem__text {
+	font-size:24rpx;
+    font-family:PingFangSC-Regular,PingFangSC;
+    font-weight:400;
+    color:rgba(246,151,158,1);
+	line-height:24rpx;
+	margin-left: 24rpx;
+}
+.ui-overOrderItem__btn {
+	display: flex;
+	width:116rpx;
+	height:48rpx;
+	margin-left: auto;
+	margin-right: 24rpx;
+	border-radius:24px;
+	border:1px solid rgba(255,197,201,1);
+	justify-content: center;
+	align-items: center;
 }

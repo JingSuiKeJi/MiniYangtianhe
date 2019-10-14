@@ -70,7 +70,9 @@
     "pages/me/finish",
     "pages/home/notice",
     "pages/step/rankingList",
-    "pages/order/finishComment"
+    "pages/order/finishComment",
+    "pages/order/overOrder",
+    "pages/order/overOrderdetails"
   ],
   "tabBar": {
     "custom": true,

@@ -249,6 +249,7 @@
 
 .modal-blissNumInputBox input{
 	display: inline-block;
+	width: 400rpx;
 	height:24rpx;
 	font-size:24rpx;
 	font-family:PingFangSC-Regular;

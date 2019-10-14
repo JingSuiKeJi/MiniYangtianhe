@@ -1,4 +1,4 @@
-<!-- <wxs module="filter" src="../../filter/filter.wxs"></wxs> -->
+<wxs module="filter" src="../../filter/filter.wxs"></wxs>
 <!--fillLogistics.wxml-->
 <view class="container">
 	<navBar title='填写物流' background='white' color='black' iconTheme='black' back="{{true}}"></navBar>
