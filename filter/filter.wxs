@@ -265,11 +265,13 @@ var filter = {
 			case 2:
 				return '审核中';
 			case 3:
-                return '退款失败';
+                return '审核中';
             case 4:
                 return '退款失败';
             case 5:
-                return '退款成功';
+                return '退款失败';
+            case 6:
+                return '退款成功';    
 			default: 
 			   return '';
 		}
