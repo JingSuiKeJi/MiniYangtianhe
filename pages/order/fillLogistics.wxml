@@ -6,14 +6,14 @@
 		<!-- 退货信息 -->
 		<view class="ui-refundInfo">
 			<text>退货信息</text>
-			<text>退货地址：广州市天河区天盈广场东塔</text>
-			<text>联系电话：138001380000</text>
-			<text>收件人：周周周</text>
+			<text>退货地址：{{list.address}}</text>
+			<text>联系电话：{{list.phone}}</text>
+			<text>收件人：{{list.name}}</text>
 		</view>
 		<!-- 退款金额与账户 -->
 		<view class="ui-refundMoney">
-			<text>退款总金额：¥101.00</text>
-			<text>退回原账户：¥101.00</text>
+			<text>退款总金额：¥{{list.name}}</text>
+			<text>退回原账户：¥{{list.name}}</text>
 		</view>
 		<!-- 物流信息 -->
 		<view class="ui-logisticsInfo">
@@ -23,7 +23,7 @@
 				<text class="ui-textCommon">快递公司：</text>
 				<picker bindchange="changeCompany" mode="selector" value="{{companyIndex}}" range="{{companyList}}">
 					<view class="ui-selectExpressCompany">
-						<text class="ui-expressCompanyName {{expressCompany=='请选择'?'ui-notSelectCompany':'ui-selectCompany'}}"><!-- {{companyList[companyIndex]}} -->{{expressCompany}}</text>
+						<text class="ui-expressCompanyName {{index >= 0 ? 'ui-selectCompany' :'ui-notSelectCompany'}}"><!-- {{companyList[companyIndex]}} -->{{expressCompany}}</text>
 						<view class="ui-pullDownIcon"></view>
 					</view>
 				</picker>
@@ -31,11 +31,11 @@
 			<!-- 退货单号 -->
 			<view class="ui-refundOrderNum">
 				<text>退货单号：</text>
-				<input type="text" bindinput="onRefundOrderNum" value="{{refundOrderNum}}" placeholder="请填写快递单号" placeholder-style="color:rgba(204,204,204,1);" />
+				<input type="number" bindinput="onRefundOrderNum" value="{{refundOrderNum}}" placeholder="请填写快递单号" placeholder-style="color:rgba(204,204,204,1);" />
 			</view>
 		</view>
 		<!-- 提交 -->
-		<view wx:if="{{expressCompany=='请选择'||refundOrderNum==''}}" class="btn-notSubmit">提交</view>
-		<view wx:else class="btn-canSubmit" bindtap="onSubmitTap">提交</view>
+		<view wx:if="{{index == undefined || refundOrderNum==''}}" class="btn-notSubmit">提交</view>
+		<view wx:if="{{index >= 0 && refundOrderNum}}" class="btn-canSubmit" bindtap="onSubmitTap">提交</view>
 	</view>
 </view>

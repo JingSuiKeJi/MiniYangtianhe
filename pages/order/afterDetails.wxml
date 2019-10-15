@@ -4,7 +4,7 @@
 	<navBar title='售后详情' background='white' color='black' iconTheme='black' back="{{true}}"></navBar>
 	<view class="ui-main">
 		
-		<block wx:if="{{list.status==5}}">
+		<block wx:if="{{list.status==6}}">
 			<!-- 退款成功 -->
 			<view class="ui-refundSuccess">
 				<view class="ui-refundSuccessIcon"></view>
@@ -42,61 +42,75 @@
 			</view>
 		</block>
 		
-		<block wx:if="{{list.status != 5}}">
+		<block wx:if="{{list.status != 6}}">
 			<view class="ui-afterStatus">
 				<!-- icon状态 -->
-				<block wx:if="{{list.status==5}}">
+				<block wx:if="{{list.status==6}}">
 					<view class="ui-afterIcon ui-approve"></view>
 				</block>
-				<block wx:if="{{list.status==3 || list.status==4 }}">
+				<block wx:if="{{ list.status==4 }}">
 					<view class="ui-afterIcon ui-notApprove"></view>
 				</block>
-				<block wx:if="{{list.status==2}}">
+				<!-- <block wx:if="{{list.status==2}}">
+					<view class="ui-afterIcon ui-check"></view>
+				</block> -->
+				<block wx:if="{{list.status==1 || list.status == 2 ||  list.status == 3}}">
 					<view class="ui-afterIcon ui-check"></view>
 				</block>
-				<block wx:if="{{list.status==1}}">
-					<view class="ui-afterIcon ui-check"></view>
-				</block>
-				<block wx:if="{{list.status==4}}">
+				<block wx:if="{{list.status==5}}">
 					<view class="ui-afterIcon ui-afterEnd"></view>
 				</block>
 				<!-- 文字状态 -->
 				<block wx:if="{{list.status==1}}">
 					<text class="ui-afterText">审核中</text>
 				</block>
-				<block wx:if="{{list.status==5}}">
-					<text class="ui-afterText">审核通过</text>
+				<block wx:if="{{list.status==2}}">
+					<text class="ui-afterText">待换货退货</text>
 				</block>
 				<block wx:if="{{list.status==3}}">
+					<text class="ui-afterText">审核中</text>
+				</block>
+				<block wx:if="{{list.status==6}}">
+					<text class="ui-afterText">审核通过</text>
+				</block>
+				<block wx:if="{{list.status==4}}">
 					<text class="ui-afterText">审核不通过，请联系客服</text>
 				</block>
-				<block wx:if="{{list.status==2}}">
+				<!-- <block wx:if="{{list.status==2}}">
 					<text class="ui-afterText">提交成功</text>
-				</block>
+				</block> -->
 				<block wx:if="{{list.status==4}}">
 					<text class="ui-afterText">售后结束</text>
 				</block>
 				<view class="ui-afterProgress">
-					<view class="ui-progressCommon {{list.status==5||list.status==1||list.status==2?'ui-greenProgressIcon':''}} {{list.status==3?'ui-redProgressIcon':''}} {{list.status==4?'ui-deepGreyProgressIcon':''}}"></view>
-					<view class="ui-progressLine {{list.status==5||list.status==1?'ui-passProgressLine':''}} {{list.status==3?'ui-rejectProgressLine':''}} {{list.status==4?'ui-deepGreyProgressLine':''}}"></view>
-					<view class="ui-progressCommon {{list.status==2?'ui-notProgressIcon':''}} {{list.status==5?'ui-greenProgressIcon':''}} {{list.status==1?'ui-progressIcon':''}} {{list.status==3  ?'ui-rejectProgressIcon':''}} {{list.status==4?'ui-deepGreyProgressIcon':''}}"></view>
-					<view class="ui-progressLine {{list.status==5?'ui-passProgressLine':''}} {{list.status==3||list.status==4?'ui-deepGreyProgressLine':''}}"></view>
-					<view class="ui-progressCommon {{list.status==1||list.status==2?'ui-notProgressIcon':''}} {{list.status==3||list.status==4?'ui-deepGreyProgressIcon':''}} {{list.status==5 ?'ui-greenProgressIcon':''}}"></view>
+					<!-- <view class="ui-progressCommon ui-greenProgressIcon "></view>
+					<view class="ui-progressLine ui-passProgressLine ui-rejectProgressLine ui-deepGreyProgressLine"></view> -->
+					<!-- <view class="ui-progressCommon ui-greenProgressIcon ui-redProgressIcon ui-deepGreyProgressIcon"></view>
+					<view class="ui-progressLine ui-passProgressLine ui-rejectProgressLine ui-deepGreyProgressLine"></view>
+					<view class="ui-progressCommon ui-notProgressIcon ui-greenProgressIcon ui-progressIcon ui-rejectProgressIcon ui-deepGreyProgressIcon"></view>
+					<view class="ui-progressLine ui-passProgressLine ui-deepGreyProgressLine"></view>
+					<view class="ui-progressCommon ui-notProgressIcon ui-deepGreyProgressIcon ui-greenProgressIcon "></view> -->
+                     
+					<view class="ui-progressCommon {{list.status==6||list.status==1||list.status==2 || list.status==3?'ui-greenProgressIcon':''}} {{list.status==3?'ui-redProgressIcon':''}} {{list.status==4?'ui-deepGreyProgressIcon':''}}"></view>
+					<view class="ui-progressLine {{list.status==6||list.status==1 || list.status==2 || list.status==3?'ui-passProgressLine':''}} {{list.status==4?'ui-rejectProgressLine':''}} {{list.status==5?'ui-deepGreyProgressLine':''}}"></view>
+					<view class="ui-progressCommon {{list.status !=4 || list.status !=5 ?'ui-notProgressIcon':''}} {{list.status==5?'ui-greenProgressIcon':''}} {{list.status==1?'ui-progressIcon':''}} {{list.status==3  ?'ui-rejectProgressIcon':''}} {{list.status==4?'ui-deepGreyProgressIcon':''}}"></view>
+					<view class="ui-progressLine {{list.status==6 ?'ui-passProgressLine':''}} {{list.status==4||list.status==5?'ui-deepGreyProgressLine':''}}"></view>
+					<view class="ui-progressCommon {{list.status==1||list.status==2 || list.status ==3 ?'ui-notProgressIcon':''}} {{list.status==4||list.status==5 ?'ui-deepGreyProgressIcon':''}} {{list.status==5 ?'ui-greenProgressIcon':''}}"></view>
 				</view>
 				<view class="ui-progressText">
-					<text class="{{list.status==3?'ui-redText':'ui-blackText'}}">已提交申请</text>
+					<text class="{{list.status==4?'ui-redText':'ui-blackText'}}">已提交申请</text>
 					<block>
-						<text wx:if="{{list.status==5}}" class="ui-blackText">客服审核中</text>
+						<text wx:if="{{list.status==6}}" class="ui-blackText">客服审核中</text>
 						<text wx:if="{{list.status==1 || list.status==2}}" class="ui-blackText">客服审核中</text>
-						<text wx:if="{{list.status==3}}" class="ui-redText'}}">已拒绝售后</text>
-						<text wx:if="{{list.status==4}}" class="ui-blackText'}}">已取消申请</text>
+						<text wx:if="{{list.status==4}}" class="ui-redText'}}">已拒绝售后</text>
+						<text wx:if="{{list.status==5}}" class="ui-blackText'}}">已取消申请</text>
 					</block>
 					<block>
-						<text wx:if="{{list.status==1}}" class="ui-greyText">待换货退货</text>
-						<text wx:if="{{list.status==5}}" class="ui-blackText">已完成售后</text>
-						<text wx:if="{{list.status==3}}" class="ui-greyText'}}">待换货退货</text>
+						<text wx:if="{{list.status != 6 }}" class="ui-greyText">待换货退货</text>
+						<text wx:if="{{list.status == 6}}" class="ui-blackText">已完成售后</text>
+						<!-- <text wx:if="{{list.status==3}}" class="ui-greyText'}}">待换货退货</text>
 						<text wx:if="{{list.status==2}}" class="ui-greyText">待换货退货</text>
-						<text wx:if="{{list.status==4}}" class="ui-greyText">待换货退货</text>
+						<text wx:if="{{list.status==4}}" class="ui-greyText">待换货退货</text> -->
 					</block>
 				</view>
 			</view>
@@ -140,10 +154,10 @@
 			</view>
 			
 			<view class="ui-verificationFooter">
-				<block wx:if="{{list.status==1||list.status==2}}">
+				<block wx:if="{{list.status==1 || list.status==2 }}">
 					<view class="btn-common btn-grey" bindtap="onCancelServiceTap"><text>取消售后</text></view>
 				</block>
-				<block wx:if="{{list.status==5}}">
+				<block wx:if="{{list.status==2}}">
 					<view class="btn-common btn-grey" bindtap="onLogisticsTap"><text>填写物流</text></view>
 				</block>
 				<!-- <block wx:if="{{list.status==3||list.status=='售后结束'}}">

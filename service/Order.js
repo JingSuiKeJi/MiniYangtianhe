@@ -136,6 +136,20 @@ class Order {
 			url: mini.order.afterorderDetails,
 			data: reqData
 		}, page);
+    }
+    logistics(page, reqData) {
+		_g.dm.canLoadMore = 1;
+		return _g.ajax({
+			url: mini.order.logistics,
+			data: reqData
+		}, page);
+    }
+    subLogistics(page, reqData) {
+		_g.dm.canLoadMore = 1;
+		return _g.ajax({
+			url: mini.order.subLogistics,
+			data: reqData
+		}, page);
 	}
 }
 

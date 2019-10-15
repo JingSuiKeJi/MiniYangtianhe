@@ -16,7 +16,9 @@ const onLoad = function(self) {
 	});
 	self.getData();
 }
-const onShow = function(self) {}
+const onShow = function(self) {
+	self.getData();
+}
 const onReady = function(self) {}
 const onUnload = function(self) {}
 const methods = {
