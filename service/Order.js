@@ -157,6 +157,13 @@ class Order {
 			url: mini.order.cancelAfterSale,
 			data: reqData
 		}, page);
+    }
+    orderTraces(page, reqData) {
+		_g.dm.canLoadMore = 1;
+		return _g.ajax({
+			url: mini.order.orderTraces,
+			data: reqData
+		}, page);
 	}
 }
 

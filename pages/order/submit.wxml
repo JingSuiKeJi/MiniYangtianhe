@@ -44,7 +44,7 @@
         <text class="ui-storeAddress__name">{{orderStoreVO.name}}</text>
         <text class="ui-storeAddress__addre">{{orderStoreVO.address}}</text>
         <view class="ui-storeAddress__distanceBox">
-			<text class="ui-storeAddress__distance">距离{{orderStoreVO.distance}}km</text>
+			<text class="ui-storeAddress__distance">距离2222km</text>
 			<image src="{{filter.getLocalPhoto('my_icMore.png')}}" class="ui-storeAddress__rightItem" mode="aspectFit"/>
 		</view>
     </view>
@@ -96,7 +96,7 @@
     </view>
     <view class="ui-pointsBox">
         <view class="ui-pointesItem">
-            <image src="{{filter.getLocalPhoto('order_tongqian.png')}}" class="ui-pointesItem__Icon" mode="aspectFit"/>
+            <image src="{{filter.getLocalPhoto('fuqi__icon.png')}}" class="ui-pointesItem__Icon" mode="aspectFit"/>
             <text class="ui-pointesItem__text" wx:if="{{points}}">{{ '可用' + points + '福气抵用' + pointsPrice + '元'}}</text>
             <text class="ui-pointesItem__text" wx:if="{{deductionStatus != 1 && points==0}}">暂无可抵用福气</text>
             <text class="ui-pointesItem__text" wx:if="{{deductionStatus == 1 && points==0}}">暂无需要抵扣的金额</text>

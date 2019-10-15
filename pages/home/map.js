@@ -94,6 +94,8 @@ const methods = {
                 item.latitude = item.lat;
                 item.longitude = item.lon;
                 item.iconPath = '/images/mapIcon.png';
+                item.width = 38;
+                item.height = 38;
                 // item.id = index;
                 return item;
             })

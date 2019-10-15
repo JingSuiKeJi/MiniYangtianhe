@@ -194,24 +194,24 @@
         <view class="ui-logisticsMask" catchtouchmove="true" wx:if="{{showLogistics}}"></view>
         <view class="ui-logisticsDialog" wx:if="{{showLogistics}}" catchtouchmove="true">
             <view class="ui-expressInfo">
-                <view class="ui-expressImg">
+                <!-- <view class="ui-expressImg">
                     <image src="http://www.gzlingren.com:8098/yangtianhe/my_yangsheng.png"></image>
-                </view>
+                </view> -->
                 <view class="ui-expressText">
-                    <text>顺丰快递</text>
-                    <text>快递单号：34394732979</text>
+                    <text>{{logisticsCompany}}</text>
+                    <text>快递单号：{{logisticsNo}}</text>
                     <text>物流状态：已发货</text>
                 </view>
             </view>
             <scroll-view scroll-y="true" class="ui-deliveryStatus">
-                <view class="ui-items" wx:for="{{deliveryStatus}}" wx:for-item="item" wx:key="idx">
+                <view class="ui-items" wx:for="{{deliveryStatus}}"  wx:key="{{index}}">
                     <view class="ui-itemsStatus">
                         <view class="{{item.arrive?'ui-arriveIcon':'ui-inTheWayIcon'}}"></view>
-                        <text>{{item.where}}</text>
+                        <text>{{item.acceptStation}}</text>
                     </view>
                     <view class="ui-momentData">
-                        <text>{{item.momentData}}</text>
-                        <text>{{item.momentTime}}</text>
+                        <text>{{item.acceptTime}}</text>
+                        <!-- <text>{{item.momentTime}}</text> -->
                     </view>
                 </view>
             </scroll-view>

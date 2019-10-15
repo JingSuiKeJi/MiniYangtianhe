@@ -75,10 +75,27 @@ const methods = {
 				verificationCodeUrl: data.verificationCodeUrl,
 				verificationCode: data.verificationCode,
 				orderVerifier: data.orderVerifier,
-				isComment: data.isComment
+				isComment: data.isComment,
+				logisticsCompany: data.logisticsCompany,
+				logisticsNo: data.logisticsNo
 			});
 			if (data.payRestTime) self.downStartTime(data.payRestTime);
         }, (err) => {
+        });
+	},
+	orderTraces: function () {
+		let self = this;
+		Order.orderTraces(self, {
+			 orderId: self.data.orderId
+			// orderId: 217
+        }).then((ret) => {
+			let data = ret.data
+			self.setData({
+				deliveryStatus: data.traces.reverse(),
+				showLogistics: true
+			})
+        }, (err) => {
+
         });
 	},
 	//订单支付倒计时
@@ -172,9 +189,10 @@ const methods = {
 	//查看物流
 	onCheckLogisticsTap:function(){
 		let self = this;
-		self.setData({
-		  showLogistics: true
-		});
+		// self.setData({
+		//   showLogistics: true
+		// });
+		self.orderTraces();
 	},
 	onHideLogisticsTap: function () {
 		let self = this;
