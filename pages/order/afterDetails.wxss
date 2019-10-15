@@ -349,7 +349,7 @@ page{
 	width: 42rpx;
 	height: 42rpx;
 }
-
+/* 中间绿圆圈 */
 .ui-progressIcon{
 	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_selectGroup.png');
 	background-repeat: no-repeat;
@@ -384,7 +384,7 @@ page{
 	background:#999999;
 	border-radius: 22rpx;
 }
-
+/* 中间红圆 */
 .ui-rejectProgressIcon{
 	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_redDot.png');
 	background-repeat: no-repeat;
@@ -396,17 +396,17 @@ page{
 	width:254rpx;
 	border: 3rpx solid rgba(236,236,236,1);
 }
-
+/* 绿色进度条 */
 .ui-passProgressLine{
 	width:254rpx;
 	border: 3rpx solid #1DC4BC;
 }
-
+/* 灰进度条 */
 .ui-deepGreyProgressLine{
 	width:254rpx;
 	border: 3rpx solid #999999;
 }
-
+/*红色进度条 */
 .ui-rejectProgressLine{
 	width:255rpx;
 	border: 3rpx solid #FD3D2F;

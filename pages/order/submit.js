@@ -139,7 +139,7 @@ const methods = {
             let list = _.map(ret.data, (item) => {
                 return new Date(item.beignTime * 1000).Format('yyyy-MM-dd hh:mm') +
                     '-' +
-                    new Date(item.endTime * 1000).Format('yyyy-MM-dd hh:mm')
+                    new Date(item.endTime * 1000).Format(' hh:mm')
             });
 
             self.setData({

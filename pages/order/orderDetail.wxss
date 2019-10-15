@@ -592,7 +592,7 @@ page{
 .ui-expressText{
 	display: flex;
 	flex-direction: column;
-	margin-left: 20rpx;
+	margin-left: 50rpx;
 }
 
 .ui-expressText text{

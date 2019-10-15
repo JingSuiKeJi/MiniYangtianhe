@@ -8,7 +8,7 @@ const event = app.event;
 const Order = require('../../service/Order');
 let data = {
 	expressCompany:'请选择',//选择快递公司
-	companyList:['顺丰快递','申通快递','圆通快递','中通快递','韵达快递','百世汇通快递','EMS快递','宅急送快递','天天快递'],//快递公司列表
+	companyList:[],//快递公司列表
 	refundOrderNum: '',//订单号
 };
 const onLoad = function(self) {
@@ -47,9 +47,10 @@ const methods = {
 				title: '已提交',
 				mask: true,
 				icon: 'success',
-				duration:  1500
+				duration:  3000,
+				success: _g.navigateBack()
 			});
-			_g.navigateBack();
+			// _g.navigateBack();
         }, (err) => {
 			
         });	

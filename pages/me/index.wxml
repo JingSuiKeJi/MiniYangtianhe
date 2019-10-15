@@ -152,12 +152,12 @@
 					</button>
 			    </form>
 				<view class="ui-inviter" wx:if="{{showInvite}}">
-					<view class="ui-inviterInfo" wx:if="{{userInfo.inviter.id}}">
-						<view class="ui-inviterInfoAvatar"><image src="{{userInfo.inviter.avatar}}"  mode="aspectFill"></image></view>
-						<text class="ui-inviterNikeName">{{userInfo.inviter.nickname}}</text>
-						<text class="ui-inviterWxName">微信号：{{userInfo.inviter.wxNo}}</text>
+					<view class="ui-inviterInfo" wx:if="{{userInfo.inviter}}">
+						<image src="{{userInfo.inviter.avatar}}"  mode="aspectFit" class="ui-inviterInfoAvatar"></image>
+						<view class="ui-inviterNikeName">{{userInfo.inviter.nickname}}</view>
+						<view class="ui-inviterWxName">微信号：{{userInfo.inviter.wxNo}}</view>
 					</view>
-					<view class="ui-inputInviterInfo" wx:else>
+					<view class="ui-inputInviterInfo" wx:if="{{!userInfo.inviter}}">
 						<input class="ui-inputBox" type="text" placeholder="请输入邀请人ID" value="{{inviterId}}" confirm-type="done" bindinput ="inviterIdInput"/>
 						<!-- 清空文字 -->
 						<view class="ui-emptyCircle" bindtap="onEmpty"></view>

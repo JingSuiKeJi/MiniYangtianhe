@@ -150,6 +150,20 @@ class Order {
 			url: mini.order.subLogistics,
 			data: reqData
 		}, page);
+    }
+    cancelAfterSale(page, reqData) {
+		_g.dm.canLoadMore = 1;
+		return _g.ajax({
+			url: mini.order.cancelAfterSale,
+			data: reqData
+		}, page);
+    }
+    orderTraces(page, reqData) {
+		_g.dm.canLoadMore = 1;
+		return _g.ajax({
+			url: mini.order.orderTraces,
+			data: reqData
+		}, page);
 	}
 }
 

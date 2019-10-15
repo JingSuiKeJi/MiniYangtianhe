@@ -12,8 +12,8 @@
 		</view>
 		<!-- 退款金额与账户 -->
 		<view class="ui-refundMoney">
-			<text>退款总金额：¥{{list.name}}</text>
-			<text>退回原账户：¥{{list.name}}</text>
+			<text>退款总金额：¥{{list.money}}</text>
+			<text>退回原账户：¥{{list.money}}</text>
 		</view>
 		<!-- 物流信息 -->
 		<view class="ui-logisticsInfo">
@@ -35,7 +35,7 @@
 			</view>
 		</view>
 		<!-- 提交 -->
-		<view wx:if="{{index == undefined || refundOrderNum==''}}" class="btn-notSubmit">提交</view>
+		<view wx:if="{{index == undefined || refundOrderNum==''}}" class="btn-notSubmit" >提交</view>
 		<view wx:if="{{index >= 0 && refundOrderNum}}" class="btn-canSubmit" bindtap="onSubmitTap">提交</view>
 	</view>
 </view>

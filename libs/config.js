@@ -14,8 +14,8 @@ config.prototype = {
     tokenKey: '',
 
     // env: 'dev', // 切换版本(提交正式必须改为 pro): dev 开发 | test  测试 | pro 生产
-    // env: 'test', // 切换版本(提交正式必须改为 pro): dev 开发 | test  测试 | pro 生产
-    env: 'pro', // 切换版本(提交正式必须改为 pro): dev 开发 | test  测试 | pro 生产
+    env: 'test', // 切换版本(提交正式必须改为 pro): dev 开发 | test  测试 | pro 生产
+    // env: 'pro', // 切换版本(提交正式必须改为 pro): dev 开发 | test  测试 | pro 生产
 
     defaultPage: 1,// 页码 默认1
     defaultPageSize: 15,// 每页数 默认15
@@ -185,8 +185,9 @@ config.prototype = {
             afterorderList: '/app/afterSale/orderList.do',
             afterorderDetails: '/app/afterSale/orderDetails.do',
             logistics: '/app/afterSale/logistics.do',
-            subLogistics: '/app/afterSale/subLogistics.do'
-
+            subLogistics: '/app/afterSale/subLogistics.do',
+            cancelAfterSale: '/app/afterSale/cancel.do',
+            orderTraces: '/app/order/orderTraces.do'
         },
         point: {
             getBaseInfo: '/app/points/getBaseInfo.do',

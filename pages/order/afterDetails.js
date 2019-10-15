@@ -28,8 +28,20 @@ const methods = {
 			id: self.data.id
 		}).then((ret) => {
 			self.setData({
-				list:ret.data
+				list:ret.data,
+				status: ret.data.status
 			})
+        }, (err) => {
+			
+        });
+	},
+	cancelAfterSale: function () {
+		let self = this;
+		Order.cancelAfterSale(self, {
+			id: self.data.id
+		}).then((ret) => {
+			self.getData();
+			self.hideModal();
         }, (err) => {
 			
         });
@@ -50,14 +62,7 @@ const methods = {
 	},
 	onConfirm: function () {
 		let self = this;
-		const orderStatus = '售后结束';
-		_g.navigateTo({
-			param:{
-		    	orderStatus:orderStatus
-		    },
-			url: 'pages/order/afterDetails',
-		}, self);
-		self.hideModal();
+		self.cancelAfterSale();
 	},
 	//跳转到申请退款
 	onApplyRefundTap:function(){
@@ -79,6 +84,7 @@ const methods = {
 		let self = this;
 		_g.navigateTo({
 			param: {
+				id: self.data.id
 			},
 			url: 'pages/order/fillLogistics',
 		}, self);

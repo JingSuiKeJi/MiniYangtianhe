@@ -40,7 +40,7 @@ page {
 .ui-addressBox {
     display: flex;
     align-items: center;
-    width: 95%;
+    width: 702rpx;
     min-height: 130rpx;
     margin: 0 auto;
     margin-top: 20rpx;
@@ -104,7 +104,7 @@ page {
     margin-left: auto;
 }
 .postBox {
-    width: 95%;
+    width: 702rpx;
     height: 180rpx;
     margin: 0 auto;
     background-color: #fff;
@@ -165,7 +165,8 @@ page {
 .ui-storeAddressBox {
     display: flex;
     align-items: center;
-    width: 95%;
+    /* width: 702rpx; */
+    width: 702rpx;
     margin: 20rpx auto;
     background-color: #fff;
     border-radius:12rpx;
@@ -183,25 +184,36 @@ page {
     line-height:30rpx;
 }
 .ui-storeAddress__name{
-    max-width: 150rpx;
+   width: 150rpx;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   white-space: nowrap;
 }
 .ui-storeAddress__addre {
-    width: 47%;
+    width: 330rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .ui-storeAddress__distanceBox{
     display: flex;
+    width: 150rpx;
     align-items: center;
     justify-content: center;
     margin-left: auto;
 }
 
 .ui-storeAddress__distance {
+    width: 140rpx;
     /* margin-left: 15rpx; */
     font-size:20rpx;
     font-family:PingFangSC;
     font-weight:400;
     color:#999999;
     line-height:20rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .ui-storeAddress__rightItem {
     width: 24rpx;
@@ -209,7 +221,7 @@ page {
     margin-left: 10rpx;
 }
 .ui-orderBox {
-    width: 95%;
+    width: 702rpx;
     margin: 0 auto;
     background-color: #fff;
     border-radius:12rpx;
@@ -352,12 +364,15 @@ page {
     line-height:28rpx;
 }
 .ui-pointsBox {
-    width: 95%;
-    margin: 20rpx auto 20rpx auto;
+    width: 702rpx;
+    height: 98rpx;
+    /* margin: 20rpx auto 20rpx auto; */
     background-color: #fff;
     border-radius:12rpx;
-    padding: 30rpx;
-    box-sizing: border-box;
+    margin: 0 auto;
+    /* padding: 30rpx; */
+    /* box-sizing: border-box; */
+   
     
 }
 /* .ui-ticketBox {
@@ -369,13 +384,17 @@ page {
     padding-bottom: 124rpx;
 }
 .ui-pointesItem {
+    display: flex;
     width: 100%;
+    height: 98rpx;
+    align-items: center;
     margin-top: 20rpx;
-    position: relative;
+    /* position: relative; */
 }
 .ui-pointesItem__Icon {
-    width: 38rpx;
-    height: 40rpx;
+    width: 48rpx;
+    height: 48rpx;
+    margin-left: 20rpx;
 }
 .ui-pointesItem__text {
     font-size:30rpx;
@@ -385,24 +404,27 @@ page {
     line-height:30rpx;
     display: inline-block;
     vertical-align: top;
-    margin-top: 10rpx;
     margin-left: 20rpx;
 }
 .ui-pointesItem__selestIcon {
     width: 40rpx;
     height: 40rpx;
-    float: right;
+    margin-left: auto;
+    margin-right: 40rpx;
 }
 .ui-pointesItem__moneyIcon {
     width: 52rpx;
     height: 52rpx;
+    margin-left: 20rpx;
 }
 .ui-pointesItem__moreBox {
-    display: inline-block;
-    vertical-align: top;
-    margin-top: -10rpx;
-    position: absolute;
-    right: 0;
+    /* display: inline-block; */
+    /* vertical-align: top;
+    margin-top: -10rpx; */
+    /* position: absolute;
+    right: 0; */
+    margin-left: auto;
+    margin-right: 24rpx;
 }
 .ui-pointesItem__pageNum {
     font-size:28rpx;
