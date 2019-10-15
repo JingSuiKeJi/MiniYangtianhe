@@ -183,7 +183,9 @@ config.prototype = {
             appayBefore: '/app/afterSale/applyBefore.do',
             afterSaleApply: '/app/afterSale/apply.do',
             afterorderList: '/app/afterSale/orderList.do',
-            afterorderDetails: '/app/afterSale/orderDetails.do'
+            afterorderDetails: '/app/afterSale/orderDetails.do',
+            logistics: '/app/afterSale/logistics.do',
+            subLogistics: '/app/afterSale/subLogistics.do'
 
         },
         point: {

@@ -1,6 +1,6 @@
 <wxs module="filter" src="../../filter/filter.wxs"></wxs>
 <!--afterSale.wxml-->
-<view class="container">
+<view class="contain">
 	<view wx:if="{{orderList}}" class="ui-main">
 		<view class="ui-searchOrder">
 			<view class="ui-searchBox">
@@ -16,7 +16,7 @@
 		</view>
 		
 		<view  class="ui-orderInfoBox" wx:for="{{orderList}}"  wx:key="{{index}}" wx:if="{{orderList.length}}">
-			<view bindtap="onOrderDetailTap" >
+			<view bindtap="onOrderDetailTap" data-id="{{item.id}}">
 				<view class="ui-orderStatus">
 					<text class="ui-orderReferenceText">订单编号： {{item.orderNo}}</text>
 					<!-- <text class="ui-storeTetx" wx:if="{{item.store}}">{{item.store}}</text> -->
@@ -50,13 +50,13 @@
 					</view>
 				</view>
 			</view>
-			<block wx:if="{{currentCheck=='0'}}">
+			<!-- <block wx:if="{{currentCheck=='0'}}">
 				<view class="ui-handle">
 					<view class="btn-grey btn-common" bindtap="onOrderDetailTap" data-id="{{item.id}}">
 					     <text>查看详情</text></view>
 					<view class="btn-right btn-gray btn-common" bindtap="onAfterApplicationTap" data-orderid="{{item.orderId}}"><text>申请退款</text></view>
 				</view>
-			</block>
+			</block> -->
 			<block>
 				<view class="ui-handle">
 					<view class="btn-right btn-gray btn-common" catchtap="onOrderDetailTap" data-id="{{item.id}}" 

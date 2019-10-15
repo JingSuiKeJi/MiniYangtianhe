@@ -31,7 +31,7 @@ const methods = {
 	   let param = {
 			page: self.data.page,
 			pageSize: 20,
-			statsus: self.data.currentCheck,
+			status: self.data.currentCheck,
 			orderNo: self.data.inputValue
 			
 	   }

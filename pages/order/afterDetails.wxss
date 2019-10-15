@@ -363,21 +363,21 @@ page{
 	background:rgba(236,236,236,1);
 	border-radius: 22rpx;
 }
-
+/* 绿圆 */
 .ui-greenProgressIcon{
 	width:22rpx;
 	height:22rpx;
 	background:rgba(29,196,188,1);
 	border-radius: 22rpx;
 }
-
+/* 红圆 */
 .ui-redProgressIcon{
 	width:22rpx;
 	height:22rpx;
 	background:rgba(253,61,47,1);
 	border-radius: 22rpx;
 }
-
+/* 灰圆 */
 .ui-deepGreyProgressIcon{
 	width:22rpx;
 	height:22rpx;
