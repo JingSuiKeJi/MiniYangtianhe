@@ -58,9 +58,10 @@ const methods = {
 		})
 	},
 	//跳转到申请退款
-	onRefundTap:function(){
+	onRefundTap:function(e){
 		let self = this;
 		let orderItemIds = self.chooseIds();
+		console.log(33, e.currentTarget.dataset.type)
 		if (!orderItemIds.length) {
 			_g.toast({
 				title: '请选择商品'
@@ -69,28 +70,29 @@ const methods = {
 		}
 		_g.navigateTo({
 			param:{
-				orderItemIds: orderItemIds.join(',')
+				orderItemIds: orderItemIds.join(','),
+				type: Number(e.currentTarget.dataset.type)
 			},
 			url: 'pages/order/applyRefund',
 		}, self);
 	},
-	//跳转到申请退款退货
-	onRefundGoodsTap:function(){
-		let self = this;
-		let orderItemIds = self.chooseIds();
-		if (!orderItemIds.length) {
-			_g.toast({
-				title: '请选择商品'
-			});
-			return
-		}
-		_g.navigateTo({
-			param:{
-				orderItemIds: orderItemIds.join(',')
-			},
-			url: 'pages/order/applyRefund',
-		}, self);
-	},
+	// //跳转到申请退款退货
+	// onRefundGoodsTap:function(){
+	// 	let self = this;
+	// 	let orderItemIds = self.chooseIds();
+	// 	if (!orderItemIds.length) {
+	// 		_g.toast({
+	// 			title: '请选择商品'
+	// 		});
+	// 		return
+	// 	}
+	// 	_g.navigateTo({
+	// 		param:{
+	// 			orderItemIds: orderItemIds.join(',')
+	// 		},
+	// 		url: 'pages/order/applyRefund',
+	// 	}, self);
+	// },
 	//跳转到申请换货
 	onExchangeGoodsTap:function(){
 		let self = this;

@@ -18,9 +18,22 @@ let data = {
 	status: 1,
 };
 const onLoad = function(self) {
-	self.setData({
-		orderItemIds: self.data.orderItemIds
-	})
+	let param = {
+		orderItemIds: self.data.orderItemIds,
+		type: self.data.type
+	}
+	switch(self.data.type) {
+		case 1 :
+			param.title = '申请退款';
+			break;
+		case 2 :
+			param.title = '申请退货';
+			break;	
+		default: 
+			param.title = '申请换货';
+			break;
+	}
+	self.setData(param);
 	self.getData();
 }
 const onShow = function(self) {}
@@ -44,26 +57,10 @@ const methods = {
 				param.reasonFlag = false;
 				return param
 			})
-			let type = 0;
-			let title = '申请退款';
-			if (opts.refundSwich) {
-				type = 1;
-				title = '申请退款';
-			}
-			if (opts.salesReturnSwich) {
-				type = 2
-				title = '申请退货';
-			}
-			if (opts.exchangeGoodsSwich) {
-				type = 3
-				title = '申请换货';
-			}
 			self.setData({
 				storeList: opts.goodsVoList,
 				totalPrice: opts.totalPrice,
 				causeList: causeList,
-				type: type,
-				title: title
 			})
         }, (err) => {
 

@@ -185,8 +185,8 @@ config.prototype = {
             afterorderList: '/app/afterSale/orderList.do',
             afterorderDetails: '/app/afterSale/orderDetails.do',
             logistics: '/app/afterSale/logistics.do',
-            subLogistics: '/app/afterSale/subLogistics.do'
-
+            subLogistics: '/app/afterSale/subLogistics.do',
+            cancelAfterSale: '/app/afterSale/cancel.do',
         },
         point: {
             getBaseInfo: '/app/points/getBaseInfo.do',

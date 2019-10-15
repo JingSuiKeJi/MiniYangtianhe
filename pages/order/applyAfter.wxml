@@ -37,7 +37,7 @@
 		</block> -->
 		<block >
 			<view class="ui-refundHandleBox">
-				<view class="ui-itemCommon" bindtap="onRefundTap" wx:if="{{refundSwich}}">
+				<view class="ui-itemCommon" bindtap="onRefundTap" wx:if="{{refundSwich}}" data-type ="1">
 					<view class="ui-iconCommon ui-refundIcon"></view>
 					<view class="ui-reasonText">
 						<text>我要退款（无需退货）</text>
@@ -45,7 +45,7 @@
 					</view>
 					<view class="ui-skipIcon"></view>
 				</view>
-				<view class="ui-itemCommon" bindtap="onRefundGoodsTap" wx:if="{{salesReturnSwich}}">
+				<view class="ui-itemCommon" bindtap="onRefundTap" wx:if="{{salesReturnSwich}}" data-type ="2">
 					<view class="ui-iconCommon ui-exchangeIcon"></view>
 					<view class="ui-reasonText">
 						<text>我要退货退款</text>
