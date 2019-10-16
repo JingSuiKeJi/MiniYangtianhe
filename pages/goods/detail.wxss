@@ -4,10 +4,13 @@ page {
     background-color: #F5F5F5;
     height: 100%;
 }
-
+.contain {
+    width: 100%;
+    height: 100%;
+}
 .main {
     width: 100%;
-    height: 1500rpx;
+    /* height: 1500rpx; */
     background-color: #F5F5F5;
     position: relative;
 }
@@ -339,6 +342,7 @@ page {
 .ui-imgItem_icon {
     width: 104rpx;
     height: 104rpx;
+    border-radius: 50%;
     margin-left: 30rpx;
     margin-top: 30rpx;
 }
@@ -351,11 +355,15 @@ page {
 }
 
 .ui-infoItem_text {
+    width: 190rpx;
     font-size: 22rpx;
     font-family: PingFang-SC-Medium;
     font-weight: 500;
     color: #333333;
     margin: 50rpx auto 7rpx auto;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .ui-infoItem_time {
@@ -384,15 +392,14 @@ page {
     width: 124rpx;
     height: 52rpx;
     background-color: #1ED2B5;
-    line-height: 108rpx;
-    /* display: inline-block; */
+    display: flex;
+    justify-content: center;
+    align-items: center;    
     font-size: 24rpx;
     font-family: PingFang-SC-Medium;
     font-weight: 500;
     color: #fff;
-    line-height: 24px;
     border-radius: 30rpx;
-    text-align: center;
     float: right;
     margin-right: 20rpx;
     margin-top: 60rpx;
@@ -912,4 +919,44 @@ page {
 .ui-tapItem_addWord {
     height: 100rpx;
     line-height: 100rpx;
+}
+.groupBox_singlePrice {
+    margin-left: 28rpx;
+    margin-top: 22rpx;
+    font-size:38rpx;
+    font-family:PingFangSC-Medium,PingFangSC;
+    font-weight:500;
+    color:#FFFFFF;
+    line-height:38rpx;
+}
+.ui-groupBox_singlePrice {
+    margin-left: 16rpx;
+    font-size:24rpx;
+    font-family:PingFangSC-Regular,PingFangSC;
+    font-weight:400;
+    color:#FFFFFF;
+    line-height:24rpx;
+}
+.ui-groupBox {
+    margin-top: 10rpx;
+    width: 500rpx;
+}
+.ui-groupBox_nowPrice {
+    margin-left: 28rpx;
+    margin-top: 22rpx;
+    font-size:38rpx;
+    font-family:PingFangSC-Medium,PingFangSC;
+    font-weight:500;
+    color:#FFFFFF;
+    line-height:38rpx;
+}
+.ui-groupItem_text {
+    /* width: 576rpx; */
+    margin-left: 28rpx;
+    margin-top: 16rpx;
+    font-size:24rpx;
+    font-family:PingFangSC-Light,PingFangSC;
+    font-weight:300;
+    color:#FFFFFF;
+    line-height:24rpx;
 }

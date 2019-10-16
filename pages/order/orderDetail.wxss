@@ -618,6 +618,7 @@ page{
 	width: 510rpx;
 	height: 708rpx;
 	margin: 48rpx 0 0 70rpx;
+	padding-bottom: 30rpx;
 }
 
 .ui-items{

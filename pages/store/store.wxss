@@ -306,6 +306,7 @@ page {
 }
 
 .ui-wrapBox .ui-classBox {
+    height: 380rpx;
     width: 90%;
     margin: 0 auto 20rpx auto;
     padding-top: 40rpx;
@@ -315,32 +316,34 @@ page {
 
 .ui-imageItem_swper {
     width: 100%;
-    height: 370rpx;
+    height: 300rpx;
 }
 
 .ui-classBox .ui-classBox_item {
     width: 20%;
     text-align: center;
     display: inline-block;
+    font-size: 0;
 }
 
-.ui-classBox_item>image {
+.ui-classItem__img {
     width: 84rpx;
-    height: 84rpx;
-    display: inline-block;
+    height: 86rpx;
 }
 
-.ui-classBox_item>text {
-    display: inline-block;
+.ui-classItem__text {
     font-size: 24rpx;
     font-family: PingFangSC-Light;
     font-weight: 300;
     color: #333333;
+    margin-top: 10rpx;
     margin-bottom: 20rpx
 }
 
 .ui-classBox_icon {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 10rpx;
 }
 
 .ui-classBox_icon>text {

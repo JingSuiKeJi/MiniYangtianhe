@@ -16,14 +16,19 @@
 .ui-imgItem_icon {
     width: 104rpx;
     height: 104rpx;
+    border-radius: 50%;
     margin: 20rpx 20rpx 30rpx;
 }
 .ui-item_info  .ui-infoItem_title{
+    width: 190rpx;
     font-size:22rpx;
     font-family:PingFang-SC-Medium;
     font-weight:500;
     color:#333333;
     margin-top: 35rpx;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 .ui-item_info  .ui-infoItem_time {
     font-size:22rpx;

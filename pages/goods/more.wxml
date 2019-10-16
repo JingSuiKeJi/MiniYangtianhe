@@ -3,16 +3,16 @@
 <view class="ui-contain">
     <view class="main">
         <view class="moreBox">
-            <view class="moreItem">
+            <view class="moreItem" wx:for="{{list}}" wx:key="{{index}}" wx:if="{{list.length}}">
                 <view class="ui-item_imgBox">
-                    <image src="../../images/touxiang.png"  class="ui-imgItem_icon"/>
+                    <image src="{{item.avatar}}"  class="ui-imgItem_icon"/>
                 </view>
                 <view class="ui-item_info">
-                    <view class="ui-infoItem_title">15677220282的团购</view>
-                    <view class="ui-infoItem_time">剩余00:46:56</view>
+                    <view class="ui-infoItem_title">{{item.nickname}}的团购</view>
+                    <view class="ui-infoItem_time">剩余{{filter.countDown(item.endTime,curTime)}}</view>
                 </view>
-                <view class="ui-item_teamer">还差<text >1</text>人成团</view>
-                <view class="ui-item_btnBox" bindtap="onJoinTap">
+                <view class="ui-item_teamer">还差<text >{{item.disparityNum}}</text>人成团</view>
+                <view class="ui-item_btnBox" bindtap="onJoinTap" data-id="{{item.id}}">
                     <image src="{{filter.getLocalPhoto('goCollageIcon.png')}}" class="ui-btnItem_btn"/>
                     <text class=".ui-btnItem_text">去参团</text>
                 </view>

@@ -11,26 +11,38 @@
     <scroll-view class="main" scroll-y scroll-into-view="{{toView}}">
         <view class="ui-headerBox" id="header">
             <view class="ui-imageBox">
-                <swiper duration="500" class="ui-imageItem_swper" mode="aspectFill" bindchange="onChangeTap">
+                <swiper duration="500" class="ui-imageItem_swper" bindchange="onChangeTap">
                     <block wx:for="{{bannerImgs}}" wx:key="index">
                         <swiper-item>
-                            <image src="{{filter.getPhoto(host, item)}}" class="ui-swperItem_image" mode="aspectFill"></image>
+                            <image src="{{filter.getPhoto(host, item)}}" class="ui-swperItem_image" mode="aspectFit"></image>
                         </swiper-item>
                     </block>
                 </swiper>
             </view>
             <view class="ui-imageIcon">{{currentIndex}}/ {{bannerImgs.length}}</view>
-            <view class="ui-infoBox">
+            <view class="ui-infoBox" wx:if="{{type != 5}}">
                 <view class="ui-infoItem_left">
-                    <text class="ui-leftItem_text" wx:if="{{type==5}}">2人团</text>
                     <view class="ui-priceBox">
-                        <text class="ui-priceBox_nowPrice" style="line-height: {{type ==5 ? '100rpx' : ''}}">￥{{goodsDetail.nowPrice}}</text>
-                        <text class="ui-priceBox_singlePrice" wx:if="{{type == 5}}">单买价:￥{{goodsDetail.originPrice}}</text>
+                        <text class="ui-priceBox_nowPrice" >￥{{goodsDetail.nowPrice}}</text>
                         <text class="ui-priceBox_earnPrice" wx:if="{{goodsDetail.commission}}">赚¥{{goodsDetail.commission}}</text>
                     </view>
-                    <text class="ui-priceBox_singlePrice" wx:if="{{type !=5}}">原价:{{goodsDetail.originPrice}}</text>
+                    <text class="ui-priceBox_singlePrice" >原价:{{goodsDetail.originPrice}}</text>
                 </view>
-                <view class="ui-infoItem_right" wx:if="{{type == 2 || type == 5}}">
+                <view class="ui-infoItem_right" wx:if="{{type == 2 }}">
+                    <view class="ui-rightItem_text">距活动结束：</view>
+                    <view class="ui-rightItem_title">{{filter.countDown(goodsDetail.endTime,curTime)}}</view>
+                </view>
+            </view>
+            <view class="ui-infoBox" wx:if="{{type==5}}">
+                <view class="ui-infoItem_left">
+                    <view class="ui-groupItem_text" >{{goodsDetail.limitNum}}人团</view>
+                    <view class="ui-groupBox">
+                        <text class="ui-groupBox_nowPrice" >￥{{goodsDetail.nowPrice}}</text>
+                        <text class="ui-groupBox_singlePrice" >单买价:￥{{goodsDetail.originPrice}}</text>
+                        <!-- <text class="ui-groupBox_earnPrice" wx:if="{{goodsDetail.commission}}">赚¥{{goodsDetail.commission}}</text> -->
+                    </view>
+                </view>
+                <view class="ui-infoItem_right" >
                     <view class="ui-rightItem_text">距活动结束：</view>
                     <view class="ui-rightItem_title">{{filter.countDown(goodsDetail.endTime,curTime)}}</view>
                 </view>
@@ -72,7 +84,7 @@
             <text wx:else>已选：{{defaultScale}}</text>
             <text>></text>
         </view>
-        <view class="ui-collageBox" wx:if="{{type == 5 }}">
+        <view class="ui-collageBox" wx:if="{{type == 5 && collage.length}}">
             <view class="ui-collageItem_top" bindtap="onMoreTap">
                 <text class="ui-topItem_title">以下小伙伴已发起拼团，可以直接参加</text>
                 <text class="ui-topItem_moreText">查看更多拼团</text>
@@ -81,15 +93,15 @@
             <view class="ui-collageItem_bottom">
                 <view class="ui-bottomItem" wx:for="{{collage}}" wx:key="index">
                     <view class="ui-bottomItem_imgBox">
-                        <image src="../../images/{{item.url}}" class="ui-imgItem_icon" mode="aspectFill"/>
+                        <image src="{{item.avatar}}" class="ui-imgItem_icon" mode="aspectFill"/>
                     </view>
                     <view class="ui-bottomItem_info">
-                        <view class="ui-infoItem_text">{{item.phone}}</view>
-                        <view class="ui-infoItem_time">剩余{{item.time}}</view>
+                        <view class="ui-infoItem_text">{{item.nickname}}</view>
+                        <view class="ui-infoItem_time">剩余{{filter.countDown(item.endTime,curTime)}}</view>
                     </view>
                     <view class="ui-bottomItem_teamer">还差
-                        <text>{{item.num}}</text>人成团</view>
-                    <view class="ui-bottomItem_collge" bindtap="onJoinTap">去参团</view>
+                        <text>{{item.disparityNum}}</text>人成团</view>
+                    <view class="ui-bottomItem_collge" bindtap="onJoinTap" data-id="{{item.id}}">去参团</view>
                 </view>
             </view>
         </view>
@@ -115,8 +127,8 @@
                 <text class="ui-tipsItem__text">商品详情</text>
                 <text class="ui-tipsItem__line"></text>
             </view>
-            <view class="ui-goodsItem_bottom">
-                <view class="ui-bottomItem_imgages">
+            <view class="ui-goodsItem_bottom" >
+                <view class="ui-bottomItem_imgages" wx:if="{{goodsImgs.length}}">
                     <!-- <image src="http://m.qpic.cn/psb?/V12Kdegv0qd4wf/q3YUQR2wBKp3krmm9Rp1yZEwH1**f.vRjme0YuXZhIg!/b/dFYBAAAAAAAA&bo=7gKMDgAAAAADh8w!&rf=viewer_4&t=5" 
                          class="ui-bottomItem_detailIcon"/> -->
                     <image src="{{filter.getPhoto(host, item)}}" class="ui-bottomItem_detailIcon" wx:for="{{goodsImgs}}" wx:key="{{index}}" mode="widthFix"></image>
@@ -136,15 +148,15 @@
                 </view>
                 <view class="ui-tapItem_singleBuy" wx:if="{{type == 5}}" bindtap="onShowTap" data-scaletype="0">
                     <view class="ui-tapItem_word ui-tapItem_specialWord" bindtap="onShowTap" data-scaletype="0">单独购买</view>
-                    <view class="ui-tapItem_word" bindtap="onShowTap" data-scaletype="0">￥19.00</view>
+                    <view class="ui-tapItem_word" bindtap="onShowTap" data-scaletype="0">￥{{goodsDetail.originPrice}}</view>
                 </view>
                 <view class="ui-tapItem_togetherBuy" hidden="{{type == 6 || type == 5}}">
                     <view class="ui-tapItem_word ui-tapItem_addWord" bindtap="showModal" data-scaletype="1">立即购买</view>
                     <!-- <view class=" ui-tapItem_text"  bindtap="onShowTap" data-scaletype="1">立赚¥0.53起</view> -->
                 </view>
                 <view class="ui-tapItem_togetherBuy" wx:if="{{type == 5}}" bindtap="onShowTap" data-scaletype="0">
-                    <view class="ui-tapItem_word ui-tapItem_specialWord" bindtap="onShowTap" data-scaletype="0">2人拼团</view>
-                    <view class="ui-tapItem_word" bindtap="onShowTap" data-scaletype="0">￥9.99</view>
+                    <view class="ui-tapItem_word ui-tapItem_specialWord" bindtap="onShowTap" data-scaletype="0">{{goodsDetail.limitNum}}人拼团</view>
+                    <view class="ui-tapItem_word" bindtap="onShowTap" data-scaletype="0">￥{{goodsDetail.nowPrice}}</view>
                 </view>
             </view>
             <view class="ui-tapItem ui-nowBuyBox" bindtap="showModal" wx:if="{{type == 5}}">立即购买</view>

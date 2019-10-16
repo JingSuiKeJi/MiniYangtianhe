@@ -88,7 +88,7 @@ const methods = {
     },
     preOrder() {
         const self = this;
-        if (self.data.from == 'goodsDetail' ||  self.data.from == 'bargain') {
+        if (self.data.from == 'goodsDetail' ||  self.data.from == 'bargain' || self.data.from == 'join') {
             let postData = self.data.postData;
             let data = {
                 preGoods: {
@@ -273,21 +273,27 @@ const methods = {
 
         if (self.data.from == 'goodsDetail' || self.data.from == 'bargain' ) {
             data.id = self.data.postData.id;
-            console.log(self.data.postData.id)
             data.buyType = 1;
         }
         if (self.data.from == 'cart') {
             data.cartIds = self.data.postData.cartIds;
             data.buyType = 2;
         }
-        if (self.data.thirdId) {
-            data.thirdId = self.data.thirdId;
+        // if (self.data.thirdId) {
+        //     data.thirdId = self.data.thirdId;
+        // }
+        if (self.data.postData.thirdId) {
+            data.thirdId = self.data.postData.thirdId;
         }
-        if (self.data.pointsFlag) {
-            data.integralStatus = 1;
-        } else {
-            data.integralStatus = 2;
+        if (self.data.postData.isJoin) {
+            data.isJoin = self.data.postData.isJoin;
         }
+        data.integralStatus = self.data.pointsFlag ? 1 : 2;
+        // if (self.data.pointsFlag) {
+        //     data.integralStatus = 1;
+        // } else {
+        //     data.integralStatus = 2;
+        // }
         Order.placeOrder(self, data).then((ret) => {
             self.prePay(ret.data);
         }, (err) => {

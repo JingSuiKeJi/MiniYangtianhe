@@ -106,11 +106,12 @@ const methods = {
                 postData: {
                     id: list[index].goodsId,
                     num: 1,
-                    platformFlag: self.data.platformFlag
+                    platformFlag: self.data.platformFlag,
+                    thirdId: list[index].userCutId,
                 },
                 platformFlag: self.data.platformFlag,
                 from: 'bargain',
-                thirdId: list[index].userCutId,
+                // thirdId: list[index].userCutId,
             }
         }, self)
     },
