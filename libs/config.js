@@ -158,6 +158,8 @@ config.prototype = {
             createCut: '/app/cut/createCut.do',
             helpCut: '/app/cut/helpCut.do',
             myCut: '/app/cut/myCut.do',
+            getUserAssembleList: '/app/assemble/getUserAssembleList.do',
+            getUserAssembleDetail: '/app/assemble/getUserAssembleDetail.do'
         },
         store: {
             storeList: '/app/home/getStoreList.do',

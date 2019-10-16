@@ -10,18 +10,7 @@ const Goods = require('../../service/Goods');
 const data = {
   classfity: ['全部','中西药品','营养保健','养生花茶','情趣计生',],
   isSelect: 0,
-  allList: [
-    {
-      url: 'tea.png',
-      title: '红豆茨实薏米茶',
-      useful: '用于缓解过敏性鼻炎有关的症状，如喷嚏、流鼻涕、鼻痒、鼻塞以及眼部痒及烧灼感。口服吞药药药要啊哈哈哈',
-      singlePri: '19.00',
-      scale: '3124',
-      nowPrice: '9.99',
-      personNum: '2'
-
-    }
-  ]
+  allList: []
 };
 
 // 页面onLoad方法
@@ -38,7 +27,8 @@ const methods = {
 	getData:function(){
 		let self = this;
 		self.getOccasion();
-	    self.getClassifyList();
+		// self.getClassifyList();
+		self.getPageData();
 	},
 	getOccasion: function () {
 		let self = this;
@@ -57,34 +47,36 @@ const methods = {
 	    let self = this;
 		// 拼团列表
 	    Goods.getAssembleList(self, {
-	        platformFlag:1,
+			// platformFlag: self.data.platformFlag,
+			platformFlag: 1,
 	    	page:1,
-	    	pageSize:10,
+	    	pageSize:20,
 	    }).then((ret)=>{
 	        let data = ret.data;
 	        self.setData({
-	            allList: data.list,
+				allList: self.data.allList.concat(data.data.list),
+				activeId: data.activeId
 	        })
 	    },(err)=>{
 	    
 	    });
 	},
-	getClassifyList: function () {
-	    let self = this;
-	    Platform.getClassifyList(self, {
-	        platformFlag:1,
-	        level: 1
-	    }).then((ret)=>{
-	       let data = ret.data;
-	       self.setData({
-			 classfity: data,
-	         classifyId: data[0].id
-		   });
-		   self.getPageData();
-	    },(err)=>{
+	// getClassifyList: function () {
+	//     let self = this;
+	//     Platform.getClassifyList(self, {
+	//         platformFlag:1,
+	//         level: 1
+	//     }).then((ret)=>{
+	//        let data = ret.data;
+	//        self.setData({
+	// 		 classfity: data,
+	//          classifyId: data[0].id
+	// 	   });
+	// 	   self.getPageData();
+	//     },(err)=>{
 	
-	    });
-	},
+	//     });
+	// },
   onSelectTap: function (e) {
 	let self = this;
 	let opts = e.currentTarget.dataset;
@@ -97,12 +89,12 @@ const methods = {
   },
   onSkipTap: function (e) {
     let self = this;
-    console.log(22)
     _g.navigateTo({
       url: 'pages/goods/detail',
-      // param: {
-
-      // }
+      param: {
+		id: e.currentTarget.dataset.id,
+		thirdId: self.data.activeId  
+      }
     },self)
   },
   onGroupTap: function (e) {

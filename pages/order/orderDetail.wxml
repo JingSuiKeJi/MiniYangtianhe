@@ -198,7 +198,7 @@
                     <image src="http://www.gzlingren.com:8098/yangtianhe/my_yangsheng.png"></image>
                 </view> -->
                 <view class="ui-expressText">
-                    <text>{{logisticsCompany}}</text>
+                    <text>{{filter.getLogiCompany(logisticsCompany)}}</text>
                     <text>快递单号：{{logisticsNo}}</text>
                     <text>物流状态：已发货</text>
                 </view>
@@ -206,7 +206,7 @@
             <scroll-view scroll-y="true" class="ui-deliveryStatus">
                 <view class="ui-items" wx:for="{{deliveryStatus}}"  wx:key="{{index}}">
                     <view class="ui-itemsStatus">
-                        <view class="{{item.arrive?'ui-arriveIcon':'ui-inTheWayIcon'}}"></view>
+                        <view class="{{index == 0?'ui-arriveIcon':'ui-inTheWayIcon'}}"></view>
                         <text>{{item.acceptStation}}</text>
                     </view>
                     <view class="ui-momentData">

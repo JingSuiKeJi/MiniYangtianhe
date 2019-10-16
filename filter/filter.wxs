@@ -287,6 +287,26 @@ var filter = {
 			default: 
 			   return '';
 		}
+    },
+    getLogiCompany: function (value) {
+        switch(value) {
+			case "SF":
+				return '顺丰快递';
+			case "STO":
+				return '申通快递';
+			case "TTKDEX":
+                return '天天快递';
+            case "YTO":
+                return '圆通快递';
+            case "EMS":
+                return 'EMS快递'; 
+            case "ZTO":
+                return '中通快递';
+            case "YUNDA":
+                return '韵达快递';           
+			default: 
+			   return '';
+		}
     }
 };
 module.exports = filter;

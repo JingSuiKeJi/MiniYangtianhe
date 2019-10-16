@@ -77,7 +77,8 @@ const methods = {
 				orderVerifier: data.orderVerifier,
 				isComment: data.isComment,
 				logisticsCompany: data.logisticsCompany,
-				logisticsNo: data.logisticsNo
+				logisticsNo: data.logisticsNo,
+				isAfterSale: data.isAfterSale
 			});
 			if (data.payRestTime) self.downStartTime(data.payRestTime);
         }, (err) => {
@@ -253,6 +254,12 @@ const methods = {
 	//申请售后
 	onApplyafterSaleTap:function(){
 		let self = this;
+        if (self.data.isAfterSale){
+			_g.toast({
+				title: '该订单正在售后中',
+			});
+			return
+		} 
 		_g.navigateTo({
 			param:{
 				orderId: self.data.orderId

@@ -7,17 +7,19 @@
             <view class="ui-contentBox" bindtap="onDetailTap">
                 <view class="contentItem_left">
                     <image src="{{filter.getLocalPhoto('pintuan.png')}}" class="ui-leftItem_textIcon"/>
-                    <image src="{{filter.getLocalPhoto('e_c.png')}}" class="ui-leftItem_imgIcon"/>
+                    <image src="{{filter.getPhoto(host,goods.picUrl)}}" class="ui-leftItem_imgIcon"/>
                 </view>
                 <view class="contentItem_center">
-                    <view class="centerItem_title">[修正]红豆芡实薏米茶</view>
+                    <view class="centerItem_title">{{goods.title}}</view>
                     <view class="centerItem_scale">
-                         <text >250g x 10包</text>
-                         <text > x 1</text> 
+                         <text ></text>
+                         <!-- 规格 -->
+                         <!-- <text >{{goods.specificationName}}</text> -->
+                         <text > x {{goods.num}}</text> 
                     </view>
                     <view class="centerItem_price">
-                        <text class="centerItem_nowPrice">¥9.99</text>
-                        <text class="centerItem_prePrice">原价¥19.00</text>
+                        <text class="centerItem_nowPrice">¥{{goods.nowPrice}}</text>
+                        <text class="centerItem_prePrice">原价¥{{goods.originPrice}}</text>
                     </view>
                 </view>
                 <view class="contentItem_right">></view>
@@ -33,11 +35,10 @@
                 <text class="ui-topItem_time">32</text>
                 <text class="ui-topItem_text">结束</text>
             </view>
-            <view class="ui-bodyItem_middle">还差1人</view>
+            <view class="ui-bodyItem_middle">还差{{diffNum}}人</view>
             <view class="ui-bodyItem_bottom">
-                <image src="{{filter.getLocalPhoto('addIcon.png')}}" />
-                <image src="{{filter.getLocalPhoto('addIcon.png')}}" />
-                <image src="{{filter.getLocalPhoto('addIcon.png')}}" />
+                <image src="{{item.avatar}}" wx:for="{{assembleMemberVOList}}" wx:if="{{assembleMemberVOList.length}}" class="ui-avatar__img"/>
+                <image src="{{filter.getLocalPhoto('addIcon.png')}}" wx:if="{{diffNum}}}"/>
             </view>
         </view>
         <view class="ui-bodyItem_bottom">

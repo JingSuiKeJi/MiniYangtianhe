@@ -214,11 +214,12 @@ const methods = {
                     id: self.data.goodsId,
                     num: 1,
                     skuId: 0,
-                    platformFlag: self.data.platformFlag
+                    platformFlag: self.data.platformFlag,
+                    thirdId: self.data.userCutId,
                 },
                 platformFlag: self.data.platformFlag,
                 from: 'bargain',
-                thirdId: self.data.userCutId,
+                // thirdId: self.data.userCutId,
             }
         }, self)
     },

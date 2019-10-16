@@ -64,7 +64,8 @@ const methods = {
             pageSize: 5
         }).then((ret) => {
             self.setData({
-                groupList: ret.data.list
+                groupList: ret.data.data.list,
+                activeId: ret.data.activeId
             });
         })
     },
@@ -123,7 +124,6 @@ const methods = {
                     brandList: BrandList
                 });
             }
-            console.log(666,self.data.brandList);
 
         }, (err) => { });
     },

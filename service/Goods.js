@@ -129,7 +129,20 @@ class Goods {
             data: reqData
         }, page);
     }
-    
+    getUserAssembleList(page, reqData) {
+        _g.dm.canLoadMore = 1;
+        return _g.ajax({
+            url: mini.goods.getUserAssembleList,
+            data: reqData
+        }, page);
+    }
+    getUserAssembleDetail(page, reqData) {
+        _g.dm.canLoadMore = 1;
+        return _g.ajax({
+            url: mini.goods.getUserAssembleDetail,
+            data: reqData
+        }, page);
+    }
 }
 
 module.exports = new Goods();

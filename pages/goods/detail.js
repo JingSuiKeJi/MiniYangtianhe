@@ -4,19 +4,13 @@ const _ = app.underscore;
 const _g = app.base;
 const _c = app.config;
 const event = app.event;
-const Platform = require('../../service/Platfrom');
 const Goods = require('../../service/Goods');
 
 // 初始化数据
 const data = {
     currentIndex: 1,
-    collage: [{
-        url: 'collageImg.png',
-        phone: '15677220282',
-        time: '00:46:56',
-        num: 1,
-    }],
-    type: 6,
+    collage: [],
+    // type: 6,
     personList: [{
         url: 'people.png',
         name: 'Amy',
@@ -47,6 +41,7 @@ const data = {
     canvasUrl: '',
     authorizeHidden: true,
     hideShareDialog: true,
+    isJoin: 1,
 };
 
 // 页面onLoad方法
@@ -99,6 +94,7 @@ const onShow = function (self) {
 };
 const onUnload = function (self) {
     event.remove('goods-detail-shareEvent', self);
+    clearInterval(self.data.timer);
 }
 // 页面中的方法
 const methods = {
@@ -121,24 +117,13 @@ const methods = {
                 type: ret.data.type
             });
             self.getCurrentTime();
-            clearInterval(self.data.timer);
-            let timer = setInterval(() => {
-                if (self.data.goodsDetail.endTime == self.data.curTime) {
-                    clearInterval(self.data.timer); 
-                    return;
-                }
-                self.getCurrentTime();
-            }, 1000);
-            self.setData({
-                timer: timer
-            })
             // "goodsDetail.type": 1,   //1.普通 2.秒杀 3.权益卡附属 4.权益 5.拼团 6.砍价 7.推荐
             self.splitString(ret.data.goodImgs, 'bannerImgs');
             self.splitString(ret.data.description, 'goodsImgs');
             // if (self.data.flag == 1 || self.data.flag == 2) { //一切数据根据返回数据为准
             if (ret.data.type == 5) {
                 //需要知道是门店商品还是商城的商品
-                self.getAssembleList();
+                self.getUserAssembleList();
             }
         }, (err) => { });
     },
@@ -147,6 +132,17 @@ const methods = {
         let curTime = new Date().getTime() / 1000;
         self.setData({
             curTime: curTime
+        });
+       if (self.data.timer) clearInterval(self.data.timer);
+        let timer = setInterval(() => {
+            if (self.data.goodsDetail.endTime == self.data.curTime) {
+                clearInterval(self.data.timer); 
+                return;
+            }
+            self.getCurrentTime();
+        }, 1000);
+        self.setData({
+            timer: timer
         })
     },
     getCommentList() {
@@ -164,18 +160,15 @@ const methods = {
 
         });
     },
-    getAssembleList() {
+    getUserAssembleList() {
         const self = this;
         //拼团 
-        let data = {
-            platformFlag: self.data.goodsDetail.platformFlag,
+        Goods.getUserAssembleList(self, {
+            activeId: self.data.thirdId,
+            goodsId: self.data.id,
             page: 1,
             pageSize: 2,
-        }
-        if (self.data.storeId) {
-            data.storeId = self.data.storeId;
-        }
-        Platform.getAssembleList(self, data).then((ret) => {
+        }).then((ret) => {
             let data = ret.data;
             self.setData({
                 collage: data.list
@@ -196,18 +189,28 @@ const methods = {
     },
     onSureTap: function (e) {
         let self = this;
+        self.setData({
+            isJoin: 2
+        })
         self.onBuyTap();
         self.hideModal();
     },
     onMoreTap: function (e) {
         let self = this;
         _g.navigateTo({
+            param: {
+                activeId: self.data.thirdId,
+                goodsId: self.data.id
+            },
             url: 'pages/goods/more'
         }, self)
     },
     onJoinTap: function (e) {
         let self = this;
         _g.navigateTo({
+            param: {
+                userAssembleId:  e.currentTarget.dataset.id
+            },
             url: 'pages/goods/join'
         }, self)
     },
@@ -247,7 +250,8 @@ const methods = {
         let self = this;
 
         self.setData({
-            hideModal: false
+            hideModal: false,
+            isJoin: 1
         })
         var animation = wx.createAnimation({
             duration: 600, //动画的持续时间 默认400ms   数值越大，动画越慢   数值越小，动画越快
@@ -366,12 +370,13 @@ const methods = {
         if (!_g.checkLogin({ type: 2 })) return;
         if (self.data.goodsDetail.skuId) data.skuId = self.data.goodsDetail.skuId;
         if (self.data.thirdId) data.thirdId = self.data.thirdId;
+        if (self.data.isJoin) data.isJoin = self.data.isJoin;
         _g.navigateTo({
             url: 'pages/order/submit',
             param: {
                 postData: data,
                 platformFlag: self.data.goodsDetail.platformFlag,
-                from: 'goodsDetail'
+                from: 'goodsDetail',
             },
         }, self);
     },
@@ -384,7 +389,7 @@ const methods = {
     splitString: function (str, key) {
         let self = this;
         let picList = [];
-        picList = str.split(',')
+        picList = str ? str.split(',') : []
         self.setData({
             [key]: picList
         })
