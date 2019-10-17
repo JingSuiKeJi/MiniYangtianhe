@@ -77,7 +77,7 @@
                         <block wx:for="{{classList}}" wx:for-item="bannerItem" wx:key="{{index}}">
                             <swiper-item>
                                 <view class="ui-classBox_item" wx:for="{{bannerItem}}" wx:key="{{index}}" bindtap="onTabTap" data-id="{{item.id}}" data-isLink="{{item.isLink}}">
-                                    <image src="{{filter.getPhoto(host,item.imgUrl)}}" class="ui-classItem__img" data-id="{{item.id}}" data-isLink="{{item.isLink}}" mode="aspectFit" />
+                                    <image src="{{filter.getPhoto(host,item.imgUrl)}}" class="ui-classItem__img" data-id="{{item.id}}" data-isLink="{{item.isLink}}" mode="aspectFill" />
                                     <view class="ui-classItem__text" data-id="{{item.id}}" data-isLink="{{item.isLink}}">
                                         {{item.title}}
                                     </view>
@@ -180,7 +180,7 @@
                 <view class="ui-bottomItem_content" hidden="{{!list.length}}">
                     <view class="ui-content_item" wx:for="{{list}}" wx:key="{{index}}" bindtap="onDetailTap" data-id="{{item.id}}">
                         <view class="ui-contentItem_left">
-                            <image src="{{filter.getPhoto(host,item.picUrl)}}"  mode="aspectFill"></image>
+                            <image src="{{filter.getPhoto(host,item.picUrl)}}"  mode="aspectFit"></image>
                         </view>
                         <view class="ui-contentItem_right">
                             <view class="ui-content_title">{{item.mainTitle}}</view>

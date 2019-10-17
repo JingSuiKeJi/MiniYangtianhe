@@ -82,7 +82,8 @@ config.prototype = {
             uploadStep: '/app/step/uploadStep.do',
             getShareQR: '/app/common/getShareQR.do',
             uploadStep: '/app/step/uploadStep.do',
-            formId: '/app/common/saveFormId.do'
+            formId: '/app/common/saveFormId.do',
+            rightsCard: '/app/rightsCard/detail.do'
         },
         user: {
             login: '/app/account/login.do',

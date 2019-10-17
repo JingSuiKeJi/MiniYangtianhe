@@ -5,7 +5,7 @@
       <view class="ui-searchBox">
             <input type="text"  class="ui-searchItem_input" bindinput="onGetInput" value="{{value}}"  bindconfirm="onSkipTap"/>
             <view class="ui-searchItem_text" bindtap="onSkipTap">搜索</view>
-            <image src="{{filter.getLocalPhoto('ic_search.png')}}" class="searchItem_icon"/>
+            <image src="{{filter.getLocalPhoto('ic_search.png')}}" class="searchItem_icon" mode="aspectFit"/>
       </view>
       <view class="ui-contentBox" wx:if="{{list.length}}">
             <view class="ui-content_tips">
@@ -17,6 +17,7 @@
                         <image wx:if="{{index == 1}}" 
                           src="{{ type == index ? filter.getLocalPhoto('sort.png') : filter.getLocalPhoto('graySort.png')}}" 
                           class="ui-priceItem_img" 
+                          mode="aspectFit"
                           data-type="{{index}}"/>
                         <!-- <image wx:if="{{type == index}}"  src="{{filter.getLocalPhoto('index_icon.png')}}"  class="ui-tapItem_icon"/> -->
                     </view>
@@ -25,7 +26,7 @@
             <view >
                  <view class="ui-content_item" wx:for="{{list}}" bindtap="onDetailTap" data-id="{{item.id}}">
                     <view class="ui-contentItem_left">
-                        <image src="{{filter.getPhoto(host,item.picUrl)}}" />
+                        <image src="{{filter.getPhoto(host,item.picUrl)}}" mode="aspectFit"/>
                     </view>
                     <view class="ui-contentItem_right">
                         <view class="ui-content_title">{{item.mainTitle}}</view>
@@ -36,7 +37,7 @@
                         </view>
                         <view class="ui-content_reward">
                             <text >￥{{item.nowPrice}}</text>
-                            <image src="{{filter.getLocalPhoto('cart.png')}}" bindtap="onAddtap"/>
+                            <image src="{{filter.getLocalPhoto('cart.png')}}" bindtap="onAddtap" mode="aspectFit"/>
                         </view>
                     </view>
                 </view>   

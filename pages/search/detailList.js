@@ -129,6 +129,10 @@ const methods = {
     },
     onSkipTap: function (e) {
         let self = this;
+        self.setData({
+            list: []
+        })
+        
         self.getPageData();
     },
 

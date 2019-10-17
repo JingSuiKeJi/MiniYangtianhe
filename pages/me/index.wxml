@@ -100,7 +100,7 @@
                 <form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onPayTap" class="ui-feedbackItem">
 					<button formType="submit" >
 						<view wx:if="{{userInfo.orderNum.waitPayNum>0}}" class="ui-notification" 
-						style="{{userInfo.orderNum.waitPayNum>9?'padding:6rpx 8rpx 6rpx 8rpx':''}}"><text>{{userInfo.orderNum.waitPayNum}}</text></view>
+						style="{{userInfo.orderNum.waitPayNum>9?'height: 35rpx; width: 35rpx':''}}"><text>{{userInfo.orderNum.waitPayNum}}</text></view>
 						<view class="ui-iconFeedback"></view>
 						<text class="ui-orderText">待支付</text>
 					</button>
@@ -108,7 +108,7 @@
 				<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onShippingTap" class="ui-feedbackItem">
 					<button formType="submit" >
 						<view wx:if="{{userInfo.orderNum.waitSendGoodsNum>0}}" class="ui-notification" 
-						style="{{userInfo.orderNum.waitSendGoodsNum>9?'padding:6rpx 8rpx 6rpx 8rpx':''}}"><text>{{userInfo.orderNum.waitSendGoodsNum}}</text></view>
+						style="{{userInfo.orderNum.waitSendGoodsNum>9?'height: 35rpx; width: 35rpx':''}}"><text>{{userInfo.orderNum.waitSendGoodsNum}}</text></view>
 						<view class="ui-iconFeedback"></view>
 						<text class="ui-orderText">待发货</text>
 					</button>
@@ -116,7 +116,7 @@
 				<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onReceivingTap" class="ui-feedbackItem">
 					<button formType="submit" >
 						<view wx:if="{{userInfo.orderNum.waitConfirmGoodsNum>0}}" class="ui-notification" 
-						style="{{userInfo.orderNum.waitConfirmGoodsNum>9?'padding:6rpx 8rpx 6rpx 8rpx':''}}"><text>{{userInfo.orderNum.waitConfirmGoodsNum}}</text></view>
+						style="{{userInfo.orderNum.waitConfirmGoodsNum>9?'height: 35rpx; width: 35rpx':''}}"><text>{{userInfo.orderNum.waitConfirmGoodsNum}}</text></view>
 						<view class="ui-iconFeedback"></view>
 						<text class="ui-orderText">待收货</text>
 					</button>
@@ -124,7 +124,7 @@
 				<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onSignedTap" class="ui-feedbackItem">
 					<button formType="submit" >
 						<view wx:if="{{userInfo.orderNum.finishNum>0}}" class="ui-notification" 
-						style="{{userInfo.orderNum.finishNum>9?'padding:6rpx 8rpx 6rpx 8rpx':''}}"><text>{{userInfo.orderNum.finishNum}}</text></view>
+						style="{{userInfo.orderNum.finishNum>9?'height: 35rpx; width: 35rpx':''}}"><text>{{userInfo.orderNum.finishNum}}</text></view>
 						<view class="ui-iconFeedback"></view>
 						<text class="ui-orderText">已签收</text>
 					</button>

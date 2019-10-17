@@ -19,7 +19,7 @@ const onLoad = function (self) {
 
 // 页面onShow方法
 const onShow = function (self) {
-	
+    self.getPageData();
 };
 const onUnload= function (self) {
     clearInterval(self.data.timer);

@@ -20,7 +20,7 @@ const onShow = function (self) {
     self.getData();
 };
 const onUnload= function (self) {
-    
+    clearInterval(self.data.timer);
 }
 // 页面中的方法
 const methods = {
@@ -39,11 +39,31 @@ const methods = {
                 diffNum: data.diffNum,
                 endTime: data.endTime,
                 assembleMemberVOList: data.assembleMemberVOList,
-                platformFlag: data.platformFlag
+                platformFlag: data.platformFlag,
+                thirdId: data.thirdId
             })
+            self.getCurrentTime();
         }, (err) => {
 
         });
+    },
+    getCurrentTime: function () {
+        let self = this;
+        let curTime = new Date().getTime() / 1000;
+        self.setData({
+            curTime: curTime
+        });
+       if (self.data.timer) clearInterval(self.data.timer);
+        let timer = setInterval(() => {
+            if (self.data.endTime == self.data.curTime) {
+                clearInterval(self.data.timer); 
+                return;
+            }
+            self.getCurrentTime();
+        }, 1000);
+        self.setData({
+            timer: timer
+        })
     },
     onJoinTap: function (e) {
         let self = this;
@@ -56,7 +76,8 @@ const methods = {
             thirdId: self.data.userAssembleId,
             skuId: 0
         };
-        _g.navigateTo({
+        //navigateTo
+        _g.redirectTo({
             url: 'pages/order/submit',
             param: {
                 postData: data,
@@ -68,6 +89,10 @@ const methods = {
     onDetailTap: function (e) {
         let self = this;
         _g.navigateTo({
+            param: {
+               id: self.data.goods.id,
+               thirdId: self.data.thirdId
+            },
             url: 'pages/goods/detail'
         },self)
     }

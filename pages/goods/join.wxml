@@ -28,17 +28,25 @@
         <view class="ui-bodyBox">
             <view class="ui-bodyItem_top">
                 <text class="ui-topItem_text">还有</text>
-                <text class="ui-topItem_time">06</text>
+                <text class="ui-topItem_time">{{filter.countDown(endTime,curTime,'h')}}</text>
                 <text>:</text>
-                <text class="ui-topItem_time">41</text>
+                <text class="ui-topItem_time">{{filter.countDown(endTime,curTime,'m')}}</text>
                 <text>:</text>
-                <text class="ui-topItem_time">32</text>
+                <text class="ui-topItem_time">{{filter.countDown(endTime,curTime,'s')}}</text>
                 <text class="ui-topItem_text">结束</text>
             </view>
             <view class="ui-bodyItem_middle">还差{{diffNum}}人</view>
             <view class="ui-bodyItem_bottom">
-                <image src="{{item.avatar}}" wx:for="{{assembleMemberVOList}}" wx:if="{{assembleMemberVOList.length}}" class="ui-avatar__img"/>
-                <image src="{{filter.getLocalPhoto('addIcon.png')}}" wx:if="{{diffNum}}}"/>
+                <view class="ui-personBox" wx:for="{{assembleMemberVOList}}" wx:if="{{assembleMemberVOList.length}}">
+                    <image src="{{item.avatar}}"  class="ui-avatar__img"/>
+                    <image src="{{filter.getLocalPhoto('join__tunzhang.png')}}"   class="ui-personItem__img" wx:if="{{item.isHead}}"/>
+                    <view class="ui-personItem__team">{{item.nickname}}</view>
+                </view>
+                 <view class="ui-personBox" wx:if="{{diffNum}}">
+                    <image src="{{filter.getLocalPhoto('addIcon.png')}}" wx:if="{{diffNum}}" class="ui-avatar__img"/>
+                    <view class="ui-personItem__team">空缺</view>
+                </view>
+                <!-- <image src="{{filter.getLocalPhoto('addIcon.png')}}" wx:if="{{diffNum}}" class="ui-avatar__img"/> -->
             </view>
         </view>
         <view class="ui-bodyItem_bottom">

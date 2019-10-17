@@ -121,7 +121,7 @@ page{
 .ui-orderStatus .ui-storeTetx{
 	position: absolute;
 	height:40rpx;
-	right:138rpx;
+	right:160rpx;
 	margin-top: 40rpx;
 	padding:0 12rpx;
 	background:linear-gradient(136deg,rgba(1,206,165,1) 0%,rgba(94,221,218,1) 100%);

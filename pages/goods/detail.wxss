@@ -129,9 +129,9 @@ page {
     flex-direction: column;
 }
 
-.ui-rightItem_text {
+/* .ui-rightItem_text {
     margin-top: 25rpx;
-}
+} */
 
 .ui-marketBox {
     width: 100%;
@@ -407,7 +407,7 @@ page {
 
 .ui-goodsBox {
     background-color: #fff;
-    margin-bottom: 20rpx;
+    margin-bottom: 150rpx;
 }
 
 .ui-goodsItem_bottom {
@@ -936,6 +936,7 @@ page {
     font-weight:400;
     color:#FFFFFF;
     line-height:24rpx;
+    text-decoration: line-through;
 }
 .ui-groupBox {
     margin-top: 10rpx;

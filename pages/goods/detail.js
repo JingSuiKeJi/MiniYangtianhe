@@ -11,14 +11,15 @@ const data = {
     currentIndex: 1,
     collage: [],
     // type: 6,
-    personList: [{
-        url: 'people.png',
-        name: 'Amy',
-    },
-    {
-        url: 'people.png',
-        name: 'Amy',
-    }
+    personList: [
+        {
+            url: 'my_qrHeader.png',
+            name: 'Amy',
+        },
+        {
+            url: 'my_ snapshoot.png',
+            name: 'Mia',
+        },
     ],
     top: 200,
     isSelect: false,
@@ -41,14 +42,14 @@ const data = {
     canvasUrl: '',
     authorizeHidden: true,
     hideShareDialog: true,
-    isJoin: 1,
+    priceFlag: 0
 };
 
 // 页面onLoad方法
 const onLoad = function (self) {
     self.getCartList();
     self.getData();
-    self.moveBarrage();
+    // self.moveBarrage();
     if (self.data.type == 5) {
         self.setData({
             title: '养天和优选',
@@ -67,6 +68,10 @@ const onLoad = function (self) {
 };
 
 const onReady = function (self) {
+    const windowHeight = _g.getLS(_c.LSKeys.systemInfo).windowHeight;
+    self.setData({
+        height: windowHeight
+    })
     setTimeout(function () {
         self.poster = self.selectComponent('#poster');
         self.poster.onHideShareTap = function () {
@@ -86,6 +91,7 @@ const onReady = function (self) {
             authorizeHidden: false
         });
     });
+    
 }
 
 // 页面onShow方法
@@ -124,7 +130,9 @@ const methods = {
             if (ret.data.type == 5) {
                 //需要知道是门店商品还是商城的商品
                 self.getUserAssembleList();
+                 self.moveBarrage();
             }
+           
         }, (err) => { });
     },
     getCurrentTime: function () {
@@ -277,6 +285,7 @@ const methods = {
                 hideModal: true,
                 modelType: 0,
                 ScaleType: -1,
+                priceFlag: 0
             })
         }, 400); //先执行下滑动画，再隐藏模块  
     },
@@ -295,7 +304,7 @@ const methods = {
         })
     },
     onChoseTap: function (e) {
-        let index = e.target.dataset.index;
+        let index = e.currentTarget.dataset.index;
         let self = this;
         if (index == self.data.isTab) return;
         if (index == 0) {
@@ -314,7 +323,8 @@ const methods = {
                 isTab: index,
                 toView: 'comments'
             })
-        }
+        };
+        console.log(333,self.data.toView);
     },
     onOpenPlus: function (e) {
         let self = this;
@@ -337,9 +347,12 @@ const methods = {
     },
     onShowTap: function (e) {
         let self = this;
-        self.setData({
-            ScaleType: e.target.dataset.scaletype
-        });
+        let opts = e.currentTarget.dataset;
+        let param = {
+             ScaleType: opts.scaletype,
+        }
+        if (opts.priceflag) param.priceFlag = opts.priceflag;
+        self.setData(param);
         self.showModal();
     },
     onMoreComments: function (e) {
@@ -370,7 +383,11 @@ const methods = {
         if (!_g.checkLogin({ type: 2 })) return;
         if (self.data.goodsDetail.skuId) data.skuId = self.data.goodsDetail.skuId;
         if (self.data.thirdId) data.thirdId = self.data.thirdId;
-        if (self.data.isJoin) data.isJoin = self.data.isJoin;
+        if (self.data.priceFlag == 1) {
+            data.isOrigPrice = 1
+        }else if (self.data.priceFlag == 2) {
+             data.isJoin = 2
+        }
         _g.navigateTo({
             url: 'pages/order/submit',
             param: {
@@ -476,6 +493,12 @@ const methods = {
                 title: '请先登录'
             })
         }
+    },
+    onCartRights: function (e) {
+        let self = this;
+        _g.navigateTo({
+            url: 'pages/card/card',
+        }, self);
     }
 };
 
