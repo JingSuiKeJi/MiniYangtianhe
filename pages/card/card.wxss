@@ -388,6 +388,7 @@ page {
     background-image: url(http://www.gzlingren.com:8098/yangtianhe/card_backGround2x.png);
     /* background-image: url(http://m.qpic.cn/psb?/V12Kdegv0qd4wf/pd0u1LVbEgis1XT.dgqoAK3R*j*csvHmoxmaaBXCJ1A!/b/dL8AAAAAAAAA&bo=zgKQAwAAAAADJ10!&rf=viewer_4&t=5); */
     background-size: cover;
+    position: relative;
 }
 .ui-goodsItem {
     display: inline-block;
@@ -411,18 +412,22 @@ page {
     margin-left: 53rpx;
 }
 .ui-goodsItem__img {
-    display: inline-block;
     width: 176rpx;
     height: 176rpx;
     margin-top: 60rpx;
 }
 .ui-goodsItem__title {
-    display: inline-block;
+    width: 236rpx;
     font-size:24rpx;
     font-family:PingFangSC;
     font-weight:500;
     color:#333333;
     line-height:24rpx;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin: 0 auto;
+    margin-top: 16rpx;
 }
 .ui-goodsItem__price {
     margin-top: 16rpx;
@@ -452,6 +457,8 @@ page {
     background-color: #FFE59C;
     border-radius: 40rpx;
     text-align: center;
+    position: absolute;
+    bottom: 50rpx;
 }
 .ui-bottomBox {
     margin-top: 138rpx;
@@ -470,6 +477,9 @@ page {
     font-family:PingFangSC;
     font-weight:500;
     color:#FFF4D6;
+}
+.ui-bottomItem__content > text {
+    color:#ED3D3B;
 }
 .ui-bottomItem > text {
     color:#ED3D3B;

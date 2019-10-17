@@ -4,8 +4,10 @@ const app = getApp();
 const _ = app.underscore;
 const _g = app.base;
 const _c = app.config;
+const Platfrom = require('../../service/Platfrom');
 // 初始化数据
 const data = {
+    platformFlag: 1
 };
 
 // 页面onLoad方法
@@ -24,7 +26,37 @@ const onUnload = function (self) {
 const methods = {
     getData: function () {
         let self = this;
-
+        self.rightsCard();
+    },
+    
+    rightsCard: function () {
+       let self = this; 
+       Platfrom.rightsCard(self,{
+        platformFlag: self.data.platformFlag
+       }).then((ret) => {   
+           let data = ret.data;
+           self.setData({
+             goodsIds: data.goodsIds,
+             thirdId: data.id
+           })
+          self.getGoodsList();
+       }, (err) => { 
+           
+       });
+    },
+    getGoodsList: function() {
+        const self = this;
+        Platfrom.getGoodsList(self,{
+            platformFlag: self.data.platformFlag,
+            goodsIds: self.data.goodsIds,
+            page: 1,
+            pageSize: 4
+        }).then((ret) => {   
+            self.setData({
+                list: ret.data.list 
+            })
+           
+        }, (err) => { });
     },
     onSkipTap: function () {
         let self = this;
@@ -35,9 +67,14 @@ const methods = {
     onDetailTap: function (e) {
         let self = this;
         _g.navigateTo({
+            param: {
+                goodsIds: self.data.goodsIds,
+                platformFlag: self.data.platformFlag,
+                thirdId: self.data.thirdId
+            },
             url: 'pages/card/detail',
         }, self);
-    }
+    },
 
 };
 

@@ -509,6 +509,12 @@ const methods = {
             }, self);
         }
 
+    },
+    onCardRightTap: function (e) {
+        let self = this;
+        _g.navigateTo({
+            url: 'pages/card/card',
+        }, self);
     }
 
 };

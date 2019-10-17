@@ -38,7 +38,7 @@ page {
 
 .ui-infoItem__name {
     margin-top: 20rpx;
-    margin-left: 14rpx;
+    /* margin-left: 14rpx; */
     font-size: 30rpx;
     font-family: PingFangSC;
     font-weight: 400;
@@ -189,6 +189,7 @@ page {
 }
 .ui-imgBox {
     margin-bottom: 160rpx;
+    min-height: 50rpx;
 }
 .goodsItem__detailIcon {
     width: 750rpx;
@@ -221,7 +222,9 @@ page {
     font-weight: 500;
     color: #FFF4D6;
 }
-
+.ui-bottomItem__content > text {
+    color:#ED3D3B;
+}
 .ui-bottomItem>text {
     color: #ED3D3B;
 }

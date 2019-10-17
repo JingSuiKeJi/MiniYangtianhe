@@ -88,7 +88,16 @@ const methods = {
     },
     preOrder() {
         const self = this;
-        if (self.data.from == 'goodsDetail' ||  self.data.from == 'bargain' || self.data.from == 'join') {
+        if (self.data.from == 'cart') {
+            Order.preOrderCart(self, {
+                cartIds: self.data.postData.cartIds,
+                platformFlag: self.data.platformFlag
+            }).then((ret) => {
+                self.setPageData(ret.data);
+                self.getGoodsInfo(ret.data.goodsVoList);
+            });
+            
+        } else {
             let postData = self.data.postData;
             let data = {
                 preGoods: {
@@ -97,22 +106,38 @@ const methods = {
                 },
                 platformFlag: postData.platformFlag
             };
+            if(postData.isOrigPrice) data.preGoods.isOrigPrice = postData.isOrigPrice;
             if (postData.skuId) data.preGoods.skuId = postData.skuId;
             Order.preOrder(self, data).then((ret) => {
                 self.setPageData(ret.data);
                 self.getGoodsInfo(ret.data.goodsVoList);
             });
-        } else if (self.data.from == 'cart') {
-            Order.preOrderCart(self, {
-                cartIds: self.data.postData.cartIds,
-                platformFlag: self.data.platformFlag
-            }).then((ret) => {
-                self.setPageData(ret.data);
-                self.getGoodsInfo(ret.data.goodsVoList);
-            });
-        } else {
-            self.selectCoupon();
         }
+        // if (self.data.from == 'goodsDetail' ||  self.data.from == 'bargain' || self.data.from == 'join') {
+        //     let postData = self.data.postData;
+        //     let data = {
+        //         preGoods: {
+        //             goodsId: postData.id,
+        //             num: postData.num,
+        //         },
+        //         platformFlag: postData.platformFlag
+        //     };
+        //     if (postData.skuId) data.preGoods.skuId = postData.skuId;
+        //     Order.preOrder(self, data).then((ret) => {
+        //         self.setPageData(ret.data);
+        //         self.getGoodsInfo(ret.data.goodsVoList);
+        //     });
+        // } else if (self.data.from == 'cart') {
+        //     Order.preOrderCart(self, {
+        //         cartIds: self.data.postData.cartIds,
+        //         platformFlag: self.data.platformFlag
+        //     }).then((ret) => {
+        //         self.setPageData(ret.data);
+        //         self.getGoodsInfo(ret.data.goodsVoList);
+        //     });
+        // } else {
+        //     self.selectCoupon();
+        // }
     },
     
     preferentialPolicies: function () {
@@ -253,8 +278,6 @@ const methods = {
     },
     onSubmitTap: function (e) {
         const self = this;
-        console.log(55,self.data.postData);
-
         let data = {
             num: self.data.num,
             skuId: 0,//暂时传0
@@ -270,15 +293,21 @@ const methods = {
             data.dispatchingType = self.data.type;
             data.dispatchingTime = self.data.dispatchingTime;
         }
-
-        if (self.data.from == 'goodsDetail' || self.data.from == 'bargain' ) {
-            data.id = self.data.postData.id;
-            data.buyType = 1;
-        }
-        if (self.data.from == 'cart') {
+         if (self.data.from == 'cart') {
             data.cartIds = self.data.postData.cartIds;
             data.buyType = 2;
-        }
+         } else {
+            data.id = self.data.postData.id;
+            data.buyType = 1;
+         }
+        // if (self.data.from == 'goodsDetail' || self.data.from == 'bargain' || self.data.from == 'join') {
+        //     data.id = self.data.postData.id;
+        //     data.buyType = 1;
+        // }
+        // if (self.data.from == 'cart') {
+        //     data.cartIds = self.data.postData.cartIds;
+        //     data.buyType = 2;
+        // }
         // if (self.data.thirdId) {
         //     data.thirdId = self.data.thirdId;
         // }
@@ -287,6 +316,9 @@ const methods = {
         }
         if (self.data.postData.isJoin) {
             data.isJoin = self.data.postData.isJoin;
+        }
+        if (self.data.postData.isOrigPrice) {
+            data.isOrigPrice = self.data.postData.isOrigPrice;
         }
         data.integralStatus = self.data.pointsFlag ? 1 : 2;
         // if (self.data.pointsFlag) {
@@ -408,6 +440,12 @@ const methods = {
         self.setData({
             preGodosReqs: preGodosReqs
         })
+    },
+    onCardRight: function (e) {
+        let self = this;
+        _g.navigateTo({
+            url: 'pages/card/card',
+        }, self);
     }
 }
 

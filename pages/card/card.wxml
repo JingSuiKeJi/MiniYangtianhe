@@ -8,7 +8,8 @@
     <view class="ui-specialItem__EnglishTitle">The special rights and interests</view>
     <view class="ui-specialItem">
         <image src="{{filter.getLocalPhoto('card_quanyika.png')}}" mode="aspectFill" class="ui-specialItem__card" />
-        <view class="ui-specialItem__btn" bindtap="onSkipTap">立即进入</view>
+        <!-- <view class="ui-specialItem__btn" bindtap="onSkipTap">立即进入</view> -->
+         <view class="ui-specialItem__btn" bindtap="onDetailTap">立即进入</view>
     </view>
     <view class="ui-specialItem__title ui-lineTitle ">—— 线上福利 ——</view>
     <view class="ui-specialItem__EnglishTitle ui-line__EnglishTitle">online benefits</view>
@@ -110,7 +111,7 @@
                     <text>1388</text>
                     元, 赚取
                     <text>2688</text>
-                    yuan
+                     元
                 </view>
             </view>
         </view>
@@ -131,31 +132,15 @@
         CHOOSE ONE OR BECOME PLUS
     </view>
     <view class="ui-goodsBox">
-        <view class="ui-goodsItem" bindtap="onDetailTap">
+        <view class="ui-goodsItem"  wx:for="{{list}}" wx:key="{{index}}">
             <image src="{{filter.getLocalPhoto('card__pulscard.png')}}" class="ui-plusItem__icon" />
-            <image src="{{filter.getLocalPhoto('e_c.png')}}" mode="aspectFill" class="ui-goodsItem__img" />
-            <view class="ui-goodsItem__title">养生堂全套保健品</view>
-            <view class="ui-goodsItem__price">¥298</view>
+            <image src="{{filter.getPhoto(host, item.picUrl)}}" mode="aspectFit" class="ui-goodsItem__img" />
+            <view class="ui-goodsItem__title">{{item.mainTitle}}</view>
+            <view class="ui-goodsItem__price">¥{{item.nowPrice}}</view>
         </view>
-        <view class="ui-goodsItem">
-            <image src="{{filter.getLocalPhoto('card__pulscard.png')}}" class="ui-plusItem__icon" />
-            <image src="{{filter.getLocalPhoto('e_c.png')}}" mode="aspectFill" class="ui-goodsItem__img" />
-            <view class="ui-goodsItem__title">养生堂全套保健品</view>
-            <view class="ui-goodsItem__price">¥298</view>
-        </view>
-        <view class="ui-goodsItem">
-            <image src="{{filter.getLocalPhoto('card__pulscard.png')}}" class="ui-plusItem__icon" />
-            <image src="{{filter.getLocalPhoto('e_c.png')}}" mode="aspectFill" class="ui-goodsItem__img" />
-            <view class="ui-goodsItem__title">养生堂全套保健品</view>
-            <view class="ui-goodsItem__price">¥298</view>
-        </view>
-        <view class="ui-goodsItem">
-            <image src="{{filter.getLocalPhoto('card__pulscard.png')}}" class="ui-plusItem__icon" />
-            <image src="{{filter.getLocalPhoto('e_c.png')}}" mode="aspectFill" class="ui-goodsItem__img" />
-            <view class="ui-goodsItem__title">养生堂全套保健品</view>
-            <view class="ui-goodsItem__price">¥298</view>
-        </view>
-        <view class="ui-moreBtn" bindtap="onSkipTap">查看更多专属礼包</view>
+        
+        <!-- <view class="ui-moreBtn" bindtap="onSkipTap">查看更多专属礼包</view> -->
+        <view class="ui-moreBtn" bindtap="onDetailTap">查看更多专属礼包</view>
     </view>
     <view class="ui-bottomBox">
         <view class="ui-bottomItem__content">
@@ -165,6 +150,6 @@
             <text>7.5</text>
             折优惠
         </view>
-        <view class="ui-bottomItem__btn">立即购买</view>
+        <view class="ui-bottomItem__btn" bindtap="onDetailTap">立即购买</view>
     </view>
 </view>

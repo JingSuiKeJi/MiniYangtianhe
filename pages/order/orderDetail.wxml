@@ -12,15 +12,19 @@
                 <view class="ui-StatusIcon ui-notPaymentIcon"></view>
                 <text class="ui-StatusText">待付款</text>
             </view>
-            <view class="ui-orderStatus" wx:if="{{status=='WAIT_SELLER_SEND_GOODS'}}">
+            <view class="ui-orderStatus" wx:if="{{status=='WAIT_SELLER_SEND_GOODS' }}">
                 <view class="ui-StatusIcon ui-waitShipmentsIcon"></view>
                 <text class="ui-StatusText">待发货</text>
             </view>
-            <view class="ui-orderStatus" wx:if="{{status=='WAIT_BUYER_CONFIRM_GOODS' || status=='WAIT_DELIVERY'}}">
+            <view class="ui-orderStatus" wx:if="{{ status=='WAIT_GROUP'}}">
+                <view class="ui-StatusIcon ui-waitShipmentsIcon"></view>
+                <text class="ui-StatusText">等待成团</text>
+            </view>
+            <view class="ui-orderStatus" wx:if="{{status=='WAIT_BUYER_CONFIRM_GOODS' }}">
                 <view class="ui-StatusIcon ui-waitReceivingIcon"></view>
                 <text class="ui-StatusText">待收货</text>
             </view>
-            <view class="ui-orderStatus" wx:if="{{status=='WAIT_CHECK'}}">
+            <view class="ui-orderStatus" wx:if="{{status=='WAIT_CHECK' || status=='WAIT_DELIVERY'}}">
                 <!-- <view class="ui-verificCodeIcon"></view> -->
                 <view class="ui-verificCodeIcon">
                     <image src="{{filter.getPhoto(host,verificationCodeUrl)}}" mode="aspectFit" />
