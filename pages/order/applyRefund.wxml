@@ -58,21 +58,27 @@
 			
 			<!--售后原因弹窗-->
 			<view class="modal-AfterMask" catchtouchmove="true" wx:if="{{showAfterModal}}"></view>
-			<view class="modal-AfterDialog" wx:if="{{showAfterModal}}" catchtouchmove="true">
-				<view class="modal-header">
-					<view class="btn-closeIcon" bindtap="hideAfterModal"></view>
-					<text>售后原因</text>
-				</view>
-				<text class="modal-explainText">请选择售后原因</text>
-				<view class="modal-afterReason">
-					<view class="modal-reasonItems" wx:for="{{causeList}}" wx:key="{{index}}" >
-						<text>{{item.reason}}</text>
-						<view class="modal-selectIcon {{reasonFlag != item.reasonFlag?'modal-selectReason':'modal-notSelectReason'}}"
-						bindtap="onSelectReasonTap" data-index = "{{index}}"></view>
-					</view>
-				</view>
-				<view class="btn-selectFinish" bindtap="onAfterConfirm" >选好了</view>
-			</view>
+			<cover-view class="modal-AfterDialog" wx:if="{{showAfterModal}}" catchtouchmove="true">
+				<cover-view class="modal-header">
+					<cover-image src="{{filter.getLocalPhoto('choseScale_delectIcon.png')}}" class="btn-closeIcon" bindtap="hideAfterModal"></cover-image>
+					<cover-view class="modal-header__reason">售后原因</cover-view>
+				</cover-view>
+				<cover-view class="modal-explainText">请选择售后原因</cover-view>
+				<cover-view class="modal-afterReason">
+					<cover-view class="modal-reasonItems" wx:for="{{causeList}}" wx:key="{{index}}" >
+						<cover-view class="modal-reasonItems__text">{{item.reason}}</cover-view>
+						<!-- <cover-view class="modal-selectIcon {{reasonFlag != item.reasonFlag?'modal-selectReason':'modal-notSelectReason'}}"
+						bindtap="onSelectReasonTap" data-index = "{{index}}"></cover-view> -->
+						<cover-image class="modal-selectIcon "
+						src="{{reasonFlag != item.reasonFlag ?  filter.getLocalPhoto('my_check.png') : filter.getLocalPhoto('my_oval.png')}}"
+						bindtap="onSelectReasonTap" data-index = "{{index}}"></cover-image>
+					</cover-view>
+				</cover-view>
+				<cover-view class="btn-selectFinish" bindtap="onAfterConfirm" >
+					<cover-image src="{{filter.getLocalPhoto('my_selectFinish.png')}}" class="btn-selectFinish__img" ></cover-image>
+					<cover-view class="btn-selectFinish__text"  >选好了</cover-view>
+				</cover-view>
+			</cover-view>
 			
 			<!-- 退款金额 -->
 			<view class="ui-refundMoney" >
@@ -85,8 +91,9 @@
 				<text class="ui-commonText" wx:if="{{type == 1}}">退款说明</text>
 				<text class="ui-commonText" wx:if="{{type == 2}}">退货说明</text>
 				<text class="ui-commonText" wx:if="{{type == 3}}">申请换货</text>
-				<textarea class="ui-explainText" placeholder="选填" value="{{description}}" bindinput="onExplainTap"
-				cols="400rpx" maxlength="300" auto-height="{{auto_height}}" bindblur='areablur' bindfocus='areafocus'/>
+				<input type="text" placeholder="选填" value="{{description}}" bindinput="onExplainTap" bindfocus='areafocus' class="ui-explainText"/>
+				<!-- <textarea class="ui-explainText" placeholder="选填" value="{{description}}" bindinput="onExplainTap"
+				cols="400rpx" maxlength="300" auto-height="{{auto_height}}" bindblur='areablur' bindfocus='areafocus'/> -->
 			</view>
 		</view>
 		

@@ -371,30 +371,30 @@ page{
 .btn-closeIcon{
 	width: 40rpx;
 	height: 40rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/choseScale_delectIcon.png');
+	/* background-image:url('http://www.gzlingren.com:8098/yangtianhe/choseScale_delectIcon.png');
 	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
+	background-position: 40rpx 40rpx;
+	background-size: cover; */
 }
 
-.modal-header text{
+.modal-header__reason{
 	margin-left: 220rpx;
-	height:34rpx;
+	/* height:34rpx; */
 	font-size:34rpx;
 	font-family:PingFangSC;
 	font-weight:500;
 	color:rgba(51,51,51,1);
-	line-height:34rpx;
+	/* line-height:34rpx; */
 }
 
 .modal-explainText{
 	margin: 0 0 76rpx 40rpx;
-	height:26rpx;
+	/* height:26rpx; */
 	font-size:30rpx;
 	font-family:PingFang-SC;
 	font-weight:400;
 	color:rgba(102,102,102,1);
-	line-height:26rpx;
+	/* line-height:26rpx; */
 }
 
 .modal-afterReason{
@@ -411,51 +411,71 @@ page{
 .modal-reasonItems{
 	width: 100%;
 	display: flex;
-	justify-content: space-between;
+	/* justify-content: space-between; */
 }
 
-.modal-reasonItems text{
-	margin-top: 6rpx;
-	height:30rpx;
+.modal-reasonItems__text{
+	/* width: 300rpx; */
+	/* margin-top: 6rpx; */
+	/* height:30rpx; */
 	font-size:30rpx;
 	font-family:PingFangSC;
 	font-weight:400;
 	color:rgba(51,51,51,1);
-	line-height:30rpx;
+	/* line-height:30rpx; */
 }
 
 .modal-selectIcon{
 	width: 40rpx;
 	height: 40rpx;
-	background-repeat: no-repeat;
+	margin-left: auto;
+	/* background-repeat: no-repeat;
 	background-position: center center;
-	background-size: cover;
+	background-size: cover; */
 }
 
-.modal-selectReason{
+/* .modal-selectReason{
 	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_check.png');
 }
 
 .modal-notSelectReason{
 	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_oval.png');
-}
+} */
 
 .btn-selectFinish{
+	display: flex;
 	margin: 62rpx 0 0 40rpx;
 	width: 670rpx;
 	height: 100rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_selectFinish.png');
+	/* background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_selectFinish.png');
 	background-repeat: no-repeat;
 	background-position: center center;
-	background-size: cover;
-	font-size:30rpx;
+	background-size: cover; */
+	/* font-size:30rpx;
 	font-family:PingFangSC;
 	font-weight:600;
-	color:rgba(255,255,255,1);
-	line-height:100rpx;
-	text-align: center;
+	color:rgba(255,255,255,1); */
+	/* line-height:100rpx;
+	text-align: center; */
+	justify-content: center;
+	align-items: center;
+	position: relative;
 }
+.btn-selectFinish__img {
+	width: 670rpx;
+	height: 100rpx;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.btn-selectFinish__text {
+    font-size:30rpx;
+	font-family:PingFangSC;
+	font-weight:600;
+	color: #ffff;
+    z-index: 99999;
 
+}
 /* 提交弹窗 */
 /* 模态框 */
 .modal-mask {

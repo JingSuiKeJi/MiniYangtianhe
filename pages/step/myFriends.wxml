@@ -16,7 +16,7 @@
                 二级乐友
             </view>
         </view>
-        <scroll-view scroll-y="true" class="ui-listBox" style="height: {{from ? '920rpx' : '1032rpx'}}">
+        <view  class="ui-listBox" >
             <view class="ui-listItem" wx:for="{{list}}" wx:key="{{index}}" bindtap="showModal" data-index="{{index}}">
                 <view class="ui-listItem__imgBox">
                     <image src="{{filter.getPhoto(host,item.avatar)}}" class="ui-listItem__icon" />
@@ -31,7 +31,7 @@
                     {{item.status == 2 ? '已达成' : '未达成' }}
                 </view>
             </view>
-        </scroll-view>
+        </view>
         <view class="modals modals-bottom-dialog" hidden="{{hideModal}}">
             <view class="modals-cancel" bindtap="hideModal"></view>
             <view class="bottom-dialog-body ">

@@ -77,19 +77,23 @@ page{
 	position: absolute;
 	margin-left: 108rpx;
 	width: 140rpx;
-	height: 72rpx;
+	height: 100%;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 }
 
 .ui-userInfo .ui-userId{
-	height:22rpx;
+	width: 100%;
+	/* height:22rpx; */
 	font-size:22rpx;
 	font-family:PingFangSC-Regular;
 	font-weight:400;
 	color:rgba(51,51,51,1);
-	line-height:22rpx;
+	/* line-height:22rpx; */
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
 }
 
 .ui-userInfo .ui-userVipLevel{

@@ -43,8 +43,8 @@ const onUnload = function (self) {
 
 }
 const onReady = function (self) {
-    self.onScroll();
-
+    // self.onScroll('#aim','scrollTop');
+    // self.onScroll('#head','headTop');
 }
 // 页面中的方法
 const methods = {
@@ -262,6 +262,7 @@ const methods = {
     showClassify: function (arr) {
         const self = this;
         var classList = [];
+        if(!arr.length) return;
         var length = Math.ceil(arr.length / 10);
         for (var index = 0; index < length; index++) {
             classList[index] = arr.slice(index * 10, (index + 1) * 10);
@@ -343,6 +344,8 @@ const methods = {
                     classifyId: data[0].id
                 });
                 self.getPageData();
+                self.onScroll('#aim','scrollTop');
+                self.onScroll('#head','headTop');
             }
         }, (err) => {
 
@@ -385,15 +388,15 @@ const methods = {
             hideModal: true,
         })
     },
-    onScroll: function () {
+    onScroll: function (id,value) {
         const self = this;
         const query = wx.createSelectorQuery();
         setTimeout(() => {
-            query.select('#aim').boundingClientRect();
+            query.select(id).boundingClientRect();
             query.selectViewport().scrollOffset();
             query.exec(function (res) {
                 self.setData({
-                    scrollTop: res[0].top
+                     [value]: res[0].top
                 });
             })
         }, 1000)
@@ -402,13 +405,13 @@ const methods = {
     },
     pageScroll: function (res) {
         let self = this;
-        let top = self.data.scrollTop + 900;
-        if (res.scrollTop >= top) {
+        let top = self.data.scrollTop - self.data.headTop;
+        if (res.scrollTop >= top && !self.data.isFixed) {
             self.setData({
                 isFixed: true,
             });
 
-        } else {
+        } else if (res.scrollTop < top && self.data.isFixed) {
             self.setData({
                 isFixed: false,
             })

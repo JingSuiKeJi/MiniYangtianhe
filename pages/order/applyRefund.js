@@ -47,7 +47,8 @@ const methods = {
 	appayBefore: function () {
 		const self = this;
         Order.appayBefore(self, {
-            orderItemIds: self.data.orderItemIds
+			orderItemIds: self.data.orderItemIds,
+			type: self.data.type
         }).then((ret) => {
 			let data = ret.data;
 			let opts  = data.orderAfterSaleVO;

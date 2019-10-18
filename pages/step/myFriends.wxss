@@ -80,7 +80,10 @@ page {
     border-radius: 0 16rpx 16rpx 0;
 }
 .ui-listBox {
+    display: flex;
+    flex-direction: column;
     width: 90%;
+    min-height: 1000rpx;
     margin: 0 auto;
     margin-top: 30rpx;
     padding: 40rpx 0 40rpx 48rpx ;

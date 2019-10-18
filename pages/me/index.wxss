@@ -226,7 +226,21 @@
 	letter-spacing: 4rpx;
 	color:rgba(255,229,203,1);
 }
-
+.ui-vipItem__text {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 140rpx;
+	height: 50rpx;
+	font-size: 24rpx;
+	letter-spacing: 4rpx;
+	color:rgba(255,229,203,1);
+	position: absolute;
+	right: 20rpx;
+	top: 20rpx;
+	border: 1rpx solid #fff;
+	border-radius: 25rpx;
+}
 .ui-incomeItems{
 	position: absolute;
 	z-index: 20;
