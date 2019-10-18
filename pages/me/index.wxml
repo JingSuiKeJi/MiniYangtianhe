@@ -61,6 +61,7 @@
 					<view class="ui-iconVip"></view>
 					<text>PLUS会员卡</text>
 				</view>
+				<view class="ui-vipItem__text" bindtap="onCardRights">立即查看</view>
 			</view>
 			
 			<view class="ui-incomeItems">

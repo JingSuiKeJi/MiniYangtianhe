@@ -7,7 +7,7 @@
             <view class="ui-searchItem_text" bindtap="onSkipTap" data-type="0" bindconfirm="onSkipTap">搜索</view>
             <image src="{{filter.getLocalPhoto('ic_search.png')}}" class="searchItem_icon" />
         </view>
-        <view class="ui-classifyBox" style="height: {{height + 'px'}}">
+        <view class="ui-classifyBox" >
             <scroll-view scroll-y class="ui-classItem_tips"  >
                 <view class="ui-tipsItem__List" wx:for="{{classifyList}}" wx:key="{{index}}" bindtap="onChoseTap" data-id="{{item.id}}" data-title="{{item.title}}" style="background-color: {{ id == item.id ? '#fff' : ''}};color: {{ id == item.id ? '#333333' : ''}}">
                     {{item.title}}

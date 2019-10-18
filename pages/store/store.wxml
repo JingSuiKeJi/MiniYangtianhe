@@ -5,19 +5,19 @@
     <view class="tab-bottom"></view>
     <view class="main">
         <view>
-            <view class="ui-headBox" style="margin-top: {{statusBarHeight+44}}px;"  wx:if="{{!isFixed}}">
+            <view class="ui-headBox" style="margin-top: {{statusBarHeight+44}}px;"  hidden="{{isFixed}}" id="head">
                 <view class="ui-headBox_search">
                     <input type="text" placeholder="搜索你想要的商品" bindinput="onSearchTap" bindfocus="onSkipTap" value="{{inputValue}}" />
                 </view>
             </view>
-            <view class="ui-tapBox">
+            <view class="ui-tapBox" wx:if="{{hotSearch.length}}">
                 <view class="ui-tapBox__Item">
                     <view class="ui-tap__item" wx:for="{{hotSearch}}" wx:key="{{index}}" bindtap="onResultTap" data-id="{{item.id}}" data-value="{{item.title}}">
                         {{item.title}}
                     </view>
                 </view>
             </view>
-            <view class="ui-banner">
+            <view class="ui-banner" wx:if="{{banner.length}}">
                 <view class="ui-banner_bgroundBox"></view>
                 <swiper autoplay interval="2000" duration="500" circular class="ui-banner_swiper" bindchange="onChangeTap">
                     <block wx:for="{{banner}}" wx:key="{{index}}">
@@ -46,7 +46,7 @@
                         <block wx:for="{{classList}}" wx:for-item="bannerItem" wx:key="{{index}}">
                             <swiper-item>
                                 <view class="ui-classBox_item" wx:for="{{bannerItem}}" wx:key="{{index}}" bindtap="onTabTap" data-id="{{item.id}}" data-isLink="{{item.isLink}}">
-                                    <image src="{{filter.getPhoto(host,item.imgUrl)}}" mode="aspectFill" class="ui-classItem__img" data-id="{{item.id}}" data-isLink="{{item.isLink}}"/>
+                                    <image src="{{filter.getPhoto(host,item.imgUrl)}}" mode="aspectFit" class="ui-classItem__img" data-id="{{item.id}}" data-isLink="{{item.isLink}}"/>
                                     <view  class="ui-classItem__text" data-id="{{item.id}}" data-isLink="{{item.isLink}}">{{item.title}}</view>
                                 </view>
                             </swiper-item>
@@ -58,9 +58,9 @@
                 </view>
             </view>
         </view>
-        <view class="ui-noticeBox" wx:if="{{notion}}">
-            <text>优选公告</text>
-            <text wx:for="{{notion}}" data-id="{{item.id}}" bindtap="onNoticTap" wx:key="{{index}}">{{item.title}}</text>
+        <view class="ui-noticeBox" >
+            <text wx:if="{{notion.length}}">优选公告</text>
+            <text wx:for="{{notion}}" wx:if="{{notion.length}}" data-id="{{item.id}}" bindtap="onNoticTap" wx:key="{{index}}">{{item.title}}</text>
         </view>
         <view class="ui-collageBox" wx:if="{{groupList.length}}">
             <view class="ui-collageItem_top">
@@ -125,7 +125,7 @@
                 <scroll-view scroll-x class="ui-brandItem_scrollView" wx:if="{{brandList[0].length || singleBrandList.length}}"> 
                     <view class="ui-brandScroll_itemTop">
                         <view wx:for="{{brandList[0] || singleBrandList}}" wx:key="{{index}}" class="ui-brandScroll_item">
-                            <image src="{{filter.getPhoto(host,item.logoUrl)}}" mode="aspectFill" bindtap="onBrandsTap" data-id="{{item.id}}" />
+                            <image src="{{filter.getPhoto(host,item.logoUrl)}}" mode="aspectFit" bindtap="onBrandsTap" data-id="{{item.id}}" />
                         </view>
                     </view>
                 </scroll-view>
@@ -142,19 +142,19 @@
         <view class="ui-recomListBox" wx:if="{{tapList.length}}">
             <view class="ui-listItem_top">推荐榜单</view>
             <view class="ui-listItem_bottom">
-                <view class="ui-bottomItem_tap {{isFixed ? 'isFixed' : ''}}" id="aim" >
+                <view class="ui-bottomItem_tap {{isFixed ? 'isFixed' : ''}}" id="aim" style="top: {{isFixed ? headTop+ 'px' : ''}}">
                     <scroll-view scroll-x class="ui-tapItem_scrollView" scroll-into-view="{{toView}}">
-                        <view wx:for="{{tapList}}" wx:key="{{index}}" class="ui-tapScroll_item" bindtap="onClickTap" id="{{'_' + item.id}}" data-type="{{item.id}}">
+                        <view wx:for="{{tapList}}" wx:key="{{index}}" class="ui-tapScroll_item" bindtap="onClickTap" id="{{'_' + item.id}}" data-type="{{item.id}}"  >
                             <view class="ui-tapScroll_itemText" style="font-weight: {{classifyId == item.id ? '500' : '400'}};color: {{isFixed ? '#fff' : ''}}">
                                 {{item.title}}
                             </view>
-                            <view class="ui-tapScroll_itemIcon" hidden="{{classifyId != item.id}}"></view>
+                            <view class="ui-tapScroll_itemIcon" hidden="{{classifyId != item.id}}" style="background-color: {{isFixed ? '#fff' : ''}}"></view>
                         </view>
                     </scroll-view>
                     <view class="ui-tapItem_Icon" bindtap="onSlideTap">
-                        <image src="{{filter.getLocalPhoto('index_slideDown.png')}}" mode="aspectFill" class="ui-tapItem_downIcon" />
+                        <image src="{{filter.getLocalPhoto('index_slideDown.png')}}" mode="aspectFill" class="ui-tapItem_downIcon" style="transform: {{!hideModal ? 'rotateX(-180deg)' : 'rotateY(0deg)'}}"/>
                     </view>
-                    <view class="modals modals-bottom-dialog" hidden="{{hideModal}}" wx:if="{{tapList.length}}">
+                    <view class="modals modals-bottom-dialog" hidden="{{hideModal}}" wx:if="{{tapList.length}}" style="top: {{!hideModal ?  headTop  + 'px' : ''}}">
                         <view class="modals-cancel" bindtap="hideModal" catchtouchmove="true"></view>
                         <view class="bottom-dialog-body bottom-pos" animation="{{animationData}}">
                             <view class="slideBox">
@@ -162,7 +162,7 @@
                                     <view class="ui-leftItem" wx:for="{{tapList}}" wx:key="{{index}}" bindtap="onClickTap" id="{{'_' + item.id}}" data-type="{{item.id}}">{{item.title}}</view>
                                 </view>
                                 <view class="ui-slideItem__right">
-                                    <image src="{{filter.getLocalPhoto('index_slideUp.png')}}" mode="aspectFill" class="ui-tapItem_upIcon" bindtap="hideModal" />
+                                    <image src="{{filter.getLocalPhoto('home__indexUp.png')}}" mode="aspectFill" class="ui-tapItem_upIcon" bindtap="hideModal" />
                                 </view>
                             </view>
                         </view>

@@ -317,6 +317,13 @@ const methods = {
        _g.navigateTo({
         url: 'pages/order/overOrder',
     }, self);
+    },
+    onCardRights: function (e) {
+        let self = this;
+        if (!_g.checkLogin({type: 2})) return;
+        _g.navigateTo({
+            url: 'pages/card/card',
+        }, self);
     }
 }
 

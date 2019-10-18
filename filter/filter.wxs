@@ -138,9 +138,11 @@ var filter = {
             case 'TRADE_BUYER_SIGNED':
                 return '已签收';
             case 'TRADE_FINISH':
-                return '已签收';
+                return '已完成';
 			case 'CHECKED':
-			    return '已核销';
+                return '已核销';
+            case 'AFTERSALE_FINISH':
+                return '退款完成';    
             default: 
                return '';
         }

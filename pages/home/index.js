@@ -74,13 +74,14 @@ const onLoad = function (self) {
 };
 
 const onReady = function (self) {
-    self.onScroll();
+    // self.onScroll('#aim','scrollTop');
+    // self.onScroll('#head','headTop');
 
 }
 
 // 页面onShow方法
 const onShow = function (self) {
-
+    event.emit('refreshHomeData');
 };
 
 const onUnload = function (self) {
@@ -228,6 +229,8 @@ const methods = {
                 classifyId: data[0].id
             });
             self.getPageData();
+            self.onScroll('#aim','scrollTop');
+            self.onScroll('#head','headTop');
         }, (err) => {
 
         });
@@ -425,6 +428,7 @@ const methods = {
     showClassify: function (arr) {
         let self = this;
         var classList = [];
+        if(!arr.length) return;
         var length = Math.ceil(arr.length / 10);
         for (var index = 0; index < length; index++) {
             classList[index] = arr.slice(index * 10, (index + 1) * 10);
@@ -567,36 +571,38 @@ const methods = {
         })
     },
 
-    onScroll: function () {
+    onScroll: function (id,value) {
         const self = this;
         const query = wx.createSelectorQuery();
-        if (!self.data.tapList.length) return;
-        setTimeout(() => {
-            query.select('#aim').boundingClientRect();
-            query.selectViewport().scrollOffset();
-            query.exec(function (res) {
-                self.setData({
-                    scrollTop: res[0].top
+            setTimeout(() => {
+                query.select(id).boundingClientRect();
+                query.selectViewport().scrollOffset();
+                query.exec(function (res) {
+                    self.setData({
+                        [value]: res[0].top
+                    });
                 });
-            });
         }, 1000);
-
+        
+ 
     },
     pageScroll: function (res) {
         let self = this;
-        let top = self.data.scrollTop-80;
-        if (res.scrollTop >= top) {
+        let top = self.data.scrollTop-self.data.headTop;
+        if (res.scrollTop >= top && !self.data.isFixed) {
             self.setData({
                 isFixed: true,
             })
-        } else {
+        } else if (res.scrollTop < top && self.data.isFixed) {
             self.setData({
                 isFixed: false,
             })
         }
+        
     },
     onMapTap() {
         const self = this;
+        if(self.data.storeInfo.isBind) return;
         _g.navigateTo({
             url: 'pages/home/map'
         }, self);

@@ -96,6 +96,8 @@ page{
 	font-weight:400;
 	color:rgba(51,51,51,1);
 	line-height:22rpx;
+	white-space: nowrap;
+	text-overflow: ellipsis;
   }
 
 .ui-userInfo .ui-userVipLevel{

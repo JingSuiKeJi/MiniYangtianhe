@@ -667,9 +667,10 @@ page {
 }
 .ui-listItem_bottom .isFixed{
     position: fixed;
-    top: 170rpx;
+    /* top: 170rpx; */
     background-color: #3CC7A4;
     border-bottom: none;
+    z-index: 999999;
 }
 .ui-tapItem_scrollView {
     width: 89%;
@@ -721,7 +722,8 @@ page {
     height: 20rpx;
     position: absolute;
     left: 15rpx;
-    top: 30rpx;
+    top: 35rpx;
+    /* transition: 0.5s linear; */
 }
 
 .ui-content_item {
@@ -798,7 +800,7 @@ page {
     font-size: 34rpx;
     font-family: PingFangSC-Medium;
     font-weight: 500;
-    color: #DE4C3E;
+    color: rgba(222,76,62,1);
     line-height: 34rpx;
 }
 
@@ -839,9 +841,9 @@ page {
 
 .modals {
     width: 100%;
-    position: absolute;
+    position: fixed;
     z-index: 9999;
-    top: 0;
+    /* top: 64px; */
     left: 0;
 }
 
@@ -867,37 +869,39 @@ page {
 .slideBox {
     display: flex;
     width: 100%;
-    padding: 32rpx;
+    padding: 58rpx 0 0 32rpx;
+    position: relative;
 }
 
 .ui-slideItem__left {
-    width: 95%;
+    width: 100;
     display: inline-block;
 }
 
 .ui-leftItem {
     display: inline-block;
-    margin: 30rpx 60rpx 30rpx 0;
+    width: 200rpx;
+    /* margin-right: 120rpx; */
+    margin-bottom: 60rpx;
     font-size: 28rpx;
     font-family: PingFangSC;
     font-weight: 400;
     color: #333333;
     line-height: 26rpx;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
-.ui-leftItem:nth-child(4n) {
-    margin-right: 10rpx;
-}
 
 .ui-slideItem__right {
-    display: inline-block;
-    width: 48rpx;
-    height: 100%;
+    position: absolute;
+    right: 20rpx;
+    top: 50rpx;
+    
 }
 
 .ui-tapItem_upIcon {
-    width: 36rpx;
-    height: 20rpx;
-    vertical-align: top;
-    margin-top: 34rpx;
+    width: 48rpx;
+    height: 48rpx;
 }

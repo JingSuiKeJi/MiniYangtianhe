@@ -1,7 +1,7 @@
 <wxs module="filter" src="../../filter/filter.wxs"></wxs>
 <view class="container">
     <navBar title="养乐药房" background="#3CC7A4" color="white" iconTheme="white">
-        <view class="location" slot="left" wx:if="{{!storeInfo.isBind}}">
+        <view class="location" slot="left">
             <view class="ui-addressIcon" catchtap="onMapTap"></view>
             <text class="ui-addressText" catchtap="onMapTap">{{storeInfo.title}}</text>
             <view class="icon"></view>
@@ -10,19 +10,19 @@
     <view class="tab-bottom"></view>
     <view class="main">
         <view>
-            <view class="ui-headBox" style="margin-top: {{statusBarHeight+44}}px;" wx:if="{{!isFixed}}">
+            <view class="ui-headBox" style="margin-top: {{statusBarHeight+44}}px;" hidden="{{isFixed}}" id="head">
                 <view class="ui-headBox_search">
                     <input type="text" placeholder="搜索你想要的商品" bindinput="onSearchTap" bindfocus="onSkipTap" value="{{inputValue}}" />
                 </view>
             </view>
-            <view class="ui-tapBox">
+            <view class="ui-tapBox" wx:if="{{hotSearch.length}}">
                 <view class="ui-tapBox__Item">
-                    <view class="ui-tap__item" wx:for="{{hotSearch}}" wx:key="{{index}}" bindtap="onResultTap" data-id="{{item.id}}" data-value="{{item.title}}">
+                    <view class="ui-tap__item" wx:for="{{hotSearch}}"  wx:key="{{index}}" bindtap="onResultTap" data-id="{{item.id}}" data-value="{{item.title}}">
                         {{item.title}}
                     </view>
                 </view>
             </view>
-            <view class="ui-banner">
+            <view class="ui-banner" wx:if="{{banner.length}}">
                 <view class="ui-banner_bgroundBox"></view>
                 <swiper current="currentIndex" autoplay interval="2000" duration="500" circular class="ui-banner_swiper" bindchange="onChangeTap">
                     <block wx:for="{{banner}}" wx:key="{{index}}">
@@ -62,9 +62,9 @@
                 <image src="{{filter.getLocalPhoto('question_icon.png')}}" mode="aspectFill" ></image>
             </view>
         </view>
-        <view class="ui-noticeBox" wx:if="{{notion}}">
-            <text>优选公告</text>
-            <text wx:key="{{index}}" wx:for="{{notion}}" data-id="{{item.id}}" bindtap="onNoticTap">{{item.title}}</text>
+        <view class="ui-noticeBox" >
+            <text wx:if="{{notion.length}}">优选公告</text>
+            <text wx:key="{{index}}" wx:for="{{notion}}" data-id="{{item.id}}" bindtap="onNoticTap" wx:if="{{notion.length}}">{{item.title}}</text>
         </view>
         <!-- 分类专区 -->
         <view>
@@ -77,7 +77,7 @@
                         <block wx:for="{{classList}}" wx:for-item="bannerItem" wx:key="{{index}}">
                             <swiper-item>
                                 <view class="ui-classBox_item" wx:for="{{bannerItem}}" wx:key="{{index}}" bindtap="onTabTap" data-id="{{item.id}}" data-isLink="{{item.isLink}}">
-                                    <image src="{{filter.getPhoto(host,item.imgUrl)}}" class="ui-classItem__img" data-id="{{item.id}}" data-isLink="{{item.isLink}}" mode="aspectFill" />
+                                    <image src="{{filter.getPhoto(host,item.imgUrl)}}" class="ui-classItem__img" data-id="{{item.id}}" data-isLink="{{item.isLink}}" mode="aspectFit" />
                                     <view class="ui-classItem__text" data-id="{{item.id}}" data-isLink="{{item.isLink}}">
                                         {{item.title}}
                                     </view>
@@ -149,7 +149,7 @@
         <view class="ui-recomListBox" wx:if="{{tapList.length}}">
             <view class="ui-listItem_top">推荐榜单</view>
             <view class="ui-listItem_bottom">
-                <view class="ui-bottomItem_tap {{isFixed ? 'isFixed' : ''}}" id="aim" >
+                <view class="ui-bottomItem_tap {{isFixed ? 'isFixed' : ''}}" id="aim"  style="top: {{isFixed ? headTop+ 'px' : ''}}">
                     <scroll-view scroll-x class="ui-tapItem_scrollView" scroll-into-view="{{toView}}">
                         <view wx:for="{{tapList}}" wx:key="{{index}}" class="ui-tapScroll_item" bindtap="onClickTap" id="{{'_' + item.id}}" data-type="{{item.id}}">
                             <view class="ui-tapScroll_itemText" style="font-weight: {{classifyId == item.id ? '500' : '400'}};color: {{isFixed ? '#fff' : ''}}">
@@ -159,9 +159,9 @@
                         </view>
                     </scroll-view>
                     <view class="ui-tapItem_Icon" bindtap="onSlideTap">
-                        <image src="{{filter.getLocalPhoto('index_slideDown.png')}}" class="ui-tapItem_downIcon" mode="aspectFill"></image>
+                        <image src="{{filter.getLocalPhoto('index_slideDown.png')}}" class="ui-tapItem_downIcon" mode="aspectFill" style="transform: {{!hideModal ? 'rotateX(-180deg)' : 'rotateY(0deg)'}}"></image>
                     </view>
-                    <view class="modals modals-bottom-dialog" hidden="{{hideModal}}" wx:if="{{tapList.length}}">
+                    <view class="modals modals-bottom-dialog" hidden="{{hideModal}}" wx:if="{{tapList.length}}" style="top: {{!hideModal ? headTop+ 'px' : ''}}">
                         <view class="modals-cancel" bindtap="hideModal" catchtouchmove="true"></view>
                         <view class="bottom-dialog-body bottom-pos">
                             <view class="slideBox">
@@ -171,7 +171,7 @@
                                     </view>
                                 </view>
                                 <view class="ui-slideItem__right">
-                                    <image src="{{filter.getLocalPhoto('index_slideUp.png')}}" class="ui-tapItem_upIcon" bindtap="hideModal" mode="aspectFill" />
+                                    <image src="{{filter.getLocalPhoto('home__indexUp.png')}}" class="ui-tapItem_upIcon" bindtap="hideModal" mode="aspectFill" />
                                 </view>
                             </view>
                         </view>
