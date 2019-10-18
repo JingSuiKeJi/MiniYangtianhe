@@ -171,7 +171,7 @@
                                     </view>
                                 </view>
                                 <view class="ui-slideItem__right">
-                                    <image src="{{filter.getLocalPhoto('home__indexUp.png')}}" class="ui-tapItem_upIcon" bindtap="hideModal" mode="aspectFill" />
+                                    <image src="{{filter.getLocalPhoto('home__indexUp.png')}}" class="ui-tapItem_upIcon" bindtap="hideModal" mode="aspectFit" />
                                 </view>
                             </view>
                         </view>

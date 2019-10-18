@@ -162,7 +162,7 @@
                                     <view class="ui-leftItem" wx:for="{{tapList}}" wx:key="{{index}}" bindtap="onClickTap" id="{{'_' + item.id}}" data-type="{{item.id}}">{{item.title}}</view>
                                 </view>
                                 <view class="ui-slideItem__right">
-                                    <image src="{{filter.getLocalPhoto('home__indexUp.png')}}" mode="aspectFill" class="ui-tapItem_upIcon" bindtap="hideModal" />
+                                    <image src="{{filter.getLocalPhoto('home__indexUp.png')}}" mode="aspectFit" class="ui-tapItem_upIcon" bindtap="hideModal" />
                                 </view>
                             </view>
                         </view>

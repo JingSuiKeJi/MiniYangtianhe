@@ -47,7 +47,6 @@ const data = {
 
 // 页面onLoad方法
 const onLoad = function (self) {
-    self.getCartList();
     self.getData();
     // self.moveBarrage();
     if (self.data.type == 5) {
@@ -64,6 +63,9 @@ const onLoad = function (self) {
         self.setData({
             canvasUrl: data.canvasUrl
         });
+    });
+    event.on('login-suc',self,(ret) => {
+        self.getCartList();
     });
 };
 

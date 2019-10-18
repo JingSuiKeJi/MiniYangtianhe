@@ -81,7 +81,9 @@ const onReady = function (self) {
 
 // 页面onShow方法
 const onShow = function (self) {
-    event.emit('refreshHomeData');
+   self.onScroll('#aim','scrollTop');
+    self.onScroll('#head','headTop');
+
 };
 
 const onUnload = function (self) {
