@@ -17,9 +17,21 @@ const data = {
 
 // 页面onLoad方法
 const onLoad = function(self) {
-    self.getData();
+    // self.getData();
     self.initBlock();
     event.on('refreshStep', self, (ret) => {
+        self.getData();
+    });
+    event.on('logout-suc',self,(ret) => {
+        self.setData({
+            step: '上传步数',
+            list: [],
+            BMIIndex: 0,
+            test: 1,
+            fridensList: []
+        })
+    });
+    event.on('login-suc',self,(ret) => {
         self.getData();
     });
     self.getTabBar().setData({
@@ -29,7 +41,9 @@ const onLoad = function(self) {
 
 // 页面onShow方法
 const onShow = function(self) {
-    event.emit('refreshStep');
+    // event.emit('refreshStep');
+    // self.getData();
+    
 };
 const onUnload = function(self) {
     event.remove('refreshStep');
