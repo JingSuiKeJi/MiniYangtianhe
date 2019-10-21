@@ -10,7 +10,7 @@
                     <input type="text" placeholder="搜索你想要的商品" bindinput="onSearchTap" bindfocus="onSkipTap" value="{{inputValue}}" />
                 </view>
             </view>
-            <view class="ui-tapBox" wx:if="{{hotSearch.length}}">
+            <view class="ui-tapBox" >
                 <view class="ui-tapBox__Item">
                     <view class="ui-tap__item" wx:for="{{hotSearch}}" wx:key="{{index}}" bindtap="onResultTap" data-id="{{item.id}}" data-value="{{item.title}}">
                         {{item.title}}
@@ -67,7 +67,7 @@
                 <view class="ui-topItem_title">优选拼团会</view>
                 <view class="ui-topItem_more" bindtap="onMoreTap">
                     <text>查看更多</text>
-                    <image src="{{filter.getLocalPhoto('home_index_rightIcon.png')}}" class="ui-topItem_icon" mode="aspectFill"/>
+                    <image src="{{filter.getLocalPhoto('home_index_rightIcon.png')}}" class="ui-topItem_icon" mode="aspectFit"/>
                 </view>
             </view>
             <view class="ui-collageItem_bottom">
@@ -118,7 +118,7 @@
                 <text >品牌甄选</text>
                 <view class="ui-topItem_moreBrand" >
                     <text class="ui-topItem__moreText">查看更多</text>
-                    <image src="{{filter.getLocalPhoto('home_index_rightIcon.png')}}" class="ui-topItem_moreIcon" mode="aspectFill"/>
+                    <image src="{{filter.getLocalPhoto('home_index_rightIcon.png')}}" class="ui-topItem_moreIcon" mode="aspectFit"/>
                 </view>
             </view>
             <view class="ui-brandSelectItem_bottom">

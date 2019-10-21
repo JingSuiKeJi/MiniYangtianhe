@@ -50,7 +50,8 @@ const methods = {
             platformFlag: self.data.platformFlag,
             goodsIds: self.data.goodsIds,
             page: 1,
-            pageSize: 4
+            pageSize: 4,
+            type: 3
         }).then((ret) => {   
             self.setData({
                 list: ret.data.list 

@@ -3,8 +3,8 @@
 <view class="contain">
    <view class="main">
        <view class="ui-headerBox">
-           <image src="{{filter.getPhoto(host,backgroundUrl)}}" mode="aspectFill" class="ui-headerItem__banner" />
-           <vie class="ui-infoBox">
+           <image src="{{filter.getPhoto(host,backgroundUrl)}}" mode="aspectFill" class="ui-headerItem__banner" wx:if="{{backgroundUrl}}" />
+           <vie class="ui-infoBox" style="margin-top: {{backgroundUrl ? '-60rpx' : ''}}">
                 <image src="{{filter.getPhoto(host,logoUrl)}}" mode="aspectFill" class="ui-infoItem__brandImg"/>
                 <text class="ui-headerItem__text">{{title}}</text>
            </vie>
@@ -13,7 +13,6 @@
       <view class="ui-contentBox" >
             <view class="ui-content_tap">
                 <view class="ui-tapItem_price" bindtap="onChoseTap" data-type="1">
-                   
                         <text class="ui-tapItem_text"  style="color: {{type == 1 ? '#20CAB4' : ''}}" >价格</text>
                         <image  src="{{type == 1 ? filter.getLocalPhoto('sort.png') : filter.getLocalPhoto('graySort.png')}}" class="ui-priceItem_img" mode="aspectFill" />
                          <image wx:if="{{type == 1}}"  src="{{filter.getLocalPhoto('index_icon.png')}}" mode="aspectFill" class="ui-tapItem_icon"/>

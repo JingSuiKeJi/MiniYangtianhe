@@ -166,7 +166,7 @@
 }
 .ui-infoBox {
     display: inline-block;
-    margin-top: -60rpx;
+    /* margin-top: -60rpx; */
     margin-left: 30rpx;
     z-index: 999;
 }

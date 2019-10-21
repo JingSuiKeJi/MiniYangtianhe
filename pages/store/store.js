@@ -43,8 +43,7 @@ const onUnload = function (self) {
 
 }
 const onReady = function (self) {
-    // self.onScroll('#aim','scrollTop');
-    // self.onScroll('#head','headTop');
+   
 }
 // 页面中的方法
 const methods = {
@@ -75,9 +74,10 @@ const methods = {
             platformFlag: 1,
         }).then((ret) => {
             let data = ret.data;
+            let banner = data.banner.slice(0, 8);
             let opts = {
                 hotSearch: data.hotSearch,
-                banner: data.banner,
+                banner: banner,
                 tapImgUrl: data.occasion.imgUrl,
                 navigation: data.navigation,
                 notion: data.notion

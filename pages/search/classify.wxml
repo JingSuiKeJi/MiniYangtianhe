@@ -16,7 +16,7 @@
             <scroll-view scroll-y class="ui-classItem_content" >
                 <view class="ui-tipBox" bindtap="onSkipTap" data-type="1">
                     <text class="ui-tipItem__text">{{title}}</text>
-                    <image src="{{filter.getLocalPhoto('classfity_rightIcon.png')}}" class="ui-tipItem__icon" data-type="1" />
+                    <image src="{{filter.getLocalPhoto('classfity_rightIcon.png')}}" class="ui-tipItem__icon" data-type="1" mode="aspectFit"/>
                 </view>
                 <view class="ui-contentBox" wx:for="{{contentList}}" wx:key="{{index}}" wx:if="{{contentList.length}}">
                     <image src="{{filter.getPhoto(host,item.imgUrl)}}" data-id="{{item.id}}" data-title="{{item.title}}" data-type="2" bindtap="onSkipTap" class="ui-contentItem_img" />

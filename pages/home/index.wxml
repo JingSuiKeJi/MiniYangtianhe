@@ -15,16 +15,16 @@
                     <input type="text" placeholder="搜索你想要的商品" bindinput="onSearchTap" bindfocus="onSkipTap" value="{{inputValue}}" />
                 </view>
             </view>
-            <view class="ui-tapBox" wx:if="{{hotSearch.length}}">
+            <view class="ui-tapBox" >
                 <view class="ui-tapBox__Item">
                     <view class="ui-tap__item" wx:for="{{hotSearch}}"  wx:key="{{index}}" bindtap="onResultTap" data-id="{{item.id}}" data-value="{{item.title}}">
                         {{item.title}}
                     </view>
                 </view>
             </view>
-            <view class="ui-banner" wx:if="{{banner.length}}">
+            <view class="ui-banner" wx:if="{{banner.length}}" >
                 <view class="ui-banner_bgroundBox"></view>
-                <swiper current="currentIndex" autoplay interval="2000" duration="500" circular class="ui-banner_swiper" bindchange="onChangeTap">
+                <swiper current="currentIndex" autoplay interval="2000" duration="500" circular class="ui-banner_swiper" bindchange="onChangeTap" wx:if="{{banner.length}}">
                     <block wx:for="{{banner}}" wx:key="{{index}}">
                         <swiper-item>
                             <image src="{{filter.getPhoto(host,item.imgUrl)}}" mode="aspectFill" class="ui-banner_image" data-index="{{index}}" data-isLink="{{item.isLink}}" bindtap="onGoTap" />
@@ -125,7 +125,7 @@
                 <text >品牌甄选</text>
                 <view class="ui-topItem_moreBrand" >
                     <text class="ui-topItem__moreText">查看更多</text>
-                    <image src="{{filter.getLocalPhoto('home_index_rightIcon.png')}}" class="ui-topItem_moreIcon" mode="aspectFill"/>
+                    <image src="{{filter.getLocalPhoto('home_index_rightIcon.png')}}" class="ui-topItem_moreIcon" mode="aspectFit"/>
                 </view>
             </view>
             <view class="ui-brandSelectItem_bottom">

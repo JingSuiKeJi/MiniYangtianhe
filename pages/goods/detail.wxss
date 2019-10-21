@@ -250,7 +250,8 @@ page {
     height: 90rpx;
     background-color: #fff;
     margin: 20rpx auto;
-    line-height: 90rpx;
+    display: flex;
+    align-items: center;
 }
 
 .ui-choseBox>text:nth-child(1) {
@@ -260,28 +261,26 @@ page {
     color: #333333;
     margin-left: 50rpx;
 }
-
-.ui-choseBox>text:nth-child(2) {
-    float: right;
+.ui-choseItem__moreIcon {
+    width: 24rpx;
+    height: 24rpx;
+    margin-left: auto;
     margin-right: 60rpx;
-    color: #999999;
-    font-size: 34rpx;
-    padding-bottom: 30rpx;
+
 }
 
 .ui-collageBox {
     width: 100%;
     background-color: #fff;
-    /*margin-top: 20rpx;*/
     margin-bottom: 20rpx;
 }
 
 .ui-collageItem_top {
+    display: flex;
     width: 100%;
     height: 90rpx;
-    line-height: 90rpx;
     border-bottom: 1rpx solid #F5F5F5;
-    position: relative;
+    align-items: center;
 }
 
 .ui-collageItem_top .ui-topItem_title {
@@ -297,25 +296,15 @@ page {
     font-family: PingFangSC-Semibold;
     font-weight: 600;
     color: #BBBBBB;
-    position: absolute;
-    right: 55rpx;
-    top: 7rpx;
-}
-
-.ui-topItem_moreIcon {
-    font-size: 34rpx;
-    font-family: PingFangSC-Semibold;
-    color: #BBBBBB;
-    position: absolute;
-    right: 20rpx;
-    top: 7rpx;
+    margin-left: 85rpx;
+    
 }
 
 .ui-collageItem_Assess {
+    display: flex;
     width: 100%;
     height: 90rpx;
-    line-height: 90rpx;
-    position: relative;
+    align-items: center;
 }
 
 .ui-AssessItem_count {
@@ -326,7 +315,12 @@ page {
     line-height: 22rpx;
     margin-left: 30rpx;
 }
-
+.ui-AssessItem__moreIcon {
+    width: 24rpx;
+    height: 24rpx;
+    margin-left: auto;
+    margin-right: 20rpx;
+}
 .ui-bottomItem {
     width: 100%;
     height: 170rpx;

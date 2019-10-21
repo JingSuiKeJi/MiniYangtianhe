@@ -75,6 +75,7 @@ const methods = {
             platformFlag: self.data.platformFlag,
             goodsIds: self.data.goodsIds,
             page: 0,
+            type: 3
         }).then((ret) => {   
             self.setData({
                 goodList: ret.data.list,

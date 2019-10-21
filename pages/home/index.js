@@ -71,18 +71,19 @@ const onLoad = function (self) {
             self.getData();
         }
     });
+    
 };
 
 const onReady = function (self) {
-    // self.onScroll('#aim','scrollTop');
-    // self.onScroll('#head','headTop');
+    
 
 }
 
 // 页面onShow方法
 const onShow = function (self) {
-   self.onScroll('#aim','scrollTop');
-    self.onScroll('#head','headTop');
+    
+    // self.onScroll('#aim', 'scrollTop');
+    // self.onScroll('#head', 'headTop');
 
 };
 
@@ -159,19 +160,20 @@ const methods = {
             //         title: '暂时没有获取到最新的微信运动数据, 请稍后再试'
             //     });
             // }
-             let opts = {
+            let banner = data.banner.slice(0, 8);
+            let opts = {
                 hotSearch: data.hotSearch,
-                banner: data.banner,
+                banner: banner,
                 tapImgUrl: data.occasion.imgUrl,
                 stepInfo: stepInfo,
                 BMIIndex: BMIIndex,
                 tabList: data.navigation,
                 notion: data.notion,
                 navigation: data.navigation
-             }
-             if (data.activity.length) {
+            }
+            if (data.activity.length) {
                 opts.activity = data.activity[0];
-             }
+            }
             self.setData(opts);
 
             self.btnShow(data.stepInfo.status);
@@ -231,8 +233,8 @@ const methods = {
                 classifyId: data[0].id
             });
             self.getPageData();
-            self.onScroll('#aim','scrollTop');
-            self.onScroll('#head','headTop');
+            self.onScroll('#aim', 'scrollTop');
+            self.onScroll('#head', 'headTop');
         }, (err) => {
 
         });
@@ -370,11 +372,11 @@ const methods = {
         let opts = e.currentTarget.dataset;
         if (opts.isLink == 2) return;
         _.each(self.data.navigation, (item) => {
-             if (item.id == opts.id) {
+            if (item.id == opts.id) {
                 self.onPageTap(item);
                 return;
             }
-           
+
         });
 
     },
@@ -430,7 +432,7 @@ const methods = {
     showClassify: function (arr) {
         let self = this;
         var classList = [];
-        if(!arr.length) return;
+        if (!arr.length) return;
         var length = Math.ceil(arr.length / 10);
         for (var index = 0; index < length; index++) {
             classList[index] = arr.slice(index * 10, (index + 1) * 10);
@@ -485,15 +487,15 @@ const methods = {
             if (ret.data.list && ret.data.list.length) {
                 if (self.data.page == 1) {
                     self.setData({
-                       list: data.list,
+                        list: data.list,
                     })
                 } else {
                     self.setData({
-                       list: self.data.list.concat(data.list),
+                        list: self.data.list.concat(data.list),
                     })
                 }
             }
-            
+
         }, (err) => {
 
         });
@@ -515,7 +517,7 @@ const methods = {
             wx.showLoading({
                 mask: true,
                 title: '正在上传步数',
-                success() {}
+                success() { }
             });
             self.wxLogin();
         } else {
@@ -573,24 +575,24 @@ const methods = {
         })
     },
 
-    onScroll: function (id,value) {
+    onScroll: function (id, value) {
         const self = this;
         const query = wx.createSelectorQuery();
-            setTimeout(() => {
-                query.select(id).boundingClientRect();
-                query.selectViewport().scrollOffset();
-                query.exec(function (res) {
-                    self.setData({
-                        [value]: res[0].top
-                    });
+        setTimeout(() => {
+            query.select(id).boundingClientRect();
+            query.selectViewport().scrollOffset();
+            query.exec(function (res) {
+                self.setData({
+                    [value]: res[0].top
                 });
+            });
         }, 1000);
-        
- 
+
+
     },
     pageScroll: function (res) {
         let self = this;
-        let top = self.data.scrollTop-self.data.headTop;
+        let top = self.data.scrollTop - self.data.headTop;
         if (res.scrollTop >= top && !self.data.isFixed) {
             self.setData({
                 isFixed: true,
@@ -600,11 +602,11 @@ const methods = {
                 isFixed: false,
             })
         }
-        
+
     },
     onMapTap() {
         const self = this;
-        if(self.data.storeInfo.isBind) return;
+        if (self.data.storeInfo.isBind) return;
         _g.navigateTo({
             url: 'pages/home/map'
         }, self);
@@ -628,7 +630,7 @@ const methods = {
                 _g.navigateTo({
                     url: 'pages/goods/detail',
                     param: {
-                        id:data.otherId 
+                        id: data.otherId
                     }
                 }, self);
                 break;
@@ -660,14 +662,14 @@ const methods = {
                     url: 'pages/card/card',
                     param: param
                 }, self);
-                break; 
+                break;
             case 6:
                 //全部分类
                 _g.navigateTo({
                     url: 'pages/search/classify',
                     param: param
                 }, self);
-                break;                
+                break;
             default:
                 break;
         }
