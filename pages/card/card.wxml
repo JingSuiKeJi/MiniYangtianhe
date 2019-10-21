@@ -4,14 +4,14 @@
     <view class="ui-titleBox">开通权益福卡 享更多优惠</view>
     <view class="ui-textBox">8000万用户的品质之选</view>
     <image src="{{filter.getLocalPhoto('card__quanyi.png')}}" mode="aspectFill" class="ui-plusCard" />
-    <view class="ui-specialItem__title">—— 权益专场 ——</view>
+    <view class="ui-specialItem__title">— 权益专场 —</view>
     <view class="ui-specialItem__EnglishTitle">The special rights and interests</view>
     <view class="ui-specialItem">
         <image src="{{filter.getLocalPhoto('card_quanyika.png')}}" mode="aspectFill" class="ui-specialItem__card" />
         <!-- <view class="ui-specialItem__btn" bindtap="onSkipTap">立即进入</view> -->
          <view class="ui-specialItem__btn" bindtap="onDetailTap">立即进入</view>
     </view>
-    <view class="ui-specialItem__title ui-lineTitle ">—— 线上福利 ——</view>
+    <view class="ui-specialItem__title ui-lineTitle ">— 线上福利 —</view>
     <view class="ui-specialItem__EnglishTitle ui-line__EnglishTitle">online benefits</view>
     <view class="ui-lineBox">
         <image src="{{filter.getLocalPhoto('card__bagIon.png')}}" mode="aspectFill" class="ui-line__Icon" />
@@ -39,7 +39,7 @@
             <image src="{{filter.getLocalPhoto('card__kefu.png')}}" mode="aspectFill" class="ui-leftItem__card" />
         </view>
     </view>
-    <view class="ui-specialItem__title ui-lineTitle ">—— 线下福利 ——</view>
+    <view class="ui-specialItem__title ui-lineTitle ">— 线下福利 —</view>
     <view class="ui-specialItem__EnglishTitle ui-line__EnglishTitle">offline welfare</view>
     <view class="ui-lineBox">
         <image src="{{filter.getLocalPhoto('card__eleCar.png')}}" mode="aspectFill" class="ui-line__moneyIcon" />
@@ -53,7 +53,7 @@
         <text class="ui-line__content">PULS会员享有优先参与大型线下沙龙、高端酒会、年终奖晚宴等活动的权益</text>
         <image src="{{filter.getLocalPhoto('')}}card__chatIcon.png" mode="aspectFill" class="ui-line__card" />
     </view>
-    <view class="ui-specialItem__title ui-lineTitle ">—— 自购省钱 分享赚钱 ——</view>
+    <view class="ui-specialItem__title ui-lineTitle ">— 自购省钱 分享赚钱 —</view>
     <view class="ui-specialItem__EnglishTitle ui-line__EnglishTitle">
         BUY FROM SAVE MONEY SHARE TO MAKE MONEY
     </view>
@@ -127,7 +127,7 @@
             </view>
         </view>
     </view>
-    <view class="ui-specialItem__title ui-lineTitle ">—— 任选一款 成为PULS ——</view>
+    <view class="ui-specialItem__title ui-lineTitle ">— 任选一款 成为PULS —</view>
     <view class="ui-specialItem__EnglishTitle ui-line__EnglishTitle">
         CHOOSE ONE OR BECOME PLUS
     </view>

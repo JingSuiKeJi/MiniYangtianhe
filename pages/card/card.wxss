@@ -387,7 +387,6 @@ page {
     width: 746rpx;
     height: 940rpx;
     background-image: url(http://www.gzlingren.com:8098/yangtianhe/card_backGround2x.png);
-    /* background-image: url(http://m.qpic.cn/psb?/V12Kdegv0qd4wf/pd0u1LVbEgis1XT.dgqoAK3R*j*csvHmoxmaaBXCJ1A!/b/dL8AAAAAAAAA&bo=zgKQAwAAAAADJ10!&rf=viewer_4&t=5); */
     background-size: cover;
     position: relative;
 }
@@ -397,10 +396,11 @@ page {
     height:328rpx;
     margin-bottom: 20rpx;
     margin-left: 25rpx;
-    background:#FFFFFFFF;
+    background-color:#FFFFFFFF ;
     border-radius:8rpx;
     text-align: center;
     position: relative;
+    z-index: 999999;
 }
 .ui-goodsItem:nth-child(1) {
     margin-top: 58rpx;

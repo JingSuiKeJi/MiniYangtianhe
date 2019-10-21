@@ -251,7 +251,7 @@ var filter = {
 			case 2:
 				return '福气核销';
 			case 3:
-				return '赠送';
+				return '赠送给';
 			default: 
 			   return '';
 		}

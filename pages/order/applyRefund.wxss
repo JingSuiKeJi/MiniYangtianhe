@@ -371,36 +371,30 @@ page{
 .btn-closeIcon{
 	width: 40rpx;
 	height: 40rpx;
-	/* background-image:url('http://www.gzlingren.com:8098/yangtianhe/choseScale_delectIcon.png');
-	background-repeat: no-repeat;
-	background-position: 40rpx 40rpx;
-	background-size: cover; */
 }
 
 .modal-header__reason{
 	margin-left: 220rpx;
-	/* height:34rpx; */
 	font-size:34rpx;
 	font-family:PingFangSC;
 	font-weight:500;
 	color:rgba(51,51,51,1);
-	/* line-height:34rpx; */
 }
 
 .modal-explainText{
-	margin: 0 0 76rpx 40rpx;
-	/* height:26rpx; */
+	margin-left: 40rpx;
 	font-size:30rpx;
 	font-family:PingFang-SC;
 	font-weight:400;
 	color:rgba(102,102,102,1);
-	/* line-height:26rpx; */
+	height: 110rpx;
+	white-space: normal;
+	
 }
 
 .modal-afterReason{
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
 	margin-left: 40rpx;
 	width: 670rpx;
 	height: 530rpx;
@@ -409,54 +403,35 @@ page{
 }
 
 .modal-reasonItems{
-	width: 100%;
 	display: flex;
-	/* justify-content: space-between; */
+	width: 100%;
+	height: 110rpx;
+	align-items: center;
 }
 
 .modal-reasonItems__text{
-	/* width: 300rpx; */
-	/* margin-top: 6rpx; */
-	/* height:30rpx; */
+	max-width: 100%;
+	width: 600rpx;
 	font-size:30rpx;
 	font-family:PingFangSC;
 	font-weight:400;
 	color:rgba(51,51,51,1);
-	/* line-height:30rpx; */
+	white-space: normal;
+
 }
 
 .modal-selectIcon{
 	width: 40rpx;
 	height: 40rpx;
 	margin-left: auto;
-	/* background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover; */
 }
 
-/* .modal-selectReason{
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_check.png');
-}
-
-.modal-notSelectReason{
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_oval.png');
-} */
 
 .btn-selectFinish{
 	display: flex;
 	margin: 62rpx 0 0 40rpx;
 	width: 670rpx;
 	height: 100rpx;
-	/* background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_selectFinish.png');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover; */
-	/* font-size:30rpx;
-	font-family:PingFangSC;
-	font-weight:600;
-	color:rgba(255,255,255,1); */
-	/* line-height:100rpx;
-	text-align: center; */
 	justify-content: center;
 	align-items: center;
 	position: relative;

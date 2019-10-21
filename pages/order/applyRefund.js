@@ -16,6 +16,7 @@ let data = {
 	tempFilePaths:[],//本地照片地址
 	showModal:false,//提交订单
 	status: 1,
+	causeList: []
 };
 const onLoad = function(self) {
 	let param = {

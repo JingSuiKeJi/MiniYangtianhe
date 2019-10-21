@@ -82,13 +82,15 @@
         <view class="ui-choseBox" bindtap="showModal" wx:if="{{type != 6}}">
             <text wx:if="{{!defaultScale}}">请选择商品规格及数量</text>
             <text wx:else>已选：{{defaultScale}}</text>
-            <text>></text>
+            <!-- <text>></text> -->
+            <image src="{{filter.getLocalPhoto('classfity_rightIcon.png')}}" class="ui-choseItem__moreIcon"  mode="aspectFit"/>
         </view>
         <view class="ui-collageBox" wx:if="{{type == 5 && collage.length}}">
             <view class="ui-collageItem_top" bindtap="onMoreTap">
                 <text class="ui-topItem_title">以下小伙伴已发起拼团，可以直接参加</text>
                 <text class="ui-topItem_moreText">查看更多拼团</text>
-                <text class="ui-topItem_moreIcon">></text>
+                <!-- <text class="ui-topItem_moreIcon">></text> -->
+                <image src="{{filter.getLocalPhoto('classfity_rightIcon.png')}}" class="ui-AssessItem__moreIcon"  mode="aspectFit"/>
             </view>
             <view class="ui-collageItem_bottom">
                 <view class="ui-bottomItem" wx:for="{{collage}}" wx:key="index">
@@ -109,10 +111,11 @@
             <view class="ui-collageItem_Assess" bindtap="onMoreComments">
                 <text class="ui-AssessItem_count">评价（{{commentLength}}）</text>
                 <!-- <text class="ui-AssessItem_text">好评率99%</text> -->
-                <text class="ui-topItem_moreIcon">></text>
+                <!-- <text class="ui-topItem_moreIcon">></text> -->
+                 <image src="{{filter.getLocalPhoto('classfity_rightIcon.png')}}" class="ui-AssessItem__moreIcon"  mode="aspectFit"/>
             </view>
-            <view class="ui-detailAssessBox">
-                <scroll-view scroll-x style="height: 265rpx;" wx:if="{{commentLength}}">
+            <view class="ui-detailAssessBox" wx:if="{{commentLength}}">
+                <scroll-view scroll-x style="height: 265rpx;" >
                     <view class="ui-detailAssess_item" wx:for="{{commentList}}" wx:key="index">
                         <image src="{{filter.getAvatar(host,item.commentUser.avatar)}}" class="ui-assessItem_icon" mode="aspectFill"/>
                         <view class="ui-assessItem_userName">{{item.commentUser.nickname}}</view>
