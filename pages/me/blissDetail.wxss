@@ -17,20 +17,25 @@
 
 .ui-moneyBox{
 	position: absolute;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_happyBackground.png');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
 	height: 526rpx;
 	width: 100%;
 }
-
+.ui-moneyItem__bgImg {
+	height: 526rpx;
+	width: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
 .moneyInfo{
 	margin-top: 168rpx;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	z-index: 99999;
+    position: relative;
+
 }
 
 .moneyInfo text{
@@ -61,10 +66,6 @@
 	display: inline-block;
 	width: 48rpx;
 	height: 38rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/fuqi__icon.png');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
 	margin-right: 12rpx;
 	top: 8rpx;
 }
@@ -83,6 +84,7 @@
 	color:rgba(255,255,255,1);
 	line-height:80rpx;
 	text-align: center;
+	position: relative;
 }
 
 .btn-withdraw{

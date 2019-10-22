@@ -8,8 +8,8 @@
     <view class="ui-specialItem__EnglishTitle">The special rights and interests</view>
     <view class="ui-specialItem">
         <image src="{{filter.getLocalPhoto('card_quanyika.png')}}" mode="aspectFill" class="ui-specialItem__card" />
-        <!-- <view class="ui-specialItem__btn" bindtap="onSkipTap">立即进入</view> -->
-         <view class="ui-specialItem__btn" bindtap="onDetailTap">立即进入</view>
+        <view class="ui-specialItem__btn" bindtap="onSkipTap">立即进入</view>
+         <!-- <view class="ui-specialItem__btn" bindtap="onDetailTap">立即进入</view> -->
     </view>
     <view class="ui-specialItem__title ui-lineTitle ">— 线上福利 —</view>
     <view class="ui-specialItem__EnglishTitle ui-line__EnglishTitle">online benefits</view>

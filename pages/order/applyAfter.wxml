@@ -5,7 +5,8 @@
 		<!-- 退款商品 -->
 		<view class="ui-newsInfoBox">
 			<view class="ui-newsInfoItem" wx:for="{{storeList}}" wx:for-item="item" wx:key="idx">
-				<view catchtap="onSelectTap" data-index="{{index}}" class="ui-selectCommon {{item.select?'ui-selectIcon':'ui-notSelectIcon'}}"></view>
+				<!-- <view catchtap="onSelectTap" data-index="{{index}}" class="ui-selectCommon {{item.select?'ui-selectIcon':'ui-notSelectIcon'}}"></view> -->
+				<image mode="aspectFit" src="{{item.select ? filter.getLocalPhoto('cart_selestIcon.png'): filter.getLocalPhoto('my_unCheck.png')}}" class="ui-selectCommon" catchtap="onSelectTap" data-index="{{index}}"/>
 				<view class="ui-newsImg">
 					<image src="{{filter.getPhoto(host,item.imgUrl)}}"></image>
 				</view>
@@ -23,43 +24,32 @@
 		</view>
 		
 		<view class="ui-cutOff"></view>
-		
-		<!-- 退款类型 -->
-		<!-- <block wx:if="{{orderStatus=='待发货'||orderStatus=='已过期'||takeState=='自提'}}">
-			<view class="ui-itemCommon" bindtap="onRefundTap">
-				<view class="ui-iconCommon ui-refundIcon"></view>
-				<view class="ui-reasonText">
-					<text>我要退款（无需退货）</text>
-					<text>没收到货，或与客服协商同意不用退货仅退款</text>
-				</view>
-				<view class="ui-skipIcon"></view>
-			</view>
-		</block> -->
 		<block >
 			<view class="ui-refundHandleBox">
 				<view class="ui-itemCommon" bindtap="onRefundTap" wx:if="{{refundSwich}}" data-type ="1">
-					<view class="ui-iconCommon ui-refundIcon"></view>
+					<image mode="aspectFit"  src="{{filter.getLocalPhoto('my_refund.png')}}" class="ui-iconCommon "/>
 					<view class="ui-reasonText">
 						<text>我要退款（无需退货）</text>
 						<text>没收到货，或与客服协商同意不用退货仅退款</text>
 					</view>
-					<view class="ui-skipIcon"></view>
+					<image mode="aspectFit"  src="{{filter.getLocalPhoto('my_rightArrow.png')}}" class="ui-skipIcon "/>
 				</view>
 				<view class="ui-itemCommon" bindtap="onRefundTap" wx:if="{{salesReturnSwich}}" data-type ="2">
-					<view class="ui-iconCommon ui-exchangeIcon"></view>
+					<!-- <view class="ui-iconCommon ui-exchangeIcon"></view> -->
+					<image mode="aspectFit"  src="{{filter.getLocalPhoto('my_exchangeGoods.png')}}" class="ui-iconCommon "/>
 					<view class="ui-reasonText">
 						<text>我要退货退款</text>
 						<text>已收到货，需要退还收到的货物</text>
 					</view>
-					<view class="ui-skipIcon"></view>
+					<image mode="aspectFit"  src="{{filter.getLocalPhoto('my_rightArrow.png')}}" class="ui-skipIcon "/>
 				</view>
 				<!-- <view class="ui-itemCommon" bindtap="onExchangeGoodsTap" wx:if="{{exchangeGoodsSwich}}">
-					<view class="ui-iconCommon ui-returnIcon"></view>
+					<image mode="aspectFit"  src="{{filter.getLocalPhoto('my_salesReturn.png')}}" class="ui-iconCommon "/>
 					<view class="ui-reasonText">
 						<text>我要换货</text>
 						<text>商品存在质量问题，联系客服协商换货</text>
 					</view>
-					<view class="ui-skipIcon"></view>
+					<image mode="aspectFit"  src="{{filter.getLocalPhoto('my_rightArrow.png')}}" class="ui-skipIcon "/>
 				</view> -->
 			</view>
 		</block>

@@ -58,9 +58,6 @@ page {
     margin-top: 60rpx;
     display: inline-block;
     text-align: center;
-    /* margin-left: 220rpx;
-    background-image: url(http://www.gzlingren.com:8098/yangtianhe/step_ditRadius.png);
-    background-size: 100% ; */
     position: relative;
    
 }
@@ -219,9 +216,6 @@ page {
     font-weight:500;
     color:#C55300;
     line-height:42rpx;
-    /* position: absolute;
-    top: 0rpx;
-    left: 234rpx; */
     background-image: url(http://www.gzlingren.com:8098/yangtianhe/step_historyIcon.png);
     background-size: 240rpx 72rpx;
     justify-content: center;
@@ -235,7 +229,6 @@ page {
     line-height: 90rpx;
     border-bottom: 1rpx solid #E5E5E5;
     position: relative;
-    /* box-shadow:0px -2px 0px 0px rgba(0,0,0,0.1); */
     color:#666666;
 }
 .ui-hirtoryItem__list > text {
@@ -376,9 +369,6 @@ page {
     line-height:36rpx;
     margin-left: 20rpx;
     text-align: left;
-    /* overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap; */
 }
 .ui-friendsLiItem__step {
     font-size:26rpx;

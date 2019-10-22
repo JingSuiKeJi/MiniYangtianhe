@@ -61,18 +61,21 @@ page {
 }
 
 .ui-stepTapBox {
+    display: flex;
     width: 690rpx;
     height: 320rpx;
     margin: 0 auto;
     background-image: url(http://www.gzlingren.com:8098/yangtianhe/yangleduo.png);
     background-size: 690rpx 320rpx;
     position: relative;
+    justify-content: center;
 }
 
 .ui-stepTapBox_left {
     display: inline-block;
     position: absolute;
     top: 36rpx;
+    left: 0;
 }
 
 .ui-stepTapBox_left>image {
@@ -102,7 +105,7 @@ page {
     height: 282rpx;
     margin: 0 auto;
     margin-top: 24rpx;
-    margin-left: 175rpx;
+    /* margin-left: 175rpx; */
     display: inline-block;
     text-align: center;
     position: relative;
@@ -179,12 +182,11 @@ page {
     color: #fff;
     line-height: 37px;
     background-image: url(http://www.gzlingren.com:8098/yangtianhe/home__index_stepIcon.png);
-    /* background-image: url(http://m.qpic.cn/psb?/V12Kdegv0qd4wf/GwPE4VGMgQCfOkSfzOM7cuvwSnfcRYUIalPHgiY3ZY8!/b/dLYAAAAAAAAA&bo=yABAAAAAAAADF7o!&rf=viewer_4&t=5); */
     background-size: 220rpx 84rpx;
     text-align: center;
     position: absolute;
     top: 36rpx;
-    right: 20rpx;
+    right: 0rpx;
 }
 
 .ui-stepTapBox>image {

@@ -154,10 +154,12 @@ page{
 	color:rgba(255,255,255,1);
 	line-height:48rpx;
 	text-align: center;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_immediateUseBtn.png');
+	/* background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_immediateUseBtn.png');
 	background-repeat: no-repeat;
 	background-position: center center;
-	background-size: cover;
+	background-size: cover; */
+	background-color: #F4A093;
+	border-radius: 30rpx;
 }
 
 .ui-haveBeenUsed{
@@ -166,10 +168,6 @@ page{
 	right: 0;
 	width: 150rpx;
 	height: 126rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_used.png');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
 }
 
 .ui-outOfDate{
@@ -199,10 +197,6 @@ page{
 	margin-top:318rpx;
 	width: 200rpx;
 	height: 152rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_youhuiquan.png');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
 }
 
 .ui-blankText{

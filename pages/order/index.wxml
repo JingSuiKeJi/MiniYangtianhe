@@ -4,7 +4,7 @@
     <view wx:if="{{orderList}}" class="ui-main">
         <view class="ui-searchOrder">
             <view class="ui-searchBox">
-                <view class="ui-searchIcon"></view>
+                <image mode="aspectFit" src="{{filter.getLocalPhoto('ic_search.png')}}" class="ui-searchIcon"/>
                 <input class="ui-searchInput" type="text" placeholder="搜索订单" bindconfirm="onInputTap" />
             </view>
         </view>
@@ -98,7 +98,8 @@
         </view>
     </view>
     <view wx:if="{{!orderList}}" class="ui-notOrder">
-        <view class="ui-notOrderIcon"></view>
+        <image src="{{filter.getLocalPhoto('my_orderListIcon.png')}}" mode="aspectFit" class="ui-notOrderIcon"/>
+        <!-- <view class="ui-notOrderIcon"></view> -->
         <view class="ui-noOrderText">
             <text>没有订单</text>
             <text>要不去逛逛</text>

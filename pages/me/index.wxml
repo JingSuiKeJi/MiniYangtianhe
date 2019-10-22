@@ -5,11 +5,12 @@
 	<view class='tab-bottom'></view>
     <view class="ui-main" >
         <view class="ui-infoBox">
+			<image mode="aspectFill"  src="{{filter.getLocalPhoto('my_background.png')}}" class="ui-infoItem__bgImg"/>
             <view class="ui-infoItem">
 				<!-- 头像 -->
                 <view class="ui-itemImgBox">
 					<image class="ui-haveAvatar" wx:if="{{isLogin}}" src="{{filter.getAvatar(host,userInfo.avatar)}}" mode="aspectFill"></image>
-					<image class="ui-noAvatar" wx:else src="http://www.gzlingren.com:8098/yangtianhe/my_personalIcon.png" mode="aspectFill"></image>
+					<image class="ui-noAvatar" wx:if="{{!isLogin}}" src="{{filter.getLocalPhoto('my_personalIcon.png')}}" mode="aspectFill"></image>
 				</view>
 				<!-- id -->
 				<block wx:if="{{isLogin}}">
@@ -29,7 +30,7 @@
 				<!-- 使用福气 -->
 				<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onScanTap" >
 					<button formType="submit" class="ui-useBlisses">
-						<view class="ui-sueBlissesIcon"></view>
+						<image mode="aspectFit" src="{{filter.getLocalPhoto('useBlisses.png')}}" class="ui-sueBlissesIcon"/>
 						<text>使用福气</text>
 					</button>
                 </form>
@@ -57,8 +58,9 @@
             </view>
 			
 			<view class="ui-vip">
+			    <image mode="aspectFill" src="{{filter.getLocalPhoto('my_vipCard.png')}}" class="ui-vip__bgImg"/>
 				<view>
-					<view class="ui-iconVip"></view>
+					<image src="{{filter.getLocalPhoto('my_vipIcon.png')}}" mode="aspectFill" class="ui-iconVip"/>
 					<text>PLUS会员卡</text>
 				</view>
 				<view class="ui-vipItem__text" bindtap="onCardRights">立即查看</view>
@@ -93,46 +95,51 @@
 					<text class="ui-orderText">我的订单</text>
 				    <view class="ui-orderCheck" >
 						<text>全部订单</text>
-						<view class="ui-checkMoreOrder"></view>
+						<image mode="aspectFit" src="{{filter.getLocalPhoto('my_rightArrow.png')}}" class="ui-checkMoreOrder"/>
 				</view>
 				</button>
 			</form>
 			<view class="ui-orderStatus">
-                <form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onPayTap" class="ui-feedbackItem">
-					<button formType="submit" >
+                <form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onPayTap" class="ui-orderStatuaItem">
+					<button formType="submit" class="ui-feedbackItem">
 						<view wx:if="{{userInfo.orderNum.waitPayNum>0}}" class="ui-notification" 
 						style="{{userInfo.orderNum.waitPayNum>9?'height: 35rpx; width: 35rpx':''}}"><text>{{userInfo.orderNum.waitPayNum}}</text></view>
-						<view class="ui-iconFeedback"></view>
+						<!-- <view class="ui-iconFeedback"></view> -->
+						<image mode="aspectFit" src="{{filter.getLocalPhoto('my_uppaid.png')}}" class="ui-iconFeedback"/>
 						<text class="ui-orderText">待支付</text>
 					</button>
 			    </form>
-				<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onShippingTap" class="ui-feedbackItem">
-					<button formType="submit" >
+				<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onShippingTap"  class="ui-orderStatuaItem">
+					<button formType="submit" class="ui-feedbackItem">
 						<view wx:if="{{userInfo.orderNum.waitSendGoodsNum>0}}" class="ui-notification" 
 						style="{{userInfo.orderNum.waitSendGoodsNum>9?'height: 35rpx; width: 35rpx':''}}"><text>{{userInfo.orderNum.waitSendGoodsNum}}</text></view>
-						<view class="ui-iconFeedback"></view>
+						<!-- <view class="ui-iconFeedback"></view> -->
+						<image mode="aspectFit" src="{{filter.getLocalPhoto('my_overhang.png')}}" class="ui-iconFeedback"/>
 						<text class="ui-orderText">待发货</text>
 					</button>
 			    </form>
-				<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onReceivingTap" class="ui-feedbackItem">
-					<button formType="submit" >
+				<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onReceivingTap"  class="ui-orderStatuaItem">
+					<button formType="submit" class="ui-feedbackItem">
 						<view wx:if="{{userInfo.orderNum.waitConfirmGoodsNum>0}}" class="ui-notification" 
 						style="{{userInfo.orderNum.waitConfirmGoodsNum>9?'height: 35rpx; width: 35rpx':''}}"><text>{{userInfo.orderNum.waitConfirmGoodsNum}}</text></view>
-						<view class="ui-iconFeedback"></view>
+						<!-- <view class="ui-iconFeedback"></view> -->
+						<image mode="aspectFit" src="{{filter.getLocalPhoto('my_waitReceiving.png')}}" class="ui-iconFeedback"/>
 						<text class="ui-orderText">待收货</text>
 					</button>
 			    </form>
-				<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onSignedTap" class="ui-feedbackItem">
-					<button formType="submit" >
+				<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onSignedTap"  class="ui-orderStatuaItem">
+					<button formType="submit" class="ui-feedbackItem">
 						<view wx:if="{{userInfo.orderNum.finishNum>0}}" class="ui-notification" 
 						style="{{userInfo.orderNum.finishNum>9?'height: 35rpx; width: 35rpx':''}}"><text>{{userInfo.orderNum.finishNum}}</text></view>
-						<view class="ui-iconFeedback"></view>
+						<!-- <view class="ui-iconFeedback"></view> -->
+						<image mode="aspectFit" src="{{filter.getLocalPhoto('my_approved.png')}}" class="ui-iconFeedback"/>
 						<text class="ui-orderText">已签收</text>
 					</button>
 			    </form>
-				<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onAfterSaleTap" class="ui-feedbackItem">
-					<button formType="submit" >
-						<view class="ui-iconFeedback"></view>
+				<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onAfterSaleTap"  class="ui-orderStatuaItem">
+					<button formType="submit" class="ui-feedbackItem">
+						<!-- <view class="ui-iconFeedback"></view> -->
+						<image mode="aspectFit" src="{{filter.getLocalPhoto('my_afterSale.png')}}" class="ui-iconFeedback"/>
 					   <text class="ui-orderText">售后</text>
 					</button>
 			    </form>
@@ -149,7 +156,7 @@
 				<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onDevelopInviterInfo"  >
 					<button formType="submit" class="ui-blockInviter">
 						<text class="ui-item__text">我的邀请人</text>
-					    <view class="{{showInvite==false?'ui-moreIcon':'ui-dropDown'}}"></view>
+						<image mode="aspectFit" src="{{showInvite==false ? filter.getLocalPhoto('my_rightArrow.png'):filter.getLocalPhoto('my_downArrow.png')}}" class="{{showInvite==false?'ui-moreIcon':'ui-dropDown'}}"/>
 					</button>
 			    </form>
 				<view class="ui-inviter" wx:if="{{showInvite}}">
@@ -160,8 +167,7 @@
 					</view>
 					<view class="ui-inputInviterInfo" wx:if="{{!userInfo.inviter}}">
 						<input class="ui-inputBox" type="text" placeholder="请输入邀请人ID" value="{{inviterId}}" confirm-type="done" bindinput ="inviterIdInput"/>
-						<!-- 清空文字 -->
-						<view class="ui-emptyCircle" bindtap="onEmpty"></view>
+						<image mode="aspectFit" src="{{filter.getLocalPhoto('my_empty.png')}}" class="ui-emptyCircle" bindtap="onEmpty"/>
 						<view class="ui-cutOff"></view>
 						<view class="ui-save" bindtap="onSaveInviterInfo">保存</view>
 					</view>
@@ -170,58 +176,42 @@
 			<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onRevenueTap" hidden="{{!userInfo.distribution}}">
 				<button formType="submit" class="ui-itemBox">
 					<text>收益中心</text>
-				    <view class="ui-moreIcon"></view>
+					<image mode="aspectFit" src="{{ filter.getLocalPhoto('my_rightArrow.png')}}" class="ui-moreIcon"/>
 				</button>
 			</form>
 			<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onStoreApplicationTap" wx:if="{{!userInfo.verifier}}">
 				<button formType="submit" class="ui-itemBox" >
 					<text>门店申请</text>
-				    <view class="ui-moreIcon"></view>
+				   <image mode="aspectFit" src="{{ filter.getLocalPhoto('my_rightArrow.png')}}" class="ui-moreIcon"/>
 				</button>
 			</form>
 			<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onMyCommentTap"  >
 				<button formType="submit" class="ui-itemBox" >
 					<text>我的评价</text>
-				    <view class="ui-moreIcon"></view>
+				   <image mode="aspectFit" src="{{ filter.getLocalPhoto('my_rightArrow.png')}}" class="ui-moreIcon"/>
 				</button>
 			</form>
 			<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onAddressHandleTap"  >
 				<button formType="submit" class="ui-itemBox" >
 					 <text>地址管理</text>
-				     <view class="ui-moreIcon"></view>
+				    <image mode="aspectFit" src="{{ filter.getLocalPhoto('my_rightArrow.png')}}" class="ui-moreIcon"/>
 				</button>
 			</form>
 			<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onMessageInformTap"  >
 				<button formType="submit" class="ui-itemBox" >
 					<text>消息通知</text>
-				    <view class="ui-moreIcon"></view>
+				   <image mode="aspectFit" src="{{ filter.getLocalPhoto('my_rightArrow.png')}}" class="ui-moreIcon"/>
 				</button>
 			</form>
 			<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onStoreTap"  wx:if="{{userInfo.verifier}}">
 				<button formType="submit" class="ui-itemBox" >
 					 <text>门店中心</text>
-				     <view class="ui-moreIcon"></view>
+				    <image mode="aspectFit" src="{{ filter.getLocalPhoto('my_rightArrow.png')}}" class="ui-moreIcon"/>
 				</button>
 			</form>
         </view>
 		<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onLogOutTap"  wx:if="{{isLogin}}">
 			<button formType="submit" class="ui-LogOut" >退出登录</button>
 		</form>
-		<!--弹窗-->
-		<!-- <view class="modal-mask" bindtap="hideModal" catchtouchmove="true" wx:if="{{showModal}}"></view>
-		<view class="modal-dialog" wx:if="{{showModal}}">
-			<view class="moadl-ythAvatar"></view>
-			<view class="modal-title"><text>养天和</text><text>申请</text></view>
-			<view class="modal-infoText">获取你的昵称、头像、地区及性别</view>
-			<view class="modal-infoBox">
-				<view class="modal-infoBoxAvatar"></view>
-				<text>命运的杰克</text>
-				<text>微信个人信息</text>
-			</view>
-			<view class="modal-footer">
-				<view class="btn-cancel" bindtap="onCancel" data-status="cancel">拒绝</view>
-				<view class="btn-confirm" bindtap="onConfirm" data-status="confirm">允许</view>
-			</view>
-		</view> -->
     </view>
 </view>

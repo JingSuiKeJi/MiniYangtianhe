@@ -48,6 +48,7 @@ page{
 }
 
 .ui-StatusIcon{
+	display: block;
 	margin-top: 104rpx;
 	background-repeat: no-repeat;
 	background-position: center center;
@@ -58,28 +59,28 @@ page{
 .ui-notPaymentIcon{
 	width: 150rpx;
 	height: 184rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_waitWuliu.png');
+	/* background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_waitWuliu.png'); */
 }
 
 /* 待发货 */
 .ui-waitShipmentsIcon{
 	width: 152rpx;
 	height: 192rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_waitGroup.png');
+	/* background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_waitGroup.png'); */
 }
 
 /* 待收货 */
 .ui-waitReceivingIcon{
 	width: 186rpx;
 	height: 152rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_inTrading.png');
+	/* background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_inTrading.png'); */
 }
 
 /* 交易成功 */
 .ui-tradeSuccessfully{
 	width: 158rpx;
 	height: 150rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_tradeSuccessfully.png');
+	/* background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_tradeSuccessfully.png'); */
 }
 
 /* 待核销 */
@@ -146,14 +147,14 @@ page{
 .ui-closeDeal{
 	width: 150rpx;
 	height: 150rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_smash.png');
+	/* background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_smash.png'); */
 }
 
 /* 评价成功 */
 .ui-commentSuccess{
 	width: 152rpx;
 	height: 150rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_writeGroup.png');
+	/* background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_writeGroup.png'); */
 }
 
 .ui-verificInfoBox{
@@ -250,10 +251,10 @@ page{
 .ui-landmarkIcon{
 	width: 34rpx;
 	height: 40rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_landmarkIcon.png');
+	/* background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_landmarkIcon.png');
 	background-repeat: no-repeat;
 	background-position: center center;
-	background-size: cover;
+	background-size: cover; */
 	margin-left: 40rpx;
 }
 
@@ -559,10 +560,6 @@ page{
 	transform: translateX(-50%);
 	width: 64rpx;
 	height: 64rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_closeVerify.png');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
 }
 
 .ui-expressInfo{
@@ -571,12 +568,19 @@ page{
 	width: 614rpx;
 	height: 184rpx;
 	border-radius:16rpx 16rpx 0 0;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_orderWaitBg.png');
+	/* background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_orderWaitBg.png');
 	background-repeat: no-repeat;
 	background-position: center center;
-	background-size: cover;
+	background-size: cover; */
+	position: relative;
 }
-
+.ui-expressInfoItem {
+	width: 614rpx;
+	height: 184rpx;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
 .ui-expressImg{
 	margin-left:40rpx;
 	width: 120rpx;
@@ -593,6 +597,7 @@ page{
 	display: flex;
 	flex-direction: column;
 	margin-left: 50rpx;
+	position: relative;
 }
 
 .ui-expressText text{
@@ -648,24 +653,18 @@ page{
 }
 
 .ui-arriveIcon{
+	display: block;
 	width: 40rpx;
 	height: 40rpx;
 	transform: translateX(-50%);
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_wuliu.png');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
 }
 
 .ui-inTheWayIcon{
+	display: block;
 	margin-left: -1rpx;
 	width: 20rpx;
 	height: 20rpx;
 	transform: translate(-50%,50%);
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_ovalSelect.png');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
 }
 
 .ui-itemsStatus text{

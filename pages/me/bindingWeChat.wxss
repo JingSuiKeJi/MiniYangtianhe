@@ -50,10 +50,8 @@ page{
 	width: 512rpx;
 	height: 80rpx;
 	margin: 60rpx 0 0 120rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_btnBindingSuccess.png');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: contain;
+	background-color: #E1E1E1;
+	border-radius: 50rpx;
 	font-size:28rpx;
 	font-family:PingFangSC-Semibold;
 	font-weight:600;
@@ -66,10 +64,8 @@ page{
 	width: 512rpx;
 	height: 80rpx;
 	margin: 60rpx 0 0 120rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_btnNotBound.png');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: contain;
+	background-color: #3BD7C6;
+	border-radius: 50rpx;
 	font-size:28rpx;
 	font-family:PingFangSC-Semibold;
 	font-weight:600;

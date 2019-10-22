@@ -7,7 +7,7 @@ const _c = app.config;
 const Platfrom = require('../../service/Platfrom');
 // 初始化数据
 const data = {
-    platformFlag: 1
+    platformFlag: 1,
 };
 
 // 页面onLoad方法
@@ -63,6 +63,9 @@ const methods = {
         let self = this;
         _g.navigateTo({
             url: 'pages/card/rightsCard',
+            param: {
+                platformFlag: self.data.platformFlag, 
+            }
         }, self);
     },
     onDetailTap: function (e) {

@@ -26,24 +26,27 @@
 	left: 32rpx;
 	width:686rpx;
 	height:216rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_returnsBackground.png');
+	/* background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_returnsBackground.png');
 	background-repeat: no-repeat;
 	background-position: center center;
-	background-size: cover;
+	background-size: cover; */
 	border-radius:16rpx;
 }
-
+.ui-InfoItem__bgImg {
+	width: 686rpx;
+    height: 216rpx;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
 .ui-itemImgBox{
 	display: inline-block;
 	width:120rpx;
 	height:120rpx;
-	/* background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_qrHeader.png');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
-	border-radius: 120rpx; */
 	margin-top: 48rpx;
 	margin-left: 48rpx;
+	border-radius: 50%;
+	position: relative;
 }
 
 .ui-textBox{
@@ -126,10 +129,6 @@
 	margin-top: 26rpx;
 	width:26rpx;
 	height:30rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_withdrawalCommissionIcon.png');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
 }
 
 .ui-withdrawItem view:first-child view:last-child{
@@ -237,19 +236,6 @@
 	background-position: center center;
 	background-size: contain;
 }
-
-.ui-detailItem:nth-child(1) .detailIcon{
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_totalCommissionIcon.png');
-}
-
-.ui-detailItem:nth-child(2) .detailIcon{
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_applicationWithdrawalIcon.png');
-}
-
-.ui-detailItem:nth-child(3) .detailIcon{
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_personalCodeIcon.png');
-}
-
 .ui-detailItem text{
 	display: block;
 	height:34rpx;

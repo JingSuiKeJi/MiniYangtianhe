@@ -170,10 +170,6 @@ page{
 	margin-top: 32rpx;
 	width: 40rpx;
 	height: 40rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_icAddToOut.png');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
 }
 
 .ui-addBox text{
@@ -201,7 +197,7 @@ page{
 	background:#FFFFFF;
 }
 
-.ui-showPicture image{
+.ui-showPictureItem{
 	width: 100%;
 	height: 100%;
 }
@@ -211,10 +207,6 @@ page{
 	width: 40rpx;
 	height: 40rpx;
 	transform: translate(-18rpx,-10rpx);
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_ic_off_red.png');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
 }
 
 /* 发布按钮 */

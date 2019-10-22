@@ -7,7 +7,8 @@
 			<text class="ui-personalId">{{userInfo.nickname}}</text>
 			<image src="{{filter.getAvatar(host,shareQR)}}" mode="aspectFill" class="ui-qrInfo" wx:if="{{shareQR}}"/>
 		</view>
-		<view class="btn-savePoster"></view>
+		<!-- <view class="btn-savePoster"></view> -->
+		<image src="{{filter.getLocalPhoto('my_save.png')}}" mode="aspectFit" class="btn-savePoster"/>
 		<text class="ui-savePosterText">保存海报</text>
 		<view class="btn-share">立即分享</view>
 	</view>
