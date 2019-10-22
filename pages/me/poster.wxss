@@ -9,7 +9,7 @@ page{
 .ui-main {
     width: 100%;
 }
-
+//
 .ui-posterBox{
 	margin: 18rpx 0 0 104rpx;
 }
@@ -92,10 +92,8 @@ page{
 .ui-posterShare{
 	width: 512rpx;
 	height: 80rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_btnNotBound.png');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
+	background-color: #38D7C5;
+	border-radius: 50rpx;
 	margin: 82rpx 0 0 120rpx;
 	font-size:28rpx;
 	font-family:PingFangSC-Semibold;
@@ -142,29 +140,17 @@ page{
 	flex-direction: column;
 }
 
-.btn-common view{
+.btn-common image{
 	width: 100rpx;
 	height: 100rpx;
 }
 
 .ui-wxImg{
-	/* background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_posterShare.png');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover; */
 	display: block;
 	width: 88rpx;
 	height: 88rpx;
 	margin: 0 auto 20rpx auto;
 }
-
-.ui-saveImg{
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_posterSave.png');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
-}
-
 .btn-common text{
 	height:26rpx;
 	font-size:26rpx;
@@ -183,9 +169,6 @@ page{
 	position: relative;
 }
 .ui-share__canvas {
-	 /*position: absolute;
-	top: 0;
-	left: 0; */
 	position: relative;
 	top: 9999px;
 	width: 542rpx;

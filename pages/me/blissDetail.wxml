@@ -4,10 +4,12 @@
     <view class="ui-main">
         <navBar ext-class="navPosition" title='福气明细' iconTheme='white' color='#ffffff' background='transparent' back="{{true}}" bindback="handlerGobackClick"></navBar>
         <view class="ui-moneyBox">
+            <image mode="aspectFill" src="{{filter.getLocalPhoto('my_happyBackground.png')}}" class="ui-moneyItem__bgImg"/>
             <view class="moneyInfo">
                 <text>{{points}}</text>
                 <view class="ui-blissTextFlex">
-                    <view class="ui-blissIcon"></view>
+                    <image mode="aspectFit" src="{{filter.getLocalPhoto('fuqi__icon.png')}}" class="ui-blissIcon"/>
+                    <!-- <view class="ui-blissIcon"></view> -->
                     <text>可用福气</text>
                 </view>
             </view>

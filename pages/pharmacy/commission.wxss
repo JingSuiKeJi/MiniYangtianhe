@@ -17,20 +17,23 @@
 
 .ui-moneyBox{
 	position: absolute;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_commissionBackground.png');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
 	height: 526rpx;
 	width: 100%;
 }
-
+.ui-moneyItem__bgImg {
+	height: 526rpx;
+	width: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
 .moneyInfo{
 	margin-top: 168rpx;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	position: relative;
 }
 
 .moneyInfo text{
@@ -71,6 +74,7 @@
 	line-height:80rpx;
 	text-align: center;
 	margin: 50rpx 0 0 224rpx;
+	position: relative;
 }
 
 .ui-withdrawInfoBox{

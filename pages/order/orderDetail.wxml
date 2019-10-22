@@ -9,19 +9,23 @@
                     <10? '0'+minutes:minutes}}分{{seconds<10? '0'+seconds:seconds}}秒关闭，请尽快支付</text>
             </view>
             <view class="ui-orderStatus" wx:if="{{status=='WAIT_BUYER_PAY'}}">
-                <view class="ui-StatusIcon ui-notPaymentIcon"></view>
+                <!-- <view class="ui-StatusIcon ui-notPaymentIcon"></view> -->
+                <image mode="aspectFill" src="{{filter.getLocalPhoto('my_waitWuliu.png')}}" class="ui-StatusIcon ui-notPaymentIcon"/>
                 <text class="ui-StatusText">待付款</text>
             </view>
             <view class="ui-orderStatus" wx:if="{{status=='WAIT_SELLER_SEND_GOODS' }}">
-                <view class="ui-StatusIcon ui-waitShipmentsIcon"></view>
+                <!-- <view class="ui-StatusIcon ui-waitShipmentsIcon"></view> -->
+                 <image mode="aspectFill" src="{{filter.getLocalPhoto('my_waitGroup.png')}}" class="ui-StatusIcon ui-waitShipmentsIcon"/>
                 <text class="ui-StatusText">待发货</text>
             </view>
             <view class="ui-orderStatus" wx:if="{{ status=='WAIT_GROUP'}}">
-                <view class="ui-StatusIcon ui-waitShipmentsIcon"></view>
+                <!-- <view class="ui-StatusIcon ui-waitShipmentsIcon"></view> -->
+                 <image mode="aspectFill" src="{{filter.getLocalPhoto('my_waitGroup.png')}}" class="ui-StatusIcon ui-waitShipmentsIcon"/>
                 <text class="ui-StatusText">等待成团</text>
             </view>
             <view class="ui-orderStatus" wx:if="{{status=='WAIT_BUYER_CONFIRM_GOODS' }}">
-                <view class="ui-StatusIcon ui-waitReceivingIcon"></view>
+                <!-- <view class="ui-StatusIcon ui-waitReceivingIcon"></view> -->
+                 <image mode="aspectFill" src="{{filter.getLocalPhoto('my_inTrading.png')}}" class="ui-StatusIcon ui-waitReceivingIcon"/>
                 <text class="ui-StatusText">待收货</text>
             </view>
             <view class="ui-orderStatus" wx:if="{{status=='WAIT_CHECK' || status=='WAIT_DELIVERY'}}">
@@ -45,16 +49,17 @@
                 <text class="ui-StatusText">交易成功</text>
             </view>
             <view class="ui-orderStatus" wx:if="{{status=='CUSTOMER_CANCEL' }}">
-                <view class="ui-StatusIcon ui-closeDeal"></view>
+                <!-- <view class="ui-StatusIcon ui-closeDeal"></view> -->
+                <image mode="aspectFill" src="{{filter.getLocalPhoto('my_smash.png')}}" class="ui-StatusIcon ui-closeDeal"/>
                 <text class="ui-StatusText">交易关闭</text>
             </view>
-            <view class="ui-orderStatus" wx:if="{{orderStatus=='评价成功'}}">
-                <view class="ui-StatusIcon ui-commentSuccess"></view>
+            <view class="ui-orderStatus" wx:if="{{from=='postComment'}}">
+                <!-- <view class="ui-StatusIcon ui-commentSuccess"></view> -->
+                <image mode="aspectFill" src="{{filter.getLocalPhoto('my_smash.png')}}" class="ui-StatusIcon ui-commentSuccess"/>
                 <text class="ui-StatusText">评价成功</text>
             </view>
         </view>
         <!-- 配送或自提信息 -->
-        <!-- wx:if="{{status=='WAIT_CHECK' || status=='CHECKED'}}" -->
         <view class="ui-pastBox">
             <view wx:if="{{deliveryType == 3 || deliveryType == 4}}" class="ui-verificInfoBox">
                 <text class="ui-orderInfoTitle">{{item.title}}</text>
@@ -88,7 +93,8 @@
             </view>
         </view>
         <view wx:if="{{deliveryType == 1}}" class="ui-consigneeAddressBox">
-            <view class="ui-landmarkIcon"></view>
+            <!-- <view class="ui-landmarkIcon"></view> -->
+            <image mode="aspectFit" src="{{filter.getLocalPhoto('my_landmarkIcon.png')}}" class="ui-landmarkIcon"/>
             <view class="ui-consignee">
                 <view class="ui-consigneeinfo">
                     <text>{{orderAddress.name}}</text>
@@ -198,6 +204,7 @@
         <view class="ui-logisticsMask" catchtouchmove="true" wx:if="{{showLogistics}}"></view>
         <view class="ui-logisticsDialog" wx:if="{{showLogistics}}" catchtouchmove="true">
             <view class="ui-expressInfo">
+                <image src="{{filter.getLocalPhoto('my_orderWaitBg.png')}}" mode="aspectFill" class="ui-expressInfoItem"/>
                 <!-- <view class="ui-expressImg">
                     <image src="http://www.gzlingren.com:8098/yangtianhe/my_yangsheng.png"></image>
                 </view> -->
@@ -210,7 +217,7 @@
             <scroll-view scroll-y="true" class="ui-deliveryStatus">
                 <view class="ui-items" wx:for="{{deliveryStatus}}"  wx:key="{{index}}">
                     <view class="ui-itemsStatus">
-                        <view class="{{index == 0?'ui-arriveIcon':'ui-inTheWayIcon'}}"></view>
+                        <image mode="aspectFit" src="{{index == 0 ? filter.getLocalPhoto('my_wuliu.png'): filter.getLocalPhoto('my_ovalSelect.png')}}" class="{{index == 0?'ui-arriveIcon':'ui-inTheWayIcon'}}"/>
                         <text>{{item.acceptStation}}</text>
                     </view>
                     <view class="ui-momentData">
@@ -220,7 +227,8 @@
                 </view>
             </scroll-view>
         </view>
-        <view class="ui-closeLogisticsIcon" bindtap="onHideLogisticsTap" wx:if="{{showLogistics}}" catchtouchmove="true"></view>
+        <!-- <view class="ui-closeLogisticsIcon" bindtap="onHideLogisticsTap" wx:if="{{showLogistics}}" catchtouchmove="true"></view> -->
+        <image mode="aspectFit" src="{{filter.getLocalPhoto('my_closeVerify.png')}}" class="ui-closeLogisticsIcon" bindtap="onHideLogisticsTap" wx:if="{{showLogistics}}" catchtouchmove="true"/>
         <!-- 确认收货 -->
         <view class="modal-mask" bindtap="hideConfirmReceipt" catchtouchmove="true" wx:if="{{confirmReceipt}}"></view>
         <view class="modal-dialog" wx:if="{{confirmReceipt}}" catchtouchmove="true">

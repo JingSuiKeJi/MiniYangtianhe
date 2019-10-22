@@ -11,7 +11,7 @@
 		</view>
 		
 		<view class="btn-notBinding" wx:if="{{!weChatValue}}">{{wxNo?'修改绑定':'立即绑定'}}</view>
-		<view class="btn-Binding" bindtap="onSaveTap" wx:else>{{wxNo?'修改绑定':'立即绑定'}}</view>
+		<view class="btn-Binding" bindtap="onSaveTap" wx:if="{{weChatValue}}">{{wxNo?'修改绑定':'立即绑定'}}</view>
 		
 		<!-- 成功弹出框 -->
 		<!-- <view class="ui-successfulBinding" wx:if="{{isShow}}"></view> -->

@@ -5,6 +5,7 @@
 		<view class="ui-backGorund"></view>
 		
 		<view class="ui-infoBox">
+			<image mode="aspectFill"  src="{{filter.getLocalPhoto('my_returnsBackground.png')}}" class="ui-InfoItem__bgImg"/>
 		    <image src="{{userInfo.avatar}}" mode="aspectFill" class="ui-itemImgBox"/>
 			<!-- <view class="ui-itemImgBox"></view> -->
 			<view class="ui-textBox">
@@ -21,7 +22,8 @@
 		<view class="ui-commissionBox">
 			<view class="ui-withdrawItem">
 				<view>
-					<view class="withdrawIcon"></view>
+					<!-- <view class="withdrawIcon"></view> -->
+					<image src="{{filter.getLocalPhoto('my_withdrawalCommissionIcon.png')}}" mode="aspectFit" class="withdrawIcon"/>
 					<view>可提现佣金</view>
 				</view>
 				<view>{{rewardInfo.money}}</view>
@@ -46,15 +48,16 @@
 		
 		<view class="ui-detailBox">
 			<view class="ui-detailItem" catchtap="onCommissionTap">
-				<view class="detailIcon"></view>
+				<image mode="aspectFit" src="{{filter.getLocalPhoto('my_totalCommissionIcon.png')}}" class="detailIcon"/>
+				<!-- <view class="detailIcon"></view> -->
 				<text>佣金明细</text>
 			</view>
 			<view class="ui-detailItem" catchtap="onApplicationTap">
-				<view class="detailIcon"></view>
+				<image mode="aspectFit" src="{{filter.getLocalPhoto('my_applicationWithdrawalIcon.png')}}" class="detailIcon"/>
 				<text>提现申请</text>
 			</view>
 			<view class="ui-detailItem" catchtap="onPersonalTap">
-				<view class="detailIcon"></view>
+				<image mode="aspectFit" src="{{filter.getLocalPhoto('my_personalCodeIcon.png')}}" class="detailIcon"/>
 				<text>个人二维码</text>
 			</view>
 		</view>

@@ -134,20 +134,8 @@ page{
 .ui-selectIcon{
 	width: 32rpx;
 	height: 32rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_group.png');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
 }
 
-.ui-notSelectIcon{
-	width: 32rpx;
-	height: 32rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_oval.png');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
-}
 
 .ui-refundDetail{
 	display: flex;
@@ -178,10 +166,10 @@ page{
 	display: inline-block;
 	width: 24rpx;
 	height: 24rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/order_rightIcon.png');
+	/* background-image:url('http://www.gzlingren.com:8098/yangtianhe/order_rightIcon.png');
 	background-repeat: no-repeat;
 	background-position: center center;
-	background-size: contain;
+	background-size: contain; */
 }
 
 .ui-refundMoney{
@@ -270,10 +258,6 @@ page{
 	margin-top: 32rpx;
 	width: 40rpx;
 	height: 40rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_icAddToOut.png');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
 }
 
 .ui-addBox text{
@@ -301,9 +285,9 @@ page{
 	background:#FFFFFF;
 }
 
-.ui-showPicture image{
-	width: 100%;
-	height: 100%;
+.ui-showPictureItem{
+	width: 140rpx;
+	height: 140rpx;
 }
 
 .ui-deleteIcon{
@@ -311,10 +295,7 @@ page{
 	width: 40rpx;
 	height: 40rpx;
 	transform: translate(-18rpx,-10rpx);
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_ic_off_red.png');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
+	
 }
 
 .btn-submit{

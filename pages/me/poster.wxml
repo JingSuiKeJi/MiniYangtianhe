@@ -25,7 +25,8 @@
                 <text class="ui-wxText">分享好友</text>
             </button>
 			<view class="btn-saveImage btn-common" bindtap="onSaveImage">
-				<view class="ui-saveImg"></view>
+				<image mode="aspectFit" src="{{filter.getLocalPhoto('my_posterSave.png')}}" class="ui-saveImg"/>
+				<!-- <view class="ui-saveImg"></view> -->
 				<text class="ui-saveText">保存图片</text>
 			</view>
 		</view>

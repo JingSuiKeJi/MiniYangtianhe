@@ -15,7 +15,6 @@
 						<text>x{{item.num}}</text>
 					</view>
                     <text class="ui-newsWeight" ></text>
-					<!-- <text class="ui-newsWeight" >{{item.specificationName}}</text> -->
 					<text class="ui-newsMoney">¥{{item.price}}</text>
 				</view>
 			</view>
@@ -28,21 +27,25 @@
 				<text class="ui-commonText">货物状态</text>
 				<view class="btn-selectBox" wx:if="{{type == 1}}">
 					<view class="btn-selectStatus">
-						<view class="{{status == 1 ?'ui-selectIcon':'ui-notSelectIcon'}}" bindtap="onStatusTap" data-status ="1"></view>
+						<!-- <view class="{{status == 1 ?'ui-selectIcon':'ui-notSelectIcon'}}" bindtap="onStatusTap" data-status ="1"></view> -->
+						<image src="{{status == 1 ? filter.getLocalPhoto('my_group.png') : filter.getLocalPhoto('my_oval.png')}}" class="ui-selectIcon" bindtap="onStatusTap" data-status ="1"/>
 						<text>未收到货</text>
 					</view>
 					<view class="btn-selectStatus">
-						<view class="{{status == 2 ? 'ui-selectIcon':'ui-notSelectIcon'}}" bindtap="onStatusTap" data-status ="2"></view>
+						<!-- <view class="{{status == 2 ? 'ui-selectIcon':'ui-notSelectIcon'}}" bindtap="onStatusTap" data-status ="2"></view> -->
+						<image src="{{status == 2 ? filter.getLocalPhoto('my_group.png') : filter.getLocalPhoto('my_oval.png')}}" class="ui-selectIcon" bindtap="onStatusTap" data-status ="2"/>
 						<text>已收到货</text>
 					</view>
 				</view>
 				<view class="btn-selectBox" wx:if="{{type == 2}}">
 					<view class="btn-selectStatus">
-						<view class="{{status == 1 ? 'ui-selectIcon':'ui-notSelectIcon'}}" bindtap="onStatusTap" data-status ="1"></view>
+						<!-- <view class="{{status == 1 ? 'ui-selectIcon':'ui-notSelectIcon'}}" bindtap="onStatusTap" data-status ="1"></view> -->
+						<image src="{{status == 1 ? filter.getLocalPhoto('my_group.png') : filter.getLocalPhoto('my_oval.png')}}" class="ui-selectIcon" bindtap="onStatusTap" data-status ="1"/>
 						<text>未拆封</text>
 					</view>
 					<view class="btn-selectStatus">
-						<view class="{{status == 2 ? 'ui-selectIcon':'ui-notSelectIcon'}}" bindtap="onStatusTap" data-status ="2"></view>
+						<!-- <view class="{{status == 2 ? 'ui-selectIcon':'ui-notSelectIcon'}}" bindtap="onStatusTap" data-status ="2"></view> -->
+						<image src="{{status == 2 ? filter.getLocalPhoto('my_group.png') : filter.getLocalPhoto('my_oval.png')}}" class="ui-selectIcon" bindtap="onStatusTap" data-status ="2"/>
 						<text>已拆封</text>
 					</view>
 				</view>
@@ -52,7 +55,7 @@
 				<text class="ui-commonText">售后原因</text>
 				<view class="btn-refundDetailMore" bindtap="showAfterDialogBtn">
 					<input value="{{reason}}" placeholder="请选择原因" placeholder-style="color:rgba(153,153,153,1);" disabled="true"></input>
-					<view class="btn-moreIcon"></view>
+					<image mode="aspectFit" src="{{filter.getLocalPhoto('order_rightIcon.png')}}" class="btn-moreIcon"/>
 				</view>
 			</view>
 			
@@ -67,8 +70,6 @@
 				<cover-view class="modal-afterReason">
 					<cover-view class="modal-reasonItems" wx:for="{{causeList}}" wx:key="{{index}}" >
 						<cover-view class="modal-reasonItems__text">{{item.reason}}</cover-view>
-						<!-- <cover-view class="modal-selectIcon {{reasonFlag != item.reasonFlag?'modal-selectReason':'modal-notSelectReason'}}"
-						bindtap="onSelectReasonTap" data-index = "{{index}}"></cover-view> -->
 						<cover-image class="modal-selectIcon "
 						src="{{reasonFlag != item.reasonFlag ?  filter.getLocalPhoto('my_check.png') : filter.getLocalPhoto('my_oval.png')}}"
 						bindtap="onSelectReasonTap" data-index = "{{index}}"></cover-image>
@@ -92,8 +93,6 @@
 				<text class="ui-commonText" wx:if="{{type == 2}}">退货说明</text>
 				<text class="ui-commonText" wx:if="{{type == 3}}">申请换货</text>
 				<input type="text" placeholder="选填" value="{{description}}" bindinput="onExplainTap" bindfocus='areafocus' class="ui-explainText"/>
-				<!-- <textarea class="ui-explainText" placeholder="选填" value="{{description}}" bindinput="onExplainTap"
-				cols="400rpx" maxlength="300" auto-height="{{auto_height}}" bindblur='areablur' bindfocus='areafocus'/> -->
 			</view>
 		</view>
 		
@@ -105,12 +104,12 @@
 					<!-- 展示图片 -->
 					<view wx:if="{{tempFilePaths.length}}" class="ui-showPicture"
 					wx:for="{{tempFilePaths}}"  wx:key="{{index}}" >
-						<view class="ui-deleteIcon" catchtap="onDeletePicTap" data-index="{{index}}"></view>
-						<image src="{{filter.getPhoto(host,item)}}"></image>
+						<image src="{{filter.getLocalPhoto('my_ic_off_red.png')}}" mode="aspectFit" class="ui-deleteIcon" catchtap="onDeletePicTap" data-index="{{index}}"/>
+						<image src="{{filter.getPhoto(host,item)}}" class="ui-showPictureItem"></image>
 					</view>
 					<!-- 添加图片 -->
 					<view wx:if="{{tempFilePaths.length != 6}}" class="ui-addBox" catchtap="onChooseImgTap">
-						<view class="ui-addIcon"></view>
+						<image mode="aspectFill" src="{{filter.getLocalPhoto('my_icAddToOut.png')}}" class="ui-addIcon"/>
 						<text>添加图片</text>
 						<text>（最多6张）</text>
 					</view>

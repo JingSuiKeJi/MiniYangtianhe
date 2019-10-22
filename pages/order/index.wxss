@@ -34,10 +34,6 @@ page{
 	margin-left: 20rpx;
 	height: 32rpx;
 	width: 32rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/ic_search.png');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
 }
 
 .ui-searchInput{
@@ -321,10 +317,6 @@ page{
 	margin-top: 318rpx;
 	width: 118rpx;
 	height: 118rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_orderListIcon.png');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
 }
 
 .ui-noOrderText{

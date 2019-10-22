@@ -25,6 +25,7 @@ page{
 	height:120rpx;
 	background:rgba(234,234,234,1);
 	margin: 40rpx 0 0 40rpx;
+	border-radius: 50%;
 }
 
 .ui-personalId{
@@ -46,15 +47,12 @@ page{
 }
 
 .btn-savePoster{
+	display: block;
 	width:110rpx;
 	height:110rpx;
 	background:rgba(68,215,182,1);
 	border-radius: 110rpx;
 	margin: 60rpx 0 0 318rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_save.png');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
 }
 
 .ui-savePosterText{

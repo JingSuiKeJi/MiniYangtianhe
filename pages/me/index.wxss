@@ -24,12 +24,14 @@
     position: relative;
     width: 100%;
     height:410rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_background.png');
-	background-repeat: no-repeat;
-	background-position: 0 0;
-	background-size: 100% 410rpx;
 }
-
+.ui-infoItem__bgImg {
+	width: 100%;
+	height:410rpx;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
 .ui-infoItem {
     position: relative;
     top: 0rpx;
@@ -133,10 +135,6 @@
 	display: inline-block;
 	width: 68rpx;
 	height: 48rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/useBlisses.png');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: contain;
 }
 
 .ui-useBlisses text{
@@ -195,13 +193,15 @@
 	left: 56rpx;
 	width:638rpx;
 	height:136rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_vipCard.png');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: 100%;
 	border-radius:16px 16rpx 0 0;
 }
-
+.ui-vip__bgImg {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
 .ui-vip view{
 	position: absolute;
 }
@@ -211,10 +211,6 @@
 	margin: 32rpx 0 0 38rpx;
 	width:28rpx;
 	height:26rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_vipIcon.png');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
 }
 
 .ui-vip view text{
@@ -257,7 +253,6 @@
 	background-size: 718rpx  222rpx;
 	border-radius:16px 16px 16px 16px;
 }
-
 .ui-incomeItem:active{
 	opacity: 0.5;
 }
@@ -349,10 +344,6 @@
 	margin-left: 8rpx;
 	width: 16rpx;
 	height: 26rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_rightArrow.png');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
 }
 
 .ui-orderStatus{
@@ -360,60 +351,32 @@
 }
 
 .ui-feedbackItem{
-	position: relative;
+	/* position: relative;
 	width: 100%;
 	height: 100%;
-	flex: 1;
+	flex: 1; */
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
 }
 
 .ui-feedbackItem:active{
 	opacity: 0.5;
 }
-
-.ui-feedbackItem .ui-iconFeedback{
-	margin-top: 30rpx;
+.ui-orderStatuaItem {
 	position: relative;
-	left: 50%;
-	transform: translateX(-6rpx);
+	width: 100%;
+	height: 100%;
+	flex: 1;
+}
+ .ui-iconFeedback{
+	margin-top: 30rpx;
 	width:48rpx;
 	height:48rpx;
-}
+	margin-left: auto;
+    margin-right: 30rpx;
 
-.ui-feedbackItem:nth-child(1) .ui-iconFeedback{
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_uppaid.png');
-	background-repeat: no-repeat;
-	background-position:center center;
-	background-size: contain;
 }
-
-.ui-feedbackItem:nth-child(2) .ui-iconFeedback{
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_overhang.png');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: contain;
-}
-
-.ui-feedbackItem:nth-child(3) .ui-iconFeedback{
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_waitReceiving.png');
-	background-repeat: no-repeat;
-	background-position:center center;
-	background-size: contain;
-}
-
-.ui-feedbackItem:nth-child(4) .ui-iconFeedback{
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_approved.png');
-	background-repeat: no-repeat;
-	background-position:center center;
-	background-size: contain;
-}
-
-.ui-feedbackItem:nth-child(5) .ui-iconFeedback{
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_afterSale.png');
-	background-repeat: no-repeat;
-	background-position:center center;
-	background-size: contain;
-}
-
 .ui-feedbackItem .ui-orderText{
 	display: block;
 	height:22rpx;
@@ -509,10 +472,6 @@
 	overflow: hidden;
 	top:12rpx;
 	right: 126rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_empty.png');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
 }
 
 .ui-cutOff{
@@ -612,10 +571,6 @@
 	width:16rpx;
 	height:26rpx;
 	line-height: 96rpx;
-	background-image: url('http://www.gzlingren.com:8098/yangtianhe/my_rightArrow.png');
-	background-repeat:no-repeat;
-	background-position: center center; 
-	background-size:cover;
 }
 
 .ui-dropDown{
@@ -625,10 +580,6 @@
 	display: inline-block;
 	top: 44rpx;
 	right: 46rpx;
-	background-image: url('http://www.gzlingren.com:8098/yangtianhe/my_downArrow.png');
-	background-repeat:no-repeat;
-	background-position: center center; 
-	background-size:cover;
 }
 
 .ui-LogOut{
@@ -671,116 +622,6 @@
 	bottom: 0;
 	left: 0;
 	z-index: 999999;
-}
-.moadl-ythAvatar{
-	display: inline-block;
-	width: 60rpx;
-	height: 60rpx;
-	border-radius: 60rpx;
-	margin: 60rpx 0 0 40rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_ythAvatar.png');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
-}
-.modal-title {
-	display: inline-block;
-	position: absolute;
-	width:170rpx;
-	height:30rpx;
-	font-size:30rpx;
-	font-family:PingFangSC-Medium;
-	font-weight:500;
-	color:rgba(51,51,51,1);
-	line-height:30rpx;
-	margin: 76rpx 0 0 24rpx;
-}
-
-.modal-title text:first-child{
-	float: left;
-}
-
-.modal-title text:last-child{
-	float: right;
-}
-
-.modal-infoText{
-	height:42rpx;
-	font-size:42rpx;
-	font-family:PingFangSC-Medium;
-	font-weight:500;
-	color:rgba(51,51,51,1);
-	line-height:42rpx;
-	margin: 26rpx 0 0 40rpx;
-}
-
-.modal-infoBox{
-	position: relative;
-	width:670rpx;
-	height:132rpx;
-	border-top: #f5f5f5 solid 2rpx;
-	border-bottom: #f5f5f5 solid 2rpx;
-	margin: 44rpx 0 0 40rpx;
-}
-
-.modal-infoBoxAvatar{
-	display: inline-block;
-	width: 92rpx;
-	height: 92rpx;
-	margin-top: 20rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_infoBoxAvatar.png');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
-}
-
-.modal-infoBox text:nth-child(2){
-	position: absolute;
-	height:30rpx;
-	font-size:30rpx;
-	font-family:PingFangSC-Medium;
-	font-weight:500;
-	color:rgba(51,51,51,1);
-	line-height:30rpx;
-	margin: 28rpx 0 0 28rpx;
-}
-
-.modal-infoBox text:nth-child(3){
-	position: absolute;
-	height:26rpx;
-	font-size:26rpx;
-	font-family:PingFangSC-Regular;
-	font-weight:400;
-	color:rgba(153,153,153,1);
-	line-height:26rpx;
-	margin: 78rpx 0 0 28rpx;
-}
-
-.modal-footer {
-	display: flex;
-	flex-direction: row;
-	margin: 152rpx 0 0 40rpx;
-}
-
-.modal-footer view{
-	height: 80rpx;
-	width: 320rpx;
-	border-radius: 2rpx;
-	font-size:34rpx;
-	font-family:PingFangSC-Regular;
-	font-weight:400;
-	line-height:80rpx;
-	text-align: center;
-	margin-right: 30rpx;
-}
-
-.btn-cancel {
-	background: #EDEDED;
-	color:rgba(4,193,96,1);
-}
-.btn-confirm {
-	background: #04C160;
-	color:rgba(255,255,255,1);
 }
 .getUserInfoBtn {
 	widows: 100%;

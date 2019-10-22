@@ -93,7 +93,7 @@ const methods = {
 			let data = ret.data
 			self.setData({
 				deliveryStatus: data.traces.reverse(),
-				showLogistics: true
+				// showLogistics: true
 			})
         }, (err) => {
 
@@ -190,9 +190,9 @@ const methods = {
 	//查看物流
 	onCheckLogisticsTap:function(){
 		let self = this;
-		// self.setData({
-		//   showLogistics: true
-		// });
+		self.setData({
+		  showLogistics: true
+		});
 		self.orderTraces();
 	},
 	onHideLogisticsTap: function () {

@@ -48,12 +48,14 @@
 				<!-- 展示图片 -->
 				<view wx:if="{{tempFilePaths}}" class="ui-showPicture"
 				wx:for="{{tempFilePaths}}" wx:for-index="idx" wx:key="idx" wx:for-item="item">
-					<view class="ui-deleteIcon" catchtap="onDeletePicTap" data-id="{{idx}}"></view>
-					<image src="{{item}}"></image>
+					<!-- <view class="ui-deleteIcon" catchtap="onDeletePicTap" data-id="{{idx}}"></view> -->
+					<image src="{{filter.getLocalPhoto('my_ic_off_red.png')}}" mode="aspectFit"  class="ui-deleteIcon" catchtap="onDeletePicTap" data-id="{{idx}}"/>
+					<image src="{{item}}" class="ui-showPictureItem"></image>
 				</view>
 				<!-- 添加图片 -->
 				<view wx:if="{{!(tempFilePaths.length==6)}}" class="ui-addBox" catchtap="onChooseImgTap">
-					<view class="ui-addIcon"></view>
+					<!-- <view class="ui-addIcon"></view> -->
+					<image src="{{filter.getLocalPhoto('my_icAddToOut.png')}}" mode="aspectFill"  class="ui-addIcon"/>
 					<text>添加图片</text>
 					<text>（最多6张）</text>
 				</view>
