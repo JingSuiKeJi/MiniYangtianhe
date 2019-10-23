@@ -36,21 +36,20 @@ page{
 	align-items: center;
 	margin-top: 148rpx;
 	width: 310rpx;
-	height: 234rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_phoneDashed.png');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
+    height: 234rpx;
+	position: relative;
 }
-
+.ui-takePhotos__bgImg {
+	width: 310rpx;
+	height: 234rpx;
+	position: absolute;
+	left: 0;
+	right: 0;
+}
 .ui-takePhotosImg{
 	margin-top: 48rpx;
 	width: 126rpx;
 	height: 98rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_photo.png');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
 }
 
 .ui-takePhotosText{
@@ -222,13 +221,9 @@ page{
 }
 
 .ui-pullDownIcon{
-	/* margin-right: 20rpx; */
+    display: flex;
 	width: 32rpx;
 	height: 32rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_iconDown.png');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: contain;
 	position: absolute;
 	top: 33rpx;
 	right: 20rpx;
@@ -254,10 +249,11 @@ page{
 }
 
 .btn-canSubmit{
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_bottomBtn.png');
+	background-color: #56DCD6;
+	/* background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_bottomBtn.png');
 	background-repeat: no-repeat;
 	background-position: center center;
-	background-size: cover;
+	background-size: cover; */
 }
 
 /* 模态框 */

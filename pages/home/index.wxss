@@ -287,6 +287,7 @@ page {
     font-weight: 400;
     color: #ffff;
     margin-right: 40rpx;
+    position: relative;
 }
 
 .ui-headBox_tap text:last-child {

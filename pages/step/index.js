@@ -12,23 +12,40 @@ const data = {
     list: [],
     BMIIndex: 0,
     test: 1,
-    fridensList: []
+    fridensList: [],
+    stepInfo: {
+        leyouNum: 0,
+        points: 0,
+        rank: 0,
+        status: 0,
+        targetStep: 0,
+        todayStep: 0,
+        totalStep: 0,
+    }
 };
 
 // 页面onLoad方法
 const onLoad = function(self) {
-    // self.getData();
-    self.initBlock();
-    event.on('refreshStep', self, (ret) => {
+    if(_g.checkLogin({ type: 1 })) {
         self.getData();
-    });
+    }
+    self.initBlock();
     event.on('logout-suc',self,(ret) => {
         self.setData({
             step: '上传步数',
             list: [],
             BMIIndex: 0,
             test: 1,
-            fridensList: []
+            fridensList: [],
+            stepInfo: {
+                leyouNum: 0,
+                points: 0,
+                rank: 0,
+                status: 0,
+                targetStep: 0,
+                todayStep: 0,
+                totalStep: 0,
+            }
         })
     });
     event.on('login-suc',self,(ret) => {
@@ -41,12 +58,10 @@ const onLoad = function(self) {
 
 // 页面onShow方法
 const onShow = function(self) {
-    // event.emit('refreshStep');
-    // self.getData();
     
 };
 const onUnload = function(self) {
-    event.remove('refreshStep');
+   
 };
 // 页面中的方法
 const methods = {
@@ -124,7 +139,7 @@ const methods = {
     },
     onStepTap: function() {
         let self = this;
-        if (self.data.stepInfo.status != 1) return;
+        if ( !self.data.isLogin && self.data.stepInfo.status != 1) return;
         wx.showLoading({
             mask: true,
             title: '正在上传步数',

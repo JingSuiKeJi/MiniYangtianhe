@@ -3,6 +3,7 @@ const app = getApp();
 const _ = app.underscore;
 const _g = app.base;
 const _c = app.config;
+const event = app.event;
 const Platfrom = require('../../service/Platfrom');
 const Goods = require('../../service/Goods');
 // 初始化数据
@@ -67,16 +68,13 @@ const methods = {
             });
         });
     },
-    onSkipTap: function () {
-        let self = this;
-        _g.navigateTo({
-            url: 'pages/card/rightsCard',
-        }, self);
-    },
     onDetailTap: function (e) {
         let self = this;
         _g.navigateTo({
-            url: 'pages/card/detail',
+            url: 'pages/goods/detail',
+            param: {
+                id: e.currentTarget.dataset.id 
+            }
         }, self);
     }
 

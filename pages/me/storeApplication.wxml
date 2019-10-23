@@ -5,7 +5,9 @@
 		<view class="ui-photoBox">
 			<view class="ui-photoBg">
 				<view wx:if="{{!photo}}" class="ui-photoDashed" bindtap="onChooseImageTap" data-type="1">
-					<view class="ui-takePhotosImg"></view>
+					<!-- <view class="ui-takePhotosImg"></view> -->
+					<image mode="aspectFit" src="{{filter.getLocalPhoto('my_phoneDashed.png')}}" class="ui-takePhotos__bgImg"/>
+					<image mode="aspectFit" src="{{filter.getLocalPhoto('my_photo.png')}}" class="ui-takePhotosImg"/>
 					<text class="ui-takePhotosText">添加门店相关图片</text>
 				</view>
 				<view class="ui-photoSelect" wx:else>
@@ -77,7 +79,8 @@
 					placeholder="请输入门店营业执照号码" placeholder-style="color:#666666;"
 					disabled="{{status == 1 || status == 2}}"/> -->
                 <view  class="ui-photoDashed ui-licenseBox" bindtap="onChooseImageTap" data-type="2" wx:if="{{!businessLicense}}">
-					<view class="ui-takePhotosImg"></view>
+					<image mode="aspectFit" src="{{filter.getLocalPhoto('my_phoneDashed.png')}}" class="ui-takePhotos__bgImg"/>
+					<image mode="aspectFit" src="{{filter.getLocalPhoto('my_photo.png')}}" class="ui-takePhotosImg"/>
 					<text class="ui-takePhotosText">添加营业执照图片</text>
                 </view>
 				<view class="ui-photoSelect" wx:if="{{businessLicense}}">
@@ -88,7 +91,8 @@
 			<view class="ui-belongCompany" >
 				<picker bindchange="onPickerChange"  range="{{list}}" range-key="{{'companyName'}}" class="ui-pickerBox">
 					<view class="ui-emptyBox">{{company}}</view>
-					<view class="ui-pullDownIcon"></view>
+					<!-- <view class="ui-pullDownIcon"></view> -->
+					<image mode="aspectFit" src="{{filter.getLocalPhoto('my_iconDown.png')}}" class="ui-pullDownIcon"/>
 				</picker>
 				
 			</view>

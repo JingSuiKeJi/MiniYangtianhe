@@ -6,25 +6,25 @@
             <image src="{{filter.getLocalPhoto('rightsCard_title.png')}}" mode="aspectFill" class="ui-centerItem__Img" />
             <text class="ui-titleItem__text">权益专区</text>
         </view>
-        <view class="ui-centerItem"  wx:if="{{list.length}}">
+        <view class="ui-centerItem"  wx:if="{{list.length}}" bindtap="onDetailTap" data-id="{{list[0].id}}">
             <image src="{{filter.getPhoto(host,list[0].picUrl)}}" mode="aspectFill" class="ui-goods__Img" />
             <view class="ui-centerItem__goods">
                 <view class="ui-goodsItem__title">{{list[0].mainTitle}}</view>
                 <view class="ui-goodsItem__scale">{{list[0].secondTitle}}</view>
                 <view class="ui-goodsItem__price">
                     <text>¥ {{list[0].nowPrice}}</text>
-                    <image src="{{filter.getLocalPhoto('cart.png')}}" mode="aspectFill" class="ui-goods__cartImg" bindtap="onAddCart" data-index="0"/>
+                    <image src="{{filter.getLocalPhoto('cart.png')}}" mode="aspectFill" class="ui-goods__cartImg" catchtap="onAddCart" data-index="0"/>
                 </view>
             </view>
         </view>
     </view>
     <view class="ui-goodsBox" wx:if="{{list.length > 1}}">
-        <view class="ui-goodsItem" bindtap="onDetailTap" wx:for="{{list}}" wx:key="{{index}}" wx:if="{{index != 0}}">
+        <view class="ui-goodsItem" bindtap="onDetailTap" data-id="{{item.id}}" wx:for="{{list}}" wx:key="{{index}}" wx:if="{{index != 0}}">
             <image src="{{filter.getPhoto(host,item.picUrl)}}" mode="aspectFill" class="ui-goodsItem__Img" />
             <view class="ui-goods__title">{{item.mainTitle}}</view>
             <view class="ui-goods__price">
                 <text>¥ {{item.nowPrice}}</text>
-                <image src="{{filter.getLocalPhoto('cart.png')}}" mode="aspectFill" class="ui-cartImg" bindtap="onAddCart" data-index="{{index}}"/>
+                <image src="{{filter.getLocalPhoto('cart.png')}}" mode="aspectFill" class="ui-cartImg" catchtap="onAddCart" data-index="{{index}}"/>
             </view>
         </view>
         <!-- <view class="ui-goodsItem" bindtap="onDetailTap">

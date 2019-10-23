@@ -277,8 +277,6 @@ page {
     width: 588rpx;
     height: 632rpx;
     background-color: #fff;
-    /* background-image: url(http://www.gzlingren.com:8098/yangtianhe/bargain_list_bgIcon.png);
-    background-size: 564rpx 678rpx; */
     border-radius:16rpx;
     position:absolute; 
     z-index:10001; 

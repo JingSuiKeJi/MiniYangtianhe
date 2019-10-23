@@ -110,6 +110,7 @@
     ]
   },
   "window": {},
+  "enablePullDownRefresh": true,
   "usingComponents": {
     "authorize": "/components/authorize/authorize"
   },

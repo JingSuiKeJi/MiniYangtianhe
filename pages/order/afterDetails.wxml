@@ -7,7 +7,8 @@
 		<block wx:if="{{status==6}}">
 			<!-- 退款成功 -->
 			<view class="ui-refundSuccess">
-				<view class="ui-refundSuccessIcon"></view>
+				<!-- <view class="ui-refundSuccessIcon"></view> -->
+				<image mode="aspectFit" src="{{filter.getLocalPhoto('my_refundSuccess.png')}}" class="ui-refundSuccessIcon"/>
 				<text class="ui-refundSuccesstext">退款成功</text>
 			</view>
 			<!-- 退款金额 -->
@@ -46,19 +47,23 @@
 			<view class="ui-afterStatus">
 				<!-- icon状态 -->
 				<block wx:if="{{status==6}}">
-					<view class="ui-afterIcon ui-approve"></view>
+					<!-- <view class="ui-afterIcon ui-approve"></view> -->
+					<image mode="aspectFit" src="{{filter.getLocalPhoto('my_writeSuccess.png')}}" class="ui-afterIcon"/>
 				</block>
 				<block wx:if="{{ status==4 }}">
-					<view class="ui-afterIcon ui-notApprove"></view>
+					<!-- <view class="ui-afterIcon ui-notApprove"></view> -->
+					<image mode="aspectFit" src="{{filter.getLocalPhoto('my_willDelet.png')}}" class="ui-afterIcon"/>
 				</block>
 				<!-- <block wx:if="{{status==2}}">
 					<view class="ui-afterIcon ui-check"></view>
 				</block> -->
 				<block wx:if="{{status==1 || status == 2 ||  status == 3}}">
-					<view class="ui-afterIcon ui-check"></view>
+					<!-- <view class="ui-afterIcon ui-check"></view> -->
+					<image mode="aspectFit" src="{{filter.getLocalPhoto('my_canWrite.png')}}" class="ui-afterIcon"/>
 				</block>
 				<block wx:if="{{status==5}}">
-					<view class="ui-afterIcon ui-afterEnd"></view>
+					<!-- <view class="ui-afterIcon ui-afterEnd"></view> -->
+					<image mode="aspectFit" src="{{filter.getLocalPhoto('my_writeSuccess.png')}}" class="ui-afterIcon"/>
 				</block>
 				<!-- 文字状态 -->
 				<block wx:if="{{status==1}}">
@@ -85,7 +90,8 @@
 				<view class="ui-afterProgress" wx:if="{{status==1 || status==2 || status==3}}">
 					   <view class="ui-progressCommon ui-greenProgressIcon "></view>
 					   <view class="ui-progressLine ui-passProgressLine"></view>
-					   <view class="ui-progressCommon ui-progressIcon "></view>
+					   <!-- <view class="ui-progressCommon ui-progressIcon "></view> -->
+					   <image mode="aspectFit" src="{{filter.getLocalPhoto('my_selectGroup.png')}}" class="ui-progressCommon"/>
 					   <view class="ui-progressLine ui-deepGreyProgressLine "></view>
 					   <view class="ui-progressCommon ui-deepGreyProgressIcon "></view>
 				</view>	  
@@ -99,7 +105,8 @@
 				<view class="ui-afterProgress" wx:if="{{status==4 }}">
 					   <view class="ui-progressCommon ui-redProgressIcon "></view>
 					   <view class="ui-progressLine ui-rejectProgressLine"></view>
-					   <view class="ui-progressCommon ui-rejectProgressIcon "></view>
+					   <!-- <view class="ui-progressCommon ui-rejectProgressIcon "></view> -->
+					   <image mode="aspectFit" src="{{filter.getLocalPhoto('my_redDot.png')}}" class="ui-progressCommon"/>
 					   <view class="ui-progressLine ui-deepGreyProgressLine "></view>
 					   <view class="ui-progressCommon ui-deepGreyProgressIcon "></view>
 				</view>	

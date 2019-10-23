@@ -130,10 +130,6 @@ page{
 	display: inline-block;
 	height: 28rpx;
 	width: 28rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_iconDown.png');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: contain;
 }
 
 .ui-refundOrderNum{

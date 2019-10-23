@@ -24,7 +24,8 @@
 				<picker bindchange="changeCompany" mode="selector" value="{{companyIndex}}" range="{{companyList}}">
 					<view class="ui-selectExpressCompany">
 						<text class="ui-expressCompanyName {{index >= 0 ? 'ui-selectCompany' :'ui-notSelectCompany'}}"><!-- {{companyList[companyIndex]}} -->{{expressCompany}}</text>
-						<view class="ui-pullDownIcon"></view>
+						<!-- <view class="ui-pullDownIcon"></view> -->
+						<image mode="aspectFit" src="{{filter.getLocalPhoto('my_iconDown.png')}}" class="ui-pullDownIcon"/>
 					</view>
 				</picker>
 			</view>
