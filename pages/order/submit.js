@@ -95,6 +95,18 @@ const methods = {
             }).then((ret) => {
                 self.setPageData(ret.data);
                 self.getGoodsInfo(ret.data.goodsVoList);
+            },(err)=>{
+                if (err.code == 40001) { 
+                    _g.toast({
+                        title: err.message,
+                    });
+                    setTimeout(()=>{
+                       _g.navigateBack();
+                    },2000)
+                   
+                    
+                }
+                
             });
             
         } else {
@@ -111,6 +123,17 @@ const methods = {
             Order.preOrder(self, data).then((ret) => {
                 self.setPageData(ret.data);
                 self.getGoodsInfo(ret.data.goodsVoList);
+            },(err)=> {
+                if (err.code == 40001) { 
+                    _g.toast({
+                        title: err.message,
+                    });
+                    setTimeout(()=>{
+                       _g.navigateBack();
+                    },2000)
+                   
+                    
+                }
             });
         }
         // if (self.data.from == 'goodsDetail' ||  self.data.from == 'bargain' || self.data.from == 'join') {

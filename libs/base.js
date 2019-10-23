@@ -1567,7 +1567,7 @@ base.prototype = {
                 event.emit('login-suc', {
                     userInfo: ret.data.myInfo
                 });
-                event.emit('refreshStep');
+                // event.emit('refreshStep');
             } else {
 				opts.suc && opts.suc();
             }

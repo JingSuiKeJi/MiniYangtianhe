@@ -48,6 +48,9 @@ const data = {
 // 页面onLoad方法
 const onLoad = function (self) {
     self.getData();
+    if(_g.checkLogin({ type: 1 })) {
+        self.getCartList();
+    }
     // self.moveBarrage();
     if (self.data.type == 5) {
         self.setData({
@@ -326,11 +329,9 @@ const methods = {
                 toView: 'comments'
             })
         };
-        console.log(333,self.data.toView);
     },
     onOpenPlus: function (e) {
         let self = this;
-        console.log('开通会员')
     },
     onChangeCount: function (e) {
         let self = this;
@@ -424,9 +425,9 @@ const methods = {
         if (!_g.checkLogin({ type: 2 })) return;
         if (self.data.platformFlag == 2) data.storeId = self.data.storeId;
         Goods.addCart(self, data).then((ret) => {
-            let data = ret.data;
+            let total = self.data.total + 1;
             self.setData({
-                list: data
+                total: total
             });
             setTimeout(function() {
             	_g.toast({
@@ -434,8 +435,8 @@ const methods = {
             		duration: 1500,
             	});
             }, 500);
-            self.getCartList();
             event.emit('refreshCart');
+            
         }, (err) => {
             _g.toast({
                 title: '加入购物车失败'

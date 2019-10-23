@@ -58,6 +58,16 @@ const onShow = function(self) {
         })) {
         self.getData();
     }
+    self.setData({
+        mediNum: 0,
+        storeNum: 0,
+        mediTotal: 0,
+        storeTotal: 0,
+        allSelect: false,
+        medicineFlag: false,
+        storeFlag: false,
+        isMgt: false
+    })
 };
 const onUnload = function(self) {
     event.remove('refreshCart');
@@ -401,7 +411,6 @@ const methods = {
         } else {
             ids = medIds || storeIds;
         }
-        console.log(44, ids);
         wx.showModal({
             content: '确认删除该商品？',
             confirmText: '删除',
@@ -419,6 +428,10 @@ const methods = {
                             storeNum: 0,
                             mediTotal: 0,
                             storeTotal: 0,
+                            allSelect: false,
+                            medicineFlag: false,
+                            storeFlag: false,
+                            isMgt: false
                         })
                     }, (err) => {});
                 } else if (res.cancel) {

@@ -40,11 +40,18 @@ const data = {
     animationData: {},
     isFixed: false,
     nowStep: 0,
-    skillId: 0
+    skillId: 0,
+    stepInfo: {
+        rank: 0,
+        status: 0,
+        targetStep: 0,
+        todayStep: 0,
+    }
 };
 
 // 页面onLoad方法
 const onLoad = function (self) {
+    wx.showShareMenu();
     self.initBlock();
     if (_g.checkLogin({
         type: 1
@@ -70,6 +77,18 @@ const onLoad = function (self) {
             });
             self.getData();
         }
+    });
+    event.on('logout-suc',self,(ret) => {
+        self.setData({
+            BMIIndex: 0,
+            step: '上传步数',
+            stepInfo: {
+                rank: 0,
+                status: 0,
+                targetStep: 0,
+                todayStep: 0,
+            }
+        })
     });
     
 };
@@ -513,14 +532,18 @@ const methods = {
     },
     onStepTap: function () {
         let self = this;
-        if (self.data.stepInfo.status == 1) {
+        if (self.data.stepInfo.status == 1 && self.data.isLogin) {
             wx.showLoading({
                 mask: true,
                 title: '正在上传步数',
                 success() { }
             });
             self.wxLogin();
-        } else {
+        } else if(!self.data.isLogin) {
+             _g.toast({
+                 title: '请登陆'
+             }) 
+        }else {
             return false;
         }
 

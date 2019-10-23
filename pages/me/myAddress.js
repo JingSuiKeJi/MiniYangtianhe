@@ -95,6 +95,12 @@ const methods = {
 	chooseMenu: function (options) {
 		const self = this;
 		const id = options.currentTarget.dataset.id;
+		const addressList = self.data.addressList;
+		for (let index = 0; index < addressList.length; index++) {
+			const element = addressList[index];
+			if (element.id ==id  && element.isDefault ) return;
+			
+		}
 		User.chooseDefault(self, {
 			addressId: id
 		}).then((ret) => {

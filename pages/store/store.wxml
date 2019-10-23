@@ -12,7 +12,7 @@
             </view>
             <view class="ui-tapBox" >
                 <view class="ui-tapBox__Item">
-                    <view class="ui-tap__item" wx:for="{{hotSearch}}" wx:key="{{index}}" bindtap="onResultTap" data-id="{{item.id}}" data-value="{{item.title}}">
+                    <view class="ui-tap__item" wx:for="{{hotSearch}}" wx:key="{{index}}" bindtap="onResultTap" data-id="{{item.id}}" data-value="{{item.title}}" style="color: '#fff' ">
                         {{item.title}}
                     </view>
                 </view>

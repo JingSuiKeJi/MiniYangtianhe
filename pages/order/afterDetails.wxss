@@ -304,27 +304,24 @@ page{
 	margin-top: 110rpx;
 	width: 150rpx;
 	height: 158rpx;
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
 }
 /* 审核icon */
-.ui-check{
+/* .ui-check{
 	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_canWrite.png');
-}
+} */
 /* 审核通过icon */
-.ui-approve{
+/* .ui-approve{
 	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_writeSuccess.png');
-}
+} */
 /* 审核不通过icon */
-.ui-notApprove{
+/* .ui-notApprove{
 	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_willDelet.png');
-}
+} */
 
 /* 售后结束icon */
-.ui-afterEnd{
+/* .ui-afterEnd{
 	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_writeSuccess.png');
-}
+} */
 
 .ui-afterText{
 	margin-top: 50rpx;
@@ -346,16 +343,17 @@ page{
 }
 
 .ui-progressCommon{
+	display: block;
 	width: 42rpx;
 	height: 42rpx;
 }
 /* 中间绿圆圈 */
-.ui-progressIcon{
+/* .ui-progressIcon{
 	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_selectGroup.png');
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: cover;
-}
+} */
 
 .ui-notProgressIcon{
 	width:22rpx;
@@ -385,12 +383,12 @@ page{
 	border-radius: 22rpx;
 }
 /* 中间红圆 */
-.ui-rejectProgressIcon{
+/* .ui-rejectProgressIcon{
 	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_redDot.png');
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: cover;
-}
+} */
 
 .ui-progressLine{
 	width:254rpx;
@@ -623,13 +621,14 @@ page{
 }
 
 .ui-refundSuccessIcon{
+	display: block;
 	margin-top: 118rpx;
 	width: 150rpx;
 	height: 150rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_refundSuccess.png');
+	/* background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_refundSuccess.png');
 	background-repeat: no-repeat;
 	background-position: center center;
-	background-size: cover;
+	background-size: cover; */
 }
 
 .ui-refundSuccesstext{
@@ -681,10 +680,8 @@ page{
 	margin-right: 40rpx;
 	width: 148rpx;
 	height: 60rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_rectangleGreen.png');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: contain;
+	background-color: #4DDAD0;
+	border-radius: 35rpx;
 }
 
 .btn-backHome text{

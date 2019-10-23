@@ -15,20 +15,24 @@
                     <view class="ui-consigneeNameTel">
                         <text>{{item.receiverName}}</text>
                         <text>{{item.receiverPhone}}</text>
-                        <view wx:if="{{handle}}" class="{{currentCheck==item.currentId?'ui-defaultIcon':''}}"></view>
+                        <!-- <view wx:if="{{handle}}" class="{{item.isDefault?'ui-defaultIcon':''}}"></view> -->
+                        <image src="{{filter.getLocalPhoto('my_default.png')}}" mode="aspectFit" class="ui-defaultIcon" wx:if="{{handle && item.isDefault}}"/>
                     </view>
                     <text class="ui-consigneeAddressDetail">{{item.address}}</text>
                     <view class="ui-handleMemu" wx:if="{{!handle}}">
                         <view class="ui-common ui-selectDefault">
-                            <view data-id="{{item.id}}" class="ui-commonCheck {{item.isDefault?'ui-check':'ui-noCheck'}}" catchtap="chooseMenu"></view>
+                            <!-- <view data-id="{{item.id}}" class="ui-commonCheck {{item.isDefault?'ui-check':'ui-noCheck'}}" catchtap="chooseMenu"></view> -->
+                            <image src="{{item.isDefault ? filter.getLocalPhoto('my_check.png'): filter.getLocalPhoto('my_unCheck.png')}}" mode="aspectFit" class="ui-commonCheck" catchtap="chooseMenu" data-id="{{item.id}}"/>
                             <text class="ui-defaultText">默认地址</text>
                         </view>
                         <view class="ui-common ui-compile" catchtap="onCompileTap" data-index="{{idx}}">
-                            <view class="ui-compileIcon"></view>
+                            <!-- <view class="ui-compileIcon"></view> -->
+                            <image src="{{filter.getLocalPhoto('my_bianji.png')}}" mode="aspectFit" class="ui-compileIcon"/>
                             <text>编辑</text>
                         </view>
                         <view class="ui-common ui-delete" data-id="{{item.id}}" catchtap="showDialogBtn" wx:if="{{from != 'order'}}">
-                            <view class="ui-deleteIcon"></view>
+                            <!-- <view class="ui-deleteIcon"></view> -->
+                             <image src="{{filter.getLocalPhoto('my_icDelete.png')}}" mode="aspectFit" class="ui-deleteIcon"/>
                             <text>删除</text>
                         </view>
                     </view>

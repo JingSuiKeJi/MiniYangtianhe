@@ -75,9 +75,6 @@ page {
 }
 
 .btn-handle {
-    /*position: absolute;*/
-    /*right: 40rpx;*/
-    /*top: 22rpx;*/
     display: flex;
     margin-left: auto;
     width: 88rpx;
@@ -130,10 +127,6 @@ page {
     width: 52rpx;
     height: 28rpx;
     margin-left: 10rpx;
-    background-image: url('http://www.gzlingren.com:8098/yangtianhe/my_default.png');
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
 }
 
 .ui-consigneeAddressDetail {
@@ -167,18 +160,16 @@ page {
 .ui-selectDefault .ui-commonCheck {
     width: 40rpx;
     height: 40rpx;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
+    
 }
 
-.ui-check {
+/* .ui-check {
     background-image: url('http://www.gzlingren.com:8098/yangtianhe/my_check.png');
 }
 
 .ui-noCheck {
     background-image: url('http://www.gzlingren.com:8098/yangtianhe/my_unCheck.png');
-}
+} */
 
 .ui-selectDefault text.ui-defaultText {
     height: 26rpx;
@@ -197,10 +188,6 @@ page {
 .ui-compileIcon {
     width: 44rpx;
     height: 44rpx;
-    background-image: url('http://www.gzlingren.com:8098/yangtianhe/my_bianji.png');
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
 }
 
 .ui-common text {
@@ -220,10 +207,6 @@ page {
 .ui-deleteIcon {
     width: 44rpx;
     height: 44rpx;
-    background-image: url('http://www.gzlingren.com:8098/yangtianhe/my_icDelete.png');
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
 }
 
 
