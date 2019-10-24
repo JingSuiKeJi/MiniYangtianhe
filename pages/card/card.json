@@ -1,4 +1,5 @@
 {
-  "usingComponents": {},
-  "navigationBarTitleText": "PLUS会员征集令"
+    "enablePullDownRefresh": true,
+    "usingComponents": {},
+    "navigationBarTitleText": "PLUS会员征集令"
 }

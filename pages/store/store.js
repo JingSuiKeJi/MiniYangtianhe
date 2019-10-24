@@ -28,6 +28,7 @@ const data = {
 
 // 页面onLoad方法
 const onLoad = function (self) {
+    wx.showShareMenu();
     self.getData();
     self.getTabBar().setData({
         selected: 1
@@ -62,8 +63,9 @@ const methods = {
             page: 1,
             pageSize: 5
         }).then((ret) => {
+            if (!ret.data.list) return;
             self.setData({
-                groupList: ret.data.data.list,
+                groupList: ret.data.list,
                 activeId: ret.data.activeId
             });
         })
@@ -155,18 +157,13 @@ const methods = {
         const self = this;
         let data = {
             classifyId: e.currentTarget.dataset.type,
+            list: [],
+            page: 1
         }
         //点击下拉列表时使scroll-view的自动滑动到相对应的view
         if (!self.data.hideModal) {
             data.toView = '_' + e.currentTarget.dataset.type;
         }
-        self.setData({
-            list: []
-        })
-        // self.setData({
-        //     classifyId: e.currentTarget.dataset.id,
-        //     page: 1
-        // });
         self.setData(data);
         self.getPageData();
         self.hideModal();
@@ -356,17 +353,13 @@ const methods = {
         Platform.getRecommend(self, {
             platformFlag: 1,
             page: self.data.page,
-            pageSize: 10,
+            pageSize: 20,
             classifyId: self.data.classifyId
         }).then((ret) => {
             let data = ret.data;
-            if (self.data.page == 1) {
+            if (data.list && data.list.length) {
                 self.setData({
-                    list: data.list
-                })
-            } else {
-                self.setData({
-                    list: self.data.list.concat(data.list)
+                    list: self.data.list.concat(data.list),
                 })
             }
         }, (err) => {
