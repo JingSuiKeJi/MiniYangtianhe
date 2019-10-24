@@ -261,7 +261,7 @@ page {
 .ui-tapBox {
     width: 100%;
     height: 80rpx;
-    margin-top: 82rpx;
+    margin-top: 72rpx;
     padding: 0 40rpx;
     background-color: #3CC7A4;
 }
@@ -281,13 +281,13 @@ page {
 
 .ui-tap__item {
     display: inline-block;
-    line-height: 0rpx;
+    height: 80rpx;
+    line-height: 80rpx;
     font-size: 26rpx;
     font-family: PingFangSC-Regular;
     font-weight: 400;
     color: #ffff;
     margin-right: 40rpx;
-    position: relative;
 }
 
 .ui-headBox_tap text:last-child {
@@ -314,7 +314,9 @@ page {
 
 .ui-banner_swiper {
     width: 90%;
-    margin-top: -40rpx;
+    position: absolute;
+    top: 0;
+    /* margin-top: -40rpx; */
 }
 
 .ui-banner_image {

@@ -1,5 +1,6 @@
 {
-  "navigationBarTitleText": "全部分类",
-	"navigationBarBackgroundColor":"#FFFFFF",
-	"navigationBarTextStyle":"black"
+	"enablePullDownRefresh": true,
+	"navigationBarTitleText": "全部分类",
+	"navigationBarBackgroundColor": "#FFFFFF",
+	"navigationBarTextStyle": "black"
 }
