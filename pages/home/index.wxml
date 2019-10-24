@@ -26,7 +26,7 @@
                 <view class="ui-banner_bgroundBox"></view>
                 <swiper current="currentIndex" autoplay interval="2000" duration="500" circular class="ui-banner_swiper" bindchange="onChangeTap" wx:if="{{banner.length}}">
                     <block wx:for="{{banner}}" wx:key="{{index}}">
-                        <swiper-item>
+                        <swiper-item style="">
                             <image src="{{filter.getPhoto(host,item.imgUrl)}}" mode="aspectFill" class="ui-banner_image" data-index="{{index}}" data-isLink="{{item.isLink}}" bindtap="onGoTap" />
                         </swiper-item>
                     </block>

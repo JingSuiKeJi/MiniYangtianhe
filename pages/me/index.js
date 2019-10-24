@@ -55,7 +55,15 @@ const onUnload = function(self) {
 
 const methods = {
     getData: function() {
-
+        let self = this;
+        if (_g.checkLogin({
+            type: 1
+        })) {
+    	self.setData({
+    		isLogin: true
+    	});
+        self.getMyInfo();
+    }
     },
     getMyInfo() {
         const self = this;
@@ -321,9 +329,16 @@ const methods = {
     onCardRights: function (e) {
         let self = this;
         if (!_g.checkLogin({type: 2})) return;
-        _g.navigateTo({
-            url: 'pages/card/card',
-        }, self);
+        if (self.data.userInfo.rightsConfigId) {
+            _g.navigateTo({
+                url: 'pages/card/card',
+            }, self);
+        } else {
+            _g.navigateTo({
+                url: 'pages/card/rightsCard',
+            }, self);
+        }
+       
     }
 }
 

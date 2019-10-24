@@ -68,7 +68,7 @@
                     <text wx:else>免邮</text>
                     <text>已售{{goodsDetail.soldNum + goodsDetail.virtualNum}}件</text>
                 </view>
-                <view class="ui-plusImgBox" wx:if="{{type !=5  }}" bindtap="onCartRights">
+                <view class="ui-plusImgBox" wx:if="{{type !=5 && !userInfo.rightsConfigId }}" bindtap="onCartRights">
                     <image src="{{filter.getLocalPhoto('goodsDetail_bgIcon.png')}}" mode="aspectFill" class="ui-plusIcon" bindtap="onOpenPlus" />
                 </view>
             </view>

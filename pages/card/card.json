@@ -1,5 +1,8 @@
 {
-    "enablePullDownRefresh": true,
-    "usingComponents": {},
-    "navigationBarTitleText": "PLUS会员征集令"
+    "navigationStyle": "custom",
+    "usingComponents": {
+        "navBar": "/components/navBar/navBar",
+        "shareGoods": "/components/share/goods"
+    },
+    "navigationBarTextStyle": "white"
 }

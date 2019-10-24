@@ -113,6 +113,9 @@ const methods = {
         const self = this;
         self.getGoodsDetail();
         self.getCommentList();
+        self.setData({
+            userInfo: _g.getLS(_c.LSKeys.userInfo)
+        })
     },
     getGoodsDetail() {
         const self = this;

@@ -63,9 +63,9 @@ const methods = {
             page: 1,
             pageSize: 5
         }).then((ret) => {
-            if (!ret.data.list) return;
+            if (!ret.data.data.list) return;
             self.setData({
-                groupList: ret.data.list,
+                groupList: ret.data.data.list,
                 activeId: ret.data.activeId
             });
         })

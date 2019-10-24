@@ -328,10 +328,15 @@ base.prototype = {
             },
             onFormIdTap: function(e) {
                 const self = this;
+                if (_g.checkLogin({
+                    type: 1
+                })) {
                 _g.postFormId({
                     self: self,
                     formId: e.detail.formId
                 });
+            }
+               
                 // console.log(e.target.dataset['fuc'])
                 e.target.dataset['fuc'] && self[e.target.dataset['fuc']](e);
             },

@@ -8,7 +8,7 @@
 	</text>
     <view class="main__box" wx:if="{{(medecineList.length || storeList.length)}}">
         <view class='tab-bottom'></view>
-        <view class="ui-headerBox" bindtap="onCardRightTap">
+        <view class="ui-headerBox" bindtap="onCardRightTap" wx:if="{{!userInfo.rightsConfigId}}">
             <image src="{{filter.getLocalPhoto('cart_laba.png')}}" class="headerItem_labaIcon" />
             <text class="headerItem_text">点击成为PLUS会员，享更多权限优惠！</text>
             <image src="{{filter.getLocalPhoto('cart_right.png')}}" class="headerItem_rightIcon" />
