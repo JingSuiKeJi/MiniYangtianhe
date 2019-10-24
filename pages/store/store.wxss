@@ -248,12 +248,15 @@ page {
     /* margin-top: -40rpx; */
     position: absolute;
     top: 0rpx;
+    border-radius: 12rpx;
 }
 
 .ui-banner_image {
     display: inline-block;
     width: 100%;
     height: 264rpx;
+    border-radius: 12rpx;
+    
 }
 
 .ui-banner_btnBox {

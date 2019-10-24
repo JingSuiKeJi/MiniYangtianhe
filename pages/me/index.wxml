@@ -63,7 +63,7 @@
 					<image src="{{filter.getLocalPhoto('my_vipIcon.png')}}" mode="aspectFill" class="ui-iconVip"/>
 					<text>PLUS会员卡</text>
 				</view>
-				<view class="ui-vipItem__text" bindtap="onCardRights">立即查看</view>
+				<view class="ui-vipItem__text" bindtap="onCardRights">{{userInfo.rightsConfigId ? '立即查看' : '进入专区'}}</view>
 			</view>
 			
 			<view class="ui-incomeItems">

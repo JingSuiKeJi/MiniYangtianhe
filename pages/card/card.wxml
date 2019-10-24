@@ -1,6 +1,7 @@
 <!-- pages/search/search.wxml -->
 <wxs module="filter" src="../../filter/filter.wxs"></wxs>
 <view class="ui-main">
+    <navBar title="PLUS会员征集令" background="#fff" color="#030303" iconTheme="black" back="{{true}}"></navBar>
     <view class="ui-titleBox">开通权益福卡 享更多优惠</view>
     <view class="ui-textBox">8000万用户的品质之选</view>
     <image src="{{filter.getLocalPhoto('card__quanyi.png')}}" mode="aspectFill" class="ui-plusCard" />

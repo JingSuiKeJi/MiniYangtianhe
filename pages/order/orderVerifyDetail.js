@@ -35,9 +35,9 @@ const methods = {
 			self.setData({
 				orderDetail: ret.data
 			});
-			_g.toast({
-				title: '核销订单成功'
-			})
+			// _g.toast({
+			// 	title: '核销订单成功'
+			// })
         }, (err) => {
             _g.toast({
 				title: err
@@ -57,7 +57,9 @@ const methods = {
 					virifyCode:self.data.orderDetail.verificationCode,
 				}).then((ret) => {
 					self.getData();
-				
+					_g.toast({
+					    title: '核销订单成功'
+					});
 				}, (err) => {
 				     _g.toast({
 				        title: '手动核销失败',

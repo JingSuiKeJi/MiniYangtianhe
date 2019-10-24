@@ -311,7 +311,12 @@ const methods = {
             platformFlag: self.data.platformFlag,
             couponId: self.data.couponId,
         };
-
+        if (self.data.platformFlag == 2 && self.data.type==1) {
+            _g.toast({
+                title: '请选择配送方式'
+            });
+            return;
+        }
         if (self.data.platformFlag == 2) {
             data.dispatchingType = self.data.type;
             data.dispatchingTime = self.data.dispatchingTime;

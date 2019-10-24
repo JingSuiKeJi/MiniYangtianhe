@@ -69,7 +69,7 @@
 			<text>付款时间：{{filter.getDate(orderDetail.payTime)}}</text>
 		</view>
 		
-		<view class="ui-verificationFooter" wx:if="{{orderDetail.status=='WAIT_CHECK'}}">
+		<view class="ui-verificationFooter" wx:if="{{orderDetail.status=='WAIT_CHECK'|| orderDetail.status=='WAIT_DELIVERY'}}">
 			<view class="btn-verifyOrder" catchtap="onManualVerifyTap">核销订单</view>
 		</view>
 	</view>

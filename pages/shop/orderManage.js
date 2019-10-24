@@ -10,12 +10,12 @@ const User = require('../../service/User');
 let data = {
 	storeId:1,//接收上一页门店id，1为测试数据
 	menuList:[
-		{status:"WAIT_CHECK",currentId:0},
-		{status:"TRADE_BUYER_SIGNED",currentId:1},
-		{status:"EXPIRED",currentId:2}
+		{status:"WAIT_CHECK",currentId:1},
+		{status:"TRADE_BUYER_SIGNED",currentId:2},
+		{status:"EXPIRED",currentId:3}
 	],
-	currentCheck: 0,
-	orderList:[
+	currentCheck: 1,
+	list:[
 		// {storeList:[
 		// 	{newsImg:'e_c',newsName:"养生堂维C+维E",newsWeight:"250gx两盒装",newsMoney:99.00},
 		// 	{newsImg:'my_herbalJelly',newsName:"红豆龟苓膏",newsWeight:"250gx两盒装",newsMoney:10.00},
@@ -70,15 +70,15 @@ const methods = {
 			page: self.data.page,
 			pageSize: 10,
 			storeId:storeId,
-			status:currentState,
+			status:self.data.currentCheck,
 		}).then((ret) => {
 			if (self.data.page == 1) {
 	    		self.setData({
-	    			orderList: ret.data.list
+	    			list: ret.data.list
 	    		});
 			} else {
 				self.setData({
-	    			orderList: self.data.orderList.concat(ret.data.list)
+	    			list: self.data.list.concat(ret.data.list)
 	    		});
 			}
 		},(err) => {
@@ -93,23 +93,24 @@ const methods = {
 		//列表
 		const menuList = self.data.menuList;
 		//当前列表名
-		const currentState = menuList[id].status;
+		// const currentState = menuList[id].status;
+		console.log(66,id);
 		//设置当前样式
 		self.setData({
 			currentCheck:id,
-			currentState:currentState
+			// currentState:currentState
 		});
 		self.getDataPage()
 	},
 	//点击跳转到订单详情页
 	onOrderVerifyDetailTap:function(e){
 		let self = this;
-		const orderList = self.data.orderList;
+		const list = self.data.list;
 		const idx = e.target.dataset.idx;
-		// console.log(123,orderList[idx].orderId);
+		// console.log(123,list[idx].orderId);
 	    _g.navigateTo({
 			param:{
-          		orderId:orderList[idx].orderId
+          		orderId:list[idx].orderId
          	},
 	        url: 'pages/order/orderVerifyDetail',
 	    }, self);

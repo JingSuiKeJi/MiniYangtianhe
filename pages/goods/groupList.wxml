@@ -3,10 +3,10 @@
 <view class="contain">
     <navBar title='拼团会' background='linear-gradient(137deg,rgba(1,206,165,1) 0%,rgba(94,221,218,1) 100%)' color='white' iconTheme='white' back="{{true}}"></navBar>
     <view class="main">
-        <view class="ui-imgBox">
+        <view class="ui-imgBox" wx:if="{{tapImgUrl}}">
             <image src="{{filter.getPhoto(host,tapImgUrl)}}" />
         </view>
-        <view class="ui-contentBox">
+        <view class="ui-contentBox" style="margin-top: {{!tapImgUrl ? '20rpx': ''}}">
             <!-- <view class="ui-content_top">
                 <scroll-view scroll-x="{{true}}" class="ui-scrollView">
                     <view wx:for="{{classfity}}" class="ui-scrollView_item" bindtap="onSelectTap" data-type="{{index}}" data-id="{{item.id}}">
@@ -26,7 +26,7 @@
                         <view class="ui-rightItem_info">
                             <text>单买价:￥{{item.originPrice}}</text>
                             <text>已售{{item.soldNum + item.virtualNum}}件</text>
-                            <text>{{item.createUser}}人团</text>
+                            <text>{{item.limitNum}}人团</text>
                         </view>
                         <view class="ui-rightItem_price">
                             <text class="ui-rightItem_priceText">￥{{item.nowPrice}}</text>

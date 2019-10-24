@@ -1,5 +1,7 @@
 {
-    "enablePullDownRefresh": true,
-    "usingComponents": {},
-    "navigationBarTitleText": "PLUS会员-权益专享"
+  "navigationStyle": "custom",
+	"usingComponents": {
+		"navBar": "/components/navBar/navBar",
+		"shareGoods": "/components/share/goods"
+	}
 }

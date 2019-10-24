@@ -45,7 +45,8 @@
                 </view>
             </view>
             <view class="ui-orderStatus" wx:if="{{status=='TRADE_FINISH' || status=='TRADE_FINISH' || status=='TRADE_BUYER_SIGNED'}}">
-                <view class="ui-StatusIcon ui-tradeSuccessfully"></view>
+                <!-- <view class="ui-StatusIcon ui-tradeSuccessfully"></view> -->
+                <image src="{{filter.getLocalPhoto('my_tradeSuccessfully.png')}}"  mode="aspectFit" class="ui-StatusIcon ui-tradeSuccessfully"/>
                 <text class="ui-StatusText">交易成功</text>
             </view>
             <view class="ui-orderStatus" wx:if="{{status=='CUSTOMER_CANCEL' }}">
@@ -141,7 +142,7 @@
             <text>创建时间：{{filter.getDate(creatrTime)}}</text>
             <text wx:if="{{payTime}}">付款时间：{{filter.getDate(payTime)}}</text>
         </view>
-        <view hidden="{{(from =='postComment')||(status == 'WAIT_DELIVERY')}}" class="ui-verificationFooter">
+        <view hidden="{{(from =='postComment')}}" class="ui-verificationFooter">
             <block wx:if="{{status=='WAIT_BUYER_PAY'}}">
                 <view class="btn-common btn-grey" bindtap="onCancelTap">
                     <text>取消订单</text>
@@ -177,7 +178,7 @@
                     <text>删除订单</text>
                 </view>
             </block>
-            <block wx:if="{{status=='WAIT_CHECK'}}">
+            <block wx:if="{{status=='WAIT_CHECK'|| status=='WAIT_DELIVERY'}}">
                 <view class="btn-common btn-single" catchtap="onApplyafterSaleTap">
                     <text>申请售后</text>
                 </view>
