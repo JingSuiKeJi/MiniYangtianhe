@@ -44,7 +44,7 @@ const onUnload = function (self) {
 
 }
 const onReady = function (self) {
-   
+
 }
 // 页面中的方法
 const methods = {
@@ -86,7 +86,7 @@ const methods = {
             }
             if (data.activity.length) {
                 opts.activity = data.activity[0];
-             }
+            }
             self.setData(opts);
             self.showClassify(data.navigation);
         }, (err) => {
@@ -133,8 +133,8 @@ const methods = {
         const self = this;
         _g.navigateTo({
             url: 'pages/goods/groupList',
-            param: { 
-                platformFlag: 1 
+            param: {
+                platformFlag: 1
             }
         }, self)
     },
@@ -142,8 +142,8 @@ const methods = {
         const self = this;
         _g.navigateTo({
             url: 'pages/search/search',
-            param: { 
-                platformFlag: 1 
+            param: {
+                platformFlag: 1
             }
         }, self);
     },
@@ -185,11 +185,11 @@ const methods = {
         let opts = e.currentTarget.dataset;
         if (opts.isLink == 2) return;
         _.each(self.data.navigation, (item) => {
-             if (item.id == opts.id) {
+            if (item.id == opts.id) {
                 self.onPageTap(item);
                 return;
             }
-           
+
         });
     },
     onDetailTap: function (e) {
@@ -243,7 +243,7 @@ const methods = {
     map: function (arr, index) {
         let self = this;
         _g.navigateTo({
-            url: 'pages' +'/goods/detail',
+            url: 'pages' + '/goods/detail',
             param: {
                 platformFlag: 1
             }
@@ -259,7 +259,7 @@ const methods = {
     showClassify: function (arr) {
         const self = this;
         var classList = [];
-        if(!arr.length) return;
+        if (!arr.length) return;
         var length = Math.ceil(arr.length / 10);
         for (var index = 0; index < length; index++) {
             classList[index] = arr.slice(index * 10, (index + 1) * 10);
@@ -341,8 +341,8 @@ const methods = {
                     classifyId: data[0].id
                 });
                 self.getPageData();
-                self.onScroll('#aim','scrollTop');
-                self.onScroll('#head','headTop');
+                self.onScroll('#aim', 'scrollTop');
+                self.onScroll('#head', 'headTop');
             }
         }, (err) => {
 
@@ -358,9 +358,16 @@ const methods = {
         }).then((ret) => {
             let data = ret.data;
             if (data.list && data.list.length) {
-                self.setData({
-                    list: self.data.list.concat(data.list),
-                })
+                if (self.data.page == 1) {
+                    self.setData({
+                        list: data.list,
+                    })
+                } else {
+                    self.setData({
+                        list: self.data.list.concat(data.list),
+                    })
+                }
+
             }
         }, (err) => {
 
@@ -381,7 +388,7 @@ const methods = {
             hideModal: true,
         })
     },
-    onScroll: function (id,value) {
+    onScroll: function (id, value) {
         const self = this;
         const query = wx.createSelectorQuery();
         setTimeout(() => {
@@ -389,7 +396,7 @@ const methods = {
             query.selectViewport().scrollOffset();
             query.exec(function (res) {
                 self.setData({
-                     [value]: res[0].top
+                    [value]: res[0].top
                 });
             })
         }, 1000)
@@ -420,7 +427,7 @@ const methods = {
                 _g.navigateTo({
                     url: 'pages/goods/detail',
                     param: {
-                        id:data.otherId 
+                        id: data.otherId
                     }
                 }, self);
                 break;
@@ -452,14 +459,14 @@ const methods = {
                     url: 'pages/card/card',
                     param: param
                 }, self);
-                break; 
+                break;
             case 6:
                 //全部分类
                 _g.navigateTo({
                     url: 'pages/search/classify',
                     param: param
                 }, self);
-                break;                
+                break;
             default:
                 break;
         }

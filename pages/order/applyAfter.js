@@ -7,35 +7,45 @@ const _t = app.temps;
 const event = app.event;
 const Order = require('../../service/Order');
 let data = {
-	orderStatus:'',//上一个页面订单状态
-	takeState:'',//上一个页面在状态，自提/配送
-	storeList:[],//商品列表
-	
+	orderStatus: '',//上一个页面订单状态
+	takeState: '',//上一个页面在状态，自提/配送
+	storeList: [],//商品列表
+
 };
-const onLoad = function(self) {
+const onLoad = function (self) {
 	//接收上一个页面状态
 	const takeState = self.data.takeState;
 	self.setData({
 		orderId: self.data.orderId,
-		takeState:takeState
+		takeState: takeState
 	});
 	self.getData();
 }
-const onShow = function(self) {}
-const onReady = function(self) {}
-const onUnload = function(self) {}
+const onShow = function (self) { }
+const onReady = function (self) { }
+const onUnload = function (self) { }
 const methods = {
 	getData: function () {
 		let self = this;
-        self.getAfterSale()
+		self.getAfterSale()
 	},
-    getAfterSale() {
-        const self = this;
-        Order.getAfterSale(self, {
-            orderId: self.data.orderId
-        }).then((ret) => {
+	getAfterSale() {
+		const self = this;
+		Order.getAfterSale(self, {
+			orderId: self.data.orderId
+		}).then((ret) => {
 			let data = ret.data;
 			let goodsVoList = data.goodsVoList
+			if (!goodsVoList.length) {
+				_g.toast({
+					title: '药品不能申请售后',
+					duration: 3000
+				});
+				setTimeout(() => {
+					_g.navigateBack();
+				}, 2000);
+				return;
+			}
 			// _.each(goodsVoList,(item)=> item.select = false);
 			self.setData({
 				storeList: goodsVoList,
@@ -43,22 +53,22 @@ const methods = {
 				salesReturnSwich: data.salesReturnSwich,
 				// exchangeGoodsSwich: data.exchangeGoodsSwich,
 			})
-        }, (err) => {
+		}, (err) => {
 
-        });
+		});
 	},
 	// 选择退款商品
-	onSelectTap:function(options){
+	onSelectTap: function (options) {
 		let self = this;
 		let storeList = self.data.storeList;
 		let index = options.currentTarget.dataset.index;
 		storeList[index].select = !storeList[index].select;
 		self.setData({
-			storeList:storeList
+			storeList: storeList
 		})
 	},
 	//跳转到申请退款
-	onRefundTap:function(e){
+	onRefundTap: function (e) {
 		let self = this;
 		let orderItemIds = self.chooseIds();
 		console.log(33, e.currentTarget.dataset.type)
@@ -69,7 +79,7 @@ const methods = {
 			return
 		}
 		_g.navigateTo({
-			param:{
+			param: {
 				orderItemIds: orderItemIds.join(','),
 				type: Number(e.currentTarget.dataset.type)
 			},
@@ -94,11 +104,11 @@ const methods = {
 	// 	}, self);
 	// },
 	//跳转到申请换货
-	onExchangeGoodsTap:function(){
+	onExchangeGoodsTap: function () {
 		let self = this;
 		_g.navigateTo({
-			param:{
-				status:'申请换货'
+			param: {
+				status: '申请换货'
 			},
 			url: 'pages/order/applyRefund',
 		}, self);
@@ -106,8 +116,8 @@ const methods = {
 	chooseIds: function () {
 		const self = this;
 		let ids = []
-		_.each(self.data.storeList,(item)=> {
-            if (item.select) ids.push(item.orderItemId);
+		_.each(self.data.storeList, (item) => {
+			if (item.select) ids.push(item.orderItemId);
 		})
 		return ids;
 	}
@@ -118,12 +128,12 @@ const temps = {};
 
 // 初始化页面page对象
 const initPage = _g.initPage({
-    data: data,
-    onLoad: onLoad,
-    onUnload: onUnload,
-    onReady: onReady,
-    onShow: onShow,
-    methods: methods,
-    temps: temps,
+	data: data,
+	onLoad: onLoad,
+	onUnload: onUnload,
+	onReady: onReady,
+	onShow: onShow,
+	methods: methods,
+	temps: temps,
 });
 Page(initPage);

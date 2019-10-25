@@ -158,6 +158,13 @@ class Platfrom {
             data: reqData
         }, page);
     }
+    getBrandLabelList(page, reqData) {
+        _g.dm.canLoadMore = 1;
+        return _g.ajax({
+            url: mini.platfrom.getBrandLabelList,
+            data: reqData
+        }, page);
+    }
 
 }
 

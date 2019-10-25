@@ -1,6 +1,6 @@
 <wxs module="filter" src="../../filter/filter.wxs"></wxs>
 <view class="ui-main">
-    <navBar title="PLUS礼包详情" background="#fff" color="#030303" iconTheme="#030303" back="{{true}}"></navBar>
+    <navBar title="PLUS礼包详情" background="#fff" color="black" iconTheme="black" back="{{true}}"></navBar>
     <view class="ui-headBox">
         <view class="ui-headItem__info">
             <image src="{{filter.getLocalPhoto('my_qrHeader.png')}}" mode="aspectFit" class="ui-infoItem__icon" />

@@ -1,6 +1,6 @@
 <wxs module="filter" src="../../filter/filter.wxs"></wxs>
 <view class="ui-main">
-    <navBar title="PLUS会员-权益专享" background="#fff" color="#030303" iconTheme="#030303" back="{{true}}"></navBar>
+    <navBar title="PLUS会员-权益专享" background="#fff" color="black" iconTheme="black" back="{{true}}"></navBar>
     <image src="{{filter.getLocalPhoto('rightsCard__banner.png')}}" mode="aspectFill" class="ui-bannerImg" />
     <view class="ui-centerBox">
         <view class="ui-centerItem__titleBox">

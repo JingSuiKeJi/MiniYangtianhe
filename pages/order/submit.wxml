@@ -1,7 +1,7 @@
 <wxs module="filter" src="../../filter/filter.wxs"></wxs>
 <navBar title='填写订单' background='white' color='black' iconTheme='black' back="{{true}}"></navBar>
 <view class="ui-main">
-    <view class="ui-headerBox" bindtap="onCardRight">
+    <view class="ui-headerBox" bindtap="onCardRight" wx:if="{{!userInfo.rightsConfigId}}">
         <image src="{{filter.getLocalPhoto('cart_laba.png')}}" class="headerItem_labaIcon" mode="aspectFit"/>
         <text class="headerItem_text">点击成为PLUS会员，享更多权限优惠！ </text>
         <image src="{{filter.getLocalPhoto('cart_right.png')}}" class="headerItem_rightIcon" mode="aspectFit"/>

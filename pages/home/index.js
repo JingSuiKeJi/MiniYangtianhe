@@ -78,7 +78,7 @@ const onLoad = function (self) {
             self.getData();
         }
     });
-    event.on('logout-suc',self,(ret) => {
+    event.on('logout-suc', self, (ret) => {
         self.setData({
             BMIIndex: 0,
             step: '上传步数',
@@ -90,17 +90,17 @@ const onLoad = function (self) {
             }
         })
     });
-    
+
 };
 
 const onReady = function (self) {
-    
+
 
 }
 
 // 页面onShow方法
 const onShow = function (self) {
-    
+
     // self.onScroll('#aim', 'scrollTop');
     // self.onScroll('#head', 'headTop');
 
@@ -503,11 +503,17 @@ const methods = {
         }).then((ret) => {
             let data = ret.data;
             if (data.list && data.list.length) {
-                self.setData({
-                    list: self.data.list.concat(data.list),
-                })
-            }
+                if (self.data.page == 1) {
+                    self.setData({
+                        list: data.list,
+                    })
+                } else {
+                    self.setData({
+                        list: self.data.list.concat(data.list),
+                    })
+                }
 
+            }
         }, (err) => {
 
         });
@@ -532,11 +538,11 @@ const methods = {
                 success() { }
             });
             self.wxLogin();
-        } else if(!self.data.isLogin) {
-             _g.toast({
-                 title: '请登陆'
-             }) 
-        }else {
+        } else if (!self.data.isLogin) {
+            _g.toast({
+                title: '请登陆'
+            })
+        } else {
             return false;
         }
 
@@ -620,6 +626,7 @@ const methods = {
         }
 
     },
+
     onMapTap() {
         const self = this;
         if (self.data.storeInfo.isBind) return;
