@@ -212,14 +212,12 @@ const methods = {
     getPageData: function() {
         let self = this;
         User.getRecordList(self, {
-            page: self.data.page,
-            pageSize: 15
+            page: 0,
         }).then((ret) => {
             let data = ret.data;
             if (data.list && data.list.length) {
                 self.setData({
                     list: data.list,
-                    hasNextPage: data.hasNextPage
                 });
             }
            

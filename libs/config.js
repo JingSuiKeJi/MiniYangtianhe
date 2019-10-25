@@ -14,8 +14,8 @@ config.prototype = {
     tokenKey: '',
 
     // env: 'dev', // 切换版本(提交正式必须改为 pro): dev 开发 | test  测试 | pro 生产
-    // env: 'test', // 切换版本(提交正式必须改为 pro): dev 开发 | test  测试 | pro 生产
-    env: 'pro', // 切换版本(提交正式必须改为 pro): dev 开发 | test  测试 | pro 生产
+    env: 'test', // 切换版本(提交正式必须改为 pro): dev 开发 | test  测试 | pro 生产
+    // env: 'pro', // 切换版本(提交正式必须改为 pro): dev 开发 | test  测试 | pro 生产
 
     defaultPage: 1,// 页码 默认1
     defaultPageSize: 15,// 每页数 默认15
@@ -84,7 +84,8 @@ config.prototype = {
             uploadStep: '/app/step/uploadStep.do',
             formId: '/app/common/saveFormId.do',
             rightsCard: '/app/rightsCard/detail.do',
-            getCardGoodsList: '/app/rightsCard/getGoodsList.do'
+            getCardGoodsList: '/app/rightsCard/getGoodsList.do',
+            getBrandLabelList: '/app/brand/getBrandLabelList.do'
 
         },
         user: {

@@ -4,5 +4,5 @@
         "navBar": "/components/navBar/navBar",
         "shareGoods": "/components/share/goods"
     },
-    "navigationBarTextStyle": "white"
+    "navigationBarTextStyle": "black"
 }

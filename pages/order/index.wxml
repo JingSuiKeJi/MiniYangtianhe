@@ -57,7 +57,7 @@
                     <!-- <view class="btn-cancelShipments btn-marginLeft btn-common" bindtap="onCancelTap"  data-orderid="{{item.orderId}}"><text>取消订单</text></view> -->
                 </view>
             </block>
-            <block wx:elif="{{item.status=='WAIT_BUYER_CONFIRM_GOODS'}}">
+            <block wx:elif="{{item.status=='WAIT_BUYER_CONFIRM_GOODS' || item.status=='WAIT_DELIVERY'}}">
                 <view class="ui-handle">
                     <view class="btn-comfirmRec btn-common" catchtap="onConfirmTap" data-orderid="{{item.orderId}}">
                         <text>确认收货</text>

@@ -262,7 +262,7 @@ page {
 .ui-banner_btnBox {
     text-align: center;
     position: absolute;
-    bottom: 65rpx;
+    bottom: 25rpx;
     /* left: 45%; */
     z-index: 999;
 }

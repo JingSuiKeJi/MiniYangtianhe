@@ -20,10 +20,6 @@ page {
     margin-left: 16rpx;
     width: 24rpx;
     height: 32rpx;
-    background-image: url('http://www.gzlingren.com:8098/yangtianhe/home_address.png');
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
 }
 
 .ui-addressText {
@@ -44,10 +40,6 @@ page {
     margin-left: 226rpx;
     width: 14rpx;
     height: 8rpx;
-    background-image: url('http://www.gzlingren.com:8098/yangtianhe/home_down.png');
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
 }
 
 .main {
@@ -264,6 +256,7 @@ page {
     margin-top: 72rpx;
     padding: 0 40rpx;
     background-color: #3CC7A4;
+    text-align: left;
 }
 .ui-tapBox__Item {
     width: 100%;
@@ -330,7 +323,7 @@ page {
 .ui-banner_btnBox {
     text-align: center;
     position: absolute;
-    bottom: 65rpx;
+    bottom: 25rpx;
     /* left: 45%; */
     z-index: 999;
 }

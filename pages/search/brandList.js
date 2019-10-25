@@ -9,16 +9,7 @@ const Platfrom = require('../../service/Platfrom')
 // 初始化数据
 const data = {
     type: 0,
-    list: [
-        {
-            title: '红豆口味，清热解毒，男女老少都爱吃',
-            scale: '【4盒装】 [生和堂] 红豆龟苓膏 200gx4盒',
-            prePrice: '14.00',
-            nowPrice: '10.00',
-            count: '3125',
-            url: 'zhengqiwan.png'
-        }
-    ],
+    list: [],
     priceSort: 1
 };
 
@@ -66,7 +57,7 @@ const methods = {
             brandId: self.data.brandId,
             platformFlag: self.data.platformFlag,
             page: self.data.page,
-            pageSize: 10,
+            pageSize: 20,
         }
         if (option) {
             _.extend(param, option);
@@ -75,7 +66,7 @@ const methods = {
         ).then((ret) => {
             let data = ret.data;
             self.setData({
-                list: data.list,
+                list: self.data.list.concat(data.list),
                 hasNextPage: data.hasNextPage
             })
         }, (err) => {
@@ -111,6 +102,10 @@ const methods = {
                 type: Number(opts.type)
             })
         }
+        self.setData({
+            list: [],
+            page: 1
+        })
         self.getPageData(data);
 
     },

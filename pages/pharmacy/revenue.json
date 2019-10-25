@@ -1,6 +1,6 @@
 {
   "navigationBarTitleText": "收益中心",
   "navigationBarBackgroundColor":"#FFFFFF",
-	"navigationBarTextStyle":"black",
-  "enablePullDownRefresh":true
+	"navigationBarTextStyle":"black"
+  
 }

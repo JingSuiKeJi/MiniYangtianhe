@@ -40,7 +40,7 @@
                         </view>
                         <view class="ui-content_reward">
                             <text >￥{{item.nowPrice}}</text>
-                            <image src="{{filter.getLocalPhoto('cart.png')}}" mode="aspectFill" bindtap="onAddtap"/>
+                            <!-- <image src="{{filter.getLocalPhoto('cart.png')}}" mode="aspectFill" bindtap="onAddtap"/> -->
                         </view>
                     </view>
                   </view>   

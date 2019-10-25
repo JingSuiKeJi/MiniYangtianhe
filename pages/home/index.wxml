@@ -1,14 +1,16 @@
 <wxs module="filter" src="../../filter/filter.wxs"></wxs>
-<view class="container">
+<view class="container" >
     <navBar title="养乐药房" background="#3CC7A4" color="white" iconTheme="white">
         <view class="location" slot="left">
-            <view class="ui-addressIcon" catchtap="onMapTap"></view>
+            <!-- <view class="ui-addressIcon" catchtap="onMapTap"></view> -->
+            <image src="{{filter.getLocalPhoto('home_address.png')}}" mode="aspectFit" class="ui-addressIcon"/>
             <text class="ui-addressText" catchtap="onMapTap">{{storeInfo.title}}</text>
-            <view class="icon"></view>
+            <!-- <view class="icon"></view> -->
+            <image src="{{filter.getLocalPhoto('home_down.png')}}" mode="aspectFit" class="icon"/>
         </view>
     </navBar>
     <view class="tab-bottom"></view>
-    <view class="main">
+    <view class="main" >
         <view>
             <view class="ui-headBox" style="margin-top: {{statusBarHeight+44}}px;" hidden="{{isFixed}}" id="head">
                 <view class="ui-headBox_search">

@@ -49,6 +49,7 @@ const data = {
 const onLoad = function (self) {
     self.setData({
         platformFlag: self.data.platformFlag,
+        userInfo: _g.getLS(_c.LSKeys.userInfo)
     });
     self.preOrder();
     if (self.data.platformFlag == 2) {
