@@ -24,6 +24,7 @@ const data = {
     animationData: {},
     second: -1,
     isFixed: false,
+    activity:[]
 };
 
 // 页面onLoad方法
@@ -63,7 +64,7 @@ const methods = {
             page: 1,
             pageSize: 5
         }).then((ret) => {
-            if (!ret.data.data.list) return;
+            if ( !ret.data.data) return;
             self.setData({
                 groupList: ret.data.data.list,
                 activeId: ret.data.activeId
@@ -85,7 +86,7 @@ const methods = {
                 notion: data.notion
             }
             if (data.activity.length) {
-                opts.activity = data.activity[0];
+                opts.activity = data.activity;
             }
             self.setData(opts);
             self.showClassify(data.navigation);
@@ -98,10 +99,11 @@ const methods = {
         Platform.getSecKill(self, {
             platformFlag: 1,
         }).then((ret) => {
-            if (!ret.data) return;
+            if (!ret.data.list) return;
             self.setData({
-                secSkill: ret.data
-            });
+                secSkill: ret.data,
+            }); 
+            if (!ret.data.startTime && !ret.data.endTime) return;
             self.timeFormat(ret.data.startTime, ret.data.endTime);
         }, (err) => { });
     },
@@ -271,7 +273,7 @@ const methods = {
     onCheckActivity: function (e) {
         const self = this;
         if (e.currentTarget.dataset.isLink == 2) return;
-        self.onPageTap(self.data.activity);
+        self.onPageTap(self.data.activity[0]);
     },
     //限时抢购
     timeFormat: function (startTime, endTime) {

@@ -45,6 +45,9 @@ const onShow = function(self) {
         });
         self.getMyInfo();
     }
+    self.getTabBar().setData({
+        selected: 4
+    });
 };
 
 const onReady = function(self) {};

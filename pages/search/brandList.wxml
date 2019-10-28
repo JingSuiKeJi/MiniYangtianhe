@@ -29,7 +29,7 @@
             <view wx:if="{{list.length}}">
                  <view class="ui-content_item" wx:for="{{list}}" wx:key="{{index}}" bindtap="onDetailTap" data-id="{{item.id}}">
                     <view class="ui-contentItem_left">
-                        <image src="{{filter.getPhoto(host,item.picUrl) }}" mode="aspectFill"/>
+                        <image src="{{filter.getPhoto(host,item.picUrl) }}" mode="aspectFit"/>
                     </view>
                     <view class="ui-contentItem_right">
                         <view class="ui-content_title">{{item.mainTitle}}</view>

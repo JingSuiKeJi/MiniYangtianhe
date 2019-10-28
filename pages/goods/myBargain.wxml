@@ -10,8 +10,8 @@
                     <view class="ui-scroll_icon" style="background: {{type == index ? '#1DC4BC' : ''}};"></view>
                 </view>
             </view>
-            <view class="ui-content_botttom" wx:if="{{type == 0}}" bindtap="onDetailTap" data-index="{{index}}">
-                <view class="ui-bottom_item" wx:for="{{list}}" wx:key="{{index}}" >
+            <view class="ui-content_botttom" wx:if="{{type == 0}}" >
+                <view class="ui-bottom_item" wx:for="{{list}}" wx:key="{{index}}" bindtap="onDetailTap" data-index="{{index}}">
                      <view class="ui-bottomItem_left">
                        <image src="{{filter.getPhoto(host,item.imgUrl)}}" bindtap="onSkipTap"/>
                        <view class="ui-timeBox">距离结束 {{filter.countDown(list.endTime,curTime)}}</view>

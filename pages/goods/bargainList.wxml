@@ -6,7 +6,7 @@
             <image src="{{filter.getLocalPhoto('bargain_icon.png')}}" />
             <view class="ui-rulesBtn" bindtap="showModal">活动规则</view>
             <image src="{{filter.getLocalPhoto('bargain_banBtn.png')}}" class="ui-bargain_banBtn" bindtap="onBargainTap"></image>
-            <image src="{{filter.getLocalPhoto('bargain_left_icon.png')}}" class="ui-bargain_leftIcon" bindtap="onBargainTap"></image>
+            <image src="{{filter.getLocalPhoto('bargain_left_icon.png')}}" mode="aspectFill" class="ui-bargain_leftIcon" bindtap="onBargainTap"></image>
             <text class="ui-myBargain_text" bindtap="onBargainTap">我的砍价</text>
         </view>
         <view class="ui-showBox">

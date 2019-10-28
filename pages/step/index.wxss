@@ -416,7 +416,7 @@ page {
     padding-right: 0; 
     justify-content: center;
     flex-direction: column;
-    margin-bottom: 80rpx;
+    /* margin-bottom: 80rpx; */
 
 }
 .ui-friendsLiItem__item {
@@ -447,4 +447,7 @@ page {
     font-weight:400;
     color:#999999;
     line-height:26rpx;
+}
+.ui-specialBox {
+    margin-bottom: 80rpx;
 }
