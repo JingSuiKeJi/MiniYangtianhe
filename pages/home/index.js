@@ -191,7 +191,7 @@ const methods = {
                 navigation: data.navigation
             }
             if (data.activity.length) {
-                opts.activity = data.activity[0];
+                opts.activity = data.activity;
             }
             self.setData(opts);
 
@@ -236,6 +236,7 @@ const methods = {
                 goodsList: data.list,
                 skillId: data.id
             });
+            if (!data.startTime && !data.endTime) return;
             self.timeFormat(data.startTime, data.endTime);
         }, (err) => { });
     },
@@ -469,7 +470,7 @@ const methods = {
     onCheckActivity: function (e) {
         let self = this;
         if (e.currentTarget.dataset.isLink == 2) return;
-        self.onPageTap(self.data.activity);
+        self.onPageTap(self.data.activity[0]);
     },
     map: function (arr, index) {
         let self = this;

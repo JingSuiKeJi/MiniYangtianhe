@@ -25,12 +25,12 @@ const data = {
 };
 
 // 页面onLoad方法
-const onLoad = function(self) {
-    if(_g.checkLogin({ type: 1 })) {
+const onLoad = function (self) {
+    if (_g.checkLogin({ type: 1 })) {
         self.getData();
     }
     self.initBlock();
-    event.on('logout-suc',self,(ret) => {
+    event.on('logout-suc', self, (ret) => {
         self.setData({
             step: '上传步数',
             list: [],
@@ -48,7 +48,7 @@ const onLoad = function(self) {
             }
         })
     });
-    event.on('login-suc',self,(ret) => {
+    event.on('login-suc', self, (ret) => {
         self.getData();
     });
     self.getTabBar().setData({
@@ -57,21 +57,21 @@ const onLoad = function(self) {
 };
 
 // 页面onShow方法
-const onShow = function(self) {
-    
+const onShow = function (self) {
+
 };
-const onUnload = function(self) {
-   
+const onUnload = function (self) {
+
 };
 // 页面中的方法
 const methods = {
-    getData: function() {
+    getData: function () {
         let self = this;
         self.getStepInfo();
         self.getPageData();
         self.rankingList();
     },
-    getStepInfo: function() {
+    getStepInfo: function () {
         let self = this;
         Platform.getStepInfo(self, {}).then((ret) => {
             let stepInfo = ret.data.stepInfo;
@@ -82,21 +82,21 @@ const methods = {
                 BMIIndex: BMIIndex
             });
             self.btnShow(stepInfo.status);
-        }, (err) => {});
+        }, (err) => { });
     },
-    onIllustrationTap: function(e) {
+    onIllustrationTap: function (e) {
         let self = this;
         _g.navigateTo({
             url: 'pages/me/blissDetail'
         }, self)
     },
-    onCheckTap: function(e) {
+    onCheckTap: function (e) {
         let self = this;
         _g.navigateTo({
             url: 'pages/step/myFriends'
         }, self)
     },
-    onIllustrateTap: function(e) {
+    onIllustrateTap: function (e) {
         let self = this;
         _g.navigateTo({
             url: 'pages/home/notice',
@@ -108,7 +108,7 @@ const methods = {
         //     url: 'pages/step/illustration'
         // }, self)
     },
-    initBlock: function() {
+    initBlock: function () {
         let self = this;
         let blockList = [];
         for (var i = 0; i < 31; i++) {
@@ -137,17 +137,17 @@ const methods = {
             blockList: blockList,
         })
     },
-    onStepTap: function() {
+    onStepTap: function () {
         let self = this;
-        if ( !self.data.isLogin && self.data.stepInfo.status != 1) return;
+        if (!self.data.isLogin && self.data.stepInfo.status != 1) return;
         wx.showLoading({
             mask: true,
             title: '正在上传步数',
-            success() {}
+            success() { }
         });
         self.wxLogin();
     },
-    wxLogin: function() {
+    wxLogin: function () {
         let self = this;
         wx.login({
             success(res) {
@@ -162,7 +162,7 @@ const methods = {
             }
         })
     },
-    getWeRunData: function() {
+    getWeRunData: function () {
         const self = this;
         wx.getWeRunData({
             success(res) {
@@ -176,7 +176,7 @@ const methods = {
         })
 
     },
-    uploadStep: function(data) {
+    uploadStep: function (data) {
         let self = this;
         Platform.uploadStep(self, data).then((ret) => {
             self.getData();
@@ -189,7 +189,7 @@ const methods = {
 
         })
     },
-    btnShow: function(status) {
+    btnShow: function (status) {
         let self = this;
         switch (status) {
             case 1:
@@ -209,22 +209,30 @@ const methods = {
                 break;
         }
     },
-    getPageData: function() {
+    getPageData: function () {
         let self = this;
         User.getRecordList(self, {
-            page: 0,
+            page: self.data.page,
+            pageSize: 20,
         }).then((ret) => {
             let data = ret.data;
             if (data.list && data.list.length) {
-                self.setData({
-                    list: data.list,
-                });
-            }
-           
+                if (self.data.page == 1) {
+                    self.setData({
+                        list: data.list,
+                    });
+                }else {
+                    self.setData({
+                        list: self.data.list.concat(data.list),
+                    });
+                }
 
-        }, (err) => {});
+            }
+
+
+        }, (err) => { });
     },
-    rankingList: function() {
+    rankingList: function () {
         let self = this;
         User.rankingList(self, {
             page: self.data.page,
@@ -236,15 +244,15 @@ const methods = {
                     fridensList: data.list,
                 });
             }
-           
 
-        }, (err) => {});
+
+        }, (err) => { });
     },
     onMoreTap: function (e) {
         let self = this;
         _g.navigateTo({
             url: 'pages/step/rankingList'
-        },self)
+        }, self)
     }
 };
 
