@@ -115,7 +115,10 @@ const methods = {
 	onCusFootmarkTap:function(){
 		let self = this;
 	    _g.navigateTo({
-	        url: 'pages/me/customerFootmark',
+			url: 'pages/me/customerFootmark',
+			param: {
+				userId: self.data.userId
+			}
 	    }, self);
 	}
 }

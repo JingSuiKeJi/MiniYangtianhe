@@ -1,49 +1,54 @@
-<!-- <wxs module="filter" src="../../filter/filter.wxs"></wxs> -->
+<wxs module="filter" src="../../filter/filter.wxs"></wxs>
 <!--customerFootmark.wxml-->
 <view class="container">
 	<navBar title='客户足迹' background='linear-gradient(137deg,rgba(1,206,165,1) 0%,rgba(94,221,218,1) 100%)' color='white' iconTheme='white' back="{{true}}"></navBar>
     <view class="ui-main">
 		<!-- 完整日历 -->
-		<view class="ui-calendarBox" wx:if="{{calendarFlag==true}}">
-			<calendar cell-size="23" weeks-type="cn" days-color="{{dayStyle}}" show-more-days="true" binddayClick="dayClick"/>
+		<view class="ui-calendarBox" wx:if="{{calendarFlag}}">
+			<calendar cell-size="23" weeks-type="cn" days-color="{{dayStyle}}" show-more-days="true" binddayClick="dayClick"
+				binddateChange="dayChange" bindprevMonth="monthChange" bindnextMonth="monthChange"/>
 			<view class="ui-showHidden ui-pullUp" catchtap="onPullUpTap"></view>
 		</view>
 		
 		<!-- 单行日历 -->
-		<view class="ui-shortCalendar" wx:else>
+		<view class="ui-shortCalendar" wx:if="{{!calendarFlag}}">
 			<view class="ui-weekText">
 				<text wx:for="{{weekList}}" wx:for-item="item" wx:key="idx">
 					{{item}}
 				</text>
 			</view>
 			<view class="ui-dateText">
-				<view bindtap="onChooseDate" class="ui-dateCircleBg {{currentData==item?'ui-dateCircleBgHhover':''}}" 
+				<view bindtap="onChooseDate" class="ui-dateCircleBg {{currentData==item.day?'ui-dateCircleBgHhover':''}}" 
 				data-id="{{index}}" wx:for="{{dateList}}" wx:for-item="item" wx:key="{{index}}">	
-					<text>{{item}}</text>
+					<text>{{item.day}}</text>
 				</view>
 			</view>
 			<view class="ui-pullDown" catchtap="onPullDownTap"></view>
 		</view>
 		
 		<!-- 商品足迹列表 -->
-		<view class="ui-footmarkBox" style="margin-bottom: {{showAndHideCheck ? '126rpx' : ''}}">
+		<view class="ui-footmarkBox" style="margin-bottom: {{showAndHideCheck ? '126rpx' : ''}}" wx:if="{{list.length}}">
 			<view class="ui-cancelSwitch" catchtap="onCancelSwitchTap"></view>
-			<view class="ui-footmarkItem" wx:for="{{dateList}}" wx:for-item="item" wx:key="idx">
+			<!-- wx:for="{{dateList}}" wx:for-item="item" wx:key="idx" -->
+			<view class="ui-footmarkItem" >
 				<view class="ui-datebox">
-					<view wx:if="{{showAndHideCheck}}" catchtap="onSelectAllIcontap" class="ui-select {{slectAllIcon==true?'ui-checkIcon':'ui-unCheckIcon'}}"></view>
-					<text class="ui-dateShow">{{item.date}}</text>
+					<!-- <view wx:if="{{showAndHideCheck}}" catchtap="onSelectAllIcontap" class="ui-select {{slectAllIcon==true?'ui-checkIcon':'ui-unCheckIcon'}}"></view> -->
+					<image src="{{ slectAllIcon ? filter.getLocalPhoto('my_check.png') : filter.getLocalPhoto('my_unCheck.png')}}" class="ui-select"  catchtap="onSelectAllIcontap" wx:if="{{showAndHideCheck}}"/>
+					<text class="ui-dateShow">{{time}}</text>
 				</view>
 				<view class="ui-footmarkList">
-					<view class="ui-ListItems" wx:for="{{imgAndPriceList}}" wx:for-item="item" wx:key="idx">
-						<view class="ui-img"><image src="http://www.gzlingren.com:8098/yangtianhe/{{item.img}}.png"></image></view>
+					<view class="ui-ListItems" wx:for="{{list}}" wx:key="{{index}}">
+						<view class="ui-img"><image src="{{filter.getPhoto(host,item.goodsPicUrl)}}"></image></view>
 						<view class="ui-priceBox">
-							<view wx:if="{{showAndHideCheck}}" class="ui-select {{slectAllIcon==true?'ui-checkIcon':'ui-unCheckIcon'}}"></view>
-							<text class="ui-price">¥{{item.price}}</text>
+							<!-- <view wx:if="{{showAndHideCheck}}" class="ui-select {{slectAllIcon==true?'ui-checkIcon':'ui-unCheckIcon'}}"></view> -->
+							<image src="{{ item.slectAllIcon ? filter.getLocalPhoto('my_check.png') : filter.getLocalPhoto('my_unCheck.png')}}" class="ui-select" wx:if="{{showAndHideCheck}}" bindtap="onSeleteTap" data-index="{{index}}"/>
+							<text class="ui-price">¥{{item.goodsNowPrice}}</text>
 						</view>
 					</view>
 				</view>
 			</view>
 		</view>
+		<view class="ui-noDataBox" wx:if="{{!list.length}}">~暂无数据</view>
 		<view class="ui-delectBox" wx:if="{{showAndHideCheck}}">
 			<view  catchtap="onDeleteTap" class="ui-delete">删除</view>
 		</view>

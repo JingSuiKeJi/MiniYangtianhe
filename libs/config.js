@@ -136,6 +136,8 @@ config.prototype = {
             getCommissionRecordList:'/app/distribution/getRecordList.do',
             verifyOrder: '/app/order/findVerifyOrder.do',
             rankingList: '/app/step/rankingList.do',
+            browseList: '/app/browse/getRecordList.do',
+            deleteBrowse: '/app/browse/delete.do',
         },
         withdraw: {
             apply: '/app/withdraw/apply.do',

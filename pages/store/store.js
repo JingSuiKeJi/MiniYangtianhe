@@ -334,7 +334,8 @@ const methods = {
         const self = this;
         Platform.getClassifyList(self, {
             platformFlag: 1,
-            level: 1
+            level: 1,
+            isRecommend : 1
         }).then((ret) => {
             let data = ret.data;
             if (ret.data && ret.data.length) {

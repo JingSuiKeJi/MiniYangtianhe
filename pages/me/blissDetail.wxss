@@ -74,6 +74,7 @@
 	display: inline-block;
 	width:304rpx;
 	height:80rpx;
+	margin-top: 20rpx;
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: cover;
@@ -89,12 +90,21 @@
 
 .btn-withdraw{
 	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_btnRecharge.png');
-	margin: 34rpx 0 0 50rpx;
+	/* margin: 34rpx 0 0 50rpx; */
 }
 
 .btn-presented{
 	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_btnPresent.png');
-	margin: 34rpx 0 0 18rpx;
+	/* margin: 34rpx 0 0 18rpx; */
+	margin-left: 30rpx;
+}
+.ui-operateBox {
+	width: 100%;
+	/* height: 80rpx; */
+	display: flex;
+	justify-content: center;
+	padding-left: 56rpx;
+	padding-right: 56rpx;
 }
 
 .ui-withdrawInfoBox{

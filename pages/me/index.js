@@ -332,7 +332,7 @@ const methods = {
     onCardRights: function (e) {
         let self = this;
         if (!_g.checkLogin({type: 2})) return;
-        if (self.data.userInfo.rightsConfigId) {
+        if (!self.data.userInfo.rightsConfigId) {
             _g.navigateTo({
                 url: 'pages/card/card',
             }, self);
