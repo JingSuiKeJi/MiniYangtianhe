@@ -52,7 +52,7 @@ const onLoad = function (self) {
         userInfo: _g.getLS(_c.LSKeys.userInfo)
     });
     self.preOrder();
-    if (self.data.platformFlag == 2) {
+    if (self.data.platformFlag == 2 && !self.data.isDisabledReservation) {
         self.getDeliveryTime();
     }
     event.on('preferentialPolicies',self,()=>{
@@ -216,6 +216,9 @@ const methods = {
             couponPrice: data.couponPrice,
             integralStatus: data.integralStatus,
             deliveryFee: data.deliveryFee,
+            isDisabledImmediate: data.isDisabledImmediate,
+            isDisabledReservation: data.isDisabledReservation,
+            isDisabledSelf: data.isDisabledSelf,
         }
         //显示积分开关
         if (data.integralStatus == 1) {
@@ -315,6 +318,12 @@ const methods = {
         if (self.data.platformFlag == 2 && self.data.type==1) {
             _g.toast({
                 title: '请选择配送方式'
+            });
+            return;
+        }
+        if (self.data.platformFlag == 2 && !self.data.orderAddressVo.isDelivery && self.data.type != 2) {
+            _g.toast({
+                title: '超过配送范围'
             });
             return;
         }

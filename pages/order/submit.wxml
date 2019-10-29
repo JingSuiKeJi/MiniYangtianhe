@@ -22,11 +22,11 @@
     </view>
     <view class="postBox" wx:if="{{platformFlag == 2}}">
         <view class="ui-postItem__text">配送方式</view>
-        <view class="ui-postItem {{ type ==3 ? 'isSelectItem' : ''}}" bindtap="onPostTap" data-type="3">
+        <view class="ui-postItem {{ type ==3 ? 'isSelectItem' : ''}}" bindtap="onPostTap" data-type="3" wx:if="{{!isDisabledImmediate}}">
             <view >立即配送</view>
             <view >2小时内送达</view>
         </view>
-        <view class="ui-postItem {{ type == 4 ? 'isSelectItem' : ''}}" bindtap="onPostTap" data-type="4" wx:if="{{orderAddressVo}}">
+        <view class="ui-postItem {{ type == 4 ? 'isSelectItem' : ''}}" bindtap="onPostTap" data-type="4" wx:if="{{orderAddressVo && !isDisabledReservation}}">
             <picker mode="selector" data-type="4" bindchange="onPickerTap" value="{{pickerValue}}" range="{{timeList}}" class="ui-pickerBox" >
                 <view  class="ui-pickerItem__text">预约配送</view>
                 <view  class="ui-pickerItem__time">2小时外送达</view>
@@ -36,7 +36,7 @@
                 <view  class="ui-pickerItem__text">预约配送</view>
                 <view  class="ui-pickerItem__time">2小时外送达</view>
         </view>
-        <view class="ui-postItem {{ type ==2 ? 'isSelectItem' : ''}} " bindtap="onPostTap" data-type="2">
+        <view class="ui-postItem {{ type ==2 ? 'isSelectItem' : ''}} " bindtap="onPostTap" data-type="2" wx:if="{{!isDisabledSelf}}">
             <view  style="margin-top: 40rpx">到店自提</view>
         </view>
     </view>

@@ -158,12 +158,16 @@ page {
     display: inline-block;
 }
 .ui-contenItem .ui-contenItem__text {
+    width: 200rpx;
     font-size:40rpx;
     font-family:PingFangSC-Medium;
     font-weight:500;
     color:#FFAA00;
     line-height:56rpx;
     letter-spacing:2rpx;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .ui-contenItem .ui-contenItem__step {
     color: #20CAB4;

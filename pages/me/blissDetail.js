@@ -39,6 +39,13 @@ const methods = {
     },
     //充值模态框
     showDialogBtn: function() {
+        let self = this;
+        if (!self.data.setting.isAllowCharge) {
+            _g.toast({
+                title: '充值功能正在维护中'
+            });
+            return;
+        }
         this.setData({
             showModal: true
         })

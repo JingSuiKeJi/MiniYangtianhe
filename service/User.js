@@ -354,6 +354,20 @@ class User {
 			data: reqData
 		}, page);
 	}
+	browseList(page, reqData) {
+		_g.dm.canLoadMore = 1;
+		return _g.ajax({
+			url: mini.user.browseList,
+			data: reqData
+		}, page);
+	}
+	deleteBrowse(page, reqData) {
+		_g.dm.canLoadMore = 1;
+		return _g.ajax({
+			url: mini.user.deleteBrowse,
+			data: reqData
+		}, page);
+	}
 }
 
 module.exports = new User();

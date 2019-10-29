@@ -13,8 +13,11 @@
                     <text>可用福气</text>
                 </view>
             </view>
-            <view class="btn-withdraw btn-common" bindtap="showDialogBtn">充值</view>
-            <view class="btn-presented btn-common" bindtap="onDonateTap">赠送</view>
+            <view class="ui-operateBox">
+                <view class="btn-withdraw btn-common" bindtap="showDialogBtn" wx:if="{{setting.isAllowCharge}}">充值</view>
+                <view class="btn-presented btn-common" bindtap="onDonateTap"  wx:if="{{setting.isAllowGift}}">赠送</view>
+            </view>
+           
         </view>
         <scroll-view class="ui-withdrawInfoBox" scroll-y="true" bindscrolltolower="scrollTolower">
             <view class="ui-withdraw__title">福气明细</view>
