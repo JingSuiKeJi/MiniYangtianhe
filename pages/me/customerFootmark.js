@@ -76,10 +76,12 @@ const methods = {
 		User.deleteBrowse(self, {
 			ids: value
 		}).then((ret) => {
-			self.getPageData();
 			self.setData({
-				slectAllIcon: false
+				slectAllIcon: false,
+				list: [],
+				page: 1
 			})
+			self.getPageData();
 		}, (err) => {
 
 		});
@@ -135,7 +137,6 @@ const methods = {
 				date: new Date(sunTime + i * oneDay).Format('yyyy/MM/dd'),
 				day: new Date(sunTime + i * oneDay).getDate()
 			}
-			console.log(222, new Date(sunTime + i * oneDay).Format('yyyy/MM/dd'))
 			// timestampList.push(new Date(sunTime+i*oneDay).getDate())
 			timestampList.push(param)
 		}

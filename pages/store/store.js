@@ -24,7 +24,7 @@ const data = {
     animationData: {},
     second: -1,
     isFixed: false,
-    activity:[]
+    activity: []
 };
 
 // 页面onLoad方法
@@ -64,7 +64,16 @@ const methods = {
             page: 1,
             pageSize: 5
         }).then((ret) => {
-            if ( !ret.data.data) return;
+            if (!ret.data.data) {
+                self.setData({
+                    groupList: [],
+                });
+            } else {
+                self.setData({
+                    groupList: ret.data.data.list,
+                    activeId: ret.data.activeId
+                });
+            };
             self.setData({
                 groupList: ret.data.data.list,
                 activeId: ret.data.activeId
@@ -99,30 +108,45 @@ const methods = {
         Platform.getSecKill(self, {
             platformFlag: 1,
         }).then((ret) => {
-            if (!ret.data.list) return;
-            self.setData({
-                secSkill: ret.data,
-            }); 
-            if (!ret.data.startTime && !ret.data.endTime) return;
-            self.timeFormat(ret.data.startTime, ret.data.endTime);
+            if (!ret.data.list) {
+                self.setData({
+                    secSkill: {},
+                });
+                clearInterval(self.data.timer);
+            } else {
+                self.setData({
+                    secSkill: ret.data,
+                });
+                if (!ret.data.startTime && !ret.data.endTime) return;
+                self.timeFormat(ret.data.startTime, ret.data.endTime);
+            };
+
         }, (err) => { });
     },
     getBrandList() {
         const self = this;
         Platform.getBrandList(self, {
             platformFlag: 1,
-            page: 0
+            page: 1,
+            pageSize: 24
         }).then((ret) => {
             let data = ret.data;
             let BrandList = [];
-            if (data.length < 12) {
+            if (!data.list) {
                 self.setData({
-                    singleBrandList: data
+                    singleBrandList: [],
+                    BrandList: []
+                });
+                return;
+            }
+            if (data.list.length < 12) {
+                self.setData({
+                    singleBrandList: data.list
                 });
 
             } else {
                 for (var index = 0; index < 2; index++) {
-                    BrandList[index] = data.slice(index * 12, (index + 1) * 12);
+                    BrandList[index] = data.list.slice(index * 12, (index + 1) * 12);
                 }
                 self.setData({
                     brandList: BrandList
@@ -335,7 +359,7 @@ const methods = {
         Platform.getClassifyList(self, {
             platformFlag: 1,
             level: 1,
-            isRecommend : 1
+            isRecommend: 1
         }).then((ret) => {
             let data = ret.data;
             if (ret.data && ret.data.length) {

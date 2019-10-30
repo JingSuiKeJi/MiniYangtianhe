@@ -50,6 +50,8 @@ const methods = {
                 lat: res.lat
             });
             self.getStoreList(res);
+        },(error) => {
+            self.getStoreList();
         });
     },
     getStoreList() {

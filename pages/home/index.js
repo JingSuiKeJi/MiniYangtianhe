@@ -46,7 +46,10 @@ const data = {
         status: 0,
         targetStep: 0,
         todayStep: 0,
-    }
+    },
+    isLogin: false, //是否登录
+    singleBrandList: [],
+    BrandList: []
 };
 
 // 页面onLoad方法
@@ -80,15 +83,9 @@ const onLoad = function (self) {
     });
     event.on('logout-suc', self, (ret) => {
         self.setData({
-            BMIIndex: 0,
-            step: '上传步数',
-            stepInfo: {
-                rank: 0,
-                status: 0,
-                targetStep: 0,
-                todayStep: 0,
-            }
-        })
+    		isLogin: false
+    	});
+        self.getLocation();
     });
 
 };
@@ -100,10 +97,6 @@ const onReady = function (self) {
 
 // 页面onShow方法
 const onShow = function (self) {
-    // self.setData({
-    //     scrollTop: '',
-    //     headTop: ''
-    // })
     // self.onScroll('#aim', 'scrollTop');
     // self.onScroll('#head', 'headTop');
 
@@ -208,17 +201,25 @@ const methods = {
         const self = this;
         Platform.getBrandList(self, {
             platformFlag: 2,
-            page: 0
+            page: 1,
+            pageSize: 24
         }).then((ret) => {
             let data = ret.data;
             let BrandList = [];
-            if (data.length < 12) {
+            if (!data.list) {
                 self.setData({
-                    singleBrandList: data
+                    singleBrandList: [],
+                    BrandList: []
+                });
+                return;
+            }
+            if (data.list.length < 12) {
+                self.setData({
+                    singleBrandList: data.list
                 });
             } else {
                 for (var index = 0; index < 2; index++) {
-                    BrandList[index] = data.slice(index * 12, (index + 1) * 12);
+                    BrandList[index] = data.list.slice(index * 12, (index + 1) * 12);
                 }
                 self.setData({
                     brandList: BrandList
@@ -234,13 +235,20 @@ const methods = {
             platformFlag: 2,
         }).then((ret) => {
             let data = ret.data;
-            if (!data.list) return;
-            self.setData({
-                goodsList: data.list,
-                skillId: data.id
-            });
-            if (!data.startTime && !data.endTime) return;
-            self.timeFormat(data.startTime, data.endTime);
+            if (!data.list) {
+                self.setData({
+                    goodsList: [],
+                });
+                clearInterval(self.data.timer);
+            } else {
+                self.setData({
+                    goodsList: data.list,
+                    skillId: data.id
+                });
+                if (!data.startTime && !data.endTime) return;
+                self.timeFormat(data.startTime, data.endTime);
+            };
+
         }, (err) => { });
     },
     //榜单推荐分类列表
@@ -249,7 +257,7 @@ const methods = {
         Platform.getClassifyList(self, {
             platformFlag: 2,
             level: 1,
-            isRecommend : 1
+            isRecommend: 1
         }).then((ret) => {
             let data = ret.data;
             self.setData({
@@ -257,7 +265,6 @@ const methods = {
                 classifyId: data[0].id
             });
             self.getPageData();
-            let pageUrl = _g.getCurrentPageUrl();
             self.onScroll('#aim', 'scrollTop');
             self.onScroll('#head', 'headTop');
             //     self.onScroll('#head', 'headTop');
@@ -265,7 +272,7 @@ const methods = {
             //     self.onScroll('#aim', 'scrollTop');
             //     self.onScroll('#head', 'headTop');
             // }
-            
+
         }, (err) => {
 
         });

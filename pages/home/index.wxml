@@ -114,7 +114,7 @@
                     <image src="{{filter.getPhoto(host,activity[0].imgUrl)}}" mode="aspectFill" class="ui-activityImg" />
                 </button>
             </form>
-            <view class="ui-buyBox" wx:if="{{second != -1}}">
+            <view class="ui-buyBox" wx:if="{{goodsList.length}}">
                 <view class="ui-buyBox_top">
                     <view>优选限时购</view>
                     <view class="ui-topItem">
@@ -127,7 +127,7 @@
                         <view class="ui-topItem_time">{{time.second}}</view>
                     </view>
                 </view>
-                <view class="ui-buyBox_bottom" wx:if="{{goodsList.length}}">
+                <view class="ui-buyBox_bottom" >
                     <scroll-view scroll-x class="ui-bottomItem_scrollView">
                         <!-- <view wx:for="{{goodsList}}" wx:key="{{index}}" class="ui-scrollView_item" bindtap="onDetailTap" data-id="{{item.id}}" data-thirdid="{{skillId}}">
                             <image src="{{filter.getLocalPhoto('buy.png')}}" mode="aspectFill"></image>
@@ -166,7 +166,7 @@
                     </view>
                 </button>
             </form>
-            <view class="ui-brandSelectItem_bottom">
+            <view class="ui-brandSelectItem_bottom" >
                 <scroll-view scroll-x class="ui-brandItem_scrollView" wx:if="{{brandList[0].length || singleBrandList.length}}">
                     <view class="ui-brandScroll_itemTop">
                         <view wx:for="{{brandList[0] || singleBrandList}}" wx:key="{{index}}" class="ui-brandScroll_item">
