@@ -305,6 +305,26 @@ const methods = {
     },
     onSubmitTap: function (e) {
         const self = this;
+        if (!self.data.orderAddressVo ) {
+            _g.toast({
+                title: '请先选择地址'
+            })
+            return;
+        }
+        if (self.data.platformFlag == 2 && self.data.type==1) {
+            _g.toast({
+                title: '请选择配送方式'
+            });
+            return;
+        }
+        if (self.data.platformFlag == 2 && !self.data.orderAddressVo.isDelivery && self.data.type != 2) {
+            _g.toast({
+                title: '您选择的地址超过门店配送的范围,请更换配送地址或选择到店自提',
+                duration: 3000
+
+            });
+            return;
+        }
         let data = {
             num: self.data.num,
             skuId: 0,//暂时传0
@@ -315,18 +335,6 @@ const methods = {
             platformFlag: self.data.platformFlag,
             couponId: self.data.couponId,
         };
-        if (self.data.platformFlag == 2 && self.data.type==1) {
-            _g.toast({
-                title: '请选择配送方式'
-            });
-            return;
-        }
-        if (self.data.platformFlag == 2 && !self.data.orderAddressVo.isDelivery && self.data.type != 2) {
-            _g.toast({
-                title: '超过配送范围'
-            });
-            return;
-        }
         if (self.data.platformFlag == 2) {
             data.dispatchingType = self.data.type;
             data.dispatchingTime = self.data.dispatchingTime;

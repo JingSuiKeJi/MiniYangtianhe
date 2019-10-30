@@ -68,7 +68,7 @@ const methods = {
 		const reportList = self.data.reportList;
 		const currentType = self.data.currentType;
 		const storeId = self.data.storeId;
-		const currentTimestamp = self.data.currentTimestamp/1000;
+		const currentTimestamp = parseInt(self.data.currentTimestamp/1000);
 		User.getFinanceInfo(self, {
             storeId:storeId,
 			type:currentType,

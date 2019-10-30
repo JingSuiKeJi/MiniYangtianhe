@@ -9,41 +9,46 @@ const Goods = require('../../service/Goods');
 // 初始化数据
 const data = {
     list: []
-// value: 0
+    // value: 0
 };
 
 // 页面onLoad方法
 const onLoad = function (self) {
-   self.getPageData();
+    self.getPageData();
 };
 
 // 页面onShow方法
 const onShow = function (self) {
-    self.getPageData();
 };
-const onUnload= function (self) {
+const onUnload = function (self) {
     clearInterval(self.data.timer);
 }
 // 页面中的方法
 const methods = {
     getPageData: function () {
-		var self = this;
-		//更多拼团
-		Goods.getUserAssembleList(self, {
-			page:self.data.page,
-			pageSize:20,
-            activeId:self.data.activeId,
+        var self = this;
+        //更多拼团
+        Goods.getUserAssembleList(self, {
+            page: self.data.page,
+            pageSize: 20,
+            activeId: self.data.activeId,
             goodsId: self.data.goodsId
-		}).then((ret)=>{
-			let data = ret.data;
-			self.setData({
-				list: self.data.list.concat(data.list),
-            });
+        }).then((ret) => {
+            let data = ret.data;
+            if (self.data.page == 1) {
+                self.setData({
+                    list: data.list,
+                });
+            } else {
+                self.setData({
+                    list: self.data.list.concat(data.list),
+                });
+            }
             self.getCurrentTime();
-            
-	   },(err)=>{
-	   
-	   });
+
+        }, (err) => {
+
+        });
     },
     getCurrentTime: function () {
         let self = this;
@@ -51,7 +56,7 @@ const methods = {
         self.setData({
             curTime: curTime
         })
-        if (self.data.timer)  clearInterval(self.data.timer);
+        if (self.data.timer) clearInterval(self.data.timer);
         let timer = setInterval(() => {
             self.getCurrentTime()
         }, 1000);
@@ -66,7 +71,7 @@ const methods = {
                 userAssembleId: e.currentTarget.dataset.id
             },
             url: 'pages/goods/join'
-        },self)
+        }, self)
     }
 };
 

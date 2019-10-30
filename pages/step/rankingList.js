@@ -31,8 +31,8 @@ const methods = {
     getPageData: function() {
         let self = this;
         User.rankingList(self, {
-            page: 0,
-            // pageSize: 20
+            page: self.data.page,
+            pageSize: 20
         }).then((ret) => {
             let data = ret.data;
             if (data.list && data.list.length) {
