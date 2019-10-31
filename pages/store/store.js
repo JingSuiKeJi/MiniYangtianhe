@@ -74,10 +74,6 @@ const methods = {
                     activeId: ret.data.activeId
                 });
             };
-            self.setData({
-                groupList: ret.data.data.list,
-                activeId: ret.data.activeId
-            });
         })
     },
     getCommonData() {
@@ -370,6 +366,12 @@ const methods = {
                 self.getPageData();
                 self.onScroll('#aim', 'scrollTop');
                 self.onScroll('#head', 'headTop');
+            }else {
+                self.setData({
+                    tapList: [],
+                    list: [],
+                    page: 1
+                });
             }
         }, (err) => {
 

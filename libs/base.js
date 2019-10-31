@@ -271,16 +271,16 @@ base.prototype = {
             onGotUserInfo: function (e) {
                 const self = this;
                 if (e.detail.errMsg == 'getUserInfo:fail auth deny') return;
-				const  isLogin = self.data.isLogin;
-				self.setData({
-					isLogin: true
-				})
+				// const  isLogin = self.data.isLogin;
+				// self.setData({
+				// 	isLogin: true
+				// })
                 const detail = e.detail;
                 wx.login({
                     success(res) {
                         if (res.code) {
                             detail.code = res.code;
-                            _g.setLogin(self, detail);
+                            _g.setLogin(self, detail, e);
                         } else {
                             console.log('登录失败！' + res.errMsg)
                         }
@@ -1141,7 +1141,7 @@ base.prototype = {
      * @param str obj
      */
     logger: function() {
-        if (!_c.debug || _c.env == 'pro') return;
+        // if (!_c.debug || _c.env == 'pro') return;
         this.logger = console.log;
     },
 
@@ -1540,7 +1540,7 @@ base.prototype = {
             return false;
         }
     },
-    setLogin: function (self, opts) {
+    setLogin: function (self, opts, e) {
         const _g = this;
         const User = require('../service/User');
         User.login(self, {
@@ -1554,8 +1554,12 @@ base.prototype = {
         }).then((ret) => {
             _g.setLS(_c.LSKeys.sessionKey, ret.data.sessionKey);
             _g.getMyInfo(self, {
-                type: 'login'
+                type: 'login',
+                e: e
             });
+            self.setData({
+                isLogin: true
+            })
         },(err)=>{
             //TODO login fail
             _g.toast({
@@ -1576,9 +1580,11 @@ base.prototype = {
             } else {
 				opts.suc && opts.suc();
             }
-            if (self.onOperation) {
-                self.onOperation();
+            if (opts.e && opts.e.currentTarget.dataset.fuc) {
             }
+            // if (self.onOperation) {
+            //     self.onOperation();
+            // }
         },(err)=>{
             //TODO login fail
 			opts.fail && opts.fail();

@@ -168,7 +168,9 @@ const methods = {
 		const changeEndBg = `dayStyle[1].background`;
 		//获取当前选择的时间戳
 		const currentTime = e.detail.year + "-" + e.detail.month + "-" + e.detail.day;
-		const currentTimestamp = new Date(e.detail.year, e.detail.month, e.detail.day).getTime() / 1000;
+		console.log(e)
+		const currentTimestamp = new Date(e.detail.year, e.detail.month-1, e.detail.day).getTime() / 1000;
+		console.log(33,currentTimestamp)
 		self.setData({
 			[changeDay]: dayClick,
 			[changeBg]: "rgba(255,255,255,0)",

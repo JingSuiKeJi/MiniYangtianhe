@@ -3,13 +3,13 @@
 <view class="ui-contain">
 	<navBar title='{{title}}' background='white' color='black' iconTheme='black' back="{{true}}"></navBar>
     <view class="ui-main">
-        <!-- <view class="ui-rulesBtn" bindtap="showModal" data-type="1">活动规则</view> -->
+        <view class="ui-rulesBtn" bindtap="oncheckRules" data-type="1">活动规则</view>
         <view class="ui-infoBox">
              <view class="ui-infoItem_iconBox">
                 <image src="{{filter.getPhoto(host,list.avatar)}}" class="ui-infoItem_perIcon" mode="aspectFill"></image>
                 <view class="ui-infoItem_name">{{title}}</view>
             </view>
-            <view class="ui-infoItem_leftBtn">距离结束：{{filter.countDown(list.endTime,curTime)}}</view>
+            <view class="ui-infoItem_leftBtn">距离结束:{{filter.countDown(list.endTime,curTime)}}</view>
             <view class="ui-goodsBox">
                 <view class="ui-goodsItem_left">
                     <image src="{{filter.getPhoto(host,list.imgUrl)}}" class="ui-leftItem_goodsImg" mode="aspectFill"></image>
@@ -44,7 +44,8 @@
                 </view>
                 <view class="ui-bargainItem">
                      <!-- <view class="ui-leftBtn" bindtap="onHelpTap" wx:if="{{!list.isOneSelf &&  list.status == 1}}">帮好友砍一刀</view> -->
-                     <button class="ui-leftBtn" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo" wx:if="{{!list.isOneSelf &&  list.status == 1}}">帮好友砍一刀</button>
+                     <button class="ui-leftBtn" open-type="getUserInfo" bindgetuserinfo="onGotUserInfo" 
+                        wx:if="{{!list.isOneSelf &&  list.status == 1}}" data-fuc="helpCut">帮好友砍一刀</button>
                     <view class="ui-leftBtn" bindtap="onShareTap" wx:if="{{list.isOneSelf && list.status == 1}}">喊好友砍一刀</view>
                      <view class="ui-leftBtn" bindtap="onSubmitTap" wx:if="{{list.isOneSelf && list.status == 2}}">砍价完成去购买</view>
                      <view class="ui-leftBtn"  wx:if="{{list.status == 4}}">活动结束</view>
@@ -62,7 +63,10 @@
             </view>
             <view class="ui-listItem_content" wx:if="{{list.friendList.length}}">
                 <view class="ui-contentItem_child" wx:for="{{list.friendList}}" wx:key="{{index}}" wx:if="{{list.friendList.length}}">
-                    <view class="ui-childItem_left">{{index + 1}}</view>
+                    <view class="ui-childItem_left" wx:if="{{index == 0}}" style="color: #FF5F55">{{index + 1}}</view>
+                    <view class="ui-childItem_left" wx:if="{{index == 1}}" style="color: #97D2FF">{{index + 1}}</view>
+                    <view class="ui-childItem_left" wx:if="{{index == 2}}" style="color: #FFAA00">{{index + 1}}</view>
+                    <view class="ui-childItem_left" wx:if="{{index > 2}}">{{index + 1}}</view>
                     <view class="ui-childItem_center">
                         <image src="{{item.userAvatar}}" class="ui-centerItem_img" mode="aspectFill"/>
                     </view>
@@ -77,7 +81,7 @@
         </view>
          <view class="modals modals-bottom-dialog" hidden="{{hideModal}}">
             <view class="modals-cancel" bindtap="hideModal" ></view>
-            <view class="bottom-dialog-body " wx:if="{{type == 2}}">
+            <view class="bottom-dialog-body " >
                 <image src="{{filter.getLocalPhoto('redPacket.png')}}"  class="ui-redPacket_icon" mode="aspectFill"/>
                  <view class="ui-model_text">
                      <text class="ui-textItem_text">你帮TA砍了</text>
@@ -89,7 +93,7 @@
                  <image src="{{filter.getLocalPhoto('model_redBtn.png')}}" class="ui-model_btnIcon" mode="aspectFill"/>
                  <view class="ui-model_btn" bindtap="onMoreTap">看看其他商品</view>
             </view>
-            <view class="bottom-dialog-body "  wx:if="{{type == 1}}" style="overflow: auto">
+            <!-- <view class="bottom-dialog-body "  wx:if="{{type == 1}}" style="overflow: auto">
                <view class="ui-titleBox">
                    <text class="ui-titleItem_icon">//</text>
                    <text class="ui-titleItem_text">活动规则</text>
@@ -101,7 +105,7 @@
                    <view >3.规则是什么规则是什么规则是什规则是什么规则是什么规则是什么规则是什规则是什么规则是什么规则是什么规则是什规则是什么</view>
                   
               </view>
-            </view>
+            </view> -->
             <view class="ui-cancelBox">
                 <image src="{{filter.getLocalPhoto('bargain_list_delect.png')}}" class="ui-cancelIcon" bindtap="hideModal" mode="aspectFill"/>
             </view>

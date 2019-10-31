@@ -33,7 +33,6 @@ const onLoad = function(self) {
             userInfo: userInfo, //用户信息
         });
     });
-    
 };
 
 const onShow = function(self) {
@@ -41,10 +40,13 @@ const onShow = function(self) {
             type: 1
         })) {
         self.setData({
-            isLogin: true
+            isLogin: true,
+            userInfo: _g.getLS(_c.LSKeys.userInfo)
+
         });
-        self.getMyInfo();
+        // self.getMyInfo();
     }
+
     self.getTabBar().setData({
         selected: 4
     });

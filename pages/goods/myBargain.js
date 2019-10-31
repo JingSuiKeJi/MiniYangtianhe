@@ -36,7 +36,7 @@ const onShow = function (self) {
     self.getData();
 };
 const onUnload = function (self) {
-
+    clearInterval(self.data.timer);
 }
 // 页面中的方法
 const methods = {

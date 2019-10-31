@@ -36,7 +36,9 @@ const onLoad = function (self) {
 const onShow = function (self) {
 
 };
-
+const onUnload = function (self) {
+    clearInterval(self.data.timer);
+};
 // 页面中的方法
 const methods = {
     getData: function (e) {
@@ -66,13 +68,25 @@ const methods = {
         }).then((ret) => {
             let data = ret.data;
             if (data.list && data.list.length) {
-                let list = data.list
+                let list = data.list;
+                if (self.data.page == 1) {
+                    self.setData({
+                        list: list,
+                        width: (list.stock - list.remainStock) / list.stock * 200,
+                        hasNextPage: data.hasNextPage
+                    });
+                } else {
+                    self.setData({
+                        list: self.data.concat(list),
+                        width: (list.stock - list.remainStock) / list.stock * 200,
+                        hasNextPage: data.hasNextPage
+                    });
+                }
+            } else {
                 self.setData({
-                    list: list,
+                    list: [],
                     width: (list.stock - list.remainStock) / list.stock * 200,
-                    hasNextPage: data.hasNextPage
                 });
-
             }
             self.getCurrentTime();
             clearInterval(self.data.timer);
@@ -87,7 +101,7 @@ const methods = {
         }, (err) => {
         });
     },
-    createCut: function (thirdId,goodsId) {
+    createCut: function (thirdId, goodsId) {
         let self = this;
         Goods.createCut(self, {
             cutId: thirdId,
@@ -109,7 +123,7 @@ const methods = {
         let self = this;
         let opt = e.currentTarget.dataset;
         if (!_g.checkLogin({ type: 2 })) return;
-        self.createCut(opt.cutid,opt.goodsid);
+        self.createCut(opt.cutid, opt.goodsid);
     },
     getCurrentTime: function () {
         let self = this;
@@ -132,7 +146,7 @@ const methods = {
             url: 'pages/goods/detail',
             param: {
                 id: opt.id,
-                thirdId : opt.thirdid
+                thirdId: opt.thirdid
             }
         }, self)
     },
@@ -143,7 +157,7 @@ const methods = {
         _g.navigateTo({
             url: 'pages/goods/myBargain',
             param: {
-                platformFlag: self.data.platformFlag, 
+                platformFlag: self.data.platformFlag,
             }
         }, self)
     },
@@ -186,5 +200,6 @@ const initPage = _g.initPage({
     onLoad: onLoad,
     onShow: onShow,
     methods: methods,
+    onUnload: onUnload,
 });
 Page(initPage);

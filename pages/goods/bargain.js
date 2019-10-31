@@ -118,10 +118,11 @@ const methods = {
             userCutId: self.data.userCutId,
         }).then((ret) => {
             self.setData({
-                money: ret.data
+                money: ret.data,
+                hideModal: false
             }); 
+            // self.showModal();
             self.getData();
-            self.showModal();
            
         }, (err) => {
         });
@@ -138,8 +139,7 @@ const methods = {
             curTime: curTime
         })
     },
-    // 显示遮罩层
-    showModal: function (e) {
+    oncheckRules: function () {
         const self = this;
         _g.navigateTo({
             url: 'pages/home/notice',
@@ -147,17 +147,15 @@ const methods = {
                 urlParam: `type=article&id=cutRule`
             }
         }, self);
-        // if (e) {
-        //     self.setData({
-        //         type: Number(e.currentTarget.dataset.type),
-        //         hideModal: false
-        //     })
-        // } else {
-        //     self.setData({
-        //         type: 2,
-        //         hideModal: false
-        //     })
-        // }
+    },
+    // 显示遮罩层
+    showModal: function (e) {
+        const self = this;
+        self.setData({
+            hideModal: false
+        });
+        self.helpCut();
+        
 
     },
     // 隐藏遮罩层

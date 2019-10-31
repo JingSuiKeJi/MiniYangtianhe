@@ -2,6 +2,7 @@
 page{
     width: 100%;
     height: 100%;
+    background:rgba(255,232,164,1);
 }
 .ui-contain {
     width: 100%;
@@ -9,11 +10,11 @@ page{
 }
 .ui-main {
     display: flex;
-    width: 100%;
-    height: 100%;
-    background-image: url(http://www.gzlingren.com:8098/yangtianhe/myBargain_bgIcon.png);
-    background-size: 100% 2096rpx;
-    background-attachment: scroll;    
+    width: 750rpx;
+    height: 992rpx;
+    background-image: url(http://www.gzlingren.com:8098/yangtianhe/bargainDetail_bg.png);
+    background-size: 750rpx 992rpx;
+    /* background-attachment: scroll;     */
     position: relative;
     flex-direction: column;
     align-items: center;
@@ -26,7 +27,7 @@ page{
     border-radius:16px;
     z-index: 999;
     position: relative;
-    margin-top: 340rpx;
+    margin-top: 278rpx;
 }
 .ui-infoBox .ui-infoItem_leftBtn {
     width: 276rpx ;
@@ -54,6 +55,7 @@ page{
 .ui-infoItem_iconBox .ui-infoItem_perIcon {
     width: 132rpx;
     height: 132rpx;
+    border-radius: 50%;
 }
 .ui-infoItem_iconBox .ui-infoItem_name {
     font-size:26rpx;
@@ -207,12 +209,13 @@ page{
     /* text-align: center; */
     white-space: nowrap;
     margin-top: 40rpx;
+    justify-content: center;
 }
  .ui-leftBtn {
      width: 300rpx;
      height: 100rpx;
-     margin-left: 15px;
-     margin-right: 15rpx;
+     /* margin-left: 22rpx; */
+     margin-right: 42rpx;
      background-image: url(http://www.gzlingren.com:8098/yangtianhe/myBargain_oringeBtn.png);
      background-size: 300rpx 100rpx;
      text-align: center;
@@ -312,7 +315,8 @@ page{
     font-size:48rpx;
     font-family:DINPro-Medium;
     font-weight:500;
-    color:#FFA638;
+    color: #999999;
+    /* color:#FFA638; */
     line-height:62px;
     margin-left: 0;
 }
@@ -455,7 +459,7 @@ page{
     border:2px solid #fff;
     text-align: center;
     position: absolute;
-    top: 160rpx;
+    top: 218rpx;
     right: 30rpx;
 }
 .bottom-dialog-body .ui-titleBox{
