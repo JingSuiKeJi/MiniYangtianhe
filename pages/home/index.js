@@ -260,6 +260,14 @@ const methods = {
             isRecommend: 1
         }).then((ret) => {
             let data = ret.data;
+            if (!data && !data.length) {
+                self.setData({
+                    tapList: [],
+                    list: [],
+                    page: 1
+                });
+                return;
+            } 
             self.setData({
                 tapList: data,
                 classifyId: data[0].id
