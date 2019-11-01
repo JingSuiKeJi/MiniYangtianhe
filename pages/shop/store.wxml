@@ -7,7 +7,7 @@
 		<view class="ui-infoBox">
 			<view class="ui-itemImgBox">
 				<image class="ui-haveAvatar" wx:if="{{userInfo.avatar}}" src="{{filter.getAvatar(host,userInfo.avatar)}}" mode="aspectFill"></image>
-				<image class="ui-noAvatar" wx:else src="http://www.gzlingren.com:8098/yangtianhe/my_personalIcon.png"></image>
+				<image class="ui-noAvatar" wx:if="{{!userInfo.avatar}}" src="{{filter.getLocalPhoto('my_personalIcon.png')}}"></image>
 			</view>
 			<view class="ui-textBox">
 				<text>{{userInfo.nickname}}</text>
@@ -22,6 +22,7 @@
 			<view class="ui-withdrawItem">
 				<view>
 					<view class="withdrawIcon"></view>
+					<!-- <image class="withdrawIcon" mode="aspectFit" src="{{filter.getLocalPhoto('my_withdrawalCommissionIcon.png')}}"/> -->
 					<view>累计营业额</view>
 				</view>
 				<view>{{centerInfo.money}}</view>

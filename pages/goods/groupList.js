@@ -8,14 +8,14 @@ const Platform = require('../../service/Platfrom');
 const Goods = require('../../service/Goods');
 // 初始化数据
 const data = {
-  classfity: ['全部','中西药品','营养保健','养生花茶','情趣计生',],
-  isSelect: 0,
-  allList: []
+	classfity: ['全部', '中西药品', '营养保健', '养生花茶', '情趣计生',],
+	isSelect: 0,
+	allList: []
 };
 
 // 页面onLoad方法
 const onLoad = function (self) {
-    self.getData();
+	self.getData();
 };
 
 // 页面onShow方法
@@ -24,7 +24,7 @@ const onShow = function (self) {
 
 // 页面中的方法
 const methods = {
-	getData:function(){
+	getData: function () {
 		let self = this;
 		self.getOccasion();
 		// self.getClassifyList();
@@ -33,33 +33,55 @@ const methods = {
 	getOccasion: function () {
 		let self = this;
 		Platform.getOccasion(self, {
-		    platformFlag:1,
-		}).then((ret)=>{
-		    let data = ret.data;
-		    self.setData({
-		        tapImgUrl: data.occasion.imgUrl,
-		    })
-		},(err)=>{
-		
+			platformFlag: 1,
+		}).then((ret) => {
+			let data = ret.data;
+			self.setData({
+				tapImgUrl: data.occasion.imgUrl,
+			})
+		}, (err) => {
+
 		});
 	},
 	getPageData: function () {
-	    let self = this;
+		let self = this;
 		// 拼团列表
-	    Goods.getAssembleList(self, {
+		Goods.getAssembleList(self, {
 			// platformFlag: self.data.platformFlag,
-			platformFlag: 1,
-	    	page:1,
-	    	pageSize:20,
-	    }).then((ret)=>{
-	        let data = ret.data;
-	        self.setData({
-				allList: self.data.allList.concat(data.data.list),
-				activeId: data.activeId
-	        })
-	    },(err)=>{
-	    
-	    });
+			platformFlag: self.data.platformFlag,
+			page: self.data.page,
+			pageSize: 20,
+		}).then((ret) => {
+			let data = ret.data;
+			// if (!data.data.list && !data.data.list.length) {
+			// 	self.setData({
+			// 		allList: [],
+			// 	});
+			// 	return
+			// }
+			if (!data.data && !data.data.list && !data.data.list.length) {
+				self.setData({
+					allList: [],
+				});
+				return
+			} else {
+				if (self.data.page == 1) {
+					self.setData({
+						allList: data.data.list,
+						activeId: data.activeId
+					})
+				} else {
+					self.setData({
+						allList: self.data.allList.concat(data.data.list),
+						activeId: data.activeId
+					})
+				}
+			}
+
+
+		}, (err) => {
+
+		});
 	},
 	// getClassifyList: function () {
 	//     let self = this;
@@ -74,39 +96,39 @@ const methods = {
 	// 	   });
 	// 	   self.getPageData();
 	//     },(err)=>{
-	
+
 	//     });
 	// },
-  onSelectTap: function (e) {
-	let self = this;
-	let opts = e.currentTarget.dataset;
-    self.setData({
-	  isSelect: opts.type,
-	  classifyId: opts.id,
-	});
-	self.getPageData();
-    
-  },
-  onSkipTap: function (e) {
-    let self = this;
-    _g.navigateTo({
-      url: 'pages/goods/detail',
-      param: {
-		id: e.currentTarget.dataset.id,
-		thirdId: self.data.activeId  
-      }
-    },self)
-  },
-  onGroupTap: function (e) {
-    let sefl = this;
-    console.log(111);
-    // _g.navigateTo({
-    //   url: '#',
-    //   param: {
+	onSelectTap: function (e) {
+		let self = this;
+		let opts = e.currentTarget.dataset;
+		self.setData({
+			isSelect: opts.type,
+			classifyId: opts.id,
+		});
+		self.getPageData();
 
-    //   }
-    // },self)
-  },
+	},
+	onSkipTap: function (e) {
+		let self = this;
+		_g.navigateTo({
+			url: 'pages/goods/detail',
+			param: {
+				id: e.currentTarget.dataset.id,
+				thirdId: self.data.activeId
+			}
+		}, self)
+	},
+	onGroupTap: function (e) {
+		let sefl = this;
+		console.log(111);
+		// _g.navigateTo({
+		//   url: '#',
+		//   param: {
+
+		//   }
+		// },self)
+	},
 };
 
 // 有引用template时定义
@@ -114,9 +136,9 @@ const temps = {};
 
 // 初始化页面page对象
 const initPage = _g.initPage({
-data: data,
-onLoad: onLoad,
-onShow: onShow,
-methods: methods,
+	data: data,
+	onLoad: onLoad,
+	onShow: onShow,
+	methods: methods,
 });
 Page(initPage);

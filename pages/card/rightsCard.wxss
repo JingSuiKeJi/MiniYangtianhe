@@ -42,7 +42,7 @@ page {
     font-size:40rpx;
     font-family:PingFangSC;
     font-weight:500;
-    color:#FFFFFFFF;
+    color:#FFFFFF;
     line-height:40rpx;
     position: absolute;
     top: 18rpx;
@@ -53,7 +53,7 @@ page {
     width:646rpx;
     height:276rpx;
     margin-bottom: 20rpx;
-    background:#FFFF;
+    background:#FFFFFF;
 }
 .ui-goods__Img {
     width: 240rpx;

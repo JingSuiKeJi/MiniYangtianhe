@@ -59,10 +59,11 @@ const methods = {
 				mask:true,
 				duration:1500, 
 			})
-		  console.log("绑定成功");
+			setTimeout(function () {
+				_g.getMyInfo(self, {});
+				_g.navigateBack();
+			}, 2000)
 		},(err) => {
-			console.log("绑定失败");
-			console.log(123,err);
 			if(err.code==400){
 				wx.hideToast();
 				_g.toast({
