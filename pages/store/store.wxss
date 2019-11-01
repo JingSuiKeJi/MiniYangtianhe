@@ -25,7 +25,7 @@ page {
     padding: 15rpx 30rpx;
     margin: 0 auto;
     /* line-height: 50rpx; */
-    background-color: #fff;
+    background-color: #ffffff;
     flex-wrap: wrap;
 }
 
@@ -35,7 +35,7 @@ page {
     font-family: PingFangSC-Regular;
     font-weight: 400;
     color: #777777;
-    margin-right: 37rpx;
+    padding-right: 37rpx;
 }
 
 .ui-noticeBox>view:first-child {
@@ -45,13 +45,13 @@ page {
 
 .ui-collageBox {
     margin-top: 20rpx;
-    background-color: #fff;
+    background-color: #ffffff;
     width: 100%;
 }
 
 .ui-collageItem_top {
     display: flex;
-    width: 90%;
+    width: 686rpx;
     height: 100rpx;
     line-height: 100rpx;
     white-space: nowrap;
@@ -175,7 +175,7 @@ page {
     font-family: PingFangSC-Regular;
     font-weight: 400;
     color: #999999;
-    background-color: #fff;
+    background-color: #ffffff;
 }
 
 .ui-headBox {
@@ -192,7 +192,7 @@ page {
 
 .ui-headBox_search>input {
     background: rgba(248, 248, 248, 1);
-    width: 90%;
+    width: 686rpx;
     height: 64rpx;
     margin: 0 auto;
     border-radius: 12rpx;
@@ -223,7 +223,8 @@ page {
     font-size: 26rpx;
     font-family: PingFangSC-Regular;
     font-weight: 400;
-    color: #ffff;
+    /* color: #FFFFFF; */
+    color: #ffffff;
     margin-right: 40rpx;
     line-height: 80rpx;
 }
@@ -239,7 +240,7 @@ page {
     width: 100%;
     height: 290rpx;
     text-align: center;
-    background-color: #fff;
+    background-color: #ffffff;
     position: relative;
 }
 
@@ -251,7 +252,7 @@ page {
 }
 
 .ui-banner_swiper {
-    width: 90%;
+    width: 686rpx;
     /* margin-top: -40rpx; */
     position: absolute;
     top: 0rpx;
@@ -289,11 +290,11 @@ page {
 .ui-activityBox {
     width: 100%;
     height: 84rpx;
-    background-color: #fff;
+    background-color: #ffffff;
 }
 
 .ui-activityBox>image {
-    width: 90%;
+    width: 686rpx;
     height: 52rpx;
     display: block;
     margin: 0 auto;
@@ -302,25 +303,25 @@ page {
 .ui-yangleBox {
     width: 100%;
     height: 184rpx;
-    background-color: #fff;
+    background-color: #ffffff;
 }
 
 .ui-yangleBox>image {
     display: block;
-    width: 90%;
+    width: 686rpx;
     height: 100%;
     margin: 0 auto;
 }
 
 .ui-wrapBox {
     width: 100%;
-    background-color: #fff;
+    background-color: #ffffff;
     display: inline-block;
 }
 
 .ui-wrapBox .ui-classBox {
     height: 380rpx;
-    width: 90%;
+    width: 686rpx;
     margin: 0 auto 20rpx auto;
     padding-top: 40rpx;
     box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.1);
@@ -386,7 +387,7 @@ page {
 
 .ui-buyBox {
     width: 100%;
-    background-color: #fff;
+    background-color: #ffffff;
     /* height: 500rpx; */
 }
 
@@ -418,7 +419,7 @@ page {
     /* font-size: 28rpx; */
     font-family: PingFangSC-Medium;
     font-weight: 500;
-    color: #fff;
+    color: #ffffff;
     background-color: #1DC4BD;
     border-radius: 8rpx;
     text-align: center;
@@ -508,7 +509,7 @@ page {
 
 .ui-brandSelectBox {
     width: 100%;
-    background-color: #fff;
+    background-color: #ffffff;
     margin: 30rpx auto;
 }
 
@@ -572,7 +573,7 @@ page {
 }
 
 .ui-recomListBox {
-    background-color: #fff;
+    background-color: #ffffff;
 }
 
 .ui-listItem_top {
@@ -600,7 +601,7 @@ page {
     position: fixed;
     top: 183rpx;
     background-color: #FF7274;
-    color: #fff;
+    color: #ffffff;
     border-bottom: none;
     z-index: 999999;
 }
@@ -751,7 +752,7 @@ page {
     font-size: 20rpx;
     font-family: PingFangSC-Regular;
     font-weight: 400;
-    color: #fff;
+    color: #ffffff;
     background-image: url(http://www.gzlingren.com:8098/yangtianhe/juxing.png);
     background-size: 148rpx 48rpx;
     /* text-align: center; */
@@ -804,7 +805,7 @@ page {
     z-index: 10001;
     top: 0;
     left: 0;
-    background-color: #fff;
+    background-color: #ffffff;
 }
 
 .slideBox {

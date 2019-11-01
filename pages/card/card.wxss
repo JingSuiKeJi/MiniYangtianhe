@@ -21,7 +21,7 @@ page {
     margin-top: 66rpx;
     font-size: 52rpx;
     font-weight: 500;
-    color: #FFFFFFFF;
+    color: #FFFFFF;
     line-height: 52rpx;
     text-shadow: 0px 4px 10px rgba(255, 170, 0, 0.5);
 }
@@ -46,7 +46,7 @@ page {
 .ui-specialItem__title {
     font-size: 36rpx;
     font-weight: 500;
-    color: #FFFF;
+    color: #FFFFFF;
     line-height: 36rpx;
 }
 
@@ -64,7 +64,7 @@ page {
     font-size: 22rpx;
     font-family: PingFangSC;
     font-weight: 500;
-    color: #FFFF;
+    color: #FFFFFF;
     line-height: 22rpx;
 }
 
@@ -75,7 +75,7 @@ page {
     font-size: 28rpx;
     font-family: PingFangSC;
     font-weight: 500;
-    color: #FFFFFFFF;
+    color: #FFFFFF;
     background-color: #F24E54;
     text-align: center;
     border-radius: 40rpx;
@@ -395,7 +395,7 @@ page {
     height:328rpx;
     margin-bottom: 20rpx;
     margin-left: 25rpx;
-    background-color:#FFFFFFFF ;
+    background-color:#FFFFFF;
     border-radius:8rpx;
     text-align: center;
     position: relative;

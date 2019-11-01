@@ -260,7 +260,7 @@ const methods = {
             isRecommend: 1
         }).then((ret) => {
             let data = ret.data;
-            if (!data && !data.length) {
+            if (!data.length) {
                 self.setData({
                     tapList: [],
                     list: [],

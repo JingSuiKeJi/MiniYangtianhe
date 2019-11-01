@@ -373,6 +373,7 @@ const methods = {
         //     data.integralStatus = 2;
         // }
         Order.placeOrder(self, data).then((ret) => {
+            // self.checkOrderStatus(ret.data);
             self.prePay(ret.data);
         }, (err) => {
             _g.showModal({
@@ -434,17 +435,39 @@ const methods = {
             });
         });
     },
-    // onSkip(){
-    //     const self = this;
-    //     if (self.data.from == 'order') {};
-    //     _g.redirectTo({
-    //         url: 'pages/order/index',
-    //         param: {
-    //             index: 0,
-    //             from: 'submit'
-    //         }
-    //     }, self);
-    // },
+    checkOrderStatus: function(code) {
+        let count = 0;
+        let timer = setInterval(() => {
+            Order.checkPlaceOrder(self, {
+               code: code
+            }).then(function(ret) {
+                self.stopCheck();
+                if (ret.data.status == 2) {
+                    self.prePay(ret.data.orderId);
+                    clearInterval(timer);
+                } else if(ret.data.status == 3){
+                    _g.showModal({
+                        content: '提交订单失败',
+                    })
+                    clearInterval(timer);
+                }else {
+                    stopCheck();
+                }
+            }, function(error) {
+                stopCheck();
+                _g.logErrorMsg(error);
+            });
+        }, 500);
+    },
+    stopCheck:function () {
+        count++;
+        if (count >= 10) {
+            clearInterval(timer);
+            _g.showModal({
+                content: '提交订单失败',
+            })
+        }
+    },
     getInputValue: function (e) {
         let self = this;
         self.setData({

@@ -8,16 +8,16 @@ const event = app.event;
 const User = require('../../service/User');
 
 let data = {
-	wxNo:'',//默认为空，接收我的页面传来的微信号
-	weChatValue:'',//本页输入的微信号
+	wxNo: '',//默认为空，接收我的页面传来的微信号
+	weChatValue: '',//本页输入的微信号
 	// isShow:false,//显示隐藏绑定成功弹出框
 };
 const onLoad = function (self) {
 	const wxNo = self.data.wxNo;
 	const weChatValue = self.weChatValue;
 	self.setData({
-		wxNo:wxNo,
-		weChatValue:wxNo,
+		wxNo: wxNo,
+		weChatValue: wxNo,
 	})
 };
 const onShow = function (self) { };
@@ -25,46 +25,47 @@ const onReady = function (self) { };
 const onUnload = function (self) { };
 const methods = {
 	//双向绑定输入的value
-	onWeChatInputName:function(e){
+	onWeChatInputName: function (e) {
 		const self = this;
 		const weChatValue = self.data.weChatValue;
 		self.setData({
-			weChatValue:e.detail.value
+			weChatValue: e.detail.value
 		})
 	},
 	//绑定微信
-	onSaveTap:function(){
+	onSaveTap: function () {
 		let self = this;
 		const weChatValue = self.data.weChatValue;
-		wx.showToast({
-		  title:"成功",
-		  icon: 'success',//图标，支持"success"、"loading" 
-		  duration: 1500,//提示的延迟时间，单位毫秒，默认：1500 
-		  mask: true,//是否显示透明蒙层，防止触摸穿透，默认：false 
-		  success:function(){
-			  User.bindWX(self, {
-			      wxNo:weChatValue,
-			  }).then((ret) => {
-				  console.log("绑定成功");
-			  },(err) => {
-				console.log("绑定失败");
-			  });
-		  },
-		  fail:function(){},
-		  complete:function(){}
-		})
-		setTimeout(function(){
-			wx.hideToast()
-		},2000)
+		User.bindWX(self, {
+			wxNo: weChatValue,
+		}).then((ret) => {
+			wx.showToast({
+				title: "成功",
+				icon: 'success',//图标，支持"success"、"loading" 
+				duration: 1500,//提示的延迟时间，单位毫秒，默认：1500 
+				mask: true,//是否显示透明蒙层，防止触摸穿透，默认：false 
+				success: function () {
+					setTimeout(function () {
+						_g.getMyInfo(self, {});
+						_g.navigateBack();
+					}, 2000)
+				},
+			})
+		}, (err) => {
+		});
+		
+		// setTimeout(function () {
+		// 	wx.hideToast()
+		// }, 2000)
 		// const isShow = self.data.isShow;
 		// self.setData({
-		// 	isShow:true
+		// 	isShow: true
 		// });
-		// setTimeout(function(){//toast消失
+		// setTimeout(function () {//toast消失
 		// 	self.setData({
-		// 		isShow:false
+		// 		isShow: false
 		// 	});
-		// },1500);
+		// }, 1500);
 	},
 };
 
@@ -73,12 +74,12 @@ const temps = {};
 
 // 初始化页面page对象
 const initPage = _g.initPage({
-  data: data,
-  onLoad: onLoad,
-  onUnload: onUnload,
-  onReady: onReady,
-  onShow: onShow,
-  methods: methods,
-  temps: temps,
+	data: data,
+	onLoad: onLoad,
+	onUnload: onUnload,
+	onReady: onReady,
+	onShow: onShow,
+	methods: methods,
+	temps: temps,
 });
 Page(initPage);

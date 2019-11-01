@@ -164,6 +164,13 @@ class Order {
 			url: mini.order.orderTraces,
 			data: reqData
 		}, page);
+    }
+    checkPlaceOrder(page, reqData) {
+		_g.dm.canLoadMore = 1;
+		return _g.ajax({
+			url: mini.order.checkPlaceOrder,
+			data: reqData
+		}, page);
 	}
 }
 
