@@ -25,6 +25,7 @@
                     <view class="ui-priceBox">
                         <text class="ui-priceBox_nowPrice" >￥{{goodsDetail.nowPrice}}</text>
                         <text class="ui-priceBox_earnPrice" wx:if="{{goodsDetail.commission}}">赚¥{{goodsDetail.commission}}</text>
+                        <!-- <text class="ui-priceBox_fuqi">福气抵扣1.32</text> -->
                     </view>
                     <text class="ui-priceBox_singlePrice" >原价:{{goodsDetail.originPrice}}</text>
                 </view>

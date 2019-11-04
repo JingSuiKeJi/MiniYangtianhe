@@ -139,7 +139,7 @@ const methods = {
     },
     onStepTap: function () {
         let self = this;
-        if (!self.data.isLogin && self.data.stepInfo.status != 1) return;
+        if (!_g.checkLogin({ type: 2 })) return;
         wx.showLoading({
             mask: true,
             title: '正在上传步数',

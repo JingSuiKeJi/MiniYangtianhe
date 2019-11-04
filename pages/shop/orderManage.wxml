@@ -4,7 +4,8 @@
 	<view class="ui-main">
 		<view class="ui-searchOrderBox">
 			<view class="ui-searchOrder">
-				<view class="ui-searchIcon"></view>
+				<!-- <view class="ui-searchIcon"></view> -->
+				<image mode="aspectFit" src="{{filter.getLocalPhoto('ic_search.png')}}" class="ui-searchIcon"/>
 				<input type="text" class="ui-searchInput" placeholder="搜索订单" placeholder-style="color:color:rgba(145,145,145,1);"></input >
 			</view>
 		</view>

@@ -4,10 +4,12 @@ page {
     background-color: #F5F5F5;
     height: 100%;
 }
+
 .contain {
     width: 100%;
     height: 100%;
 }
+
 .main {
     width: 100%;
     /* height: 1500rpx; */
@@ -107,6 +109,24 @@ page {
     line-height: 30rpx;
     margin-top: 20rpx;
     margin-left: 16rpx;
+}
+
+.ui-priceBox_fuqi {
+    display: inline-block;
+    width: 128rpx;
+    height: 28rpx;
+    margin-left: 20rpx;
+    margin-top: 20rpx;
+    font-size: 18rpx;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    color: #20CAB4;
+    line-height: 28rpx;
+    background: #91FFE8;
+    border-radius: 14rpx;
+    text-align: center;
+    vertical-align: top;
+
 }
 
 .ui-infoItem_right {
@@ -234,11 +254,13 @@ page {
 .ui-sendItem_transform>text:nth-child(2) {
     margin-left: 20rpx;
 }
+
 .ui-plusImgBox {
     width: 710rpx;
     height: 114rpx;
     margin-left: -20rpx;
 }
+
 .ui-plusImgBox .ui-plusIcon {
     width: 710rpx;
     height: 114rpx;
@@ -261,12 +283,12 @@ page {
     color: #333333;
     margin-left: 50rpx;
 }
+
 .ui-choseItem__moreIcon {
     width: 24rpx;
     height: 24rpx;
     margin-left: auto;
     margin-right: 60rpx;
-
 }
 
 .ui-collageBox {
@@ -297,7 +319,6 @@ page {
     font-weight: 600;
     color: #BBBBBB;
     margin-left: 85rpx;
-    
 }
 
 .ui-collageItem_Assess {
@@ -315,12 +336,14 @@ page {
     line-height: 22rpx;
     margin-left: 30rpx;
 }
+
 .ui-AssessItem__moreIcon {
     width: 24rpx;
     height: 24rpx;
     margin-left: auto;
     margin-right: 20rpx;
 }
+
 .ui-bottomItem {
     width: 100%;
     height: 170rpx;
@@ -388,7 +411,7 @@ page {
     background-color: #1ED2B5;
     display: flex;
     justify-content: center;
-    align-items: center;    
+    align-items: center;
     font-size: 24rpx;
     font-family: PingFang-SC-Medium;
     font-weight: 500;
@@ -437,8 +460,7 @@ page {
     position: relative;
 }
 
-.ui-tapItem_messageIcon,
-.ui-tapItem_cartIcon {
+.ui-tapItem_messageIcon, .ui-tapItem_cartIcon {
     width: 50rpx;
     height: 50rpx;
     margin: 25rpx 30rpx;
@@ -515,7 +537,6 @@ page {
     margin-top: 10rpx;
     margin-bottom: -10rpx;
 }
-
 
 /*  */
 
@@ -702,7 +723,6 @@ page {
     border-radius: 20rpx 20rpx 0px 0px;
 }
 
-
 /* 动画前初始位置*/
 
 .bottom-pos {
@@ -769,7 +789,7 @@ page {
 .ui-assessItem_icon {
     width: 52rpx;
     height: 52rpx;
-	border-radius: 50%;
+    border-radius: 50%;
     margin: 20rpx;
 }
 
@@ -914,44 +934,49 @@ page {
     height: 100rpx;
     line-height: 100rpx;
 }
+
 .groupBox_singlePrice {
     margin-left: 28rpx;
     margin-top: 22rpx;
-    font-size:38rpx;
-    font-family:PingFangSC-Medium,PingFangSC;
-    font-weight:500;
-    color:#FFFFFF;
-    line-height:38rpx;
+    font-size: 38rpx;
+    font-family: PingFangSC-Medium, PingFangSC;
+    font-weight: 500;
+    color: #FFFFFF;
+    line-height: 38rpx;
 }
+
 .ui-groupBox_singlePrice {
     margin-left: 16rpx;
-    font-size:24rpx;
-    font-family:PingFangSC-Regular,PingFangSC;
-    font-weight:400;
-    color:#FFFFFF;
-    line-height:24rpx;
+    font-size: 24rpx;
+    font-family: PingFangSC-Regular, PingFangSC;
+    font-weight: 400;
+    color: #FFFFFF;
+    line-height: 24rpx;
     text-decoration: line-through;
 }
+
 .ui-groupBox {
     margin-top: 10rpx;
     width: 500rpx;
 }
+
 .ui-groupBox_nowPrice {
     margin-left: 28rpx;
     margin-top: 22rpx;
-    font-size:38rpx;
-    font-family:PingFangSC-Medium,PingFangSC;
-    font-weight:500;
-    color:#FFFFFF;
-    line-height:38rpx;
+    font-size: 38rpx;
+    font-family: PingFangSC-Medium, PingFangSC;
+    font-weight: 500;
+    color: #FFFFFF;
+    line-height: 38rpx;
 }
+
 .ui-groupItem_text {
     /* width: 576rpx; */
     margin-left: 28rpx;
     margin-top: 16rpx;
-    font-size:24rpx;
-    font-family:PingFangSC-Light,PingFangSC;
-    font-weight:300;
-    color:#FFFFFF;
-    line-height:24rpx;
+    font-size: 24rpx;
+    font-family: PingFangSC-Light, PingFangSC;
+    font-weight: 300;
+    color: #FFFFFF;
+    line-height: 24rpx;
 }
