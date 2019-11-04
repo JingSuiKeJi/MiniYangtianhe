@@ -128,6 +128,7 @@ const methods = {
             num: 1,
             skuId: 1
         };
+        if (!_g.checkLogin({ type: 2 })) return;
         self.hideModal();
         _g.navigateTo({
             url: 'pages/order/submit',

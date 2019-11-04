@@ -487,8 +487,4 @@ page{
 .ui-moreIconCommon{
 	width:14rpx;
 	height:24rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_rightArrow.png');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
 }

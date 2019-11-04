@@ -558,19 +558,17 @@ const methods = {
     },
     onStepTap: function () {
         let self = this;
-        if (self.data.stepInfo.status == 1 && self.data.isLogin) {
+        if ( self.data.isLogin) {
             wx.showLoading({
                 mask: true,
                 title: '正在上传步数',
                 success() { }
             });
             self.wxLogin();
-        } else if (!self.data.isLogin) {
+        } else {
             _g.toast({
                 title: '请登陆'
             })
-        } else {
-            return false;
         }
 
     },

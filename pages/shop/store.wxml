@@ -21,8 +21,8 @@
 		<view class="ui-commissionBox">
 			<view class="ui-withdrawItem">
 				<view>
-					<view class="withdrawIcon"></view>
-					<!-- <image class="withdrawIcon" mode="aspectFit" src="{{filter.getLocalPhoto('my_withdrawalCommissionIcon.png')}}"/> -->
+					<!-- <view class="withdrawIcon"></view> -->
+					<image class="withdrawIcon" mode="aspectFit" src="{{filter.getLocalPhoto('my_withdrawalCommissionIcon.png')}}"/>
 					<view>累计营业额</view>
 				</view>
 				<view>{{centerInfo.money}}</view>
@@ -47,27 +47,28 @@
 		
 		<view class="ui-detailBox">
 			<view class="ui-detailItem" catchtap="onStatementsTap">
-				<view class="detailIcon"></view>
+				<!-- <view class="detailIcon"></view> -->
+				<image mode="aspectFit"  src="{{filter.getLocalPhoto('my_Statements.png')}}" class="detailIcon"/>
 				<text>财务报表</text>
 			</view>
 			<view class="ui-detailItem" bindtap="getScancode">
-				<view class="detailIcon"></view>
+					<image mode="aspectFit"  src="{{filter.getLocalPhoto('my_EwmVerification.png')}}" class="detailIcon"/>
 				<text>扫码核销</text>
 			</view>
 			<view class="ui-detailItem" catchtap="onBlissVerifyTap">
-				<view class="detailIcon"></view>
+					<image mode="aspectFit"  src="{{filter.getLocalPhoto('my_blissVerification.png')}}" class="detailIcon"/>
 				<text>福气核销</text>
 			</view>
 			<view class="ui-detailItem" catchtap="onOrderManageTap">
-				<view class="detailIcon"></view>
+					<image mode="aspectFit"  src="{{filter.getLocalPhoto('my_orderManagement.png')}}" class="detailIcon"/>
 				<text>订单管理</text>
 			</view>
 			<view class="ui-detailItem" catchtap="onStoreQRCodeTap">
-				<view class="detailIcon"></view>
+					<image mode="aspectFit"  src="{{filter.getLocalPhoto('my_storeQR.png')}}" class="detailIcon"/>
 				<text>门店二维码</text>
 			</view>
 			<view class="ui-detailItem" catchtap="onBlissVerifyDetailTap">
-				<view class="detailIcon"></view>
+					<image mode="aspectFit"  src="{{filter.getLocalPhoto('my_blessingVerificationIcon.png')}}" class="detailIcon"/>
 				<text>福气核销明细</text>
 			</view>
 		</view>

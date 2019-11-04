@@ -169,7 +169,9 @@ class Order {
 		_g.dm.canLoadMore = 1;
 		return _g.ajax({
 			url: mini.order.checkPlaceOrder,
-			data: reqData
+            data: reqData,
+            showToast: false,
+            hideToast: true
 		}, page);
 	}
 }

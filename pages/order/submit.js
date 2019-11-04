@@ -43,6 +43,7 @@ const data = {
     num: 0, //商品总数
     totalPrice: 22, //总价
     couponId: 0,
+    count: 0
 };
 
 // 页面onLoad方法
@@ -55,7 +56,7 @@ const onLoad = function (self) {
     if (self.data.platformFlag == 2 && !self.data.isDisabledReservation) {
         self.getDeliveryTime();
     }
-    event.on('preferentialPolicies',self,()=>{
+    event.on('preferentialPolicies', self, () => {
         self.preferentialPolicies();
     })
 };
@@ -70,7 +71,7 @@ const onShow = function (self) {
     // self.preferentialPolicies();
 };
 const onUnload = function (self) {
-     event.remove('preferentialPolicies',self);
+    event.remove('preferentialPolicies', self);
 }
 // 页面中的方法
 const methods = {
@@ -96,20 +97,20 @@ const methods = {
             }).then((ret) => {
                 self.setPageData(ret.data);
                 self.getGoodsInfo(ret.data.goodsVoList);
-            },(err)=>{
-                if (err.code == 40001) { 
+            }, (err) => {
+                if (err.code == 40001) {
                     _g.toast({
                         title: err.message,
                     });
-                    setTimeout(()=>{
-                       _g.navigateBack();
-                    },2000)
-                   
-                    
+                    setTimeout(() => {
+                        _g.navigateBack();
+                    }, 2000)
+
+
                 }
-                
+
             });
-            
+
         } else {
             let postData = self.data.postData;
             let data = {
@@ -119,21 +120,21 @@ const methods = {
                 },
                 platformFlag: postData.platformFlag
             };
-            if(postData.isOrigPrice) data.preGoods.isOrigPrice = postData.isOrigPrice;
+            if (postData.isOrigPrice) data.preGoods.isOrigPrice = postData.isOrigPrice;
             if (postData.skuId) data.preGoods.skuId = postData.skuId;
             Order.preOrder(self, data).then((ret) => {
                 self.setPageData(ret.data);
                 self.getGoodsInfo(ret.data.goodsVoList);
-            },(err)=> {
-                if (err.code == 40001) { 
+            }, (err) => {
+                if (err.code == 40001) {
                     _g.toast({
                         title: err.message,
                     });
-                    setTimeout(()=>{
-                       _g.navigateBack();
-                    },2000)
-                   
-                    
+                    setTimeout(() => {
+                        _g.navigateBack();
+                    }, 2000)
+
+
                 }
             });
         }
@@ -163,7 +164,7 @@ const methods = {
         //     self.selectCoupon();
         // }
     },
-    
+
     preferentialPolicies: function () {
         let self = this;
         let param = {
@@ -223,7 +224,7 @@ const methods = {
         //显示积分开关
         if (data.integralStatus == 1) {
             option.pointsFlag = true;
-        }else if(data.integralStatus == 2) {
+        } else if (data.integralStatus == 2) {
             option.pointsFlag = false;
         }
         self.setData(option);
@@ -234,7 +235,7 @@ const methods = {
         let self = this;
         let type = e.currentTarget.dataset.type;
         if (self.data.type == type) return;
-        if (!self.data.orderAddressVo ) {
+        if (!self.data.orderAddressVo) {
             _g.toast({
                 title: '请先选择地址'
             })
@@ -305,13 +306,13 @@ const methods = {
     },
     onSubmitTap: function (e) {
         const self = this;
-        if (!self.data.orderAddressVo ) {
+        if (!self.data.orderAddressVo) {
             _g.toast({
                 title: '请先选择地址'
             })
             return;
         }
-        if (self.data.platformFlag == 2 && self.data.type==1) {
+        if (self.data.platformFlag == 2 && self.data.type == 1) {
             _g.toast({
                 title: '请选择配送方式'
             });
@@ -339,13 +340,13 @@ const methods = {
             data.dispatchingType = self.data.type;
             data.dispatchingTime = self.data.dispatchingTime;
         }
-         if (self.data.from == 'cart') {
+        if (self.data.from == 'cart') {
             data.cartIds = self.data.postData.cartIds;
             data.buyType = 2;
-         } else {
+        } else {
             data.id = self.data.postData.id;
             data.buyType = 1;
-         }
+        }
         // if (self.data.from == 'goodsDetail' || self.data.from == 'bargain' || self.data.from == 'join') {
         //     data.id = self.data.postData.id;
         //     data.buyType = 1;
@@ -373,8 +374,8 @@ const methods = {
         //     data.integralStatus = 2;
         // }
         Order.placeOrder(self, data).then((ret) => {
-            // self.checkOrderStatus(ret.data);
-            self.prePay(ret.data);
+            self.checkOrderStatus(ret.data);
+            // self.prePay(ret.data);
         }, (err) => {
             _g.showModal({
                 content: '提交订单失败',
@@ -389,7 +390,7 @@ const methods = {
         Order.prePay(self, {
             orderId: id
         }).then((ret) => {
-             let payInfo = ret.data;
+            let payInfo = ret.data;
             if (payInfo.type == 1) {
                 payInfo.success = function () {
                     //TODO check pay status
@@ -405,9 +406,9 @@ const methods = {
                     });
                 };
                 _g.requestPayment(payInfo);
-               
-            }else if (payInfo.type == 2) {
-                console.log(33,id)
+
+            } else if (payInfo.type == 2) {
+                console.log(33, id)
                 self.payStatus('success', id);
             }
             // payInfo.success = function () {
@@ -435,37 +436,55 @@ const methods = {
             });
         });
     },
-    checkOrderStatus: function(code) {
+    checkOrderStatus: function (code) {
+        let self = this;
         let count = 0;
         let timer = setInterval(() => {
+            count++;
+            // if (status == 2) {
+            //     self.prePay();
+            //     clearInterval(self.data.timer);
+            // } else if(status == 3){
+            //     _g.showModal({
+            //         content: '提交订单失败',
+            //     })
+            //     clearInterval(self.data.timer);
+            // }else {
+            //     self.stopCheck(count);
+            // }
             Order.checkPlaceOrder(self, {
-               code: code
-            }).then(function(ret) {
-                self.stopCheck();
+                code: code
+            }).then(function (ret) {
+                // self.stopCheck();
                 if (ret.data.status == 2) {
                     self.prePay(ret.data.orderId);
                     clearInterval(timer);
-                } else if(ret.data.status == 3){
+                } else if (ret.data.status == 3) {
                     _g.showModal({
                         content: '提交订单失败',
                     })
                     clearInterval(timer);
-                }else {
-                    stopCheck();
+                } else {
+                    self.stopCheck(count);
                 }
-            }, function(error) {
-                stopCheck();
+            }, function (error) {
+                clearInterval(timer);
                 _g.logErrorMsg(error);
             });
         }, 500);
+        self.setData({
+            timer: timer
+        })
     },
-    stopCheck:function () {
-        count++;
+    stopCheck: function (count) {
+        let self = this;
+        // console.log(count);
         if (count >= 10) {
-            clearInterval(timer);
+            clearInterval(self.data.timer);
             _g.showModal({
                 content: '提交订单失败',
-            })
+            });
+
         }
     },
     getInputValue: function (e) {

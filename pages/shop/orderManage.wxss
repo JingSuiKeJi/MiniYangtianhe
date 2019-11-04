@@ -32,10 +32,10 @@ page{
 	width: 32rpx;
 	height: 32rpx;
 	margin-left: 20rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/ic_search.png');
+	/* background-image:url('http://www.gzlingren.com:8098/yangtianhe/ic_search.png');
 	background-repeat: no-repeat;
 	background-position: center center;
-	background-size: cover;
+	background-size: cover; */
 }
 
 .ui-searchInput{

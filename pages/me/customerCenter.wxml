@@ -48,7 +48,8 @@
 				<text class="ui-addressTitle ui-fontLargeTextCommon">收件地址</text>
 				<view class="ui-addressMore">
 					<text class="ui-fontSmallTextCommon">全部收件信息</text>
-					<view class="ui-moreIconCommon"></view>
+					<!-- <view class="ui-moreIconCommon"></view> -->
+				    <image src="{{filter.getLocalPhoto('my_rightArrow.png')}}" mode="aspectFit" class="ui-moreIconCommon"/>
 				</view>
 			</view>
 			<view wx:if="{{addressList}}">
@@ -72,7 +73,7 @@
 			<view class="ui-fontLargeTextCommon">客户足迹</view>
 			<view class="ui-historyMore" catchtap="onCusFootmarkTap">
 				<text class="ui-fontSmallTextCommon">查看客户足迹</text>
-				<view class="ui-moreIconCommon"></view>
+				 <image src="{{filter.getLocalPhoto('my_rightArrow.png')}}" mode="aspectFit" class="ui-moreIconCommon"/>
 			</view>
 		</view>
 		
@@ -81,7 +82,7 @@
 				<text class="ui-fontLargeTextCommon">订单列表</text>
 				<view class="ui-orderListMore">
 					<text class="ui-fontSmallTextCommon">全部订单</text>
-					<view class="ui-moreIconCommon"></view>
+					 <image src="{{filter.getLocalPhoto('my_rightArrow.png')}}" mode="aspectFit" class="ui-moreIconCommon"/>
 				</view>
 			</view>
 			<block wx:if="{{orderList}}">
