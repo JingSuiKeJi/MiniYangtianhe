@@ -1,0 +1,55 @@
+@charset "UTF-8";
+@import "/libs/common.wxss";
+page {
+    background: rgba(255, 255, 255, 1);
+}
+
+.ui-main {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.ui-yangtianhe__img {
+    width: 160rpx;
+    height: 160rpx;
+    margin-top: 232rpx;
+    margin-bottom: 44rpx;
+}
+
+.ui-yangtianhe__text {
+    font-size: 30rpx;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    color: #333333;
+    line-height: 30rpx;
+}
+
+.ui-loginBtn {
+    width: 512rpx;
+    height: 92rpx;
+    margin-top: 210rpx;
+    margin-bottom: 48rpx;
+    font-size: 32rpx;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: #FFFFFF;
+    line-height: 92rpx;
+    background: linear-gradient(137deg, rgba(1, 206, 165, 1) 0%, rgba(94, 221, 218, 1) 100%);
+    border-radius: 46rpx;
+    text-align: center;
+}
+
+.ui-greyBtn {
+    width: 512rpx;
+    height: 92rpx;
+    font-size: 32rpx;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: #333333;
+    line-height: 92rpx;
+    background: #F3F4F6;
+    border-radius: 46rpx;
+    text-align: center;
+}

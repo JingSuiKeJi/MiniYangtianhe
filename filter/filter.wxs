@@ -256,8 +256,11 @@ var filter = {
 			   return '';
 		}
 	},
-	getId:function (description){
-		var news = description.substring(description.indexOf('：')+1,description.indexOf(' 用'));
+	getId:function (str){
+        var news = str.substring(str.indexOf('：')+1,str.indexOf(' 用'));
+        if (str.indexOf('（')!= -1) {
+            news = str.substring(str.indexOf('（')+1,str.length-1);
+        }
 		return news
     },
     checkAfterOrderStatus: function (status) {
@@ -309,6 +312,13 @@ var filter = {
 			default: 
 			   return '';
 		}
+    },
+    getOverString: function (string) {
+        if (string.length>6) {
+            return string.slice(0,5) + '..';
+        } else {
+            return string
+        }
     }
 };
 module.exports = filter;

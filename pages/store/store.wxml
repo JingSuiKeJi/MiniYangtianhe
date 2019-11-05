@@ -6,9 +6,7 @@
     <view class="main">
         <view>
             <view class="ui-headBox" style="margin-top: {{statusBarHeight+44}}px;" hidden="{{isFixed}}" id="head">
-                <view class="ui-headBox_search">
-                    <input type="text" placeholder="搜索你想要的商品" bindinput="onSearchTap" bindfocus="onSkipTap" value="{{inputValue}}" />
-                </view>
+                <view class="ui-headBox_search" bindtap="onSkipTap">搜索你想要的商品</view>
             </view>
             <view class="ui-tapBox">
                 <view class="ui-tapBox__Item">
@@ -259,9 +257,9 @@
                                 </view>
                                 <view class="ui-content_reward">
                                     <text>￥{{item.nowPrice}}</text>
-                                    <view wx:if="{{item.commission}}">
+                                    <!-- <view wx:if="{{item.commission}}">
                                         分享赚 ￥{{item.commission}}
-                                    </view>
+                                    </view> -->
                                 </view>
                             </view>
                         </button>

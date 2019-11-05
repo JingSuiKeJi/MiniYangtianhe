@@ -1,0 +1,12 @@
+<wxs module="filter" src="../../filter/filter.wxs"></wxs>
+<!-- bindingPhone.wxml -->
+<view class="container">
+    <navBar title='登陆' background='linear-gradient(137deg,rgba(1,206,165,1) 0%,rgba(94,221,218,1) 100%)' color='white' iconTheme='white' back="{{true}}"></navBar>
+    <view class="ui-main">
+        <image src="{{filter.getLocalPhoto('yangtianhe_icon.png')}}" mode="aspectFill" class="ui-yangtianhe__img" />
+        <view class="ui-yangtianhe__text">养天和优选</view>
+        <!-- <view class="ui-loginBtn" bindtap="onLoginTap">登录</view> -->
+        <button class="ui-loginBtn" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo" data-fuc="onLoginTap">登录</button>
+        <view class="ui-greyBtn" bindtap="onLaterLogin">稍后授权</view>
+    </view>
+</view>

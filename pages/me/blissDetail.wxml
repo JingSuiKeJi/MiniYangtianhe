@@ -19,32 +19,32 @@
             </view>
            
         </view>
-        <scroll-view class="ui-withdrawInfoBox" scroll-y="true" bindscrolltolower="scrollTolower">
+        <view class="ui-withdrawInfoBox"  bindscrolltolower="scrollTolower">
             <view class="ui-withdraw__title">福气明细</view>
             <block wx:if="{{withdrawlist.length > 0}}">
-                <view class="ui-withdrawInfoItem">
+                <scroll-view class="ui-withdrawInfoItem" scroll-y="true">
                     <view class="ui-withdrawDetail" wx:for="{{withdrawlist}}" wx:for-index="idx" wx:key="idx" wx:for-item="item" style="color: {{item.type==1?'#666666':'#20CAB4'}};">
                         <text>{{filter.getDateOrTime(item.createTime,3)}}</text>
                         <text>{{item.type==1?'+':'-'}}{{item.points}}</text>
 						<block wx:if="{{item.type==1}}">
 							<view class="ui-presentedTextBox" wx:if="{{item.incomeType==2}}">
 							    <text>{{filter.getIncomeType(item.incomeType)}}</text>
-							    <text class="ui-idColor">ID:{{filter.getId(item.description)}}</text>
+							    <text class="ui-idColor">{{filter.getId(item.description)}}</text>
 							</view>
 							<text wx:else>{{filter.getIncomeType(item.incomeType)}}</text>
 						</block>
                         <block wx:if="{{item.type==2}}">
                         	<view class="ui-presentedTextBox" wx:if="{{item.expenditureType==3}}">
                         	    <text>{{filter.getExpenditureType(item.expenditureType)}}</text>
-                        	    <text class="ui-idColor">ID:{{filter.getId(item.description)}}</text>
+                        	    <text class="ui-idColor">{{filter.getId(item.description)}}</text>
                         	</view>
                         	<text wx:else>{{filter.getExpenditureType(item.expenditureType)}}</text>
                         </block>
                        
                     </view>
-                </view>
+                </scroll-view>
             </block>
-        </scroll-view>
+        </view>
     </view>
     <!-- 充值弹窗信息 -->
     <view class="modal-mask" bindtap="hideModal" catchtouchmove="true" wx:if="{{showModal}}"></view>

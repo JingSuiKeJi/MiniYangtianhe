@@ -8,25 +8,25 @@ const Platform = require('../../service/Platfrom');
 // 初始化数据
 const data = {
     type: 0,
-     list: [],
-     tapList: ['默认','价格','销量'],
-     page: 1,
-     priceSort: 1,// 价格排序 1 是升序，2是降序
-     value: ''
+    list: [],
+    tapList: ['默认', '价格', '销量'],
+    page: 1,
+    priceSort: 1,// 价格排序 1 是升序，2是降序
+    value: ''
 };
 
 // 页面onLoad方法
 const onLoad = function (self) {
     let data = {
-         platformFlag: self.data.platformFlag
+        platformFlag: self.data.platformFlag
     }
     if (self.data.flag) {
-    wx.setNavigationBarTitle({
-        title: '全部分类',
-    })
+        wx.setNavigationBarTitle({
+            title: '全部分类',
+        })
     } else {
         wx.setNavigationBarTitle({
-        title: '搜索',
+            title: '搜索',
         })
     }
     if (self.data.value) {
@@ -38,15 +38,15 @@ const onLoad = function (self) {
     if (self.data.brandId) {
         data.brandId = self.data.brandId
     }
-    self.setData(data); 
+    self.setData(data);
     self.getData();
 };
 
 // 页面onShow方法
 const onShow = function (self) {
-      
+
 };
-const onUnload= function (self) {
+const onUnload = function (self) {
 
 }
 // 页面中的方法
@@ -55,34 +55,37 @@ const methods = {
         let self = this;
         self.getPageData();
     },
-    onChoseTap: function(e) {
+    onChoseTap: function (e) {
         let self = this;
         const opts = e.target.dataset;
         if (opts.type == self.data.type && opts.type == 1) {
-            switch(self.data.priceSort) {
+            switch (self.data.priceSort) {
                 case 1:
                     self.setData({
                         priceSort: 2,
-                        list: []
+                        list: [],
+                        page: 1
                     });
                     break;
                 default:
                     self.setData({
                         priceSort: 1,
-                        list: []
+                        list: [],
+                        page: 1
                     });
-            } 
+            }
         } else if (opts.type == self.data.type) {
-          return;
+            return;
         } else {
             self.setData({
                 type: opts.type,
                 priceSort: 1,
                 soldNumSort: 1,
-                list: []
-          });
+                list: [],
+                page: 1
+            });
         }
-        self.getPageData();  
+        self.getPageData();
     },
     onGetInput: function (e) {
         let self = this;
@@ -95,8 +98,8 @@ const methods = {
         let opts = e.currentTarget.dataset;
         _g.navigateTo({
             url: 'pages/goods/detail',
-            param: { id: opts.id}
-        },self)
+            param: { id: opts.id }
+        }, self)
     },
     getPageData: function () {
         let self = this;
@@ -118,21 +121,22 @@ const methods = {
         if (self.data.type == 2) {
             data.soldNumSort = 2
         }
-        Platform.getGoodsList(self, data 
-        ).then((ret)=>{
-           let param = ret.data;
-           self.setData({
-               list: self.data.list.concat(param.list)
-           });
-        },(err)=>{
+        Platform.getGoodsList(self, data
+        ).then((ret) => {
+            let param = ret.data;
+            self.setData({
+                list: self.data.list.concat(param.list)
+            });
+        }, (err) => {
         });
     },
     onSkipTap: function (e) {
         let self = this;
         self.setData({
-            list: []
+            list: [],
+            page: 1
         })
-        
+
         self.getPageData();
     },
 

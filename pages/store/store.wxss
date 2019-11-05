@@ -190,7 +190,7 @@ page {
     background-color: #FF7274;
 }
 
-.ui-headBox_search>input {
+.ui-headBox_search {
     background: rgba(248, 248, 248, 1);
     width: 686rpx;
     height: 64rpx;
@@ -202,6 +202,7 @@ page {
     font-family: PingFangSC-Regular;
     padding-left: 20rpx;
     z-index: 1003;
+    line-height: 64rpx;
 }
 
 .ui-tapBox {

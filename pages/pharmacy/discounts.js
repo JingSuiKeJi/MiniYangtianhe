@@ -127,6 +127,13 @@ const methods = {
 			});
 			event.emit('preferentialPolicies');
 			_g.navigateBack();
+		}else {
+			_g.navigateTo({
+				url: 'pages/search/detailList',
+				param: {
+					platformFlag: 1
+				}
+			},self)
 		}
 	}
 }

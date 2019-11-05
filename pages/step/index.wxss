@@ -165,9 +165,9 @@ page {
     color:#FFAA00;
     line-height:56rpx;
     letter-spacing:2rpx;
-    white-space: nowrap;
+    /* white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;
+    text-overflow: ellipsis; */
 }
 .ui-contenItem .ui-contenItem__step {
     color: #20CAB4;

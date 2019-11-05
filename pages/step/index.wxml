@@ -29,7 +29,7 @@
             <view class="ui-stepContentBox">
                 <view class="ui-contenItem" bindtap="onIllustrationTap">
                     <view class="ui-contenItem__text">
-                        {{stepInfo.points}}
+                        {{filter.getOverString(stepInfo.points)}}
                         <text>福气</text>
                     </view>
                     <view class="ui-contenItem__title">累计福气</view>
@@ -41,9 +41,9 @@
                     </view>
                     <view class="ui-contenItem__title">我的乐友</view>
                 </view>
-                <view class="ui-contenItem">
+                <view class="ui-contenItem" bindtap="checkOrderStatus">
                     <view class="ui-contenItem__text ui-contenItem__step">
-                        {{stepInfo.totalStep}}
+                         {{filter.getOverString(stepInfo.totalStep)}}
                         <text>步数</text>
                     </view>
                     <view class="ui-contenItem__title">累计步数</view>
