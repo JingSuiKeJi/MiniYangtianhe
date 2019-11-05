@@ -3,16 +3,27 @@
 <view class="container">
 	<view class="ui-main">
 		<view class="ui-qrBox">
-			<view class="ui-addressBox">
+			<!-- <view class="ui-addressBox">
 				<text>{{userInfo.store.title}}</text>
 				<text>{{userInfo.store.address}}</text>
 			</view>
 			<view class="ui-qrInfo">
 				<image src="{{filter.getPhoto(host,shareQR)}}" mode="aspectFill"></image>
-			</view>
+			</view> -->
+			<canvas canvas-id="share" class="ui-share__canvas" ></canvas>
+			<image class="ui-share__image" src="{{canvasUrl}}" show-menu-by-longpress="true"></image>
 		</view>
-		<view class="btn-savePoster"></view>
-		<text class="ui-savePosterText">保存海报</text>
-		<view class="btn-share">立即分享</view>
+		<!-- <view class="btn-savePoster"></view> -->
+		<image src="{{filter.getLocalPhoto('my_save.png')}}" mode="aspectFit" class="btn-savePoster" bindtap="onSaveImage"/>
+		<view class="ui-savePosterText">保存海报</view>
+		<!-- <view class="btn-share">立即分享</view> -->
+		<button open-type="share" class="btn-share" >立即分享</button>
 	</view>
 </view>
+<authorize 
+    id="authorize" 
+    message="请问需要授权相册从而保存至本地" 
+    bind:onCancelTap="onCancelTap" 
+    eventName="me-storeQRCode-authorize" 
+    isHidden="{{authorizeHidden}}">
+</authorize>
