@@ -151,6 +151,9 @@ base.prototype = {
                     _.each(options, function(val, key) {
                         self.data[key] = val;
                     });
+                    if(options.promoCode){
+                        _g.setLS(_c.LSKeys.promoCode, options.promoCode, _c.promoCodeExpireTime)
+                    }
                 }
                 // param 页面自定方法传递的参数
                 if (_g.j2s(_g.dm.param) != '{}') {

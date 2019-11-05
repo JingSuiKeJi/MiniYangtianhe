@@ -6,7 +6,8 @@
 		<!-- 完整日历 -->
 		<view class="ui-calendarBox" wx:if="{{calendarFlag==true}}">
 			<calendar cell-size="23" weeks-type="cn" days-color="{{dayStyle}}" show-more-days="true" binddayClick="dayClick"/>
-			<view class="ui-showHidden ui-pullUp" catchtap="onPullUpTap"></view>
+			<!-- <view class="ui-showHidden ui-pullUp" catchtap="onPullUpTap"></view> -->
+			<image src="{{filter.getLocalPhoto('my_pullUp.png')}}" mode="aspectFit" class="ui-showHidden " catchtap="onPullUpTap"/>
 		</view>
 		
 		<!-- 单行日历 -->
@@ -22,7 +23,8 @@
 					<text>{{item}}</text>
 				</view>
 			</view>
-			<view class="ui-pullDown" catchtap="onPullDownTap"></view>
+			<!-- <view class="ui-pullDown" catchtap="onPullDownTap"></view> -->
+			<image src="{{filter.getLocalPhoto('my_pulDown.png')}}" mode="aspectFit" class="ui-pullDown" catchtap="onPullDownTap"/>
 		</view>
 		
 		<!-- 当天/一周/一个月，福气历史总数 -->

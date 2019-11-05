@@ -83,8 +83,8 @@ const onLoad = function (self) {
     });
     event.on('logout-suc', self, (ret) => {
         self.setData({
-    		isLogin: false
-    	});
+            isLogin: false
+        });
         self.getLocation();
     });
 
@@ -146,10 +146,20 @@ const methods = {
             lat: self.data.location.lat
         }).then((ret) => {
             if (ret.data.list && ret.data.list.length) {
+                let num = 0;
+                if (self.data.storeId) {
+                    _.find(ret.data.list, (item,index) => {
+                        if (item.id == self.data.storeId) {
+                            num = index
+                        }
+
+                    })
+                }
+                let storeInfo = ret.data.list[num]
                 self.setData({
-                    storeInfo: ret.data.list[0]
+                    storeInfo: storeInfo
                 });
-                _g.setLS(_c.LSKeys.storeInfo, ret.data.list[0]);
+                _g.setLS(_c.LSKeys.storeInfo, storeInfo);
                 self.getData();
             }
         });
@@ -267,7 +277,7 @@ const methods = {
                     page: 1
                 });
                 return;
-            } 
+            }
             self.setData({
                 tapList: data,
                 classifyId: data[0].id
@@ -558,7 +568,7 @@ const methods = {
     },
     onStepTap: function () {
         let self = this;
-        if ( self.data.isLogin) {
+        if (self.data.isLogin) {
             wx.showLoading({
                 mask: true,
                 title: '正在上传步数',
