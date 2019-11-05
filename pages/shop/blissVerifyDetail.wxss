@@ -45,18 +45,7 @@ page{
 	width: 64rpx;
 	height: 64rpx;
 	transform: translateY(-12rpx);
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
 }
-
-.ui-pullUp{
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_pullUp.png');
-}
-
-/* .ui-pulDown{
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_pulDown.png');
-} */
 /* 单行日历 */
 .ui-shortCalendar{
 	position: relative;
@@ -143,10 +132,6 @@ page{
 	width: 64rpx;
 	height: 64rpx;
 	position: absolute;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_pulDown.png');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
 	right: 38rpx;
 	transform: translateY(-50%);
 }

@@ -9,7 +9,6 @@ page{
 .ui-main {
     width: 100%;
 }
-//
 .ui-posterBox{
 	margin: 18rpx 0 0 104rpx;
 }
