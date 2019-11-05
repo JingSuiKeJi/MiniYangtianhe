@@ -1141,7 +1141,7 @@ base.prototype = {
      * @param str obj
      */
     logger: function() {
-        // if (!_c.debug || _c.env == 'pro') return;
+        if (!_c.debug || _c.env == 'pro') return;
         this.logger = console.log;
     },
 
