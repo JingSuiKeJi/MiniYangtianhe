@@ -1584,10 +1584,9 @@ base.prototype = {
 				opts.suc && opts.suc();
             }
             if (opts.e && opts.e.currentTarget.dataset.fuc) {
+                let fuc = opts.e.currentTarget.dataset.fuc;
+                self[fuc]();
             }
-            // if (self.onOperation) {
-            //     self.onOperation();
-            // }
         },(err)=>{
             //TODO login fail
 			opts.fail && opts.fail();

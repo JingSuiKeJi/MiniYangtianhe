@@ -43,7 +43,23 @@
                 </view>   
             </view>    
       </view>
-      <view class="ui-contentBox" wx:else>
+      <view class="ui-contentBox" wx:if="{{!list.length}}">
+            <view class="ui-content_tips">
+                 <view class="ui-tipsItem_price"  wx:for="{{tapList}}">
+                    <view data-type="{{index}}" class="ui-priceItem">
+                        <text class="ui-tipsItem_text">{{item}}</text>
+                        <image wx:if="{{index == 1}}" src="{{filter.getLocalPhoto('graySort.png')}}" class="ui-priceItem_img"  mode="aspectFit"/>
+                    </view>
+                </view>
+            </view>
+            <view  class="ui-noListBox">
+                <image src="{{filter.getLocalPhoto('magnifier.png')}}" class="ui-noListItem_icon"/>
+                <view >无搜索结果</view>
+                <view>换个关键词搜索试一下</view>
+            </view>
+      </view>
+      
+      <!-- <view class="ui-contentBox" wx:else>
            <view class="ui-content_tap">
                 <view class="ui-tapItem_price" >
                     <view >
@@ -62,6 +78,6 @@
                 <view >无搜索结果</view>
                 <view>换个关键词搜索试一下</view>
             </view>
-      </view>
+      </view> -->
    </view>
 </view>

@@ -194,7 +194,7 @@
     width: 12rpx;
     height: 28rpx;
     position: absolute;
-    top: 30rpx;
+    top: 27rpx;
     right: -19rpx;
 }
 .ui-content_tips .ui-tipsItem_text {

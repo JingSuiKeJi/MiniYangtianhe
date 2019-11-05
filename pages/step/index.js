@@ -253,7 +253,7 @@ const methods = {
         _g.navigateTo({
             url: 'pages/step/rankingList'
         }, self)
-    }
+    },
 };
 
 // 有引用template时定义

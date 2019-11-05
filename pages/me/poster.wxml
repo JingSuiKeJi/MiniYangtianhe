@@ -3,21 +3,6 @@
 <view class="container">
 	<navBar title='我的海报' background='white' color='black' iconTheme='black' back="{{true}}"></navBar>
 	<view class="ui-main">
-		<!-- <view class="ui-posterBox">
-			<view class="ui-posterBackground">
-				<image src="{{filter.getPhoto(host,poster)}}" mode="aspectFill"></image>
-				<view class="ui-personalIcon"><image src="{{filter.getAvatar(host,avatar)}}" mode="aspectFill"></image></view>
-				<text class="ui-personalIdText">{{nickname}}</text>
-			</view>
-			
-			<view class="ui-ExtractQR">
-				<view class="ui-qrCode"></view>
-				<text class="ui-explainText">|长按识别小程序码|</text>
-			</view>
-		</view> -->
-		
-		<!-- <view class="ui-posterShare" bindtap="showDialogBtn">分享我的专属海报</view> -->
-		
 		<view class="modal-mask" bindtap="hideModal" catchtouchmove="true" wx:if="{{showModal}}"></view>
 		<view class="modal-dialog" wx:if="{{showModal}}">
 			<button open-type="share" class="btn-friendsShare btn-common" style="background-color: #fff;border: none;display: block;">

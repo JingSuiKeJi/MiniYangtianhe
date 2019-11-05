@@ -64,7 +64,10 @@ const methods = {
         } else {
             // if (!self.data.value) return;
             param.value = self.data.value;
-            self.setHisttory(self.data.value);
+            if (self.data.value) {
+                self.setHisttory(self.data.value);
+            };
+            
         }
         _g.navigateTo({
             url: 'pages/search/detailList',
