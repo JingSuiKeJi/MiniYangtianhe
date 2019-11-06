@@ -15,17 +15,27 @@ let data = {
     points: 0,
     rechargePoint: '',
     giftPoint: '',
-    giftMember: ''
+    giftMember: '',
+    height: 0,
+    scrollHeight: 0
 
 };
 const onLoad = function(self) {
+   
     self.getBase();
     self.getPageData();
 };
 const onShow = function(self) {
     self.getBase();
 };
-const onReady = function(self) {};
+const onReady = function(self) {
+    let systemInfo = _g.getLS(_c.LSKeys.systemInfo);
+    let screenHeight = systemInfo.screenHeight;
+    let height = parseInt(screenHeight*908/1344); 
+    let scrollHeight = height - parseInt(screenHeight*88/1344); 
+    self.setData({height,scrollHeight})
+    console.log(666,height,scrollHeight);
+};
 const onUnload = function(self) {};
 const methods = {
     getBase() {

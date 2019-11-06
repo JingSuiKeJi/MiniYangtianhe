@@ -19,10 +19,10 @@
             </view>
            
         </view>
-        <view class="ui-withdrawInfoBox"  bindscrolltolower="scrollTolower">
+        <view class="ui-withdrawInfoBox" style="height: {{height+'px'}}">
             <view class="ui-withdraw__title">福气明细</view>
             <block wx:if="{{withdrawlist.length > 0}}">
-                <scroll-view class="ui-withdrawInfoItem" scroll-y="true">
+                <scroll-view class="ui-withdrawInfoItem" scroll-y="true"  bindscrolltolower="scrollTolower" >
                     <view class="ui-withdrawDetail" wx:for="{{withdrawlist}}" wx:for-index="idx" wx:key="idx" wx:for-item="item" style="color: {{item.type==1?'#666666':'#20CAB4'}};">
                         <text>{{filter.getDateOrTime(item.createTime,3)}}</text>
                         <text>{{item.type==1?'+':'-'}}{{item.points}}</text>

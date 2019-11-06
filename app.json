@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/home/login",
     "pages/home/index",
     "pages/home/map",
     "pages/search/search",
@@ -72,8 +73,8 @@
     "pages/step/rankingList",
     "pages/order/finishComment",
     "pages/order/overOrder",
-    "pages/order/overOrderdetails",
-    "pages/home/login"
+    "pages/order/overOrderdetails"
+    
   ],
   "tabBar": {
     "custom": true,
