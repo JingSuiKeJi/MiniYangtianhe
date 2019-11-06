@@ -53,13 +53,7 @@ const methods = {
 			pageSize: 20,
 		}).then((ret) => {
 			let data = ret.data;
-			// if (!data.data.list && !data.data.list.length) {
-			// 	self.setData({
-			// 		allList: [],
-			// 	});
-			// 	return
-			// }
-			if (!data.data && !data.data.list && !data.data.list.length) {
+			if (!data.data ) {
 				self.setData({
 					allList: [],
 				});
@@ -68,12 +62,14 @@ const methods = {
 				if (self.data.page == 1) {
 					self.setData({
 						allList: data.data.list,
-						activeId: data.activeId
+						activeId: data.activeId,
+						// hasNextPage: data.data.hasNextPage
 					})
 				} else {
 					self.setData({
 						allList: self.data.allList.concat(data.data.list),
-						activeId: data.activeId
+						activeId: data.activeId,
+						// hasNextPage: data.data.hasNextPage
 					})
 				}
 			}

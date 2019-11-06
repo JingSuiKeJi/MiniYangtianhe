@@ -8,18 +8,32 @@ const event = app.event;
 const User = require('../../service/User');
 
 let data = {
-
+    isLogin: false
 };
 const onLoad = function (self) {
+    if (_g.checkLogin({type:1})) {
+        self.setData({
+            isLogin: true 
+        })
+        _g.switchTab({
+            url: 'pages/home/index'
+        },self)
+    }else {
+        self.setData({
+            isLogin: false 
+        }) 
+    }
+    
 
 };
-const onShow = function (self) { };
+const onShow = function (self) { 
+    
+};
 const onReady = function (self) { };
 const onUnload = function (self) { };
 const methods = {
     onLoginTap: function (e) {
         let self = this;
-        console.log(5555)
         if (self.data.isLogin) {
             _g.switchTab({
                 url: 'pages/home/index'
