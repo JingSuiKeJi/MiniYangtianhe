@@ -1,15 +1,17 @@
-<!--pages/goods/detail.wxml-->
+<!-- pages/goods/detail.wxml -->
 <wxs module="filter" src="../../filter/filter.wxs"></wxs>
 <view class="contain">
     <navBar title='{{title}}' background='white' color='black' iconTheme='black' back="{{true}}"></navBar>
     <view class="ui-tabBox">
         <view class="ui-tabItem " wx:for="{{tabList}}" wx:key="index" bindtap="onChoseTap" data-index="{{index}}">
-            <view class="ui-tabItem_title" style="color: {{isTab == index ? '#20CAB4' : '#CCCCCC'}}" >{{item}}</view>
+            <view class="ui-tabItem_title" style="color: {{isTab == index ? '#20CAB4' : '#CCCCCC'}}">
+                {{item}}
+            </view>
             <view class="ui-tabItem_icon" style="background-color: {{isTab == index ? '#20CAB4' : 'transparent'}}"></view>
         </view>
     </view>
     <scroll-view class="main" scroll-y scroll-into-view="{{toView}}" style="height: {{height + 'px'}}">
-        <view class="ui-headerBox" id="header"> 
+        <view class="ui-headerBox" id="header">
             <view class="ui-imageBox">
                 <swiper duration="500" class="ui-imageItem_swper" bindchange="onChangeTap">
                     <block wx:for="{{bannerImgs}}" wx:key="index">
@@ -23,29 +25,39 @@
             <view class="ui-infoBox" wx:if="{{type != 5}}">
                 <view class="ui-infoItem_left">
                     <view class="ui-priceBox">
-                        <text class="ui-priceBox_nowPrice" >￥{{goodsDetail.nowPrice}}</text>
-                        <text class="ui-priceBox_earnPrice" wx:if="{{goodsDetail.commission}}">赚¥{{goodsDetail.commission}}</text>
-                        <text class="ui-priceBox_fuqi" wx:if="{{goodsDetail.pointsDeduction}}">福气抵扣{{goodsDetail.pointsDeduction}}</text>
+                        <text class="ui-priceBox_nowPrice">￥{{goodsDetail.nowPrice}}</text>
+                        <text class="ui-priceBox_earnPrice" wx:if="{{goodsDetail.commission}}">
+                            赚¥{{goodsDetail.commission}}
+                        </text>
+                        <text class="ui-priceBox_fuqi" wx:if="{{goodsDetail.pointsDeduction}}">
+                            福气抵扣{{goodsDetail.pointsDeduction}}
+                        </text>
                     </view>
-                    <text class="ui-priceBox_singlePrice" >原价:{{goodsDetail.originPrice}}</text>
+                    <text class="ui-priceBox_singlePrice">原价:{{goodsDetail.originPrice}}</text>
                 </view>
                 <view class="ui-infoItem_right" wx:if="{{type == 2 }}">
                     <view class="ui-rightItem_text">距活动结束：</view>
-                    <view class="ui-rightItem_title">{{filter.countDown(goodsDetail.endTime,curTime)}}</view>
+                    <view class="ui-rightItem_title">
+                        {{filter.countDown(goodsDetail.endTime,curTime)}}
+                    </view>
                 </view>
             </view>
             <view class="ui-infoBox" wx:if="{{type==5}}">
                 <view class="ui-infoItem_left">
-                    <view class="ui-groupItem_text" >{{goodsDetail.limitNum}}人团</view>
+                    <view class="ui-groupItem_text">{{goodsDetail.limitNum}}人团</view>
                     <view class="ui-groupBox">
-                        <text class="ui-groupBox_nowPrice" >￥{{goodsDetail.nowPrice}}</text>
-                        <text class="ui-groupBox_singlePrice" >单买价:￥{{goodsDetail.originPrice}}</text>
+                        <text class="ui-groupBox_nowPrice">￥{{goodsDetail.nowPrice}}</text>
+                        <text class="ui-groupBox_singlePrice">
+                            单买价:￥{{goodsDetail.originPrice}}
+                        </text>
                         <!-- <text class="ui-groupBox_earnPrice" wx:if="{{goodsDetail.commission}}">赚¥{{goodsDetail.commission}}</text> -->
                     </view>
                 </view>
-                <view class="ui-infoItem_right" >
+                <view class="ui-infoItem_right">
                     <view class="ui-rightItem_text">距活动结束：</view>
-                    <view class="ui-rightItem_title">{{filter.countDown(goodsDetail.endTime,curTime)}}</view>
+                    <view class="ui-rightItem_title">
+                        {{filter.countDown(goodsDetail.endTime,curTime)}}
+                    </view>
                 </view>
             </view>
             <view class="ui-marketBox">
@@ -62,7 +74,9 @@
                         </button>
                     </form>
                 </view>
-                <view class="ui-sendTime_introduce" wx:if="{{type !=5 }}">{{goodsDetail.secondTitle}}</view>
+                <view class="ui-sendTime_introduce" wx:if="{{type !=5 }}">
+                    {{goodsDetail.secondTitle}}
+                </view>
                 <view class="ui-sendItem_sales" wx:if="{{type == 5 }}">销量:200</view>
                 <view class="ui-sendItem_transform" wx:if="{{type !=5}}">
                     <text wx:if="{{goodsDetail.postFee}}">运费{{goodsDetail.postFee}}</text>
@@ -76,35 +90,42 @@
         </view>
         <view class="ui-showBox" wx:if="{{type == 5 }}">
             <view class="ui-showBox_btn" wx:for="{{personList}}" wx:key="index" style="top: {{top + 'rpx'}};transition: all {{second}}s linear 0s;">
-                <image src="{{filter.getLocalPhoto(item.url)}}" class="ui-btnItem_icon" mode="aspectFill"/>
-                <view class="ui-btnItem_text"> {{item.name}}刚刚发起了拼团</view>
+                <image src="{{filter.getLocalPhoto(item.url)}}" class="ui-btnItem_icon" mode="aspectFill" />
+                <view class="ui-btnItem_text">{{item.name}}刚刚发起了拼团</view>
             </view>
         </view>
         <view class="ui-choseBox" bindtap="showModal" wx:if="{{type != 6}}">
             <text wx:if="{{!defaultScale}}">请选择商品规格及数量</text>
             <text wx:else>已选：{{defaultScale}}</text>
             <!-- <text>></text> -->
-            <image src="{{filter.getLocalPhoto('classfity_rightIcon.png')}}" class="ui-choseItem__moreIcon"  mode="aspectFit"/>
+            <image src="{{filter.getLocalPhoto('classfity_rightIcon.png')}}" class="ui-choseItem__moreIcon" mode="aspectFit" />
         </view>
         <view class="ui-collageBox" wx:if="{{type == 5 && collage.length}}">
             <view class="ui-collageItem_top" bindtap="onMoreTap">
                 <text class="ui-topItem_title">以下小伙伴已发起拼团，可以直接参加</text>
                 <text class="ui-topItem_moreText">查看更多拼团</text>
                 <!-- <text class="ui-topItem_moreIcon">></text> -->
-                <image src="{{filter.getLocalPhoto('classfity_rightIcon.png')}}" class="ui-AssessItem__moreIcon"  mode="aspectFit"/>
+                <image src="{{filter.getLocalPhoto('classfity_rightIcon.png')}}" class="ui-AssessItem__moreIcon" mode="aspectFit" />
             </view>
             <view class="ui-collageItem_bottom">
                 <view class="ui-bottomItem" wx:for="{{collage}}" wx:key="index">
                     <view class="ui-bottomItem_imgBox">
-                        <image src="{{item.avatar}}" class="ui-imgItem_icon" mode="aspectFill"/>
+                        <image src="{{item.avatar}}" class="ui-imgItem_icon" mode="aspectFill" />
                     </view>
                     <view class="ui-bottomItem_info">
                         <view class="ui-infoItem_text">{{item.nickname}}</view>
-                        <view class="ui-infoItem_time">剩余{{filter.countDown(item.endTime,curTime)}}</view>
+                        <view class="ui-infoItem_time">
+                            剩余{{filter.countDown(item.endTime,curTime)}}
+                        </view>
                     </view>
-                    <view class="ui-bottomItem_teamer">还差
-                        <text>{{item.disparityNum}}</text>人成团</view>
-                    <view class="ui-bottomItem_collge" bindtap="onJoinTap" data-id="{{item.id}}">去参团</view>
+                    <view class="ui-bottomItem_teamer">
+                        还差
+                        <text>{{item.disparityNum}}</text>
+                        人成团
+                    </view>
+                    <view class="ui-bottomItem_collge" bindtap="onJoinTap" data-id="{{item.id}}">
+                        去参团
+                    </view>
                 </view>
             </view>
         </view>
@@ -113,12 +134,12 @@
                 <text class="ui-AssessItem_count">评价（{{commentLength}}）</text>
                 <!-- <text class="ui-AssessItem_text">好评率99%</text> -->
                 <!-- <text class="ui-topItem_moreIcon">></text> -->
-                 <image src="{{filter.getLocalPhoto('classfity_rightIcon.png')}}" class="ui-AssessItem__moreIcon"  mode="aspectFit"/>
+                <image src="{{filter.getLocalPhoto('classfity_rightIcon.png')}}" class="ui-AssessItem__moreIcon" mode="aspectFit" />
             </view>
             <view class="ui-detailAssessBox" wx:if="{{commentLength}}">
-                <scroll-view scroll-x style="height: 265rpx;" >
+                <scroll-view scroll-x style="height: 265rpx;">
                     <view class="ui-detailAssess_item" wx:for="{{commentList}}" wx:key="index">
-                        <image src="{{filter.getAvatar(host,item.commentUser.avatar)}}" class="ui-assessItem_icon" mode="aspectFill"/>
+                        <image src="{{filter.getAvatar(host,item.commentUser.avatar)}}" class="ui-assessItem_icon" mode="aspectFill" />
                         <view class="ui-assessItem_userName">{{item.commentUser.nickname}}</view>
                         <view class="ui-assessItem_content">{{item.content}}</view>
                     </view>
@@ -131,7 +152,7 @@
                 <text class="ui-tipsItem__text">商品详情</text>
                 <text class="ui-tipsItem__line"></text>
             </view>
-            <view class="ui-goodsItem_bottom" >
+            <view class="ui-goodsItem_bottom">
                 <view class="ui-bottomItem_imgages" wx:if="{{goodsImgs.length}}">
                     <!-- <image src="http://m.qpic.cn/psb?/V12Kdegv0qd4wf/q3YUQR2wBKp3krmm9Rp1yZEwH1**f.vRjme0YuXZhIg!/b/dFYBAAAAAAAA&bo=7gKMDgAAAAADh8w!&rf=viewer_4&t=5" 
                          class="ui-bottomItem_detailIcon"/> -->
@@ -145,55 +166,50 @@
                 <image src="{{filter.getLocalPhoto('homeIcon.png')}}" class="ui-tapItem_messageIcon" mode="aspectFill" bindtap="onBackTap" />
                 <image src="{{filter.getLocalPhoto('ic_shopping_cart.png')}}" mode="aspectFill" class="ui-tapItem_cartIcon" bindtap="onCartTap" />
             </view>
-            <view class="ui-tapItem" >
+            <view class="ui-tapItem">
                 <view class="ui-tapItem_singleBuy" hidden="{{type == 6 || type == 5}}">
-                    <view class="ui-tapItem_word  ui-tapItem_addWord" bindtap="onShowTap" data-scaletype="0">加入购物车</view>
+                    <view class="ui-tapItem_word  ui-tapItem_addWord" bindtap="onShowTap" data-scaletype="0">
+                        加入购物车
+                    </view>
                     <!-- <view class=" ui-tapItem_text" bindtap="onBuyTap" data-scaletype="0">立省¥0.53起</view> -->
                 </view>
                 <view class="ui-tapItem_singleBuy" wx:if="{{type == 5}}" bindtap="onShowTap" data-scaletype="0" data-priceflag="1">
-                    <view class="ui-tapItem_word ui-tapItem_specialWord" >单独购买</view>
-                    <view class="ui-tapItem_word" >￥{{goodsDetail.originPrice}}</view>
+                    <view class="ui-tapItem_word ui-tapItem_specialWord">单独购买</view>
+                    <view class="ui-tapItem_word">￥{{goodsDetail.originPrice}}</view>
                 </view>
                 <view class="ui-tapItem_togetherBuy" hidden="{{type == 6 || type == 5}}">
-                    <view class="ui-tapItem_word ui-tapItem_addWord" bindtap="showModal" data-scaletype="1">立即购买</view>
+                    <view class="ui-tapItem_word ui-tapItem_addWord" bindtap="showModal" data-scaletype="1">
+                        立即购买
+                    </view>
                     <!-- <view class=" ui-tapItem_text"  bindtap="onShowTap" data-scaletype="1">立赚¥0.53起</view> -->
                 </view>
                 <view class="ui-tapItem_togetherBuy" wx:if="{{type == 5}}" bindtap="onShowTap" data-scaletype="0" data-priceflag="2">
-                    <view class="ui-tapItem_word ui-tapItem_specialWord" >{{goodsDetail.limitNum}}人拼团</view>
-                    <view class="ui-tapItem_word" bindtap="onShowTap" data-scaletype="0">￥{{goodsDetail.nowPrice}}</view>
+                    <view class="ui-tapItem_word ui-tapItem_specialWord">
+                        {{goodsDetail.limitNum}}人拼团
+                    </view>
+                    <view class="ui-tapItem_word" bindtap="onShowTap" data-scaletype="0">
+                        ￥{{goodsDetail.nowPrice}}
+                    </view>
                 </view>
             </view>
-            <view class="ui-tapItem ui-nowBuyBox" bindtap="showModal" wx:if="{{type == 5}}">立即购买</view>
+            <view class="ui-tapItem ui-nowBuyBox" bindtap="showModal" wx:if="{{type == 5}}">
+                立即购买
+            </view>
         </view>
         <view class="modals modals-bottom-dialog" hidden="{{hideModal}}">
             <view class="modals-cancel" bindtap="hideModal" catchtouchmove="true"></view>
             <view class="bottom-dialog-body bottom-pos" animation="{{animationData}}">
                 <view class="ui-modelBox">
-                    <!-- <view class="ui-shareBox" >
-                        <view class="ui-shareItem__text">分享好友下单
-                            <text>赚1.34元</text>
-                        </view>
-                        <view class="modal-dialog">
-                            <view class="btn-friendsShare btn-common">
-                                <view class="ui-wxImg"></view>
-                                <text class="ui-wxText">分享好友</text>
-                            </view>
-                            <view class="btn-saveImage btn-common">
-                                <view class="ui-saveImg"></view>
-                                <text class="ui-saveText">保存海报</text>
-                            </view>
-                        </view>
-                        <view class="ui-shareItem__text" bindtap="hideModal">取消</view>
-                    </view> -->
                     <view class="ui-modelContent ">
                         <view class="ui-model_top">
                             <view class="ui-modelTop_left">
-                                <image src="{{filter.getPhoto(host, goodsDetail.picUrl)}}" mode="aspectFill" class="ui-leftImg_goodsIcon" />
+                                <image src="{{filter.getPhoto(host,skuImg)}}" mode="aspectFill" class="ui-leftImg_goodsIcon"  wx:if="{{skuImg}}"/>
                             </view>
                             <view class="ui-modelTop_center">
-                                <view class="ui-centerItem_price">
+                                <!-- <view class="ui-centerItem_price">
                                     ¥{{ priceFlag ==1 ? goodsDetail.originPrice : goodsDetail.nowPrice}}
-                                </view>
+                                </view> -->
+                                <view class="ui-centerItem_price">¥{{skuPrice}} </view>
                                 <!-- <view class="ui-centerItem_scale" wx:if="{{type ==1 || type == 3 || type == 4 ||type == 7}}"> {{scale}}</view>
                                 <view class="ui-centerItem_scale" wx:if="{{type == 5}}"> 250g x 10包</view> -->
                             </view>
@@ -201,13 +217,43 @@
                                 <image src="{{filter.getLocalPhoto('choseScale_delectIcon.png')}}" mode="aspectFill" class="ui-cancel_delectIcon" />
                             </view>
                         </view>
-                        <view class="ui-model_middle" hidden="{{true}}">
-                            <view class="ui-middleItem_title">规格</view>
+                        <view class="ui-model_middle" wx:if="{{skuLength>1}}">
+                            <view class="ui-middleItem_title">
+                                {{skuList[0].goodsSpecificationVoList[0].key}}
+                            </view>
                             <view class="ui-ui-middleItem_btnList" hidden="{{type == 6 || type == 5}}">
-                                <view class="ui-middleItem_btn {{index == scaleIndex ? 'isSelectBtn' : ''}}" wx:for="{{scaleList}}" wx:key="index" bindtap="onSelectTap" data-index="{{index}}">{{item}}</view>
+                                <view class="ui-middleItem_btn {{index == firstIndex ? 'isSelectBtn' : ''}}" wx:for="{{skuList}}" wx:key="{{index}}" bindtap="onSelectTap" data-index="{{index}}">
+                                    {{item.name}}
+                                </view>
                             </view>
                             <view class="ui-ui-middleItem_btnList" hidden="{{type != 6 || type != 5}}">
-                                <view class="ui-middleItem_btn isSelectBtn" wx:for="{{scaleList}}" wx:key="index">{{item}}</view>
+                                <view class="ui-middleItem_btn isSelectBtn" wx:for="{{scaleList}}" wx:key="index">
+                                    {{item}}
+                                </view>
+                            </view>
+                        </view>
+                        <view class="ui-model_middle" >
+                            <view class="ui-middleItem_title">{{skuList[0].key}}</view>
+                            <view class="ui-ui-middleItem_btnList" hidden="{{type == 6 || type == 5}}">
+                                <view class="ui-middleItem_btn {{index == secondIndex && item.optional? 'isSelectBtn' : ''}}" 
+                                   wx:if="{{item.optional}}"
+                                   wx:for="{{secondSkuList}}" 
+                                   wx:key="{{index}}" 
+                                   bindtap="onSecondSelect" 
+                                   data-index="{{index}}">
+                                {{item.name}}
+                                </view>
+                                 <view class="ui-middleItem_btn {{!item.parentId ? 'noSelectBtn' : ''}}" 
+                                   wx:if="{{!item.optional}}"
+                                   wx:for="{{secondSkuList}}" 
+                                   wx:key="{{index}}" >
+                                {{item.name}}
+                                </view>
+                            </view>
+                            <view class="ui-ui-middleItem_btnList" hidden="{{type != 6 || type != 5}}">
+                                <view class="ui-middleItem_btn isSelectBtn" wx:for="{{scaleList}}" wx:key="index">
+                                    {{item}}
+                                </view>
                             </view>
                         </view>
                         <view class="ui-model_middle" hidden="{{type == 6 || type == 5}}">
@@ -225,35 +271,26 @@
                                 <image src="{{filter.getLocalPhoto('ic_shopping_cart.png')}}" mode="aspectFill" class="ui-tapItem_cartIcon" bindtap="onCartTap" />
                             </view>
                             <view class="ui-tapItem" hidden="{{type == 6 || type == 5}}">
-                                <view class="ui-tapItem_singleBuy" >
-                                    <view class="ui-tapItem_word ui-tapItem_addWord" bindtap="onAddCart" data-scaletype="0">加入购物车</view>
+                                <view class="ui-tapItem_singleBuy">
+                                    <view class="ui-tapItem_word ui-tapItem_addWord" bindtap="onAddCart" data-scaletype="0">
+                                        加入购物车
+                                    </view>
                                 </view>
-                                <view class="ui-tapItem_togetherBuy" >
-                                    <view class="ui-tapItem_word ui-tapItem_addWord" bindtap="onBuyTap" data-scaletype="0">立即购买</view>
+                                <view class="ui-tapItem_togetherBuy">
+                                    <view class="ui-tapItem_word ui-tapItem_addWord" bindtap="onBuyTap" data-scaletype="0">
+                                        立即购买
+                                    </view>
                                 </view>
                             </view>
                         </view>
-                        <view wx:if="{{type == 5}}" class="ui-model_bottom" bindtap="onSureTap">确定</view>
+                        <view wx:if="{{type == 5}}" class="ui-model_bottom" bindtap="onSureTap">
+                            确定
+                        </view>
                     </view>
                 </view>
             </view>
         </view>
     </scroll-view>
 </view>
-<shareGoods
-    id="poster"
-    goodsDetail="{{goodsDetail}}"
-    host="{{host}}"
-    thirdId="{{thirdId}}"
-    hideShareDialog="{{hideShareDialog}}"
-    eventNameAuth="goods-detail-openAuthorize"
-    shareEvent="goods-detail-shareEvent"
-    bind:onHideShareTap="onHideShareTap">
-</shareGoods>
-<authorize 
-    id="authorize" 
-    message="请问需要授权相册从而保存至本地" 
-    bind:onCancelTap="onCancelTap" 
-    eventName="goods-detail-authorize" 
-    isHidden="{{authorizeHidden}}">
-</authorize>
+<shareGoods id="poster" goodsDetail="{{goodsDetail}}" host="{{host}}" thirdId="{{thirdId}}" hideShareDialog="{{hideShareDialog}}" eventNameAuth="goods-detail-openAuthorize" shareEvent="goods-detail-shareEvent" bind:onHideShareTap="onHideShareTap"></shareGoods>
+<authorize id="authorize" message="请问需要授权相册从而保存至本地" bind:onCancelTap="onCancelTap" eventName="goods-detail-authorize" isHidden="{{authorizeHidden}}"></authorize>

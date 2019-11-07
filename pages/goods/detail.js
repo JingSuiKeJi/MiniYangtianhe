@@ -42,13 +42,17 @@ const data = {
     canvasUrl: '',
     authorizeHidden: true,
     hideShareDialog: true,
-    priceFlag: 0
+    priceFlag: 0,
+    firstIndex: -1,
+    secondIndex: -1,
+    secondSkuList: [],
+    skuList: []
 };
 
 // 页面onLoad方法
 const onLoad = function (self) {
     self.getData();
-    if(_g.checkLogin({ type: 1 })) {
+    if (_g.checkLogin({ type: 1 })) {
         self.getCartList();
     }
     // self.moveBarrage();
@@ -67,7 +71,7 @@ const onLoad = function (self) {
             canvasUrl: data.canvasUrl
         });
     });
-    event.on('login-suc',self,(ret) => {
+    event.on('login-suc', self, (ret) => {
         self.getCartList();
     });
 };
@@ -96,7 +100,7 @@ const onReady = function (self) {
             authorizeHidden: false
         });
     });
-    
+
 }
 
 // 页面onShow方法
@@ -129,10 +133,17 @@ const methods = {
             data.thirdId = self.data.thirdId
         }
         Goods.getGoodsDetail(self, data).then((ret) => {
-            self.setData({
-                goodsDetail: ret.data,
-                type: ret.data.type
-            });
+            let data = ret.data;
+            let skuLength = data.goodsSpecificationsMapVos.length
+            let param = {
+                goodsDetail: data,
+                type: data.type,
+                skuLength: skuLength,
+            }
+            if (skuLength==1) {
+                param.firstIndex =1
+            }
+            self.setData(param);
             self.getCurrentTime();
             // "goodsDetail.type": 1,   //1.普通 2.秒杀 3.权益卡附属 4.权益 5.拼团 6.砍价 7.推荐
             self.splitString(ret.data.goodImgs, 'bannerImgs');
@@ -141,9 +152,9 @@ const methods = {
             if (ret.data.type == 5) {
                 //需要知道是门店商品还是商城的商品
                 self.getUserAssembleList();
-                 self.moveBarrage();
+                self.moveBarrage();
             }
-           
+            self.mapSkiuList(ret.data.goodsSpecificationsMapVos);
         }, (err) => { });
     },
     getCurrentTime: function () {
@@ -152,10 +163,10 @@ const methods = {
         self.setData({
             curTime: curTime
         });
-       if (self.data.timer) clearInterval(self.data.timer);
+        if (self.data.timer) clearInterval(self.data.timer);
         let timer = setInterval(() => {
             if (self.data.goodsDetail.endTime == self.data.curTime) {
-                clearInterval(self.data.timer); 
+                clearInterval(self.data.timer);
                 return;
             }
             self.getCurrentTime();
@@ -228,7 +239,7 @@ const methods = {
         let self = this;
         _g.navigateTo({
             param: {
-                userAssembleId:  e.currentTarget.dataset.id
+                userAssembleId: e.currentTarget.dataset.id
             },
             url: 'pages/goods/join'
         }, self)
@@ -256,12 +267,38 @@ const methods = {
         });
     },
     onSelectTap: function (e) {
-        let index = e.target.dataset.index;
         let self = this;
+        let index = e.currentTarget.dataset.index;
+        if (self.data.firstIndex == index){
+            self.setData({
+                firstIndex: -1,
+                id: -1,
+                // secondIndex: -1,
+                // secondSkuList: self.data.startList
+            })
+            return;
+        } 
         self.setData({
-            scaleIndex: index,
-            scale: self.data.scaleList[index],
-            isSelect: !self.data.isSelect
+            firstIndex: index,
+            secondSkuList: self.data.skuList[index].goodsSpecificationVoList
+        });
+    },
+    onSecondSelect: function (e) {
+        let self = this;
+        let index = e.currentTarget.dataset.index;
+        let list = self.data.secondSkuList[index]
+        if (self.data.secondIndex == index){
+            self.setData({
+                secondIndex: -1,
+                id: -1,
+            })
+            return;
+        } 
+        self.setData({
+            secondIndex: index,
+            id: list.id,
+            skuImg: list.imgUrl,
+            skuPrice : list.nowPrice
         });
     },
     // 显示遮罩层
@@ -358,7 +395,7 @@ const methods = {
         let self = this;
         let opts = e.currentTarget.dataset;
         let param = {
-             ScaleType: opts.scaletype,
+            ScaleType: opts.scaletype,
         }
         if (opts.priceflag) param.priceFlag = opts.priceflag;
         self.setData(param);
@@ -371,8 +408,8 @@ const methods = {
             url: 'pages/goods/comments',
             param: {
                 goodsId: self.data.id,
-                type: self.data.type, 
-                platformFlag: self.data.goodsDetail.platformFlag, 
+                type: self.data.type,
+                platformFlag: self.data.goodsDetail.platformFlag,
             }
         }, self)
     },
@@ -390,12 +427,18 @@ const methods = {
             num: self.data.num,
         };
         if (!_g.checkLogin({ type: 2 })) return;
+        if ( self.data.id == -1 || self.data.firstIndex== -1) {
+            _g.toast({
+                title: '请选择商品规格'
+            });
+            return;
+        } 
         if (self.data.goodsDetail.skuId) data.skuId = self.data.goodsDetail.skuId;
         if (self.data.thirdId) data.thirdId = self.data.thirdId;
         if (self.data.priceFlag == 1) {
             data.isOrigPrice = 1
-        }else if (self.data.priceFlag == 2) {
-             data.isJoin = 2
+        } else if (self.data.priceFlag == 2) {
+            data.isJoin = 2
         }
         _g.navigateTo({
             url: 'pages/order/submit',
@@ -429,20 +472,26 @@ const methods = {
             num: self.data.num
         }
         if (!_g.checkLogin({ type: 2 })) return;
+        if ( self.data.id == -1 || self.data.firstIndex == -1) {
+            _g.toast({
+                title: '请选择商品规格'
+            });
+            return;
+        } 
         if (self.data.platformFlag == 2) data.storeId = self.data.storeId;
         Goods.addCart(self, data).then((ret) => {
             let total = self.data.total + 1;
             self.setData({
                 total: total
             });
-            setTimeout(function() {
-            	_g.toast({
-            	    title: '添加购物车成功',
-            		duration: 1500,
-            	});
+            setTimeout(function () {
+                _g.toast({
+                    title: '添加购物车成功',
+                    duration: 1500,
+                });
             }, 500);
             event.emit('refreshCart');
-            
+
         }, (err) => {
             _g.toast({
                 title: '加入购物车失败'
@@ -455,10 +504,10 @@ const methods = {
         Goods.cartList(self, {}).then((ret) => {
             let data = ret.data;
             let total = 0;
-            if ( data.mallShopCartList && data.mallShopCartList.length  ) {
+            if (data.mallShopCartList && data.mallShopCartList.length) {
                 total += data.mallShopCartList.length
             }
-            if (data.storeShopCartList && data.storeShopCartList.length ) {
+            if (data.storeShopCartList && data.storeShopCartList.length) {
                 total += data.storeShopCartList.length
             }
             self.setData({
@@ -508,6 +557,43 @@ const methods = {
         _g.navigateTo({
             url: 'pages/card/card',
         }, self);
+    },
+    mapSkiuList: function (arr) {
+        let self = this;
+        let firstIndex = self.data.firstIndex;
+        let secondIndex = self.data.secondIndex;
+        let skuList = arr;
+        if (self.data.skuLength > 1) {
+            skuList = _.map(arr[0].goodsSpecificationVoList, (item, index) => {
+                item.goodsSpecificationVoList = [];
+                return item
+            });
+            for (let index = 0; index < skuList.length; index++) {
+                for (let i = 0; i < arr[1].goodsSpecificationVoList.length; i++) {
+                    const element = arr[1].goodsSpecificationVoList[i];
+                    if (element.parentId == skuList[index].id) {
+                        skuList[index].goodsSpecificationVoList.push(element);
+                    }
+
+                }
+
+            }
+
+        }
+        let secondSkuList = skuList[0].goodsSpecificationVoList;
+        let startList = _.map(secondSkuList,(item)=> {
+            item.optional =true;
+            return item;
+        })
+        self.setData({
+            skuList: skuList,
+            startList: startList,
+            secondSkuList: secondSkuList,
+            skuImg: secondSkuList[0].imgUrl,
+            skuPrice : secondSkuList[0].nowPrice,
+            id: -1,
+        });
+
     }
 };
 

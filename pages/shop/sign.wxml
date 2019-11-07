@@ -1,0 +1,39 @@
+<wxs module="filter" src="../../filter/filter.wxs"></wxs>
+<view class="ui-contain">
+     <navBar title='我的门店' background='white' color='black' iconTheme='black' back="{{true}}"></navBar>
+     <view class="ui-main">
+         <view class="ui-storeBox">
+            <view class="ui-storeItem__gps">
+                <view class="ui-gpsItem__btn">
+                     <image src="{{filter.getLocalPhoto('home_address.png')}}" mode="aspectFit"  class="ui-gpsItem__addressItem"/>
+                     <view class="ui-gpsItem__name">当前门店：天盈广场店</view>
+                </view>
+                <view class="ui-gpsitem__status">未绑定</view>
+            </view>
+            <map class="ui-map" 
+                longitude="{{lon}}" 
+                latitude="{{lat}}"
+                enable-scroll="{{true}}"
+                markers="{{markerList}}"
+                bindcallouttap="onBubbleTap"
+                bindupdated="bindupdated"
+                bindregionchange="bindregionchange"
+                subkey="YLTBZ-SPSRO-PPIWR-SKAML-PNQ72-CWBWC">
+            </map>
+            <view class="ui-addressBox">
+                <view class="ui-addressitem">门店地址：广州市天河区天盈广场东塔</view>
+                <view class="ui-addressitem">联系人：方店长</view>
+                <view class="ui-addressitem">联系方式：13800138000</view>
+            </view>
+         </view>
+         <view class="ui-signBox">
+            <view class="ui-signitem__fuqi">
+                <view class="ui-fuqi__num">可用福气：<text >1000</text></view>
+                <view class="ui-fuqi__num">已连续签到：<text >0</text>天</view>
+            </view>
+            <view class="ui-signitem__date"></view>
+            <view class="ui-signitem__btn">扫码签到</view>
+             <view class="ui-signitem__text">*所有有注册养天和优选的门店均可参加扫码签到活动，详情请浏览规则说明</view>
+         </view>
+     </view>
+</view>

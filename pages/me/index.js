@@ -344,7 +344,25 @@ const methods = {
             }, self);
         }
        
-    }
+    },
+    onMyStore: function (e) {
+        let self = this;
+        if (!_g.checkLogin({type: 2})) return;
+        _g.navigateTo({
+            url: 'pages/shop/sign',
+        }, self);
+    },
+    onTastTap: function (e) {
+        let self = this;
+        if (!_g.checkLogin({type: 2})) return;
+        console.log('任务中心');
+    },
+    onExchangeTap: function (e) {
+        let self = this;
+        if (!_g.checkLogin({type: 2})) return;
+        console.log('兑换中心');
+    },
+    
 }
 
 // 有引用template时定义
