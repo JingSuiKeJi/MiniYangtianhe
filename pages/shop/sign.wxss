@@ -1,0 +1,147 @@
+@charset "UTF-8";
+@import "/libs/common.wxss";
+page {
+    background-color: #F5F5F5;
+}
+.ui-main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.ui-storeBox {
+    display: flex;
+    height: 636rpx;
+    width: 100%;
+    background-color: #FFFFFF;
+    align-items: center;
+    flex-direction: column;
+}
+.ui-storeItem__gps {
+    display: flex;
+    height: 120rpx;
+    width: 100%;
+    align-items: center;
+
+}
+.ui-gpsItem__btn {
+    display: flex;
+    width:352rpx;
+    height:48rpx;
+    background:rgba(9,221,214,1);
+    border-radius:29rpx;
+    margin-left: 52rpx;
+    align-items: center;
+
+}
+.ui-gpsItem__addressItem {
+    width: 32rpx;
+    height: 32rpx;
+    margin-left: 16rpx;
+    margin-right: 8rpx;
+}
+.ui-gpsItem__name {
+    width:280rpx;
+    font-size:28rpx;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    color:#FFFFFF;
+    line-height:28rpx;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.ui-gpsitem__status {
+    font-size:28rpx;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    color:#999999;
+    line-height:28rpx;
+    margin-left: auto;
+    margin-right: 40rpx;
+}
+.ui-map {
+    width: 710rpx;
+    height: 320rpx;
+}
+.ui-addressBox{
+    width: 100%;
+    height: 196rpx;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    
+}
+.ui-addressitem {
+    width: 100%;
+    padding-left: 40rpx;
+    font-size:28rpx;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    color:#333333;
+    line-height:28rpx;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.ui-addressitem:nth-child(2)  {
+   margin-top: 20rpx ;
+   margin-bottom: 20rpx;
+}
+.ui-signBox{
+    display: flex;
+    margin-top: 40rpx;
+    width:710rpx;
+    height:496rpx;
+    background:rgba(255,255,255,1);
+    border-radius:16rpx;
+    align-items: center;
+    flex-direction: column;
+}
+.ui-signitem__fuqi {
+    display: flex;
+    width: 710rpx;
+    height: 124rpx;
+    align-items: center;
+    background-color: turquoise;
+    /* background-image: url(http://www.gzlingren.com:8098/yangtianhe/sign__bgicon.png);
+    background-size: 100%; */
+}
+.ui-fuqi__num {
+    font-size:24rpx;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    color:#FFFFFF;
+    line-height:24rpx;
+    margin-left: 52rpx;
+}
+.ui-fuqi__num > text {
+    font-size:40rpx;
+    font-weight:600;
+}
+.ui-signitem__date {
+    display: flex;
+    width: 100%;
+    height: 198rpx;
+}
+.ui-signitem__btn {
+    display: flex;
+    width: 260rpx;
+    height: 68rpx;
+    font-size:32rpx;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    color:rgba(255,255,255,1);
+    line-height:32rpx;
+    background-color: #4BDACF;
+    border-radius: 30rpx;
+    align-items: center;
+    justify-content: center;
+}
+.ui-signitem__text {
+    margin-top: 44rpx;
+    font-size:18rpx;
+    font-family:PingFang-SC-Medium,PingFang-SC;
+    font-weight:500;
+    color:rgba(153,153,153,1);
+    line-height:18rpx;
+}

@@ -681,7 +681,9 @@ page {
     background-color: #76DFDD;
     color: #fff;
 }
-
+.ui-model_middle .noSelectBtn {
+    background-color: #F5F5F5;
+}
 .ui-model_bottom {
     width: 100%;
     height: 92rpx;

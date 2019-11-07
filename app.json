@@ -73,8 +73,8 @@
     "pages/step/rankingList",
     "pages/order/finishComment",
     "pages/order/overOrder",
-    "pages/order/overOrderdetails"
-    
+    "pages/order/overOrderdetails",
+    "pages/shop/sign"
   ],
   "tabBar": {
     "custom": true,
