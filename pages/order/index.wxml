@@ -26,8 +26,7 @@
                             <image src="{{filter.getPhoto(host,GoodsItem.imgUrl)}}"></image>
                         </view>
                         <text class="ui-newsName">{{GoodsItem.title}}</text>
-                        <!-- <text class="ui-newsWeight">{{GoodsItem.specificationName}}</text> -->
-                        <text class="ui-newsWeight"></text>
+                        <text class="ui-newsWeight" hidden="{{!GoodsItem.specificationName}}">{{GoodsItem.specificationName}}</text>
                         <text class="ui-newsMoney">¥{{GoodsItem.price}}</text>
                         <text class="ui-newsNum">x{{GoodsItem.num}}</text>
                     </view>

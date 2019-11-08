@@ -374,8 +374,10 @@ const methods = {
         //     data.integralStatus = 2;
         // }
         Order.placeOrder(self, data).then((ret) => {
-            self.checkOrderStatus(ret.data);
-            // self.prePay(ret.data);
+            //需要做订单轮巡的
+            // self.checkOrderStatus(ret.data);
+            // 不做订单轮巡的
+            self.prePay(ret.data);
         }, (err) => {
             _g.showModal({
                 content: '提交订单失败',

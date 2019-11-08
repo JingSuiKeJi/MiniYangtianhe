@@ -28,7 +28,7 @@
 					<text class="ui-newsName">{{goodsList.title}}</text>
 					<!-- 没有规格时显示先这样处理 -->
 					<text class="ui-newsWeight"></text>
-					<!-- <text class="ui-newsWeight">{{goodsList.specificationName}}</text> -->
+					<text class="ui-newsWeight" hidden="{{!goodsList.specificationName}}">{{goodsList.specificationName}}</text>
 					<text class="ui-newsMoney">¥{{goodsList.price}}</text>
 					<text class="ui-newsNum">x{{goodsList.num}}</text>
 				</view>

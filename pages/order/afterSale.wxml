@@ -31,9 +31,7 @@
 						<view class="ui-newsDetail">
 							<text class="ui-newsName">{{goodsItem.title}}</text>
 							<view class="ui-newsWeight">
-							<!-- 规格没有时先置空 -->
-							    <text></text>
-								<!-- <text>{{goodsItem.specificationName}}</text> -->
+								<text hidden="{{!goodsItem.specificationName }}">{{goodsItem.specificationName }}</text>
 								<text>x{{goodsItem.num}}</text>
 							</view>
 							<view class="ui-newsMoney">
