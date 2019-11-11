@@ -102,10 +102,10 @@
 		
     </view>
 </view>
-<authorize 
+<!-- <authorize 
     id="authorize" 
     message="请问需要授权相册从而保存至本地" 
     bind:onCancelTap="onCancelTap" 
     eventName="step-index-authorize" 
     isHidden="{{authorizeHidden}}">
-</authorize>
+</authorize> -->

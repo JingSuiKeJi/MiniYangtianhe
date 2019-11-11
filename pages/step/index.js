@@ -451,9 +451,9 @@ const methods = {
             imageUrl: self.data.canvasUrl
         }
 	}
-}
-    
 };
+    
+
 
 // 有引用template时定义
 const temps = {};
