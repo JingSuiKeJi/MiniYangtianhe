@@ -6,6 +6,7 @@ const _c = app.config;
 const event = app.event;
 const Store = require('../../service/Store.js');
 const Platform = require('../../service/Platfrom');
+const User = require('../../service/User');
 
 // 初始化数据
 const data = {
@@ -49,7 +50,12 @@ const data = {
     },
     isLogin: false, //是否登录
     singleBrandList: [],
-    BrandList: []
+    BrandList: [],
+    picThumb: {},
+    shareCode: {},
+    avatarThumb: {},
+    canvasUrl: '',
+    authorizeHidden: true,
 };
 
 // 页面onLoad方法
@@ -87,11 +93,41 @@ const onLoad = function (self) {
         });
         self.getLocation();
     });
+    event.on('home-index-authorize', self, (res) => {
+        if (res.detail.authSetting['scope.writePhotosAlbum']) {
+            self.savePicToAlbum();
+            self.setData({
+                authorizeHidden: true,
+                showModal: false
+            });
+        }
+    });
 
 };
 
 const onReady = function (self) {
-
+    if (self.data.canvasUrl) return;
+    const userInfo = _g.getLS(_c.LSKeys.userInfo);
+    if (userInfo && userInfo.avatar && !_g.getLS('avatarThumb')) {
+        self.downloadImg({
+            imgUrl: userInfo.avatar,
+        }, (res) => {
+            self.setData({
+                avatarThumb: res
+            });
+            self.checkDownload();
+        });
+    } else {
+        self.setData({
+            avatarThumb: _g.getLS('avatarThumb')
+        });
+    }
+    self.authorize = self.selectComponent('#authorize');
+    self.authorize.onCancelTap = function () {
+        self.setData({
+            authorizeHidden: true
+        });
+    }
 
 }
 
@@ -105,6 +141,7 @@ const onShow = function (self) {
 const onUnload = function (self) {
     event.remove('refreshStep');
     event.remove('login-suc');
+    event.remove('home-index-authorize', self);
 };
 
 // 页面中的方法
@@ -170,6 +207,8 @@ const methods = {
         self.getBrandList();
         self.getSecKill();
         self.getClassifyList();
+        self.getPoster();
+        self.getShareCode();
     },
     getCommonData() {
         const self = this;
@@ -203,6 +242,9 @@ const methods = {
 
             self.btnShow(data.stepInfo.status);
             self.showClassify(data.navigation);
+            if (data.stepInfo.status == 2) {
+                self.showDialogBtn();
+            }
         }, (err) => {
 
         });
@@ -744,6 +786,211 @@ const methods = {
                 urlParam: `type=notice&id=${e.currentTarget.dataset.id}`
             }
         }, self);
+    },
+    getPoster: function () {
+        const self = this;
+        User.getPoster(self, {
+            type: 3
+        }).then((ret) => {
+            self.downloadImg({
+                imgUrl: self.data.host + ret.data.poster
+            }, (res) => {
+                self.setData({
+                    picThumb: res
+                });
+            });
+            self.checkDownload();
+        }, (err) => {
+        });
+    },
+    //显示模态框
+    showDialogBtn: function () {
+        const self = this;
+        self.setData({
+            showModal: true
+        })
+        self.getTabBar().setData({
+            flag: false
+        });
+        
+    },
+    //隐藏模态框
+    hideModal: function () {
+        const self = this;
+        self.setData({
+            showModal: false
+        });
+        self.getTabBar().setData({
+            flag: true
+        });
+    },
+    //分享给朋友
+    onFriendsShare: function () {
+        const self = this;
+        self.hideModal();
+    },
+    //保存图片
+    onSaveImage: function () {
+        const self = this;
+        _g.getAuthorize({
+            type: 'scope.writePhotosAlbum'
+        }, (result) => {
+            if (result == undefined || result) {
+                // self.onSaveTap();
+                self.savePicToAlbum();
+                self.hideModal();
+            } else {
+                self.setData({
+                    authorizeHidden: false
+                });
+            }
+        })
+    },
+    checkDownload() {
+        const self = this;
+        if (!_.isEmpty(self.data.picThumb) &&
+            !_.isEmpty(self.data.avatarThumb) &&
+            !_.isEmpty(self.data.shareCode)) {
+            self.drawPoster();
+        }
+
+    },
+    getShareCode() {
+        const self = this;
+        if (!_g.getUserInfo()) return;
+        let sence = 'p=' + _g.getLS(_c.LSKeys.userInfo).promoCode;
+
+        Platform.getShareQR(self, {
+            scene: sence,
+            page: 'pages/home/index'
+        }).then((ret) => {
+            self.downloadImg({
+                imgUrl: self.data.host + ret.data.shareQR
+            }, (res) => {
+                self.setData({
+                    shareCode: res
+                });
+                self.checkDownload();
+            });
+
+        }, (err) => {
+
+        });
+    },
+    openSettingTap(e) {
+
+    },
+    downloadImg(req, callback) {
+        wx.downloadFile({
+            url: req.imgUrl,
+            success(res) {
+                if (res.statusCode === 200) {
+                    wx.getImageInfo({
+                        src: res.tempFilePath,
+                        success(res) {
+                            callback && callback(res);
+                        },
+                        fail(err) {
+                            wx.hideLoading();
+                        }
+                    });
+                }
+            }
+        });
+    },
+    onSaveTap() {
+        const self = this;
+    },
+    savePicToAlbum() {
+        const self = this;
+        wx.saveImageToPhotosAlbum({
+            filePath: self.data.canvasUrl,
+            success(res) {
+                _g.toast({
+                    icon: 'success',
+                    title: '图片保存成功'
+                });
+            },
+            fail(err) {
+                _g.toast({
+                    title: '图片保存失败'
+                });
+            }
+        });
+    },
+    drawPoster() {
+        const self = this;
+        const userInfo = _g.getLS(_c.LSKeys.userInfo);
+        const UIWidth = 750;
+        const winWidth = _g.getLS(_c.LSKeys.systemInfo).windowWidth;
+        let poster = {
+            avatar: self.data.avatarThumb.path,
+            name: userInfo.nickname,
+            picUrl: self.data.picThumb.path,
+            shareCode: self.data.shareCode
+        };
+        const ctx = wx.createCanvasContext('share', self)
+        ctx.setFillStyle('white')
+        ctx.fillRect(0, 0, calculate(552), calculate(900))
+        //画背景
+        ctx.drawImage(poster.picUrl, 0, 0, calculate(552), calculate(900))
+
+        ctx.setFillStyle('white')
+        ctx.fillRect(calculate(36), calculate(670), calculate(476), calculate(142))
+        ctx.setFillStyle('#3D3D3D');
+        ctx.setFontSize(calculate(18))
+        ctx.fillText('恭喜您已完成今日目标', calculate(148), calculate(728))
+        ctx.setFillStyle('#3D3D3D');
+        ctx.setFontSize(calculate(18))
+        ctx.fillText('获得', calculate(148), calculate(728))
+        ctx.setFillStyle('#3D3D3D');
+        ctx.setFontSize(calculate(18))
+        ctx.fillText('获得', calculate(148), calculate(758))
+        ctx.setFillStyle('#EA6363');
+        ctx.setFontSize(calculate(23))
+        ctx.fillText('3000', calculate(188), calculate(758))
+        ctx.setFillStyle('#3D3D3D');
+        ctx.setFontSize(calculate(18))
+        ctx.fillText('福气', calculate(248), calculate(758))
+        ctx.drawImage(poster.avatar, calculate(64), calculate(704), calculate(62), calculate(62))
+
+        //分享二维码
+        // ctx.save()
+        ctx.drawImage(poster.shareCode.path, calculate(368), calculate(684), calculate(118), calculate(118))
+        ctx.setFillStyle('#333');
+        ctx.setFontSize(calculate(18))
+        ctx.fillText('扫一扫识别二维码，一起来挑战吧', calculate(142), calculate(850))
+        ctx.draw(true, (res) => {
+            wx.canvasToTempFilePath({
+                x: 0,
+                y: 0,
+                width: calculate(poster.width) * 4,
+                height: calculate(poster.height) * 4,
+                destWidth: poster.width * 2,
+                destHeight: poster.height * 2,
+                canvasId: 'share',
+                success(res) {
+                    self.setData({
+                        canvasUrl: res.tempFilePath
+                    });
+                    _g.setLS('myPosterUrl', res.tempFilePath);
+                }
+            }, self);
+        }, self);
+
+        function calculate(size) {
+            return winWidth * size / UIWidth;
+        }
+    },
+    onShareAppMessage() {
+        const self = this;
+        const userInfo = _g.getLS(_c.LSKeys.userInfo);
+        const path = `pages/home/index?platformFlag=${self.data.platformFlag}`;
+        return {
+            title: '一起加入养天和吧',
+            path: path,
+            imageUrl: self.data.canvasUrl
+        }
     }
 
 };

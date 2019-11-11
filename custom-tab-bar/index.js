@@ -2,6 +2,7 @@ const app = getApp();
 Component({
   //数据
   data: {
+	flag: true,
     selected: 0,//当前tabBar页面
     color: "#8E8E93",//未选中tabBar时的文字颜色
     selectedColor: "#03B8AB",//选中时tabBar文字颜色

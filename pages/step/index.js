@@ -23,10 +23,17 @@ const data = {
         totalStep: 0,
     },
     showModal: false,
+    picThumb: {},
+    shareCode: {},
+    avatarThumb: {},
+    canvasUrl: '',
+    authorizeHidden: true,
 };
 
 // 页面onLoad方法
 const onLoad = function (self) {
+
+
     if (_g.checkLogin({ type: 1 })) {
         self.getData();
     }
@@ -55,7 +62,42 @@ const onLoad = function (self) {
     self.getTabBar().setData({
         selected: 2
     });
+    event.on('step-index-authorize', self, (res) => {
+        if (res.detail.authSetting['scope.writePhotosAlbum']) {
+            self.savePicToAlbum();
+            self.setData({
+                authorizeHidden: true,
+                showModal: false
+            });
+        }
+    });
+
 };
+const onReady = function (self) {
+    if (self.data.canvasUrl) return;
+    const userInfo = _g.getLS(_c.LSKeys.userInfo);
+    if (userInfo && userInfo.avatar && !_g.getLS('avatarThumb')) {
+        self.downloadImg({
+            imgUrl: userInfo.avatar,
+        }, (res) => {
+            self.setData({
+                avatarThumb: res
+            });
+            self.checkDownload();
+        });
+    } else {
+        self.setData({
+            avatarThumb: _g.getLS('avatarThumb')
+        });
+    }
+    self.authorize = self.selectComponent('#authorize');
+    self.authorize.onCancelTap = function () {
+        self.setData({
+            authorizeHidden: true
+        });
+    }
+
+}
 
 // 页面onShow方法
 const onShow = function (self) {
@@ -71,7 +113,8 @@ const methods = {
         self.getStepInfo();
         self.getPageData();
         self.rankingList();
-        // self.getPoster();
+        self.getPoster();
+        self.getShareCode();
     },
     getStepInfo: function () {
         let self = this;
@@ -84,6 +127,9 @@ const methods = {
                 BMIIndex: BMIIndex
             });
             self.btnShow(stepInfo.status);
+            if (stepInfo.status == 2) {
+                self.showDialogBtn();
+            }
         }, (err) => { });
     },
     onIllustrationTap: function (e) {
@@ -223,7 +269,7 @@ const methods = {
                     self.setData({
                         list: data.list,
                     });
-                }else {
+                } else {
                     self.setData({
                         list: self.data.list.concat(data.list),
                     });
@@ -238,7 +284,7 @@ const methods = {
         let self = this;
         User.rankingList(self, {
             page: self.data.page,
-            pageSize: 5
+            pageSize: 3
         }).then((ret) => {
             let data = ret.data;
             if (data.list && data.list.length) {
@@ -257,202 +303,212 @@ const methods = {
         }, self)
     },
     getPoster: function () {
-		const self = this;
-		if (!_g.getLS('posterThumb')) {
-			User.getPoster(self, {
-				type: 1
-			}).then((ret) => {
-				self.downloadImg({
-					imgUrl: self.data.host +  ret.data.poster
-				}, (res) => {
-					self.setData({
-						picThumb: res
-					});
-					_g.setLS('posterThumb', res);
-				});
-				self.checkDownload();
-			}, (err) => {
-			});
-		} else {
-			self.setData({
-				picThumb: _g.getLS('posterThumb')
-			});
-		}
-	},
-	//显示模态框
-	showDialogBtn: function () {
-		const self = this;
-		self.setData({
-		  showModal: true
-		})
-	},
-	//隐藏模态框
-	hideModal: function () {
-		const self = this;
-		self.setData({
-		  showModal: false
-		});
-	},
-	//分享给朋友
-	onFriendsShare: function () {
-		const self = this;
-		self.hideModal();
-	},
-	//保存图片
-	onSaveImage: function () {
-		const self = this;
-		_g.getAuthorize({
-			type: 'scope.writePhotosAlbum'
-		}, (result)=>{
-			if (result == undefined || result) {
-	            // self.onSaveTap();
-	            self.savePicToAlbum();
-				self.hideModal();
-	        } else {
-	        	self.setData({
-	        		authorizeHidden: false
-	        	});
-	        }
-		})
-	},
-	checkDownload() {
-		const self = this;
-		if (!_.isEmpty(self.data.picThumb) &&
-		!_.isEmpty(self.data.avatarThumb) &&
-		!_.isEmpty(self.data.shareCode)) {
-		   self.drawPoster();
-	    }
-		
-	},
-	getShareCode() {
-		const self = this;
-		if (!_g.getUserInfo()) return;
-		let sence = 'p=' + _g.getLS(_c.LSKeys.userInfo).promoCode;
+        const self = this;
+        User.getPoster(self, {
+            type: 3
+        }).then((ret) => {
+            self.downloadImg({
+                imgUrl: self.data.host + ret.data.poster
+            }, (res) => {
+                self.setData({
+                    picThumb: res
+                });
+            });
+            self.checkDownload();
+        }, (err) => {
+        });
+    },
+    //显示模态框
+    showDialogBtn: function () {
+        const self = this;
+        self.setData({
+            showModal: true
+        })
+        self.getTabBar().setData({
+            flag: false
+        });
+        
+    },
+    //隐藏模态框
+    hideModal: function () {
+        const self = this;
+        self.setData({
+            showModal: false
+        });
+        self.getTabBar().setData({
+            flag: true
+        });
+    },
+    //分享给朋友
+    onFriendsShare: function () {
+        const self = this;
+        self.hideModal();
+    },
+    //保存图片
+    onSaveImage: function () {
+        const self = this;
+        _g.getAuthorize({
+            type: 'scope.writePhotosAlbum'
+        }, (result) => {
+            if (result == undefined || result) {
+                // self.onSaveTap();
+                self.savePicToAlbum();
+                self.hideModal();
+            } else {
+                self.setData({
+                    authorizeHidden: false
+                });
+            }
+        })
+    },
+    checkDownload() {
+        const self = this;
+        if (!_.isEmpty(self.data.picThumb) &&
+            !_.isEmpty(self.data.avatarThumb) &&
+            !_.isEmpty(self.data.shareCode)) {
+            self.drawPoster();
+        }
 
-		Platform.getShareQR(self, {
-			scene: sence,
-			page: 'pages/home/index'
-		}).then((ret) => {
-			self.downloadImg({
-				imgUrl: self.data.host + ret.data.shareQR
-			}, (res) => {
-				self.setData({
-					shareCode: res
-				});
-				self.checkDownload();
-			});
-			
-		}, (err) => {
+    },
+    getShareCode() {
+        const self = this;
+        if (!_g.getUserInfo()) return;
+        let sence = 'p=' + _g.getLS(_c.LSKeys.userInfo).promoCode;
 
-		});
-	},
-	openSettingTap(e) {
-		
-	},
-	downloadImg(req, callback) {
-		wx.downloadFile({
-			url: req.imgUrl,
-			success(res) {
-				if (res.statusCode === 200) {
-					wx.getImageInfo({
-						src: res.tempFilePath,
-						success(res) {
-							callback && callback(res);
-						},
-						fail(err) {
-							wx.hideLoading();
-						}
-					});
-				}
-			}
-		});
-	},
-	onSaveTap() {
-		const self = this;
-	},
-	savePicToAlbum() {
-		const self = this;
-		wx.saveImageToPhotosAlbum({
-			filePath: self.data.canvasUrl,
-			success(res) {
-				_g.toast({
-					icon: 'success',
-					title: '图片保存成功'
-				});
-			},
-			fail(err) {
-				_g.toast({
-					title: '图片保存失败'
-				});
-			}
-		});
-	},
-	drawPoster() {
-		const self = this;
-		const userInfo = _g.getLS(_c.LSKeys.userInfo);
-		const UIWidth = 750;
-		const winWidth = _g.getLS(_c.LSKeys.systemInfo).windowWidth;
-		let poster = {
-			avatar: self.data.avatarThumb.path,
-			name: userInfo.nickname,
-			picUrl:  self.data.picThumb.path,
-			shareCode: self.data.shareCode
-		};
-		const ctx = wx.createCanvasContext('share',self)
-		ctx.setFillStyle('white')
-        ctx.fillRect(0, 0, calculate(542), calculate(964))
-		//画背景
-		ctx.drawImage(poster.picUrl,0, 0, calculate(542), calculate(770))
-		ctx.setFillStyle('#333');
-		ctx.setFontSize(calculate(26))
-		ctx.fillText(poster.name,calculate(50), calculate(744))
-		ctx.setFillStyle('#333');
-		ctx.setFontSize(calculate(26))
-		ctx.fillText('|长按识别小程序码|',calculate(224), calculate(874))
-		//头像
-		// ctx.save()
-		// ctx.arc(calculate(38 ), calculate(610), calculate(106) / 2, 0, 2*Math.PI)
-		// ctx.clip()
-		ctx.drawImage(poster.avatar, calculate(38), calculate(610), calculate(106), calculate(106))
+        Platform.getShareQR(self, {
+            scene: sence,
+            page: 'pages/home/index'
+        }).then((ret) => {
+            self.downloadImg({
+                imgUrl: self.data.host + ret.data.shareQR
+            }, (res) => {
+                self.setData({
+                    shareCode: res
+                });
+                self.checkDownload();
+            });
 
-		//分享二维码
-		// ctx.save()
-		ctx.drawImage(poster.shareCode.path, calculate(42), calculate(784), calculate(140), calculate(140))
-		
-		ctx.draw(true,(res)=>{
-			wx.canvasToTempFilePath({
-				x: 0,
-				y: 0,
-				width: calculate(poster.width) * 4,
-				height: calculate(poster.height) * 4,
-				destWidth: poster.width * 2,
-				destHeight: poster.height * 2,
-				canvasId: 'share',
-				success(res) {
-					self.setData({
-						canvasUrl: res.tempFilePath
-					});
-					_g.setLS('myPosterUrl', res.tempFilePath);
-				}
-			}, self);
-		},self);
+        }, (err) => {
 
-		function calculate(size) {
-			return winWidth * size / UIWidth;
-		}
-	},
-	onShareAppMessage() {
-		const self = this;
-		const userInfo = _g.getLS(_c.LSKeys.userInfo);
-		const path = `pages/home/index?platformFlag=${self.data.platformFlag}`;
-		return {
+        });
+    },
+    openSettingTap(e) {
+
+    },
+    downloadImg(req, callback) {
+        wx.downloadFile({
+            url: req.imgUrl,
+            success(res) {
+                if (res.statusCode === 200) {
+                    wx.getImageInfo({
+                        src: res.tempFilePath,
+                        success(res) {
+                            callback && callback(res);
+                        },
+                        fail(err) {
+                            wx.hideLoading();
+                        }
+                    });
+                }
+            }
+        });
+    },
+    onSaveTap() {
+        const self = this;
+    },
+    savePicToAlbum() {
+        const self = this;
+        wx.saveImageToPhotosAlbum({
+            filePath: self.data.canvasUrl,
+            success(res) {
+                _g.toast({
+                    icon: 'success',
+                    title: '图片保存成功'
+                });
+            },
+            fail(err) {
+                _g.toast({
+                    title: '图片保存失败'
+                });
+            }
+        });
+    },
+    drawPoster() {
+        const self = this;
+        const userInfo = _g.getLS(_c.LSKeys.userInfo);
+        const UIWidth = 750;
+        const winWidth = _g.getLS(_c.LSKeys.systemInfo).windowWidth;
+        let poster = {
+            avatar: self.data.avatarThumb.path,
+            name: userInfo.nickname,
+            picUrl: self.data.picThumb.path,
+            shareCode: self.data.shareCode
+        };
+        const ctx = wx.createCanvasContext('share', self)
+        ctx.setFillStyle('white')
+        ctx.fillRect(0, 0, calculate(552), calculate(900))
+        //画背景
+        ctx.drawImage(poster.picUrl, 0, 0, calculate(552), calculate(900))
+
+        ctx.setFillStyle('white')
+        ctx.fillRect(calculate(36), calculate(670), calculate(476), calculate(142))
+        ctx.setFillStyle('#3D3D3D');
+        ctx.setFontSize(calculate(18))
+        ctx.fillText('恭喜您已完成今日目标', calculate(148), calculate(728))
+        ctx.setFillStyle('#3D3D3D');
+        ctx.setFontSize(calculate(18))
+        ctx.fillText('获得', calculate(148), calculate(728))
+        ctx.setFillStyle('#3D3D3D');
+        ctx.setFontSize(calculate(18))
+        ctx.fillText('获得', calculate(148), calculate(758))
+        ctx.setFillStyle('#EA6363');
+        ctx.setFontSize(calculate(23))
+        ctx.fillText('3000', calculate(188), calculate(758))
+        ctx.setFillStyle('#3D3D3D');
+        ctx.setFontSize(calculate(18))
+        ctx.fillText('福气', calculate(248), calculate(758))
+        ctx.drawImage(poster.avatar, calculate(64), calculate(704), calculate(62), calculate(62))
+
+        //分享二维码
+        // ctx.save()
+        ctx.drawImage(poster.shareCode.path, calculate(368), calculate(684), calculate(118), calculate(118))
+        ctx.setFillStyle('#333');
+        ctx.setFontSize(calculate(18))
+        ctx.fillText('扫一扫识别二维码，一起来挑战吧', calculate(142), calculate(850))
+        ctx.draw(true, (res) => {
+            wx.canvasToTempFilePath({
+                x: 0,
+                y: 0,
+                width: calculate(poster.width) * 4,
+                height: calculate(poster.height) * 4,
+                destWidth: poster.width * 2,
+                destHeight: poster.height * 2,
+                canvasId: 'share',
+                success(res) {
+                    self.setData({
+                        canvasUrl: res.tempFilePath
+                    });
+                    _g.setLS('myPosterUrl', res.tempFilePath);
+                }
+            }, self);
+        }, self);
+
+        function calculate(size) {
+            return winWidth * size / UIWidth;
+        }
+    },
+    onShareAppMessage() {
+        const self = this;
+        const userInfo = _g.getLS(_c.LSKeys.userInfo);
+        const path = `pages/step/index?platformFlag=${self.data.platformFlag}`;
+        return {
             title: '一起加入养天和吧',
             path: path,
             imageUrl: self.data.canvasUrl
         }
-	}
+    }
 };
-    
+
 
 
 // 有引用template时定义
@@ -464,6 +520,7 @@ const initPage = _g.initPage({
     onLoad: onLoad,
     onShow: onShow,
     methods: methods,
-    onUnload: onUnload
+    onUnload: onUnload,
+    onReady: onReady,
 });
 Page(initPage);

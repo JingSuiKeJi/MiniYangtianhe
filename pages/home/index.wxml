@@ -193,7 +193,7 @@
         </view>
         <!-- 推荐榜单 -->
         <view class="ui-recomListBox" wx:if="{{tapList.length}}">
-            <view class="ui-listItem_top">推荐榜单</view>
+            <view class="ui-listItem_top" >推荐榜单</view>
             <view class="ui-listItem_bottom">
                 <view class="ui-bottomItem_tap {{isFixed ? 'isFixed' : ''}}" id="aim" style="top: {{isFixed ? headTop+ 'px' : ''}}">
                     <scroll-view scroll-x class="ui-tapItem_scrollView" scroll-into-view="{{toView}}">
@@ -268,5 +268,30 @@
         </view>
         <!-- <topList titleSize="44rpx"/> -->
         <view class="ui-bottomBox">到底啦，但我们会努力变长的～</view>
+        <view class="modal-mask" bindtap="hideModal" catchtouchmove="true" wx:if="{{showModal}}"></view>
+        <view class="ui-modalBox" wx:if="{{showModal}}">
+            <view class="ui-share__bd">
+                <canvas canvas-id="share" class="ui-share__canvas" ></canvas>
+                <image class="ui-share__image" src="{{canvasUrl}}" show-menu-by-longpress="true"></image>
+            </view>
+            <view class="modal-dialog" >
+                <button open-type="share" class="btn-friendsShare btn-common" style="background-color: #fff;border: none;display: block;">
+                    <image class="ui-wxImg" src="{{filter.getLocalPhoto('icon-wechat.png')}}"></image>
+                    <view class="ui-wxText">分享好友</view>
+                </button>
+                <view class="btn-saveImage btn-common" bindtap="onSaveImage">
+                    <image  src="{{filter.getLocalPhoto('my_posterSave.png')}}" class="ui-saveImg"></image>
+                    <!-- <view class="ui-saveImg"></view> -->
+                    <view class="ui-saveText">保存图片</view>
+                </view>
+		   </view>
+        </view>
     </view>
 </view>
+<authorize 
+    id="authorize" 
+    message="请问需要授权相册从而保存至本地" 
+    bind:onCancelTap="onCancelTap" 
+    eventName="home-index-authorize" 
+    isHidden="{{authorizeHidden}}">
+</authorize>
