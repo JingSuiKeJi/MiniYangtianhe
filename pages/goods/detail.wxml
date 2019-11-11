@@ -198,7 +198,7 @@
         </view>
         <view class="modals modals-bottom-dialog" hidden="{{hideModal}}">
             <view class="modals-cancel" bindtap="hideModal" catchtouchmove="true"></view>
-            <scroll-view scroll-y class="bottom-dialog-body bottom-pos" animation="{{animationData}}">
+            <view  class="bottom-dialog-body bottom-pos" animation="{{animationData}}">
                 <view class="ui-modelBox">
                     <view class="ui-modelContent ">
                         <view class="ui-model_top">
@@ -218,77 +218,90 @@
                                 <image src="{{filter.getLocalPhoto('choseScale_delectIcon.png')}}" mode="aspectFill" class="ui-cancel_delectIcon" />
                             </view>
                         </view>
-                        <block wx:if="{{skuLength}}">
-                            <view class="ui-model_middle" wx:if="{{skuLength>1}}">
-                                <view class="ui-middleItem_title">
-                                    {{skuList[0].goodsSpecificationVoList[0].key}}
+                        <scroll-view scroll-y  class="ui-scrollViewBox">
+                            <block wx:if="{{skuLength}}">
+                                <view class="ui-model_middle" wx:if="{{skuLength>1}}">
+                                    <view class="ui-middleItem_title">
+                                        {{skuList[0].goodsSpecificationVoList[0].key}}
+                                    </view>
+                                    <view class="ui-ui-middleItem_btnList" hidden="{{type == 6 || type == 5}}">
+                                        <view class="ui-middleItem_btn {{index == firstIndex ? 'isSelectBtn' : ''}}" wx:for="{{skuList}}" wx:key="{{index}}" bindtap="onSelectTap" data-index="{{index}}">
+                                            {{item.name}}
+                                        </view>
+                                    </view>
+                                    <!-- <view class="ui-ui-middleItem_btnList" hidden="{{type != 6 || type != 5}}">
+                                        <view class="ui-middleItem_btn isSelectBtn" wx:for="{{scaleList}}" wx:key="index">
+                                            {{item}}
+                                        </view>
+                                    </view> -->
                                 </view>
-                                <view class="ui-ui-middleItem_btnList" hidden="{{type == 6 || type == 5}}">
-                                    <view class="ui-middleItem_btn {{index == firstIndex ? 'isSelectBtn' : ''}}" wx:for="{{skuList}}" wx:key="{{index}}" bindtap="onSelectTap" data-index="{{index}}">
+                                <view class="ui-model_middle" >
+                                    <view class="ui-middleItem_title">{{skuList[0].key}}</view>
+                                    <view class="ui-ui-middleItem_btnList" >
+                                        <view class="ui-middleItem_btn {{index == secondIndex && item.optional? 'isSelectBtn' : ''}} {{!item.optional && firstIndex != -1? 'noSelectBtn' : ''}}" 
+                                        wx:for="{{secondSkuList}}" 
+                                        wx:key="{{index}}" 
+                                        bindtap="onSecondSelect" 
+                                        data-index="{{index}}">
                                         {{item.name}}
+                                        </view>
+                                        
                                     </view>
+                                    <!-- <view class="ui-ui-middleItem_btnList" hidden="{{type != 6 || type != 5}}">
+                                        <view class="ui-middleItem_btn isSelectBtn" wx:for="{{scaleList}}" wx:key="index">
+                                            {{item}}
+                                        </view>
+                                    </view> -->
                                 </view>
-                                <!-- <view class="ui-ui-middleItem_btnList" hidden="{{type != 6 || type != 5}}">
-                                    <view class="ui-middleItem_btn isSelectBtn" wx:for="{{scaleList}}" wx:key="index">
-                                        {{item}}
-                                    </view>
-                                </view> -->
-                            </view>
-                            <view class="ui-model_middle" >
-                                <view class="ui-middleItem_title">{{skuList[0].key}}</view>
-                                <view class="ui-ui-middleItem_btnList" >
-                                    <view class="ui-middleItem_btn {{index == secondIndex && item.optional? 'isSelectBtn' : ''}} {{!item.optional && firstIndex != -1? 'noSelectBtn' : ''}}" 
-                                    wx:for="{{secondSkuList}}" 
-                                    wx:key="{{index}}" 
-                                    bindtap="onSecondSelect" 
-                                    data-index="{{index}}">
-                                    {{item.name}}
-                                    </view>
-                                    
+                            </block>
+                            <view class="ui-model_middle ui-model__count" wx:if="{{!((type == 6) || (type == 5))}}">
+                                <view class="ui-middleItem_title  ui-middleItem_bottomTitle">数量</view>
+                                <view class="ui-addCountBox">
+                                    <image src="{{filter.getLocalPhoto('goodsDetail_subtraction.png')}}" mode="aspectFill" class="ui-countItem__icon" bindtap="onChangeCount" data-type="1" />
+                                    <text class="ui-countItem__text">{{num}}</text>
+                                    <image src="{{filter.getLocalPhoto('goodsDetail_add.png')}}" mode="aspectFill" class="ui-countItem__icon" bindtap="onChangeCount" data-type="2" />
                                 </view>
-                                <!-- <view class="ui-ui-middleItem_btnList" hidden="{{type != 6 || type != 5}}">
-                                    <view class="ui-middleItem_btn isSelectBtn" wx:for="{{scaleList}}" wx:key="index">
-                                        {{item}}
-                                    </view>
-                                </view> -->
                             </view>
-                        </block>
-                        <view class="ui-model_middle" wx:if="{{!((type == 6) || (type == 5))}}">
-                            <view class="ui-middleItem_title  ui-middleItem_bottomTitle">数量</view>
-                            <view class="ui-addCountBox">
-                                <image src="{{filter.getLocalPhoto('goodsDetail_subtraction.png')}}" mode="aspectFill" class="ui-countItem__icon" bindtap="onChangeCount" data-type="1" />
-                                <text class="ui-countItem__text">{{num}}</text>
-                                <image src="{{filter.getLocalPhoto('goodsDetail_add.png')}}" mode="aspectFill" class="ui-countItem__icon" bindtap="onChangeCount" data-type="2" />
-                            </view>
-                        </view>
-                        <view class="ui-tapBox" wx:if="{{!((type == 6) || (type == 5))}}">
-                            <view class="ui-tapItem_imgBox">
-                                <text class="ui-tapItem_numIcon" wx:if="{{total}}">{{total}}</text>
-                                <image src="{{filter.getLocalPhoto('homeIcon.png')}}" mode="aspectFill" class="ui-tapItem_messageIcon" bindtap="onBackTap" />
-                                <image src="{{filter.getLocalPhoto('ic_shopping_cart.png')}}" mode="aspectFill" class="ui-tapItem_cartIcon" bindtap="onCartTap" />
-                            </view>
-                            <view class="ui-tapItem">
-                                <view class="ui-tapItem_singleBuy">
-                                    <view class="ui-tapItem_word ui-tapItem_addWord" bindtap="onAddCart" data-scaletype="0">
-                                        加入购物车
-                                    </view>
+                            <view class="ui-tapBox" wx:if="{{!((type == 6) || (type == 5))}}">
+                                <view class="ui-tapItem_imgBox">
+                                    <text class="ui-tapItem_numIcon" wx:if="{{total}}">{{total}}</text>
+                                    <image src="{{filter.getLocalPhoto('homeIcon.png')}}" mode="aspectFill" class="ui-tapItem_messageIcon" bindtap="onBackTap" />
+                                    <image src="{{filter.getLocalPhoto('ic_shopping_cart.png')}}" mode="aspectFill" class="ui-tapItem_cartIcon" bindtap="onCartTap" />
                                 </view>
-                                <view class="ui-tapItem_togetherBuy">
-                                    <view class="ui-tapItem_word ui-tapItem_addWord" bindtap="onBuyTap" data-scaletype="0">
-                                        立即购买
+                                <view class="ui-tapItem">
+                                    <view class="ui-tapItem_singleBuy">
+                                        <view class="ui-tapItem_word ui-tapItem_addWord" bindtap="onAddCart" data-scaletype="0">
+                                            加入购物车
+                                        </view>
+                                    </view>
+                                    <view class="ui-tapItem_togetherBuy">
+                                        <view class="ui-tapItem_word ui-tapItem_addWord" bindtap="onBuyTap" data-scaletype="0">
+                                            立即购买
+                                        </view>
                                     </view>
                                 </view>
                             </view>
-                        </view>
-                        <!-- <view wx:if="{{type == 5}}" class="ui-model_bottom" bindtap="onSureTap">
-                            确定
-                        </view> -->
+                            <view wx:if="{{type == 5}}" class="ui-model_bottom" bindtap="onSureTap">确定</view>
+                        </scroll-view >    
                     </view>
                 </view>
-                 <view wx:if="{{type == 5}}" class="ui-model_bottom" bindtap="onSureTap">确定</view>
-            </scroll-view>
+                <!-- <view wx:if="{{type == 5}}" class="ui-model_bottom" bindtap="onSureTap">确定</view> -->
+            </view>
         </view>
     </scroll-view>
 </view>
-<shareGoods id="poster" goodsDetail="{{goodsDetail}}" host="{{host}}" thirdId="{{thirdId}}" hideShareDialog="{{hideShareDialog}}" eventNameAuth="goods-detail-openAuthorize" shareEvent="goods-detail-shareEvent" bind:onHideShareTap="onHideShareTap"></shareGoods>
-<authorize id="authorize" message="请问需要授权相册从而保存至本地" bind:onCancelTap="onCancelTap" eventName="goods-detail-authorize" isHidden="{{authorizeHidden}}"></authorize>
+<shareGoods id="poster" 
+  goodsDetail="{{goodsDetail}}" 
+  host="{{host}}" 
+  thirdId="{{thirdId}}" 
+  hideShareDialog="{{hideShareDialog}}" 
+  eventNameAuth="goods-detail-openAuthorize" 
+  shareEvent="goods-detail-shareEvent" 
+  bind:onHideShareTap="onHideShareTap">
+</shareGoods>
+<authorize id="authorize" 
+  message="请问需要授权相册从而保存至本地" 
+  bind:onCancelTap="onCancelTap" 
+  eventName="goods-detail-authorize" 
+  isHidden="{{authorizeHidden}}">
+</authorize>
