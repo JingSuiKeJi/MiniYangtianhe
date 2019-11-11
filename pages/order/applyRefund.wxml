@@ -14,7 +14,7 @@
 						<text>{{item.title}}</text>
 						<text>x{{item.num}}</text>
 					</view>
-                    <text class="ui-newsWeight" ></text>
+                    <text class="ui-newsWeight" >{{item.specificationName}}</text>
 					<text class="ui-newsMoney">¥{{item.price}}</text>
 				</view>
 			</view>

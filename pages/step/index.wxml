@@ -41,7 +41,7 @@
                     </view>
                     <view class="ui-contenItem__title">我的乐友</view>
                 </view>
-                <view class="ui-contenItem" bindtap="checkOrderStatus">
+                <view class="ui-contenItem" >
                     <view class="ui-contenItem__text ui-contenItem__step">
                          {{filter.getOverString(stepInfo.totalStep)}}
                         <text>步数</text>
@@ -81,5 +81,31 @@
             </view>
         </view>
         <view class="ui-bottomTex">为你加油，一起努力吧 ～</view>
+        <view class="modal-mask" bindtap="hideModal" catchtouchmove="true" wx:if="{{showModal}}"></view>
+        <view class="ui-modalBox" wx:if="{{showModal}}">
+            <view class="ui-share__bd">
+                <canvas canvas-id="share" class="ui-share__canvas" ></canvas>
+                <image class="ui-share__image" src="{{canvasUrl}}" show-menu-by-longpress="true"></image>
+            </view>
+            <view class="modal-dialog" >
+                <button open-type="share" class="btn-friendsShare btn-common" style="background-color: #fff;border: none;display: block;">
+                    <image class="ui-wxImg" src="{{filter.getLocalPhoto('icon-wechat.png')}}"></image>
+                    <text class="ui-wxText">分享好友</text>
+                </button>
+                <view class="btn-saveImage btn-common" bindtap="onSaveImage">
+                    <image mode="aspectFit" src="{{filter.getLocalPhoto('my_posterSave.png')}}" class="ui-saveImg"/>
+                    <!-- <view class="ui-saveImg"></view> -->
+                    <text class="ui-saveText">保存图片</text>
+                </view>
+		   </view>
+        </view>
+		
     </view>
 </view>
+<authorize 
+    id="authorize" 
+    message="请问需要授权相册从而保存至本地" 
+    bind:onCancelTap="onCancelTap" 
+    eventName="step-index-authorize" 
+    isHidden="{{authorizeHidden}}">
+</authorize>

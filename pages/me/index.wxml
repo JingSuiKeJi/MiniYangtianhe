@@ -209,7 +209,7 @@
 				    <image mode="aspectFit" src="{{ filter.getLocalPhoto('my_rightArrow.png')}}" class="ui-moreIcon"/>
 				</button>
 			</form>
-			<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onMyStore"  >
+			<!-- <form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onMyStore"  >
 				<button formType="submit" class="ui-itemBox" >
 					 <text>我的门店</text>
 				    <image mode="aspectFit" src="{{ filter.getLocalPhoto('my_rightArrow.png')}}" class="ui-moreIcon"/>
@@ -226,7 +226,7 @@
 					 <text>兑换中心</text>
 				    <image mode="aspectFit" src="{{ filter.getLocalPhoto('my_rightArrow.png')}}" class="ui-moreIcon"/>
 				</button>
-			</form>
+			</form> -->
         </view>
 		<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onLogOutTap"  wx:if="{{isLogin}}">
 			<button formType="submit" class="ui-LogOut" >退出登录</button>

@@ -30,7 +30,7 @@
 					<view class="ui-newsInfoDetail">
 						<text class="ui-newsName">{{item.title}}</text>
 						<text class="ui-newsWeight"></text>
-						<!-- <text class="ui-newsWeight">{{item.specificationName}}</text> -->
+						<text class="ui-newsWeight" hidden="{{!item.specificationName}}">{{item.specificationName}}</text>
 						<text class="ui-newsMoney">¥{{item.price}}</text>
 					</view>
 					<text class="ui-newsNum">x{{item.num}}</text>

@@ -27,7 +27,7 @@ const data = {
     animationData: {},
     tabList: ['商品', '详情', '评价'],
     isTab: 0,
-    scale: '请选择规格',
+    scale: '',
     cartNum: 2,
     scaleList: ['250g x 10包',],
     scaleIndex: -1,
@@ -134,15 +134,13 @@ const methods = {
         }
         Goods.getGoodsDetail(self, data).then((ret) => {
             let data = ret.data;
-            let skuLength = data.goodsSpecificationsMapVos.length
+             let skuLength = data.goodsSpecificationsMapVos.length ;
             let param = {
                 goodsDetail: data,
                 type: data.type,
-                skuLength: skuLength,
+                skuLength :skuLength,
             }
-            if (skuLength==1) {
-                param.firstIndex =1
-            }
+            if (skuLength == 1) param.firstIndex = 1;
             self.setData(param);
             self.getCurrentTime();
             // "goodsDetail.type": 1,   //1.普通 2.秒杀 3.权益卡附属 4.权益 5.拼团 6.砍价 7.推荐
@@ -154,7 +152,9 @@ const methods = {
                 self.getUserAssembleList();
                 self.moveBarrage();
             }
-            self.mapSkiuList(ret.data.goodsSpecificationsMapVos);
+            if (skuLength) {
+                self.mapSkiuList(data.goodsSpecificationsMapVos);
+            }
         }, (err) => { });
     },
     getCurrentTime: function () {
@@ -269,37 +269,65 @@ const methods = {
     onSelectTap: function (e) {
         let self = this;
         let index = e.currentTarget.dataset.index;
-        if (self.data.firstIndex == index){
+        let skuList = self.data.skuList;
+        let firstIndex = self.data.firstIndex; 
+        let secondIndex = self.data.secondIndex;
+        let skuLength = self.data.skuLength;
+        if (self.data.firstIndex == index) {
             self.setData({
                 firstIndex: -1,
                 id: -1,
+                scale: ''
                 // secondIndex: -1,
                 // secondSkuList: self.data.startList
             })
             return;
-        } 
-        self.setData({
+        }
+        let secondSkuList = skuList[index].goodsSpecificationVoList
+        let param = {
             firstIndex: index,
-            secondSkuList: self.data.skuList[index].goodsSpecificationVoList
-        });
+            secondSkuList: secondSkuList
+        }
+        if (secondIndex != -1 && !secondSkuList[secondIndex].optional) {
+            param.id = -1;
+            param.secondIndex = -1;
+        }
+        if(skuLength == 2 && secondIndex != -1 && firstIndex != -1) {
+            param.scale =skuList[index].name + ',' +secondSkuList[secondIndex].name
+        }else {
+            param.scale = ''
+        }
+        self.setData(param);
     },
     onSecondSelect: function (e) {
         let self = this;
         let index = e.currentTarget.dataset.index;
-        let list = self.data.secondSkuList[index]
-        if (self.data.secondIndex == index){
+        let firstIndex = self.data.firstIndex; 
+        let secondIndex = self.data.secondIndex;
+        let skuLength = self.data.skuLength;
+        let skuList = self.data.skuList;
+        let list = self.data.secondSkuList[index];
+        if (!list.optional) return
+        if (self.data.secondIndex == index) {
             self.setData({
                 secondIndex: -1,
                 id: -1,
+                scale: ''
             })
             return;
-        } 
-        self.setData({
+        }
+        let opts = {
             secondIndex: index,
-            id: list.id,
+            id: list.goodsId,
             skuImg: list.imgUrl,
-            skuPrice : list.nowPrice
-        });
+            skuPrice: list.nowPrice
+        }
+        if (skuLength == 1 ) {
+            opts.scale = list.name;
+        } else if (skuLength == 2 &&  firstIndex != -1){
+            opts.scale = skuList[firstIndex].name +',' + list.name
+        }
+        self.setData(opts);
     },
     // 显示遮罩层
     showModal: function () {
@@ -423,16 +451,16 @@ const methods = {
         let self = this;
         let data = {
             platformFlag: self.data.goodsDetail.platformFlag,
-            id: self.data.goodsDetail.id,
+            id: self.data.id,
             num: self.data.num,
         };
         if (!_g.checkLogin({ type: 2 })) return;
-        if ( self.data.id == -1 || self.data.firstIndex== -1) {
+        if ((self.data.id == -1 || self.data.firstIndex == -1) && self.data.skuLength) {
             _g.toast({
                 title: '请选择商品规格'
             });
             return;
-        } 
+        }
         if (self.data.goodsDetail.skuId) data.skuId = self.data.goodsDetail.skuId;
         if (self.data.thirdId) data.thirdId = self.data.thirdId;
         if (self.data.priceFlag == 1) {
@@ -472,12 +500,12 @@ const methods = {
             num: self.data.num
         }
         if (!_g.checkLogin({ type: 2 })) return;
-        if ( self.data.id == -1 || self.data.firstIndex == -1) {
+        if ((self.data.id == -1 || self.data.firstIndex == -1) && self.data.skuLength) {
             _g.toast({
                 title: '请选择商品规格'
             });
             return;
-        } 
+        }
         if (self.data.platformFlag == 2) data.storeId = self.data.storeId;
         Goods.addCart(self, data).then((ret) => {
             let total = self.data.total + 1;
@@ -560,37 +588,27 @@ const methods = {
     },
     mapSkiuList: function (arr) {
         let self = this;
-        let firstIndex = self.data.firstIndex;
-        let secondIndex = self.data.secondIndex;
         let skuList = arr;
         if (self.data.skuLength > 1) {
-            skuList = _.map(arr[0].goodsSpecificationVoList, (item, index) => {
-                item.goodsSpecificationVoList = [];
-                return item
-            });
-            for (let index = 0; index < skuList.length; index++) {
-                for (let i = 0; i < arr[1].goodsSpecificationVoList.length; i++) {
-                    const element = arr[1].goodsSpecificationVoList[i];
-                    if (element.parentId == skuList[index].id) {
-                        skuList[index].goodsSpecificationVoList.push(element);
-                    }
-
-                }
-
-            }
+            skuList = arr[0].goodsSpecificationVoList;
+            skuList.map((item, index) => {
+                let newArr = arr[1].goodsSpecificationVoList.filter((element) => {
+                    return item.id == element.parentId;
+                })
+                item.goodsSpecificationVoList = newArr;
+            })
 
         }
         let secondSkuList = skuList[0].goodsSpecificationVoList;
-        let startList = _.map(secondSkuList,(item)=> {
-            item.optional =true;
-            return item;
+        let startList = _.map(secondSkuList, (item) => {
+            return { ...item,optional: true  };
         })
         self.setData({
             skuList: skuList,
             startList: startList,
-            secondSkuList: secondSkuList,
+            secondSkuList: startList,
             skuImg: secondSkuList[0].imgUrl,
-            skuPrice : secondSkuList[0].nowPrice,
+            skuPrice: secondSkuList[0].nowPrice,
             id: -1,
         });
 
