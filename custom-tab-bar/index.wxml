@@ -1,4 +1,4 @@
-<cover-view class='tab-bar'>
+<cover-view class='tab-bar' wx:if="{{flag}}">
     <!-- 背景图片 -->
     <cover-image class='tab-bar-bg' src='../images/tabbarIcon/tabbar_bg.png'/>
     

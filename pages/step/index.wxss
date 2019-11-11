@@ -492,7 +492,7 @@ page {
 	flex-direction: column;
 }
 
-.btn-common image{
+.ui-saveImg{
 	width: 100rpx;
 	height: 100rpx;
 }
@@ -503,7 +503,7 @@ page {
 	height: 88rpx;
 	margin: 0 auto 20rpx auto;
 }
-.btn-common text{
+.ui-wxText,.ui-saveText{
 	height:26rpx;
 	font-size:26rpx;
 	font-family:PingFangSC-Regular;
@@ -515,18 +515,19 @@ page {
 }
 .ui-share__bd {
     width: 552rpx;
-    height: 982rpx;
+    height: 900rpx;
     position: fixed;
     bottom: 268rpx;
     left: 100rpx;
+    background-color: #FFFFFF;
 }
 .ui-share__canvas {
     width: 552rpx;
-    height: 982rpx;
+    height: 900rpx;
 }
 .ui-share__image {
     width: 552rpx;
-    height: 982rpx;
+    height: 900rpx;
     position: absolute;
     top: 0;
     left: 0;
