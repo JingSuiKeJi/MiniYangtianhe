@@ -173,15 +173,15 @@
 
 .ui-detailBox{
 	width:686rpx;
-	height:284rpx;
+	height:426rpx;
 	background:rgba(255,255,255,1);
 	box-shadow:0 2rpx 8rpx 0 rgba(0,0,0,0.1);
 	border-radius:16rpx;
 	margin: 24rpx 0 0 32rpx;
 	display: flex;
 	flex-flow: wrap;
-	justify-content: center;
 	align-items: center;
+	/* justify-content: center; */
 }
 
 .ui-commissionItem{
@@ -221,6 +221,7 @@
 
 .ui-detailItem{
 	width: 33.333%;
+	padding: 14rpx 0;
 }
 
 .ui-detailItem .detailIcon{
