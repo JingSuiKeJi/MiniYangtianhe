@@ -268,11 +268,12 @@
         </view>
         <!-- <topList titleSize="44rpx"/> -->
         <view class="ui-bottomBox">到底啦，但我们会努力变长的～</view>
-        <view class="modal-mask" bindtap="hideModal" catchtouchmove="true" wx:if="{{showModal}}"></view>
-        <view class="ui-modalBox" wx:if="{{showModal}}">
+        <view class="modal-mask" bindtap="hideShareModal" catchtouchmove="true" wx:if="{{shareModal}}"></view>
+        <view class="ui-modalBox" wx:if="{{shareModal}}" wx:if="{{shareModal}}">
+        <view class="ui-modalBox">
             <view class="ui-share__bd">
                 <canvas canvas-id="share" class="ui-share__canvas" ></canvas>
-                <image class="ui-share__image" src="{{canvasUrl}}" show-menu-by-longpress="true"></image>
+                <!-- <image class="ui-share__image" src="{{canvasUrl}}" show-menu-by-longpress="true"></image> -->
             </view>
             <view class="modal-dialog" >
                 <button open-type="share" class="btn-friendsShare btn-common" style="background-color: #fff;border: none;display: block;">

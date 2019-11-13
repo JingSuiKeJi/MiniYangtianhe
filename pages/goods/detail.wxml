@@ -10,7 +10,7 @@
             <view class="ui-tabItem_icon" style="background-color: {{isTab == index ? '#20CAB4' : 'transparent'}}"></view>
         </view>
     </view>
-    <scroll-view class="main" scroll-y scroll-into-view="{{toView}}" style="height: {{height + 'px'}}">
+    <scroll-view class="main" scroll-y="{{isScroll}}" scroll-into-view="{{toView}}" style="height: {{height + 'px'}}">
         <view class="ui-headerBox" id="header">
             <view class="ui-imageBox">
                 <swiper duration="500" class="ui-imageItem_swper" bindchange="onChangeTap">
@@ -25,13 +25,13 @@
             <view class="ui-infoBox" wx:if="{{type != 5}}">
                 <view class="ui-infoItem_left">
                     <view class="ui-priceBox">
-                        <text class="ui-priceBox_nowPrice">￥{{goodsDetail.nowPrice}}</text>
-                        <text class="ui-priceBox_earnPrice" wx:if="{{goodsDetail.commission}}">
+                        <view  class="ui-priceBox_nowPrice">￥{{goodsDetail.nowPrice}}</view>
+                        <view class="ui-priceBox_earnPrice" wx:if="{{goodsDetail.commission}}">
                             赚¥{{goodsDetail.commission}}
-                        </text>
-                        <text class="ui-priceBox_fuqi" wx:if="{{goodsDetail.pointsDeduction}}">
+                        </view>
+                        <view class="ui-priceBox_fuqi" wx:if="{{goodsDetail.pointsDeduction}}">
                             福气抵扣{{goodsDetail.pointsDeduction}}
-                        </text>
+                        </view>
                     </view>
                     <text class="ui-priceBox_singlePrice">原价:{{goodsDetail.originPrice}}</text>
                 </view>
@@ -253,7 +253,7 @@
                                         </view>
                                     </view> -->
                                 </view>
-                            </block>
+                            </block>  
                             <view class="ui-model_middle ui-model__count" wx:if="{{!((type == 6) || (type == 5))}}">
                                 <view class="ui-middleItem_title  ui-middleItem_bottomTitle">数量</view>
                                 <view class="ui-addCountBox">
@@ -262,27 +262,28 @@
                                     <image src="{{filter.getLocalPhoto('goodsDetail_add.png')}}" mode="aspectFill" class="ui-countItem__icon" bindtap="onChangeCount" data-type="2" />
                                 </view>
                             </view>
-                            <view class="ui-tapBox" wx:if="{{!((type == 6) || (type == 5))}}">
-                                <view class="ui-tapItem_imgBox">
-                                    <text class="ui-tapItem_numIcon" wx:if="{{total}}">{{total}}</text>
-                                    <image src="{{filter.getLocalPhoto('homeIcon.png')}}" mode="aspectFill" class="ui-tapItem_messageIcon" bindtap="onBackTap" />
-                                    <image src="{{filter.getLocalPhoto('ic_shopping_cart.png')}}" mode="aspectFill" class="ui-tapItem_cartIcon" bindtap="onCartTap" />
-                                </view>
-                                <view class="ui-tapItem">
-                                    <view class="ui-tapItem_singleBuy">
-                                        <view class="ui-tapItem_word ui-tapItem_addWord" bindtap="onAddCart" data-scaletype="0">
-                                            加入购物车
-                                        </view>
+                        </scroll-view >        
+                        <view class="ui-tapBox" wx:if="{{!((type == 6) || (type == 5))}}">
+                            <view class="ui-tapItem_imgBox">
+                                <text class="ui-tapItem_numIcon" wx:if="{{total}}">{{total}}</text>
+                                <image src="{{filter.getLocalPhoto('homeIcon.png')}}" mode="aspectFill" class="ui-tapItem_messageIcon" bindtap="onBackTap" />
+                                <image src="{{filter.getLocalPhoto('ic_shopping_cart.png')}}" mode="aspectFill" class="ui-tapItem_cartIcon" bindtap="onCartTap" />
+                            </view>
+                            <view class="ui-tapItem">
+                                <view class="ui-tapItem_singleBuy">
+                                    <view class="ui-tapItem_word ui-tapItem_addWord" bindtap="onAddCart" data-scaletype="0">
+                                        加入购物车
                                     </view>
-                                    <view class="ui-tapItem_togetherBuy">
-                                        <view class="ui-tapItem_word ui-tapItem_addWord" bindtap="onBuyTap" data-scaletype="0">
-                                            立即购买
-                                        </view>
+                                </view>
+                                <view class="ui-tapItem_togetherBuy">
+                                    <view class="ui-tapItem_word ui-tapItem_addWord" bindtap="onBuyTap" data-scaletype="0">
+                                        立即购买
                                     </view>
                                 </view>
                             </view>
-                            <view wx:if="{{type == 5}}" class="ui-model_bottom" bindtap="onSureTap">确定</view>
-                        </scroll-view >    
+                        </view>
+                        <view wx:if="{{type == 5}}" class="ui-model_bottom" bindtap="onSureTap">确定</view>
+                          
                     </view>
                 </view>
                 <!-- <view wx:if="{{type == 5}}" class="ui-model_bottom" bindtap="onSureTap">确定</view> -->

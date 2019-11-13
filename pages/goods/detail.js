@@ -46,7 +46,9 @@ const data = {
     firstIndex: -1,
     secondIndex: -1,
     secondSkuList: [],
-    skuList: []
+    skuList: [],
+    skuId: -1,
+    isScroll: true
 };
 
 // 页面onLoad方法
@@ -276,7 +278,7 @@ const methods = {
         if (self.data.firstIndex == index) {
             self.setData({
                 firstIndex: -1,
-                id: -1,
+                skuId: -1,
                 scale: ''
                 // secondIndex: -1,
                 // secondSkuList: self.data.startList
@@ -286,14 +288,15 @@ const methods = {
         let secondSkuList = skuList[index].goodsSpecificationVoList
         let param = {
             firstIndex: index,
-            secondSkuList: secondSkuList
+            secondSkuList: secondSkuList, 
         }
         if (secondIndex != -1 && !secondSkuList[secondIndex].optional) {
-            param.id = -1;
+            param.skuId = secondSkuList[secondIndex].goodsId;
             param.secondIndex = -1;
         }
-        if(skuLength == 2 && secondIndex != -1 && firstIndex != -1) {
-            param.scale =skuList[index].name + ',' +secondSkuList[secondIndex].name
+        if(skuLength == 2 && secondIndex != -1 ) {
+            param.scale =skuList[index].name + ',' +secondSkuList[secondIndex].name;
+            param.skuId = secondSkuList[secondIndex].goodsId;
         }else {
             param.scale = ''
         }
@@ -311,14 +314,14 @@ const methods = {
         if (self.data.secondIndex == index) {
             self.setData({
                 secondIndex: -1,
-                id: -1,
+                skuId: -1,
                 scale: ''
             })
             return;
         }
         let opts = {
             secondIndex: index,
-            id: list.goodsId,
+            skuId: list.goodsId,
             skuImg: list.imgUrl,
             skuPrice: list.nowPrice
         }
@@ -335,7 +338,8 @@ const methods = {
 
         self.setData({
             hideModal: false,
-            isJoin: 1
+            isJoin: 1,
+            isScroll: false
         })
         var animation = wx.createAnimation({
             duration: 600, //动画的持续时间 默认400ms   数值越大，动画越慢   数值越小，动画越快
@@ -361,7 +365,8 @@ const methods = {
                 hideModal: true,
                 modelType: 0,
                 ScaleType: -1,
-                priceFlag: 0
+                priceFlag: 0,
+                isScroll: true
             })
         }, 400); //先执行下滑动画，再隐藏模块  
     },
@@ -435,7 +440,7 @@ const methods = {
         _g.navigateTo({
             url: 'pages/goods/comments',
             param: {
-                goodsId: self.data.id,
+                goodsId: self.data.goodsDetail.id,
                 type: self.data.type,
                 platformFlag: self.data.goodsDetail.platformFlag,
             }
@@ -455,13 +460,16 @@ const methods = {
             num: self.data.num,
         };
         if (!_g.checkLogin({ type: 2 })) return;
-        if ((self.data.id == -1 || self.data.firstIndex == -1) && self.data.skuLength) {
+        if ((self.data.skuId == -1 || self.data.firstIndex == -1) && self.data.skuLength) {
             _g.toast({
                 title: '请选择商品规格'
             });
             return;
         }
-        if (self.data.goodsDetail.skuId) data.skuId = self.data.goodsDetail.skuId;
+        if (self.data.skuLength) {
+            data.id = self.data.skuId
+        }
+        // if (self.data.goodsDetail.skuId) data.skuId = self.data.goodsDetail.skuId;
         if (self.data.thirdId) data.thirdId = self.data.thirdId;
         if (self.data.priceFlag == 1) {
             data.isOrigPrice = 1
@@ -500,11 +508,14 @@ const methods = {
             num: self.data.num
         }
         if (!_g.checkLogin({ type: 2 })) return;
-        if ((self.data.id == -1 || self.data.firstIndex == -1) && self.data.skuLength) {
+        if ((self.data.skuId == -1 || self.data.firstIndex == -1) && self.data.skuLength) {
             _g.toast({
                 title: '请选择商品规格'
             });
             return;
+        }
+        if (self.data.skuLength) {
+            data.goodsId = self.data.skuId
         }
         if (self.data.platformFlag == 2) data.storeId = self.data.storeId;
         Goods.addCart(self, data).then((ret) => {
@@ -518,8 +529,7 @@ const methods = {
                     duration: 1500,
                 });
             }, 500);
-            event.emit('refreshCart');
-
+            self.getCartList();
         }, (err) => {
             _g.toast({
                 title: '加入购物车失败'
@@ -538,6 +548,7 @@ const methods = {
             if (data.storeShopCartList && data.storeShopCartList.length) {
                 total += data.storeShopCartList.length
             }
+            if (data.length > 99) total = '99+';
             self.setData({
                 total: total
             });
@@ -609,7 +620,6 @@ const methods = {
             secondSkuList: startList,
             skuImg: secondSkuList[0].imgUrl,
             skuPrice: secondSkuList[0].nowPrice,
-            id: -1,
         });
 
     }

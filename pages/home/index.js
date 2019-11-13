@@ -56,6 +56,7 @@ const data = {
     avatarThumb: {},
     canvasUrl: '',
     authorizeHidden: true,
+    shareModal: false,
 };
 
 // 页面onLoad方法
@@ -102,6 +103,8 @@ const onLoad = function (self) {
             });
         }
     });
+    self.getPoster();
+    self.getShareCode();
 
 };
 
@@ -128,11 +131,13 @@ const onReady = function (self) {
             authorizeHidden: true
         });
     }
+    console.log('---')
 
 }
 
 // 页面onShow方法
 const onShow = function (self) {
+    console.log(4444,self.data.canvasUrl);
     // self.onScroll('#aim', 'scrollTop');
     // self.onScroll('#head', 'headTop');
 
@@ -207,8 +212,8 @@ const methods = {
         self.getBrandList();
         self.getSecKill();
         self.getClassifyList();
-        self.getPoster();
-        self.getShareCode();
+        // self.getPoster();
+        // self.getShareCode();
     },
     getCommonData() {
         const self = this;
@@ -242,9 +247,7 @@ const methods = {
 
             self.btnShow(data.stepInfo.status);
             self.showClassify(data.navigation);
-            if (data.stepInfo.status == 2) {
-                self.showDialogBtn();
-            }
+            
         }, (err) => {
 
         });
@@ -667,6 +670,10 @@ const methods = {
                 duration: 3000
             });
             self.getCommonData();
+            if (self.data.stepInfo.status == 2) {
+                self.showDialogBtn();
+                console.log(555,self.data.canvasUrl);
+            }
         }, (err) => {
             _g.toast({
                 title: err.message
@@ -807,7 +814,7 @@ const methods = {
     showDialogBtn: function () {
         const self = this;
         self.setData({
-            showModal: true
+            shareModal: true
         })
         self.getTabBar().setData({
             flag: false
@@ -815,10 +822,10 @@ const methods = {
         
     },
     //隐藏模态框
-    hideModal: function () {
+    hideShareModal: function () {
         const self = this;
         self.setData({
-            showModal: false
+            shareModal: false
         });
         self.getTabBar().setData({
             flag: true
@@ -827,7 +834,7 @@ const methods = {
     //分享给朋友
     onFriendsShare: function () {
         const self = this;
-        self.hideModal();
+        self.hideShareModal();
     },
     //保存图片
     onSaveImage: function () {
@@ -838,7 +845,7 @@ const methods = {
             if (result == undefined || result) {
                 // self.onSaveTap();
                 self.savePicToAlbum();
-                self.hideModal();
+                self.hideShareModal();
             } else {
                 self.setData({
                     authorizeHidden: false
@@ -930,11 +937,11 @@ const methods = {
             shareCode: self.data.shareCode
         };
         const ctx = wx.createCanvasContext('share', self)
+        // const ctx = wx.createOffscreenCanvas('share', self)
         ctx.setFillStyle('white')
         ctx.fillRect(0, 0, calculate(552), calculate(900))
         //画背景
         ctx.drawImage(poster.picUrl, 0, 0, calculate(552), calculate(900))
-
         ctx.setFillStyle('white')
         ctx.fillRect(calculate(36), calculate(670), calculate(476), calculate(142))
         ctx.setFillStyle('#3D3D3D');
@@ -953,34 +960,40 @@ const methods = {
         ctx.setFontSize(calculate(18))
         ctx.fillText('福气', calculate(248), calculate(758))
         ctx.drawImage(poster.avatar, calculate(64), calculate(704), calculate(62), calculate(62))
-
         //分享二维码
         // ctx.save()
         ctx.drawImage(poster.shareCode.path, calculate(368), calculate(684), calculate(118), calculate(118))
         ctx.setFillStyle('#333');
         ctx.setFontSize(calculate(18))
         ctx.fillText('扫一扫识别二维码，一起来挑战吧', calculate(142), calculate(850))
-        ctx.draw(true, (res) => {
-            wx.canvasToTempFilePath({
-                x: 0,
-                y: 0,
-                width: calculate(poster.width) * 4,
-                height: calculate(poster.height) * 4,
-                destWidth: poster.width * 2,
-                destHeight: poster.height * 2,
-                canvasId: 'share',
-                success(res) {
-                    self.setData({
-                        canvasUrl: res.tempFilePath
-                    });
-                    _g.setLS('myPosterUrl', res.tempFilePath);
-                }
-            }, self);
-        }, self);
+        console.log(3333)
+        ctx.draw(false,()=>{
+            console.log(22222)
+        })
+        // ctx.draw(false, (res) => {
+            // console.log('[[[[')
+            // wx.canvasToTempFilePath({
+            //     x: 0,
+            //     y: 0,
+            //     width: calculate(poster.width) * 4,
+            //     height: calculate(poster.height) * 4,
+            //     destWidth: poster.width * 2,
+            //     destHeight: poster.height * 2,
+            //     canvasId: 'share',
+            //     success(res) {
+            //         console.log('\\\\',res)
+            //         self.setData({
+            //             canvasUrl: res.tempFilePath
+            //         });
+            //         // _g.setLS('myPosterUrl', res.tempFilePath);
+            //     }
+            // }, self);
+        // }, self);
 
         function calculate(size) {
             return winWidth * size / UIWidth;
         }
+        console.log(6666,self.data.canvasUrl)
     },
     onShareAppMessage() {
         const self = this;
