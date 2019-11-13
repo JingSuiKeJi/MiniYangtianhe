@@ -35,5 +35,22 @@
             <view class="ui-signitem__btn">扫码签到</view>
              <view class="ui-signitem__text">*所有有注册养天和优选的门店均可参加扫码签到活动，详情请浏览规则说明</view>
          </view>
+         <!--  -->
+         <view class="ui-recordBox">
+             <view class="ui-recorditem__title">乐友签到记录</view>
+             <block wx:for="{{5}}" wx:key="{{item}}">
+                 <view class="ui-recorditem__friend">
+                    <view class="ui-recorditem__avatar">
+                         <!-- <image src="{{filter.getLocalPhoto('home_address.png')}}" mode="aspectFit" class="ui-recorditem__avatar"/> -->
+                    </view>
+                    <view class="ui-recorditem__name">命运的杰克</view>
+                    <view class="ui-recorditem__time">2019.11.11 20:23:23到店签到</view>
+                </view>
+             </block>
+             <view class="ui-recorditem__end">
+                 向下滑动显示更多
+             </view>
+         </view>
+         <!--  -->
      </view>
 </view>
