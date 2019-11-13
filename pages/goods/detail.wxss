@@ -78,6 +78,7 @@ page {
 }
 
 .ui-priceBox {
+    display: flex;
     position: relative;
     margin-top: 20rpx;
 }
@@ -112,7 +113,7 @@ page {
 }
 
 .ui-priceBox_fuqi {
-    display: inline-block;
+    display: flex;
     width: 128rpx;
     height: 28rpx;
     margin-left: 20rpx;
@@ -124,8 +125,8 @@ page {
     line-height: 28rpx;
     background: #91FFE8;
     border-radius: 14rpx;
-    text-align: center;
-    vertical-align: top;
+    align-items: center;
+    justify-content: center;
 
 }
 
@@ -134,13 +135,10 @@ page {
     width: 30%;
     height: 100%;
     background-color: #69DDD9;
-    /* display: inline-block;
-    text-align: center; */
     font-size: 24rpx;
     font-family: PingFangSC-Regular;
     font-weight: 400;
     color: #fff;
-    /* vertical-align: top; */
     position: absolute;
     top: 0;
     right: 0;
@@ -148,11 +146,6 @@ page {
     justify-content: center;
     flex-direction: column;
 }
-
-/* .ui-rightItem_text {
-    margin-top: 25rpx;
-} */
-
 .ui-marketBox {
     width: 100%;
     padding: 30rpx 40rpx 20rpx 40rpx;
@@ -590,11 +583,9 @@ page {
 .ui-scrollViewBox {
     display: flex;
     width: 100%;
-    height: 418rpx;
+    height: 318rpx;
+    padding-bottom: 30rpx;
     position: relative;
-    /* align-content: flex-end; */
-    /* flex-direction: column-reverse; */
-    
 }
 .ui-modelTop_left .ui-leftImg_goodsIcon {
     width: 204rpx;
@@ -663,15 +654,19 @@ page {
     line-height: 30px;
     margin-bottom: 25rpx;
 }
+.ui-middleItem_bottomTitle {
+    margin-bottom: 0;
+}
 .ui-model__count {
-    margin-bottom: 125rpx;
+    display: flex;
+    align-items: center;
 }
 .ui-model_middle .ui-middleItem_btn {
     width: 320rpx;
     height: 80rpx;
     line-height: 80rpx;
     /* background-color: #FCFCFC; */
-    border: 1rpx solid #F5F5F5;
+    border: 1rpx solid #CCCCCC;
     font-size: 26rpx;
     font-family: PingFang-SC-Medium;
     font-weight: 500;
@@ -733,7 +728,7 @@ page {
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: #fff;
+    background-color: #FFFFFF;
     border-radius: 20rpx 20rpx 0px 0px;
     flex-direction: column;
 
@@ -863,9 +858,11 @@ page {
 .ui-addCountBox {
     display: flex;
     align-items: center;
-    position: absolute;
+    /* position: absolute;
     top: 0rpx;
-    right: 60rpx;
+    right: 60rpx; */
+    margin-left: auto;
+    margin-right: 30rpx;
 }
 
 .ui-addCountBox .ui-countItem__icon {

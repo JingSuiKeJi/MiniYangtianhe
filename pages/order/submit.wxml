@@ -57,8 +57,7 @@
             </view>
             <view class="ui-orderItem__info">
                 <view class="ui-infoItem__title">{{item.title}}</view>
-                <!-- <view class="ui-infoItem__scale">{{item.specificationName}}</view> -->
-                <view class="ui-infoItem__scale"></view>
+                <view class="ui-infoItem__scale" hidden="{{!item.specificationName}}">{{item.specificationName}}</view>
                 <view class="ui-infoItem__price">
                     <text class="ui-priceItem__price">￥{{item.price}}</text>
                     <text class="ui-priceItem__num">x{{item.num}}</text>

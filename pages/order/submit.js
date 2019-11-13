@@ -306,6 +306,7 @@ const methods = {
     },
     onSubmitTap: function (e) {
         const self = this;
+        const userInfo = self.data.userInfo;
         if (!self.data.orderAddressVo) {
             _g.toast({
                 title: '请先选择地址'
@@ -325,6 +326,22 @@ const methods = {
 
             });
             return;
+        }
+        if (self.data.points && !userInfo.phone) {
+            wx.showModal({
+                content: '您当前还没绑定手机号,去绑定手机号？',
+                confirmText: '确定',
+                cancelText: '取消',
+                confirmColor: '#20CAB4',
+                success(res) {
+                    if (res.confirm) {
+                        _g.navigateTo({
+                            url: 'pages/me/bindingPhone'
+                        }, self)
+                    }
+                }
+            })
+            return ;
         }
         let data = {
             num: self.data.num,

@@ -49,7 +49,7 @@ page {
     font-weight: 400;
     color: #333333;
     line-height: 92rpx;
-    background: #F3F4F6;
+    background-color: #F3F4F6;
     border-radius: 46rpx;
     text-align: center;
 }

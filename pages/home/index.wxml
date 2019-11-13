@@ -268,11 +268,13 @@
         </view>
         <!-- <topList titleSize="44rpx"/> -->
         <view class="ui-bottomBox">到底啦，但我们会努力变长的～</view>
-        <view class="modal-mask" bindtap="hideModal" catchtouchmove="true" wx:if="{{showModal}}"></view>
-        <view class="ui-modalBox" wx:if="{{showModal}}">
+        <!-- <cover-view class="ui-sharePosterModal">
+              <cover-view class="modal-mask" bindtap="hideShareModal" catchtouchmove="true" wx:if="{{shareModal}}"></cover-view>
+        </cover-view> -->
+        <view class="modal-mask" bindtap="hideShareModal" catchtouchmove="true" wx:if="{{shareModal}}"></view>
+        <view class="ui-modalBox" wx:if="{{shareModal}}">
             <view class="ui-share__bd">
                 <canvas canvas-id="share" class="ui-share__canvas" ></canvas>
-                <image class="ui-share__image" src="{{canvasUrl}}" show-menu-by-longpress="true"></image>
             </view>
             <view class="modal-dialog" >
                 <button open-type="share" class="btn-friendsShare btn-common" style="background-color: #fff;border: none;display: block;">
@@ -281,7 +283,6 @@
                 </button>
                 <view class="btn-saveImage btn-common" bindtap="onSaveImage">
                     <image  src="{{filter.getLocalPhoto('my_posterSave.png')}}" class="ui-saveImg"></image>
-                    <!-- <view class="ui-saveImg"></view> -->
                     <view class="ui-saveText">保存图片</view>
                 </view>
 		   </view>

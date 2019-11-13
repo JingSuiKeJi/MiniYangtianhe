@@ -52,11 +52,11 @@
 				<text>财务报表</text>
 			</view>
 			<view class="ui-detailItem" bindtap="getScancode">
-					<image mode="aspectFit"  src="{{filter.getLocalPhoto('my_EwmVerification.png')}}" class="detailIcon"/>
+				<image mode="aspectFit"  src="{{filter.getLocalPhoto('my_EwmVerification.png')}}" class="detailIcon"/>
 				<text>扫码核销</text>
 			</view>
 			<view class="ui-detailItem" catchtap="onBlissVerifyTap">
-					<image mode="aspectFit"  src="{{filter.getLocalPhoto('my_blissVerification.png')}}" class="detailIcon"/>
+				<image mode="aspectFit"  src="{{filter.getLocalPhoto('my_blissVerification.png')}}" class="detailIcon"/>
 				<text>福气核销</text>
 			</view>
 			<view class="ui-detailItem" catchtap="onOrderManageTap">

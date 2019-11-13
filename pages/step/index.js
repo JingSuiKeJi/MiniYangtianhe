@@ -101,7 +101,7 @@ const onReady = function (self) {
 
 // 页面onShow方法
 const onShow = function (self) {
-
+  console.log(4444,self.data.canvasUrl);
 };
 const onUnload = function (self) {
     event.remove('step-index-authorize', self);
@@ -127,9 +127,7 @@ const methods = {
                 BMIIndex: BMIIndex
             });
             self.btnShow(stepInfo.status);
-            if (stepInfo.status == 2) {
-                self.showDialogBtn();
-            }
+           
         }, (err) => { });
     },
     onIllustrationTap: function (e) {
@@ -233,6 +231,9 @@ const methods = {
                 title: '上传步数成功',
                 duration: 3000
             });
+            if (self.data.stepInfo.status == 2) {
+                self.showDialogBtn();
+            }
         }, (err) => {
 
         })
@@ -488,7 +489,7 @@ const methods = {
                     self.setData({
                         canvasUrl: res.tempFilePath
                     });
-                    _g.setLS('myPosterUrl', res.tempFilePath);
+                    // _g.setLS('myPosterUrl', res.tempFilePath);
                 }
             }, self);
         }, self);

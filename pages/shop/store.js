@@ -136,6 +136,22 @@ const methods = {
 	onBlissVerifyTap:function(){
 		let self = this;
 		const userInfo = self.data.userInfo;
+		if (!userInfo.phone) {
+            wx.showModal({
+                content: '您当前还没绑定手机号,去绑定手机号？',
+                confirmText: '确定',
+                cancelText: '取消',
+                confirmColor: '#20CAB4',
+                success(res) {
+                    if (res.confirm) {
+                        _g.navigateTo({
+                            url: 'pages/me/bindingPhone'
+                        }, self)
+                    }
+                }
+            })
+            return ;
+        }
 		_g.navigateTo({
 			param:{
 				userInfo:userInfo,

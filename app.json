@@ -74,8 +74,7 @@
     "pages/order/finishComment",
     "pages/order/overOrder",
     "pages/order/overOrderdetails",
-    "pages/shop/sign",
-    "components/tabBar/tabBar"
+    "pages/shop/sign"
   ],
   "tabBar": {
     "custom": true,
