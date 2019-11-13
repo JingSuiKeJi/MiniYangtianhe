@@ -1,0 +1,286 @@
+@charset "UTF-8";
+@import "/libs/common.wxss";
+
+/**storeQRCode.wxss**/
+page{
+	background:rgba(245,245,245,1);
+}
+
+.ui-main {
+    width: 100%;
+}
+
+.ui-qrBox{
+	width:670rpx;
+	height: 720rpx;
+	padding: 40rpx 40rpx 0 40rpx;
+	background:rgba(255,255,255,1);
+	box-shadow:0rpx 2rpx 8rpx 0rpx rgba(0,0,0,0.1);
+	border-radius:16rpx;
+	margin: 38rpx 0 0 40rpx;
+	position: relative;
+}
+
+/*  */
+.ui-nameBox {
+	width: 100%;
+	height: 34rpx;
+	font-size: 34rpx;
+	font-family: PingFangSC-Medium,PingFang SC;
+	font-weight: 500;
+	color:rgba(61,61,61,1);
+	line-height: 34rpx;
+}
+
+.ui-addressBox {
+	width: 100%;
+	height: 26rpx;
+	margin-top: 20rpx;
+	font-size: 26rpx;
+	font-family: PingFangSC-Regular,PingFang SC;
+	font-weight: 400;
+	color:rgba(61,61,61,1);
+	line-height: 26rpx;
+}
+
+.ui-storeQR {
+	width: 480rpx;
+	height: 480rpx;
+	margin: 60rpx auto;
+	background-color: rgba(0,0,0,0.1);
+}
+
+.ui-refBtn {
+	margin: 60rpx 0 0 120rpx;
+	width:512rpx;
+	height:80rpx;
+	background:linear-gradient(137deg,rgba(1,206,164,1) 0%,rgba(92,220,217,1) 100%);
+	border-radius:40rpx;
+	font-size:28rpx;
+	font-family:PingFangSC-Semibold;
+	font-weight:400;
+	color:rgba(255,255,255,1);
+	line-height:80rpx;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.ui-iconRefresh {
+	width: 36rpx;
+	height: 36rpx;
+	margin-right: 20rpx;
+	vertical-align: -6rpx;
+}
+
+.ui-recordBox {
+	width: 686rpx;
+	height: auto;
+	margin: 60rpx 0 0 32rpx;
+	background:rgba(255,255,255,1);
+	border-radius:16rpx 16rpx 0 0;
+}
+
+.ui-recordBox__count {
+	display: flex;
+	width: 100%;
+	height: 164rpx;
+	text-align: center;
+	flex-direction: column;
+}
+.ui-recordBox__title {
+	height: 20rpx;
+	margin-top: 40rpx;
+	font-size: 20rpx;
+	font-family: PingFangSC-Regular,PingFang SC;
+	font-weight: 400;
+	color:rgba(102,102,102,1);
+	line-height: 20rpx;
+}
+
+.ui-recordBox__num {
+	width: 100%;
+	height: 40rpx;
+	margin: 24rpx 0 32rpx 0;
+	font-size: 40rpx;
+	font-family: PingFangSC-Regular,PingFang SC;
+	font-weight: 400;
+	color:rgb(51,51,51,1);
+	line-height: 40rpx;
+	text-align: center;
+}
+
+.ui-recordBox__friend {
+	display: flex;
+	width: 686rpx;
+	height: 164rpx;
+	padding: 0 40rpx;
+	background:rgba(255,255,255,1);
+	box-shadow:0 -2rpx 0 0 rgba(245,245,245,1),0 2rpx 0 0 rgba(245,245,245,1);
+}
+
+.ui-friendBox {
+	flex: 1;
+	padding: 20rpx 0;
+}
+.ui-friend__info {
+	display: flex;
+}
+.ui-friend__avater {
+	width: 80rpx;
+	height: 80rpx;
+	border-radius: 50%;
+	background-color: rgba(1,206,165,1);
+	vertical-align: middle;
+}
+.ui-friend__name {
+	flex: 1;
+	height: 28rpx;
+	margin: auto 0 auto 20rpx;
+	font-size: 28rpx;
+	font-family: PingFangSC-Regular,PingFang SC;
+	font-weight: 400;
+	color:rgba(61,61,61,1);
+	line-height: 28rpx;
+	vertical-align: middle;
+}
+
+.ui-friend__time {
+	width: 100%;
+	height: 24rpx;
+	margin-top: 20rpx;
+	font-size: 24rpx;
+	font-family: PingFang-SC-Medium,PingFang-SC;
+	font-weight: 500;
+	color:rgba(153,153,153,1);
+	line-height: 24rpx;
+}
+
+.ui-friend__count {
+	display: flex;
+	width: 144rpx;
+	height: 100%;
+	flex-direction: column;
+}
+.ui-friend__num {
+	padding: 44rpx 0 20rpx 0;
+	font-size: 32rpx;
+	font-family: PingFangSC-Semibold,PingFang SC;
+	font-weight: 600;
+	color:rgba(51,51,51,1);
+	line-height: 32rpx;
+	text-align: center;
+}
+.ui-friend__count > text {
+	font-size: 24rpx;
+	font-family: PingFang-SC-Medium,PingFang-SC;
+	font-weight: 500;
+	color:rgba(153,153,153,1);
+	line-height: 24rpx;
+	text-align: center;
+}
+
+.ui-recordBox__drop {
+	width: 686rpx;
+	height: 164rpx;
+	padding: 40rpx 0;
+	font-size: 24rpx;
+	font-family: PingFangSC-Regular,PingFang SC;
+	font-weight: 400;
+	color:rgba(187,187,187,1);
+	line-height: 24rpx;
+	text-align: center;
+}
+/*  */
+
+/* .ui-addressBox{
+	width:100%;
+	background:rgba(245,245,245,1);
+	border-radius:16rpx 16rpx 0rpx 0rpx;
+	display: flex;
+	flex-direction: column;
+} */
+
+.ui-addressBox text:first-child{
+	font-size:34rpx;
+	font-family:PingFangSC-Medium;
+	font-weight:500;
+	color:rgba(61,61,61,1);
+	margin: 32rpx 0 0 32rpx;
+}
+
+.ui-addressBox text:last-child{
+	font-size:26rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(61,61,61,1);
+	line-height:35rpx;
+	margin: 20rpx 32rpx 22rpx 32rpx;
+	word-break: keep-all;/*不允许字断开*/
+	word-wrap: break-word;/*在长单词或URL地址内部进行换行*/
+}
+
+.ui-qrInfo{
+	width: 100%;
+	height: 622rpx;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.ui-qrInfo image{
+	width:520rpx;
+	height:470rpx;
+}
+
+.btn-savePoster{
+	width:110rpx;
+	height:110rpx;
+	background:rgba(255,255,255,1);
+	border-radius: 110rpx;
+	margin: 36rpx 0 0 318rpx;
+}
+
+.ui-savePosterText{
+	/* position: relative;
+	top: 20rpx;
+	left: 320rpx; */
+	height:28rpx;
+	font-size:28rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(102,102,102,1);
+	line-height:28rpx;
+	margin-top: 20rpx;
+	text-align: center;
+
+}
+
+.btn-share{
+	margin: 36rpx 0 0 120rpx;
+	width:512rpx;
+	height:80rpx;
+	background:linear-gradient(137deg,rgba(1,206,165,1) 0%,rgba(94,221,218,1) 100%);
+	border-radius:40rpx;
+	font-size:28rpx;
+	font-family:PingFangSC-Semibold;
+	font-weight:600;
+	color:rgba(255,255,255,1);
+	line-height:80rpx;
+	text-align: center;
+}
+
+.ui-share__canvas {
+	width:670rpx;
+	height:756rpx;
+	background:rgba(255,255,255,1);
+	box-shadow:0rpx 2rpx 8rpx 0rpx rgba(0,0,0,0.1);
+	border-radius:16rpx;
+}
+.ui-share__image {
+	width:670rpx;
+	height:756rpx;
+	border-radius:16rpx;
+	position: absolute;
+	left: 0;
+	top: 0;
+}

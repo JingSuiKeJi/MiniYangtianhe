@@ -170,7 +170,7 @@ const methods = {
 		    url: 'pages/shop/blissVerifyDetail',
 		}, self);
 	},
-	//跳转到门店二维码
+	//跳转到门店签到二维码
 	onSignQRCode: function(){
 		let self = this;
 		const userInfo = self.data.userInfo;
@@ -178,7 +178,7 @@ const methods = {
 			param:{
 				storeId:userInfo.store.id,
 			},
-			url: 'pages/shop/storeQRCode',
+			url: 'pages/shop/signQRCode',
 		}, self);
 	}
 }
