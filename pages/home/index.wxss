@@ -975,6 +975,8 @@ page {
     background-color: #FFFFFF;
 }
 .ui-share__canvas {
+    position: fixed;
+    /* left: -100%; */
     width: 552rpx;
     height: 900rpx;
     background-color: #FFFFFF;
