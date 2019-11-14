@@ -119,6 +119,7 @@ const methods = {
 	},
 	onUseTap: function (e) {
 		let self = this;
+		let opts = e.currentTarget.dataset;
 		if (self.data.from) {
 			_g.getPrevPage().setData({
 				couponId: Number(e.currentTarget.dataset.id),
@@ -128,11 +129,15 @@ const methods = {
 			event.emit('preferentialPolicies');
 			_g.navigateBack();
 		}else {
+			let param = {};
+			if (opts.type <=2) {
+				param.platformFlag = 1;
+			}else {
+				param.platformFlag = 2;
+			}
 			_g.navigateTo({
 				url: 'pages/search/detailList',
-				param: {
-					platformFlag: 1
-				}
+				param: param
 			},self)
 		}
 	}
