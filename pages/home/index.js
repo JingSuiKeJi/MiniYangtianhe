@@ -670,10 +670,10 @@ const methods = {
                 duration: 3000
             });
             self.getCommonData();
-            if (self.data.stepInfo.status == 2) {
-                self.showDialogBtn();
-                console.log(555,self.data.canvasUrl);
-            }
+            // if (self.data.stepInfo.status == 2) {
+            //     self.showDialogBtn();
+            //     console.log(555,self.data.canvasUrl);
+            // }
         }, (err) => {
             _g.toast({
                 title: err.message
