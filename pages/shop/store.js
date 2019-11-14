@@ -170,6 +170,17 @@ const methods = {
 		    url: 'pages/shop/blissVerifyDetail',
 		}, self);
 	},
+	//跳转到门店签到二维码
+	onSignQRCode: function(){
+		let self = this;
+		const userInfo = self.data.userInfo;
+		_g.navigateTo({
+			param:{
+				storeId:userInfo.store.id,
+			},
+			url: 'pages/shop/signQRCode',
+		}, self);
+	}
 }
 
 // 有引用template时定义
