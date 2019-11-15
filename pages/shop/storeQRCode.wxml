@@ -3,57 +3,21 @@
 <view class="container">
 	<view class="ui-main">
 		<view class="ui-qrBox">
-			<view class="ui-nameBox">天盈广场店</view>
-			<view class="ui-addressBox">广州市天河区天盈广场东塔</view>
-			<view class="ui-storeQR"></view>
-		</view>
-			<!-- <view class="ui-qrBox">
-				<view class="ui-addressBox">
-					<text>{{userInfo.store.title}}</text>
-					<text>{{userInfo.store.address}}</text>
-				</view>
-				<view class="ui-qrInfo">
-					<image src="{{filter.getPhoto(host,shareQR)}}" mode="aspectFill"></image>
-				</view>
-				<canvas canvas-id="share" class="ui-share__canvas" ></canvas>
-				<image class="ui-share__image" src="{{canvasUrl}}" show-menu-by-longpress="true"></image>
+			<!-- <view class="ui-addressBox">
+				<text>{{userInfo.store.title}}</text>
+				<text>{{userInfo.store.address}}</text>
+			</view>
+			<view class="ui-qrInfo">
+				<image src="{{filter.getPhoto(host,shareQR)}}" mode="aspectFill"></image>
 			</view> -->
+			<canvas canvas-id="share" class="ui-share__canvas" ></canvas>
+			<image class="ui-share__image" src="{{canvasUrl}}" show-menu-by-longpress="true"></image>
+		</view>
 		<!-- <view class="btn-savePoster"></view> -->
-		<!-- <image src="{{filter.getLocalPhoto('my_save.png')}}" mode="aspectFit" class="btn-savePoster" bindtap="onSaveImage"/>
-		<view class="ui-savePosterText">保存海报</view> -->
+		<image src="{{filter.getLocalPhoto('my_save.png')}}" mode="aspectFit" class="btn-savePoster" bindtap="onSaveImage"/>
+		<view class="ui-savePosterText">保存海报</view>
 		<!-- <view class="btn-share">立即分享</view> -->
-		<!-- <button open-type="share" class="btn-share" >立即分享</button> -->
-
-		<view class="ui-refBtn">
-			<!-- <image src="{{filter.getLocalPhoto('sgin/icon_refresh.png')}}" class="ui-iconRefresh"/> -->
-			<text>刷新二维码</text>
-		</view>
-		<view class="ui-recordBox">
-			<view class="ui-recordBox__count">
-				<view class="ui-recordBox__title">今日签到人数</view>
-				<view class="ui-recordBox__num"> <text>56</text> </view>
-			</view>
-			<block wx:for="{{4}}" wx:key="{{item}}">
-				<view class="ui-recordBox__friend">
-					<view class="ui-friendBox">
-						<view class="ui-friend__info">
-							<view class="ui-friend__avater">
-							<!-- <image src=""/> -->
-							</view>
-							<text class="ui-friend__name">命运的杰克</text>
-						</view>
-						<view class="ui-friend__time">2019-11-11 15:46:49</view>
-					</view>
-					<view class="ui-friend__count">
-						<view class="ui-friend__num">20</view>
-						<text>累计签到次数</text>
-					</view>
-				</view>
-			</block>
-			<view class="ui-recordBox__drop">
-				下拉滑动显示更多
-			</view>
-		</view>
+		<button open-type="share" class="btn-share" >立即分享</button>
 	</view>
 </view>
 <authorize 
