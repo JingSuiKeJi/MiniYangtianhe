@@ -81,7 +81,7 @@
             </view>
         </view>
         <view class="ui-bottomTex">为你加油，一起努力吧 ～</view>
-        <cover-view class="modal-mask" bindtap="hideModal" catchtouchmove="true" wx:if="{{showModal}}"></cover-view>
+        <view class="modal-mask" bindtap="hideModal" catchtouchmove="true" wx:if="{{showModal}}"></view>
         <view class="ui-modalBox" wx:if="{{showModal}}">
             <view class="ui-share__bd">
                 <canvas canvas-id="share" class="ui-share__canvas" ></canvas>
@@ -92,7 +92,7 @@
                     <image class="ui-wxImg" src="{{filter.getLocalPhoto('icon-wechat.png')}}"></image>
                     <view class="ui-wxText">分享好友</view>
                 </button>
-                <view class="btn-saveImage btn-common" bindtap="onSaveImage">
+                <view class="btn-saveImage btn-common" catchtap="onSaveImage">
                     <image  src="{{filter.getLocalPhoto('my_posterSave.png')}}" class="ui-saveImg"></image>
                     <!-- <view class="ui-saveImg"></view> -->
                     <view class="ui-saveText">保存图片</view>

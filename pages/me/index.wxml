@@ -79,7 +79,7 @@
 					    <text>优惠券</text>
 					</button>
 				</form>
-				<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onRevenueTap"  class="ui-incomeItem">
+				<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onRevenueTap"  class="ui-incomeItem" wx:if="{{userInfo.distribution && userInfo.distribution.id > 0}}">
 					<button formType="submit" >
 						<text>{{userInfo.money||0}}</text>
 					    <text>收益</text>
@@ -173,7 +173,7 @@
 					</view>
 				</view>
 			</view>
-			<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onRevenueTap" hidden="{{!userInfo.distribution}}">
+			<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onRevenueTap" wx:if="{{userInfo.distribution && userInfo.distribution.id}}">
 				<button formType="submit" class="ui-itemBox">
 					<text>收益中心</text>
 					<image mode="aspectFit" src="{{ filter.getLocalPhoto('my_rightArrow.png')}}" class="ui-moreIcon"/>
