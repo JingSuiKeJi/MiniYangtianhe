@@ -66,7 +66,6 @@ const methods = {
 	    		});
     		}
     	},(err) => {
-            console.log("获取失败");
        });
 	},
 	//删除店员
@@ -84,7 +83,6 @@ const methods = {
 			assistantList:assistantList
            })
         }, (err) => {
-            console.log("删除失败");
         });
 	},
 	//查找店员
@@ -117,7 +115,6 @@ const methods = {
 			const addList = self.data.addList;
 			// console.log(123,addList);
 		},(err) => {
-			console.log("获取失败");
 		});
 	},
 	//搜索框双向绑定

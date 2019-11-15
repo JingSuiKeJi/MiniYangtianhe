@@ -670,10 +670,9 @@ const methods = {
                 duration: 3000
             });
             self.getCommonData();
-            // if (self.data.stepInfo.status == 2) {
-            //     self.showDialogBtn();
-            //     console.log(555,self.data.canvasUrl);
-            // }
+            if (self.data.stepInfo.status == 2) {
+                self.showDialogBtn();
+            }
         }, (err) => {
             _g.toast({
                 title: err.message
@@ -845,7 +844,7 @@ const methods = {
             if (result == undefined || result) {
                 // self.onSaveTap();
                 self.savePicToAlbum();
-                self.hideShareModal();
+                // self.hideShareModal();
             } else {
                 self.setData({
                     authorizeHidden: false
@@ -937,7 +936,6 @@ const methods = {
             shareCode: self.data.shareCode
         };
         const ctx = wx.createCanvasContext('share', self)
-        // const ctx = wx.createOffscreenCanvas('share', self)
         ctx.setFillStyle('white')
         ctx.fillRect(0, 0, calculate(552), calculate(900))
         //画背景
@@ -966,34 +964,27 @@ const methods = {
         ctx.setFillStyle('#333');
         ctx.setFontSize(calculate(18))
         ctx.fillText('扫一扫识别二维码，一起来挑战吧', calculate(142), calculate(850))
-        console.log(3333)
-        ctx.draw(false,()=>{
-            console.log(22222)
-        })
-        // ctx.draw(false, (res) => {
-            // console.log('[[[[')
-            // wx.canvasToTempFilePath({
-            //     x: 0,
-            //     y: 0,
-            //     width: calculate(poster.width) * 4,
-            //     height: calculate(poster.height) * 4,
-            //     destWidth: poster.width * 2,
-            //     destHeight: poster.height * 2,
-            //     canvasId: 'share',
-            //     success(res) {
-            //         console.log('\\\\',res)
-            //         self.setData({
-            //             canvasUrl: res.tempFilePath
-            //         });
-            //         // _g.setLS('myPosterUrl', res.tempFilePath);
-            //     }
-            // }, self);
-        // }, self);
+        ctx.draw(false, (res) => {
+            wx.canvasToTempFilePath({
+                x: 0,
+                y: 0,
+                width: calculate(poster.width) * 4,
+                height: calculate(poster.height) * 4,
+                destWidth: poster.width * 2,
+                destHeight: poster.height * 2,
+                canvasId: 'share',
+                success(res) {
+                    self.setData({
+                        canvasUrl: res.tempFilePath
+                    });
+                    // _g.setLS('myPosterUrl', res.tempFilePath);
+                }
+            }, self);
+        }, self);
 
         function calculate(size) {
             return winWidth * size / UIWidth;
         }
-        console.log(6666,self.data.canvasUrl)
     },
     onShareAppMessage() {
         const self = this;

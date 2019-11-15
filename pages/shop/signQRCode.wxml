@@ -3,9 +3,11 @@
 <view class="container">
 	<view class="ui-main">
 		<view class="ui-qrBox">
-			<view class="ui-nameBox">天盈广场店</view>
-			<view class="ui-addressBox">广州市天河区天盈广场东塔</view>
-			<view class="ui-storeQR"></view>
+			<view class="ui-nameBox">{{userInfo.store.title}}</view>
+			<view class="ui-addressBox">{{userInfo.store.address}}</view>
+			<view class="ui-storeQR">
+				<image src="{{url}}" class="ui-codeImg" mode="aspectFit"/>
+			</view>
 		</view>
 		<view class="ui-refBtn">
 			<!-- <image src="{{filter.getLocalPhoto('sgin/icon_refresh.png')}}" class="ui-iconRefresh"/> -->
@@ -39,10 +41,3 @@
 		</view>
 	</view>
 </view>
-<authorize 
-    id="authorize" 
-    message="请问需要授权相册从而保存至本地" 
-    bind:onCancelTap="onCancelTap" 
-    eventName="me-storeQRCode-authorize" 
-    isHidden="{{authorizeHidden}}">
-</authorize>

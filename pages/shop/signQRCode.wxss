@@ -47,9 +47,12 @@ page{
 	width: 480rpx;
 	height: 480rpx;
 	margin: 60rpx auto;
-	background-color: rgba(0,0,0,0.1);
+	/* background-color: rgba(0,0,0,0.1); */
 }
-
+.ui-codeImg {
+	width: 480rpx;
+	height: 480rpx;
+}
 .ui-refBtn {
 	margin: 60rpx 0 0 120rpx;
 	width:512rpx;

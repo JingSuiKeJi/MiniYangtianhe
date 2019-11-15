@@ -331,17 +331,16 @@ base.prototype = {
             },
             onFormIdTap: function(e) {
                 const self = this;
-                if (_g.checkLogin({
-                    type: 1
-                })) {
-                _g.postFormId({
-                    self: self,
-                    formId: e.detail.formId
-                });
-            }
-               
-                // console.log(e.target.dataset['fuc'])
+                if (_g.checkLogin({ type: 1})) {
+                    _g.postFormId({
+                        self: self,
+                        formId: e.detail.formId
+                    });
+                   
+                 }
                 e.target.dataset['fuc'] && self[e.target.dataset['fuc']](e);
+                // console.log(e.target.dataset['fuc'])
+               
             },
         };
         // 初始化页面方法

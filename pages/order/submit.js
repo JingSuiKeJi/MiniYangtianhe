@@ -321,7 +321,7 @@ const methods = {
         }
         if (self.data.platformFlag == 2 && !self.data.orderAddressVo.isDelivery && self.data.type != 2) {
             _g.toast({
-                title: '您选择的地址超过门店配送的范围,请更换配送地址或选择到店自提',
+                title: `您选择的地址超过门店配送${self.data.orderAddressVo.betweenDistance}km的范围,请更换配送地址或选择到店自提`,
                 duration: 3000
 
             });
