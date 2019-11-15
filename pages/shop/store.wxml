@@ -73,7 +73,6 @@
 			</view>
 			<!-- <view class="ui-detailItem" catchtap="onSignQRCode">
 				<image mode="aspectFit"  src="{{filter.getLocalPhoto('sign/signQR.png')}}" class="detailIcon"/>
-					<image mode="aspectFit"  src="{{filter.getLocalPhoto('my_blessingVerificationIcon.png')}}" class="detailIcon"/>
 				<text>签到二维码</text>
 			</view> -->
 		</view>
