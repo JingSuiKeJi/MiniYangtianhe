@@ -336,9 +336,9 @@ base.prototype = {
                         self: self,
                         formId: e.detail.formId
                     });
-                    e.target.dataset['fuc'] && self[e.target.dataset['fuc']](e);
-                }
-               
+                   
+                 }
+                e.target.dataset['fuc'] && self[e.target.dataset['fuc']](e);
                 // console.log(e.target.dataset['fuc'])
                
             },
