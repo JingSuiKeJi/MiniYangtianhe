@@ -521,9 +521,17 @@ page {
     left: 100rpx;
     background-color: #FFFFFF;
 }
+/* .ui-share__canvas {
+    width: 552rpx;
+    height: 900rpx;
+} */
 .ui-share__canvas {
     width: 552rpx;
     height: 900rpx;
+    position: fixed;
+    bottom: 268rpx;
+    left: -552rpx;
+    background-color: #FFFFFF;
 }
 .ui-share__image {
     width: 552rpx;

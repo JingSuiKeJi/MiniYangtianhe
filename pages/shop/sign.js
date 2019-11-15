@@ -43,6 +43,15 @@ const methods = {
     bindregionchange(e) {
 
     },
+    onCodeTap:function () {
+        let self = this;
+        wx.scanCode({
+            onlyFromCamera: true,
+            success (res) {
+                console.log(555,res)
+            }
+        });
+    }
 
 }
 

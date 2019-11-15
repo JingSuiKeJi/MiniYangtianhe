@@ -103,13 +103,16 @@ const methods = {
         const self = this;
         User.getCompanyList(self, {
             page: 1,
-            pageSize: 15,
+            pageSize: 50,
         }).then((ret) => {
             let list = ret.data.list;
             self.setData({
                 list: list
             });
             self.getDetail();
+            console.log('+++++++++++++++')
+            console.log(ret)            
+            console.log('+++++++++++++++')
         }, (err) => {
             console.log("获取失败");
         });

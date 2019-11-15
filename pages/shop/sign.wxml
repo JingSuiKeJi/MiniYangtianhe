@@ -35,11 +35,11 @@
                 <block wx:for="{{7}}" wx:key="{{item}}">
                     <view class="ui-signitem__day">
                         <view wx:if="{{item !== 0}}" class="ui-signitem__num">
-                            <!-- 初始化 <image src="filter.getLocalPhoto('sign/sign_bg.png')" mode="aspectFit"/> -->
+                             <image src="{{filter.getLocalPhoto('sign/sign_bg.png')}}" mode="aspectFit"/> 
                             <text >+10</text>
                         </view>
                         <view wx:else class="ui-signitem__num">
-                            <!--签到成功 <image src="filter.getLocalPhoto('sign/signSuccess_bg.png')" mode="aspectFit"/> -->
+                             <image src="{{filter.getLocalPhoto('sign/signSuccess_bg.png')}}" mode="aspectFit"/> 
                         </view>
                         <view class="ui-signitem__which">
                             <text >第一天</text>
@@ -47,7 +47,7 @@
                     </view>
                 </block>
             </view>
-            <view class="ui-signitem__btn">扫码签到</view>
+            <view class="ui-signitem__btn" bindtap="onCodeTap">扫码签到</view>
              <view class="ui-signitem__text">*所有有注册养天和优选的门店均可参加扫码签到活动，详情请浏览规则说明</view>
          </view>
          <!--  -->

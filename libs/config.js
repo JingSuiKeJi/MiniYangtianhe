@@ -14,8 +14,8 @@ config.prototype = {
     tokenKey: '',
 
     // env: 'dev', // 切换版本(提交正式必须改为 pro): dev 开发 | test  测试 | pro 生产
-    // env: 'test', // 切换版本(提交正式必须改为 pro): dev 开发 | test  测试 | pro 生产
-    env: 'pro', // 切换版本(提交正式必须改为 pro): dev 开发 | test  测试 | pro 生产
+    env: 'test', // 切换版本(提交正式必须改为 pro): dev 开发 | test  测试 | pro 生产
+    // env: 'pro', // 切换版本(提交正式必须改为 pro): dev 开发 | test  测试 | pro 生产
 
     defaultPage: 1,// 页码 默认1
     defaultPageSize: 15,// 每页数 默认15
@@ -28,7 +28,7 @@ config.prototype = {
      */
     host: {
         // test: 'http://192.168.199.108:9537',
-        // test: 'http://123.207.33.101:10008', // 测试
+        // test: 'http://120.79.36.152', // 测试
         test: 'http://120.79.36.152:10008', // 测试
         pro: 'https://app.yth-yx.com', // 生产
         dev: 'http://localhost:9528', // 开发
@@ -138,6 +138,7 @@ config.prototype = {
             rankingList: '/app/step/rankingList.do',
             browseList: '/app/browse/getRecordList.do',
             deleteBrowse: '/app/browse/delete.do',
+
         },
         withdraw: {
             apply: '/app/withdraw/apply.do',

@@ -184,7 +184,9 @@ const methods = {
     //跳转到收益中心
     onRevenueTap: function() {
         let self = this;
+        let userInfo= _g.getLS(_c.LSKeys.userInfo);
         if (!_g.checkLogin({type: 2})) return;
+        if (!userInfo.distribution ) return;
         _g.navigateTo({
             url: 'pages/pharmacy/revenue',
         }, self);

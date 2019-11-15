@@ -331,7 +331,7 @@ page {
     position: absolute;
     bottom: 25rpx;
     /* left: 45%; */
-    z-index: 999;
+    /* z-index: 999; */
 }
 
 .ui-banner_btnBox>text {
@@ -976,7 +976,8 @@ page {
 }
 .ui-share__canvas {
     position: fixed;
-    /* left: -100%; */
+    bottom: 268rpx;
+    left: -552rpx;
     width: 552rpx;
     height: 900rpx;
     background-color: #FFFFFF;

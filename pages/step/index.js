@@ -231,9 +231,9 @@ const methods = {
                 title: '上传步数成功',
                 duration: 3000
             });
-            // if (self.data.stepInfo.status == 2) {
-            //     self.showDialogBtn();
-            // }
+            if (self.data.stepInfo.status == 2) {
+                self.showDialogBtn();
+            }
         }, (err) => {
 
         })

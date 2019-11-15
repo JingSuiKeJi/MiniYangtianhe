@@ -268,30 +268,12 @@
         </view>
         <!-- <topList titleSize="44rpx"/> -->
         <view class="ui-bottomBox">到底啦，但我们会努力变长的～</view>
-        <!-- <cover-view class="ui-sharePosterModal">
-              <cover-view class="modal-mask" bindtap="hideShareModal" catchtouchmove="true" ></cover-view>
-                <cover-view class="ui-modalBox" >
-                    <cover-view class="ui-share__bd">
-                        <canvas canvas-id="share" class="ui-share__canvas" ></canvas>
-                        <cover-image class="ui-share__image" src="{{canvasUrl}}" show-menu-by-longpress="true"></cover-image>
-                    </cover-view>
-                    <cover-view class="modal-dialog" >
-                        <button open-type="share" class="btn-friendsShare btn-common" style="background-color: #fff;border: none;display: block;">
-                            <cover-image class="ui-wxImg" src="{{filter.getLocalPhoto('icon-wechat.png')}}"></cover-image>
-                            <cover-view class="ui-wxText">分享好友</cover-view>
-                        </button>
-                        <cover-view class="btn-saveImage btn-common" bindtap="onSaveImage">
-                            <cover-image  src="{{filter.getLocalPhoto('my_posterSave.png')}}" class="ui-saveImg"></cover-image>
-                            <cover-view class="ui-saveText">保存图片</cover-view>
-                        </cover-view>
-                    </cover-view>
-                </cover-view>
-        </cover-view> -->
+        <canvas canvas-id="share" class="ui-share__canvas" ></canvas>
         <view class="modal-mask" bindtap="hideShareModal" catchtouchmove="true" wx:if="{{shareModal}}"></view>
         <view class="ui-modalBox" wx:if="{{shareModal}}">
-            <view class="ui-share__bd">
-                <canvas canvas-id="share" class="ui-share__canvas" ></canvas>
-            </view>
+            <cover-view class="ui-share__bd">
+                <cover-image class="ui-share__image" src="{{canvasUrl}}" ></cover-image>
+            </cover-view>
             <view class="modal-dialog" >
                 <button open-type="share" class="btn-friendsShare btn-common" style="background-color: #fff;border: none;display: block;">
                     <image class="ui-wxImg" src="{{filter.getLocalPhoto('icon-wechat.png')}}"></image>
