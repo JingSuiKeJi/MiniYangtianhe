@@ -1,0 +1,283 @@
+@charset "UTF-8";
+@import "/libs/common.wxss";
+
+/* test.wxml */
+
+.ui-main {
+    position: relative;
+    padding-bottom: 54rpx;
+}
+
+.ui-fuqi {
+    display: flex;
+    width: 750rpx;
+    height: 330rpx;
+    background: rgba(42, 213, 188, 1);
+    flex-direction: column;
+
+    /* background: url('test/banner_bg.png'); */
+}
+.ui-fuqi__num {
+    width: 100%;
+    height: 60rpx;
+    margin-top: 60rpx;
+    font-size: 60rpx;
+    font-family: PingFangSC-Medium,PingFang SC;
+    font-weight: 500;
+    color:rgba(255,255,255,1);
+    line-height: 60rpx;
+    letter-spacing: 2rpx;
+    text-shadow:0 4rpx 8rpx rgba(0,0,0,0.25);
+    text-align: center;
+}
+.ui-fuqi__text {
+    width: 100%;
+    height: 48rpx;
+    margin-top: 14rpx;
+    text-align: center;
+}
+.ui-fuqi__text > image:nth-child(1) {
+    width: 48rpx;
+    height: 48rpx;
+    vertical-align: middle;
+}
+.ui-fuqi__text > image:last-child {
+    width: 10rpx;
+    height: 14rpx;
+    margin-left: 8rpx;
+    vertical-align: middle;
+}
+.ui-fuqi__text > text {
+    width: 80rpx;
+    height: 20rpx;
+    margin-left: 10rpx;
+    font-size: 20rpx;
+    font-family: PingFangSC-Regular,PingFang SC;
+    font-weight: 400;
+    color:rgba(255,255,255,1);
+    line-height: 20rpx;
+    vertical-align: middle;
+}
+
+.ui-gzBox {
+    width:118rpx;
+    height:52rpx;
+    padding-left: 24rpx;
+    background:rgba(29,196,188,1);
+    border-radius:200rpx 0 0 200rpx;
+    position: absolute;
+    top: 258rpx;
+    right:0;
+    line-height:52rpx;
+    z-index: 100;
+}
+.ui-gzBox > text {
+    width:48rpx;
+    height:100%;
+    font-size:24rpx;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    color:rgba(255,255,255,1);
+    text-align: center;
+}
+.ui-gzBox > image {
+    width: 28rpx;
+    height: 28rpx;
+    vertical-align: -5rpx;
+}
+
+.ui-testBox {
+    width: 710rpx;
+    height: 398rpx;
+    position: absolute;
+    top: 218rpx;
+    left: 20rpx;
+    background:rgba(255,255,255,1);
+    border-radius:16rpx;
+}
+.ui-testBox__title {
+    width: 100%;
+    height: 112rpx;
+    font-size:32rpx;
+    font-family:PingFangSC-Semibold,PingFang SC;
+    font-weight:600;
+    color:rgba(51,51,51,1);
+    line-height:112rpx;
+    text-align: center;
+}
+.ui-testBox__sign {
+    display: flex;
+    width: 100%;
+    height: auto;
+}
+.ui-testBox__signItem {
+    width: 76rpx;
+    height: auto;
+    margin-left:20rpx;
+}
+.ui-testBox__signItem + .ui-testBox__signItem {
+    margin-left: 24rpx;
+}
+.ui-testBox__signNum {
+    width: 76rpx;
+    height: 76rpx;
+    line-height: 76rpx;
+    text-align: center;
+    border-radius: 50%;
+    background: rgba(255, 253, 188, 1);
+
+    /* background: url('sign/sign_bg.png'); */
+}
+.is-success {
+    background: rgba(255, 240, 132, 1);
+    /* background: url('sign/sign_success.png'); */
+}
+
+.ui-testBox__signNum > text {
+    width:46rpx;
+    height:28rpx;
+    font-size:28rpx;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    color:rgba(255,170,0,1);
+}
+.ui-testBox__sigmDay {
+    width: 66rpx;
+    height: 22rpx;
+    margin-top: 20rpx;
+    margin-left: 4rpx;
+}
+.ui-testBox__sigmDay > text {
+    width:66rpx;
+    height:22rpx;
+    font-size:22rpx;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    color:rgba(102,102,102,1);
+    line-height:22rpx;
+}
+.is-active {
+    color:rgba(255,75,0,1) !important;
+}
+
+.ui-testBox__btn {
+    display:flex;
+    width: 260rpx;
+    height: 68rpx;
+    background:linear-gradient(137deg,rgba(4, 206, 166, 1) 0%,rgba(89, 220, 215, 1) 100%);
+    margin:60rpx auto 40rpx auto;
+    border-radius: 34rpx;
+    text-align: center;
+}
+.ui-testBox__btn > text {
+    width:128rpx;
+    height:32rpx;
+    margin: auto;
+    font-size:32rpx;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    color:rgba(255,255,255,1);
+    line-height: 32rpx;
+}
+
+.ui-game {
+    display: flex;
+    width: 710rpx;
+    height: 180rpx;
+    margin-top: 306rpx;
+    margin-left: 20rpx;
+}
+.ui-game__item {
+    width: 344rpx;
+    height: 180rpx;
+}
+.ui-game__item:nth-child(1) {
+    background: rgba(255, 122, 113, 1);
+    /* background: url('test/zhuanpan_bg.png'); */
+}
+.ui-game__item:nth-child(2) {
+    margin-left: 22rpx;
+    background: rgba(255, 240, 132, 1);
+   /* background: url('test/jindan_bg.png'); */
+}
+.ui-game__item > view:nth-child(1){
+    width: 140rpx;
+    height: 28rpx;
+    margin-top: 56rpx;
+    margin-left: 32rpx;
+    font-size:28rpx;
+    font-family:PingFangSC-Semibold,PingFang SC;
+    font-weight:600;
+    color:rgba(255,255,255,1);
+    line-height:28rpx;
+    text-shadow:0 4rpx 8rpx rgba(209,27,27,0.5);
+}
+.ui-game__item > view:nth-child(2){
+    width:140rpx;
+    height:20rpx;
+    margin-left: 32rpx;
+    margin-top: 20rpx;
+    font-size:20rpx;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    color:rgba(255,234,206,1);
+    line-height:20rpx;
+}
+
+.ui-test {
+    width: 710rpx;
+    height: 584rpx;
+    margin-top: 20rpx;
+    margin-left: 20rpx;
+    padding: 32rpx 40rpx;
+    background: rgba(255,255,255,1);
+
+    /* background: url('test/test_bg.png'); */
+}
+.ui-test__title {
+    width:160rpx;
+    height:40rpx;
+    font-size:40rpx;
+    font-family:PingFangSC-Medium,PingFang SC;
+    font-weight:500;
+    color:rgba(51,51,51,1);
+    line-height:40rpx;
+}
+.ui-test__testItem {
+    display: flex;
+    width: 100%;
+    height: 56rpx;
+    margin-top: 40rpx;
+}
+.ui-test__testName {
+    flex: 1;
+    margin:auto 0;
+    font-size:28rpx;
+    font-family:PingFangSC-Medium,PingFang SC;
+    font-weight:500;
+    color:rgba(51,51,51,1);
+    line-height:28rpx;
+}
+.ui-test__testAdd {
+    width:130rpx;
+    height:28rpx;
+    margin: auto 0;
+    font-size:28rpx;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    color:rgba(255,100,48,1);
+    line-height:28rpx;
+}
+.ui-test__testStatus {
+    width:150rpx;
+    height:56rpx;
+    margin: auto 0 auto 68rpx;
+    background:linear-gradient(137deg,rgba(1,206,165,1) 0%,rgba(94,221,218,1) 100%);
+    border-radius:28rpx;
+    font-size:28rpx;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    color:rgba(255,255,255,1);
+    line-height:56rpx;
+    text-align:center;
+}
