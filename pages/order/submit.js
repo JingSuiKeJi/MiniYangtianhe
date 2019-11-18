@@ -138,31 +138,6 @@ const methods = {
                 }
             });
         }
-        // if (self.data.from == 'goodsDetail' ||  self.data.from == 'bargain' || self.data.from == 'join') {
-        //     let postData = self.data.postData;
-        //     let data = {
-        //         preGoods: {
-        //             goodsId: postData.id,
-        //             num: postData.num,
-        //         },
-        //         platformFlag: postData.platformFlag
-        //     };
-        //     if (postData.skuId) data.preGoods.skuId = postData.skuId;
-        //     Order.preOrder(self, data).then((ret) => {
-        //         self.setPageData(ret.data);
-        //         self.getGoodsInfo(ret.data.goodsVoList);
-        //     });
-        // } else if (self.data.from == 'cart') {
-        //     Order.preOrderCart(self, {
-        //         cartIds: self.data.postData.cartIds,
-        //         platformFlag: self.data.platformFlag
-        //     }).then((ret) => {
-        //         self.setPageData(ret.data);
-        //         self.getGoodsInfo(ret.data.goodsVoList);
-        //     });
-        // } else {
-        //     self.selectCoupon();
-        // }
     },
 
     preferentialPolicies: function () {
@@ -341,7 +316,7 @@ const methods = {
                     }
                 }
             })
-            return ;
+            return;
         }
         let data = {
             num: self.data.num,
@@ -364,17 +339,6 @@ const methods = {
             data.id = self.data.postData.id;
             data.buyType = 1;
         }
-        // if (self.data.from == 'goodsDetail' || self.data.from == 'bargain' || self.data.from == 'join') {
-        //     data.id = self.data.postData.id;
-        //     data.buyType = 1;
-        // }
-        // if (self.data.from == 'cart') {
-        //     data.cartIds = self.data.postData.cartIds;
-        //     data.buyType = 2;
-        // }
-        // if (self.data.thirdId) {
-        //     data.thirdId = self.data.thirdId;
-        // }
         if (self.data.postData.thirdId) {
             data.thirdId = self.data.postData.thirdId;
         }
@@ -385,11 +349,6 @@ const methods = {
             data.isOrigPrice = self.data.postData.isOrigPrice;
         }
         data.integralStatus = self.data.pointsFlag ? 1 : 2;
-        // if (self.data.pointsFlag) {
-        //     data.integralStatus = 1;
-        // } else {
-        //     data.integralStatus = 2;
-        // }
         Order.placeOrder(self, data).then((ret) => {
             //需要做订单轮巡的
             // self.checkOrderStatus(ret.data);
@@ -427,23 +386,8 @@ const methods = {
                 _g.requestPayment(payInfo);
 
             } else if (payInfo.type == 2) {
-                console.log(33, id)
                 self.payStatus('success', id);
             }
-            // payInfo.success = function () {
-            //     //TODO check pay status
-            //     self.payStatus('success', id);
-            // };
-            // payInfo.fail = function () {
-            //     _g.showModal({
-            //         title: '提示',
-            //         content: '支付失败',
-            //         confirm: function () {
-            //             self.payStatus('fail', id);
-            //         }
-            //     });
-            // };
-            // _g.requestPayment(payInfo);
         }, err => {
             _g.showModal({
                 title: '提示',
@@ -460,17 +404,6 @@ const methods = {
         let count = 0;
         let timer = setInterval(() => {
             count++;
-            // if (status == 2) {
-            //     self.prePay();
-            //     clearInterval(self.data.timer);
-            // } else if(status == 3){
-            //     _g.showModal({
-            //         content: '提交订单失败',
-            //     })
-            //     clearInterval(self.data.timer);
-            // }else {
-            //     self.stopCheck(count);
-            // }
             Order.checkPlaceOrder(self, {
                 code: code
             }).then(function (ret) {

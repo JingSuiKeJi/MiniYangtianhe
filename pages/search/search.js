@@ -32,20 +32,26 @@ const methods = {
     getData: function () {
         let self = this;
         self.getHotSearchList();
-        
+
     },
     getHotSearchList: function () {
         let self = this;
         Goods.getHotSearchList(self, {
             platformFlag: self.data.platformFlag,
         }).then((ret) => {
-             self.setData({
+            if (ret.data.length > 10) {
+                self.setData({
+                    tagList: ret.data.slice(0, 10)
+                });
+                return;
+            }
+            self.setData({
                 tagList: ret.data
-             });
-             self.getHisList();
+            });
+            self.getHisList();
         }, (err) => {
-
-        }); 
+            self.getHisList();
+        });
     },
     onGetInput: function (e) {
         let self = this;
@@ -67,7 +73,7 @@ const methods = {
             if (self.data.value) {
                 self.setHisttory(self.data.value);
             };
-            
+
         }
         _g.navigateTo({
             url: 'pages/search/detailList',
@@ -81,21 +87,22 @@ const methods = {
     },
     //设置历史记录
     setHisttory: function (value) {
-       let self = this;
-       let key = self.data.key;
-       let storage = wx.getStorageSync(self.data.key);
-       if (storage) {
-           storage.push(value);
-          wx.setStorageSync(key, storage);
-       } else {
-           storage = [value]
-           wx.setStorageSync(key, storage);
-       }
+        let self = this;
+        let key = self.data.key;
+        let storage = wx.getStorageSync(self.data.key);
+        if (storage) {
+            storage.push(value);
+            wx.setStorageSync(key, storage);
+        } else {
+            storage = [value]
+            wx.setStorageSync(key, storage);
+        }
     },
     //获取本地缓存
     getHisList: function () {
-       let self = this; 
-       let hisList = wx.getStorageSync(self.data.key)
+        let self = this;
+        let hisList = wx.getStorageSync(self.data.key);
+        if (hisList.length > 10) hisList = slice(0, 10);
         self.setData({
             hisList: hisList
         })

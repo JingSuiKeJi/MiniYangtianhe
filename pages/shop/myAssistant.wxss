@@ -344,9 +344,9 @@ page{
 	right: 0;
 	width: 40rpx;
 	height: 40rpx;
-	background-repeat: no-repeat;
+	/* background-repeat: no-repeat;
 	background-position: center center;
-	background-size: cover;
+	background-size: cover; */
 }
 
 .modal-check{

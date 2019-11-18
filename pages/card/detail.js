@@ -43,6 +43,7 @@ const data = {
     ],
     hideModal: true, //模态框的状态  true-隐藏  false-显示
     animationData: {},//
+    goodsDetail: {},
 
 };
 
@@ -76,7 +77,8 @@ const methods = {
             goodsIds: self.data.goodsIds,
             page: 0,
             type: 3
-        }).then((ret) => {   
+        }).then((ret) => {  
+            if(!ret.data.list.length) return;  
             self.setData({
                 goodList: ret.data.list,
                 id: ret.data.list[0].id
@@ -122,13 +124,15 @@ const methods = {
     },
     onBuyTap: function (e) {
         let self = this;
+        if (!_g.checkLogin({ type: 2 })) return;
+        if(!self.data.goodsDetail.id ) return;
         let data = {
             platformFlag: self.data.goodsDetail.platformFlag,
             id: self.data.goodsDetail.id,
             num: 1,
             skuId: 1
         };
-        if (!_g.checkLogin({ type: 2 })) return;
+        
         self.hideModal();
         _g.navigateTo({
             url: 'pages/order/submit',

@@ -10,7 +10,7 @@
             </view>
         </view>
     </view>
-    <view class="ui-scrollViewBox ">
+    <view class="ui-scrollViewBox " wx:if="{{goodList.length}}">
         <scroll-view scroll-x class="ui-scrollView">
             <view wx:for="{{goodList}}" wx:key="{{index}}" class="ui-tapScroll_item" style="box-shadow: {{index == type ? '0rpx 2rpx 20rpx 0rpx rgba(255,214,101,0.4)' : '' }}" bindtap="onClickTap" data-type="{{index}}">
                 <image src="{{filter.getPhoto(host,item.picUrl)}}" mode="aspectFit" class="ui-scrollView__goodsIcon" />
@@ -19,7 +19,7 @@
             </view>
         </scroll-view>
     </view>
-    <view class="ui-goodsMainBox">
+    <view class="ui-goodsMainBox" wx:if="{{goodsDetail.picUrl || goodsDetail.nowPrice ||  goodsDetail.mainTitle}}">
         <image src="{{filter.getPhoto(host,goodsDetail.picUrl)}}" mode="aspectFit" class="goodsItem__icon" />
         <view class="goodsItem__price">￥{{goodsDetail.nowPrice}}</view>
         <view class="goodsItem__text">{{goodsDetail.mainTitle}}</view>

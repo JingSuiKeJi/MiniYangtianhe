@@ -1,7 +1,7 @@
 /**
  * Created by hou on 19/05/2017.
  */
-function base() {};
+function base() { };
 
 var _ = require('./underscore.js');
 var _c = require('./config.js');
@@ -19,7 +19,7 @@ var event = require('./event.js');
  * formatTime(new Date(),'yyyy-M-d h:m:s.S'); ==> 2006-7-2 8:9:4.18
  * @param {[type]} fmt [description]
  */
-Date.prototype.Format = function(fmt) {
+Date.prototype.Format = function (fmt) {
     var o = {
         "M+": this.getMonth() + 1, //月份
         "d+": this.getDate(), //日
@@ -51,26 +51,27 @@ base.prototype = {
         userInfo: '', // 用户信息
         userInfoRes: '', // 微信返回的登录信息,包括加密后的信息encryptedData,iv等信息
         wxLoginCode: '', //  微信登录的login code(登录凭证),使用code 换取 session_key api，将 code 换成 openid 和 session_key
+
     },
-    getUserInfo: function() {
+    getUserInfo: function () {
         let _g = this;
         return _g.getLS(_c.LSKeys.userInfo);
     },
-    getDBUserInfo: function(User, page, showToast) {
+    getDBUserInfo: function (User, page, showToast) {
         let _g = this;
         let sessionKey = _g.getSessionKey();
         if (sessionKey) {
             User.get(page, {
                 showToast: showToast
-            }).then(function(resp) {
+            }).then(function (resp) {
                 _g.setLS(_c.LSKeys.userInfo, resp.data, _c.sessionKeyExpireTime);
-            }, function(error) {
+            }, function (error) {
                 _g.logger(error);
             });
         }
     },
 
-    getSessionKey: function() {
+    getSessionKey: function () {
         let _g = this;
         return _g.getLS(_c.LSKeys.sessionKey);
     },
@@ -80,7 +81,7 @@ base.prototype = {
      * @param options
      * @returns {{data: {}, pm: {param: {}, data: {}}, onLoad: onLoad, onReady: onReady, onShow: onShow, onHide: onHide, onUnload: onUnload, onShareAppMessage: onShareAppMessage, onPullDownRefresh: onPullDownRefresh, onReachBottom: onReachBottom, back: back, home: home}}
      */
-    initPage: function(options) {
+    initPage: function (options) {
         var _g = this;
         var onLoad = options.onLoad; // 重写onLoad
         var onShow = options.onShow; // 重写onShow
@@ -105,7 +106,7 @@ base.prototype = {
 
         var page = {
             data: options.data || {},
-            onLoad: function(options) {
+            onLoad: function (options) {
                 var self = this;
                 wx.hideShareMenu();
                 if (self.route !== _c.pages.home.index) {
@@ -119,10 +120,10 @@ base.prototype = {
                     console.log(scene);
                     const sceneData = _g.getDataByUrl(scene);
                     console.log(sceneData);
-                    if(sceneData.p) {
+                    if (sceneData.p) {
                         sceneData.promoCode = sceneData.p;
                     }
-                    if(sceneData.promoCode) {
+                    if (sceneData.promoCode) {
                         _g.setLS(_c.LSKeys.promoCode, sceneData.promoCode, _c.promoCodeExpireTime)
                     }
                     if (sceneData.t) {
@@ -148,25 +149,25 @@ base.prototype = {
                 }
                 // 原始方式/分享页面传递单数兼容
                 if (_g.j2s(options) != '{}') {
-                    _.each(options, function(val, key) {
+                    _.each(options, function (val, key) {
                         self.data[key] = val;
                     });
-                    if(options.promoCode){
+                    if (options.promoCode) {
                         _g.setLS(_c.LSKeys.promoCode, options.promoCode, _c.promoCodeExpireTime)
                     }
                 }
                 // param 页面自定方法传递的参数
                 if (_g.j2s(_g.dm.param) != '{}') {
-                    _.each(_g.dm.param, function(val, key) {
+                    _.each(_g.dm.param, function (val, key) {
                         self.data[key] = val;
                     });
                 }
-                
+
                 // 来源是邀请
                 if (self.data.promoCode) {
                     _g.setLS(_c.LSKeys.promoCode, self.data.promoCode, _c.promoCodeExpireTime);
                 }
-                
+
                 // if (self.data.recallUserId) {
                 //     _g.setLS(_c.LSKeys.recallUserId, self.data.recallUserId, _c.promoCodeExpireTime);
                 // }
@@ -185,36 +186,36 @@ base.prototype = {
 
                 // 重置模板data
                 var tempsData = {};
-                _.each(temps, function(tempVal, tempKey) {
+                _.each(temps, function (tempVal, tempKey) {
                     var tempData = tempVal.data;
                     var tempOriginObj = _g.clone(_t[tempKey]);
                     if (tempData && _g.j2s(tempData) != '{}') {
-                        _.each(tempData, function(tempDataVal, tempDataKey) {
+                        _.each(tempData, function (tempDataVal, tempDataKey) {
                             tempOriginObj.data[tempDataKey] = tempDataVal;
                         });
                     }
                     tempsData[tempKey + 'Constant'] = tempOriginObj.data;
                 });
                 // if (!_g.getLS(_c.LSKeys.shareQRCode)) {
-                    // console.log(222222)
-                    // _g.getShareCode(self);
+                // console.log(222222)
+                // _g.getShareCode(self);
                 // }
                 self.setData(tempsData);
                 // 执行页面自定义的 onLoad 方法
                 onLoad && onLoad(self);
             },
-            onReady: function() {
+            onReady: function () {
                 // 执行页面自定义的 onReady 方法
                 onReady && onReady(this);
             },
-            onShow: function() {
+            onShow: function () {
                 var self = this;
                 //审核
                 self.setData({
                     auditStatus: _g.getLS(_c.LSKeys.auditStatus)
                 });
                 self.data.openTimes++; // 页面打开次数自增
-                setTimeout(function() {
+                setTimeout(function () {
                     _g.dm.preUrl = ''; // 防触摸多次打开多个页面标志 临时记录每个跳转页面的前一个页面地址(url)
                 }, 500);
                 if (self.data.openTimes >= 2) {
@@ -222,15 +223,15 @@ base.prototype = {
                     onShow && onShow(self);
                 }
             },
-            onHide: function() {
+            onHide: function () {
                 // 执行页面自定义的 onShow 方法
                 onHide && onHide(this);
             },
-            onUnload: function() {
+            onUnload: function () {
                 // 执行页面自定义的 onUnload 方法
                 onUnload && onUnload(this);
             },
-            onShareAppMessage: function(res) {
+            onShareAppMessage: function (res) {
                 if (res.from === 'button') {
                     // 来自页面内转发按钮
                     _g.logger(res.target);
@@ -238,7 +239,7 @@ base.prototype = {
                 return _g.shareAppMsg({});
             },
             // 下拉刷新
-            onPullDownRefresh: function() {
+            onPullDownRefresh: function () {
                 var self = this;
                 self.data.page = 1;
                 if (self.getData) {
@@ -246,7 +247,7 @@ base.prototype = {
                 }
             },
             // 底部翻页
-            onReachBottom: function() {
+            onReachBottom: function () {
                 var self = this;
                 _g.logger('~~~ onReachBottom ~~~~');
                 if (self.data.hasNextPage > 0) {
@@ -274,10 +275,10 @@ base.prototype = {
             onGotUserInfo: function (e) {
                 const self = this;
                 if (e.detail.errMsg == 'getUserInfo:fail auth deny') return;
-				// const  isLogin = self.data.isLogin;
-				// self.setData({
-				// 	isLogin: true
-				// })
+                // const  isLogin = self.data.isLogin;
+                // self.setData({
+                // 	isLogin: true
+                // })
                 const detail = e.detail;
                 wx.login({
                     success(res) {
@@ -289,9 +290,9 @@ base.prototype = {
                         }
                     }
                 })
-                
+
             },
-            onPageScroll: function(res) {
+            onPageScroll: function (res) {
                 // 执行页面自定义的 onShow 方法
                 var self = this;
                 self.pageScroll && self.pageScroll(res);
@@ -300,22 +301,22 @@ base.prototype = {
                 console.log(e);
             },
             // 返回上一页
-            back: function() {
+            back: function () {
                 _g.navigateBack();
             },
             // 回到首页
-            home: function() {
+            home: function () {
                 var self = this;
                 _g.switchTab({
                     self: self,
                     url: _c.pages.home.index
                 });
             },
-            touchStart: function(e) {
+            touchStart: function (e) {
                 const self = this;
                 self.touchStartTime = e.timeStamp;
             },
-            touchEnd: function(e) {
+            touchEnd: function (e) {
                 const self = this;
                 if (self.data.lastTapTime != e.timeStamp) {
                     if (e.timeStamp - self.data.lastTapTime <= 400) {
@@ -329,42 +330,42 @@ base.prototype = {
             longPress: function (e) {
                 console.log(e);
             },
-            onFormIdTap: function(e) {
+            onFormIdTap: function (e) {
                 const self = this;
-                if (_g.checkLogin({ type: 1})) {
+                if (_g.checkLogin({ type: 1 })) {
                     _g.postFormId({
                         self: self,
                         formId: e.detail.formId
                     });
-                   
-                 }
+
+                }
                 e.target.dataset['fuc'] && self[e.target.dataset['fuc']](e);
                 // console.log(e.target.dataset['fuc'])
-               
+
             },
         };
         // 初始化页面方法
-        _.each(methods, function(val, key) {
+        _.each(methods, function (val, key) {
             page[key] = val;
         });
 
         // 初始化模板
-        _.each(temps, function(tempVal, tempKey) {
+        _.each(temps, function (tempVal, tempKey) {
             page.data[tempKey] = tempKey; // 初始化模板名称
             // 初始化模板方法
             var tempOriginObj = _g.clone(_t[tempKey]);
-            _.each(tempOriginObj.methods, function(mVal, mKey) {
+            _.each(tempOriginObj.methods, function (mVal, mKey) {
                 page[mKey] = mVal;
             });
             // 初始化页面模板重写方法
             var pageTempMethods = tempVal.methods || {};
-            _.each(pageTempMethods, function(pageTempMethodVal, pageTempMethodKey) {
+            _.each(pageTempMethods, function (pageTempMethodVal, pageTempMethodKey) {
                 page[pageTempMethodKey] = pageTempMethodVal;
             });
             // 初始化页面模板的data
             var tempData = tempVal.data;
             if (tempData && _g.j2s(tempData) != '{}') {
-                _.each(tempData, function(tempDataVal, tempDataKey) {
+                _.each(tempData, function (tempDataVal, tempDataKey) {
                     tempOriginObj.data[tempDataKey] = tempDataVal;
                 });
             }
@@ -378,7 +379,7 @@ base.prototype = {
      * @param opts
      * @param self 微信page对象
      */
-    ajax: function(opts, self) {
+    ajax: function (opts, self) {
         var _g = this;
         var self = self || opts.self;
         if (_g.dm.lock) return;
@@ -396,7 +397,7 @@ base.prototype = {
             opts.showToast = true;
         }
         delete opts.data.showToast;
-        return new Promise(function(resolve, reject) {
+        return new Promise(function (resolve, reject) {
             if (!_g.dm.canLoadMore) { // 整体请求 比如: getToken,login 都可能不会在页面总请求,而在app.onLaunch中请求
                 _g.dm.canLoadMore = 1;
                 return reject('can not load more');
@@ -472,7 +473,7 @@ base.prototype = {
                 // header: {'Content-Type': 'application/json'},
                 header: { 'content-type': 'application/x-www-form-urlencoded' },
 
-                success: function(res) {
+                success: function (res) {
                     _g.dm.lock = false;
                     // 网络请求错误
                     if (res.statusCode != 200) {
@@ -498,7 +499,7 @@ base.prototype = {
                         return reject(res.data);
                     }
                     if (opts.hideToast) {
-                        setTimeout(function() {
+                        setTimeout(function () {
                             _g.hideToast();
                         }, 2000);
                     }
@@ -525,7 +526,7 @@ base.prototype = {
                     opts.success && opts.success(res.data);
                     return resolve(res.data);
                 },
-                fail: function(err) {
+                fail: function (err) {
                     _g.dm.lock = false;
                     _g.logger('response err: ', err);
                     _g.dm.canLoadMore = 1;
@@ -541,7 +542,7 @@ base.prototype = {
      * @param date
      * @returns {number}
      */
-    getTimestamp: function(date) {
+    getTimestamp: function (date) {
         var timestamp;
         if ((typeof date) == 'object') {
             timestamp = Date.parse(date);
@@ -557,7 +558,7 @@ base.prototype = {
      * obj对象转为json格式的字符串
      * @param obj
      */
-    j2s: function(obj) {
+    j2s: function (obj) {
         return JSON.stringify(obj);
     },
 
@@ -565,7 +566,7 @@ base.prototype = {
      * json格式的字符串转为obj
      * @param str
      */
-    s2j: function(str) {
+    s2j: function (str) {
         return JSON.parse(str);
     },
 
@@ -574,7 +575,7 @@ base.prototype = {
      * @param obj
      * @returns {*}
      */
-    clone: function(obj) {
+    clone: function (obj) {
         var _g = this;
         var o;
         if (typeof obj == "object") {
@@ -604,7 +605,7 @@ base.prototype = {
      * @param len 长度
      * @returns {string}
      */
-    randomString: function(len) {
+    randomString: function (len) {
         len = len || 32;
         var $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';
         /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****/
@@ -622,7 +623,7 @@ base.prototype = {
      * @param val
      * @param expireTime 毫秒数 有效时长
      */
-    setLS: function(key, val, expireTime) {
+    setLS: function (key, val, expireTime) {
         var _g = this;
         var value = {};
         value.val = val;
@@ -642,7 +643,7 @@ base.prototype = {
      * @param key
      * @returns {*}
      */
-    getLS: function(key) {
+    getLS: function (key) {
         var _g = this;
         var result = '';
         if (wx.getStorageSync(key)) {
@@ -664,7 +665,7 @@ base.prototype = {
      * 删除单个缓存
      * @param key
      */
-    rmLS: function(key) {
+    rmLS: function (key) {
         try {
             wx.removeStorageSync(key);
         } catch (e) {
@@ -675,7 +676,7 @@ base.prototype = {
     /**
      * 删除所有本地缓存
      */
-    rmAllLS: function() {
+    rmAllLS: function () {
         try {
             wx.clearStorageSync();
         } catch (e) {
@@ -687,7 +688,7 @@ base.prototype = {
      * 设置顶部导航栏title
      * @param title
      */
-    setNavigationBarTitle: function(title) {
+    setNavigationBarTitle: function (title) {
         wx.setNavigationBarTitle({
             title: title
         });
@@ -697,7 +698,7 @@ base.prototype = {
      * navigateTo 跳转页面
      * @param options
      */
-    navigateTo: function(options, self) {
+    navigateTo: function (options, self) {
         var _g = this;
         if (_g.dm.preUrl == options.url) {
             return;
@@ -749,7 +750,7 @@ base.prototype = {
      * redirectTo 跳转页面
      * @param options
      */
-    redirectTo: function(options, self) {
+    redirectTo: function (options, self) {
         var _g = this;
         if (_g.dm.preUrl == options.url) {
             return;
@@ -769,14 +770,14 @@ base.prototype = {
      * @param options
      */
     closeToWin: function () {
-        
+
     },
 
     /**
      * switch跳转页面
      * @param options
      */
-    switchTab: function(options, self) {
+    switchTab: function (options, self) {
         var _g = this;
         if (_g.dm.preUrl == options.url) {
             return;
@@ -795,7 +796,7 @@ base.prototype = {
      * navigateBack 返回
      * @param delta 返回深度
      */
-    navigateBack: function(delta) {
+    navigateBack: function (delta) {
         if (getCurrentPages().length > 1) {
             wx.navigateBack({
                 delta: delta || 1
@@ -811,7 +812,7 @@ base.prototype = {
      * closeWin 重写返回 返回
      * @param opts.delta 返回深度
      */
-     closeWin: function(opts) {
+    closeWin: function (opts) {
         if (getCurrentPages().length > 1) {
             wx.navigateBack({
                 delta: opts.delta || 1
@@ -826,7 +827,7 @@ base.prototype = {
      * toast
      * @param msg options
      */
-    toast: function(options) {
+    toast: function (options) {
         /*if (options.mask == false) {
             options.mask = false;
         } else {
@@ -838,7 +839,7 @@ base.prototype = {
             image: options.image || '', // 自定义图标的本地路径，image 的优先级高于 icon
             mask: options.mask || false, // 是否显示透明蒙层，防止触摸穿透，默认：false
             duration: options.duration || 1000, //提示的延迟时间
-            success: function() {
+            success: function () {
                 options.success && options.success();
             }
         });
@@ -847,7 +848,7 @@ base.prototype = {
     /**
      * 隐藏toast
      */
-    hideToast: function() {
+    hideToast: function () {
         wx.hideToast();
     },
 
@@ -855,7 +856,7 @@ base.prototype = {
      * 预览图片
      * @param urlsArr
      */
-    previewImage: function(urlsArr) {
+    previewImage: function (urlsArr) {
         wx.previewImage({
             current: '', // 当前显示图片的http链接
             urls: urlsArr // 需要预览的图片http链接列表
@@ -866,7 +867,7 @@ base.prototype = {
      * 打开同一公众号下关联的另一个小程序。
      * @param options
      */
-    navigateToMiniProgram: function(options) {
+    navigateToMiniProgram: function (options) {
         if (!options) options = {};
         var envVersion = '';
         if (_c.env == 'dev') {
@@ -890,7 +891,7 @@ base.prototype = {
     /**
      * 停止下拉刷新
      */
-    stopPullDownRefresh: function() {
+    stopPullDownRefresh: function () {
         wx.stopPullDownRefresh();
     },
 
@@ -898,7 +899,7 @@ base.prototype = {
      * 显示模态框
      * @param opts
      */
-    showModal: function(opts) {
+    showModal: function (opts) {
         var _g = this;
         wx.showModal({
             title: opts.title || '提示',
@@ -908,7 +909,7 @@ base.prototype = {
             confirmText: opts.confirmText || '确定',
             cancelColor: opts.cancelColor || '#000000',
             cancelText: opts.cancelText || '取消',
-            success: function(res) {
+            success: function (res) {
                 if (res.confirm) {
                     _g.logger('用户点击确定');
                     opts.confirm && opts.confirm(res);
@@ -924,16 +925,16 @@ base.prototype = {
      * 定位
      * @returns {*}
      */
-    getLocation: function(type) {
+    getLocation: function (type) {
         var _g = this;
-        return new Promise(function(resolve, reject) {
+        return new Promise(function (resolve, reject) {
             _g.toast({
                 title: '请稍等',
                 icon: 'loading',
                 duration: 1000
             });
             wx.getLocation({
-                success: function(data) {
+                success: function (data) {
                     var key = 'YLTBZ-SPSRO-PPIWR-SKAML-PNQ72-CWBWC';
                     var getAddressUrl = 'https://apis.map.qq.com/ws/geocoder/v1/?location=' + data.latitude + ',' + data.longitude + '&key=' + key + '&get_poi=1';
                     _g.dm.lat = data.latitude;
@@ -944,7 +945,7 @@ base.prototype = {
                         header: {
                             'content-type': 'application/json' // 默认值
                         },
-                        success: function(res) {
+                        success: function (res) {
                             if (res.data.status == 0) {
                                 _g.dm.addr = res.data.result.address_component;
                                 _g.dm.addr.lon = _g.dm.lon;
@@ -952,12 +953,12 @@ base.prototype = {
                             }
                             return resolve(_g.dm.addr);
                         },
-                        fail: function(err) {
+                        fail: function (err) {
                             return reject(err);
                         }
                     });
                 },
-                fail: function(e) {
+                fail: function (e) {
                     if (e.errMsg == 'getLocation:fail auth deny') {
                         // _g.toast({title: '用户拒绝授权'});
                     }
@@ -973,7 +974,7 @@ base.prototype = {
      */
     getLocationDetail: function (lon, lat) {
         var _g = this;
-        return new Promise(function(resolve, reject) {
+        return new Promise(function (resolve, reject) {
             var key = 'YLTBZ-SPSRO-PPIWR-SKAML-PNQ72-CWBWC';
             var getAddressUrl = 'https://apis.map.qq.com/ws/geocoder/v1/?location=' + lat + ',' + lon + '&key=' + key + '&get_poi=1';
             wx.request({
@@ -981,14 +982,14 @@ base.prototype = {
                 header: {
                     'content-type': 'application/json' // 默认值
                 },
-                success: function(res) {
+                success: function (res) {
                     var addr;
                     if (res.data.status == 0) {
                         addr = res.data.result.address_component;
                     }
                     return resolve(addr);
                 },
-                fail: function(err) {
+                fail: function (err) {
                     return reject(err);
                 }
             });
@@ -998,7 +999,7 @@ base.prototype = {
      * 根据配置文件中不同的环境获取不同的host
      * @returns {string}
      */
-    getHost: function() {
+    getHost: function () {
         var host = '';
         if (_c.env == 'dev') {
             host = _c.host.dev;
@@ -1016,7 +1017,7 @@ base.prototype = {
      * @param body
      * @returns {*}
      */
-    promiseWhile: function(condition, body) {
+    promiseWhile: function (condition, body) {
         var done = _q.defer();
 
         function loop() {
@@ -1028,11 +1029,11 @@ base.prototype = {
         return done.promise;
     },
 
-    getOpenSetting: function() {
+    getOpenSetting: function () {
         var _g = this;
-        return new Promise(function(resolve, reject) {
+        return new Promise(function (resolve, reject) {
             wx.getSetting({
-                success: function(res) {
+                success: function (res) {
                     _g.logger('wx.getSetting ', res);
                     if (!res.authSetting['scope.userInfo'] && res.authSetting['scope.userInfo'] != false) {
                         return resolve();
@@ -1040,9 +1041,9 @@ base.prototype = {
                         _g.showModal({
                             title: '用户未授权',
                             content: '如需正常使用"竞华招聘"小程序,请按确定后在授权管理中选中"用户信息",点击确定或返回后重新进入小程序后即可正常使用!',
-                            confirm: function() {
+                            confirm: function () {
                                 wx.openSetting({
-                                    success: function(data) {
+                                    success: function (data) {
                                         if (data) {
                                             if (data.authSetting["scope.userInfo"] == true) {
                                                 _g.dm.isRefuseAuthorization = false;
@@ -1056,13 +1057,13 @@ base.prototype = {
                                             }
                                         }
                                     },
-                                    fail: function() {
+                                    fail: function () {
                                         _g.logger("设置失败返回数据");
                                         return reject();
                                     }
                                 });
                             },
-                            cancel: function() {
+                            cancel: function () {
                                 return reject();
                             }
                         });
@@ -1077,7 +1078,7 @@ base.prototype = {
      * @param options
      * @returns {*|string}
      */
-    imgGM: function(options) {
+    imgGM: function (options) {
         var _g = this;
         var image = options.img || '';
         // console.log('_g.dm.useImgGM ', _g.dm.useImgGM);
@@ -1097,7 +1098,7 @@ base.prototype = {
      * @param options
      * @returns {{title: string, path: string, success: success, fail: fail}}
      */
-    shareAppMsg: function(options) {
+    shareAppMsg: function (options) {
         var options = options || {};
         var _g = this;
         var title = options.title || _c.shareTitle,
@@ -1110,11 +1111,11 @@ base.prototype = {
         return {
             title: title,
             path: path,
-            success: function(res) {
+            success: function (res) {
                 // 转发成功
                 _g.logger('onShareAppMessage success : ', res);
             },
-            fail: function(res) {
+            fail: function (res) {
                 // 转发失败
                 _g.logger('onShareAppMessage fail : ', res);
             }
@@ -1126,7 +1127,7 @@ base.prototype = {
      * @param arr
      * @returns {Array}
      */
-    arrUnique: function(arr) {
+    arrUnique: function (arr) {
         var res = [];
         var json = {};
         for (var i = 0; i < arr.length; i++) {
@@ -1142,7 +1143,7 @@ base.prototype = {
      * 输出日志
      * @param str obj
      */
-    logger: function() {
+    logger: function () {
         if (!_c.debug || _c.env == 'pro') return;
         this.logger = console.log;
     },
@@ -1152,7 +1153,7 @@ base.prototype = {
      * @param $poneInput
      * @returns {boolean}
      */
-    isPhone: function(phone) {
+    isPhone: function (phone) {
         var myreg = /^[0-9]{11}$/;
         if (!myreg.test(phone)) {
             return false;
@@ -1167,7 +1168,7 @@ base.prototype = {
      * @param b
      * @returns {boolean|{}}
      */
-    ksort: function(a, b) {
+    ksort: function (a, b) {
         var e, f, g, c = {},
             d = [],
             h = this,
@@ -1175,7 +1176,7 @@ base.prototype = {
             j = {};
         switch (b) {
             case "SORT_STRING":
-                e = function(a, b) {
+                e = function (a, b) {
                     return h.strnatcmp(a, b)
                 };
                 break;
@@ -1184,12 +1185,12 @@ base.prototype = {
                 e = this.php_js.i18nLocales[k].sorting;
                 break;
             case "SORT_NUMERIC":
-                e = function(a, b) {
+                e = function (a, b) {
                     return a + 0 - (b + 0)
                 };
                 break;
             default:
-                e = function(a, b) {
+                e = function (a, b) {
                     var c = parseFloat(a),
                         d = parseFloat(b),
                         e = c + "" === a,
@@ -1208,7 +1209,7 @@ base.prototype = {
      * @param json
      * @returns {string}
      */
-    jsonToPostDataStr: function(json) {
+    jsonToPostDataStr: function (json) {
         var PostDataStr = '';
         for (var i in json) {
             PostDataStr += i + '=' + json[i] + '&';
@@ -1216,7 +1217,7 @@ base.prototype = {
         return PostDataStr == '' ? PostDataStr : PostDataStr.slice(0, -1);
     },
 
-    param2Obj: function(str) {
+    param2Obj: function (str) {
         var obj = {};
         var str1 = str.split('&');
         for (var i = 0; i < str1.length; i++) {
@@ -1226,7 +1227,7 @@ base.prototype = {
         return obj;
     },
 
-    obj2Param: function(obj) {
+    obj2Param: function (obj) {
         var arr = [];
         for (var key in obj) {
             arr.push(key + '=' + obj[key]);
@@ -1234,9 +1235,9 @@ base.prototype = {
         console.log(arr.join('&'));
         return arr.join('&');
     },
-    chooseImage: function(options) {
+    chooseImage: function (options) {
         var _g = this;
-        return new Promise(function(resolve, reject) {
+        return new Promise(function (resolve, reject) {
             wx.chooseImage({
                 // count: 9,
                 // sizeType: ['original', 'compressed'], // original 原图，compressed 压缩图，默认二者都有
@@ -1250,7 +1251,7 @@ base.prototype = {
                 count: options.count || 9,
 
                 // 成功则返回图片的本地文件路径列表 tempFilePaths
-                success: function(result) {
+                success: function (result) {
                     _g.logger('~~~ wx.chooseImage -> success ~~~', result);
                     if (options.success) {
                         options.success(result);
@@ -1265,7 +1266,7 @@ base.prototype = {
                     }
                 },
                 // 接口调用失败的回调函数
-                fail: function(error) {
+                fail: function (error) {
                     _g.logger('~~~ wx.chooseImage -> fail ~~~', error);
                     options.fail && options.fail(error);
                     return reject(error);
@@ -1273,15 +1274,15 @@ base.prototype = {
             });
         });
     },
-    onUpload: function(options) {
+    onUpload: function (options) {
         var _g = this;
         var imageList = options.imageList;
         var index = 0;
         var allChoseCount = imageList.length;
         var uploadImgs = [];
-        _g.promiseWhile(function() {
+        _g.promiseWhile(function () {
             return index < allChoseCount;
-        }, function() {
+        }, function () {
             _g.toast({
                 title: '上传第' + (index + 1) + '张图片',
                 icon: 'loading',
@@ -1290,7 +1291,7 @@ base.prototype = {
 
             var host = _g.getHost();
             var uploadUrl = host + _c.apiUrls.ajaxUpload;
-            return _q.Promise(function(resolve, reject) {
+            return _q.Promise(function (resolve, reject) {
                 wx.uploadFile({
                     url: uploadUrl,
                     filePath: imageList[index],
@@ -1298,7 +1299,7 @@ base.prototype = {
                     formData: {
                         'sessionKey': _g.getLS(_c.LSKeys.sessionKey)
                     },
-                    success: function(res) {
+                    success: function (res) {
                         index++;
                         var response = JSON.parse(res.data);
                         _g.logger(response);
@@ -1313,7 +1314,7 @@ base.prototype = {
                         uploadImgs.push(src);
                         return resolve(src);
                     },
-                    fail: function(res) {
+                    fail: function (res) {
                         _g.toast({
                             title: '网络错误',
                             duration: 1000,
@@ -1322,8 +1323,8 @@ base.prototype = {
                     }
                 });
             });
-        }).then(function() {
-            setTimeout(function() {
+        }).then(function () {
+            setTimeout(function () {
                 _g.hideToast();
                 if (options.success) {
                     options.success(uploadImgs);
@@ -1336,7 +1337,7 @@ base.prototype = {
             }, 1000);
         }).done();
     },
-    requestPayment: function(opts) {
+    requestPayment: function (opts) {
         var _g = this;
         wx.requestPayment({
             timeStamp: opts.timeStamp,
@@ -1344,24 +1345,24 @@ base.prototype = {
             package: opts.package,
             signType: opts.signType,
             paySign: opts.paySign,
-            success: function(res) {
+            success: function (res) {
                 _g.logger(res);
                 _g.toast({
                     title: '支付成功~'
                 });
                 opts.success && opts.success();
             },
-            fail: function(err) {
+            fail: function (err) {
                 _g.logger(err);
                 opts.fail && opts.fail();
             }
         })
     },
-    getStatusBarHeight: function() {
+    getStatusBarHeight: function () {
         let _g = this;
         return _g.getLS('statusBarHeight');
     },
-    getHeaderHeight: function() {
+    getHeaderHeight: function () {
         let _g = this;
         let headerHeight = 0;
         const statusBarHeight = _g.getLS('statusBarHeight');
@@ -1385,7 +1386,7 @@ base.prototype = {
             // button2StatusBar: buttonRect.top - statusBarHeight //忘记有什么用了
         };
     },
-    getSystemInfo: function() {
+    getSystemInfo: function () {
         let systemInfo;
         wx.getSystemInfo({
             success(res) {
@@ -1394,15 +1395,15 @@ base.prototype = {
         });
         return systemInfo;
     },
-    getCurrentPage: function() {
+    getCurrentPage: function () {
         return getCurrentPages()[getCurrentPages().length - 1].__route__;
     },
-    transNum: function(num) {
+    transNum: function (num) {
         if (num > 10000) return num / 10000 + '万';
         return num;
     },
     // 获取上一个页面
-    getPrevPage: function() {
+    getPrevPage: function () {
         var _g = this;
         var pages = getCurrentPages();
         if (pages.length < 2) {
@@ -1412,18 +1413,18 @@ base.prototype = {
         var prevPage = pages[pages.length - 2]; //上一个页面
         return prevPage;
     },
-    logErrorMsg: function(err) {
+    logErrorMsg: function (err) {
         const _g = this;
         _g.logger(err);
-        if ([4000, 4001, 4005, 4006, 
-                5015, 5016, 5021, 5022, 5023].indexOf(err.code) < 0) {
+        if ([4000, 4001, 4005, 4006,
+            5015, 5016, 5021, 5022, 5023].indexOf(err.code) < 0) {
             _g.toast({
                 title: err.message
             });
         }
     },
     initializeClock(page) {
-        let timeInterval = setInterval(function() {
+        let timeInterval = setInterval(function () {
             let startTime = page.data.startTime;
             page.setData({
                 startTime: startTime + 1
@@ -1435,12 +1436,12 @@ base.prototype = {
     },
     getCurrTimeAndInitializeClock(page) {
         const self = this;
-        self.getCurrTime(page, function(time) {
+        self.getCurrTime(page, function (time) {
             page.setData({
                 startTime: time
             });
             self.initializeClock(page);
-        }, function(error) {
+        }, function (error) {
             _g.logErrorMsg(error);
         });
     },
@@ -1467,27 +1468,27 @@ base.prototype = {
             }
         })
     },
-    joinFormId: function(page, type, id) {
+    joinFormId: function (page, type, id) {
         if (type == _c.formIdType.navigation) {
             return page + ':' + 'navigation' + ':' + id;
         }
     },
-    getCurrentPageUrl: function() {
+    getCurrentPageUrl: function () {
         var pages = getCurrentPages(); //获取加载的页面
         var currentPage = pages[pages.length - 1]; //获取当前页面的对象
         var url = currentPage.route; //当前页面url
         return url;
     },
-    postFormId: function(opts) {
+    postFormId: function (opts) {
         if (opts.formId == 'the formId is a mock one') return;
         const _g = this;
         const Platform = require('../service/Platfrom');
         Platform.formId(opts.self, {
             formId: opts.formId,
             showToast: false
-        }).then(function(ret) {
+        }).then(function (ret) {
 
-        }, function(error) {
+        }, function (error) {
             _g.logErrorMsg(error);
         });
     },
@@ -1545,29 +1546,62 @@ base.prototype = {
     setLogin: function (self, opts, e) {
         const _g = this;
         const User = require('../service/User');
-        User.login(self, {
-            jsCode: opts.code,
-            rawData: opts.rawData,
-            signature: opts.signature,
-            encryptedData: opts.encryptedData,
-            iv: opts.iv,
-            promoCode: _g.getLS('promoCode') || '',
-            storeId: _g.getLS('storeInfo').id
-        }).then((ret) => {
-            _g.setLS(_c.LSKeys.sessionKey, ret.data.sessionKey);
-            _g.getMyInfo(self, {
-                type: 'login',
-                e: e
+        _g.getLocation().then((res) => {
+            User.login(self, {
+                lon: res.lon,
+                lat: res.lat,
+                jsCode: opts.code,
+                rawData: opts.rawData,
+                signature: opts.signature,
+                encryptedData: opts.encryptedData,
+                iv: opts.iv,
+                promoCode: _g.getLS('promoCode') || '',
+                storeId: _g.getLS('storeInfo').id
+            }).then((ret) => {
+                _g.setLS(_c.LSKeys.sessionKey, ret.data.sessionKey);
+                _g.getMyInfo(self, {
+                    type: 'login',
+                    e: e
+                });
+                self.setData({
+                    isLogin: true
+                })
+            }, (err) => {
+                //TODO login fail
+                _g.toast({
+                    title: '登录失败,请重试'
+                });
             });
-            self.setData({
-                isLogin: true
-            })
-        },(err)=>{
-            //TODO login fail
-            _g.toast({
-                title: '登录失败,请重试'
+
+        }, (error) => {
+            User.login(self, {
+                lon: 112.59000,
+                lat: 28.12000,
+                jsCode: opts.code,
+                rawData: opts.rawData,
+                signature: opts.signature,
+                encryptedData: opts.encryptedData,
+                iv: opts.iv,
+                promoCode: _g.getLS('promoCode') || '',
+                storeId: _g.getLS('storeInfo').id
+            }).then((ret) => {
+                _g.setLS(_c.LSKeys.sessionKey, ret.data.sessionKey);
+                _g.getMyInfo(self, {
+                    type: 'login',
+                    e: e
+                });
+                self.setData({
+                    isLogin: true
+                })
+            }, (err) => {
+                //TODO login fail
+                _g.toast({
+                    title: '登录失败,请重试'
+                });
             });
+
         });
+
     },
     getMyInfo: function (self, opts) {
         const _g = this;
@@ -1580,15 +1614,15 @@ base.prototype = {
                 });
                 // event.emit('refreshStep');
             } else {
-				opts.suc && opts.suc();
+                opts.suc && opts.suc();
             }
             if (opts.e && opts.e.currentTarget.dataset.fuc) {
                 let fuc = opts.e.currentTarget.dataset.fuc;
                 self[fuc]();
             }
-        },(err)=>{
+        }, (err) => {
             //TODO login fail
-			opts.fail && opts.fail();
+            opts.fail && opts.fail();
         });
     },
     getShareCode(self) {
@@ -1628,7 +1662,7 @@ base.prototype = {
         if (!_g.getLS('goodsPosterBg')) {
             User.getPoster(self, {
                 type: 2
-            }).then(({data}) => {
+            }).then(({ data }) => {
                 if (data.poster) {
                     wx.downloadFile({
                         url: `${host}${data.poster}`,

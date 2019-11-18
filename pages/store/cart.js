@@ -24,7 +24,7 @@ const data = {
 };
 
 // 页面onLoad方法
-const onLoad = function(self) {
+const onLoad = function (self) {
     self.getTabBar().setData({
         selected: 3
     });
@@ -32,8 +32,8 @@ const onLoad = function(self) {
         userInfo: _g.getLS(_c.LSKeys.userInfo)
     })
     if (_g.checkLogin({
-            type: 1
-        })) {
+        type: 1
+    })) {
         self.getData();
     }
     event.on('refreshCart', self, () => {
@@ -49,13 +49,13 @@ const onLoad = function(self) {
 };
 
 // 页面onShow方法
-const onShow = function(self) {
+const onShow = function (self) {
     self.setData({
         userInfo: _g.getLS(_c.LSKeys.userInfo)
     })
     if (_g.checkLogin({
-            type: 1
-        })) {
+        type: 1
+    })) {
         self.getData();
     }
     self.setData({
@@ -69,13 +69,13 @@ const onShow = function(self) {
         isMgt: false
     })
 };
-const onUnload = function(self) {
+const onUnload = function (self) {
     event.remove('refreshCart');
     event.remove('login-suc');
 };
 // 页面中的方法
 const methods = {
-    getData: function() {
+    getData: function () {
         const self = this;
         // if (!self.userInfo) return;
         Goods.cartList(self, {}).then((ret) => {
@@ -97,7 +97,7 @@ const methods = {
         });
 
     },
-    onSubtractionTap: function(e) {
+    onSubtractionTap: function (e) {
         let self = this;
         let medecineList = self.data.medecineList;
         let storeList = self.data.storeList;
@@ -124,7 +124,7 @@ const methods = {
             index: index
         });
     },
-    onAddTap: function(e) {
+    onAddTap: function (e) {
         let self = this;
         let medecineList = self.data.medecineList;
         let storeList = self.data.storeList;
@@ -148,7 +148,7 @@ const methods = {
         });
 
     },
-    onChoseTap: function(e) {
+    onChoseTap: function (e) {
         let self = this;
         let opts = e.target.dataset;
         let medecineList = self.data.medecineList;
@@ -180,7 +180,7 @@ const methods = {
             self.getMonney('storeList', 2);
         }
     },
-    onAllTap: function(e) {
+    onAllTap: function (e) {
         let self = this;
         if (e.target.dataset.type == 1) {
             self.setData({
@@ -204,7 +204,7 @@ const methods = {
         }
 
     },
-    allChoseTap: function(e) {
+    allChoseTap: function (e) {
         let self = this;
         self.setData({
             allSelect: !self.data.allSelect,
@@ -218,7 +218,7 @@ const methods = {
         // self.getMonney('medecineList',1);
         // self.getMonney('storeList',2);
     },
-    selectTap: function(flag, arr) {
+    selectTap: function (flag, arr) {
         let self = this;
         let list = self.data[arr];
         if (!list.length) return;
@@ -230,7 +230,7 @@ const methods = {
         })
     },
     //全选按钮功能
-    totalFun: function(arr) {
+    totalFun: function (arr) {
         let self = this;
         let list = self.data[arr];
         for (let index = 0; index < list.length; index++) {
@@ -240,7 +240,7 @@ const methods = {
             arr: list
         })
     },
-    getMonney: function(arr, type) {
+    getMonney: function (arr, type) {
         let self = this;
         let mediNum = 0;
         let storeNum = 0;
@@ -272,7 +272,7 @@ const methods = {
             })
         }
     },
-    touchstart: function(e) {
+    touchstart: function (e) {
         this.setData({
             startX: e.changedTouches[0].clientX,
             startY: e.changedTouches[0].clientY,
@@ -289,7 +289,7 @@ const methods = {
 
     },
     //滑动事件处理
-    touchmove: function(e) {
+    touchmove: function (e) {
         let self = this;
         let index = e.currentTarget.dataset.index; //当前索引
         let startX = self.data.startX; //开始X坐标
@@ -299,7 +299,7 @@ const methods = {
         //获取滑动角度
         let angle = self.angle({ X: startX, Y: startY }, { X: touchMoveX, Y: touchMoveY });
         if (e.currentTarget.dataset.type == 1) {
-            self.data.medecineList.forEach(function(v, i) {
+            self.data.medecineList.forEach(function (v, i) {
                 v.isTouchMove = false;
                 //滑动超过30度角 return
                 if (Math.abs(angle) > 30) return;
@@ -315,7 +315,7 @@ const methods = {
                 medecineList: self.data.medecineList
             });
         } else {
-            self.data.storeList.forEach(function(v, i) {
+            self.data.storeList.forEach(function (v, i) {
                 v.isTouchMove = false;
                 //滑动超过30度角 return
                 if (Math.abs(angle) > 30) return;
@@ -338,14 +338,14 @@ const methods = {
      * @param {Object} start 起点坐标
      * @param {Object} end 终点坐标
      */
-    angle: function(start, end) {
+    angle: function (start, end) {
         var _X = end.X - start.X,
             _Y = end.Y - start.Y
         //返回角度 /Math.atan()返回数字的反正切值
         return 360 * Math.atan(_Y / _X) / (2 * Math.PI);
     },
     //删除事件
-    onDeleteTap: function(e) {
+    onDeleteTap: function (e) {
         const self = this;
         const opts = e.currentTarget.dataset;
         Goods.deleteCart(self, {
@@ -356,13 +356,13 @@ const methods = {
 
         });
     },
-    onMgtTap: function(e) {
+    onMgtTap: function (e) {
         let self = this;
         self.setData({
             isMgt: !self.data.isMgt
         })
     },
-    onAccountTap: function(e) {
+    onAccountTap: function (e) {
         let self = this;
         let data = self.data;
         let ids = [];
@@ -372,17 +372,23 @@ const methods = {
             });
         } else {
             let selectedList = [];
+            _.each(selectedList, (item) => {
+                if (item.isSelect) {
+                    ids.push(item.id)
+                }
+            });
+             if (!ids.length) {
+                 _g.toast({title: '请选择要购买的商品'});
+                 return;
+            }
             if (data.mediNum) {
                 selectedList = self.data.medecineList;
             } else {
                 selectedList = self.data.storeList;
             }
 
-            _.each(selectedList, (item) => {
-                if (item.isSelect) {
-                    ids.push(item.id)
-                }
-            });
+
+           
             _g.navigateTo({
                 url: 'pages/order/submit',
                 param: {
@@ -399,7 +405,7 @@ const methods = {
 
     },
     //批量删除
-    onBatchDelete: function(e) {
+    onBatchDelete: function (e) {
         let self = this;
         let medIds = self.deleteIds('medecineList');
         let storeIds = self.deleteIds('storeList');
@@ -433,14 +439,14 @@ const methods = {
                             storeFlag: false,
                             isMgt: false
                         })
-                    }, (err) => {});
+                    }, (err) => { });
                 } else if (res.cancel) {
 
                 }
             }
         })
     },
-    getCartList: function() {
+    getCartList: function () {
         const self = this;
         self.getData();
         self.setData({
@@ -459,7 +465,7 @@ const methods = {
         // });
     },
     //数量加 1 接口
-    addNum: function(opts) {
+    addNum: function (opts) {
         const self = this;
         const key = opts.list + '[' + opts.index + '].num';
         Goods.addNum(self, {
@@ -474,7 +480,7 @@ const methods = {
         });
     },
     //数量减 1 接口
-    subtractNum: function(opts) {
+    subtractNum: function (opts) {
         const self = this;
         const key = opts.list + '[' + opts.index + '].num';
         Goods.subtractNum(self, {
@@ -491,7 +497,7 @@ const methods = {
         });
     },
     //整合批量删除的ids
-    deleteIds: function(arr) {
+    deleteIds: function (arr) {
         let self = this;
         let aimArr = self.data[arr];
         let idsArr = [];
@@ -503,7 +509,7 @@ const methods = {
         });
         return idsArr.join(',');
     },
-    onDetailTap: function(e) {
+    onDetailTap: function (e) {
         let self = this;
         let opts = e.currentTarget.dataset;
         if (opts.type == 1) {
