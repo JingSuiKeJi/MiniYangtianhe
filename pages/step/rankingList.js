@@ -11,16 +11,16 @@ const data = {
 };
 
 // 页面onLoad方法
-const onLoad = function(self) {
+const onLoad = function (self) {
     self.getData();
 };
 
 // 页面onShow方法
-const onShow = function(self) {
-    
+const onShow = function (self) {
+
 };
-const onUnload = function(self) {
-    
+const onUnload = function (self) {
+
 };
 // 页面中的方法
 const methods = {
@@ -28,25 +28,32 @@ const methods = {
         let self = this;
         self.getPageData();
     },
-    getPageData: function() {
+    getPageData: function () {
         let self = this;
         User.rankingList(self, {
             page: self.data.page,
             pageSize: 20
         }).then((ret) => {
             let data = ret.data;
-            if (data.list && data.list.length) {
+            if (self.data.page == 1) {
+                self.setData({
+                    list: data.list.list,
+                    myStep: data.myStep,
+                    hasNextPage: data.list.hasNextPage
+                });
+            } else {
                 self.setData({
                     list: self.data.list.concat(data.list),
                     myStep: data.myStep,
-                    // hasNextPage: data.hasNextPage
+                    hasNextPage: data.list.hasNextPage
                 });
             }
-           
 
-        }, (err) => {});
+
+
+        }, (err) => { });
     },
-    
+
 };
 
 // 有引用template时定义

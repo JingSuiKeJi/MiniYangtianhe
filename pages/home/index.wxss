@@ -24,7 +24,7 @@ page {
 
 .ui-addressText {
     margin-left: 10rpx;
-    width: 108px;
+    width: 88px;
     height: 40rpx;
     font-size: 28rpx;
     font-family: PingFangSC;
@@ -32,6 +32,8 @@ page {
     color: rgba(255, 255, 255, 1);
     line-height: 40rpx;
     overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .icon {

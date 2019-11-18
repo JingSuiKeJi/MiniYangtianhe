@@ -16,7 +16,6 @@ let data = {
     storeName: '', //门店名称
     storeTel: '', //门店电话
     businessLicense: '', //营业执照
-    company: '', //分公司
     companyId: '', //分公司Id
     authorizeHidden: true, //开启地理授权
     showModal: false, //选择公司模态框,

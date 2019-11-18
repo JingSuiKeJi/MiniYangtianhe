@@ -107,7 +107,7 @@
 				</view>
 			</scroll-view>
 			
-			<view wx:if="{{!introduce||!encoding||!storeName||!address||!storeTel||!businessLicense||!company}}" class="btn-submit btn-notSubmit" bindtap="onNotSubmitTap">完成并提交申请</view>
+			<view wx:if="{{!introduce||!encoding||!storeName||!address||!storeTel||!businessLicense||!companyId || !photo || !cityName || !areaName || !houseNumber || !address  }}" class="btn-submit btn-notSubmit" bindtap="onNotSubmitTap">完成并提交申请</view>
 			<view wx:else class="btn-submit btn-canSubmit" bindtap="onSubmitTap">完成并提交申请</view>
 		</view>
 	</view>

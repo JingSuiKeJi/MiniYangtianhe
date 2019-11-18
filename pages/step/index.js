@@ -101,7 +101,7 @@ const onReady = function (self) {
 
 // 页面onShow方法
 const onShow = function (self) {
- 
+
 };
 const onUnload = function (self) {
     event.remove('step-index-authorize', self);
@@ -127,7 +127,7 @@ const methods = {
                 BMIIndex: BMIIndex
             });
             self.btnShow(stepInfo.status);
-           
+
         }, (err) => { });
     },
     onIllustrationTap: function (e) {
@@ -231,9 +231,9 @@ const methods = {
                 title: '上传步数成功',
                 duration: 3000
             });
-            if (self.data.stepInfo.status == 2) {
-                self.showDialogBtn();
-            }
+            // if (self.data.stepInfo.status == 2) {
+            //     self.showDialogBtn();
+            // }
         }, (err) => {
 
         })
@@ -288,11 +288,9 @@ const methods = {
             pageSize: 3
         }).then((ret) => {
             let data = ret.data;
-            if (data.list && data.list.length) {
-                self.setData({
-                    fridensList: data.list,
-                });
-            }
+            self.setData({
+                fridensList: data.list.list,
+            });
 
 
         }, (err) => { });
@@ -328,7 +326,7 @@ const methods = {
         self.getTabBar().setData({
             flag: false
         });
-        
+
     },
     //隐藏模态框
     hideModal: function () {
@@ -500,7 +498,7 @@ const methods = {
     onShareAppMessage() {
         const self = this;
         const userInfo = _g.getLS(_c.LSKeys.userInfo);
-        const path = `pages/step/index?platformFlag=${self.data.platformFlag}`;
+        const path = `pages/step/index?promoCode=${userInfo.promoCode}`;
         return {
             title: '一起加入养天和吧',
             path: path,

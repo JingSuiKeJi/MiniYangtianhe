@@ -12,9 +12,6 @@ App({
         self.base.logger();
         wx.getSystemInfo({
             success(res) {
-                if (res.environment == 'wxwork') {
-                    self.base.setLS('isWork', true);
-                }
                 self.base.setLS('systemType', res.platform);
                 self.base.setLS('systemInfo', res);
                 //获取状态栏高度

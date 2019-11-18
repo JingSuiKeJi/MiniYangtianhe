@@ -92,7 +92,7 @@ const onLoad = function (self) {
         self.setData({
             isLogin: false
         });
-        self.getLocation();
+        self.getStoreList();
     });
     event.on('home-index-authorize', self, (res) => {
         if (res.detail.authSetting['scope.writePhotosAlbum']) {
@@ -131,13 +131,11 @@ const onReady = function (self) {
             authorizeHidden: true
         });
     }
-    console.log('---')
 
 }
 
 // 页面onShow方法
 const onShow = function (self) {
-    console.log(4444,self.data.canvasUrl);
     // self.onScroll('#aim', 'scrollTop');
     // self.onScroll('#head', 'headTop');
 
@@ -212,8 +210,6 @@ const methods = {
         self.getBrandList();
         self.getSecKill();
         self.getClassifyList();
-        // self.getPoster();
-        // self.getShareCode();
     },
     getCommonData() {
         const self = this;
@@ -670,9 +666,9 @@ const methods = {
                 duration: 3000
             });
             self.getCommonData();
-            if (self.data.stepInfo.status == 2) {
-                self.showDialogBtn();
-            }
+            // if (self.data.stepInfo.status == 2) {
+            //     self.showDialogBtn();
+            // }
         }, (err) => {
             _g.toast({
                 title: err.message
@@ -989,7 +985,7 @@ const methods = {
     onShareAppMessage() {
         const self = this;
         const userInfo = _g.getLS(_c.LSKeys.userInfo);
-        const path = `pages/home/index?platformFlag=${self.data.platformFlag}`;
+        const path = `pages/home/index?promoCode=${userInfo.promoCode}`;
         return {
             title: '一起加入养天和吧',
             path: path,
