@@ -75,7 +75,8 @@
     "pages/order/overOrder",
     "pages/order/overOrderdetails",
     "pages/shop/sign",
-    "pages/shop/signQRCode"
+    "pages/shop/signQRCode",
+    "pages/shop/test"
   ],
   "tabBar": {
     "custom": true,

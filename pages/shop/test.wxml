@@ -1,0 +1,76 @@
+<wxs module="filter" src="../../filter/filter.wxs"></wxs>
+<!-- test.wxml -->
+<view class="container">
+    <view class="ui-main">
+        <view class="ui-fuqi">
+            <view class="ui-fuqi__num">2929</view>
+            <view class="ui-fuqi__text">
+                <image mode="aspectFit" src="{{filter.getLocalPhoto('test/fuqi_icon.png')}}"/>
+                <text>福气明细 </text>
+                <image mode="aspectFit" src="{{ filter.getLocalPhoto('test/rightArrow.png')}}" class="ui-moreIcon"/>
+            </view>
+        </view>
+        <view class="ui-gzBox">
+            <text>规则 </text>
+            <image mode="aspectFit" src="{{ filter.getLocalPhoto('test/rightArrow.png')}}" class="ui-moreIcon"/>
+        </view>
+        <view class="ui-testBox">
+            <view class="ui-testBox__title">签到福气加倍</view>
+            <view class="ui-testBox__sign">
+                 <view class="ui-testBox__signItem" wx:for="{{7}}" wx:key="{{item}}">
+                    <view class="ui-testBox__signNum {{ item == 1 ? 'is-success' : '' }}">
+                        <text>+16</text>
+                    </view>
+                    <view class="ui-testBox__sigmDay">
+                        <text class="{{ item == 1 ? 'is-active' : '' }}">第一天</text>
+                    </view>
+                 </view>
+            </view>
+            <view class="ui-testBox__btn">
+                <text>立即签到</text>
+            </view>
+        </view>
+        <view class="ui-game">
+            <view class="ui-game__item">
+                 <view >福气大转盘</view>
+                 <view >邀请好友一起玩</view>
+            </view>
+            <view class="ui-game__item">
+                 <view >幸运砸金蛋</view>
+                 <view >天天赢好礼</view>
+            </view>
+        </view>
+        <view class="ui-test">
+            <view class="ui-test__title">
+                新手任务
+            </view>
+            <view class="ui-test__testItem" wx:for="{{ 5 }}" wx:key="item">
+                <view class="ui-test__testName">关注公众号</view>
+                <view class="ui-test__testAdd">+50</view>
+                <view class="ui-test__testStatus">
+                    去完成
+                </view>
+            </view>
+        </view>
+        <view class="ui-test">
+                    <view class="ui-test__title">
+                       每日任务
+                    </view>
+                    <view class="ui-test__testItem" wx:for="{{ 5 }}" wx:key="item">
+                        <view class="ui-test__testName">关注公众号</view>
+                        <view class="ui-test__testAdd">+50</view>
+                        <view class="ui-test__testStatus">
+                            去完成
+                        </view>
+                    </view>
+                </view>
+    </view>
+</view>
+
+<authorize 
+    id="authorize" 
+    message="请问需要授权相册从而保存至本地" 
+    bind:onCancelTap="onCancelTap" 
+    eventName="me-storeQRCode-authorize" 
+    isHidden="{{authorizeHidden}}">
+</authorize>
