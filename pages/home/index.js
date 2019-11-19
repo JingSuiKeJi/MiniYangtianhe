@@ -666,9 +666,9 @@ const methods = {
                 duration: 3000
             });
             self.getCommonData();
-            // if (self.data.stepInfo.status == 2) {
-            //     self.showDialogBtn();
-            // }
+            if (self.data.stepInfo.status == 2) {
+                self.showDialogBtn();
+            }
         }, (err) => {
             _g.toast({
                 title: err.message

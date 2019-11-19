@@ -172,7 +172,13 @@ config.prototype = {
             storeList: '/app/home/getStoreList.do',
             applyDetail: '/app/store/applyDetail.do',
             updateApply: '/app/store/updateApply.do',
-            selectStore: '/app/home/selectStore.do'
+            selectStore: '/app/home/selectStore.do',
+            signHome: '/app/store/signHome.do',
+            signIn: '/app/store/signIn.do',
+            qrCodeCenter: '/app/store/qrCodeCenter.do',
+            signMyFriend: '/app/store/signMyFriend.do',
+            taskSignIn: '/app/task/signIn.do',
+            taskSignHome: '/app/task/signHome.do'
         },
         order: {
             placeOrder: '/app/order/placeOrder.do',

@@ -6,9 +6,9 @@
             <view class="ui-storeItem__gps">
                 <view class="ui-gpsItem__btn">
                      <image src="{{filter.getLocalPhoto('home_address.png')}}" mode="aspectFit"  class="ui-gpsItem__addressItem"/>
-                     <view class="ui-gpsItem__name">当前门店：天盈广场店</view>
+                     <view class="ui-gpsItem__name">当前门店：<text >{{store.title}}</text></view>
                 </view>
-                <view class="ui-gpsitem__status">未绑定</view>
+                <view class="ui-gpsitem__status">{{info.isBindStore ? '已' : '未'}}绑定</view>
             </view>
             <map class="ui-map" 
                 longitude="{{lon}}" 
@@ -18,53 +18,51 @@
                 bindcallouttap="onBubbleTap"
                 bindupdated="bindupdated"
                 bindregionchange="bindregionchange"
-                subkey="YLTBZ-SPSRO-PPIWR-SKAML-PNQ72-CWBWC">
+                subkey="YLTBZ-SPSRO-PPIWR-SKAML-PNQ72-CWBWC" >
             </map>
             <view class="ui-addressBox">
-                <view class="ui-addressitem">门店地址：广州市天河区天盈广场东塔</view>
-                <view class="ui-addressitem">联系人：方店长</view>
-                <view class="ui-addressitem">联系方式：13800138000</view>
+                <view class="ui-addressitem">门店地址：{{store.address}}</view>
+                <view class="ui-addressitem">联系人：{{store.managerName}}</view>
+                <view class="ui-addressitem">联系方式：{{store.phone}}</view>
             </view>
          </view>
          <view class="ui-signBox">
             <view class="ui-signitem__fuqi">
-                <view class="ui-fuqi__num">可用福气：<text >1000</text></view>
-                <view class="ui-fuqi__num">已连续签到：<text >0</text>天</view>
+                <view class="ui-fuqi__num">可用福气：<text >{{info.point}}</text></view>
+                <view class="ui-fuqi__num ui-fuqi__signDay">已连续签到：<text >{{info.signNum}} </text>天</view>
             </view>
             <view class="ui-signitem__date">
-                <block wx:for="{{7}}" wx:key="{{item}}">
+                <block wx:for="{{signList}}" wx:key="{{index}}">
                     <view class="ui-signitem__day">
-                        <view wx:if="{{item !== 0}}" class="ui-signitem__num">
+                        <view wx:if="{{!item.isSign}}" class="ui-signitem__num">
                              <image src="{{filter.getLocalPhoto('sign/sign_bg.png')}}" mode="aspectFit"/> 
-                            <text >+10</text>
+                            <text >+{{item.score}}</text>
                         </view>
-                        <view wx:else class="ui-signitem__num">
+                        <view wx:if="{{item.isSign}}" class="ui-signitem__num">
                              <image src="{{filter.getLocalPhoto('sign/signSuccess_bg.png')}}" mode="aspectFit"/> 
                         </view>
-                        <view class="ui-signitem__which">
-                            <text >第一天</text>
+                        <view class="ui-signitem__which" style="color: {{!item.isSign ? '#666666' : ''}}">
+                            <text >第{{item.day}}天</text>
                         </view>
                     </view>
                 </block>
             </view>
-            <view class="ui-signitem__btn" bindtap="onCodeTap">扫码签到</view>
-             <view class="ui-signitem__text">*所有有注册养天和优选的门店均可参加扫码签到活动，详情请浏览规则说明</view>
+            <view class="ui-signitem__btn" bindtap="onCodeTap" wx:if="{{!info.todaySignStatus}}">扫码签到</view>
+            <view class="ui-signitem__btn"  wx:if="{{info.todaySignStatus}}" style="background-color: #CCCCCC ">扫码签到</view>
+            <view class="ui-signitem__text">*所有有注册养天和优选的门店均可参加扫码签到活动，详情请浏览规则说明</view>
          </view>
          <!--  -->
          <view class="ui-recordBox">
              <view class="ui-recorditem__title">乐友签到记录</view>
-             <block wx:for="{{5}}" wx:key="{{item}}">
+             <block wx:for="{{friendsList}}" wx:key="{{index}}" wx:if="{{friendsList.length}}">
                  <view class="ui-recorditem__friend">
-                    <view class="ui-recorditem__avatar">
-                         <!-- 用户头像 <image src="{{filter.getLocalPhoto('home_address.png')}}" mode="aspectFit" class="ui-recorditem__avatar"/> -->
-                    </view>
-                    <view class="ui-recorditem__name">命运的杰克</view>
-                    <view class="ui-recorditem__time">2019.11.11 20:23:23到店签到</view>
+                    <image src="{{item.avatar}}" mode="aspectFit" class="ui-recorditem__avatar"/>
+                    <view class="ui-recorditem__name">{{item.name}}</view>
+                    <view class="ui-recorditem__time">{{filter.getDate(item.createTime)}}到店签到</view>
                 </view>
              </block>
-             <view class="ui-recorditem__end">
-                 向下滑动显示更多
-             </view>
+             <view class="ui-recorditem__end" wx:if="{{!friendsList.length}}">暂无数据~</view>
+             <view class="ui-recorditem__end">{{hasNextPage ? '下拉滑动显示更多' : ''}}</view>
          </view>
          <!--  -->
      </view>

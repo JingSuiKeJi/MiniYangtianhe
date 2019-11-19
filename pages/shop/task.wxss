@@ -164,8 +164,9 @@
     display:flex;
     width: 260rpx;
     height: 68rpx;
-    background:linear-gradient(137deg,rgba(4, 206, 166, 1) 0%,rgba(89, 220, 215, 1) 100%);
-    margin:60rpx auto 40rpx auto;
+    /* background:linear-gradient(137deg,rgba(4, 206, 166, 1) 0%,rgba(89, 220, 215, 1) 100%); */
+    background-color: #4BDACF;
+    margin:40rpx auto 40rpx auto;
     border-radius: 34rpx;
     text-align: center;
 }
@@ -280,4 +281,23 @@
     color:rgba(255,255,255,1);
     line-height:56rpx;
     text-align:center;
+}
+.ui-signitem__num {
+    width: 78rpx;
+    height: 76rpx;
+    margin: 40rpx 0 0 0;
+    position: relative;
+}
+.ui-signitem__num > image {
+    width: 100%;
+    height: 100%;
+}
+.ui-signitem__num > text {
+    position: absolute;
+    left: 14rpx;
+    font-size: 28rpx;
+    font-family: PingFangSC-Regular,PingFang SC;
+    font-weight: 400;
+    color:rgba(255,170,0,1);
+    line-height: 76rpx;
 }
