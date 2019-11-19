@@ -1,68 +1,25 @@
-// pages/step/index.js
 const app = getApp();
 const _ = app.underscore;
 const _g = app.base;
 const _c = app.config;
 const event = app.event;
-const Platform = require('../../service/Platfrom');
 const User = require('../../service/User');
+const Platform = require('../../service/Platfrom')
 // 初始化数据
 const data = {
-    step: '上传步数',
-    list: [],
-    BMIIndex: 0,
-    test: 1,
-    fridensList: [],
-    stepInfo: {
-        leyouNum: 0,
-        points: 0,
-        rank: 0,
-        status: 0,
-        targetStep: 0,
-        todayStep: 0,
-        totalStep: 0,
-    },
     showModal: false,
     picThumb: {},
     shareCode: {},
     avatarThumb: {},
     canvasUrl: '',
     authorizeHidden: true,
+    point: 10
 };
 
 // 页面onLoad方法
 const onLoad = function (self) {
-
-
-    if (_g.checkLogin({ type: 1 })) {
-        self.getData();
-    }
-    self.initBlock();
-    event.on('logout-suc', self, (ret) => {
-        self.setData({
-            step: '上传步数',
-            list: [],
-            BMIIndex: 0,
-            test: 1,
-            fridensList: [],
-            stepInfo: {
-                leyouNum: 0,
-                points: 0,
-                rank: 0,
-                status: 0,
-                targetStep: 0,
-                todayStep: 0,
-                totalStep: 0,
-            }
-        })
-    });
-    event.on('login-suc', self, (ret) => {
-        self.getData();
-    });
-    self.getTabBar().setData({
-        selected: 2
-    });
-    event.on('step-index-authorize', self, (res) => {
+    self.getData();
+    event.on('shop-signFinish-authorize', self, (res) => {
         if (res.detail.authSetting['scope.writePhotosAlbum']) {
             self.savePicToAlbum();
             self.setData({
@@ -71,11 +28,27 @@ const onLoad = function (self) {
             });
         }
     });
+};
+
+// 页面onShow方法
+const onShow = function (self) {
 
 };
+const onUnload = function (self) {
+    event.remove('shop-signFinish-authorize', self);
+};
 const onReady = function (self) {
-    if (self.data.canvasUrl) return;
     const userInfo = _g.getLS(_c.LSKeys.userInfo);
+    self.setData({
+        userInfo: userInfo
+    })
+    self.authorize = self.selectComponent('#authorize');
+    self.authorize.onCancelTap = function () {
+        self.setData({
+            authorizeHidden: true,
+        });
+    }
+    if (self.data.canvasUrl) return;
     if (userInfo && userInfo.avatar && !_g.getLS('avatarThumb')) {
         self.downloadImg({
             imgUrl: userInfo.avatar,
@@ -90,222 +63,23 @@ const onReady = function (self) {
             avatarThumb: _g.getLS('avatarThumb')
         });
     }
-    self.authorize = self.selectComponent('#authorize');
-    self.authorize.onCancelTap = function () {
-        self.setData({
-            authorizeHidden: true
-        });
-    }
 
 }
-
-// 页面onShow方法
-const onShow = function (self) {
-
-};
-const onUnload = function (self) {
-    event.remove('step-index-authorize', self);
-};
 // 页面中的方法
 const methods = {
     getData: function () {
         let self = this;
-        self.getStepInfo();
-        self.getPageData();
-        self.rankingList();
         self.getPoster();
-        self.getShareCode();
-    },
-    getStepInfo: function () {
-        let self = this;
-        Platform.getStepInfo(self, {}).then((ret) => {
-            let stepInfo = ret.data.stepInfo;
-            let percent = stepInfo.todayStep / stepInfo.targetStep;
-            let BMIIndex = Math.ceil(31 * percent);
-            self.setData({
-                stepInfo: stepInfo,
-                BMIIndex: BMIIndex
-            });
-            self.btnShow(stepInfo.status);
-
-        }, (err) => { });
-    },
-    onIllustrationTap: function (e) {
-        let self = this;
-        _g.navigateTo({
-            url: 'pages/me/blissDetail'
-        }, self)
-    },
-    onCheckTap: function (e) {
-        let self = this;
-        _g.navigateTo({
-            url: 'pages/step/myFriends'
-        }, self)
-    },
-    onIllustrateTap: function (e) {
-        let self = this;
-        _g.navigateTo({
-            url: 'pages/home/notice',
-            param: {
-                urlParam: `type=article&id=pointsRule`
-            }
-        }, self);
-        // _g.navigateTo({
-        //     url: 'pages/step/illustration'
-        // }, self)
-    },
-    initBlock: function () {
-        let self = this;
-        let blockList = [];
-        for (var i = 0; i < 31; i++) {
-            if (i <= 14) {
-                var a = 130;
-            } else if (i == 15) {
-                var a = 0;
-            } else if (i >= 16) {
-                var a = 130;
-            }
-            var rotate = ((a / 15) * i - a).toFixed(0);
-            //y = y0 + r * sin(a * pi / 180)
-            //x = x0 + r * cos(a * pi / 180)
-            //(x0, y0) ==> (0, 0)
-            var left = (1.4 * Math.sin(rotate * Math.PI / 180)).toFixed(2);
-            var bottom = (1.4 * Math.cos(rotate * Math.PI / 180)).toFixed(2);
-            blockList.push({
-                //  bottom: 0,
-                // left: 0,
-                bottom: bottom,
-                left: left,
-                rotate: rotate
-            });
-        }
-        self.setData({
-            blockList: blockList,
-        })
-    },
-    onStepTap: function () {
-        let self = this;
-        if (!_g.checkLogin({ type: 2 })) return;
-        wx.showLoading({
-            mask: true,
-            title: '正在上传步数',
-            success() { }
-        });
-        self.wxLogin();
-    },
-    wxLogin: function () {
-        let self = this;
-        wx.login({
-            success(res) {
-                if (res.code) {
-                    self.setData({
-                        code: res.code
-                    })
-                    self.getWeRunData();
-                } else {
-                    console.log('登录失败！' + res.errMsg)
-                }
-            }
-        })
-    },
-    getWeRunData: function () {
-        const self = this;
-        wx.getWeRunData({
-            success(res) {
-                let data = {
-                    encryptedData: res.encryptedData,
-                    iv: res.iv,
-                    jsCode: self.data.code
-                };
-                self.uploadStep(data)
-            }
-        })
-
-    },
-    uploadStep: function (data) {
-        let self = this;
-        Platform.uploadStep(self, data).then((ret) => {
-            self.getData();
-            wx.hideLoading();
-            _g.toast({
-                title: '上传步数成功',
-                duration: 3000
-            });
-            if (self.data.stepInfo.status == 2) {
-                self.showDialogBtn();
-            }
-        }, (err) => {
-
-        })
-    },
-    btnShow: function (status) {
-        let self = this;
-        switch (status) {
-            case 1:
-                self.setData({
-                    step: '上传步数'
-                });
-                break;
-            case 2:
-                self.setData({
-                    step: '已领取'
-                });
-                break;
-            default:
-                self.setData({
-                    step: ''
-                });
-                break;
-        }
-    },
-    getPageData: function () {
-        let self = this;
-        User.getRecordList(self, {
-            page: self.data.page,
-            pageSize: 20,
-        }).then((ret) => {
-            let data = ret.data;
-            if (data.list && data.list.length) {
-                if (self.data.page == 1) {
-                    self.setData({
-                        list: data.list,
-                    });
-                } else {
-                    self.setData({
-                        list: self.data.list.concat(data.list),
-                    });
-                }
-
-            }
-
-
-        }, (err) => { });
-    },
-    rankingList: function () {
-        let self = this;
-        User.rankingList(self, {
-            page: self.data.page,
-            pageSize: 3
-        }).then((ret) => {
-            let data = ret.data;
-            self.setData({
-                fridensList: data.list.list,
-            });
-
-
-        }, (err) => { });
-    },
-    onMoreTap: function (e) {
-        let self = this;
-        _g.navigateTo({
-            url: 'pages/step/rankingList'
-        }, self)
+        self.getShareCode()
     },
     getPoster: function () {
         const self = this;
         User.getPoster(self, {
-            type: 3
+            type: 4
         }).then((ret) => {
+            self.setData({
+                bgImg: ret.data.poster
+            })
             self.downloadImg({
                 imgUrl: self.data.host + ret.data.poster
             }, (res) => {
@@ -323,9 +97,6 @@ const methods = {
         self.setData({
             showModal: true
         })
-        self.getTabBar().setData({
-            flag: false
-        });
 
     },
     //隐藏模态框
@@ -372,11 +143,13 @@ const methods = {
         const self = this;
         if (!_g.getUserInfo()) return;
         let sence = 'p=' + _g.getLS(_c.LSKeys.userInfo).promoCode;
-
         Platform.getShareQR(self, {
             scene: sence,
             page: 'pages/home/index'
         }).then((ret) => {
+            self.setData({
+                code: ret.data.shareQR
+            })
             self.downloadImg({
                 imgUrl: self.data.host + ret.data.shareQR
             }, (res) => {
@@ -461,16 +234,16 @@ const methods = {
         ctx.fillText('获得', calculate(148), calculate(758))
         ctx.setFillStyle('#EA6363');
         ctx.setFontSize(calculate(23))
-        ctx.fillText('3000', calculate(188), calculate(758))
+        ctx.fillText(self.data.point, calculate(188), calculate(758))
         ctx.setFillStyle('#3D3D3D');
         ctx.setFontSize(calculate(18))
-        ctx.fillText('福气', calculate(248), calculate(758))
+        ctx.fillText('福气', calculate(248), calculate(738))
         ctx.drawImage(poster.avatar, calculate(64), calculate(704), calculate(62), calculate(62))
 
         //分享二维码
         // ctx.save()
         ctx.drawImage(poster.shareCode.path, calculate(368), calculate(684), calculate(118), calculate(118))
-        ctx.setFillStyle('#333');
+        ctx.setFillStyle('#FFFFFF');
         ctx.setFontSize(calculate(18))
         ctx.fillText('扫一扫识别二维码，一起来挑战吧', calculate(142), calculate(850))
         ctx.draw(true, (res) => {
@@ -486,7 +259,6 @@ const methods = {
                     self.setData({
                         canvasUrl: res.tempFilePath
                     });
-                    // _g.setLS('myPosterUrl', res.tempFilePath);
                 }
             }, self);
         }, self);
@@ -505,9 +277,8 @@ const methods = {
             imageUrl: self.data.canvasUrl
         }
     }
+
 };
-
-
 
 // 有引用template时定义
 const temps = {};

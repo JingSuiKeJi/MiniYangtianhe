@@ -49,12 +49,12 @@ const methods = {
                 lon: res.lon,
                 lat: res.lat
             });
-            self.getStoreList(res);
+            self.getPageData(res);
         },(error) => {
-            self.getStoreList();
+            self.getPageData();
         });
     },
-    getStoreList() {
+    getPageData() {
         const self = this;
         Store.storeList(self, {
             page: self.data.page,
@@ -74,9 +74,9 @@ const methods = {
                         storeList: self.data.storeList.concat(ret.data.list)
                     });
                 }
-                self.setData({
-                    page: ++self.data.page
-                });
+                // self.setData({
+                //     page: ++self.data.page
+                // });
                 self.transList();
             } else {
                 if (self.data.page != 1) {

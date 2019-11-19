@@ -319,6 +319,12 @@ var filter = {
         } else {
             return string
         }
+    },
+    limitedLength: function (value) {
+        if(value && value.length > 13) {
+           value = value.slice(0,13) + '...'
+        }
+        return value;
     }
 };
 module.exports = filter;

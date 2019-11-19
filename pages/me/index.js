@@ -357,7 +357,9 @@ const methods = {
     onTastTap: function (e) {
         let self = this;
         if (!_g.checkLogin({type: 2})) return;
-        console.log('任务中心');
+       _g.navigateTo({
+           url: 'pages/shop/task'
+       },self)
     },
     onExchangeTap: function (e) {
         let self = this;

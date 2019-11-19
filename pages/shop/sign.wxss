@@ -50,6 +50,13 @@ page {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+.ui-gpsItem__name > text{
+    width: 150rpx;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: inline-block;
+}
 .ui-gpsitem__status {
     font-size:28rpx;
     font-family:PingFangSC-Regular,PingFang SC;
@@ -117,6 +124,10 @@ page {
 .ui-fuqi__num > text {
     font-size:40rpx;
     font-weight:600;
+}
+.ui-fuqi__signDay {
+    margin-left: auto;
+    margin-right: 30rpx;
 }
 .ui-signitem__date {
     display: flex;
@@ -210,9 +221,10 @@ page {
     display: flex;
     width:646rpx;
     height:128rpx;
-    padding: 24rpx 0;
+    /* padding: 24rpx 0; */
     background:rgba(255,255,255,1);
     box-shadow:0 2rpx 0 0 rgba(245,245,245,1),0 -2rpx 0 0 rgba(245,245,245,1);
+    align-items: center;
 }
 .ui-recorditem__avatar {
     width: 80rpx;
@@ -224,27 +236,22 @@ page {
     width:130rpx;
     height:36rpx;
     margin-left: 20rpx;
-    margin-top:auto;
-    margin-bottom:auto;
     font-size:26rpx;
     font-family:PingFangSC-Regular,PingFang SC;
     font-weight:400;
     color:rgba(61,61,61,1);
     line-height: 36rpx;
-    vertical-align: middle;
 }
 .ui-recorditem__time {
     width:360rpx;
     height:36rpx;
-    margin-left: 56rpx;
-    margin-top:auto;
-    margin-bottom:auto;
     font-size:26rpx;
     font-family:PingFangSC-Regular,PingFang SC;
     font-weight:400;
     color:rgba(153,153,153,1);
-    line-height: 36rpx;
-    vertical-align: middle;
+    margin-left: auto;
+    text-align: right;
+
 }
 .ui-recorditem__end{
     width:646rpx;
