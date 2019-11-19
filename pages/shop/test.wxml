@@ -19,7 +19,7 @@
             <view class="ui-testBox__sign">
                  <view class="ui-testBox__signItem" wx:for="{{7}}" wx:key="{{item}}">
                     <view class="ui-testBox__signNum {{ item == 1 ? 'is-success' : '' }}">
-                        <text>+16</text>
+                        <text wx:if="{{item != 1}}">+16</text>
                     </view>
                     <view class="ui-testBox__sigmDay">
                         <text class="{{ item == 1 ? 'is-active' : '' }}">第一天</text>

@@ -76,7 +76,8 @@
     "pages/order/overOrderdetails",
     "pages/shop/sign",
     "pages/shop/signQRCode",
-    "pages/shop/test"
+    "pages/shop/test",
+    "pages/shop/blessTurnTable"
   ],
   "tabBar": {
     "custom": true,

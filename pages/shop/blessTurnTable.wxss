@@ -1,0 +1,217 @@
+@charset "UTF-8";
+@import "/libs/common.wxss";
+/* blessTurnTable.wxss */
+
+page{
+    background:linear-gradient(to right,rgba(255,126,117,1) 0% , rgba(255, 162, 145, 1) 40%,rgba(255,154,149,1) 40%,rgba(255, 118, 110, 1) 100%);
+}
+.ui-gameBox {
+    width: 750rpx;
+    height: 1206rpx;
+    padding-top: 1px;
+    background-image: url('http://www.gzlingren.com:8098/yangtianhe/zhuanpan/bg.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+} 
+.ui-gameBox__gz {
+    position:absolute;
+    width: 88rpx;
+    height: 48rpx;
+    right: 0;
+    top: 58rpx;
+    background: rgba(255, 232, 85, 1);
+    border-radius:200rpx 0 0 200rpx;
+    text-align: center;
+}
+.ui-gameBox__gz > text {
+    width:48rpx;
+    height:24rpx;
+    font-size:24rpx;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    color:rgba(246,92,119,1);
+    line-height:48rpx;
+}
+.ui-gameBox__container {
+    display: flex;
+    width: 670rpx;
+    height: 614rpx;
+    margin: 380rpx 0 0 40rpx;
+    padding: 46rpx;
+    background-image: url('http://www.gzlingren.com:8098/yangtianhe/zhuanpan/zhuanpan.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.ui-gameBox__item {
+    display: flex;
+    width: 190rpx;
+    height: 170rpx;
+    background-image: url('http://www.gzlingren.com:8098/yangtianhe/zhuanpan/prize_g.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    flex-direction: column;
+}
+.ui-gameBox__prizeImg {
+    width: 92rpx;
+    height: 92rpx;
+    margin: 8rpx auto;
+}
+.ui-gameBox__text {
+    width:130rpx;
+    height:28rpx;
+    margin: 2rpx auto;
+    font-size:28rpx;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    color:rgba(255,77,105,1);
+    line-height:28rpx;
+}
+.ui-gameBox__btn {
+    background-image: url('http://www.gzlingren.com:8098/yangtianhe/zhuanpan/btn.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    flex-direction: column;
+}
+.ui-gameBox__dj {
+    width:100%;
+    height:50rpx;
+    margin-top: 40rpx;
+    font-size:36rpx;
+    font-family:PingFangSC-Medium,PingFang SC;
+    font-weight:500;
+    color:rgba(255,102,0,1);
+    line-height:50rpx;
+    text-align: center;
+}
+.ui-gameBox__less {
+    width:100%;
+    height:34rpx;
+    margin-top: 6rpx;
+    font-size:24rpx;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    color:rgba(255,102,0,1);
+    line-height:34rpx;
+    text-align: center;
+}
+.ui-gameBox__fuqi {
+    width: 480rpx;
+    height: 170rpx;
+    padding: 1px;
+    margin-left:136rpx;
+    background-image: url('http://www.gzlingren.com:8098/yangtianhe/zhuanpan/fuq_num.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    
+}
+.ui-gameBox__fuqi > view {
+    width:100%;
+    height:44rpx;
+    margin-top: 92rpx;
+    font-size:32rpx;
+    font-family:PingFangSC-Medium,PingFang SC;
+    font-weight:500;
+    color:rgba(255,255,255,1);
+    line-height:44rpx;
+    text-align: center;
+}
+
+/* 模态框 */
+.ui-mask {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left:0;
+    right:0;
+    padding: 1px;
+    background:rgba(0,0,0,1);
+    opacity:0.5;
+    z-index: 9999;
+}
+.ui-mask__close {
+    width: 72rpx;
+    height: 72rpx;
+    margin-top: 110rpx;
+    margin-left: 630rpx;
+    background-image: url('http://www.gzlingren.com:8098/yangtianhe/game/close_icon.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+.ui-mask__container {
+    width: 672rpx;
+    height: 680rpx;
+    padding: 1px;
+    margin-top: 36rpx;
+    margin-left: 40rpx;
+    background-image: url('http://www.gzlingren.com:8098/yangtianhe/game/mask_bg.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+.ui-mask__title {
+    width:100%;
+    height:48rpx;
+    margin-top: 70rpx;
+    font-size:48rpx;
+    font-family:PingFangSC-Medium,PingFang SC;
+    font-weight:500;
+    color:rgba(255,95,85,1);
+    line-height:48rpx;
+    text-align: center;
+}
+.ui-mask__prizeTitle {
+    width:272rpx;
+    height:48rpx;
+    margin: 24rpx auto 0 auto;
+    background:rgba(255,180,113,1);
+    border-radius:25rpx;
+    text-align: center;
+    font-size: 0;
+    line-height: 48rpx;
+    font-size:24rpx;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    color:rgba(255,255,255,1);
+}
+.ui-mask__prizeImg {
+    width: 236rpx;
+    height: 236rpx;
+    padding: 16rpx;
+    margin: 20rpx auto 0 auto;
+}
+.ui-mask__prizeImg > image {
+    width: 204rpx;
+    height: 204rpx;
+}
+.ui-mask__warn {
+    width:100%;
+    height:24rpx;
+    margin-top: 16rpx;
+    font-size:24rpx;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    color:rgba(51,51,51,1);
+    line-height:24rpx;
+    text-align: center;
+}
+.ui-mask__btn {
+    width:360rpx;
+    height:88rpx;
+    margin: 24rpx auto 0 auto;
+    background:linear-gradient(178deg,rgba(255,77,67,1) 0%,rgba(255,143,137,1) 100%);
+    border-radius:46rpx;
+    font-size:40rpx;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    color:rgba(255,255,255,1);
+    line-height: 88rpx;
+    text-align: center;
+}

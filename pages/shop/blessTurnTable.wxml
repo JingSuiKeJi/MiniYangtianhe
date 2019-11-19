@@ -1,0 +1,51 @@
+<wxs module="filter" src="../../filter/filter.wxs"></wxs>
+<!-- blessTurnTable.wxml -->
+<view class="container">
+    <view class="ui-main">
+        <view class="ui-gameBox">
+            <view class="ui-gameBox__gz">
+                <text>规则</text>
+            </view>
+            <view class="ui-gameBox__container">
+                <block wx:for="{{9}}" wx:key="{{item}}">
+                    <view class="ui-gameBox__item" wx:if="{{item !== 4}}">
+                        <image mode="aspectFit" src="{{ filter.getLocalPhoto('zhuanpan/quan.png')}}" class="ui-gameBox__prizeImg" />
+                        <view class="ui-gameBox__text">5元优惠券</view>
+                    </view>
+                    <view class="ui-gameBox__item ui-gameBox__btn" wx:else bindtap="hideModal">
+                        <view class="ui-gameBox__dj">
+                            点击抽奖
+                        </view>
+                        <view class="ui-gameBox__less">
+                            -20福气
+                        </view>
+                    </view>
+                </block>
+                
+            </view>
+            <view class="ui-gameBox__fuqi">
+                <view>我的福气数: 10000</view>
+            </view>
+        </view>
+        <view class="ui-mask" wx:if="{{onShow}}">
+            <view class="ui-mask__close" bindtap="hideModal"></view>
+            <view class="ui-mask__container">
+                <view class="ui-mask__title">
+                    恭喜你，中奖啦
+                </view>
+                <view class="ui-mask__prizeTitle">
+                    恭喜你获得超级大礼包
+                </view>
+                <view class="ui-mask__prizeImg">
+                    <image src="{{ filter.getLocalPhoto('zhuanpan/libao.png')}}"/>
+                </view>
+                <view class="ui-mask__warn">
+                    奖品已放到兑换中心
+                </view>
+                <view class="ui-mask__btn">
+                    查看奖品
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
