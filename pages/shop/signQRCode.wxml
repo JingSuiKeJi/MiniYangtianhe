@@ -3,8 +3,8 @@
 <view class="container">
 	<view class="ui-main">
 		<view class="ui-qrBox">
-			<view class="ui-nameBox">{{userInfo.store.title}}</view>
-			<view class="ui-addressBox">{{userInfo.store.address}}</view>
+			<view class="ui-nameBox">{{storeName}}</view>
+			<view class="ui-addressBox">{{storeAddress}}</view>
 			<view class="ui-storeQR">
 				<image src="{{url}}" class="ui-codeImg" mode="aspectFit"/>
 			</view>
@@ -16,28 +16,27 @@
 		<view class="ui-recordBox">
 			<view class="ui-recordBox__count">
 				<view class="ui-recordBox__title">今日签到人数</view>
-				<view class="ui-recordBox__num"> <text>56</text> </view>
+				<view class="ui-recordBox__num"> <text>{{storeSignNum}}</text> </view>
 			</view>
-			<block wx:for="{{4}}" wx:key="{{item}}">
+			<block wx:for="{{list}}" wx:key="{{index}}">
 				<view class="ui-recordBox__friend">
 					<view class="ui-friendBox">
 						<view class="ui-friend__info">
-							<view class="ui-friend__avater">
-							<!-- <image src=""/> -->
-							</view>
-							<text class="ui-friend__name">命运的杰克</text>
+							<!-- <view class="ui-friend__avater">
+							
+							</view> -->
+							<image src="{{item.avatar}}" class="ui-friend__avater"/>
+							<text class="ui-friend__name">{{item.name}}</text>
 						</view>
-						<view class="ui-friend__time">2019-11-11 15:46:49</view>
+						<view class="ui-friend__time">{{filter.getDate(item.createTime)}}</view>
 					</view>
 					<view class="ui-friend__count">
-						<view class="ui-friend__num">20</view>
+						<view class="ui-friend__num">{{item.signNum}}</view>
 						<text>累计签到次数</text>
 					</view>
 				</view>
 			</block>
-			<view class="ui-recordBox__drop">
-				下拉滑动显示更多
-			</view>
+			<view class="ui-recordBox__drop">{{hasNextPage ? '下拉滑动显示更多' : ''}}</view>
 		</view>
 	</view>
 </view>

@@ -1,0 +1,38 @@
+<wxs module="filter" src="../../filter/filter.wxs"></wxs>
+<view class="ui-contain">
+    <navBar title='今日排行榜' background='white' color='black' iconTheme='black' back="{{true}}"></navBar>
+    <view class="ui-main">
+        <image src="{{filter.getPhoto(host,bgImg)}}" class="ui-main__bgImg"/>
+        <view class="ui-contentBox">
+            <image src="{{userInfo.avatar}}"  class="ui-contentItem__avatar"/>
+            <view class="ui-contentItem__title"> 您已到店签到成功获得 <text >{{point}}</text>福气</view>
+            <image src="{{filter.getPhoto(host,code)}}"  class="ui-contentItem__code"/>
+        </view>
+        <view class="ui-main__text">扫一扫识别二维码，一起来参加到店打卡</view>
+        <view class="ui-main__btn" bindtap="showDialogBtn">分享好友</view>
+        <canvas canvas-id="share" class="ui-share__canvas" ></canvas>
+        <view class="modal-mask" bindtap="hideModal" catchtouchmove="true" wx:if="{{showModal}}"></view>
+        <view class="ui-modalBox"  wx:if="{{showModal}}">
+            <cover-view class="ui-share__bd">
+                <cover-image  class="ui-share__image" src="{{canvasUrl}}" ></cover-image>
+            </cover-view>
+            <view class="modal-dialog" >
+                <button open-type="share" class="btn-friendsShare btn-common" style="background-color: #fff;border: none;display: block;">
+                    <image class="ui-wxImg" src="{{filter.getLocalPhoto('icon-wechat.png')}}"></image>
+                    <view class="ui-wxText">分享好友</view>
+                </button>
+                <view class="btn-saveImage btn-common" catchtap="onSaveImage">
+                    <image  src="{{filter.getLocalPhoto('my_posterSave.png')}}" class="ui-saveImg"></image>
+                    <view class="ui-saveText">保存图片</view>
+                </view>
+		   </view>
+        </view>
+    </view>
+</view>  
+<authorize 
+    id="authorize" 
+    message="请问需要授权相册从而保存至本地" 
+    bind:onCancelTap="onCancelTap" 
+    eventName="shop-signFinish-authorize" 
+    isHidden="{{authorizeHidden}}">
+</authorize>

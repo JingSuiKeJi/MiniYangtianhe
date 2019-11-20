@@ -37,6 +37,50 @@ class Store {
             data: reqData
         }, page);
     }
+    signHome(page, reqData) {
+        _g.dm.canLoadMore = 1;
+        return _g.ajax({
+            url: mini.store.signHome,
+            data: reqData
+        }, page);
+    }
+    signIn(page, reqData) {
+        _g.dm.canLoadMore = 1;
+        return _g.ajax({
+            url: mini.store.signIn,
+            data: reqData
+        }, page);
+    }
+    qrCodeCenter(page, reqData) {
+        _g.dm.canLoadMore = 1;
+        return _g.ajax({
+            url: mini.store.qrCodeCenter,
+            data: reqData
+        }, page);
+    }
+    signMyFriend(page, reqData) {
+        _g.dm.canLoadMore = 1;
+        return _g.ajax({
+            url: mini.store.signMyFriend,
+            data: reqData
+        }, page);
+    }
+    taskSignIn(page, reqData) {
+        _g.dm.canLoadMore = 1;
+        return _g.ajax({
+            url: mini.store.taskSignIn,
+            data: reqData
+        }, page);
+    }
+    taskSignHome(page, reqData) {
+        _g.dm.canLoadMore = 1;
+        return _g.ajax({
+            url: mini.store.taskSignHome,
+            data: reqData
+        }, page);
+    }
+
+
 }
 
 module.exports = new Store();

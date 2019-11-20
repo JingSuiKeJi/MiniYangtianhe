@@ -1,7 +1,7 @@
 <!-- <wxs module="filter" src="../../filter/filter.wxs"></wxs> -->
 <!--bindingPhone.wxml-->
 <view class="container">
-	<navBar title='绑定手机号' background='linear-gradient(137deg,rgba(1,206,165,1) 0%,rgba(94,221,218,1) 100%)' color='white' iconTheme='white' back="{{true}}"></navBar>
+	<navBar title="{{!phone?'请绑定手机号':'请修改手机号'}}" background='linear-gradient(137deg,rgba(1,206,165,1) 0%,rgba(94,221,218,1) 100%)' color='white' iconTheme='white' back="{{true}}"></navBar>
     <view class="ui-main">
 		<text class="ui-captionText">{{!phone?'请绑定手机号':'请修改手机号'}}</text>
 		
