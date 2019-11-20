@@ -32,6 +32,7 @@
                 <view class="ui-fuqi__num ui-fuqi__signDay">已连续签到：<text >{{info.signNum}} </text>天</view>
             </view>
             <view class="ui-signitem__date">
+                <view class="ui-signItem__line"></view>
                 <block wx:for="{{signList}}" wx:key="{{index}}">
                     <view class="ui-signitem__day">
                         <view wx:if="{{!item.isSign}}" class="ui-signitem__num">
@@ -47,8 +48,10 @@
                     </view>
                 </block>
             </view>
+            <view class="ui-signitem__warnText">连续签到7天后，后续签到每日均可获得{{info.continuousPoint}}福气</view>
             <view class="ui-signitem__btn" bindtap="onCodeTap" wx:if="{{!info.todaySignStatus}}">扫码签到</view>
             <view class="ui-signitem__btn"  wx:if="{{info.todaySignStatus}}" style="background-color: #CCCCCC ">扫码签到</view>
+           
             <view class="ui-signitem__text">*所有有注册养天和优选的门店均可参加扫码签到活动，详情请浏览规则说明</view>
          </view>
          <!--  -->

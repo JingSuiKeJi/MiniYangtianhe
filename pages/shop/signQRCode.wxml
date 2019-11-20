@@ -18,13 +18,10 @@
 				<view class="ui-recordBox__title">今日签到人数</view>
 				<view class="ui-recordBox__num"> <text>{{storeSignNum}}</text> </view>
 			</view>
-			<block wx:for="{{list}}" wx:key="{{index}}">
+			<block wx:for="{{list}}" wx:key="{{index}}" wx:if="{{list.length}}">
 				<view class="ui-recordBox__friend">
 					<view class="ui-friendBox">
 						<view class="ui-friend__info">
-							<!-- <view class="ui-friend__avater">
-							
-							</view> -->
 							<image src="{{item.avatar}}" class="ui-friend__avater"/>
 							<text class="ui-friend__name">{{item.name}}</text>
 						</view>
@@ -36,7 +33,8 @@
 					</view>
 				</view>
 			</block>
-			<view class="ui-recordBox__drop">{{hasNextPage ? '下拉滑动显示更多' : ''}}</view>
+			<view class="ui-recordBox__drop"  wx:if="{{!list.length}}">暂无数据</view>
+			<view class="ui-recordBox__drop" >{{hasNextPage ? '下拉滑动显示更多' : ''}}</view>
 		</view>
 	</view>
 </view>

@@ -9,25 +9,25 @@ const Store = require('../../service/Store.js');
 
 let data = {
 	signInfo: {}
-	
+
 };
 
-const onLoad = function(self) {
+const onLoad = function (self) {
 	const userInfo = _g.getLS(_c.LSKeys.userInfo);
 	self.setData({
-        userInfo: userInfo
-    })
-    self.getData();
+		userInfo: userInfo
+	})
+	self.getData();
 }
 
-const onShow = function(self) {}
+const onShow = function (self) { }
 
-const onReady = function(self) {
-	
+const onReady = function (self) {
+
 }
 
-const onUnload = function(self) {
-	
+const onUnload = function (self) {
+
 }
 
 const methods = {
@@ -40,38 +40,38 @@ const methods = {
 		Store.taskSignHome(self, {
 			miniUserId: self.data.userInfo.id
 		}).then((ret) => {
-           self.setData({
-			signInfo: ret.data
-		   })
+			self.setData({
+				signInfo: ret.data
+			})
 		}, (err) => {
-		}); 
+		});
 	},
 	taskSignIn: function () {
 		let self = this;
 		const userInfo = _g.getLS(_c.LSKeys.userInfo);
-        Store.taskSignIn(self, {
+		Store.taskSignIn(self, {
 			miniUserId: userInfo.id
 		}).then((ret) => {
 			self.getData();
-            _g.navigateTo({
-                url: 'pages/shop/signFinish',
-                param: {
-                    point: self.data.signInfo.point
-                }
-            },self)
+			_g.navigateTo({
+				url: 'pages/shop/signFinish',
+				param: {
+					point: ret.data 
+				}
+			}, self)
 		}, (err) => {
 		});
 	},
-	
-	onCodeTap:function () {
-        let self = this;
-        self.taskSignIn();
-	},
-	onGoTap:function () {
+
+	onCodeTap: function () {
 		let self = this;
-        _g.navigateTo({
+		self.taskSignIn();
+	},
+	onGoTap: function () {
+		let self = this;
+		_g.navigateTo({
 			url: 'pages/me/blissDetail',
-		},self)
+		}, self)
 	},
 }
 
@@ -79,12 +79,12 @@ const temps = {}
 
 // 初始化页面page对象
 const initPage = _g.initPage({
-    data: data,
-    onLoad: onLoad,
-    onUnload: onUnload,
-    onReady: onReady,
-    onShow: onShow,
-    methods: methods,
-    temps: temps,
+	data: data,
+	onLoad: onLoad,
+	onUnload: onUnload,
+	onReady: onReady,
+	onShow: onShow,
+	methods: methods,
+	temps: temps,
 });
 Page(initPage);

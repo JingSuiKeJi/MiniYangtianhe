@@ -90,7 +90,7 @@
 
 .ui-testBox {
     width: 710rpx;
-    height: 398rpx;
+    height: 412rpx;
     position: absolute;
     top: 218rpx;
     left: 20rpx;
@@ -111,10 +111,14 @@
     display: flex;
     width: 100%;
     height: auto;
+    position: relative;
 }
 .ui-testBox__signItem {
     width: 76rpx;
     height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-left:20rpx;
 }
 .ui-testBox__signItem + .ui-testBox__signItem {
@@ -147,10 +151,10 @@
     color:rgba(255,170,0,1);
 }
 .ui-testBox__sigmDay {
-    width: 66rpx;
+    /* width: 66rpx; */
     height: 22rpx;
     margin-top: 20rpx;
-    margin-left: 4rpx;
+    /* margin-left: 4rpx; */
 }
 .ui-testBox__sigmDay > text {
     width:66rpx;
@@ -171,7 +175,7 @@
     height: 68rpx;
     /* background:linear-gradient(137deg,rgba(4, 206, 166, 1) 0%,rgba(89, 220, 215, 1) 100%); */
     background-color: #4BDACF;
-    margin:40rpx auto 40rpx auto;
+    margin:32rpx auto 40rpx auto;
     border-radius: 34rpx;
     text-align: center;
 }
@@ -295,7 +299,6 @@
 .ui-signitem__num {
     width: 78rpx;
     height: 76rpx;
-    margin: 40rpx 0 0 0;
     position: relative;
 }
 .ui-signitem__num > image {
@@ -310,4 +313,22 @@
     font-weight: 400;
     color:rgba(255,170,0,1);
     line-height: 76rpx;
+}
+.ui-signitem__warnText {
+    /* margin-bottom: 32rpx; */
+    font-size:20rpx;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    color:#000000;
+    line-height:20rpx;
+    text-align: center;
+    margin-top: 32rpx;
+}
+.ui-signItem__line {
+    width:618rpx;
+    height:4rpx;
+    background:rgba(255,240,132,1);
+    position: absolute;
+    top: 38rpx;
+    left: 58rpx;
 }

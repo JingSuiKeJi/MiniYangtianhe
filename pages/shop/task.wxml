@@ -5,75 +5,67 @@
         <view class="ui-fuqi">
             <view class="ui-fuqi__num">{{signInfo.point}}</view>
             <view class="ui-fuqi__text" bindtap="onGoTap">
-                <image mode="aspectFit" src="{{filter.getLocalPhoto('test/fuqi_icon.png')}}"/>
-                <text>福气明细 </text>
-                <image mode="aspectFit" src="{{ filter.getLocalPhoto('test/rightArrow.png')}}" class="ui-moreIcon"/>
+                <image mode="aspectFit" src="{{filter.getLocalPhoto('test/fuqi_icon.png')}}" />
+                <text>福气明细</text>
+                <image mode="aspectFit" src="{{ filter.getLocalPhoto('test/rightArrow.png')}}" class="ui-moreIcon" />
             </view>
         </view>
         <view class="ui-gzBox">
-            <text>规则 </text>
-            <image mode="aspectFit" src="{{ filter.getLocalPhoto('test/rightArrow.png')}}" class="ui-moreIcon"/>
+            <text>规则</text>
+            <image mode="aspectFit" src="{{ filter.getLocalPhoto('test/rightArrow.png')}}" class="ui-moreIcon" />
         </view>
         <view class="ui-testBox">
             <view class="ui-testBox__title">签到福气加倍</view>
             <view class="ui-testBox__sign">
-                 <view class="ui-testBox__signItem" wx:for="{{signInfo.signScoreItemList}}" wx:key="{{index}}">
-                    <!-- <view class="ui-testBox__signNum {{ item.isSign  ? 'is-success' : '' }}">
-                        <image src="{{filter.getLocalPhoto('sign/sign_bg.png')}}" mode="aspectFit"/>
-                        <text>+16</text>
-                    </view> -->
+                <view class="ui-signItem__line"></view>
+                <view class="ui-testBox__signItem" wx:for="{{signInfo.signScoreItemList}}" wx:key="{{index}}">
                     <view wx:if="{{!item.isSign}}" class="ui-signitem__num">
-                            <image src="{{filter.getLocalPhoto('sign/sign_bg.png')}}" mode="aspectFit"/>
-                            <text >+{{item.score}}</text>
-                        </view>
-                        <view wx:if="{{item.isSign}}" class="ui-signitem__num">
-                             <image src="{{filter.getLocalPhoto('sign/signSuccess_bg.png')}}" mode="aspectFit"/>
-                        </view>
+                        <image src="{{filter.getLocalPhoto('sign/sign_bg.png')}}" mode="aspectFit" />
+                        <text>+{{item.score}}</text>
+                    </view>
+                    <view wx:if="{{item.isSign}}" class="ui-signitem__num">
+                        <image src="{{filter.getLocalPhoto('sign/signSuccess_bg.png')}}" mode="aspectFit" />
+                    </view>
                     <view class="ui-testBox__sigmDay">
                         <text class="{{ item.isSign ? 'is-active' : '' }}">第{{item.day}}天</text>
                     </view>
-                 </view>
+                </view>
+            </view>
+            <view class="ui-signitem__warnText">
+                连续签到7天后，后续签到每日均可获得{{signInfo.continuousPoint}}福气
             </view>
             <view class="ui-testBox__btn" bindtap="onCodeTap" wx:if="{{!signInfo.todaySignStatus}}">
                 <text>立即签到</text>
             </view>
-             <view class="ui-testBox__btn" wx:if="{{signInfo.todaySignStatus}}" style="background-color: #CCCCCC ">
+            <view class="ui-testBox__btn" wx:if="{{signInfo.todaySignStatus}}" style="background-color: #CCCCCC ">
                 <text>立即签到</text>
             </view>
         </view>
         <view class="ui-game">
             <view class="ui-game__item">
-                 <view >福气大转盘</view>
-                 <view >邀请好友一起玩</view>
+                <view>福气大转盘</view>
+                <view>邀请好友一起玩</view>
             </view>
             <view class="ui-game__item">
-                 <view >幸运砸金蛋</view>
-                 <view >天天赢好礼</view>
+                <view>幸运砸金蛋</view>
+                <view>天天赢好礼</view>
             </view>
         </view>
-        <view class="ui-test">
-            <view class="ui-test__title">
-                新手任务
-            </view>
+        <!-- <view class="ui-test">
+            <view class="ui-test__title">新手任务</view>
             <view class="ui-test__testItem" wx:for="{{ 5 }}" wx:key="item">
                 <view class="ui-test__testName">关注公众号</view>
                 <view class="ui-test__testAdd">+50</view>
-                <view class="ui-test__testStatus">
-                    去完成
-                </view>
+                <view class="ui-test__testStatus">去完成</view>
             </view>
         </view>
         <view class="ui-test">
-                    <view class="ui-test__title">
-                       每日任务
-                    </view>
-                    <view class="ui-test__testItem" wx:for="{{ 5 }}" wx:key="item">
-                        <view class="ui-test__testName">关注公众号</view>
-                        <view class="ui-test__testAdd">+50</view>
-                        <view class="ui-test__testStatus">
-                            去完成
-                        </view>
-                    </view>
-                </view>
+            <view class="ui-test__title">每日任务</view>
+            <view class="ui-test__testItem" wx:for="{{ 5 }}" wx:key="item">
+                <view class="ui-test__testName">关注公众号</view>
+                <view class="ui-test__testAdd">+50</view>
+                <view class="ui-test__testStatus">去完成</view>
+            </view>
+        </view> -->
     </view>
 </view>

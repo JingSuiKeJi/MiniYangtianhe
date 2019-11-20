@@ -18,6 +18,9 @@ const data = {
 
 // 页面onLoad方法
 const onLoad = function (self) {
+    self.setData({
+        point: self.data.point
+    })
     self.getData();
     event.on('shop-signFinish-authorize', self, (res) => {
         if (res.detail.authSetting['scope.writePhotosAlbum']) {
@@ -237,11 +240,17 @@ const methods = {
         ctx.fillText(self.data.point, calculate(188), calculate(758))
         ctx.setFillStyle('#3D3D3D');
         ctx.setFontSize(calculate(18))
-        ctx.fillText('福气', calculate(248), calculate(738))
+        ctx.fillText('福气', calculate(248), calculate(758))
         ctx.drawImage(poster.avatar, calculate(64), calculate(704), calculate(62), calculate(62))
 
         //分享二维码
-        // ctx.save()
+        // ctx.save();
+        // ctx.beginPath();
+        // ctx.arc(calculate(118)+calculate(368)/2, calculate(118)+calculate(684)/2, calculate(368)/2, 0, Math.PI * 2, false);
+        // ctx.setFillStyle('#EEEEEE')
+        // ctx.fill()
+
+        // ctx.clip();
         ctx.drawImage(poster.shareCode.path, calculate(368), calculate(684), calculate(118), calculate(118))
         ctx.setFillStyle('#FFFFFF');
         ctx.setFontSize(calculate(18))

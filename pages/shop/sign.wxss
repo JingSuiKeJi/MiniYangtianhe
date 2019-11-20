@@ -98,7 +98,7 @@ page {
     display: flex;
     margin-top: 40rpx;
     width:710rpx;
-    height:496rpx;
+    height:522rpx;
     background:rgba(255,255,255,1);
     border-radius:16rpx;
     align-items: center;
@@ -130,11 +130,13 @@ page {
     margin-right: 30rpx;
 }
 .ui-signitem__date {
+    position: relative;
     display: flex;
     width: 100%;
     height: 198rpx;
     padding: 0 10rpx;
     justify-content: space-around;
+    /* flex-direction: column; */
 }
 .ui-signitem__btn {
     display: flex;
@@ -266,3 +268,18 @@ page {
     text-align: center;
 }
 /*  */
+.ui-signitem__warnText {
+    margin-bottom: 32rpx;
+    font-size:20rpx;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    color:#000000;
+    line-height:20rpx;
+}
+.ui-signItem__line {
+    width:618rpx;
+    height:4rpx;
+    background:rgba(255,240,132,1);
+    position: absolute;
+    top: 78rpx;
+}

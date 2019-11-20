@@ -368,6 +368,13 @@ class User {
 			data: reqData
 		}, page);
 	}
+	preLogin(page, reqData) {
+		_g.dm.canLoadMore = 1;
+		return _g.ajax({
+			url: mini.user.preLogin,
+			data: reqData
+		}, page);
+	}
 }
 
 module.exports = new User();
