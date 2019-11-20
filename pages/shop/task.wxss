@@ -14,8 +14,10 @@
     height: 330rpx;
     background: rgba(42, 213, 188, 1);
     flex-direction: column;
-
-    /* background: url('test/banner_bg.png'); */
+    background-image: url('http://www.gzlingren.com:8098/yangtianhe/test/banner_bg.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
 }
 .ui-fuqi__num {
     width: 100%;
@@ -83,7 +85,7 @@
 .ui-gzBox > image {
     width: 28rpx;
     height: 28rpx;
-    vertical-align: -5rpx;
+    vertical-align: -3rpx;
 }
 
 .ui-testBox {
@@ -124,13 +126,16 @@
     line-height: 76rpx;
     text-align: center;
     border-radius: 50%;
-    background: rgba(255, 253, 188, 1);
-
-    /* background: url('sign/sign_bg.png'); */
+    background-image: url('http://www.gzlingren.com:8098/yangtianhe/sign/sign_bg.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
 }
 .is-success {
-    background: rgba(255, 240, 132, 1);
-    /* background: url('sign/sign_success.png'); */
+    background-image: url('http://www.gzlingren.com:8098/yangtianhe/sign/sign_success.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
 }
 
 .ui-testBox__signNum > text {
@@ -193,13 +198,17 @@
     height: 180rpx;
 }
 .ui-game__item:nth-child(1) {
-    background: rgba(255, 122, 113, 1);
-    /* background: url('test/zhuanpan_bg.png'); */
+    background-image: url('http://www.gzlingren.com:8098/yangtianhe/test/zhuanpan_bg.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
 }
 .ui-game__item:nth-child(2) {
     margin-left: 22rpx;
-    background: rgba(255, 240, 132, 1);
-   /* background: url('test/jindan_bg.png'); */
+    background-image: url('http://www.gzlingren.com:8098/yangtianhe/test/jindan_bg.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
 }
 .ui-game__item > view:nth-child(1){
     width: 140rpx;
@@ -231,12 +240,13 @@
     margin-top: 20rpx;
     margin-left: 20rpx;
     padding: 32rpx 40rpx;
-    background: rgba(255,255,255,1);
-
-    /* background: url('test/test_bg.png'); */
+    background-image: url('http://www.gzlingren.com:8098/yangtianhe/test/test_bg.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
 }
 .ui-test__title {
-    width:160rpx;
+    width:100%;
     height:40rpx;
     font-size:40rpx;
     font-family:PingFangSC-Medium,PingFang SC;

@@ -19,15 +19,15 @@
             <view class="ui-testBox__sign">
                  <view class="ui-testBox__signItem" wx:for="{{signInfo.signScoreItemList}}" wx:key="{{index}}">
                     <!-- <view class="ui-testBox__signNum {{ item.isSign  ? 'is-success' : '' }}">
-                        <image src="{{filter.getLocalPhoto('sign/sign_bg.png')}}" mode="aspectFit"/> 
+                        <image src="{{filter.getLocalPhoto('sign/sign_bg.png')}}" mode="aspectFit"/>
                         <text>+16</text>
                     </view> -->
                     <view wx:if="{{!item.isSign}}" class="ui-signitem__num">
-                            <image src="{{filter.getLocalPhoto('sign/sign_bg.png')}}" mode="aspectFit"/> 
+                            <image src="{{filter.getLocalPhoto('sign/sign_bg.png')}}" mode="aspectFit"/>
                             <text >+{{item.score}}</text>
                         </view>
                         <view wx:if="{{item.isSign}}" class="ui-signitem__num">
-                             <image src="{{filter.getLocalPhoto('sign/signSuccess_bg.png')}}" mode="aspectFit"/> 
+                             <image src="{{filter.getLocalPhoto('sign/signSuccess_bg.png')}}" mode="aspectFit"/>
                         </view>
                     <view class="ui-testBox__sigmDay">
                         <text class="{{ item.isSign ? 'is-active' : '' }}">第{{item.day}}天</text>
