@@ -36,12 +36,12 @@
                 </form>
 				<!-- 绑定信息 -->
 				<view class="ui-contact">
-					<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onBindingWeChat" >
+					<!-- <form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onBindingWeChat" >
 						<button formType="submit" class="ui-contactItem">
 							<image src="{{filter.getLocalPhoto('my_weChatIcon.png')}}" mode="aspectFill" class="ui-iconContact"/>
 						    <text>{{userInfo.wxNo?'修改微信':'绑定微信'}}</text>
 						</button>
-                    </form> 
+                    </form>  -->
 					 <form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onBindingPhone" >
 						<button formType="submit" class="ui-contactItem">
 							<image src="{{filter.getLocalPhoto('my_phone.png')}}" mode="aspectFill" class="ui-iconContact"/>
@@ -163,7 +163,7 @@
 					<view class="ui-inviterInfo" wx:if="{{userInfo.inviter}}">
 						<image src="{{userInfo.inviter.avatar}}"  mode="aspectFit" class="ui-inviterInfoAvatar"></image>
 						<view class="ui-inviterNikeName">{{userInfo.inviter.nickname}}</view>
-						<view class="ui-inviterWxName">微信号：{{userInfo.inviter.wxNo}}</view>
+						<!-- <view class="ui-inviterWxName">微信号：{{userInfo.inviter.wxNo}}</view> -->
 					</view>
 					<view class="ui-inputInviterInfo" wx:if="{{!userInfo.inviter}}">
 						<input class="ui-inputBox" type="text" placeholder="请输入邀请人ID" value="{{inviterId}}" confirm-type="done" bindinput ="inviterIdInput"/>
@@ -179,6 +179,30 @@
 					<image mode="aspectFit" src="{{ filter.getLocalPhoto('my_rightArrow.png')}}" class="ui-moreIcon"/>
 				</button>
 			</form>
+			<!-- <form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onMyStore"  wx:if="{{!userInfo.verifier}}">
+				<button formType="submit" class="ui-itemBox" >
+					 <text>我的门店</text>
+				    <image mode="aspectFit" src="{{ filter.getLocalPhoto('my_rightArrow.png')}}" class="ui-moreIcon"/>
+				</button>
+			</form> -->
+            <form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onStoreTap"  wx:if="{{userInfo.verifier}}">
+				<button formType="submit" class="ui-itemBox" >
+					 <text>门店中心</text>
+				    <image mode="aspectFit" src="{{ filter.getLocalPhoto('my_rightArrow.png')}}" class="ui-moreIcon"/>
+				</button>
+			</form>
+            <!-- <form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onTastTap"  >
+				<button formType="submit" class="ui-itemBox" >
+					 <text>任务中心</text>
+				    <image mode="aspectFit" src="{{ filter.getLocalPhoto('my_rightArrow.png')}}" class="ui-moreIcon"/>
+				</button>
+			</form> -->
+            <!-- <form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onExchangeTap"  >
+				<button formType="submit" class="ui-itemBox" >
+					 <text>兑换中心</text>
+				    <image mode="aspectFit" src="{{ filter.getLocalPhoto('my_rightArrow.png')}}" class="ui-moreIcon"/>
+				</button>
+			</form> -->
 			<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onStoreApplicationTap" wx:if="{{!userInfo.verifier}}">
 				<button formType="submit" class="ui-itemBox" >
 					<text>门店申请</text>
@@ -203,30 +227,6 @@
 				   <image mode="aspectFit" src="{{ filter.getLocalPhoto('my_rightArrow.png')}}" class="ui-moreIcon"/>
 				</button>
 			</form>
-			<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onStoreTap"  wx:if="{{userInfo.verifier}}">
-				<button formType="submit" class="ui-itemBox" >
-					 <text>门店中心</text>
-				    <image mode="aspectFit" src="{{ filter.getLocalPhoto('my_rightArrow.png')}}" class="ui-moreIcon"/>
-				</button>
-			</form>
-			<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onMyStore"  wx:if="{{!userInfo.verifier}}">
-				<button formType="submit" class="ui-itemBox" >
-					 <text>我的门店</text>
-				    <image mode="aspectFit" src="{{ filter.getLocalPhoto('my_rightArrow.png')}}" class="ui-moreIcon"/>
-				</button>
-			</form>
-			<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onTastTap"  >
-				<button formType="submit" class="ui-itemBox" >
-					 <text>任务中心</text>
-				    <image mode="aspectFit" src="{{ filter.getLocalPhoto('my_rightArrow.png')}}" class="ui-moreIcon"/>
-				</button>
-			</form>
-			<!-- <form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onExchangeTap"  >
-				<button formType="submit" class="ui-itemBox" >
-					 <text>兑换中心</text>
-				    <image mode="aspectFit" src="{{ filter.getLocalPhoto('my_rightArrow.png')}}" class="ui-moreIcon"/>
-				</button>
-			</form> -->
         </view>
 		<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onLogOutTap"  wx:if="{{isLogin}}">
 			<button formType="submit" class="ui-LogOut" >退出登录</button>
