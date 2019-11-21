@@ -58,12 +58,14 @@ App({
     },
     onShow: function () {
         this.base = require('/libs/base.js');
+        this.config = require('/libs/config.js');
         var self = this;
-        if (!self.base.checkLogin({ type: 1 })) {
+        if (!self.base.checkLogin({ type: 1 }) && getCurrentPages().length > 0) {
             self.base.navigateTo({
                 url: 'pages/home/login'
             }, self)
-        }
+        };
+
     },
     globalData: {
         //状态栏高度
