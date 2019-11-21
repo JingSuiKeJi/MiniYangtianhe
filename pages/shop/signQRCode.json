@@ -1,5 +1,6 @@
 {
-  "navigationBarTitleText": "签到二维码",
-	"navigationBarBackgroundColor":"#FFFFFF",
-	"navigationBarTextStyle":"black"
+	"navigationBarTitleText": "签到二维码",
+	"navigationBarBackgroundColor": "#FFFFFF",
+	"navigationBarTextStyle": "black",
+	"enablePullDownRefresh": true
 }

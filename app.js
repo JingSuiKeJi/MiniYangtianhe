@@ -1,6 +1,6 @@
 //app.js
 App({
-    onLaunch: function(opts) {
+    onLaunch: function (opts) {
         // 引入相关js
         this.base = require('/libs/base.js');
         this.promise = require('/libs/q.js');
@@ -8,6 +8,23 @@ App({
         this.event = require('/libs/event.js');
         this.config = require('/libs/config.js');
         this.temps = require('/templates/temps.js');
+        const updateManager = wx.getUpdateManager();
+        // updateManager.onCheckForUpdate(function(res) {
+        //     // 请求完新版本信息的回调
+        //     console.log(res.hasUpdate)
+        // });
+        updateManager.onUpdateReady(function () {
+            wx.showModal({
+                title: '更新提示',
+                content: '新版本已经准备好，是否重启应用？',
+                success: function (res) {
+                    if (res.confirm) {
+                        // 新的版本已经下载好，调用 applyUpdate 应用新版本并重启
+                        updateManager.applyUpdate()
+                    }
+                }
+            })
+        })
         var self = this;
         self.base.logger();
         wx.getSystemInfo({
@@ -39,11 +56,20 @@ App({
         self.base.rmLS('goodsPosterBg');
         self.base.getGoodsPosterBg(self);
     },
-	globalData: {
-		//状态栏高度
-		statusBarHeight:wx.getSystemInfoSync()['statusBarHeight'],
-		//手机屏幕可用高度
-		screenHeight:wx.getSystemInfoSync()['screenHeight'],
+    onShow: function () {
+        this.base = require('/libs/base.js');
+        var self = this;
+        if (!self.base.checkLogin({ type: 1 })) {
+            self.base.navigateTo({
+                url: 'pages/home/login'
+            }, self)
+        }
+    },
+    globalData: {
+        //状态栏高度
+        statusBarHeight: wx.getSystemInfoSync()['statusBarHeight'],
+        //手机屏幕可用高度
+        screenHeight: wx.getSystemInfoSync()['screenHeight'],
     }
 
 });

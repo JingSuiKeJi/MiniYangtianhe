@@ -239,7 +239,11 @@ var filter = {
 			case 5:
 				return '养步乐一级奖励';
 			case 6:
-				return '养步乐二级奖励';				
+                return '养步乐二级奖励';
+            case 10:
+                return '门店签到奖励'; 
+            case 11:
+                return '任务签到奖励';       				
 			default: 
 			   return '';
 		}

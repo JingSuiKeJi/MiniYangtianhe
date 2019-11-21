@@ -37,8 +37,8 @@ const methods = {
     signHome: function () {
         let self = this;
         Store.signHome(self, {
-			miniUserId: self.data.userInfo.id
-		}).then((ret) => {
+            miniUserId: self.data.userInfo.id
+        }).then((ret) => {
             let data = ret.data;
             self.setData({
                 store: data.signStoreVo,
@@ -53,49 +53,50 @@ const methods = {
                     width: 38,
                     height: 38,
                     title: data.signStoreVo.title,
-                  }
+                }
                 ],
             })
-		}, (err) => {
-		});
+        }, (err) => {
+        });
     },
     signIn: function (code) {
         let self = this;
         Store.signIn(self, {
-			code: code
-		}).then((ret) => {
-			_g.navigateTo({
+            code: code
+        }).then((ret) => {
+            self.getData();
+            _g.navigateTo({
                 url: 'pages/shop/signFinish',
                 param: {
-                    point: self.data.info.point
+                    point: ret.data
                 }
-            },self)
-		}, (err) => {
-		});
+            }, self)
+        }, (err) => {
+        });
     },
     getPageData: function () {
-		let self = this;
-		const userInfo = _g.getLS(_c.LSKeys.userInfo);
-		Store.signMyFriend(self, {
-			page: self.data.page,
-			pageSize: 10,
-			miniUserId: userInfo.id
-		}).then((ret) => {
-			let data = ret.data
-			if (self.data.page == 1) {
-				self.setData({
+        let self = this;
+        const userInfo = _g.getLS(_c.LSKeys.userInfo);
+        Store.signMyFriend(self, {
+            page: self.data.page,
+            pageSize: 10,
+            miniUserId: userInfo.id
+        }).then((ret) => {
+            let data = ret.data
+            if (self.data.page == 1) {
+                self.setData({
                     friendsList: data.list,
                     hasNextPage: data.hasNextPage
-				})
-			} else {
-				self.setData({
+                })
+            } else {
+                self.setData({
                     friendsList: self.data.friendsList.concat(data.list),
                     hasNextPage: data.hasNextPage
-				})
-			}
+                })
+            }
 
 
-		}, (err) => {
+        }, (err) => {
 
         });
     },
@@ -107,11 +108,11 @@ const methods = {
     bindregionchange(e) {
 
     },
-    onCodeTap:function () {
+    onCodeTap: function () {
         let self = this;
         wx.scanCode({
             onlyFromCamera: true,
-            success (res) {
+            success(res) {
                 self.signIn(res.result)
             }
         });

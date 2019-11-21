@@ -1,11 +1,11 @@
 <wxs module="filter" src="../../filter/filter.wxs"></wxs>
 <view class="ui-contain">
-    <navBar title='今日排行榜' background='white' color='black' iconTheme='black' back="{{true}}"></navBar>
+    <navBar title='签到成功' background='white' color='black' iconTheme='black' back="{{true}}"></navBar>
     <view class="ui-main">
         <image src="{{filter.getPhoto(host,bgImg)}}" class="ui-main__bgImg"/>
         <view class="ui-contentBox">
             <image src="{{userInfo.avatar}}"  class="ui-contentItem__avatar"/>
-            <view class="ui-contentItem__title"> 您已到店签到成功获得 <text >{{point}}</text>福气</view>
+            <view class="ui-contentItem__title"> 您已到店签到成功获得<text >{{point}}</text>福气</view>
             <image src="{{filter.getPhoto(host,code)}}"  class="ui-contentItem__code"/>
         </view>
         <view class="ui-main__text">扫一扫识别二维码，一起来参加到店打卡</view>
