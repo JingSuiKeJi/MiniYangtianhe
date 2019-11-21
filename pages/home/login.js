@@ -11,40 +11,53 @@ let data = {
     isLogin: false
 };
 const onLoad = function (self) {
-    if (_g.checkLogin({type:1})) {
+    if (_g.checkLogin({ type: 1 })) {
         self.setData({
-            isLogin: true 
+            isLogin: true
         })
         _g.switchTab({
             url: 'pages/home/index'
-        },self)
-    }else {
+        }, self)
+    } else {
         self.setData({
-            isLogin: false 
-        }) 
+            isLogin: false
+        })
     }
     
+    // _g.getLocation().then((res) => {
+    //     console.log(res)
+    // }, (error) => {
+    //     console.log(error)
+    //     // self.getStoreList();
+    // });
 
 };
-const onShow = function (self) { 
-    
+const onShow = function (self) {
+
 };
 const onReady = function (self) { };
 const onUnload = function (self) { };
 const methods = {
     onLoginTap: function (e) {
         let self = this;
-        if (self.data.isLogin) {
+        if (self.data.isLogin && getCurrentPages().length < 2) {
             _g.switchTab({
                 url: 'pages/home/index'
-            },self)
+            }, self)
+        } else if (self.data.isLogin && getCurrentPages().length >= 2) {
+            _g.navigateBack();
         }
     },
     onLaterLogin: function (e) {
         let self = this;
-        _g.switchTab({
-            url: 'pages/home/index'
-        },self)
+        if (getCurrentPages().length >= 1) {
+            _g.navigateBack();
+        } else {
+            _g.switchTab({
+                url: 'pages/home/index'
+            }, self)
+        }
+
     }
 };
 
