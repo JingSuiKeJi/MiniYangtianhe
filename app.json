@@ -116,9 +116,9 @@
     ]
   },
   "window": {},
-  "enablePullDownRefresh": true,
   "usingComponents": {
-    "authorize": "/components/authorize/authorize"
+    "authorize": "/components/authorize/authorize",
+    "location": "/components/location/location"
   },
   "permission": {
     "scope.userLocation": {
