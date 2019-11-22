@@ -167,7 +167,6 @@ base.prototype = {
                 if (self.data.promoCode) {
                     _g.setLS(_c.LSKeys.promoCode, self.data.promoCode, _c.promoCodeExpireTime);
                 }
-
                 // if (self.data.recallUserId) {
                 //     _g.setLS(_c.LSKeys.recallUserId, self.data.recallUserId, _c.promoCodeExpireTime);
                 // }
@@ -201,6 +200,15 @@ base.prototype = {
                 // _g.getShareCode(self);
                 // }
                 self.setData(tempsData);
+                const User = require('../service/User');
+
+                if (self.route != 'pages/home/index' &&
+                    self.route != 'pages/home/login' &&
+                    _g.getLS(_c.LSKeys.promoCode) &&
+                    _g.checkLogin({type: 1})) {
+                    _g.userLinkUser(self);
+                }
+
                 // 执行页面自定义的 onLoad 方法
                 onLoad && onLoad(self);
             },
@@ -1694,6 +1702,26 @@ base.prototype = {
             }, (err) => {
             });
         }
+    },
+    userLinkUser(self) {
+        const _g = this;
+        const User = require('../service/User');
+        let postData = {
+            promoCode: _g.getLS(_c.LSKeys.promoCode),
+            userId: _g.getLS(_c.LSKeys.userInfo).id
+        };
+        User.userLinkUser(self, postData).then((ret) => {
+            if (ret.data.result == 1) {
+                _g.rmLS(_c.LSKeys.promoCode);
+                _g.getMyInfo(self , {
+                    suc() {
+                        event.emit('refreshHomeData')
+                    }
+                })
+            }
+        }, (err) => {
+            //TODO 失败
+        });
     }
 };
 

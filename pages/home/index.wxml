@@ -13,6 +13,7 @@
             <view class="ui-headBox" style="margin-top: {{statusBarHeight+44}}px;" hidden="{{isFixed}}" id="head">
                 <view class="location"  catchtap="onMapTap">
                     <image src="{{filter.getLocalPhoto('home_address.png')}}" mode="aspectFit" class="ui-addressIcon" />
+                    <text class="ui-addressText" >{{storeInfo.isBind ? '绑定门店:' : '推荐门店:'}}</text>
                     <text class="ui-addressText" catchtap="onMapTap">{{filter.limitedLength(storeInfo.title )}}</text>
                     <image src="{{filter.getLocalPhoto('home_down.png')}}" mode="aspectFit" class="icon" />
                 </view>
@@ -297,3 +298,6 @@
     eventName="home-index-authorize" 
     isHidden="{{authorizeHidden}}">
 </authorize>
+<!-- <location id="location" 
+    bind:onCancelTap="onCancelTap" 
+    hiddenLocationPopup="{{hiddenLocationPopup}}"></location> -->

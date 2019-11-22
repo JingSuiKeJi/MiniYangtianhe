@@ -28,6 +28,7 @@ const data = {
     avatarThumb: {},
     canvasUrl: '',
     authorizeHidden: true,
+    code: ''
 };
 
 // 页面onLoad方法
@@ -191,7 +192,8 @@ const methods = {
             title: '正在上传步数',
             success() { }
         });
-        self.wxLogin();
+        // self.wxLogin();
+        self.getWeRunData();
     },
     wxLogin: function () {
         let self = this;
@@ -225,17 +227,24 @@ const methods = {
     uploadStep: function (data) {
         let self = this;
         Platform.uploadStep(self, data).then((ret) => {
-            self.getData();
-            wx.hideLoading();
-            _g.toast({
-                title: '上传步数成功',
-                duration: 3000
-            });
-            if (self.data.stepInfo.status == 2) {
-                self.showDialogBtn();
+            if (ret.data.code == 11001 || ret.data.code == 11002) {
+                _g.toast({ title: '重新上传步数中，请稍等' });
+                self.wxLogin();
+            } else {
+                self.getStepInfo();
+                self.getPageData();
+                self.rankingList();
+                wx.hideLoading();
+                _g.toast({
+                    title: '上传步数成功',
+                    duration: 3000
+                });
+                if (ret.data.status == 2) {
+                    self.showDialogBtn();
+                }
             }
-        }, (err) => {
 
+        }, (err) => {
         })
     },
     btnShow: function (status) {
@@ -404,6 +413,7 @@ const methods = {
                             callback && callback(res);
                         },
                         fail(err) {
+                            console.log(err)
                             wx.hideLoading();
                         }
                     });
@@ -455,9 +465,6 @@ const methods = {
         ctx.fillText('恭喜您已完成今日目标', calculate(148), calculate(728))
         ctx.setFillStyle('#3D3D3D');
         ctx.setFontSize(calculate(18))
-        ctx.fillText('获得', calculate(148), calculate(728))
-        ctx.setFillStyle('#3D3D3D');
-        ctx.setFontSize(calculate(18))
         ctx.fillText('获得', calculate(148), calculate(758))
         ctx.setFillStyle('#EA6363');
         ctx.setFontSize(calculate(23))
@@ -465,8 +472,15 @@ const methods = {
         ctx.setFillStyle('#3D3D3D');
         ctx.setFontSize(calculate(18))
         ctx.fillText('福气', calculate(248), calculate(758))
+        //头像
+        ctx.save()
+        ctx.beginPath()
+        ctx.arc(calculate(64 + 31), calculate(704 + 31), calculate(62) / 2, 0, 2 * Math.PI)
+        ctx.setStrokeStyle('white')
+        ctx.stroke();
+        ctx.clip()
         ctx.drawImage(poster.avatar, calculate(64), calculate(704), calculate(62), calculate(62))
-
+        ctx.restore()
         //分享二维码
         // ctx.save()
         ctx.drawImage(poster.shareCode.path, calculate(368), calculate(684), calculate(118), calculate(118))
@@ -498,7 +512,7 @@ const methods = {
     onShareAppMessage() {
         const self = this;
         const userInfo = _g.getLS(_c.LSKeys.userInfo);
-        const path = `pages/step/index?promoCode=${userInfo.promoCode}`;
+        const path = `pages/home/login?promoCode=${userInfo.promoCode}`;
         return {
             title: '一起加入养天和吧',
             path: path,

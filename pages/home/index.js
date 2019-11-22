@@ -57,19 +57,20 @@ const data = {
     canvasUrl: '',
     authorizeHidden: true,
     shareModal: false,
+    code: ''
 };
 
 // 页面onLoad方法
 const onLoad = function (self) {
     wx.showShareMenu();
     self.initBlock();
-    if (_g.checkLogin({
-        type: 1
-    })) {
-        //已登录
+    // _g.setLS(_c.LSKeys.promoCode, 'hs23a1')
+
+    if (_g.checkLogin({ type: 1 }) && _g.getLS(_c.LSKeys.promoCode)) {
+        self.setLoginDataV2();
+    } else if (_g.checkLogin({ type: 1 })) {
         self.setLoginData();
     } else {
-        //未登录
         self.getLocation();
     }
     event.on('login-suc', self, (data) => {
@@ -131,7 +132,6 @@ const onReady = function (self) {
             authorizeHidden: true
         });
     }
-
 }
 
 // 页面onShow方法
@@ -149,6 +149,16 @@ const onUnload = function (self) {
 
 // 页面中的方法
 const methods = {
+    setLoginDataV2() {
+        const self = this;
+        const userInfo = _g.getLS(_c.LSKeys.userInfo);
+        self.setData({
+            isLogin: true,
+            userInfo: userInfo,
+            storeInfo: userInfo.store
+        });
+        self.getUserLink();
+    },
     setLoginData() {
         const self = this;
         const userInfo = _g.getLS(_c.LSKeys.userInfo);
@@ -187,15 +197,19 @@ const methods = {
         }).then((ret) => {
             if (ret.data.list && ret.data.list.length) {
                 let num = 0;
-                if (self.data.storeId) {
-                    _.find(ret.data.list, (item,index) => {
+                if (self.data.storeId || storeInfo) {
+                    _.find(ret.data.list, (item, index) => {
                         if (item.id == self.data.storeId) {
                             num = index
                         }
 
                     })
                 }
-                let storeInfo = ret.data.list[num]
+                let storeInfo = ret.data.list[num];
+                let lsStoreInfo = _g.getLS(_c.LSKeys.storeInfo);
+                if (lsStoreInfo) {
+                    storeInfo = lsStoreInfo;
+                }
                 self.setData({
                     storeInfo: storeInfo
                 });
@@ -243,7 +257,7 @@ const methods = {
 
             self.btnShow(data.stepInfo.status);
             self.showClassify(data.navigation);
-            
+
         }, (err) => {
 
         });
@@ -615,7 +629,7 @@ const methods = {
                 title: '正在上传步数',
                 success() { }
             });
-            self.wxLogin();
+            self.getWeRunData();
         } else {
             _g.toast({
                 title: '请登陆'
@@ -656,26 +670,33 @@ const methods = {
         let self = this;
         Platform.uploadStep(self, data
         ).then((ret) => {
-            self.setData({
-                nowStep: self.data.stepInfo.todayStep
-            });
-            event.emit('refreshStep');
-            wx.hideLoading();
-            _g.toast({
-                title: '上传步数成功',
-                duration: 3000
-            });
-            self.getCommonData();
-            if (self.data.stepInfo.status == 2) {
-                self.showDialogBtn();
-            }
-        }, (err) => {
-            _g.toast({
-                title: err.message
-            });
-            // _g.toast({
-            //     title: '上传步数失败'
+            // self.setData({
+            //     nowStep: self.data.stepInfo.todayStep
             // });
+            if (ret.data.code == 11001 || ret.data.code == 11002) {
+                _g.toast({ title: '重新上传步数中，请稍等' });
+                self.wxLogin();
+            } else {
+                self.setData({
+                    stepInfo: ret.data
+                })
+                event.emit('refreshStep');
+                wx.hideLoading();
+                _g.toast({
+                    title: '上传步数成功',
+                    duration: 3000
+                });
+                if (ret.data.status == 2) {
+                    self.showDialogBtn();
+                }
+            }
+
+            // self.getCommonData();
+            // if (self.data.stepInfo.status == 2) {
+            //     self.showDialogBtn();
+            // }
+            
+        }, (err) => {
         })
     },
 
@@ -814,7 +835,7 @@ const methods = {
         self.getTabBar().setData({
             flag: false
         });
-        
+
     },
     //隐藏模态框
     hideShareModal: function () {
@@ -943,17 +964,21 @@ const methods = {
         ctx.fillText('恭喜您已完成今日目标', calculate(148), calculate(728))
         ctx.setFillStyle('#3D3D3D');
         ctx.setFontSize(calculate(18))
-        ctx.fillText('获得', calculate(148), calculate(728))
-        ctx.setFillStyle('#3D3D3D');
-        ctx.setFontSize(calculate(18))
         ctx.fillText('获得', calculate(148), calculate(758))
         ctx.setFillStyle('#EA6363');
         ctx.setFontSize(calculate(23))
         ctx.fillText('3000', calculate(188), calculate(758))
         ctx.setFillStyle('#3D3D3D');
         ctx.setFontSize(calculate(18))
-        ctx.fillText('福气', calculate(248), calculate(758))
+        ctx.fillText('福气', calculate(248), calculate(758));
+        ctx.save()
+        ctx.beginPath()
+        ctx.arc(calculate(64 + 31), calculate(704 + 31), calculate(62) / 2, 0, 2 * Math.PI)
+        ctx.setStrokeStyle('white')
+        ctx.stroke();
+        ctx.clip()
         ctx.drawImage(poster.avatar, calculate(64), calculate(704), calculate(62), calculate(62))
+        ctx.restore()
         //分享二维码
         // ctx.save()
         ctx.drawImage(poster.shareCode.path, calculate(368), calculate(684), calculate(118), calculate(118))
@@ -985,12 +1010,78 @@ const methods = {
     onShareAppMessage() {
         const self = this;
         const userInfo = _g.getLS(_c.LSKeys.userInfo);
-        const path = `pages/home/index?promoCode=${userInfo.promoCode}`;
+        const path = `pages/home/login?promoCode=${userInfo.promoCode}`;
         return {
             title: '一起加入养天和吧',
             path: path,
             imageUrl: self.data.canvasUrl
         }
+    },
+    setUserLinkData(ret) {
+        const self = this;
+        _g.rmLS(_c.LSKeys.promoCode);
+        if (ret.data.result == 2) {
+            // 无登录 往上找 有门店
+            _g.setLS(_c.LSKeys.storeInfo, ret.data.storeInfo);
+            self.setData({
+                storeInfo: storeInfo
+            })
+            //TODO get info
+        } else if (ret.data.result == 1) {
+            //登陆了 需要刷新门店
+            _g.getMyInfo(self, {
+                suc() {
+                    self.setData({
+                        userInfo: _g.getLS(_c.LSKeys.userInfo),
+                        storeInfo: _g.getLS(_c.LSKeys.userInfo).store
+                    });
+                    _g.setLS(_c.LSKeys.storeInfo, _g.getLS(_c.LSKeys.userInfo).store);
+                    self.getData();
+                }
+            })
+        } else {
+            //小白 和之前一样处理
+            if (self.data.isLogin) {
+                let userInfo = _g.getLS(_c.LSKeys.userInfo);
+                if (!userInfo.store) {
+                    self.getLocation();
+                } else {
+                    self.getData();
+                }
+            } else {
+                self.getLocation();
+            }
+        }
+    },
+    getUserLink() {
+        const self = this;
+        let postData = {
+            promoCode: _g.getLS(_c.LSKeys.promoCode)
+        };
+
+        // if (self.data.isLogin) {
+        postData.userId = self.data.userInfo.id;
+        User.userLinkUser(self, postData).then((ret) => {
+            self.setUserLinkData(ret);
+        }, (err) => {
+            //TODO 失败
+        });
+        // } else {
+        //     wx.login({
+        //         success(res) {
+        //             if (res.code) {
+        //                 postData.jsCode = res.code;
+        //                 User.userLinkUser(self, postData).then((ret) => {
+        //                     self.setUserLinkData(ret);
+        //                 }, (err) => {
+        //                     //TODO 失败
+        //                 });
+        //             } else {
+        //                 //TODO 微信登陆失败
+        //             }
+        //         }
+        //     })
+        // }
     }
 
 };

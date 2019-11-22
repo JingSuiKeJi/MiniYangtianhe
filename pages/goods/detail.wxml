@@ -306,3 +306,7 @@
   eventName="goods-detail-authorize" 
   isHidden="{{authorizeHidden}}">
 </authorize>
+<!-- <location id="location" 
+  bind:onCancelTap="onCancelTap" 
+  hiddenLocationPopup="{{hiddenLocationPopup}}">
+</location> -->

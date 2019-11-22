@@ -10,13 +10,7 @@ const User = require('../../service/User');
 let data = {
 	userInfo:{},//用户信息
 	storeId:'1',//接收上一页门店id，测试1
-	customerList:[
-		// {avatar:'my_infoBoxAvatar',nickname:'于此长歌',sort:0,oneLevelTeamNum:10,twoLevelTeamNum:25,orderNum:1244,totalPayment:2335,id:1},
-		// {avatar:'my_infoBoxAvatar',nickname:'邻家小姐姐',sort:1,oneLevelTeamNum:10,twoLevelTeamNum:25,orderNum:1244,totalPayment:2335,id:2},
-		// {avatar:'my_infoBoxAvatar',nickname:'邻家小哥哥',sort:2,oneLevelTeamNum:10,twoLevelTeamNum:25,orderNum:1244,totalPayment:2335,id:3},
-		// {avatar:'my_infoBoxAvatar',nickname:'邻家小哥哥',sort:null,oneLevelTeamNum:10,twoLevelTeamNum:25,orderNum:1244,totalPayment:2335,id:4},
-		// {avatar:'my_infoBoxAvatar',nickname:'于此长歌',sort:2,oneLevelTeamNum:10,twoLevelTeamNum:25,orderNum:1244,totalPayment:2335,id:5},
-	],
+	customerList:[],
 };
 const onLoad = function(self) {
 	self.getMyInfo();
