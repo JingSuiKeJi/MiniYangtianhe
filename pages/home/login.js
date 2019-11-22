@@ -8,9 +8,9 @@ const event = app.event;
 const User = require('../../service/User');
 
 let data = {
-    isLogin: false
+    isLogin: false,
 };
-const onLoad = function (self) {
+const onLoad = function(self) {
     if (_g.checkLogin({ type: 1 })) {
         self.setData({
             isLogin: true
@@ -21,24 +21,14 @@ const onLoad = function (self) {
     } else {
         self.setData({
             isLogin: false
-        })
+        });
     }
-    
-    // _g.getLocation().then((res) => {
-    //     console.log(res)
-    // }, (error) => {
-    //     console.log(error)
-    //     // self.getStoreList();
-    // });
-
 };
-const onShow = function (self) {
-
-};
-const onReady = function (self) { };
-const onUnload = function (self) { };
+const onShow = function(self) {};
+const onReady = function(self) {};
+const onUnload = function(self) {};
 const methods = {
-    onLoginTap: function (e) {
+    onLoginTap: function(e) {
         let self = this;
         if (self.data.isLogin && getCurrentPages().length < 2) {
             _g.switchTab({
@@ -48,7 +38,7 @@ const methods = {
             _g.navigateBack();
         }
     },
-    onLaterLogin: function (e) {
+    onLaterLogin: function(e) {
         let self = this;
         if (getCurrentPages().length >= 1) {
             _g.navigateBack();

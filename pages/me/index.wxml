@@ -1,7 +1,7 @@
 <wxs module="filter" src="../../filter/filter.wxs"></wxs>
 <!--index.wxml-->
 <view class="container">
-	<navBar title='我的' background='#20CAB4' color='white' iconTheme='white' back="{{true}}"></navBar>
+	<navBar title="我的" background="#20CAB4" color="white" iconTheme="white" back="{{true}}"></navBar>
 	<view class='tab-bottom'></view>
     <view class="ui-main" >
         <view class="ui-infoBox">
@@ -233,3 +233,8 @@
 		</form>
     </view>
 </view>
+<location 
+    id="location" 
+    hiddenLocationPopup="{{hiddenLocationPopup}}"
+    bind:onCancelTap="onCancelTap">
+</location>

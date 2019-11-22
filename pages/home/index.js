@@ -142,8 +142,8 @@ const onShow = function (self) {
 };
 
 const onUnload = function (self) {
-    event.remove('refreshStep');
-    event.remove('login-suc');
+    event.remove('refreshStep', self);
+    event.remove('login-suc', self);
     event.remove('home-index-authorize', self);
 };
 

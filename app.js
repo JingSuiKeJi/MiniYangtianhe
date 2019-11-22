@@ -61,11 +61,12 @@ App({
         this.config = require('/libs/config.js');
         var self = this;
         if (!self.base.checkLogin({ type: 1 }) && getCurrentPages().length > 0) {
-            self.base.navigateTo({
-                url: 'pages/home/login'
-            }, self)
-        };
-
+            if (getCurrentPages()[0].route != 'pages/home/login') {
+                self.base.navigateTo({
+                    url: 'pages/home/login'
+                }, self)
+            }
+        }
     },
     globalData: {
         //状态栏高度

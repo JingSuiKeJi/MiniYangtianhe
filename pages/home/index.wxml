@@ -297,3 +297,8 @@
     eventName="home-index-authorize" 
     isHidden="{{authorizeHidden}}">
 </authorize>
+<location 
+    id="location" 
+    hiddenLocationPopup="{{hiddenLocationPopup}}"
+    bind:onCancelTap="onCancelTap">
+</location>

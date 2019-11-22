@@ -29,7 +29,7 @@ Component({
     methods: {
         openSettingTap(e) {
             const self = this;
-            event.emit('setLocationConfig', e);
+            event.emit('location-getSettingData', e);
         }
     }
 });

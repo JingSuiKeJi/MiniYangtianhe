@@ -103,6 +103,12 @@ base.prototype = {
         options.data.lastTapTime = 0;
         // 单击事件点击后要触发的函数
         options.data.lastTapTimeoutFunc = null;
+        //location 授权弹窗控制
+        options.data.hiddenLocationPopup = true;
+        options.data.myLocation = {
+            lon: 112.59000,
+            lat: 28.12000
+        };
 
         var page = {
             data: options.data || {},
@@ -206,14 +212,38 @@ base.prototype = {
             },
             onReady: function () {
                 // 执行页面自定义的 onReady 方法
+                const self = this;
+                if (['pages/home/login',
+                    'pages/home/index',
+                    'pages/goods/detail',
+                    'pages/goods/myBargain',
+                    'pages/store/cart',
+                    'pages/me/index'].indexOf(self.route) > -1) {
+                    
+                    self.location = self.selectComponent('#location');
+                    if (self.location) {
+                        self.location.onCancelTap = function() {
+                            self.setData({
+                                hiddenLocationPopup: true
+                            });
+                        }
+                        event.on('location-getSettingData', self, function(e) {
+                            self.setData({
+                                hiddenLocationPopup: true
+                            });
+                            if (e.detail.authSetting['scope.userLocation']) {
+                                //开启成功
+                                self.getMyLocation && self.getMyLocation();
+                            } else {
+                                //开启失败
+                            }
+                        });
+                    }
+                }
                 onReady && onReady(this);
             },
             onShow: function () {
                 var self = this;
-                //审核
-                self.setData({
-                    auditStatus: _g.getLS(_c.LSKeys.auditStatus)
-                });
                 self.data.openTimes++; // 页面打开次数自增
                 setTimeout(function () {
                     _g.dm.preUrl = ''; // 防触摸多次打开多个页面标志 临时记录每个跳转页面的前一个页面地址(url)
@@ -229,6 +259,7 @@ base.prototype = {
             },
             onUnload: function () {
                 // 执行页面自定义的 onUnload 方法
+                event.remove('location-getSettingData', self);
                 onUnload && onUnload(this);
             },
             onShareAppMessage: function (res) {
@@ -343,6 +374,21 @@ base.prototype = {
                 // console.log(e.target.dataset['fuc'])
 
             },
+            getMyLocation: function () {
+                const self = this;
+                _g.getLocation().then((res) => {
+                    self.setData({
+                        myLocation: {
+                            lon: res.lon,
+                            lat: res.lat
+                        }
+                    })
+                }, (err) => {
+                    self.setData({
+                        hiddenLocationPopup: false
+                    });
+                })
+            }
         };
         // 初始化页面方法
         _.each(methods, function (val, key) {
@@ -1546,62 +1592,87 @@ base.prototype = {
     setLogin: function (self, opts, e) {
         const _g = this;
         const User = require('../service/User');
-        _g.getLocation().then((res) => {
-            User.login(self, {
-                lon: res.lon,
-                lat: res.lat,
-                jsCode: opts.code,
-                rawData: opts.rawData,
-                signature: opts.signature,
-                encryptedData: opts.encryptedData,
-                iv: opts.iv,
-                promoCode: _g.getLS('promoCode') || '',
-                storeId: _g.getLS('storeInfo').id
-            }).then((ret) => {
-                _g.setLS(_c.LSKeys.sessionKey, ret.data.sessionKey);
-                _g.getMyInfo(self, {
-                    type: 'login',
-                    e: e
-                });
-                self.setData({
-                    isLogin: true
-                })
-            }, (err) => {
-                //TODO login fail
-                _g.toast({
-                    title: '登录失败,请重试'
-                });
+        User.login(self, {
+            lon: self.data.myLocation.lon,
+            lat: self.data.myLocation.lat,
+            jsCode: opts.code,
+            rawData: opts.rawData,
+            signature: opts.signature,
+            encryptedData: opts.encryptedData,
+            iv: opts.iv,
+            promoCode: _g.getLS('promoCode') || '',
+            storeId: _g.getLS('storeInfo').id
+        }).then((ret) => {
+            _g.setLS(_c.LSKeys.sessionKey, ret.data.sessionKey);
+            _g.getMyInfo(self, {
+                type: 'login',
+                e: e
             });
-
-        }, (error) => {
-            User.login(self, {
-                lon: 112.59000,
-                lat: 28.12000,
-                jsCode: opts.code,
-                rawData: opts.rawData,
-                signature: opts.signature,
-                encryptedData: opts.encryptedData,
-                iv: opts.iv,
-                promoCode: _g.getLS('promoCode') || '',
-                storeId: _g.getLS('storeInfo').id
-            }).then((ret) => {
-                _g.setLS(_c.LSKeys.sessionKey, ret.data.sessionKey);
-                _g.getMyInfo(self, {
-                    type: 'login',
-                    e: e
-                });
-                self.setData({
-                    isLogin: true
-                })
-            }, (err) => {
-                //TODO login fail
-                _g.toast({
-                    title: '登录失败,请重试'
-                });
+            self.setData({
+                isLogin: true
+            })
+        }, (err) => {
+            //TODO login fail
+            _g.toast({
+                title: '登录失败,请重试'
             });
-
         });
 
+        // _g.getLocation().then((res) => {
+        //     User.login(self, {
+        //         lon: res.lon,
+        //         lat: res.lat,
+        //         jsCode: opts.code,
+        //         rawData: opts.rawData,
+        //         signature: opts.signature,
+        //         encryptedData: opts.encryptedData,
+        //         iv: opts.iv,
+        //         promoCode: _g.getLS('promoCode') || '',
+        //         storeId: _g.getLS('storeInfo').id
+        //     }).then((ret) => {
+        //         _g.setLS(_c.LSKeys.sessionKey, ret.data.sessionKey);
+        //         _g.getMyInfo(self, {
+        //             type: 'login',
+        //             e: e
+        //         });
+        //         self.setData({
+        //             isLogin: true
+        //         })
+        //     }, (err) => {
+        //         //TODO login fail
+        //         _g.toast({
+        //             title: '登录失败,请重试'
+        //         });
+        //     });
+
+        // }, (error) => {
+        //     User.login(self, {
+        //         lon: 112.59000,
+        //         lat: 28.12000,
+        //         jsCode: opts.code,
+        //         rawData: opts.rawData,
+        //         signature: opts.signature,
+        //         encryptedData: opts.encryptedData,
+        //         iv: opts.iv,
+        //         promoCode: _g.getLS('promoCode') || '',
+        //         storeId: _g.getLS('storeInfo').id
+        //     }).then((ret) => {
+        //         _g.setLS(_c.LSKeys.sessionKey, ret.data.sessionKey);
+        //         _g.getMyInfo(self, {
+        //             type: 'login',
+        //             e: e
+        //         });
+        //         self.setData({
+        //             isLogin: true
+        //         })
+        //     }, (err) => {
+        //         //TODO login fail
+        //         _g.toast({
+        //             title: '登录失败,请重试'
+        //         });
+        //     });
+
+        // });
     },
     getMyInfo: function (self, opts) {
         const _g = this;

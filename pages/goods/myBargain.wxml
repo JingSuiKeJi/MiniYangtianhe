@@ -70,5 +70,9 @@
         </view>
     </view>
 </view>
-
+<location 
+    id="location" 
+    hiddenLocationPopup="{{hiddenLocationPopup}}"
+    bind:onCancelTap="onCancelTap">
+</location>
 

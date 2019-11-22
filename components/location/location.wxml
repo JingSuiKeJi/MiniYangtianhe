@@ -1,4 +1,4 @@
-<cover-view class="ui-authorize" hidden="{{isHidden}}">
+<cover-view class="ui-authorize" hidden="{{hiddenLocationPopup}}">
 	<cover-view class="ui-authorize__bg"></cover-view>
 	<cover-view class="ui-dialog__bd">
 		<cover-view class="ui-dialog__content">{{message}}</cover-view>
