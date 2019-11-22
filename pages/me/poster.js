@@ -88,6 +88,15 @@ const methods = {
 				});
 				self.checkDownload();
 			}, (err) => {
+				self.downloadImg({
+					imgUrl: 'http://www.gzlingren.com:8098/yangtianhe/myposter.jpg'
+				}, (res) => {
+					self.setData({
+						picThumb: res
+					});
+					_g.setLS('posterThumb', res);
+				});
+				self.checkDownload();
 			});
 		} else {
 			self.setData({
