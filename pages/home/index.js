@@ -824,6 +824,14 @@ const methods = {
             });
             self.checkDownload();
         }, (err) => {
+            self.downloadImg({
+                imgUrl: 'http://www.gzlingren.com:8098/yangtianhe/share__step__bgImg.png'
+            }, (res) => {
+                self.setData({
+                    picThumb: res
+                });
+            });
+            self.checkDownload();
         });
     },
     //显示模态框
