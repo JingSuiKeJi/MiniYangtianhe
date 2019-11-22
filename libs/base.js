@@ -217,16 +217,28 @@ base.prototype = {
 
                 // 执行页面自定义的 onLoad 方法
                 onLoad && onLoad(self);
+                if (['pages/home/login',
+                    // 'pages/home/index',
+                    // 'pages/goods/detail',
+                    // 'pages/goods/myBargain',
+                    // 'pages/store/cart',
+                    // 'pages/me/index'
+                    ].indexOf(self.route) > -1) {
+                    if (!_g.checkLogin({ type: 1 })) {
+                        self.getMyLocation();
+                    }
+                }
             },
             onReady: function () {
                 // 执行页面自定义的 onReady 方法
                 const self = this;
                 if (['pages/home/login',
-                    'pages/home/index',
-                    'pages/goods/detail',
-                    'pages/goods/myBargain',
-                    'pages/store/cart',
-                    'pages/me/index'].indexOf(self.route) > -1) {
+                    // 'pages/home/index',
+                    // 'pages/goods/detail',
+                    // 'pages/goods/myBargain',
+                    // 'pages/store/cart',
+                    // 'pages/me/index'
+                    ].indexOf(self.route) > -1) {
                     
                     self.location = self.selectComponent('#location');
                     if (self.location) {
