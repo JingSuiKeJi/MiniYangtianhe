@@ -10,13 +10,13 @@ const data = {
     list: [],
     title: '我的乐友',
     hideModal: true, //true-隐藏  false-显示
-	nimationData: {},//
-	value: '',
+    nimationData: {},//
+    value: '',
 };
 
 // 页面onLoad方法
 const onLoad = function (self) {
-    self.getData();  
+    self.getData();
     if (self.data.from) {
         self.setData({
             from: self.data.from,
@@ -42,24 +42,34 @@ const methods = {
     getPageData: function () {
         let self = this;
         User.getLeyouList(self, {
-            page: 0,
-            // pageSize: 0,
-			level: self.data.type,
-			memberId: self.data.value
+            page: 1,
+            pageSize: 20,
+            level: self.data.type,
+            memberId: self.data.value
 
         }).then((ret) => {
             let data = ret.data;
-            self.setData({
-                list: data.list,
-                hasNextPage: data.hasNextPage
-            })
+            if (self.data.page == 1) {
+                self.setData({
+                    list: data.list,
+                })
+            }else {
+                self.setData({
+                    list: self.data.list.concat(data.list),
+                }) 
+            }
+
         }, (err) => {
         });
     },
     onChoseTap: function (e) {
         let self = this;
+        let type = e.currentTarget.dataset.type;
+        if (type == self.data.type) return
         self.setData({
-            type: Number(e.target.dataset.type)
+            type: type,
+            page: 0,
+            list: []
         });
         self.getPageData();
     },
@@ -71,14 +81,18 @@ const methods = {
     },
     onSkipTap: function (e) {
         let self = this;
+        self.setData ({
+            page: 1,
+            list: []
+        })
         self.getData();
     },
     showModal: function (e) {
-		let  self = this;
+        let self = this;
         if (!self.data.from) return;
         self.setData({
-			hideModal: false,
-			index: e.currentTarget.dataset.index
+            hideModal: false,
+            index: e.currentTarget.dataset.index
         })
     },
     // 隐藏遮罩层
@@ -89,11 +103,11 @@ const methods = {
         })
     },
     onSureTap: function (e) {
-		let self = this;
-		let index = self.data.index;
+        let self = this;
+        let index = self.data.index;
         //返回上一个页面，并传参
         _g.getPrevPage().setData({
-			memberId: self.data.list[index].memberId
+            memberId: self.data.list[index].memberId
         });
         _g.navigateBack();
     }

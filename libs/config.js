@@ -138,7 +138,7 @@ config.prototype = {
             rankingList: '/app/step/rankingList.do',
             browseList: '/app/browse/getRecordList.do',
             deleteBrowse: '/app/browse/delete.do',
-            preLogin: '/app/account/preLogin.do',
+            userLinkUser: '/app/account/userLinkUser.do',
 
         },
         withdraw: {

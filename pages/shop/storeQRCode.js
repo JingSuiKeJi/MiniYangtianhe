@@ -74,6 +74,7 @@ const methods = {
 							callback && callback(res);
 						},
 						fail(err) {
+							console.log(777,err)
 							wx.hideLoading();
 						}
 					});
@@ -141,7 +142,7 @@ const methods = {
 	onShareAppMessage() {
 		const self = this;
 		const userInfo = _g.getLS(_c.LSKeys.userInfo);
-		const path = `pages/home/index?storeId=${userInfo.store.id}&promoCode=${userInfo.promoCode}`;
+		const path = `pages/home/login?storeId=${userInfo.store.id}&promoCode=${userInfo.promoCode}`;
 		return {
             title: '一起加入养天和吧',
             path: path,

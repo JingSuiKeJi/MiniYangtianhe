@@ -176,6 +176,7 @@ const methods = {
 							callback && callback(res);
 						},
 						fail(err) {
+							console.log(666,err)
 							wx.hideLoading();
 						}
 					});
@@ -226,11 +227,14 @@ const methods = {
 		ctx.setFontSize(calculate(26))
 		ctx.fillText('|长按识别小程序码|',calculate(224), calculate(874))
 		//头像
-		// ctx.save()
-		// ctx.arc(calculate(38 ), calculate(610), calculate(106) / 2, 0, 2*Math.PI)
-		// ctx.clip()
+		ctx.save()
+		ctx.beginPath() 
+		ctx.arc(calculate(38 + 53), calculate(610 + 53), calculate(106) / 2, 0, 2*Math.PI)
+		ctx.setStrokeStyle('white')
+		ctx.stroke();
+		ctx.clip()
 		ctx.drawImage(poster.avatar, calculate(38), calculate(610), calculate(106), calculate(106))
-
+        ctx.restore()
 		//分享二维码
 		// ctx.save()
 		ctx.drawImage(poster.shareCode.path, calculate(42), calculate(784), calculate(140), calculate(140))
