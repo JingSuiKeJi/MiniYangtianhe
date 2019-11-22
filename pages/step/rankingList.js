@@ -43,7 +43,7 @@ const methods = {
                 });
             } else {
                 self.setData({
-                    list: self.data.list.concat(data.list),
+                    list: self.data.list.concat(data.list.list),
                     myStep: data.myStep,
                     hasNextPage: data.list.hasNextPage
                 });

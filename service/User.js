@@ -368,10 +368,10 @@ class User {
 			data: reqData
 		}, page);
 	}
-	preLogin(page, reqData) {
+	userLinkUser(page, reqData) {
 		_g.dm.canLoadMore = 1;
 		return _g.ajax({
-			url: mini.user.preLogin,
+			url: mini.user.userLinkUser,
 			data: reqData
 		}, page);
 	}
