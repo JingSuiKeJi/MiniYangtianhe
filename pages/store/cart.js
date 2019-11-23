@@ -372,6 +372,11 @@ const methods = {
             });
         } else {
             let selectedList = [];
+            if (data.mediNum) {
+                selectedList = self.data.medecineList;
+            } else {
+                selectedList = self.data.storeList;
+            }
             _.each(selectedList, (item) => {
                 if (item.isSelect) {
                     ids.push(item.id)
@@ -381,14 +386,6 @@ const methods = {
                  _g.toast({title: '请选择要购买的商品'});
                  return;
             }
-            if (data.mediNum) {
-                selectedList = self.data.medecineList;
-            } else {
-                selectedList = self.data.storeList;
-            }
-
-
-           
             _g.navigateTo({
                 url: 'pages/order/submit',
                 param: {
