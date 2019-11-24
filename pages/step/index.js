@@ -242,6 +242,7 @@ const methods = {
                 if (ret.data.status == 2) {
                     self.showDialogBtn();
                 }
+                event.emit('refreshStep')
             }
 
         }, (err) => {
