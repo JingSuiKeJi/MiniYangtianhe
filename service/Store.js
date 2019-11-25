@@ -79,6 +79,13 @@ class Store {
             data: reqData
         }, page);
     }
+    listTaskCenter(page, reqData) {
+        _g.dm.canLoadMore = 1;
+        return _g.ajax({
+            url: mini.store.listTaskCenter,
+            data: reqData
+        }, page);
+    }
 
 
 }

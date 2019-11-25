@@ -95,6 +95,7 @@ const methods = {
         }, (err) => {
 
         });
+        // self.getDeduction();
 
     },
     onSubtractionTap: function (e) {
@@ -102,23 +103,6 @@ const methods = {
         let medecineList = self.data.medecineList;
         let storeList = self.data.storeList;
         let index = e.target.dataset.index;
-        // if (e.target.dataset.type == 1) {
-        //  // 1: 门店
-        //     if (medecineList[index].count == 1) return;
-        //     medecineList[index].num = medecineList[index].num - 1;
-        //     self.setData({
-        //         medecineList: medecineList
-        //     });
-        //     self.getMonney('medecineList', 1);
-        // } else {
-        //  // 2: 商城
-        //     if (storeList[index].num == 1) return;
-        //     storeList[index].num = storeList[index].num - 1;
-        //     self.setData({
-        //         storeList: storeList
-        //     });
-        //     self.getMonney('storeList', 2);
-        // }
         self.subtractNum({
             list: e.target.dataset.type == 1 ? 'medecineList' : 'storeList',
             index: index
@@ -126,22 +110,7 @@ const methods = {
     },
     onAddTap: function (e) {
         let self = this;
-        let medecineList = self.data.medecineList;
-        let storeList = self.data.storeList;
         let index = e.target.dataset.index;
-        // if (e.target.dataset.type == 1) {
-        //     medecineList[index].count = medecineList[index].num + 1;
-        //     self.setData({
-        //         medecineList: medecineList
-        //     });
-        //     self.getMonney('medecineList', 1);
-        // } else {
-        //     storeList[index].num = storeList[index].num + 1;
-        //     self.setData({
-        //         storeList: storeList
-        //     });
-        //     self.getMonney('storeList', 2);
-        // }
         self.addNum({
             list: e.target.dataset.type == 1 ? 'medecineList' : 'storeList',
             index: index
@@ -531,7 +500,20 @@ const methods = {
         _g.navigateTo({
             url: 'pages/card/card',
         }, self);
-    }
+    },
+    getDeduction: function () {
+        let self = this;
+        Goods.getDeduction(self, {
+           type: 2
+        }).then((ret) => {
+            // let data = ret.data;
+            // self.setData({
+            //     fridensList: data.list.list,
+            // });
+
+
+        }, (err) => { });
+    },
 
 };
 

@@ -69,7 +69,7 @@
 	color: #999;
 }
 
-.ui-share__btnText text {
+.ui-share__earnText {
 	color: #ED3D3B;
 }
 

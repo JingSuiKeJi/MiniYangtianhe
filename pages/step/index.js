@@ -6,6 +6,7 @@ const _c = app.config;
 const event = app.event;
 const Platform = require('../../service/Platfrom');
 const User = require('../../service/User');
+const Goods = require('../../service/Goods');
 // 初始化数据
 const data = {
     step: '上传步数',
@@ -116,6 +117,7 @@ const methods = {
         self.rankingList();
         self.getPoster();
         self.getShareCode();
+        // self.getDeduction();
     },
     getStepInfo: function () {
         let self = this;
@@ -271,8 +273,8 @@ const methods = {
     getPageData: function () {
         let self = this;
         User.getRecordList(self, {
-            page: self.data.page,
-            pageSize: 20,
+            page: 0,
+            // pageSize: 20,
         }).then((ret) => {
             let data = ret.data;
             if (data.list && data.list.length) {
@@ -527,7 +529,20 @@ const methods = {
             path: path,
             imageUrl: self.data.canvasUrl
         }
-    }
+    },
+    getDeduction: function () {
+        let self = this;
+        Goods.getDeduction(self, {
+           type: 1
+        }).then((ret) => {
+            // let data = ret.data;
+            // self.setData({
+            //     fridensList: data.list.list,
+            // });
+
+
+        }, (err) => { });
+    },
 };
 
 

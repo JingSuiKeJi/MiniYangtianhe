@@ -99,7 +99,20 @@
                 </view>
 		   </view>
         </view>
-		
+		<!-- <view class="ui-topListBox">
+            <view class="ui-topListItem__tip">-抵扣推荐商品-</view>
+            <view class="ui-topListitem__goods">
+                <view class="ui-goodsItem">
+                    <image src="{{filter.getLocalPhoto('jieshibang.png')}}"  class="ui-goodsItem__img" mode="aspectFit"/>
+                    <view class="ui-goodsItem__title">天然维生素C天然维生素天然维生素天然维生素天然维生素</view>
+                    <view class="ui-goodsItem__scale">已售105件</view>
+                    <view class="ui-goodsItem__price">
+                        <text class="ui-goodsItem__nowPrice">¥59.9</text>
+                        <text class="ui-goodsItem__prePrice">¥59.9</text>
+                    </view>
+                </view>
+            </view>
+        </view> -->
     </view>
 </view>
 <authorize 

@@ -82,7 +82,7 @@ const methods = {
         }).then((ret) => {
             self.setData({
                 bgImg: ret.data.poster
-            })
+            });
             self.downloadImg({
                 imgUrl: self.data.host + ret.data.poster
             }, (res) => {
@@ -92,6 +92,14 @@ const methods = {
             });
             self.checkDownload();
         }, (err) => {
+            self.downloadImg({
+                imgUrl: 'http://www.gzlingren.com:8098/yangtianhe/sign__finish.png'
+            }, (res) => {
+                self.setData({
+                    picThumb: res
+                });
+            });
+            self.checkDownload();
         });
     },
     //显示模态框
@@ -107,9 +115,6 @@ const methods = {
         const self = this;
         self.setData({
             showModal: false
-        });
-        self.getTabBar().setData({
-            flag: true
         });
     },
     //分享给朋友
@@ -180,6 +185,7 @@ const methods = {
                             callback && callback(res);
                         },
                         fail(err) {
+                            console.log(err)
                             wx.hideLoading();
                         }
                     });
@@ -218,12 +224,11 @@ const methods = {
             picUrl: self.data.picThumb.path,
             shareCode: self.data.shareCode
         };
-        const ctx = wx.createCanvasContext('share', self)
+        const ctx = wx.createCanvasContext('share', self);
         ctx.setFillStyle('white')
         ctx.fillRect(0, 0, calculate(552), calculate(900))
         //画背景
         ctx.drawImage(poster.picUrl, 0, 0, calculate(552), calculate(900))
-
         ctx.setFillStyle('white')
         ctx.fillRect(calculate(36), calculate(670), calculate(476), calculate(142))
         ctx.setFillStyle('#3D3D3D');
@@ -242,20 +247,11 @@ const methods = {
         ctx.setFontSize(calculate(18))
         ctx.fillText('福气', calculate(248), calculate(758))
         ctx.drawImage(poster.avatar, calculate(64), calculate(704), calculate(62), calculate(62))
-
-        //分享二维码
-        // ctx.save();
-        // ctx.beginPath();
-        // ctx.arc(calculate(118)+calculate(368)/2, calculate(118)+calculate(684)/2, calculate(368)/2, 0, Math.PI * 2, false);
-        // ctx.setFillStyle('#EEEEEE')
-        // ctx.fill()
-
-        // ctx.clip();
         ctx.drawImage(poster.shareCode.path, calculate(368), calculate(684), calculate(118), calculate(118))
         ctx.setFillStyle('#FFFFFF');
         ctx.setFontSize(calculate(18))
-        ctx.fillText('扫一扫识别二维码，一起来挑战吧', calculate(142), calculate(850))
-        ctx.draw(true, (res) => {
+        ctx.fillText('扫一扫识别二维码，一起来挑战吧', calculate(142), calculate(850));
+        ctx.draw(true, (result) => {
             wx.canvasToTempFilePath({
                 x: 0,
                 y: 0,
@@ -279,7 +275,7 @@ const methods = {
     onShareAppMessage() {
         const self = this;
         const userInfo = _g.getLS(_c.LSKeys.userInfo);
-        const path = `pages/step/index?promoCode=${userInfo.promoCode}`;
+        const path = `pages/home/login?promoCode=${userInfo.promoCode}`;
         return {
             title: '一起加入养天和吧',
             path: path,
