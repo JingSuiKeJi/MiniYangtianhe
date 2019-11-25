@@ -922,6 +922,7 @@ const methods = {
                             callback && callback(res);
                         },
                         fail(err) {
+                            console.log(err)
                             wx.hideLoading();
                         }
                     });

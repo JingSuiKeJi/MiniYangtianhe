@@ -2,7 +2,8 @@
 <view class="ui-contain">
     <navBar title='签到成功' background='white' color='black' iconTheme='black' back="{{true}}"></navBar>
     <view class="ui-main">
-        <image src="{{filter.getPhoto(host,bgImg)}}" class="ui-main__bgImg"/>
+        <image src="{{filter.getPhoto(host,bgImg)}}" class="ui-main__bgImg" wx:if="{{bgImg}}"/>
+         <image src="{{filter.getLocalPhoto('sign__finish.png')}}" class="ui-main__bgImg" wx:if="{{!bgImg}}"/>
         <view class="ui-contentBox">
             <image src="{{userInfo.avatar}}"  class="ui-contentItem__avatar"/>
             <view class="ui-contentItem__title"> 您已到店签到成功获得<text >{{point}}</text>福气</view>

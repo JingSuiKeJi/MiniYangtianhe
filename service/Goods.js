@@ -143,6 +143,13 @@ class Goods {
             data: reqData
         }, page);
     }
+    getDeduction(page, reqData) {
+        _g.dm.canLoadMore = 1;
+        return _g.ajax({
+            url: mini.goods.getDeduction,
+            data: reqData
+        }, page);
+    }
 }
 
 module.exports = new Goods();

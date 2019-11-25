@@ -34,6 +34,7 @@ const methods = {
 	getData: function () {
 		let self = this;
 		self.taskSignHome();
+		self.listTaskCenter();
 	},
 	taskSignHome: function () {
 		let self = this;
@@ -42,6 +43,16 @@ const methods = {
 		}).then((ret) => {
 			self.setData({
 				signInfo: ret.data
+			})
+		}, (err) => {
+		});
+	},
+	listTaskCenter: function () {
+		let self = this;
+		Store.listTaskCenter(self, {}).then((ret) => {
+			let data = ret.data
+			self.setData({
+				newbieTask: data.newbieTask
 			})
 		}, (err) => {
 		});

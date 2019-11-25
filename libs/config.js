@@ -167,7 +167,8 @@ config.prototype = {
             helpCut: '/app/cut/helpCut.do',
             myCut: '/app/cut/myCut.do',
             getUserAssembleList: '/app/assemble/getUserAssembleList.do',
-            getUserAssembleDetail: '/app/assemble/getUserAssembleDetail.do'
+            getUserAssembleDetail: '/app/assemble/getUserAssembleDetail.do',
+            getDeduction: '/app/common/getDeduction.do',
         },
         store: {
             storeList: '/app/home/getStoreList.do',
@@ -179,7 +180,8 @@ config.prototype = {
             qrCodeCenter: '/app/store/qrCodeCenter.do',
             signMyFriend: '/app/store/signMyFriend.do',
             taskSignIn: '/app/task/signIn.do',
-            taskSignHome: '/app/task/signHome.do'
+            taskSignHome: '/app/task/signHome.do',
+            listTaskCenter: '/app/task/listTaskCenter',
         },
         order: {
             placeOrder: '/app/order/placeOrder.do',

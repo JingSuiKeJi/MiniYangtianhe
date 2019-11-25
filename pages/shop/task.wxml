@@ -16,9 +16,9 @@
         </view>
         <view class="ui-testBox">
             <view class="ui-testBox__title">签到福气加倍</view>
-            <view class="ui-testBox__sign">
+            <view class="ui-testBox__sign" hidden="{{!signInfo.signScoreItemList.length}}">
                 <view class="ui-signItem__line"></view>
-                <view class="ui-testBox__signItem" wx:for="{{signInfo.signScoreItemList}}" wx:key="{{index}}">
+                <view class="ui-testBox__signItem" wx:for="{{signInfo.signScoreItemList}}" wx:key="{{index}}" >
                     <view wx:if="{{!item.isSign}}" class="ui-signitem__num">
                         <image src="{{filter.getLocalPhoto('sign/sign_bg.png')}}" mode="aspectFit" />
                         <text>+{{item.score}}</text>
@@ -51,15 +51,15 @@
                 <view>天天赢好礼</view>
             </view>
         </view>
-        <!-- <view class="ui-test">
+        <view class="ui-test">
             <view class="ui-test__title">新手任务</view>
-            <view class="ui-test__testItem" wx:for="{{ 5 }}" wx:key="item">
-                <view class="ui-test__testName">关注公众号</view>
-                <view class="ui-test__testAdd">+50</view>
-                <view class="ui-test__testStatus">去完成</view>
+            <view class="ui-test__testItem" wx:for="{{newbieTask }}" wx:key="{{item}}">
+                <view class="ui-test__testName">{{item.title}}</view>
+                <view class="ui-test__testAdd">+{{item.point}}</view>
+                <view class="ui-test__testStatus" style="background: {{item.status ? '#CCCCCC' :''}}">{{item.status ? '已' :'去'}}完成</view>
             </view>
         </view>
-        <view class="ui-test">
+        <!-- <view class="ui-test">
             <view class="ui-test__title">每日任务</view>
             <view class="ui-test__testItem" wx:for="{{ 5 }}" wx:key="item">
                 <view class="ui-test__testName">关注公众号</view>

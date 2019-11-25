@@ -31,13 +31,13 @@
                 <view class="ui-fuqi__num">可用福气：<text >{{info.point}}</text></view>
                 <view class="ui-fuqi__num ui-fuqi__signDay">已连续签到：<text >{{info.signNum}} </text>天</view>
             </view>
-            <view class="ui-signitem__date">
+            <view class="ui-signitem__date" hidden="{{!signList.length}}">
                 <view class="ui-signItem__line"></view>
                 <block wx:for="{{signList}}" wx:key="{{index}}">
                     <view class="ui-signitem__day">
                         <view wx:if="{{!item.isSign}}" class="ui-signitem__num">
                              <image src="{{filter.getLocalPhoto('sign/sign_bg.png')}}" mode="aspectFit"/> 
-                            <text >+{{item.score}}</text>
+                             <text >+{{item.score}}</text>
                         </view>
                         <view wx:if="{{item.isSign}}" class="ui-signitem__num">
                              <image src="{{filter.getLocalPhoto('sign/signSuccess_bg.png')}}" mode="aspectFit"/> 

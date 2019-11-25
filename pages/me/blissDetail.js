@@ -34,7 +34,6 @@ const onReady = function (self) {
     let height = parseInt(screenHeight * 908 / 1344);
     let scrollHeight = height - parseInt(screenHeight * 88 / 1344);
     self.setData({ height, scrollHeight })
-    console.log(666, height, scrollHeight);
 };
 const onUnload = function (self) { };
 const methods = {

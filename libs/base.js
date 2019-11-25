@@ -121,7 +121,6 @@ base.prototype = {
                     });
                 }
                 const scene = decodeURIComponent(options.scene);
-                console.log('base.js-----line126');
                 if (scene != 'undefined') {
                     console.log(scene);
                     const sceneData = _g.getDataByUrl(scene);
@@ -176,14 +175,22 @@ base.prototype = {
                 // if (self.data.recallUserId) {
                 //     _g.setLS(_c.LSKeys.recallUserId, self.data.recallUserId, _c.promoCodeExpireTime);
                 // }
-                // if (self.route == 'pages/goods/cutDetail') {
-                //     if (!_.isUndefined(options.cutPriceId)) {
-                //         self.setData({
-                //             cutPriceId: options.cutPriceId
-                //         });
-                //     }
-                // }
-
+                if (self.route == 'pages/goods/bargain') {
+                    if (!_.isUndefined(options.userCutId)) {
+                        self.setData({
+                            userCutId: options.userCutId,
+                            goodsId: options.goodsId
+                        });
+                    }
+                }
+                //解决从商品详情页退出再通过分享链接进去其他商品，结果没有切换的问题
+                if (self.route == 'pages/goods/detail') {
+                    if (!_.isUndefined(options.id)) {
+                        self.setData({
+                            id: options.id
+                        });
+                    }
+                }
                 self.data.prePageUrl = _g.dm.prePageUrl || ''; // 前一个页面的url路径
                 self.data.openTimes = 0; // 页面打开次数 默认0
                 self.data.page = _c.defaultPage; // 页码 默认1
