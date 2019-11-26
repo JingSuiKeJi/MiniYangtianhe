@@ -85,8 +85,9 @@ const methods = {
 						picThumb: res
 					});
 					_g.setLS('posterThumb', res);
+					self.checkDownload();
 				});
-				self.checkDownload();
+				
 			}, (err) => {
 				self.downloadImg({
 					imgUrl: 'http://www.gzlingren.com:8098/yangtianhe/myposter.jpg'
@@ -95,8 +96,9 @@ const methods = {
 						picThumb: res
 					});
 					_g.setLS('posterThumb', res);
+					self.checkDownload();
 				});
-				self.checkDownload();
+				
 			});
 		} else {
 			self.setData({
@@ -185,7 +187,6 @@ const methods = {
 							callback && callback(res);
 						},
 						fail(err) {
-							console.log(666,err)
 							wx.hideLoading();
 						}
 					});

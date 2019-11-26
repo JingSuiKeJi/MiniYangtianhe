@@ -13,6 +13,7 @@
             <view class="ui-headBox" style="margin-top: {{statusBarHeight+44}}px;" hidden="{{isFixed}}" id="head">
                 <view class="location"  catchtap="onMapTap">
                     <image src="{{filter.getLocalPhoto('home_address.png')}}" mode="aspectFit" class="ui-addressIcon" />
+                    <text class="ui-addressText" >{{storeInfo.isBind ? '绑定门店:' : '推荐门店:'}}</text>
                     <text class="ui-addressText" catchtap="onMapTap">{{filter.limitedLength(storeInfo.title )}}</text>
                     <image src="{{filter.getLocalPhoto('home_down.png')}}" mode="aspectFit" class="icon" />
                 </view>
@@ -227,23 +228,6 @@
                     </view>
                 </view>
                 <view class="ui-bottomItem_content" hidden="{{!list.length}}">
-                    <!-- <view class="ui-content_item" wx:for="{{list}}" wx:key="{{index}}" bindtap="onDetailTap" data-id="{{item.id}}">
-                        <view class="ui-contentItem_left">
-                            <image src="{{filter.getPhoto(host,item.picUrl)}}" mode="aspectFit"></image>
-                        </view>
-                        <view class="ui-contentItem_right">
-                            <view class="ui-content_title">{{item.mainTitle}}</view>
-                            <view class="ui-content_scale">{{item.secondTitle}}</view>
-                            <view class="ui-content_price">
-                                <text>原价￥{{item.originPrice}}</text>
-                                <text>已售{{item.soldNum + item.virtualNum}}件</text>
-                            </view>
-                            <view class="ui-content_reward">
-                                <text>￥{{item.nowPrice}}</text>
-                                <view wx:if="{{item.commission}}">分享赚 ￥{{item.commission}}</view>
-                            </view>
-                        </view>
-                    </view> -->
                     <form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onDetailTap" data-id="{{item.id}}" wx:for="{{list}}" wx:key="{{index}}">
                         <button formType="submit" class="ui-content_item">
                             <view class="ui-contentItem_left">

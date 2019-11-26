@@ -975,7 +975,7 @@ base.prototype = {
     showModal: function (opts) {
         var _g = this;
         wx.showModal({
-            title: opts.title || '提示',
+            title: opts.title || '',
             content: opts.content,
             showCancel: opts.showCancel ? opts.showCancel : false,
             confirmColor: opts.confirmColor || '#3CC51F',

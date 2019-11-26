@@ -1,7 +1,8 @@
 {
   "navigationStyle": "custom",
+  "enablePullDownRefresh": true,
   "usingComponents": {
     "navBar": "/components/navBar/navBar"
   },
-  "navigationBarTextStyle":"black"
+  "navigationBarTextStyle": "black"
 }
