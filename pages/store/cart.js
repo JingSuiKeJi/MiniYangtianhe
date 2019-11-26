@@ -20,7 +20,8 @@ const data = {
     storeList: [],
     startX: 0, //开始坐标
     startY: 0,
-    isMgt: false
+    isMgt: false,
+    deductDoods: []
 };
 
 // 页面onLoad方法
@@ -37,7 +38,7 @@ const onLoad = function (self) {
         self.getData();
     }
     event.on('refreshCart', self, () => {
-        self.getData();
+        self.cartList();
     });
     event.on('login-suc', self, (data) => {
         self.setData({
@@ -56,7 +57,7 @@ const onShow = function (self) {
     if (_g.checkLogin({
         type: 1
     })) {
-        self.getData();
+        self.cartList();
     }
     self.setData({
         mediNum: 0,
@@ -77,7 +78,12 @@ const onUnload = function (self) {
 const methods = {
     getData: function () {
         const self = this;
-        // if (!self.userInfo) return;
+        self.cartList();
+        // self.getDeduction();
+
+    },
+    cartList: function () {
+        let self = this;
         Goods.cartList(self, {}).then((ret) => {
             let data = ret.data;
             let param = {};
@@ -95,8 +101,7 @@ const methods = {
         }, (err) => {
 
         });
-        // self.getDeduction();
-
+        
     },
     onSubtractionTap: function (e) {
         let self = this;
@@ -351,9 +356,9 @@ const methods = {
                     ids.push(item.id)
                 }
             });
-             if (!ids.length) {
-                 _g.toast({title: '请选择要购买的商品'});
-                 return;
+            if (!ids.length) {
+                _g.toast({ title: '请选择要购买的商品' });
+                return;
             }
             _g.navigateTo({
                 url: 'pages/order/submit',
@@ -504,16 +509,29 @@ const methods = {
     getDeduction: function () {
         let self = this;
         Goods.getDeduction(self, {
-           type: 2
+            type: 2
         }).then((ret) => {
-            // let data = ret.data;
-            // self.setData({
-            //     fridensList: data.list.list,
-            // });
-
+            if (ret.data.list) {
+                self.setData({
+                    deductDoods: ret.data.list,
+                });
+            } else {
+                self.setData({
+                    deductDoods: [],
+                });
+            }
 
         }, (err) => { });
     },
+    onDetainTap: function (e) {
+        let self = this;
+        _g.navigateTo({
+            url: 'pages/goods/detail',
+            param: {
+                id: e.currentTarget.dataset.id
+            }
+        }, self)
+    }
 
 };
 

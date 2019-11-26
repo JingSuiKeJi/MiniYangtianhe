@@ -115,9 +115,12 @@ const methods = {
         User.bindRecommend(self, {
             memberId: inviterId,
         }).then((ret) => {
+            _g.toast({
+                title: `您已成功绑定${ret.data.nickname}为您的推荐人`,
+                duration: 3000
+            })
             self.getMyInfo();
         }, (err) => {
-            console.log("获取失败");
         });
     },
     //显示隐藏邀请人信息

@@ -240,7 +240,7 @@
 
 .ui-test {
     width: 710rpx;
-    height: 584rpx;
+    /* height: 584rpx; */
     margin-top: 20rpx;
     margin-left: 20rpx;
     padding: 32rpx 40rpx;

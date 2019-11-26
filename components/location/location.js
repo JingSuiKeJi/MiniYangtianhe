@@ -21,7 +21,7 @@ Component({
 
     },
     data: {
-        message: '请开启定位',
+        message: '找不到您的位置，请开启手机定位服务',
         hiddenLocationPopup: true,
         // eventName: '',
         type: ''

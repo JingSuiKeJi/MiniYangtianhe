@@ -100,18 +100,23 @@
 		   </view>
         </view>
 		<!-- <view class="ui-topListBox">
-            <view class="ui-topListItem__tip">-抵扣推荐商品-</view>
-            <view class="ui-topListitem__goods">
-                <view class="ui-goodsItem">
-                    <image src="{{filter.getLocalPhoto('jieshibang.png')}}"  class="ui-goodsItem__img" mode="aspectFit"/>
-                    <view class="ui-goodsItem__title">天然维生素C天然维生素天然维生素天然维生素天然维生素</view>
-                    <view class="ui-goodsItem__scale">已售105件</view>
+            <view class="ui-topListItem__tip">
+                <view class="ui-tipItem__firstLine"></view>
+                <view class="ui-tipItem__text">抵扣推荐商品</view>
+                <view class=" ui-tipItem__secondLine"></view>
+            </view>
+            <view class="ui-topListitem__goods" wx:if="{{deductDoods.length}}">
+                <view class="ui-goodsItem" wx:for="{{deductDoods}}" wx:key="{{index}}" bindtap="onDetainTap" data-id="{{item.id}}">
+                    <image src="{{filter.getPhoto(host,item.picUrl)}}"  class="ui-goodsItem__img" mode="aspectFit"/>
+                    <view class="ui-goodsItem__title">{{item.mainTitle}}</view>
+                    <view class="ui-goodsItem__scale">已售{{item.soldNum + item.virtualNum}}件</view>
                     <view class="ui-goodsItem__price">
-                        <text class="ui-goodsItem__nowPrice">¥59.9</text>
-                        <text class="ui-goodsItem__prePrice">¥59.9</text>
+                        <text class="ui-goodsItem__nowPrice">¥{{item.nowPrice}}</text>
+                        <text class="ui-goodsItem__prePrice">¥{{item.originPrice}}</text>
                     </view>
                 </view>
             </view>
+            <view class="ui-noData__word"  wx:if="{{!deductDoods.length}}">暂无数据</view>
         </view> -->
     </view>
 </view>

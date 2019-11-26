@@ -8,6 +8,7 @@ const event = app.event;
 const User = require('../../service/User');
 let data = {
 	selectLevel: 1,//1一级客户/2二级客户
+	clientList: []
 };
 const onLoad = function (self) {
 	self.getData();
@@ -43,7 +44,9 @@ const methods = {
 	onLevelTap: function (e) {
 		const self = this;
 		self.setData({
-			selectLevel: Number(e.target.dataset.level)
+			selectLevel: Number(e.target.dataset.level),
+			page: 1,
+			clientList: []
 		});
 		self.getPageData();
 	}

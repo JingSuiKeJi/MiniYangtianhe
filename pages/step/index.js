@@ -29,7 +29,8 @@ const data = {
     avatarThumb: {},
     canvasUrl: '',
     authorizeHidden: true,
-    code: ''
+    code: '',
+    deductDoods: []
 };
 
 // 页面onLoad方法
@@ -194,7 +195,9 @@ const methods = {
             title: '正在上传步数',
             success() { }
         });
-        // self.wxLogin();
+        setTimeout(function () {
+            wx.hideLoading()
+        }, 1000)
         self.getWeRunData();
     },
     wxLogin: function () {
@@ -324,17 +327,19 @@ const methods = {
                 self.setData({
                     picThumb: res
                 });
+                self.checkDownload();
             });
-            self.checkDownload();
+
         }, (err) => {
             self.downloadImg({
-                imgUrl:  'http://www.gzlingren.com:8098/yangtianhe/share__step__bgImg.png'
+                imgUrl: 'http://www.gzlingren.com:8098/yangtianhe/share__step__bgImg.png'
             }, (res) => {
                 self.setData({
                     picThumb: res
                 });
+                self.checkDownload();
             });
-            self.checkDownload();
+
         });
     },
     //显示模态框
@@ -424,7 +429,6 @@ const methods = {
                             callback && callback(res);
                         },
                         fail(err) {
-                            console.log(err)
                             wx.hideLoading();
                         }
                     });
@@ -479,7 +483,7 @@ const methods = {
         ctx.fillText('获得', calculate(148), calculate(758))
         ctx.setFillStyle('#EA6363');
         ctx.setFontSize(calculate(23))
-        ctx.fillText('3000', calculate(188), calculate(758))
+        ctx.fillText('100', calculate(188), calculate(758))
         ctx.setFillStyle('#3D3D3D');
         ctx.setFontSize(calculate(18))
         ctx.fillText('福气', calculate(248), calculate(758))
@@ -533,16 +537,29 @@ const methods = {
     getDeduction: function () {
         let self = this;
         Goods.getDeduction(self, {
-           type: 1
+            type: 1
         }).then((ret) => {
-            // let data = ret.data;
-            // self.setData({
-            //     fridensList: data.list.list,
-            // });
-
+            if (ret.data.list) {
+                self.setData({
+                    deductDoods: ret.data.list,
+                });
+            } else {
+                self.setData({
+                    deductDoods: [],
+                });
+            }
 
         }, (err) => { });
     },
+    onDetainTap: function (e) {
+        let self = this;
+        _g.navigateTo({
+            url: 'pages/goods/detail',
+            param: {
+                id: e.currentTarget.dataset.id
+            }
+        }, self)
+    }
 };
 
 

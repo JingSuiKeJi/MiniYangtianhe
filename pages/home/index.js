@@ -158,6 +158,7 @@ const methods = {
             storeInfo: userInfo.store
         });
         self.getUserLink();
+        self.bindPhonePopup();
     },
     setLoginData() {
         const self = this;
@@ -172,6 +173,8 @@ const methods = {
         } else {
             self.getData();
         }
+        self.bindPhonePopup();
+
     },
     getLocation() {
         const self = this;
@@ -629,6 +632,9 @@ const methods = {
                 title: '正在上传步数',
                 success() { }
             });
+            setTimeout(function () {
+                wx.hideLoading()
+            }, 1000)
             self.getWeRunData();
         } else {
             _g.toast({
@@ -670,9 +676,6 @@ const methods = {
         let self = this;
         Platform.uploadStep(self, data
         ).then((ret) => {
-            // self.setData({
-            //     nowStep: self.data.stepInfo.todayStep
-            // });
             if (ret.data.code == 11001 || ret.data.code == 11002) {
                 _g.toast({ title: '重新上传步数中，请稍等' });
                 self.wxLogin();
@@ -695,7 +698,7 @@ const methods = {
             // if (self.data.stepInfo.status == 2) {
             //     self.showDialogBtn();
             // }
-            
+
         }, (err) => {
         })
     },
@@ -821,8 +824,9 @@ const methods = {
                 self.setData({
                     picThumb: res
                 });
+                self.checkDownload();
             });
-            self.checkDownload();
+
         }, (err) => {
             self.downloadImg({
                 imgUrl: 'http://www.gzlingren.com:8098/yangtianhe/share__step__bgImg.png'
@@ -830,8 +834,9 @@ const methods = {
                 self.setData({
                     picThumb: res
                 });
+                self.checkDownload();
             });
-            self.checkDownload();
+
         });
     },
     //显示模态框
@@ -976,7 +981,7 @@ const methods = {
         ctx.fillText('获得', calculate(148), calculate(758))
         ctx.setFillStyle('#EA6363');
         ctx.setFontSize(calculate(23))
-        ctx.fillText('3000', calculate(188), calculate(758))
+        ctx.fillText('100', calculate(188), calculate(758))
         ctx.setFillStyle('#3D3D3D');
         ctx.setFontSize(calculate(18))
         ctx.fillText('福气', calculate(248), calculate(758));
@@ -1091,6 +1096,26 @@ const methods = {
         //         }
         //     })
         // }
+    },
+    bindPhonePopup: function () {
+        let self = this;
+        const userInfo = _g.getLS(_c.LSKeys.userInfo);
+        if (!userInfo.phone) {
+            _g.showModal({
+                content: '您当前还没绑定手机号马上绑定手机号',
+                showCancel: true,
+                confirmColor: '#20CAB4',
+                confirmText: '立即绑定',
+                cancelColor: '#666666',
+                cancelText: '稍后绑定',
+                confirm: function () {
+                    _g.navigateTo({
+                        url: 'pages/me/bindingPhone'
+                    }, self)
+                }
+
+            })
+        }
     }
 
 };

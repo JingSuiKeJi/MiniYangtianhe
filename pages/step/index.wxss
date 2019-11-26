@@ -543,16 +543,22 @@ page {
 .ui-topListBox {
     width: 100%;
     background-color: #F5F5F5;
-    padding: 0 32rpx 150rpx 32rpx;
+    padding: 0 32rpx 170rpx 32rpx;
 }
 .ui-topListItem__tip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 132rpx;
+}
+
+.ui-tipItem__text {
     font-size:32rpx;
     font-family:PingFangSC-Regular,PingFang SC;
     font-weight:400;
     color:rgba(51,51,51,1);
-    line-height: 132rpx;
-    text-align: center;
+    margin-left: 24rpx;
+    margin-right: 24rpx;
 }
 .ui-topListitem__goods {
     display: flex;
@@ -624,4 +630,42 @@ page {
     text-decoration: line-through;
     display: inline-block;
     vertical-align: top;
+}
+.ui-tipItem__firstLine, .ui-tipItem__secondLine{
+    display: line-block;
+    width: 54rpx;
+    height: 3rpx;
+    background-color: #333333;
+    position: relative;
+}
+.ui-tipItem__firstLine::after {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    top: -2rpx;
+    content: '';
+    width: 8rpx;
+    height: 8rpx;
+    background-color: #333333;
+    border-radius: 50%;
+}
+.ui-tipItem__secondLine::before {
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    top: -2rpx;
+    content: '';
+    width: 8rpx;
+    height: 8rpx;
+    background-color: #333333;
+    border-radius: 50%;
+}
+.ui-noData__word {
+    font-size: 26rpx;
+    font-family: PingFangSC-Regular,PingFangSC;
+    font-weight: 400;
+    color: #999999;
+    line-height: 50rpx;
+    text-align: center;
+
 }

@@ -29,8 +29,8 @@
                         <view class="ui-priceBox_earnPrice" wx:if="{{goodsDetail.commission}}">
                             赚¥{{goodsDetail.commission}}
                         </view>
-                        <view class="ui-priceBox_fuqi" wx:if="{{goodsDetail.pointsDeduction}}">
-                            福气抵扣{{goodsDetail.pointsDeduction}}
+                        <view class="ui-priceBox_fuqi" wx:if="{{goodsDetail.pointsDeductionPrice}}">
+                            福气抵扣{{goodsDetail.pointsDeductionPrice}}元
                         </view>
                     </view>
                     <text class="ui-priceBox_singlePrice">原价:{{goodsDetail.originPrice}}</text>
