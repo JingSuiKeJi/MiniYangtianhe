@@ -484,7 +484,7 @@ base.prototype = {
                     title: '加载中',
                     mask: true,
                     icon: 'loading',
-                    duration: opts.duration || 1000
+                    duration: opts.duration || 200
                 });
             }
             var postData = {};
@@ -1644,62 +1644,6 @@ base.prototype = {
                 title: '登录失败,请重试'
             });
         });
-
-        // _g.getLocation().then((res) => {
-        //     User.login(self, {
-        //         lon: res.lon,
-        //         lat: res.lat,
-        //         jsCode: opts.code,
-        //         rawData: opts.rawData,
-        //         signature: opts.signature,
-        //         encryptedData: opts.encryptedData,
-        //         iv: opts.iv,
-        //         promoCode: _g.getLS('promoCode') || '',
-        //         storeId: _g.getLS('storeInfo').id
-        //     }).then((ret) => {
-        //         _g.setLS(_c.LSKeys.sessionKey, ret.data.sessionKey);
-        //         _g.getMyInfo(self, {
-        //             type: 'login',
-        //             e: e
-        //         });
-        //         self.setData({
-        //             isLogin: true
-        //         })
-        //     }, (err) => {
-        //         //TODO login fail
-        //         _g.toast({
-        //             title: '登录失败,请重试'
-        //         });
-        //     });
-
-        // }, (error) => {
-        //     User.login(self, {
-        //         lon: 112.59000,
-        //         lat: 28.12000,
-        //         jsCode: opts.code,
-        //         rawData: opts.rawData,
-        //         signature: opts.signature,
-        //         encryptedData: opts.encryptedData,
-        //         iv: opts.iv,
-        //         promoCode: _g.getLS('promoCode') || '',
-        //         storeId: _g.getLS('storeInfo').id
-        //     }).then((ret) => {
-        //         _g.setLS(_c.LSKeys.sessionKey, ret.data.sessionKey);
-        //         _g.getMyInfo(self, {
-        //             type: 'login',
-        //             e: e
-        //         });
-        //         self.setData({
-        //             isLogin: true
-        //         })
-        //     }, (err) => {
-        //         //TODO login fail
-        //         _g.toast({
-        //             title: '登录失败,请重试'
-        //         });
-        //     });
-
-        // });
     },
     getMyInfo: function (self, opts) {
         const _g = this;

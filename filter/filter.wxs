@@ -267,7 +267,7 @@ var filter = {
 			case 3:
 				return '赠送给';
 			default: 
-			   return '';
+			   return '系统扣除';
 		}
 	},
 	getId:function (str){

@@ -31,6 +31,7 @@
 							    <text>{{filter.getIncomeType(item.incomeType)}}</text>
 							    <text class="ui-idColor">{{filter.getId(item.description)}}</text>
 							</view>
+                            <text wx:if="{{item.incomeType== 12}}">{{item.description}}</text>
 							<text wx:else>{{filter.getIncomeType(item.incomeType)}}</text>
 						</block>
                         <block wx:if="{{item.type==2}}">
@@ -67,25 +68,4 @@
             <view class="btn-confirm" bindtap="onConfirm" data-status="confirm">充值</view>
         </view>
     </view>
-    <!-- 赠送弹窗信息 -->
-    <!-- <view class="modal-mask" bindtap="hideModal" catchtouchmove="true" wx:if="{{showPresentedBtn}}"></view>
-    <view class="modal-dialog" wx:if="{{showPresentedBtn}}">
-        <view class="modal-title">赠送</view>
-        <view class="modal-blissNumInputBox">
-            <text>福气数量：</text>
-            <input type="number" placeholder="请输入要充值的福气数量" cursor-spacing="408rpx" data-key="giftPoint" bindinput="inputValue"/>
-        </view>
-        <view class="modal-blissNumInputBox">
-            <text>受赠人ID：</text>
-            <input type="text" placeholder="请输入要赠送的用户ID" cursor-spacing="288rpx" data-key="giftMember" bindinput="inputValue"/>
-        </view>
-        <view class="modal-todayMoneyratio">
-            <text>今日比例：</text>
-            <text>{{setting.pointsExchangeVO.money}}RMB：{{setting.pointsExchangeVO.points}}福气</text>
-        </view>
-        <view class="modal-commonFooter modal-presentedFooter">
-            <view class="btn-cancel btn-presentedCancel" bindtap="onPresentedCancel" data-status="presentedcancel">取消</view>
-            <view class="btn-confirm btn-presentedConfirm" bindtap="onPresentedConfirm" data-status="presentedconfirm">赠送</view>
-        </view>
-    </view> -->
 </view>

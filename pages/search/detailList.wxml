@@ -9,7 +9,7 @@
       </view>
       <view class="ui-contentBox" wx:if="{{list.length}}">
             <view class="ui-content_tips">
-                 <view class="ui-tipsItem_price" bindtap="onChoseTap" data-type="{{index}}" wx:for="{{tapList}}">
+                 <view class="ui-tipsItem_price" bindtap="onChoseTap" data-type="{{index}}" wx:for="{{tapList}}" wx:key="{{index}}">
                     <view data-type="{{index}}" class="ui-priceItem">
                         <text class="ui-tipsItem_text" 
                           data-type="{{index}}" 
@@ -24,7 +24,7 @@
                 </view>
             </view>
             <view >
-                 <view class="ui-content_item" wx:for="{{list}}" bindtap="onDetailTap" data-id="{{item.id}}">
+                 <view class="ui-content_item" wx:for="{{list}}" wx:key="{{index}}" bindtap="onDetailTap" data-id="{{item.id}}">
                     <view class="ui-contentItem_left">
                         <image src="{{filter.getPhoto(host,item.picUrl)}}" mode="aspectFit"/>
                     </view>
@@ -45,7 +45,7 @@
       </view>
       <view class="ui-contentBox" wx:if="{{!list.length}}">
             <view class="ui-content_tips">
-                 <view class="ui-tipsItem_price"  wx:for="{{tapList}}">
+                 <view class="ui-tipsItem_price"  wx:for="{{tapList}}" wx:key="{{index}}">
                     <view data-type="{{index}}" class="ui-priceItem">
                         <text class="ui-tipsItem_text">{{item}}</text>
                         <image wx:if="{{index == 1}}" src="{{filter.getLocalPhoto('graySort.png')}}" class="ui-priceItem_img"  mode="aspectFit"/>

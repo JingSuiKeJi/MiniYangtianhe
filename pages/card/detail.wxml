@@ -38,7 +38,7 @@
         </view>
     </view>
     <view class="ui-imgBox">
-        <image src="{{filter.getPhoto(host,item)}}" mode="widthFix" class="goodsItem__detailIcon" wx:for="{{imgUrl}}" wx:if="{{imgUrl.length}}"/>
+        <image src="{{filter.getPhoto(host,item)}}" mode="widthFix" class="goodsItem__detailIcon" wx:for="{{imgUrl}}" wx:if="{{imgUrl.length}}" wx:key="{{index}}"/>
         <!-- <image src="../../images/cardDetail__goodsIcon2.png" mode="aspectFit" class="goodsItem__introIcon" />
         <image src="../../images/cardDetail__goodsIcon3.png" mode="aspectFit" class="goodsItem__lifeIcon" /> -->
     </view>

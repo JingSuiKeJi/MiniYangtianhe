@@ -70,10 +70,6 @@
         <view class="ui-collageBox" wx:if="{{groupList.length}}">
             <view class="ui-collageItem_top">
                 <view class="ui-topItem_title">优选拼团会</view>
-                <!-- <view class="ui-topItem_more" bindtap="onMoreTap">
-                    <text>查看更多</text>
-                    <image src="{{filter.getLocalPhoto('home_index_rightIcon.png')}}" class="ui-topItem_icon" mode="aspectFit" />
-                </view> -->
                 <form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onMoreTap"  >
                     <button formType="submit" class="ui-topItem_more">
                         <text>查看更多</text>
@@ -83,15 +79,6 @@
             </view>
             <view class="ui-collageItem_bottom">
                 <scroll-view scroll-x class="ui-collageItem_scrollView">
-                    <!-- <view wx:for="{{groupList}}" class="ui-collageScroll_item" wx:key="{{index}}" bindtap="onDetailTap" data-id="{{item.id}}" data-thirdid="{{activeId}}">
-                        <image src="{{filter.getPhoto(host, item.picUrl)}}" mode="aspectFill" />
-                        <view class="ui-collageScroll_itemTitle">{{item.mainTitle}}</view>
-                        <view class="ui-collageScroll_itemNow">
-                            <text>拼团价</text>
-                            <text>￥{{item.nowPrice}}</text>
-                        </view>
-                        <view class="ui-collageScroll_itemPre">￥{{item.originPrice}}</view>
-                    </view> -->
                     <form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onDetailTap" data-id="{{item.id}}" data-thirdid="{{activeId}}" wx:for="{{groupList}}"  wx:key="{{index}}">
                         <button formType="submit" class="ui-collageScroll_item">
                             <image src="{{filter.getPhoto(host, item.picUrl)}}" mode="aspectFill" />
@@ -129,13 +116,6 @@
                 </view>
                 <view class="ui-buyBox_bottom">
                     <scroll-view scroll-x class="ui-bottomItem_scrollView">
-                        <!-- <view wx:for="{{secSkill.list}}" wx:key="{{index}}" class="ui-scrollView_item" bindtap="onDetailTap" data-id="{{item.id}}" data-thirdid="{{secSkill.id}}">
-                            <image src="{{filter.getLocalPhoto('buy.png')}}" mode="aspectFill"></image>
-                            <image src="{{filter.getPhoto(host, item.picUrl)}}" mode="aspectFill"></image>
-                            <view class="ui-scrollView_itemTitle">{{item.mainTitle}}</view>
-                            <view class="ui-scrollView_itemNow">￥{{item.nowPrice}}</view>
-                            <view class="ui-scrollView_itemPre">￥{{item.originPrice}}</view>
-                        </view> -->
                         <form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onDetailTap" wx:for="{{secSkill.list}}" wx:key="{{index}}" class="ui-scrollView_item" data-id="{{item.id}}" data-thirdid="{{secSkill.id}}">
                             <button formType="submit" class="ui-scrollView_item">
                                 <image src="{{filter.getLocalPhoto('buy.png')}}" mode="aspectFill"></image>
@@ -150,13 +130,6 @@
             </view>
         </view>
         <view class="ui-brandSelectBox" wx:if="{{brandList[0].length || brandList[1].length ||  singleBrandList.length}}">
-            <!-- <view class="ui-brandSelectItem_top" bindtap="onAllBrandsTap">
-                <text >品牌甄选</text>
-                <view class="ui-topItem_moreBrand" >
-                    <text class="ui-topItem__moreText">查看更多</text>
-                    <image src="{{filter.getLocalPhoto('home_index_rightIcon.png')}}" class="ui-topItem_moreIcon" mode="aspectFit"/>
-                </view>
-            </view> -->
             <form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onAllBrandsTap">
                 <button formType="submit" class="ui-brandSelectItem_top">
                     <text>品牌甄选</text>
@@ -226,23 +199,6 @@
                     </view>
                 </view>
                 <view class="ui-bottomItem_content" hidden="{{!list.length}}">
-                    <!-- <view class="ui-content_item" wx:for="{{list}}" wx:key="{{index}}" data-id="{{item.id}}" catchtap="onDetailTap">
-                        <view class="ui-contentItem_left">
-                            <image src="{{filter.getPhoto(host,item.picUrl)}}" mode="aspectFit"></image>
-                        </view>
-                        <view class="ui-contentItem_right">
-                            <view class="ui-content_title">{{item.mainTitle}}</view>
-                            <view class="ui-content_scale">{{item.secondTitle}}</view>
-                            <view class="ui-content_price">
-                                <text>原价￥{{item.originPrice}}</text>
-                                <text>已售{{item.soldNum + item.virtualNum}}件</text>
-                            </view>
-                            <view class="ui-content_reward">
-                                <text>￥{{item.nowPrice}}</text>
-                                <view wx:if="{{item.commission}}">分享赚 ￥{{item.commission}}</view>
-                            </view>
-                        </view>
-                    </view> -->
                     <form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onDetailTap" wx:for="{{list}}" wx:key="{{index}}" data-id="{{item.id}}">
                         <button formType="submit" class="ui-content_item">
                             <view class="ui-contentItem_left">

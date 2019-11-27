@@ -85,12 +85,6 @@
                     <swiper duration="500" class="ui-imageItem_swper" bindchange="onClassifyTap">
                         <block wx:for="{{classList}}" wx:for-item="bannerItem" wx:key="{{index}}">
                             <swiper-item>
-                                <!-- <view class="ui-classBox_item" wx:for="{{bannerItem}}" wx:key="{{index}}" bindtap="onTabTap" data-id="{{item.id}}" data-isLink="{{item.isLink}}">
-                                    <image src="{{filter.getPhoto(host,item.imgUrl)}}" class="ui-classItem__img" data-id="{{item.id}}" data-isLink="{{item.isLink}}" mode="aspectFit" />
-                                    <view class="ui-classItem__text" data-id="{{item.id}}" data-isLink="{{item.isLink}}">
-                                        {{item.title}}
-                                    </view>
-                                </view> -->
                                 <form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onTabTap" wx:for="{{bannerItem}}" wx:key="{{index}}" data-id="{{item.id}}" data-isLink="{{item.isLink}}">
                                     <button formType="submit" class="ui-classBox_item">
                                         <image src="{{filter.getPhoto(host,item.imgUrl)}}" class="ui-classItem__img" data-id="{{item.id}}" data-isLink="{{item.isLink}}" mode="aspectFit" />
@@ -131,13 +125,6 @@
                 </view>
                 <view class="ui-buyBox_bottom" >
                     <scroll-view scroll-x class="ui-bottomItem_scrollView">
-                        <!-- <view wx:for="{{goodsList}}" wx:key="{{index}}" class="ui-scrollView_item" bindtap="onDetailTap" data-id="{{item.id}}" data-thirdid="{{skillId}}">
-                            <image src="{{filter.getLocalPhoto('buy.png')}}" mode="aspectFill"></image>
-                            <image src="{{filter.getPhoto(host,item.picUrl)}}" mode="aspectFill"></image>
-                            <view class="ui-scrollView_itemTitle">{{item.mainTitle}}</view>
-                            <view class="ui-scrollView_itemNow">￥{{item.nowPrice}}</view>
-                            <view class="ui-scrollView_itemPre">￥{{item.originPrice}}</view>
-                        </view> -->
                         <form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onDetailTap" data-id="{{item.id}}" data-thirdid="{{skillId}}" wx:for="{{goodsList}}" wx:key="{{index}}" class="ui-scrollView_item">
                             <button formType="submit" class="ui-scrollView_item">
                                 <image src="{{filter.getLocalPhoto('buy.png')}}" mode="aspectFill"></image>
@@ -152,13 +139,6 @@
             </view>
         </view>
         <view class="ui-brandSelectBox" wx:if="{{brandList[0].length || brandList[1].length || singleBrandList.length}}">
-            <!-- <view class="ui-brandSelectItem_top" bindtap="onAllBrandsTap">
-                <text>品牌甄选</text>
-                <view class="ui-topItem_moreBrand">
-                    <text class="ui-topItem__moreText">查看更多</text>
-                    <image src="{{filter.getLocalPhoto('home_index_rightIcon.png')}}" class="ui-topItem_moreIcon" mode="aspectFit" />
-                </view>
-            </view> -->
             <form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onAllBrandsTap">
                 <button formType="submit" class="ui-brandSelectItem_top">
                     <text>品牌甄选</text>

@@ -340,6 +340,7 @@ const methods = {
                 tapList: data,
                 classifyId: data[0].id
             });
+            console.log(6677)
             self.getPageData();
             self.onScroll('#aim', 'scrollTop');
             self.onScroll('#head', 'headTop');
@@ -597,7 +598,7 @@ const methods = {
             classifyId: self.data.classifyId
         }).then((ret) => {
             let data = ret.data;
-            if (data.list && data.list.length) {
+            if (data.list ) {
                 if (self.data.page == 1) {
                     self.setData({
                         list: data.list,

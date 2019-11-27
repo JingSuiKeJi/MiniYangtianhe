@@ -89,8 +89,9 @@ const methods = {
                 self.setData({
                     picThumb: res
                 });
+                self.checkDownload();
             });
-            self.checkDownload();
+
         }, (err) => {
             self.downloadImg({
                 imgUrl: 'http://www.gzlingren.com:8098/yangtianhe/sign__finish.png'
@@ -98,8 +99,9 @@ const methods = {
                 self.setData({
                     picThumb: res
                 });
+                self.checkDownload();
             });
-            self.checkDownload();
+
         });
     },
     //显示模态框

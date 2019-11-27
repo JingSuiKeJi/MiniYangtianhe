@@ -118,7 +118,7 @@ const methods = {
         self.rankingList();
         self.getPoster();
         self.getShareCode();
-        // self.getDeduction();
+        self.getDeduction();
     },
     getStepInfo: function () {
         let self = this;
@@ -559,7 +559,7 @@ const methods = {
                 id: e.currentTarget.dataset.id
             }
         }, self)
-    }
+    },
 };
 
 

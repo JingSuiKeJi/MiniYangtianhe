@@ -52,7 +52,8 @@ const methods = {
 		Store.listTaskCenter(self, {}).then((ret) => {
 			let data = ret.data
 			self.setData({
-				newbieTask: data.newbieTask
+				newbieTask: data.newbieTask,
+				dailyTask: data.dailyTask
 			})
 		}, (err) => {
 		});
@@ -67,7 +68,7 @@ const methods = {
 			_g.navigateTo({
 				url: 'pages/shop/signFinish',
 				param: {
-					point: ret.data 
+					point: ret.data
 				}
 			}, self)
 		}, (err) => {
@@ -84,6 +85,59 @@ const methods = {
 			url: 'pages/me/blissDetail',
 		}, self)
 	},
+	onSkipTap: function (e) {
+		let self = this;
+		let code = e.target.dataset.code;
+		switch (code) {
+			case 11: // 绑定微信
+				_g.navigateTo({
+					url: 'pages/me/bindingWeChat'
+				}, self)
+				break;
+			case 12: // 绑定手机号
+				_g.navigateTo({
+					url: 'pages/me/bindingPhone'
+				}, self)
+				break;
+			case 13: // 绑定门店
+				// _g.navigateTo({
+				// 	url: 'pages/me/bindingWeChat'
+				// },self)
+				break;
+			case 14: //绑定上级
+				_g.switchTab({
+					url: 'pages/me/index'
+				}, self)
+				break;
+			case 15: //购买权益卡
+				_g.navigateTo({
+					url: 'pages/card/card'
+				}, self)
+				break;
+			case 21: // 养乐步任务
+				_g.switchTab({
+					url: 'pages/step/index'
+				}, self)
+				break;
+			case 22: //到店签到
+				_g.navigateTo({
+					url: 'pages/shop/sign'
+				}, self)
+				break;
+			case 23: //浏览商品
+				_g.switchTab({
+					url: 'pages/store/store'
+				}, self)
+				break;
+			case 24: //分享商品
+				_g.switchTab({
+					url: 'pages/store/store'
+				}, self)
+				break;
+			default:
+				break;
+		}
+	}
 }
 
 const temps = {}

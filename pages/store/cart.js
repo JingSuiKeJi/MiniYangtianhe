@@ -79,7 +79,7 @@ const methods = {
     getData: function () {
         const self = this;
         self.cartList();
-        // self.getDeduction();
+        self.getDeduction();
 
     },
     cartList: function () {
