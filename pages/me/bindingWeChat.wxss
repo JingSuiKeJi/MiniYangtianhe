@@ -73,16 +73,3 @@ page{
 	line-height:80rpx;
 	text-align: center;
 }
-
-/* .ui-successfulBinding{
-	position: fixed;
-	z-index: 9000;
-	width: 350rpx;
-	height: 260rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_bindingSuccess.png');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: contain;
-	top: 410rpx;
-	left: 200rpx;
-} */

@@ -14,7 +14,7 @@ page {
     width: 750rpx;
     height: 280rpx;
    
-    background-image: url(http://www.gzlingren.com:8098/yangtianhe/cardDetail_bg.png);
+    background-image: url(https://app.yth-yx.com/mini/cardDetail_bg.png);
     background-size: cover;
     justify-content: center;
   
@@ -25,7 +25,7 @@ page {
     width: 686rpx;
     height: 108rpx;
     margin-top: 38rpx;
-    background-image: url(http://www.gzlingren.com:8098/yangtianhe/cardDetail__black_bg.png);
+    background-image: url(https://app.yth-yx.com/mini/cardDetail__black_bg.png);
     background-size: 100%;
 
 }

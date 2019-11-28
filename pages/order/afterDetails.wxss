@@ -305,23 +305,6 @@ page{
 	width: 150rpx;
 	height: 158rpx;
 }
-/* 审核icon */
-/* .ui-check{
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_canWrite.png');
-} */
-/* 审核通过icon */
-/* .ui-approve{
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_writeSuccess.png');
-} */
-/* 审核不通过icon */
-/* .ui-notApprove{
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_willDelet.png');
-} */
-
-/* 售后结束icon */
-/* .ui-afterEnd{
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_writeSuccess.png');
-} */
 
 .ui-afterText{
 	margin-top: 50rpx;
@@ -347,13 +330,6 @@ page{
 	width: 42rpx;
 	height: 42rpx;
 }
-/* 中间绿圆圈 */
-/* .ui-progressIcon{
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_selectGroup.png');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
-} */
 
 .ui-notProgressIcon{
 	width:22rpx;
@@ -382,14 +358,6 @@ page{
 	background:#999999;
 	border-radius: 22rpx;
 }
-/* 中间红圆 */
-/* .ui-rejectProgressIcon{
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_redDot.png');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
-} */
-
 .ui-progressLine{
 	width:254rpx;
 	border: 3rpx solid rgba(236,236,236,1);
@@ -625,10 +593,6 @@ page{
 	margin-top: 118rpx;
 	width: 150rpx;
 	height: 150rpx;
-	/* background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_refundSuccess.png');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover; */
 }
 
 .ui-refundSuccesstext{

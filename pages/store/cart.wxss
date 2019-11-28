@@ -6,6 +6,7 @@ page {
 }
 .main {
     position: relative;
+    padding-bottom: 260rpx;
 }
 .main__box {
 	position: relative;
@@ -293,8 +294,6 @@ page {
     font-family: PingFangSC;
     font-weight: 600;
     color: #fff;
-    /* background-image: url(http://www.gzlingren.com:8098/yangtianhe/cart_greenBtn.png);
-    background-size: 192rpx 90rpx; */
     background-color: #3ED8C8;
     border-radius: 50rpx;
     text-align: center;
@@ -380,7 +379,8 @@ page {
 .ui-topListBox {
     width: 100%;
     background-color: #F5F5F5;
-    padding: 0 32rpx 260rpx 32rpx;
+    /* padding: 0 32rpx 260rpx 32rpx; */
+    padding: 0 32rpx ;
 }
 .ui-topListItem__tip {
     display: flex;

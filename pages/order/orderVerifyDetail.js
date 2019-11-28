@@ -9,10 +9,7 @@ const User = require('../../service/User');
 
 let data = {
 	orderId:'50',//接收上一页选择的订单id，测试数据50
-	orderDetail:[
-		// {newsImg:'my_ce',newsName:"养生堂维C+维E",newsWeight:"250gx两盒装",newsMoney:'99.00'},
-		// {newsImg:'my_antiviral',newsName:"抗病毒口服液",newsWeight:"10gx12支",newsMoney:'23.80'},
-	],
+	orderDetail:[],
 };
 const onLoad = function(self) {
 	//接收上一个页面状态
@@ -35,13 +32,54 @@ const methods = {
 			self.setData({
 				orderDetail: ret.data
 			});
-			// _g.toast({
-			// 	title: '核销订单成功'
-			// })
         }, (err) => {
             _g.toast({
 				title: err
 			})
+        });
+	},
+	//审核通过
+	confirmAudit: function () {
+        const self = this;
+		User.confirmAudit(self, {
+            id: 1
+        }).then((ret) => {
+
+        }, (err) => {
+        
+        });
+	},
+	//审核拒绝
+	rejectAudit: function () {
+        const self = this;
+		User.rejectAudit(self, {
+            id: 1
+        }).then((ret) => {
+
+        }, (err) => {
+        
+        });
+	},
+	//确认退款
+	confirmReturn: function () {
+        const self = this;
+		User.confirmReturn(self, {
+            id: 1
+        }).then((ret) => {
+
+        }, (err) => {
+        
+        });
+	},
+	//拒绝退款
+	rejectReturn: function () {
+        const self = this;
+		User.rejectReturn(self, {
+            id: 1
+        }).then((ret) => {
+
+        }, (err) => {
+        
         });
 	},
 	//手动核销
@@ -68,6 +106,23 @@ const methods = {
 				});
 			}
 		});
+	},
+	onConfirmTap: function () {
+		const self = this;
+		_g.showModal({
+			content: '审核通过马上退款给客户？',
+			showCancel: true,
+			confirmColor: '#1DD3B5',
+			confirm: function () {
+				// self.confirmReturn();
+				console.log(444);
+			}
+		})
+	},
+	onRejectTap: function  () {
+		const self = this;
+		// self.rejectAudit();
+		console.log('====');
 	}
 }
 

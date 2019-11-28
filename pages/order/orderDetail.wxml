@@ -206,9 +206,6 @@
         <view class="ui-logisticsDialog" wx:if="{{showLogistics}}" catchtouchmove="true">
             <view class="ui-expressInfo">
                 <image src="{{filter.getLocalPhoto('my_orderWaitBg.png')}}" mode="aspectFill" class="ui-expressInfoItem"/>
-                <!-- <view class="ui-expressImg">
-                    <image src="http://www.gzlingren.com:8098/yangtianhe/my_yangsheng.png"></image>
-                </view> -->
                 <view class="ui-expressText">
                     <text>{{filter.getLogiCompany(logisticsCompany)}}</text>
                     <text>快递单号：{{logisticsNo}}</text>

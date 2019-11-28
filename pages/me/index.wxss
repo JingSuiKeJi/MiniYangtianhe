@@ -247,7 +247,7 @@
 	align-items: center;
 	width: 686rpx;
 	height: 190rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_rectangle.png');
+	background-image:url('https://app.yth-yx.com/mini/my_rectangle.png');
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: 718rpx  222rpx;

@@ -101,11 +101,11 @@ var filter = {
                 return avatar ? (host + avatar) : '';
             }
         } else {
-            return 'http://www.gzlingren.com:8098/yangtianhe/my_ythAvatar.png';
+            return 'https://app.yth-yx.com/mini/my_ythAvatar.png';
         }
     },
     getLocalPhoto: function (path) {
-        var host = 'http://www.gzlingren.com:8098/yangtianhe/';
+        var host = 'https://app.yth-yx.com/mini/';
         return host + path;
     },
     getPlatform: function (flag) {

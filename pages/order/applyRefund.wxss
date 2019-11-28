@@ -166,10 +166,6 @@ page{
 	display: inline-block;
 	width: 24rpx;
 	height: 24rpx;
-	/* background-image:url('http://www.gzlingren.com:8098/yangtianhe/order_rightIcon.png');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: contain; */
 }
 
 .ui-refundMoney{

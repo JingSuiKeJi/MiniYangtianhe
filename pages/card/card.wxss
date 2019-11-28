@@ -10,7 +10,7 @@ page {
 }
 .ui-main {
     width: 100%;
-    background-image: url(http://www.gzlingren.com:8098/yangtianhe/card__backgroud.png);
+    background-image: url(https://app.yth-yx.com/mini/card__backgroud.png);
     background-size: cover;
     display: flex;
     flex-direction: column;
@@ -214,7 +214,7 @@ page {
     flex-direction: column;
     width: 718rpx;
     height: 1166rpx;
-    background-image: url(http://www.gzlingren.com:8098/yangtianhe/card__bg.png);
+    background-image: url(https://app.yth-yx.com/mini/card__bg.png);
     background-size: cover;
 }
 
@@ -321,7 +321,7 @@ page {
     display: flex;
     width: 686rpx;
     height: 236rpx;
-    background-image: url(http://www.gzlingren.com:8098/yangtianhe/card__orginbg.png);
+    background-image: url(https://app.yth-yx.com/mini/card__orginbg.png);
     background-size: cover;
 }
 .ui-leftItem__icon {
@@ -385,7 +385,7 @@ page {
 .ui-goodsBox {
     width: 746rpx;
     height: 940rpx;
-    background-image: url(http://www.gzlingren.com:8098/yangtianhe/card_backGround2x.png);
+    background-image: url(https://app.yth-yx.com/mini/card_backGround2x.png);
     background-size: cover;
     position: relative;
 }

@@ -59,28 +59,24 @@ page{
 .ui-notPaymentIcon{
 	width: 150rpx;
 	height: 184rpx;
-	/* background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_waitWuliu.png'); */
 }
 
 /* 待发货 */
 .ui-waitShipmentsIcon{
 	width: 152rpx;
 	height: 192rpx;
-	/* background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_waitGroup.png'); */
 }
 
 /* 待收货 */
 .ui-waitReceivingIcon{
 	width: 186rpx;
 	height: 152rpx;
-	/* background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_inTrading.png'); */
 }
 
 /* 交易成功 */
 .ui-tradeSuccessfully{
 	width: 158rpx;
 	height: 150rpx;
-	/* background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_tradeSuccessfully.png'); */
 }
 
 /* 待核销 */
@@ -147,14 +143,12 @@ page{
 .ui-closeDeal{
 	width: 150rpx;
 	height: 150rpx;
-	/* background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_smash.png'); */
 }
 
 /* 评价成功 */
 .ui-commentSuccess{
 	width: 152rpx;
 	height: 150rpx;
-	/* background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_writeGroup.png'); */
 }
 
 .ui-verificInfoBox{
@@ -251,10 +245,6 @@ page{
 .ui-landmarkIcon{
 	width: 34rpx;
 	height: 40rpx;
-	/* background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_landmarkIcon.png');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover; */
 	margin-left: 40rpx;
 }
 
@@ -568,10 +558,6 @@ page{
 	width: 614rpx;
 	height: 184rpx;
 	border-radius:16rpx 16rpx 0 0;
-	/* background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_orderWaitBg.png');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover; */
 	position: relative;
 }
 .ui-expressInfoItem {
@@ -795,7 +781,7 @@ page{
 
 .btn-backHome{
 	margin-left: 40rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_btnBackHome.png');
+	background-image:url('https://app.yth-yx.com/mini/my_btnBackHome.png');
 }
 
 .btn-backHome text{
@@ -804,7 +790,7 @@ page{
 
 .btn-checkComment{
 	margin-right: 40rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_btnDetails.png');
+	background-image:url('https://app.yth-yx.com/mini/my_btnDetails.png');
 }
 
 .btn-checkComment text{

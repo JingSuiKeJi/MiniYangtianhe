@@ -94,7 +94,7 @@ const methods = {
 
         }, (err) => {
             self.downloadImg({
-                imgUrl: 'http://www.gzlingren.com:8098/yangtianhe/sign__finish.png'
+                imgUrl: 'https://app.yth-yx.com/mini/sign__finish.png'
             }, (res) => {
                 self.setData({
                     picThumb: res

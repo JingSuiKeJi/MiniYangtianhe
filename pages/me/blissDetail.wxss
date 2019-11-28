@@ -89,12 +89,12 @@
 }
 
 .btn-withdraw{
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_btnRecharge.png');
+	background-image:url('https://app.yth-yx.com/mini/my_btnRecharge.png');
 	/* margin: 34rpx 0 0 50rpx; */
 }
 
 .btn-presented{
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_btnPresent.png');
+	background-image:url('https://app.yth-yx.com/mini/my_btnPresent.png');
 	/* margin: 34rpx 0 0 18rpx; */
 	/* margin-left: 30rpx; */
 }
@@ -239,7 +239,7 @@
 .modal-dialog {
 	width:736rpx;
 	height:646rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_rechargeBackground.png');
+	background-image:url('https://app.yth-yx.com/mini/my_rechargeBackground.png');
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: 702rpx 602rpx;

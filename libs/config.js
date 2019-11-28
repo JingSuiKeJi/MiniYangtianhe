@@ -139,6 +139,10 @@ config.prototype = {
             browseList: '/app/browse/getRecordList.do',
             deleteBrowse: '/app/browse/delete.do',
             userLinkUser: '/app/account/userLinkUser.do',
+            confirmAudit: '/afterSale/confirmAudit.do',
+            rejectAudit: '/afterSale/rejectAudit.do',
+            confirmReturn: '/afterSale/confirmReturn.do',
+            rejectReturn: '/afterSale/rejectReturn.do'
 
         },
         withdraw: {
@@ -169,6 +173,7 @@ config.prototype = {
             getUserAssembleList: '/app/assemble/getUserAssembleList.do',
             getUserAssembleDetail: '/app/assemble/getUserAssembleDetail.do',
             getDeduction: '/app/common/getDeduction.do',
+            browseGoods: '/app/taskCenter/browseGoods.do'
         },
         store: {
             storeList: '/app/home/getStoreList.do',

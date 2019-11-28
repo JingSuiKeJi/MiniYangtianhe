@@ -9,7 +9,7 @@ page{
     width: 750rpx;
     height: 1206rpx;
     padding-top: 1px;
-    background-image: url('http://www.gzlingren.com:8098/yangtianhe/zhuanpan/bg.png');
+    background-image: url('https://app.yth-yx.com/mini/zhuanpan/bg.png');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -39,7 +39,7 @@ page{
     height: 614rpx;
     margin: 380rpx 0 0 40rpx;
     padding: 46rpx;
-    background-image: url('http://www.gzlingren.com:8098/yangtianhe/zhuanpan/zhuanpan.png');
+    background-image: url('https://app.yth-yx.com/mini/zhuanpan/zhuanpan.png');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -50,7 +50,7 @@ page{
     display: flex;
     width: 190rpx;
     height: 170rpx;
-    background-image: url('http://www.gzlingren.com:8098/yangtianhe/zhuanpan/prize_g.png');
+    background-image: url('https://app.yth-yx.com/mini/zhuanpan/prize_g.png');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -72,7 +72,7 @@ page{
     line-height:28rpx;
 }
 .ui-gameBox__btn {
-    background-image: url('http://www.gzlingren.com:8098/yangtianhe/zhuanpan/btn.png');
+    background-image: url('https://app.yth-yx.com/mini/zhuanpan/btn.png');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -105,7 +105,7 @@ page{
     height: 170rpx;
     padding: 1px;
     margin-left:136rpx;
-    background-image: url('http://www.gzlingren.com:8098/yangtianhe/zhuanpan/fuq_num.png');
+    background-image: url('https://app.yth-yx.com/mini/zhuanpan/fuq_num.png');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -140,7 +140,7 @@ page{
     height: 72rpx;
     margin-top: 110rpx;
     margin-left: 630rpx;
-    background-image: url('http://www.gzlingren.com:8098/yangtianhe/game/close_icon.png');
+    background-image: url('https://app.yth-yx.com/mini/game/close_icon.png');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -151,7 +151,7 @@ page{
     padding: 1px;
     margin-top: 36rpx;
     margin-left: 40rpx;
-    background-image: url('http://www.gzlingren.com:8098/yangtianhe/game/mask_bg.png');
+    background-image: url('https://app.yth-yx.com/mini/game/mask_bg.png');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;

@@ -482,7 +482,7 @@ page {
     font-family:PingFangSC;
     font-weight:600;
     color:#fff;
-    background-image: url(http://www.gzlingren.com:8098/yangtianhe/cart_greenBtn.png);
+    background-image: url(https://app.yth-yx.com/mini/cart_greenBtn.png);
     background-size: 192rpx 80rpx;
     text-align: center;
 }

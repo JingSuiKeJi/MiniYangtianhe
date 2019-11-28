@@ -62,10 +62,11 @@
         </view>
         <!-- <view class="ui-test">
             <view class="ui-test__title">每日任务</view>
-            <view class="ui-test__testItem" wx:for="{{ dailyTask}}" wx:key="{{index}}" wx:if="{{userInfo.verifier && (item.code != 22)}}">
+            <view class="ui-test__testItem" wx:for="{{ dailyTask}}" wx:key="{{index}}" wx:if="{{(userInfo.verifier && (item.code != 22)) || !userInfo.verifier}}">
                 <view class="ui-test__testName">{{item.title}}</view>
                 <view class="ui-test__testAdd">+{{item.point}}</view>
-                <view class="ui-test__testStatus"  bindtap="onSkipTap" data-code="{{item.code}}"  wx:if="{{!item.status}}">去完成</view>
+                <view class="ui-test__testStatus"  bindtap="onSkipTap" data-code="{{item.code}}"  wx:if="{{!item.status && item.sum > 0}}">{{item.successNum + '/' + item.sum}}</view>
+                 <view class="ui-test__testStatus"  bindtap="onSkipTap" data-code="{{item.code}}"  wx:if="{{!item.status && item.sum == 0}}">去完成</view>
                 <view class="ui-test__testStatus" style="background:  #CCCCCC " wx:if="{{item.status}}">已完成</view>
             </view>
         </view> -->

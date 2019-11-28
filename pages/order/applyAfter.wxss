@@ -35,11 +35,11 @@ page{
 }
 
 .ui-selectIcon{
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/cart_selestIcon.png');
+	background-image:url('https://app.yth-yx.com/mini/cart_selestIcon.png');
 }
 
 .ui-notSelectIcon{
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_unCheck.png');
+	background-image:url('https://app.yth-yx.com/mini/my_unCheck.png');
 }
 
 .ui-newsImg{

@@ -13,7 +13,7 @@
 		<view class="ui-menuBar">
 			<text wx:for="{{menuList}}" wx:for-item="item" wx:key="{{item.currentId}}" bindtap="chooseMenu"
 			data-id="{{item.currentId}}" class="ui-menuText {{currentCheck==item.currentId?'currentText currentBorder':''}}"
-			>{{filter.getOrderStatus(item.status)}}</text>
+			>{{item.status}}</text>
 		</view>
 		
 		<view class="ui-orderInfoBox" wx:for="{{list}}" wx:for-item="orderList" wx:for-index="idx" wx:key="{{idx}}" wx:if="{{list.length}}">

@@ -298,7 +298,7 @@ page{
 .ui-notOrderList .ui-orderIcon{
 	width: 118rpx;
 	height: 118rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_orderListIcon.png');
+	background-image:url('https://app.yth-yx.com/mini/my_orderListIcon.png');
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: cover;
