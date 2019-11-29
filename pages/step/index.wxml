@@ -99,7 +99,7 @@
                 </view>
 		   </view>
         </view>
-		<view class="ui-topListBox">
+		<!-- <view class="ui-topListBox">
             <view class="ui-topListItem__tip">
                 <view class="ui-tipItem__firstLine"></view>
                 <view class="ui-tipItem__text">抵扣推荐商品</view>
@@ -117,7 +117,7 @@
                 </view>
             </view>
             <view class="ui-noData__word"  wx:if="{{!deductDoods.length}}">暂无数据</view>
-        </view>
+        </view> -->
     </view>
 </view>
 <authorize 

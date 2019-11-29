@@ -173,7 +173,8 @@ config.prototype = {
             getUserAssembleList: '/app/assemble/getUserAssembleList.do',
             getUserAssembleDetail: '/app/assemble/getUserAssembleDetail.do',
             getDeduction: '/app/common/getDeduction.do',
-            browseGoods: '/app/taskCenter/browseGoods.do'
+            browseGoods: '/app/taskCenter/browseGoods.do',
+            shareGoods: '/taskCenter/shareGoods.do',
         },
         store: {
             storeList: '/app/home/getStoreList.do',

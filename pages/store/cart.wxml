@@ -97,7 +97,7 @@
         <view class="ui-text">暂无选购</view>
         <view>快去添加吧</view>
     </view>
-    <view class="ui-topListBox">
+    <!-- <view class="ui-topListBox">
         <view class="ui-topListItem__tip">
             <view class="ui-tipItem__firstLine"></view>
             <view class="ui-tipItem__text">抵扣推荐商品</view>
@@ -115,7 +115,7 @@
             </view>
         </view>
         <view class="ui-topListItem__noData" wx:if="{{!deductDoods.length}}">暂无数据</view>
-    </view>
+    </view> -->
 </view>
 <!-- 没有登陆的情况 -->
 <view class="ui-noBox" wx:if="{{!userInfo}}">

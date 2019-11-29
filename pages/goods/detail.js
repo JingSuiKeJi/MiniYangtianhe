@@ -125,7 +125,7 @@ const methods = {
         })
         self.getGoodsDetail();
         self.getCommentList();
-        self.browseGoods();
+        // self.browseGoods();
         
     },
     getGoodsDetail() {
@@ -215,6 +215,17 @@ const methods = {
         const self = this;
         let userInfo = _g.getLS(_c.LSKeys.userInfo);
         Goods.browseGoods(self, {
+            goodsId: self.data.id,
+            userId: userInfo.id
+        }).then((ret) => {
+        }, (err) => {
+
+        });
+    },
+    shareGoods() {
+        const self = this;
+        let userInfo = _g.getLS(_c.LSKeys.userInfo);
+        Goods.shareGoods(self, {
             goodsId: self.data.id,
             userId: userInfo.id
         }).then((ret) => {

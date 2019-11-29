@@ -19,12 +19,12 @@ let data = {
 	list:[],
 };
 const onLoad = function(self) {
-	let userInfo = _g.getLS(_c.LSKeys.userInfo);
-	if(userInfo.verifier.level == 1) {
-		let menuList = self.data.menuList;
-		menuList.push( {status:"售后审核",currentId:4});
-		self.setData({menuList})
-	} 
+	// let userInfo = _g.getLS(_c.LSKeys.userInfo);
+	// if(userInfo.verifier.level == 1) {
+	// 	let menuList = self.data.menuList;
+	// 	menuList.push( {status:"售后审核",currentId:4});
+	// 	self.setData({menuList})
+	// } 
 	self.getDataPage();
 };
 const onShow = function(self) {
