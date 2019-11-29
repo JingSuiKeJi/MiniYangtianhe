@@ -20,7 +20,7 @@
 			<view class="ui-orderStatus">
 				<text class="ui-orderReferenceText">订单编号： {{orderList.orderNo}}</text>
 				<text class="ui-storeText" wx:if="{{orderList.deliveryType}}">{{filter.getDeliveryType(orderList.deliveryType)}}</text>
-				<text class="ui-orderStatusText">{{filter.getOrderStatus(orderList.status)}}</text>
+				<text class="ui-orderStatusText">{{currentCheck == 4 ? filter.checkAfterOrder(orderList.status) :filter.getOrderStatus(orderList.status)}}</text>
 			</view>
 			<view class="ui-newsInfoBox" wx:for="{{orderList.goodsList}}" wx:for-item="goodsList" wx:key="idx">
 				<view class="ui-newsInfoItem">
@@ -35,7 +35,7 @@
 			</view>
 			<view class="ui-total">
 				<text>共{{orderList.num}}件商品</text>
-				<text>总额：¥{{orderList.totalPrice}}</text>
+				<text>总额：¥{{currentCheck == 4 ? orderList.refund : orderList.totalPrice}}</text>
 			</view>
 			<view class="ui-detailBox">
 				<view class="ui-detailBtn" catchtap="onOrderVerifyDetailTap" data-idx="{{idx}}">查看详情</view>

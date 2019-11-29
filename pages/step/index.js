@@ -41,6 +41,9 @@ const onLoad = function (self) {
         self.getData();
     }
     self.initBlock();
+    event.on('refreshStep', self, (ret) => {
+        self.getData();
+    });
     event.on('logout-suc', self, (ret) => {
         self.setData({
             step: '上传步数',
@@ -107,6 +110,8 @@ const onShow = function (self) {
 
 };
 const onUnload = function (self) {
+    event.remove('refreshStep', self);
+    event.remove('login-suc', self);
     event.remove('step-index-authorize', self);
 };
 // 页面中的方法
@@ -247,7 +252,7 @@ const methods = {
                 if (ret.data.status == 2) {
                     self.showDialogBtn();
                 }
-                event.emit('refreshStep')
+                event.emit('refreshHomeStep')
             }
 
         }, (err) => {

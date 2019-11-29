@@ -339,6 +339,18 @@ var filter = {
            value = value.slice(0,13) + '...'
         }
         return value;
-    }
+    },
+    checkAfterOrder: function (status) {
+        switch(status) {
+			case 1:
+				return '售后中';
+			case 4:
+				return '审核不通过';
+			case 6:
+                return '审核通过';
+			default: 
+			   return '';
+		}
+    },
 };
 module.exports = filter;

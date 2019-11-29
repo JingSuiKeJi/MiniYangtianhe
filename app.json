@@ -78,7 +78,8 @@
     "pages/shop/signQRCode",
     "pages/shop/task",
     "pages/shop/blessTurnTable",
-    "pages/shop/signFinish"
+    "pages/shop/signFinish",
+    "pages/order/afterSaleDetail"
   ],
   "tabBar": {
     "custom": true,

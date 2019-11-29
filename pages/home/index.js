@@ -76,7 +76,7 @@ const onLoad = function (self) {
     event.on('login-suc', self, (data) => {
         self.setLoginData();
     });
-    event.on('refreshStep', self, (ret) => {
+    event.on('refreshHomeStep', self, (ret) => {
         self.getCommonData();
     });
     event.on('refreshHomeData', self, (ret) => {
@@ -142,8 +142,10 @@ const onShow = function (self) {
 };
 
 const onUnload = function (self) {
-    event.remove('refreshStep', self);
+    event.remove('refreshHomeStep', self);
+    event.remove('refreshHomeData', self);
     event.remove('login-suc', self);
+    event.remove('logout-suc', self);
     event.remove('home-index-authorize', self);
 };
 
@@ -677,15 +679,12 @@ const methods = {
         let self = this;
         Platform.uploadStep(self, data
         ).then((ret) => {
+            wx.hideLoading();
             if (ret.data.code == 11001 || ret.data.code == 11002) {
                 _g.toast({ title: '重新上传步数中，请稍等' });
                 self.wxLogin();
             } else {
-                self.setData({
-                    stepInfo: ret.data
-                })
-                event.emit('refreshStep');
-                wx.hideLoading();
+                self.getCommonData();
                 _g.toast({
                     title: '上传步数成功',
                     duration: 3000
@@ -693,6 +692,7 @@ const methods = {
                 if (ret.data.status == 2) {
                     self.showDialogBtn();
                 }
+                event.emit('refreshStep')
             }
 
             // self.getCommonData();
@@ -701,6 +701,7 @@ const methods = {
             // }
 
         }, (err) => {
+            wx.hideLoading();
         })
     },
 

@@ -38,7 +38,30 @@ const methods = {
 			})
 		});
 	},
-	
+	//审核通过
+	confirmReturn: function () {
+		const self = this;
+		User.confirmReturn(self, {
+			id: self.data.orderDetail.orderAfterSale.id
+		}).then((ret) => {
+			_g.toast({title: '提交成功'});
+            self.getData();
+		}, (err) => {
+
+		});
+	},
+	//审核拒绝
+	rejectReturn: function () {
+		const self = this;
+		User.rejectReturn(self, {
+			id: self.data.orderDetail.orderAfterSale.id
+		}).then((ret) => {
+			_g.toast({title: '提交成功'});
+			self.getData();
+		}, (err) => {
+
+		});
+	},
 	onManualVerifyTap: function () {
 		const self = this;
 		// console.log(self.data.orderDetail.verificationCode)
@@ -63,7 +86,24 @@ const methods = {
 			}
 		});
 	},
+	onConfirmTap: function () {
+		const self = this;
+		if (self.data.orderDetail.orderAfterSale.type == 1) {
+			_g.showModal({
+				content: '审核通过马上退款给客户？',
+				showCancel: true,
+				confirmColor: '#1DD3B5',
+				confirm: function () {
+					self.confirmReturn();
+				}
+			})
+		}
 
+	},
+	onRejectTap: function () {
+		const self = this;
+		self.rejectReturn();
+	}
 }
 
 // 有引用template时定义

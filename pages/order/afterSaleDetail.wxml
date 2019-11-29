@@ -7,8 +7,7 @@
 				<text>{{orderDetail.orderDelivery.storeName||orderDetail.orderVerifier.storeName}}</text>
 				<text>{{orderDetail.orderDelivery.address||orderDetail.orderVerifier.storeAddress}}</text>
 			</view>
-			<view class="ui-verify {{orderDetail.status=='CHECKED'?'ui-red':''}} {{orderDetail.status=='EXPIRED'?'ui-grey':''}}"
-			>{{filter.getOrderStatus(orderDetail.status)}}</view>
+			<view  class="ui-verify  {{orderDetail.orderAfterSale.status != 6 ?'ui-red':''}}">{{filter.checkAfterOrder(orderDetail.orderAfterSale.status)}}</view>
 		</view>
 		
 		<view class="ui-consigneeAddressBox" wx:if="{{orderDetail.deliveryType != 2}}">
@@ -56,9 +55,15 @@
 		
 		<view class="ui-verificationCode">
 			<view class="ui-codeIcon"><image src="{{filter.getPhoto(host,orderDetail.verificationCodeUrl)}}"></image></view>
-			<view class="ui-verificationNum" wx:if="{{orderDetail.status=='WAIT_CHECK'}}"><text>核销码：{{orderDetail.verificationCode}}</text></view>
-			<view class="ui-verificGrey" wx:if="{{orderDetail.status=='CHECKED'}}"><text>已核销</text></view>
-			<view class="ui-verificGrey" wx:if="{{orderDetail.status=='EXPIRED'}}"><text>已过期</text></view>
+			<!-- <block wx:if="{{!orderDetail.orderAfterSale}}">
+			    <view class="ui-verificationNum" wx:if="{{orderDetail.status=='WAIT_CHECK'}}"><text>核销码：{{orderDetail.verificationCode}}</text></view>
+			    <view class="ui-verificGrey" wx:if="{{orderDetail.status=='CHECKED'}}"><text>已核销</text></view>
+			    <view class="ui-verificGrey" wx:if="{{orderDetail.status=='EXPIRED'}}"><text>已过期</text></view>
+			</block> -->
+			<block  wx:if="{{orderDetail.orderAfterSale}}">
+			     <view class="ui-verificGrey" ><text>{{orderDetail.orderAfterSale.status == 1 ? '审核中' : '已审核'}}</text></view>
+			</block>
+			
 		</view>
 		
 		<view class="ui-orderInfoBox">
@@ -68,9 +73,17 @@
 			<text>创建时间：{{filter.getDate(orderDetail.creatrTime)}}</text>
 			<text>付款时间：{{filter.getDate(orderDetail.payTime)}}</text>
 		</view>
+		<!-- <block wx:if="{{!orderDetail.orderAfterSale}}">
+		    <view class="ui-verificationFooter" wx:if="{{orderDetail.status=='WAIT_CHECK'|| orderDetail.status=='WAIT_DELIVERY'}}">
+			    <view class="btn-verifyOrder" catchtap="onManualVerifyTap">核销订单</view>
+		    </view>
+		</block> -->
+		<block wx:if="{{orderDetail.orderAfterSale.status == 1}}">
+			<view class="ui-verificationFooter">
+				<view class="ui-rejectBtn" bindtap="onRejectTap">审核不通过</view>
+				<view class="ui-confirmBtn" bindtap="onConfirmTap">审核通过</view>
+			</view>
+		</block>
 		
-		<view class="ui-verificationFooter" wx:if="{{orderDetail.status=='WAIT_CHECK'|| orderDetail.status=='WAIT_DELIVERY'}}">
-			<view class="btn-verifyOrder" catchtap="onManualVerifyTap">核销订单</view>
-		</view>
 	</view>
 </view>
