@@ -269,7 +269,7 @@ page{
 	width: 32rpx;
 	height: 32rpx;
 	right: 32rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_iconDown.png');
+	background-image:url('https://app.yth-yx.com/mini/my_iconDown.png');
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: contain;
@@ -350,11 +350,11 @@ page{
 }
 
 .modal-check{
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_check.png');
+	background-image:url('https://app.yth-yx.com/mini/my_check.png');
 }
 
 .modal-unCheck{
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_unCheck.png');
+	background-image:url('https://app.yth-yx.com/mini/my_unCheck.png');
 }
 
 .modal-commonFooter{

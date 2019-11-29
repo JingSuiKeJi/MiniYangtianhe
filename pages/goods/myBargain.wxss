@@ -142,7 +142,7 @@
 .ui-rightItem_button {
     width:124rpx;
     height:48rpx;
-    background-image: url(http://www.gzlingren.com:8098/yangtianhe/myBargain_greenBtn.png);
+    background-image: url(https://app.yth-yx.com/mini/myBargain_greenBtn.png);
     background-size: 124rpx 48rpx; 
     color: #fff;
     font-size:24rpx;

@@ -17,35 +17,8 @@ page{
 	box-shadow:0rpx 2rpx 8rpx 0rpx rgba(0,0,0,0.1);
 	border-radius:16rpx;
 	margin: 80rpx 0 0 32rpx;
+	position: relative;
 }
-
-.ui-headPortrait{
-	position: absolute;
-	width:120rpx;
-	height:120rpx;
-	background:rgba(234,234,234,1);
-	margin: 40rpx 0 0 40rpx;
-	border-radius: 50%;
-}
-
-.ui-personalId{
-	position: absolute;
-	height:34rpx;
-	font-size:34rpx;
-	font-family:PingFangSC-Medium;
-	font-weight:500;
-	color:rgba(61,61,61,1);
-	line-height:34rpx;
-	margin: 84rpx 0 0 184rpx;
-}
-
-.ui-qrInfo{
-	position: absolute;
-	width:520rpx;
-	height:470rpx;
-	margin: 166rpx 0 0 82rpx;
-}
-
 .btn-savePoster{
 	display: block;
 	width:110rpx;
@@ -79,4 +52,19 @@ page{
 	color:rgba(255,255,255,1);
 	line-height:80rpx;
 	text-align: center;
+}
+.ui-share__canvas {
+	width:686rpx;
+	height:684rpx;
+	background:rgba(255,255,255,1);
+	box-shadow:0rpx 2rpx 8rpx 0rpx rgba(0,0,0,0.1);
+	border-radius:16rpx;
+}
+.ui-share__image {
+	width:686rpx;
+	height:684rpx;
+	border-radius:16rpx;
+	position: absolute;
+	left: 0;
+	top: 0;
 }

@@ -375,6 +375,36 @@ class User {
 			data: reqData
 		}, page);
 	}
+
+	confirmAudit(page, reqData) {
+		_g.dm.canLoadMore = 1;
+		return _g.ajax({
+			url: mini.user.confirmAudit,
+			data: reqData
+		}, page);
+	}
+	rejectAudit(page, reqData) {
+		_g.dm.canLoadMore = 1;
+		return _g.ajax({
+			url: mini.user.rejectAudit,
+			data: reqData
+		}, page);
+	}
+	confirmReturn(page, reqData) {
+		_g.dm.canLoadMore = 1;
+		return _g.ajax({
+			url: mini.user.confirmReturn,
+			data: reqData
+		}, page);
+	}
+	rejectReturn(page, reqData) {
+		_g.dm.canLoadMore = 1;
+		return _g.ajax({
+			url: mini.user.rejectReturn,
+			data: reqData
+		}, page);
+	}
+
 }
 
 module.exports = new User();

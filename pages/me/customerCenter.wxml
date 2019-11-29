@@ -14,18 +14,6 @@
 				</view>
 			</view>
 			<view class="ui-vipBackground" wx:if="{{clientInfo.distributionTitle}}">{{clientInfo.distributionTitle}}
-				<!-- <block wx:if="{{clientInfo.sort==1}}">
-					<view class="ui-vipLevelIcon"><image src="http://www.gzlingren.com:8098/yangtianhe/my_distributionLevel.png"></image></view>
-					<view class="ui-levelNum">一级</view>
-				</block>
-				<block wx:if="{{clientInfo.sort==2}}">
-					<view class="ui-vipLevelIcon"><image src="http://www.gzlingren.com:8098/yangtianhe/my_distributionLevel2.png"></image></view>
-					<view class="ui-levelNum">二级</view>
-				</block>
-				<block wx:if="{{clientInfo.sort==0||clientInfo.sort==null}}">
-					<view class="ui-vipLevelIcon"></view>
-					<view class="ui-levelNum"></view>
-				</block> -->
 			</view>
 			<view class="ui-userOperation">
 				<view class="ui-userOperationItemCommon ui-orderNum">

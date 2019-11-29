@@ -1,20 +1,18 @@
 <wxs module="filter" src="../../filter/filter.wxs"></wxs>
 <!--revenue.wxml-->
 <view class="container">
+    <navBar title='收益中心' background='white' color='black' iconTheme='black' back="{{true}}"></navBar>
 	<view class="ui-main">
 		<view class="ui-backGorund"></view>
 		
 		<view class="ui-infoBox">
 			<image mode="aspectFill"  src="{{filter.getLocalPhoto('my_returnsBackground.png')}}" class="ui-InfoItem__bgImg"/>
 		    <image src="{{userInfo.avatar}}" mode="aspectFill" class="ui-itemImgBox"/>
-			<!-- <view class="ui-itemImgBox"></view> -->
 			<view class="ui-textBox">
 				<text>{{userInfo.nickname}}</text>
 				<text>所属门店：{{userInfo.store.title}}</text>
 			</view>
 			<view class="ui-vipBox">
-			    <!-- <image src="{{userInfo.distribution.sort == 1 ? filter.getLocalPhoto('my_distributionLevel.png') : filter.getLocalPhoto('my_distributionLevel2.png')}}"  mode="aspectFill" class="vipIcon"/> -->
-				<!-- <view class="vipIcon"></view> -->
 				<text>{{userInfo.distribution.title}}</text>
 			</view>
 		</view>

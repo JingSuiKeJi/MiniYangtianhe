@@ -110,8 +110,6 @@ page {
     height: 124rpx;
     align-items: center;
     background-color: turquoise;
-    /* background-image: url(http://www.gzlingren.com:8098/yangtianhe/sign__bgicon.png);
-    background-size: 100%; */
 }
 .ui-fuqi__num {
     font-size:24rpx;

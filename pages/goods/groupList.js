@@ -63,13 +63,13 @@ const methods = {
 					self.setData({
 						allList: data.data.list,
 						activeId: data.activeId,
-						// hasNextPage: data.data.hasNextPage
+						hasNextPage: data.data.hasNextPage
 					})
 				} else {
 					self.setData({
 						allList: self.data.allList.concat(data.data.list),
 						activeId: data.activeId,
-						// hasNextPage: data.data.hasNextPage
+						hasNextPage: data.data.hasNextPage
 					})
 				}
 			}

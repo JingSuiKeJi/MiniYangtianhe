@@ -4,21 +4,24 @@
 	<view class="ui-main">
 		<view class="ui-storeAddressBox">
 			<view class="ui-store">
-				<text>{{orderDetail.orderDelivery.storeName||orderDetail.orderVerifier.storeName||'暂无数据'}}</text>
+				<text>{{orderDetail.orderDelivery.storeName||orderDetail.orderVerifier.storeName}}</text>
 				<text>{{orderDetail.orderDelivery.address||orderDetail.orderVerifier.storeAddress}}</text>
 			</view>
 			<view class="ui-verify {{orderDetail.status=='CHECKED'?'ui-red':''}} {{orderDetail.status=='EXPIRED'?'ui-grey':''}}"
 			>{{filter.getOrderStatus(orderDetail.status)}}</view>
+
+			<!-- <view class="ui-verify ui-red {{orderDetail.status=='CHECKED'?'ui-red':''}}"
+			>审核不通过</view> -->
 		</view>
 		
-		<view class="ui-consigneeAddressBox" wx:if="{{!(orderDetail.deliveryType==2)}}">
+		<view class="ui-consigneeAddressBox" wx:if="{{orderDetail.deliveryType != 2}}">
 			<view class="ui-landmarkIcon"></view>
 			<view class="ui-consignee">
 				<view class="ui-consigneeinfo">
-					<text>{{orderDetail.orderDelivery.name||'暂无数据'}}</text>
+					<text>{{orderDetail.orderDelivery.name}}</text>
 					<text>{{orderDetail.orderDelivery.phone}}</text>
 				</view>
-				<text class="ui-consigneeAddressDetial">{{orderDetail.orderDelivery.address||'暂无数据'}}</text>
+				<text class="ui-consigneeAddressDetial">{{orderDetail.orderDelivery.address}}</text>
 			</view>
 		</view>
 		
@@ -72,5 +75,10 @@
 		<view class="ui-verificationFooter" wx:if="{{orderDetail.status=='WAIT_CHECK'|| orderDetail.status=='WAIT_DELIVERY'}}">
 			<view class="btn-verifyOrder" catchtap="onManualVerifyTap">核销订单</view>
 		</view>
+		<!-- <view class="ui-verificationFooter">
+			<view class="ui-rejectBtn" bindtap="onRejectTap">审核不通过</view>
+			<view class="ui-confirmBtn" bindtap="onConfirmTap">审核通过</view>
+			
+		</view> -->
 	</view>
 </view>

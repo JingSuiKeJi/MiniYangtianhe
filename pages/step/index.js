@@ -332,7 +332,7 @@ const methods = {
 
         }, (err) => {
             self.downloadImg({
-                imgUrl: 'http://www.gzlingren.com:8098/yangtianhe/share__step__bgImg.png'
+                imgUrl: 'https://app.yth-yx.com/mini/share__step__bgImg.png'
             }, (res) => {
                 self.setData({
                     picThumb: res
@@ -559,7 +559,7 @@ const methods = {
                 id: e.currentTarget.dataset.id
             }
         }, self)
-    }
+    },
 };
 
 

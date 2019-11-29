@@ -14,7 +14,7 @@
     height: 330rpx;
     background: rgba(42, 213, 188, 1);
     flex-direction: column;
-    background-image: url('http://www.gzlingren.com:8098/yangtianhe/test/banner_bg.png');
+    background-image: url('https://app.yth-yx.com/mini/test/banner_bg.png');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -130,13 +130,13 @@
     line-height: 76rpx;
     text-align: center;
     border-radius: 50%;
-    background-image: url('http://www.gzlingren.com:8098/yangtianhe/sign/sign_bg.png');
+    background-image: url('https://app.yth-yx.com/mini/sign/sign_bg.png');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
 }
 .is-success {
-    background-image: url('http://www.gzlingren.com:8098/yangtianhe/sign/sign_success.png');
+    background-image: url('https://app.yth-yx.com/mini/sign/sign_success.png');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -202,14 +202,14 @@
     height: 180rpx;
 }
 .ui-game__item:nth-child(1) {
-    background-image: url('http://www.gzlingren.com:8098/yangtianhe/test/zhuanpan_bg.png');
+    background-image: url('https://app.yth-yx.com/mini/test/zhuanpan_bg.png');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
 }
 .ui-game__item:nth-child(2) {
     margin-left: 22rpx;
-    background-image: url('http://www.gzlingren.com:8098/yangtianhe/test/jindan_bg.png');
+    background-image: url('https://app.yth-yx.com/mini/test/jindan_bg.png');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -244,7 +244,7 @@
     margin-top: 20rpx;
     margin-left: 20rpx;
     padding: 32rpx 40rpx;
-    background-image: url('http://www.gzlingren.com:8098/yangtianhe/test/test_bg.png');
+    background-image: url('https://app.yth-yx.com/mini/test/test_bg.png');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;

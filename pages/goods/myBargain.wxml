@@ -60,7 +60,7 @@
                           <text class="ui-rightItem_priceText">￥{{item.lowPrice}}</text>
                           <text class="ui-rightItem_preText">￥{{item.beginPrice}}</text>
                           <view class="ui-rightItem_button"  
-                            style="background-image: url(http://www.gzlingren.com:8098/yangtianhe/myBargain_greyBtn.png)"
+                            style="background-image: url(https://app.yth-yx.com/mini/myBargain_greyBtn.png)"
                            >砍价失败</view>
                       </view>
                     </view>

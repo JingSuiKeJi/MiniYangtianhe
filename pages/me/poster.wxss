@@ -72,7 +72,7 @@ page{
 	position: absolute;
 	width: 120rpx;
 	height: 120rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_posterQR.png');
+	background-image:url('https://app.yth-yx.com/mini/my_posterQR.png');
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: cover;

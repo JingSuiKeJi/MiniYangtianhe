@@ -26,7 +26,7 @@ page{
 .ui-successIcon{
 	width: 136rpx;
 	height: 136rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_withdrawalSuccess.png');
+	background-image:url('https://app.yth-yx.com/mini/my_withdrawalSuccess.png');
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: cover;
@@ -95,12 +95,12 @@ page{
 }
 
 .btn-details{
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_btnDetails.png');
+	background-image:url('https://app.yth-yx.com/mini/my_btnDetails.png');
 	color:rgba(102,102,102,1);
 }
 
 .btn-backHome{
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_btnBackHome.png');
+	background-image:url('https://app.yth-yx.com/mini/my_btnBackHome.png');
 	margin-left: 30rpx;
 	color:rgba(255,255,255,1);
 }

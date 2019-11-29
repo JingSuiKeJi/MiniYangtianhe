@@ -151,7 +151,7 @@ page{
 .ui-successIcon{
 	width: 36rpx;
 	height: 36rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_workedOut.png');
+	background-image:url('https://app.yth-yx.com/mini/my_workedOut.png');
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: cover;
@@ -160,7 +160,7 @@ page{
 .ui-failIcon {
 	width: 36rpx;
 	height: 36rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_workedDel.png');
+	background-image:url('https://app.yth-yx.com/mini/my_workedDel.png');
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: cover;
@@ -169,7 +169,7 @@ page{
 .ui-notSuccessIcon{
 	width: 36rpx;
 	height: 36rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_processed.png');
+	background-image:url('https://app.yth-yx.com/mini/my_processed.png');
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: cover;

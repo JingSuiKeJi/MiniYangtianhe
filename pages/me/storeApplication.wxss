@@ -250,10 +250,6 @@ page{
 
 .btn-canSubmit{
 	background-color: #56DCD6;
-	/* background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_bottomBtn.png');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover; */
 }
 
 /* 模态框 */

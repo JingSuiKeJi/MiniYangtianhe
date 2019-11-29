@@ -90,7 +90,7 @@ const methods = {
 				
 			}, (err) => {
 				self.downloadImg({
-					imgUrl: 'http://www.gzlingren.com:8098/yangtianhe/myposter.jpg'
+					imgUrl: 'https://app.yth-yx.com/mini/myposter.jpg'
 				}, (res) => {
 					self.setData({
 						picThumb: res
@@ -183,8 +183,8 @@ const methods = {
 				if (res.statusCode === 200) {
 					wx.getImageInfo({
 						src: res.tempFilePath,
-						success(res) {
-							callback && callback(res);
+						success(result) {
+							callback && callback(result);
 						},
 						fail(err) {
 							wx.hideLoading();

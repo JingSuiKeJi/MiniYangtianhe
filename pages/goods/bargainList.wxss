@@ -270,7 +270,7 @@
     padding-top: 60rpx;
     padding-bottom: 60rpx;
     background-color: #fff;
-    background-image: url(http://www.gzlingren.com:8098/yangtianhe/bargain_list_bgIcon.png);
+    background-image: url(https://app.yth-yx.com/mini/bargain_list_bgIcon.png);
     background-size: 564rpx 678rpx;
     position:absolute; 
     z-index:10001; 

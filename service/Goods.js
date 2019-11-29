@@ -150,6 +150,20 @@ class Goods {
             data: reqData
         }, page);
     }
+    browseGoods(page, reqData) {
+        _g.dm.canLoadMore = 1;
+        return _g.ajax({
+            url: mini.goods.browseGoods,
+            data: reqData
+        }, page);
+    }
+    shareGoods(page, reqData) {
+        _g.dm.canLoadMore = 1;
+        return _g.ajax({
+            url: mini.goods.shareGoods,
+            data: reqData
+        }, page);
+    }
 }
 
 module.exports = new Goods();

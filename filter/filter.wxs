@@ -101,11 +101,11 @@ var filter = {
                 return avatar ? (host + avatar) : '';
             }
         } else {
-            return 'http://www.gzlingren.com:8098/yangtianhe/my_ythAvatar.png';
+            return 'https://app.yth-yx.com/mini/my_ythAvatar.png';
         }
     },
     getLocalPhoto: function (path) {
-        var host = 'http://www.gzlingren.com:8098/yangtianhe/';
+        var host = 'https://app.yth-yx.com/mini/';
         return host + path;
     },
     getPlatform: function (flag) {
@@ -235,11 +235,11 @@ var filter = {
 			case 3:
 				return '退款';
 			case 4:
-				return '养步乐自完成奖励';
+				return '养步乐任务达成奖励';
 			case 5:
-				return '养步乐一级奖励';
+				return '一级乐友任务达成奖励';
 			case 6:
-                return '养步乐二级奖励';
+                return '二级乐友任务达成奖励';
             case 10:
                 return '门店签到奖励'; 
             case 11:
@@ -267,7 +267,7 @@ var filter = {
 			case 3:
 				return '赠送给';
 			default: 
-			   return '';
+			   return '系统扣除';
 		}
 	},
 	getId:function (str){

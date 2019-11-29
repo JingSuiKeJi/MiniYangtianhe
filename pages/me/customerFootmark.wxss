@@ -54,12 +54,8 @@ page{
 }
 
 .ui-pullUp{
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_pullUp.png');
+	background-image:url('https://app.yth-yx.com/mini/my_pullUp.png');
 }
-
-/* .ui-pulDown{
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_pulDown.png');
-} */
 /* 单行日历 */
 .ui-shortCalendar{
 	position: relative;
@@ -146,7 +142,7 @@ page{
 	width: 64rpx;
 	height: 64rpx;
 	position: absolute;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_pulDown.png');
+	background-image:url('https://app.yth-yx.com/mini/my_pulDown.png');
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: cover;
@@ -167,7 +163,7 @@ page{
 	height: 44rpx;
 	margin-top: -12rpx;
 	right: 40rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_icDelete.png');
+	background-image:url('https://app.yth-yx.com/mini/my_icDelete.png');
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: contain;
@@ -196,11 +192,11 @@ page{
 }
 
 .ui-checkIcon{
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_check.png');
+	background-image:url('https://app.yth-yx.com/mini/my_check.png');
 }
 
 .ui-unCheckIcon{
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_unCheck.png');
+	background-image:url('https://app.yth-yx.com/mini/my_unCheck.png');
 }
 
 .ui-dateShow{

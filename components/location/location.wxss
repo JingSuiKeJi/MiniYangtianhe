@@ -38,7 +38,6 @@
     vertical-align: middle;
     box-sizing: border-box;
     font-size: 36rpx;
-    overflow: auto;
     padding:  20rpx;
     padding-top: 83rpx;
     white-space:pre-wrap;

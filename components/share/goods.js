@@ -44,7 +44,7 @@ Component({
                         });
                     } else {
                         self.downloadImg({
-                            imgUrl: 'http://www.gzlingren.com:8098/yangtianhe/' + 'bg-share.png'
+                            imgUrl: 'https://app.yth-yx.com/mini/' + 'bg-share.png'
                         }, (res) => {
                             self.setData({
                                 bgThumb: res

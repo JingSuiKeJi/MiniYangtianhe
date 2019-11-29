@@ -1,15 +1,22 @@
 <wxs module="filter" src="../../filter/filter.wxs"></wxs>
 <!--qr.wxml-->
 <view class="container">
+    <navBar title='我的二维码' background='white' color='black' iconTheme='black' back="{{true}}"></navBar>
 	<view class="ui-main">
 		<view class="ui-qrBox">
-			<image src="{{userInfo.avatar}}" mode="aspectFill" class="ui-headPortrait"/>
-			<text class="ui-personalId">{{userInfo.nickname}}</text>
-			<image src="{{filter.getAvatar(host,shareQR)}}" mode="aspectFill" class="ui-qrInfo" wx:if="{{shareQR}}"/>
+			<canvas canvas-id="share" class="ui-share__canvas" ></canvas>
+			<image class="ui-share__image" src="{{canvasUrl}}" show-menu-by-longpress="true"></image>
 		</view>
-		<!-- <view class="btn-savePoster"></view> -->
-		<image src="{{filter.getLocalPhoto('my_save.png')}}" mode="aspectFit" class="btn-savePoster"/>
+		<image src="{{filter.getLocalPhoto('my_save.png')}}" mode="aspectFit" class="btn-savePoster" bindtap="onSaveImage"/>
 		<text class="ui-savePosterText">保存海报</text>
-		<view class="btn-share">立即分享</view>
+		<button open-type="share" class="btn-share" >立即分享</button>
+
 	</view>
 </view>
+<authorize 
+    id="authorize" 
+    message="请问需要授权相册从而保存至本地" 
+    bind:onCancelTap="onCancelTap" 
+    eventName="me-qr-authorize" 
+    isHidden="{{authorizeHidden}}">
+</authorize>

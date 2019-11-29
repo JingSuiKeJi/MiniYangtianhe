@@ -27,7 +27,7 @@
 	width:686rpx;
 	height:216rpx;
 	border-radius:16rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_StoresCenterBackground.png');
+	background-image:url('https://app.yth-yx.com/mini/my_StoresCenterBackground.png');
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: cover;

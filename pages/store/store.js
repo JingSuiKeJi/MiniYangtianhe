@@ -386,7 +386,7 @@ const methods = {
             classifyId: self.data.classifyId
         }).then((ret) => {
             let data = ret.data;
-            if (data.list && data.list.length) {
+            if (data.list ) {
                 if (self.data.page == 1) {
                     self.setData({
                         list: data.list,

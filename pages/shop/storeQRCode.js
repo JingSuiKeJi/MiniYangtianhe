@@ -49,7 +49,7 @@ const methods = {
 	getData:function(){
 		const self = this;
 		Platfrom.getShareQR(self, {
-	        scene:"promoCode=e23a1f",
+	        scene:'p=' + _g.getLS(_c.LSKeys.userInfo).promoCode,
 	    }).then((ret) => {
 			self.downloadImg({
 				imgUrl: self.data.host + ret.data.shareQR
@@ -74,7 +74,6 @@ const methods = {
 							callback && callback(res);
 						},
 						fail(err) {
-							console.log(777,err)
 							wx.hideLoading();
 						}
 					});

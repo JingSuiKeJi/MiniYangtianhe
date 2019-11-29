@@ -91,7 +91,7 @@ page{
 	margin-top: 112rpx;
 	margin-left: 50%;
 	transform: translateX(-50%);
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_btnVerific.png');
+	background-image:url('https://app.yth-yx.com/mini/my_btnVerific.png');
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: cover;
@@ -137,7 +137,7 @@ page{
 .modal-cancel{
 	width: 46rpx;
 	height: 46rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_cancelVerific.png');
+	background-image:url('https://app.yth-yx.com/mini/my_cancelVerific.png');
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: cover;
@@ -188,7 +188,7 @@ page{
 	width: 366rpx;
 	height: 80rpx;
 	margin-top: 112rpx;
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_btnVerific.png');
+	background-image:url('https://app.yth-yx.com/mini/my_btnVerific.png');
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: cover;

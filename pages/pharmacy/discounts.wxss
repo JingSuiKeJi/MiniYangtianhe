@@ -154,10 +154,6 @@ page{
 	color:rgba(255,255,255,1);
 	line-height:48rpx;
 	text-align: center;
-	/* background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_immediateUseBtn.png');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover; */
 	background-color: #F4A093;
 	border-radius: 30rpx;
 }

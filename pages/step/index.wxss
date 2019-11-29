@@ -11,6 +11,7 @@ page {
 .main {
     background:linear-gradient(180deg,rgba(125,222,227,1) 0%,rgba(150,228,232,1) 46%,rgba(255,255,255,1) 100%);
     background-attachment: scroll;
+    padding-bottom: 170rpx;
 }
 .ui-stepBox {
     width: 100%;
@@ -20,7 +21,7 @@ page {
     display: flex;
     width: 750rpx;
     height: 560rpx;
-    background-image: url(http://www.gzlingren.com:8098/yangtianhe/step__bgImage.png);
+    background-image: url(https://app.yth-yx.com/mini/step__bgImage.png);
     background-size: 750rpx 560rpx; 
     justify-content: center;
     margin: 0 auto;
@@ -93,7 +94,7 @@ page {
 .ui-leftItem_loadText {
     width: 228rpx;
     height: 88rpx;
-    background-image: url(http://www.gzlingren.com:8098/yangtianhe/step_greenBtn.png);
+    background-image: url(https://app.yth-yx.com/mini/step_greenBtn.png);
     background-size: 100%;
     font-size:24rpx;
     font-family:PingFang-SC-Heavy;
@@ -220,7 +221,7 @@ page {
     font-weight:500;
     color:#C55300;
     line-height:42rpx;
-    background-image: url(http://www.gzlingren.com:8098/yangtianhe/step_historyIcon.png);
+    background-image: url(https://app.yth-yx.com/mini/step_historyIcon.png);
     background-size: 240rpx 72rpx;
     justify-content: center;
     align-items: center;
@@ -286,7 +287,7 @@ page {
     padding-top: 60rpx;
     padding-bottom: 60rpx;
     background-color: #fff;
-    background-image: url(http://www.gzlingren.com:8098/yangtianhe/bargain_list_bgIcon.png);
+    background-image: url(https://app.yth-yx.com/mini/bargain_list_bgIcon.png);
     background-size: 564rpx 678rpx;
     position:absolute; 
     z-index:10001; 
@@ -391,7 +392,7 @@ page {
     font-weight:500;
     color:#C55300;
     line-height:30rpx;
-    background-image: url('http://www.gzlingren.com:8098/yangtianhe/moreListBtn.png');
+    background-image: url('https://app.yth-yx.com/mini/moreListBtn.png');
     background-size: 250rpx 72rpx;
     justify-content: center;
     align-items: center;
@@ -436,7 +437,7 @@ page {
     font-family:PingFangSC-Medium;
     font-weight:500;
     color:#C55300;
-    background-image: url(http://www.gzlingren.com:8098/yangtianhe/leyou__listIcon.png);
+    background-image: url(https://app.yth-yx.com/mini/leyou__listIcon.png);
     background-size: 280rpx 72rpx;
     justify-content: center;
     align-items: center;
@@ -452,9 +453,9 @@ page {
     color:#999999;
     line-height:26rpx;
 }
-.ui-specialBox {
+/* .ui-specialBox {
     margin-bottom: 80rpx;
-}
+} */
 /* 模态框 */
 .modal-mask {
 	width: 100%;
@@ -543,7 +544,8 @@ page {
 .ui-topListBox {
     width: 100%;
     background-color: #F5F5F5;
-    padding: 0 32rpx 170rpx 32rpx;
+    padding: 0 32rpx ;
+    margin-top: 40rpx;
 }
 .ui-topListItem__tip {
     display: flex;

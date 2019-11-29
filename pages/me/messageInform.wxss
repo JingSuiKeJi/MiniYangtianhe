@@ -40,9 +40,9 @@ page{
 }
 
 .ui-Open{
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_switchOn.png');
+	background-image:url('https://app.yth-yx.com/mini/my_switchOn.png');
 }
 
 .ui-Close{
-	background-image:url('http://www.gzlingren.com:8098/yangtianhe/my_switchOff.png');
+	background-image:url('https://app.yth-yx.com/mini/my_switchOff.png');
 }

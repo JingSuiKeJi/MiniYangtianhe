@@ -67,7 +67,7 @@ const methods = {
             pageSize: 10
         }).then((ret) => {
             let data = ret.data;
-            if (data.list && data.list.length) {
+            if (data.list ) {
                 let list = data.list;
                 if (self.data.page == 1) {
                     self.setData({

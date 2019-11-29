@@ -120,11 +120,13 @@ const onUnload = function (self) {
 const methods = {
     getData: function () {
         const self = this;
-        self.getGoodsDetail();
-        self.getCommentList();
         self.setData({
             userInfo: _g.getLS(_c.LSKeys.userInfo)
         })
+        self.getGoodsDetail();
+        self.getCommentList();
+        // self.browseGoods();
+        
     },
     getGoodsDetail() {
         const self = this;
@@ -205,6 +207,28 @@ const methods = {
             self.setData({
                 collage: data.list
             })
+        }, (err) => {
+
+        });
+    },
+    browseGoods() {
+        const self = this;
+        let userInfo = _g.getLS(_c.LSKeys.userInfo);
+        Goods.browseGoods(self, {
+            goodsId: self.data.id,
+            userId: userInfo.id
+        }).then((ret) => {
+        }, (err) => {
+
+        });
+    },
+    shareGoods() {
+        const self = this;
+        let userInfo = _g.getLS(_c.LSKeys.userInfo);
+        Goods.shareGoods(self, {
+            goodsId: self.data.id,
+            userId: userInfo.id
+        }).then((ret) => {
         }, (err) => {
 
         });
