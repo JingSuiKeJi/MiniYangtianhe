@@ -79,7 +79,7 @@ const methods = {
         const userInfo = _g.getLS(_c.LSKeys.userInfo);
         Store.signMyFriend(self, {
             page: self.data.page,
-            pageSize: 10,
+            pageSize: 20,
             miniUserId: userInfo.id
         }).then((ret) => {
             let data = ret.data

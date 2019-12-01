@@ -64,7 +64,7 @@ const methods = {
         Goods.listCut(self, {
             platformFlag: self.data.platformFlag,
             page: self.data.page,
-            pageSize: 10
+            pageSize: 20
         }).then((ret) => {
             let data = ret.data;
             if (data.list ) {

@@ -25,7 +25,7 @@ const methods = {
 		let self = this;
 		User.getCommissionClientList(self, {
 			page: self.data.page,
-			pageSize: 10,
+			pageSize: 20,
 			level: self.data.selectLevel
 		}).then((ret) => {
 			if (self.data.page == 1) {

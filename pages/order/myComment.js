@@ -9,7 +9,7 @@ const User = require('../../service/User');
 let data = {
     commentList: [],
 };
-const onLoad = function (self) { 
+const onLoad = function (self) {
     self.getData();
 }
 const onShow = function (self) { }
@@ -24,20 +24,28 @@ const methods = {
         let self = this;
         User.myCommentList(self, {
             page: self.data.page,
-            pageSize: 10,
+            pageSize: 20,
         }).then((ret) => {
-			let data = ret.data;
-			self.setData({
-				commentList: data.list,
-                hasNextPage: data.hasNextPage,
-			})
+            let data = ret.data;
+            if (self.data.page == 1) {
+                self.setData({
+                    commentList: data.list,
+                    hasNextPage: data.hasNextPage,
+                })
+            } else {
+                self.setData({
+                    commentList: self.data.commentList.concat(data.list),
+                    hasNextPage: data.hasNextPage,
+                })
+            }
+
         }, (err) => {
 
         });
     },
     deleteComment: function (id) {
         User.deleteComment(self, {
-           id: id
+            id: id
         }).then((ret) => {
         }, (err) => {
 

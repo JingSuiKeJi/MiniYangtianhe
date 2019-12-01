@@ -39,7 +39,7 @@ const methods = {
 		//门店店员列表
 		User.getOrderList(self, {
 			page: self.data.page,
-			pageSize: 10,
+			pageSize: 20,
 			storeId: storeId,
 			status: self.data.currentCheck,
 		}).then((ret) => {

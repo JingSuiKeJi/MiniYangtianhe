@@ -49,13 +49,21 @@ const methods = {
         Goods.myCut(self, {
             status: self.data.status,
             page: self.data.page,
-            pageSize: 15
+            pageSize: 20
         }).then((ret) => {
             let data = ret.data;
-            self.setData({
-                list: data.list,
-                hasNextPage: data.hasNextPage,
-            });
+            if (self.data.page == 1) {
+                self.setData({
+                    list: data.list,
+                    hasNextPage: data.hasNextPage,
+                });
+            } else {
+                self.setData({
+                    list: self.data.list.concat(data.list),
+                    hasNextPage: data.hasNextPage,
+                });
+            }
+
             self.getCurrentTime();
             clearInterval(self.data.timer);
             let timer = setInterval(() => {
