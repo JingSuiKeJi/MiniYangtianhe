@@ -46,7 +46,6 @@ const methods = {
 				}, 2000);
 				return;
 			}
-			// _.each(goodsVoList,(item)=> item.select = false);
 			self.setData({
 				storeList: goodsVoList,
 				refundSwich: data.refundSwich,

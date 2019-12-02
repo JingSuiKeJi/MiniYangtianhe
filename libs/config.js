@@ -140,7 +140,8 @@ config.prototype = {
             deleteBrowse: '/app/browse/delete.do',
             userLinkUser: '/app/account/userLinkUser.do',
             confirmReturn: '/app/afterSale/confirmReturn.do',
-            rejectReturn: '/app/afterSale/rejectReturn.do'
+            rejectReturn: '/app/afterSale/rejectReturn.do',
+            financialStatements: '/app/store/financialStatements.do',
 
         },
         withdraw: {

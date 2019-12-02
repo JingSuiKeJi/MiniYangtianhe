@@ -342,15 +342,9 @@ const methods = {
                 tapList: data,
                 classifyId: data[0].id
             });
-            console.log(6677)
             self.getPageData();
             self.onScroll('#aim', 'scrollTop');
             self.onScroll('#head', 'headTop');
-            //     self.onScroll('#head', 'headTop');
-            // if (pageUrl=="pages/home/index") {
-            //     self.onScroll('#aim', 'scrollTop');
-            //     self.onScroll('#head', 'headTop');
-            // }
 
         }, (err) => {
 
