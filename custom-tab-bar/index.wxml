@@ -1,7 +1,7 @@
 <cover-view class='tab-bar' wx:if="{{flag}}">
     <!-- 背景图片 -->
     <cover-image class='tab-bar-bg' src='../images/tabbarIcon/tabbar_bg.png'/>
-    
+
     <!-- 养乐药房 -->
     <cover-view class='tab-bar-index' data-index='0' data-path='{{list[0].pagePath}}' bindtap='tab_bar_index'>
       <cover-view class='tab-bar-icon'>

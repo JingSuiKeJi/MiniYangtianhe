@@ -82,6 +82,8 @@
     "pages/order/afterSaleDetail"
   ],
   "tabBar": {
+    "borderStyle": "white",
+    "backgroundColor": "#FFFFFF",
     "list": [
       {
         "iconPath": "",
