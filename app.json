@@ -84,32 +84,22 @@
   "tabBar": {
     "list": [
       {
-        "iconPath": "",
-        "selectedIconPath": "",
         "pagePath": "pages/home/index",
         "text": ""
       },
       {
-        "iconPath": "",
-        "selectedIconPath": "",
         "pagePath": "pages/store/store",
         "text": ""
       },
       {
-        "iconPath": "",
-        "selectedIconPath": "",
         "pagePath": "pages/step/index",
         "text": ""
       },
       {
-        "iconPath": "",
-        "selectedIconPath": "",
         "pagePath": "pages/store/cart",
         "text": ""
       },
       {
-        "iconPath": "",
-        "selectedIconPath": "",
         "pagePath": "pages/me/index",
         "text": ""
       }

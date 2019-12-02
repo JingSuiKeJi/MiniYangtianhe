@@ -10,7 +10,7 @@
     <view class="tab-bottom"></view>
     <view class="main">
         <view>
-            <view class="ui-headBox" style="margin-top: {{statusBarHeight+44}}px;" hidden="{{isFixed}}" id="head">
+            <view class="ui-headBox" style="top: {{statusBarHeight+44}}px;" hidden="{{isFixed}}" id="head">
                 <view class="location"  catchtap="onMapTap">
                     <image src="{{filter.getLocalPhoto('home_address.png')}}" mode="aspectFit" class="ui-addressIcon" />
                     <text class="ui-addressText" >{{storeInfo.isBind ? '绑定门店:' : '推荐门店:'}}</text>
@@ -26,7 +26,7 @@
                     </view>
                 </view>
             </view>
-            <view class="ui-banner" wx:if="{{banner.length}}">
+            <!-- <view class="ui-banner" wx:if="{{banner.length}}">
                 <view class="ui-banner_bgroundBox"></view>
                 <swiper current="currentIndex" autoplay interval="2000" duration="500" circular class="ui-banner_swiper" bindchange="onChangeTap" wx:if="{{banner.length}}">
                     <block wx:for="{{banner}}" wx:key="{{index}}">
@@ -41,7 +41,7 @@
             </view>
             <view class="ui-activityBox">
                 <image src="{{filter.getLocalPhoto('activity.png')}}" mode="aspectFill"></image>
-            </view>
+            </view> -->
         </view>
         <view class="ui-stepBox">
             <view class="ui-stepTapBox">
@@ -222,9 +222,9 @@
                                 </view>
                                 <view class="ui-content_reward">
                                     <text>￥{{item.nowPrice}}</text>
-                                    <!-- <view wx:if="{{item.commission}}">
+                                    <view wx:if="{{item.commission}}">
                                         分享赚 ￥{{item.commission}}
-                                    </view> -->
+                                    </view>
                                 </view>
                             </view>
                         </button>
@@ -233,7 +233,6 @@
                 <view class="ui-bottomItem_contentEmpty" hidden="{{list.length}}">暂无数据</view>
             </view>
         </view>
-        <!-- <topList titleSize="44rpx"/> -->
         <view class="ui-bottomBox">到底啦，但我们会努力变长的～</view>
         <canvas canvas-id="share" class="ui-share__canvas" ></canvas>
         <view class="modal-mask" bindtap="hideShareModal" catchtouchmove="true" wx:if="{{shareModal}}"></view>
