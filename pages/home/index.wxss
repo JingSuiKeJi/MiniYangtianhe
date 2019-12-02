@@ -669,8 +669,8 @@ page {
 .ui-listItem_bottom .isFixed{
     position: fixed;
     /* top: 170rpx; */
-    background-color: #32BC9A;
-    border-bottom: none;
+    background-color: #FFFFFF;
+    /* border-bottom: none; */
     z-index: 999999;
 }
 .ui-tapItem_scrollView {
