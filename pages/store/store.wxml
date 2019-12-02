@@ -225,5 +225,6 @@
             </view>
         </view>
         <view class="ui-bottomBox">到底啦，但我们会努力变长的～</view>
+        <tabBar selected="1"></tabBar>
     </view>
 </view>

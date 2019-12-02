@@ -15,9 +15,9 @@ let data = {
 };
 const onLoad = function(self) {
     // wx.hideTabBar()
-    self.getTabBar().setData({
-        selected: 4
-    });
+    // self.getTabBar().setData({
+    //     selected: 4
+    // });
     if (_g.checkLogin({
             type: 1
         })) {

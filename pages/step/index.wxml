@@ -118,6 +118,7 @@
             </view>
             <view class="ui-noData__word"  wx:if="{{!deductDoods.length}}">暂无数据</view>
         </view> -->
+        <tabBar selected="2"></tabBar>
     </view>
 </view>
 <authorize 

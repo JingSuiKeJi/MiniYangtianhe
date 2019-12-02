@@ -65,9 +65,9 @@ const onLoad = function (self) {
     event.on('login-suc', self, (ret) => {
         self.getData();
     });
-    self.getTabBar().setData({
-        selected: 2
-    });
+    // self.getTabBar().setData({
+    //     selected: 2
+    // });
     event.on('step-index-authorize', self, (res) => {
         if (res.detail.authSetting['scope.writePhotosAlbum']) {
             self.savePicToAlbum();

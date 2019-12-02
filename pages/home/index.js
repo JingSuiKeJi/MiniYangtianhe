@@ -63,6 +63,7 @@ const data = {
 // 页面onLoad方法
 const onLoad = function (self) {
     wx.showShareMenu();
+    wx.hideTabBar();
     self.initBlock();
     // _g.setLS(_c.LSKeys.promoCode, 'hs23a1')
 

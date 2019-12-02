@@ -122,6 +122,7 @@
     <view class="ui-noLogin__text">亲，您还没登陆哦～</view>
     <button class="ui-loginBtn" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">立即登陆</button>
 </view>
+<tabBar selected="3"></tabBar>
 <location 
     id="location" 
     hiddenLocationPopup="{{hiddenLocationPopup}}"
