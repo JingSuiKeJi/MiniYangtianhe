@@ -1,6 +1,6 @@
 <wxs module="filter" src="../../filter/filter.wxs"></wxs>
 <view class="container">
-    <navBar title="养乐药房" background="#3CC7A4" color="white" iconTheme="white">
+    <navBar title="养乐药房" background="#32BC9A" color="white" iconTheme="white">
     <!-- <view class="location" slot="left" catchtap="onMapTap">
         <image src="{{filter.getLocalPhoto('home_address.png')}}" mode="aspectFit" class="ui-addressIcon" />
         <text class="ui-addressText" catchtap="onMapTap">{{storeInfo.title}}</text>

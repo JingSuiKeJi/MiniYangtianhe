@@ -125,7 +125,7 @@ const methods = {
         })
         self.getGoodsDetail();
         self.getCommentList();
-        // self.browseGoods();
+        self.browseGoods();
         
     },
     getGoodsDetail() {
@@ -595,7 +595,7 @@ const methods = {
         if (userInfo) {
             path += '&promoCode=' + userInfo.promoCode;
         }
-        // self.shareGoods();
+        self.shareGoods();
         return {
             title: self.data.goodsDetail.mainTitle,
             path: path,

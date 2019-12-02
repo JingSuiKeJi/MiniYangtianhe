@@ -34,7 +34,7 @@
 				<view class="ui-refundReason">
 					<text>退款金额：¥{{list.refund}}</text>
 					<text>申请件数：{{list.num}}</text>
-					<text>申请时间：{{filter.getDate(list.applyCreateTime)}}}</text>
+					<text>申请时间：{{filter.getDate(list.applyCreateTime)}}</text>
 				</view>
 			</view>
 			<!-- 返回首页 -->

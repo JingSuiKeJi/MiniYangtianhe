@@ -96,7 +96,7 @@ const methods = {
         if (self.data.platformFlag == 1) key = self.data.storeKey
         let storage = wx.getStorageSync(key);
         if (storage) {
-            storage.push(value);
+            storage.unshift(value);
             wx.setStorageSync(key, storage);
         } else {
             storage = [value]
@@ -109,7 +109,6 @@ const methods = {
         let key = self.data.key;
         if (self.data.platformFlag == 1) key = self.data.storeKey
         let hisList = wx.getStorageSync(key);
-        hisList.reverse();
         if (hisList.length > 10) hisList = slice(0, 10);
         self.setData({
             hisList: hisList

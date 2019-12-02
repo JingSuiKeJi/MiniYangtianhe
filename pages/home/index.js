@@ -77,7 +77,7 @@ const onLoad = function (self) {
         self.setLoginData();
     });
     event.on('refreshHomeStep', self, (ret) => {
-        self.getCommonData();
+        self.getStepInfo();
     });
     event.on('refreshHomeData', self, (ret) => {
         if (self.data.isLogin) {
@@ -684,7 +684,7 @@ const methods = {
                 _g.toast({ title: '重新上传步数中，请稍等' });
                 self.wxLogin();
             } else {
-                self.getCommonData();
+                // self.getCommonData();
                 _g.toast({
                     title: '上传步数成功',
                     duration: 3000
@@ -694,7 +694,12 @@ const methods = {
                 }
                 event.emit('refreshStep')
             }
-
+            setTimeout(()=>{
+                self.getStepInfo();
+            },100);
+            setTimeout(()=>{
+                event.emit('refreshStep')
+            },1000);
             // self.getCommonData();
             // if (self.data.stepInfo.status == 2) {
             //     self.showDialogBtn();
@@ -1118,7 +1123,21 @@ const methods = {
 
             })
         }
-    }
+    },
+    getStepInfo: function () {
+        let self = this;
+        Platform.getStepInfo(self, {}).then((ret) => {
+            let stepInfo = ret.data.stepInfo;
+            let percent = stepInfo.todayStep / stepInfo.targetStep;
+            let BMIIndex = Math.ceil(31 * percent);
+            self.setData({
+                stepInfo: stepInfo,
+                BMIIndex: BMIIndex
+            });
+            self.btnShow(stepInfo.status);
+
+        }, (err) => { });
+    },
 
 };
 
