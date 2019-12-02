@@ -84,34 +84,34 @@
   "tabBar": {
     "list": [
       {
-        "iconPath": "images/tabbarIcon/tabbar_pharmacy.png",
-        "selectedIconPath": "images/tabbarIcon/tabbar_selectPharmacy.png",
+        "iconPath": "",
+        "selectedIconPath": "",
         "pagePath": "pages/home/index",
-        "text": "养乐药房"
+        "text": ""
       },
       {
-        "iconPath": "images/tabbarIcon/tabbar_market.png",
-        "selectedIconPath": "images/tabbarIcon/tabbar_selectmarket.png",
+        "iconPath": "",
+        "selectedIconPath": "",
         "pagePath": "pages/store/store",
-        "text": "养乐商城"
+        "text": ""
       },
       {
-        "iconPath": "images/tabbarIcon/raiseHappyStep.png",
-        "selectedIconPath": "images/tabbarIcon/raiseHappyStep.png",
+        "iconPath": "",
+        "selectedIconPath": "",
         "pagePath": "pages/step/index",
-        "text": "养步乐"
+        "text": ""
       },
       {
-        "iconPath": "images/tabbarIcon/tabbar_cart.png",
-        "selectedIconPath": "images/tabbarIcon/tabbar_selectCart.png",
+        "iconPath": "",
+        "selectedIconPath": "",
         "pagePath": "pages/store/cart",
-        "text": "购物车"
+        "text": ""
       },
       {
-        "iconPath": "images/tabbarIcon/tabbar_me.png",
-        "selectedIconPath": "images/tabbarIcon/tabbar_selectMe.png",
+        "iconPath": "",
+        "selectedIconPath": "",
         "pagePath": "pages/me/index",
-        "text": "我的"
+        "text": ""
       }
     ]
   },
