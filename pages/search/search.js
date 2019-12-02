@@ -23,7 +23,7 @@ const onLoad = function (self) {
 
 // 页面onShow方法
 const onShow = function (self) {
-    self.getData();
+    // self.getData();
 };
 const onUnload = function (self) {
 
@@ -81,6 +81,7 @@ const methods = {
             url: 'pages/search/detailList',
             param: param
         }, self);
+        self.getHisList();
     },
     onDelectTap: function (e) {
         let self = this;
@@ -108,6 +109,7 @@ const methods = {
         let key = self.data.key;
         if (self.data.platformFlag == 1) key = self.data.storeKey
         let hisList = wx.getStorageSync(key);
+        hisList.reverse();
         if (hisList.length > 10) hisList = slice(0, 10);
         self.setData({
             hisList: hisList

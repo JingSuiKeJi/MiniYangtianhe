@@ -595,7 +595,7 @@ const methods = {
         if (userInfo) {
             path += '&promoCode=' + userInfo.promoCode;
         }
-        console.log('====',path )
+        // self.shareGoods();
         return {
             title: self.data.goodsDetail.mainTitle,
             path: path,
