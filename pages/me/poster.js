@@ -188,6 +188,9 @@ const methods = {
 						},
 						fail(err) {
 							wx.hideLoading();
+							_g.toast({
+								title: '网络好像不太稳定,请稍后再试'
+							});
 						}
 					});
 				}
