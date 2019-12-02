@@ -8,7 +8,7 @@
 	height: 156rpx;
 	display: flex;
 	flex-direction: row;
-	background-color: #FAFAFA;
+	/* background-color: #FAFAFA; */
 	box-sizing: border-box;
 	/* box-sizing: content-box; */
 	padding-bottom: 25rpx;
