@@ -59,7 +59,7 @@
     "pages/order/applyRefund",
     "pages/order/applyAfter",
     "pages/order/fillLogistics",
-    "custom-tab-bar/index",
+    "components/tabBar/index",
     "components/navBar/navBar",
     "pages/shop/blissVerifyDetail",
     "pages/pharmacy/customer",
@@ -82,7 +82,6 @@
     "pages/order/afterSaleDetail"
   ],
   "tabBar": {
-    "custom": true,
     "list": [
       {
         "iconPath": "images/tabbarIcon/tabbar_pharmacy.png",
@@ -119,7 +118,8 @@
   "window": {},
   "usingComponents": {
     "authorize": "/components/authorize/authorize",
-    "location": "/components/location/location"
+    "location": "/components/location/location",
+    "tabBar": "/components/tabBar/index"
   },
   "permission": {
     "scope.userLocation": {

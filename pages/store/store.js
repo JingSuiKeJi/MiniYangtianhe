@@ -31,9 +31,9 @@ const data = {
 const onLoad = function (self) {
     wx.showShareMenu();
     self.getData();
-    self.getTabBar().setData({
-        selected: 1
-    });
+    // self.getTabBar().setData({
+    //     selected: 1
+    // });
     // self.onScroll();
     // event.on('login-suc', self, (ret) => { });
 };
