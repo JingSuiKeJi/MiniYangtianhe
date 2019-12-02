@@ -123,7 +123,7 @@ page{
 	color:rgba(255,255,255,1);
 	line-height:40rpx;
 	text-align: center;
-	right:138rpx;
+	right:168rpx;
 	margin-top: 40rpx;
 }
 

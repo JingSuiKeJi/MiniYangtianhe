@@ -9,7 +9,8 @@ const Goods = require('../../service/Goods');
 const data = {
     tagList: [],
     hisList: [],
-    key: 'hisList'
+    key: 'hisList',
+    storeKey: 'storeHisList'
 };
 
 // 页面onLoad方法
@@ -22,7 +23,7 @@ const onLoad = function (self) {
 
 // 页面onShow方法
 const onShow = function (self) {
-    self.getData();
+    // self.getData();
 };
 const onUnload = function (self) {
 
@@ -43,11 +44,12 @@ const methods = {
                 self.setData({
                     tagList: ret.data.slice(0, 10)
                 });
-                return;
+            } else {
+                self.setData({
+                    tagList: ret.data
+                });
             }
-            self.setData({
-                tagList: ret.data
-            });
+
             self.getHisList();
         }, (err) => {
             self.getHisList();
@@ -79,6 +81,7 @@ const methods = {
             url: 'pages/search/detailList',
             param: param
         }, self);
+        self.getHisList();
     },
     onDelectTap: function (e) {
         let self = this;
@@ -89,7 +92,9 @@ const methods = {
     setHisttory: function (value) {
         let self = this;
         let key = self.data.key;
-        let storage = wx.getStorageSync(self.data.key);
+        //1 拿商城的历史记录 2拿药房的历史记录
+        if (self.data.platformFlag == 1) key = self.data.storeKey
+        let storage = wx.getStorageSync(key);
         if (storage) {
             storage.push(value);
             wx.setStorageSync(key, storage);
@@ -101,7 +106,10 @@ const methods = {
     //获取本地缓存
     getHisList: function () {
         let self = this;
-        let hisList = wx.getStorageSync(self.data.key);
+        let key = self.data.key;
+        if (self.data.platformFlag == 1) key = self.data.storeKey
+        let hisList = wx.getStorageSync(key);
+        hisList.reverse();
         if (hisList.length > 10) hisList = slice(0, 10);
         self.setData({
             hisList: hisList

@@ -139,10 +139,8 @@ config.prototype = {
             browseList: '/app/browse/getRecordList.do',
             deleteBrowse: '/app/browse/delete.do',
             userLinkUser: '/app/account/userLinkUser.do',
-            confirmAudit: '/afterSale/confirmAudit.do',
-            rejectAudit: '/afterSale/rejectAudit.do',
-            confirmReturn: '/afterSale/confirmReturn.do',
-            rejectReturn: '/afterSale/rejectReturn.do'
+            confirmReturn: '/app/afterSale/confirmReturn.do',
+            rejectReturn: '/app/afterSale/rejectReturn.do'
 
         },
         withdraw: {
@@ -212,7 +210,8 @@ config.prototype = {
             subLogistics: '/app/afterSale/subLogistics.do',
             cancelAfterSale: '/app/afterSale/cancel.do',
             orderTraces: '/app/order/orderTraces.do',
-            checkPlaceOrder: '/app/order/checkPlaceOrder.do'
+            checkPlaceOrder: '/app/order/checkPlaceOrder.do',
+            getOrderAfterSaleList: '/app/store/getOrderAfterSaleList.do'
         },
         point: {
             getBaseInfo: '/app/points/getBaseInfo.do',

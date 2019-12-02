@@ -173,6 +173,15 @@ class Order {
             showToast: false,
             hideToast: true
 		}, page);
+    }
+    getOrderAfterSaleList(page, reqData) {
+		_g.dm.canLoadMore = 1;
+		return _g.ajax({
+			url: mini.order.getOrderAfterSaleList,
+            data: reqData,
+            showToast: false,
+            hideToast: true
+		}, page);
 	}
 }
 

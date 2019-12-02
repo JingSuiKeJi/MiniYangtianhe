@@ -177,7 +177,7 @@ const methods = {
         const self = this;
         Point.getRecordList(self, {
             page: self.data.page,
-            pageSize: 10
+            pageSize: 20
         }).then((ret) => {
             if (self.data.page == 1) {
                 self.setData({

@@ -1745,8 +1745,8 @@ base.prototype = {
             userId: _g.getLS(_c.LSKeys.userInfo).id
         };
         User.userLinkUser(self, postData).then((ret) => {
+            _g.rmLS(_c.LSKeys.promoCode);
             if (ret.data.result == 1) {
-                _g.rmLS(_c.LSKeys.promoCode);
                 _g.getMyInfo(self , {
                     suc() {
                         event.emit('refreshHomeData')

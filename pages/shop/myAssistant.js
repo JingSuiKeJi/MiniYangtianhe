@@ -31,7 +31,7 @@ const methods = {
 		//门店店员列表
 		User.getVerifierList(self, {
 			page: self.data.page,
-			pageSize: 10,
+			pageSize: 20,
 			storeId: storeId,
 		}).then((ret) => {
 			if (self.data.page == 1) {
@@ -70,7 +70,7 @@ const methods = {
 		//查找店员
 		User.searchVerifier(self, {
 			page: self.data.page,
-			pageSize: 10,
+			pageSize: 20,
 			keyword: nameId,
 		}).then((ret) => {
 			if (!ret.data.list) {
