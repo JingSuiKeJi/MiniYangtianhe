@@ -171,7 +171,7 @@ Component({
           if (ios) {
             systemInfo.navBarExtendHeight = 4; //下方扩展4像素高度 防止下方边距太小
           } else {
-            systemInfo.navBarExtendHeight = 0;
+            systemInfo.navBarExtendHeight = 4;
           }
         }
         systemInfo.navBarHeight = navBarHeight; //导航栏高度不包括statusBarHeight

@@ -32,7 +32,7 @@
 							    <text class="ui-idColor">{{filter.getId(item.description)}}</text>
 							</view>
                             <text wx:if="{{item.incomeType== 12}}">{{item.description}}</text>
-							<text wx:else>{{filter.getIncomeType(item.incomeType)}}</text>
+							<text wx:if="{{!(item.incomeType==2 || item.incomeType== 12)}}">{{filter.getIncomeType(item.incomeType)}}</text>
 						</block>
                         <block wx:if="{{item.type==2}}">
                         	<view class="ui-presentedTextBox" wx:if="{{item.expenditureType==3}}">

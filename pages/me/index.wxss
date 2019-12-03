@@ -177,8 +177,8 @@
 
 .ui-contactItem text{
 	display: block;
-	height:22rpx;
-	font-size:22rpx;
+	height:24rpx;
+	font-size:24rpx;
 	font-family:PingFangSC-Regular;
 	font-weight:400;
 	color:rgba(255,255,255,1);

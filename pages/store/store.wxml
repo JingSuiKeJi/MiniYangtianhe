@@ -1,11 +1,11 @@
 <!-- pages/store/store.wxml -->
 <wxs module="filter" src="../../filter/filter.wxs"></wxs>
 <view class="container">
-    <navBar title="养乐商城" background="#FF7274" color="white"></navBar>
+    <navBar title="养乐商城" background="#FF7475" color="white"></navBar>
     <view class="tab-bottom"></view>
     <view class="main">
         <view>
-            <view class="ui-headBox" style="margin-top: {{statusBarHeight+44}}px;" hidden="{{isFixed}}" id="head">
+            <view class="ui-headBox" style="top: {{statusBarHeight+44}}px;" hidden="{{isFixed}}" id="head">
                 <view class="ui-headBox_search" bindtap="onSkipTap">搜索你想要的商品</view>
             </view>
             <view class="ui-tapBox">
@@ -173,14 +173,14 @@
                 <view class="ui-bottomItem_tap {{isFixed ? 'isFixed' : ''}}" id="aim" style="top: {{isFixed ? headTop+ 'px' : ''}}">
                     <scroll-view scroll-x class="ui-tapItem_scrollView" scroll-into-view="{{toView}}">
                         <view wx:for="{{tapList}}" wx:key="{{index}}" class="ui-tapScroll_item" bindtap="onClickTap" id="{{'_' + item.id}}" data-type="{{item.id}}">
-                            <view class="ui-tapScroll_itemText" style="font-weight: {{classifyId == item.id ? '500' : '400'}};color: {{isFixed ? '#fff' : ''}}">
+                            <view class="ui-tapScroll_itemText" style="font-weight: {{classifyId == item.id ? '500' : '400'}};">
                                 {{item.title}}
                             </view>
-                            <view class="ui-tapScroll_itemIcon" hidden="{{classifyId != item.id}}" style="background-color: {{isFixed ? '#fff' : ''}}"></view>
+                            <view class="ui-tapScroll_itemIcon" hidden="{{classifyId != item.id}}"  wx:if="{{!isFixed}}"></view>
                         </view>
                     </scroll-view>
                     <view class="ui-tapItem_Icon" bindtap="onSlideTap">
-                        <image src="{{filter.getLocalPhoto('index_slideDown.png')}}" mode="aspectFill" class="ui-tapItem_downIcon" style="transform: {{!hideModal ? 'rotateX(-180deg)' : 'rotateY(0deg)'}}" />
+                        <image src="{{filter.getLocalPhoto('index_slideDown.png')}}" mode="aspectFit" class="ui-tapItem_downIcon" style="transform: {{!hideModal ? 'rotateX(-180deg)' : 'rotateY(0deg)'}}" />
                     </view>
                     <view class="modals modals-bottom-dialog" hidden="{{hideModal}}" wx:if="{{tapList.length}}" style="top: {{!hideModal ?  headTop  + 'px' : ''}}">
                         <view class="modals-cancel" bindtap="hideModal" catchtouchmove="true"></view>
@@ -191,8 +191,8 @@
                                         {{item.title}}
                                     </view>
                                 </view>
-                                <view class="ui-slideItem__right">
-                                    <image src="{{filter.getLocalPhoto('home__indexUp.png')}}" mode="aspectFit" class="ui-tapItem_upIcon" bindtap="hideModal" />
+                                <view class="ui-slideItem__right"  bindtap="hideModal">
+                                    <image src="{{filter.getLocalPhoto('home__indexUp.png')}}" mode="aspectFit" class="ui-tapItem_upIcon" />
                                 </view>
                             </view>
                         </view>
@@ -225,5 +225,6 @@
             </view>
         </view>
         <view class="ui-bottomBox">到底啦，但我们会努力变长的～</view>
+        <tabBar selected="1"></tabBar>
     </view>
 </view>

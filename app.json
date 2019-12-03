@@ -59,7 +59,7 @@
     "pages/order/applyRefund",
     "pages/order/applyAfter",
     "pages/order/fillLogistics",
-    "custom-tab-bar/index",
+    "components/tabBar/index",
     "components/navBar/navBar",
     "pages/shop/blissVerifyDetail",
     "pages/pharmacy/customer",
@@ -82,44 +82,36 @@
     "pages/order/afterSaleDetail"
   ],
   "tabBar": {
-    "custom": true,
+    "borderStyle": "white",
+    "backgroundColor": "#FFFFFF",
     "list": [
       {
-        "iconPath": "images/tabbarIcon/tabbar_pharmacy.png",
-        "selectedIconPath": "images/tabbarIcon/tabbar_selectPharmacy.png",
         "pagePath": "pages/home/index",
-        "text": "养乐药房"
+        "text": ""
       },
       {
-        "iconPath": "images/tabbarIcon/tabbar_market.png",
-        "selectedIconPath": "images/tabbarIcon/tabbar_selectmarket.png",
         "pagePath": "pages/store/store",
-        "text": "养乐商城"
+        "text": ""
       },
       {
-        "iconPath": "images/tabbarIcon/raiseHappyStep.png",
-        "selectedIconPath": "images/tabbarIcon/raiseHappyStep.png",
         "pagePath": "pages/step/index",
-        "text": "养步乐"
+        "text": ""
       },
       {
-        "iconPath": "images/tabbarIcon/tabbar_cart.png",
-        "selectedIconPath": "images/tabbarIcon/tabbar_selectCart.png",
         "pagePath": "pages/store/cart",
-        "text": "购物车"
+        "text": ""
       },
       {
-        "iconPath": "images/tabbarIcon/tabbar_me.png",
-        "selectedIconPath": "images/tabbarIcon/tabbar_selectMe.png",
         "pagePath": "pages/me/index",
-        "text": "我的"
+        "text": ""
       }
     ]
   },
   "window": {},
   "usingComponents": {
     "authorize": "/components/authorize/authorize",
-    "location": "/components/location/location"
+    "location": "/components/location/location",
+    "tabBar": "/components/tabBar/index"
   },
   "permission": {
     "scope.userLocation": {

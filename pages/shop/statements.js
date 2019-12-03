@@ -26,28 +26,7 @@ let data = {
 	currentData:'',//当前选择日期/默认今日日份
 	currentTimestamp:'',//当前选中时间戳/默认今日日份时间戳
 	currentType:1,//报表时间段，默认1 1当天/2一周/3一个月
-	reportList:[
-		// {year:'2019/07/31',time:'12:45:13',
-		// 	detailList:[
-		// 		{incident:'应收订单金额',price:'¥19.00'},
-		// 		{incident:'实收订单金额',price:'¥19.00'},
-		// 		{incident:'福气抵扣金额',price:'¥1.38'},
-		// 		{incident:'抵扣福气数',price:'138'},
-		// 	],
-		// },
-		// {year:'2019/07/31',time:'12:45:13',
-		// 	detailList:[
-		// 		{incident:'福气核销金额',price:'¥19.00'},
-		// 		{incident:'核销福气数',price:'190000'},
-		// 	],
-		// },
-		// {year:'2019/07/31',time:'12:45:13',
-		// 	detailList:[
-		// 		{incident:'应收订单金额',price:'¥19.00'},
-		// 		{incident:'实收订单金额',price:'¥19.00'},
-		// 	],
-		// },
-	]
+	reportList:[]
 };
 const onLoad = function(self) {
 	self.getSunday();

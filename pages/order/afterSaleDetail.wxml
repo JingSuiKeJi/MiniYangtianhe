@@ -72,6 +72,8 @@
 			<text>订单编号：{{orderDetail.orderNo}}</text>
 			<text>创建时间：{{filter.getDate(orderDetail.creatrTime)}}</text>
 			<text>付款时间：{{filter.getDate(orderDetail.payTime)}}</text>
+			<text>退款原因：{{orderDetail.orderAfterSale.reason}}</text>
+			<text>申请退款时间：{{filter.getDate(orderDetail.orderAfterSale.createTime)}}</text>
 		</view>
 		<!-- <block wx:if="{{!orderDetail.orderAfterSale}}">
 		    <view class="ui-verificationFooter" wx:if="{{orderDetail.status=='WAIT_CHECK'|| orderDetail.status=='WAIT_DELIVERY'}}">

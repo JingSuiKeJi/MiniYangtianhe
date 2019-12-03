@@ -12,22 +12,23 @@ page {
 
 .location {
     display: flex;
-    margin-top: 10rpx;
-    margin-bottom: 20rpx;
+    padding-top: 10rpx;
+    padding-bottom: 20rpx;
     justify-content: center;
     align-items: center;
+    background-color: #32BC9A;
 }
 
 .ui-addressIcon {
     margin-top: 4rpx;
     margin-left: 16rpx;
-    width: 24rpx;
+    width: 32rpx;
     height: 32rpx;
 }
 
 .ui-addressText {
     margin-left: 10rpx;
-    font-size: 28rpx;
+    font-size: 32rpx;
     font-family: PingFangSC;
     font-weight: 500;
     color: rgba(255, 255, 255, 1);
@@ -153,34 +154,47 @@ page {
 }
 
 .ui-leftItem_loadText {
-    width: 180rpx;
-    height: 72rpx;
-    background-image: url(https://app.yth-yx.com/mini/ellipse.png);
+    width: 188rpx;
+    height: 70rpx;
+    background-image: url(https://app.yth-yx.com/mini/home__index__uploadStepIndex.png);
+    background-repeat: no-repeat;
     background-size: 100%;
-    font-size: 24rpx;
+    font-size: 28rpx;
     font-family: PingFang-SC-Heavy;
     font-weight: 800;
     color: #FFFFFF;
-    line-height: 60rpx;
+    line-height: 70rpx;
     margin: 30rpx auto;
     background-color: transparent;
 }
 
 .ui-stepTapBox_right {
     display: inline-block;
-    width: 220rpx;
+    /* width: 220rpx;
     height: 84rpx;
-    font-size: 20rpx;
+    font-size: 24rpx;
     font-family: PingFangSC;
     font-weight: 600;
     color: #FFFFFF;
     line-height: 37px;
     background-image: url(https://app.yth-yx.com/mini/home__index_stepIcon.png);
-    background-size: 220rpx 84rpx;
+    background-size: 220rpx 84rpx; */
+    width:208rpx;
+    height:48rpx;
+    font-size: 24rpx;
+    font-family: PingFangSC;
+    font-weight: 600;
+    color: #FFFFFF;
+    line-height: 48px;
+    background:linear-gradient(137deg,rgba(1,206,165,1) 0%,rgba(94,221,218,1) 100%);
+    box-shadow:0rpx 4rpx 8rpx 0rpx rgba(68,215,182,0.5);
+    border-radius:0rpx 24rpx 0rpx 24rpx;
+    line-height: 48rpx;
     text-align: center;
     position: absolute;
-    top: 36rpx;
-    right: 0rpx;
+    top: 40rpx;
+    right: 8rpx;
+
 }
 
 .ui-stepTapBox>image {
@@ -230,14 +244,16 @@ page {
 
 .ui-headBox {
     width: 100%;
-    padding-top: 12rpx;
+    height: 154rpx;
     position: fixed;
-    top: 0rpx;
     left: 0;
     z-index: 9999;
     height: 155rpx;
-    line-height: 90rpx;
-    background-color: #3CC7A4;
+}
+.ui-searchBox {
+    background-color: #32BC9A;
+    height: 84rpx;
+    padding-bottom: 20rpx;
 }
 
 .ui-headBox_search{
@@ -260,10 +276,10 @@ page {
 .ui-tapBox {
     width: 100%;
     height: 80rpx;
-    margin-top: 145rpx;
+    margin-top: 135rpx;
     padding: 0 40rpx;
-    background-color: #3CC7A4;
-   
+    background-color: #32BC9A;
+
 }
 .ui-tapBox__Item {
     width: 100%;
@@ -283,7 +299,7 @@ page {
     display: inline-block;
     height: 80rpx;
     line-height: 80rpx;
-    font-size: 26rpx;
+    font-size: 28rpx;
     font-family: PingFangSC-Regular;
     font-weight: 400;
     color: #FFFFFF;
@@ -309,7 +325,7 @@ page {
     width: 100%;
     height: 50rpx;
     border-radius: 0 0 40% 40%;
-    background-color: #3CC7A4;
+    background-color: #32BC9A;
 }
 
 .ui-banner_swiper {
@@ -645,7 +661,7 @@ page {
 
 .ui-listItem_top {
     width: 100%;
-    height: 130rpx;
+    height: 100rpx;
     padding-left: 30rpx;
     padding-top: 30rpx;
     font-family: PingFangSC-Medium;
@@ -668,8 +684,8 @@ page {
 .ui-listItem_bottom .isFixed{
     position: fixed;
     /* top: 170rpx; */
-    background-color: #3CC7A4;
-    border-bottom: none;
+    background-color: #FFFFFF;
+    /* border-bottom: none; */
     z-index: 999999;
 }
 .ui-tapItem_scrollView {
@@ -835,7 +851,7 @@ page {
 
 .tab-bottom {
     position: fixed;
-    z-index: 9999999;
+    z-index: 1000;
     left: 0;
     bottom: 0;
     width: 100%;
@@ -899,15 +915,18 @@ page {
 
 
 .ui-slideItem__right {
+    width: 70rpx;
+    height: 50rpx;
     position: absolute;
     right: 20rpx;
-    top: 50rpx;
+    top: 65rpx;
+   /* line-height: 50rpx; */
     
 }
 
 .ui-tapItem_upIcon {
-    width: 48rpx;
-    height: 48rpx;
+    width: 36rpx;
+    height: 20rpx;
 }
 /* 模态框 */
 .modal-mask {

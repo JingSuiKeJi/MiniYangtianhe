@@ -14,7 +14,7 @@
             <view class="ui-content_tap">
                 <view class="ui-tapItem_price" bindtap="onChoseTap" data-type="1">
                         <text class="ui-tapItem_text"  style="color: {{type == 1 ? '#20CAB4' : ''}}" >价格</text>
-                        <image  src="{{type == 1 ? filter.getLocalPhoto('sort.png') : filter.getLocalPhoto('graySort.png')}}" class="ui-priceItem_img" mode="aspectFill" />
+                        <image  src="{{type == 1 ? filter.getLocalPhoto('sort.png') : filter.getLocalPhoto('graySort.png')}}" class="ui-priceItem_img" mode="aspectFit" />
                          <image wx:if="{{type == 1}}"  src="{{filter.getLocalPhoto('index_icon.png')}}" mode="aspectFill" class="ui-tapItem_icon"/>
                    
                     

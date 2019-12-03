@@ -16,7 +16,7 @@
 						<text>x{{item.num}}</text>
 					</view>
 					<!-- 没有规格时先让他为空 -->
-					<text class="ui-newsWeight">{{item.specificationName + ''}}</text>
+					<text class="ui-newsWeight" hidden="{{!item.specificationName}}">{{item.specificationName }}</text>
 					<text class="ui-newsMoney">¥{{item.price}}</text>
 				</view>
 			</view>

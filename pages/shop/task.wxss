@@ -72,6 +72,7 @@
     right:0;
     line-height:52rpx;
     z-index: 100;
+    vertical-align: middle;
 }
 .ui-gzBox > text {
     width:48rpx;
@@ -81,11 +82,12 @@
     font-weight:400;
     color:rgba(255,255,255,1);
     text-align: center;
+    vertical-align: middle;
 }
 .ui-gzBox > image {
     width: 28rpx;
     height: 28rpx;
-    vertical-align: -3rpx;
+    vertical-align: middle;
 }
 
 .ui-testBox {
@@ -246,7 +248,7 @@
     padding: 32rpx 40rpx;
     background-image: url('https://app.yth-yx.com/mini/test/test_bg.png');
     background-repeat: no-repeat;
-    background-position: center center;
+    /* background-position: center center; */
     background-size: cover;
 }
 .ui-test__title {
