@@ -108,7 +108,7 @@
     ]
   },
   "window": {
-    "navigationStyle": "custom"
+    "navigationBarBackgroundColor": "#ffffff"
   },
   "usingComponents": {
     "authorize": "/components/authorize/authorize",
