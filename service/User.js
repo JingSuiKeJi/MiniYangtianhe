@@ -404,10 +404,10 @@ class User {
 			data: reqData
 		}, page);
 	}
-	financialStatements(page, reqData) {
+	getFinanceInfoV2(page, reqData) {
 		_g.dm.canLoadMore = 1;
 		return _g.ajax({
-			url: mini.user.financialStatements,
+			url: mini.user.getFinanceInfoV2,
 			data: reqData
 		}, page);
 	}

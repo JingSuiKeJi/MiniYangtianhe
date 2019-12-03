@@ -26,9 +26,7 @@ let data = {
 	currentData:'',//当前选择日期/默认今日日份
 	currentTimestamp:'',//当前选中时间戳/默认今日日份时间戳
 	currentType:1,//报表时间段，默认1 1当天/2一周/3一个月
-	reportList:[
-		
-	]
+	reportList:[]
 };
 const onLoad = function(self) {
 	self.getSunday();
