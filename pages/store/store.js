@@ -51,11 +51,18 @@ const onReady = function (self) {
 const methods = {
     getData: function () {
         const self = this;
+        Promise.all([self.getCommonData(), self.getBrandList(), self.getSecKill(), self.getClassifyList()]).then((res)=>{
+            self.onScroll('#aim', 'scrollTop');
+            self.onScroll('#head', 'headTop');
+        }).catch(err => {
+            self.onScroll('#aim', 'scrollTop');
+            self.onScroll('#head', 'headTop');
+        });
         self.getClassifyList();
-        self.getCommonData();
-        self.getSecKill();
-        self.getBrandList();
-        self.getGroupList();
+        // self.getCommonData();
+        // self.getSecKill();
+        // self.getBrandList();
+        // self.getGroupList();
     },
     getGroupList() {
         const self = this;
@@ -364,10 +371,10 @@ const methods = {
                     classifyId: data[0].id
                 });
                 self.getPageData();
-                setTimeout(()=>{
-                     self.onScroll('#aim', 'scrollTop');
-                     self.onScroll('#head', 'headTop');
-                },500)
+                // setTimeout(()=>{
+                //      self.onScroll('#aim', 'scrollTop');
+                //      self.onScroll('#head', 'headTop');
+                // },500)
                
             }else {
                 self.setData({
@@ -427,11 +434,12 @@ const methods = {
             query.select(id).boundingClientRect();
             query.selectViewport().scrollOffset();
             query.exec(function (res) {
+                let top = id=="#head" ? res[0].top : res[0].top + res[1].scrollTop;
                 self.setData({
-                    [value]: res[0].top
+                    [value]: top
                 });
             })
-        }, 1000)
+        }, 300)
 
 
     },
