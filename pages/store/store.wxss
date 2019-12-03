@@ -838,17 +838,14 @@ page {
 } */
 
 .ui-slideItem__right {
+    width: 70rpx;
+    height: 50rpx;
     position: absolute;
     right: 20rpx;
-    top: 50rpx;
-    /* display: inline-block;
-    width: 48rpx;
-    height: 100%; */
+    top: 65rpx;
 }
 
 .ui-tapItem_upIcon {
-    width: 48rpx;
-    height: 48rpx;
-    /* vertical-align: top;
-    margin-top: 34rpx; */
+    width: 36rpx;
+    height: 20rpx;
 }

@@ -343,8 +343,10 @@ const methods = {
                 classifyId: data[0].id
             });
             self.getPageData();
-            self.onScroll('#aim', 'scrollTop');
-            self.onScroll('#head', 'headTop');
+            setTimeout(()=> {
+                self.onScroll('#aim', 'scrollTop');
+                self.onScroll('#head', 'headTop'); 
+            },500)
 
         }, (err) => {
 

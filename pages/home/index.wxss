@@ -915,15 +915,18 @@ page {
 
 
 .ui-slideItem__right {
+    width: 70rpx;
+    height: 50rpx;
     position: absolute;
     right: 20rpx;
-    top: 50rpx;
+    top: 65rpx;
+   /* line-height: 50rpx; */
     
 }
 
 .ui-tapItem_upIcon {
-    width: 48rpx;
-    height: 48rpx;
+    width: 36rpx;
+    height: 20rpx;
 }
 /* 模态框 */
 .modal-mask {

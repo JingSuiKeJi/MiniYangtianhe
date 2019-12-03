@@ -85,8 +85,14 @@ const methods = {
     },
     onDelectTap: function (e) {
         let self = this;
-        wx.setStorageSync(self.data.key, []);
-        self.getHisList();
+        if (self.data.platformFlag == 1) {
+            wx.setStorageSync(self.data.storeKey, []);
+        } else {
+             wx.setStorageSync(self.data.key, []);
+        }
+        self.setData({
+            hisList: []
+        })
     },
     //设置历史记录
     setHisttory: function (value) {

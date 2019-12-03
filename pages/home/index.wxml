@@ -187,11 +187,11 @@
                             <view class="ui-tapScroll_itemText" style="font-weight: {{classifyId == item.id ? '500' : '400'}};">
                                 {{item.title}}
                             </view>
-                            <view class="ui-tapScroll_itemIcon" hidden="{{classifyId != item.id}}" style="background-color: {{isFixed ? '#fff' : ''}}"></view>
+                            <view class="ui-tapScroll_itemIcon" hidden="{{classifyId != item.id}}"  wx:if="{{!isFixed}}"></view>
                         </view>
                     </scroll-view>
                     <view class="ui-tapItem_Icon" bindtap="onSlideTap">
-                        <image src="{{filter.getLocalPhoto('index_slideDown.png')}}" class="ui-tapItem_downIcon" mode="aspectFill" style="transform: {{!hideModal ? 'rotateX(-180deg)' : 'rotateY(0deg)'}}"></image>
+                        <image src="{{filter.getLocalPhoto('index_slideDown.png')}}" class="ui-tapItem_downIcon" mode="aspectFit" style="transform: {{!hideModal ? 'rotateX(-180deg)' : 'rotateY(0deg)'}}"></image>
                     </view>
                     <view class="modals modals-bottom-dialog" hidden="{{hideModal}}" wx:if="{{tapList.length}}" style="top: {{!hideModal ? headTop+ 'px' : ''}}">
                         <view class="modals-cancel" bindtap="hideModal" catchtouchmove="true"></view>
@@ -202,8 +202,8 @@
                                         {{item.title}}
                                     </view>
                                 </view>
-                                <view class="ui-slideItem__right">
-                                    <image src="{{filter.getLocalPhoto('home__indexUp.png')}}" class="ui-tapItem_upIcon" bindtap="hideModal" mode="aspectFit" />
+                                <view class="ui-slideItem__right" bindtap="hideModal">
+                                    <image src="{{filter.getLocalPhoto('home__indexUp.png')}}" class="ui-tapItem_upIcon"  mode="aspectFit" />
                                 </view>
                             </view>
                         </view>
