@@ -858,9 +858,9 @@ const methods = {
         self.setData({
             shareModal: true
         })
-        self.getTabBar().setData({
-            flag: false
-        });
+        // self.getTabBar().setData({
+        //     flag: false
+        // });
 
     },
     //隐藏模态框
@@ -869,9 +869,9 @@ const methods = {
         self.setData({
             shareModal: false
         });
-        self.getTabBar().setData({
-            flag: true
-        });
+        // self.getTabBar().setData({
+        //     flag: true
+        // });
     },
     //分享给朋友
     onFriendsShare: function () {

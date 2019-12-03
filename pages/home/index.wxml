@@ -72,7 +72,7 @@
             </view>
         </view>
         <view class="ui-noticeBox">
-            <view  wx:if="{{notion.length}}">优选公告</view>
+            <view  wx:if="{{notion.length}}" class="ui-noticeItem__title">优选公告</view>
             <view wx:key="{{index}}" wx:for="{{notion}}" data-id="{{item.id}}" bindtap="onNoticTap" wx:if="{{notion.length}}">
                 {{item.title}}
             </view>

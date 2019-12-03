@@ -224,7 +224,7 @@ page {
     padding-right: 37rpx;
 }
 
-.ui-noticeBox>view:first-child {
+.ui-noticeBox .ui-noticeItem__title {
     font-size: 26rpx;
     font-weight: bold;
     color: #FF4035;
@@ -993,6 +993,7 @@ page {
     bottom: 268rpx;
     left: 100rpx;
     background-color: #FFFFFF;
+    z-index: 101;
 }
 .ui-share__canvas {
     position: fixed;

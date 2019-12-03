@@ -107,7 +107,9 @@
       }
     ]
   },
-  "window": {},
+  "window": {
+    "navigationStyle": "custom"
+  },
   "usingComponents": {
     "authorize": "/components/authorize/authorize",
     "location": "/components/location/location",
