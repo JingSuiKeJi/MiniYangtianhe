@@ -25,7 +25,7 @@
 					</view>
 					<view class="ui-newsInfoDetail">
 						<text class="ui-newsName">{{item.title}}</text>
-						<view class="ui-newsWeight">
+						<view class="ui-newsWeight" hidden="{{!item.specificationName}}">
 							<text>{{item.specificationName}}</text>
 						</view>
 						<text class="ui-newsMoney">¥{{item.price}}</text>
@@ -34,7 +34,7 @@
 				<view class="ui-refundReason">
 					<text>退款金额：¥{{list.refund}}</text>
 					<text>申请件数：{{list.num}}</text>
-					<text>申请时间：{{filter.getDate(list.applyCreateTime)}}}</text>
+					<text>申请时间：{{filter.getDate(list.applyCreateTime)}}</text>
 				</view>
 			</view>
 			<!-- 返回首页 -->
@@ -142,8 +142,8 @@
 					<view class="ui-newsInfoDetail">
 						<text class="ui-newsName">{{item.title}}</text>
 						<view class="ui-newsWeight">
-						    <text></text>
-							<!-- <text>{{item.specificationName}}</text> -->
+						    <!-- <text></text> -->
+							<text hidden="{{!item.specificationName}}">{{item.specificationName}}</text>
 						</view>
 						<text class="ui-newsMoney">¥{{item.price}}</text>
 					</view>

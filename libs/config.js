@@ -140,7 +140,8 @@ config.prototype = {
             deleteBrowse: '/app/browse/delete.do',
             userLinkUser: '/app/account/userLinkUser.do',
             confirmReturn: '/app/afterSale/confirmReturn.do',
-            rejectReturn: '/app/afterSale/rejectReturn.do'
+            rejectReturn: '/app/afterSale/rejectReturn.do',
+            getFinanceInfoV2: '/app/store/financialStatements.do',
 
         },
         withdraw: {
@@ -172,7 +173,7 @@ config.prototype = {
             getUserAssembleDetail: '/app/assemble/getUserAssembleDetail.do',
             getDeduction: '/app/common/getDeduction.do',
             browseGoods: '/app/taskCenter/browseGoods.do',
-            shareGoods: '/taskCenter/shareGoods.do',
+            shareGoods: '/app/taskCenter/shareGoods.do',
         },
         store: {
             storeList: '/app/home/getStoreList.do',

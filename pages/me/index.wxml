@@ -231,6 +231,7 @@
 		<form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onLogOutTap"  wx:if="{{isLogin}}">
 			<button formType="submit" class="ui-LogOut" >退出登录</button>
 		</form>
+		<tabBar selected="4"></tabBar>
     </view>
 </view>
 <location 

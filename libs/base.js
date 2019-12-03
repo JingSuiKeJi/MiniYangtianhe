@@ -115,6 +115,7 @@ base.prototype = {
             onLoad: function (options) {
                 var self = this;
                 wx.hideShareMenu();
+                wx.hideTabBar();
                 if (self.route !== _c.pages.home.index) {
                     self.setData({
                         host: _g.getHost()

@@ -31,9 +31,9 @@ const data = {
 const onLoad = function (self) {
     wx.showShareMenu();
     self.getData();
-    self.getTabBar().setData({
-        selected: 1
-    });
+    // self.getTabBar().setData({
+    //     selected: 1
+    // });
     // self.onScroll();
     // event.on('login-suc', self, (ret) => { });
 };
@@ -364,8 +364,11 @@ const methods = {
                     classifyId: data[0].id
                 });
                 self.getPageData();
-                self.onScroll('#aim', 'scrollTop');
-                self.onScroll('#head', 'headTop');
+                setTimeout(()=>{
+                     self.onScroll('#aim', 'scrollTop');
+                     self.onScroll('#head', 'headTop');
+                },500)
+               
             }else {
                 self.setData({
                     tapList: [],

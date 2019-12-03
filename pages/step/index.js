@@ -65,9 +65,9 @@ const onLoad = function (self) {
     event.on('login-suc', self, (ret) => {
         self.getData();
     });
-    self.getTabBar().setData({
-        selected: 2
-    });
+    // self.getTabBar().setData({
+    //     selected: 2
+    // });
     event.on('step-index-authorize', self, (res) => {
         if (res.detail.authSetting['scope.writePhotosAlbum']) {
             self.savePicToAlbum();
@@ -241,9 +241,6 @@ const methods = {
                 _g.toast({ title: '重新上传步数中，请稍等' });
                 self.wxLogin();
             } else {
-                self.getStepInfo();
-                self.getPageData();
-                self.rankingList();
                 wx.hideLoading();
                 _g.toast({
                     title: '上传步数成功',
@@ -252,7 +249,15 @@ const methods = {
                 if (ret.data.status == 2) {
                     self.showDialogBtn();
                 }
-                event.emit('refreshHomeStep')
+                setTimeout(() => {
+                    self.getStepInfo();
+                    self.getPageData();
+                    self.rankingList();
+                }, 100);
+                setTimeout(() => {
+                    event.emit('refreshHomeStep')
+                },1000)
+                
             }
 
         }, (err) => {
