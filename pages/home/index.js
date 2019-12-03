@@ -225,10 +225,19 @@ const methods = {
     },
     getData() {
         const self = this;
-        self.getCommonData();
-        self.getBrandList();
-        self.getSecKill();
-        self.getClassifyList();
+        Promise.all([self.getCommonData(), self.getBrandList(), self.getSecKill(), self.getClassifyList()]).then((res)=>{
+            console.log(13, res);
+            setTimeout(function(){
+                self.onScroll('#aim', 'scrollTop');
+                self.onScroll('#head', 'headTop');
+                console.log(self.data)
+            }, 400)
+
+        }).catch(err => {console.log(14, err)});
+        // self.getCommonData();
+        // self.getBrandList();
+        // self.getSecKill();
+        // self.getClassifyList();
     },
     getCommonData() {
         const self = this;
@@ -343,10 +352,10 @@ const methods = {
                 classifyId: data[0].id
             });
             self.getPageData();
-            setTimeout(()=> {
-                self.onScroll('#aim', 'scrollTop');
-                self.onScroll('#head', 'headTop'); 
-            },500)
+            // setTimeout(()=> {
+            //     self.onScroll('#aim', 'scrollTop');
+            //     self.onScroll('#head', 'headTop');
+            // },500)
 
         }, (err) => {
 
@@ -713,11 +722,12 @@ const methods = {
             query.select(id).boundingClientRect();
             query.selectViewport().scrollOffset();
             query.exec(function (res) {
+                let top = id=="#head" ? res[0].top : res[0].top + res[1].scrollTop;
                 self.setData({
-                    [value]: res[0].top
+                    [value]: top
                 });
             });
-        }, 1000);
+        }, 300);
 
 
     },
