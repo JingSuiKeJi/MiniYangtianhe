@@ -51,14 +51,14 @@ const onReady = function (self) {
 const methods = {
     getData: function () {
         const self = this;
-        Promise.all([self.getCommonData(), self.getBrandList(), self.getSecKill(), self.getClassifyList()]).then((res)=>{
+        Promise.all([self.getCommonData(), self.getBrandList(), self.getSecKill(), self.getClassifyList(),self.getGroupList()]).then((res)=>{
             self.onScroll('#aim', 'scrollTop');
             self.onScroll('#head', 'headTop');
         }).catch(err => {
             self.onScroll('#aim', 'scrollTop');
             self.onScroll('#head', 'headTop');
         });
-        self.getClassifyList();
+        // self.getClassifyList();
         // self.getCommonData();
         // self.getSecKill();
         // self.getBrandList();

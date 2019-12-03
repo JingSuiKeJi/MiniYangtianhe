@@ -33,9 +33,10 @@ page {
     font-size: 28rpx;
     font-weight: 500;
     color: #FFF;
-    line-height: 52rpx;
+    line-height: 56rpx;
     text-align: center;
     border: 4px solid rgba(255, 255, 255, 1);
+    box-sizing: content-box;
 }
 
 .ui-plusCard {

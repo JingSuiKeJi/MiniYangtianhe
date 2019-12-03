@@ -101,7 +101,14 @@ page{
 	justify-content: center;
 	align-items: center;
 }
-
+.ui-dateCircle__radius {
+	position: absolute;
+	top: 60rpx;
+	width:8rpx;
+    height:8rpx;
+	background:rgba(29,196,188,1);
+	border-radius: 50%;
+}
 .ui-dateCircleBg:first-child{
 	margin-left: 40rpx;
 }
@@ -137,7 +144,6 @@ page{
 /* 营业额 */
 .ui-history{
 	width:100%;
-	height:300rpx;
 	background:rgba(255,255,255,1);
 	margin-top: 40rpx;
 }
@@ -197,24 +203,31 @@ page{
 .ui-historyOperation{
 	background: #FFFFFF;
 	display: flex;
-	justify-content: space-between;
-	margin: 86rpx 44rpx 40rpx 40rpx;
+	margin-top: 86rpx;
+	flex-wrap: wrap;
 }
 
 .ui-historyOperationItem{
+	width:186rpx;
+    min-height:108rpx;
 	display: flex;
 	flex-direction: column;
+	margin-bottom: 15rpx;
 }
 
-.ui-historyOperationItem .ui-itemTitle{
-	height:22rpx;
-	font-size:22rpx;
+ .ui-itemTitle{
+	height:28rpx;
+	font-size:20rpx;
 	font-family:PingFangSC-Regular;
 	font-weight:400;
 	color:rgba(102,102,102,1);
-	line-height:22rpx;
+	text-align: center;
+	line-height: 28rpx;
+	border-right: 2rpx solid #DDDDDD;
 }
-
+.ui-itemTitle__border{
+	border-right: transparent;
+}
 .ui-historyOperationItem .ui-orderNum{
 	height:30rpx;
 	font-size:30rpx;
@@ -224,30 +237,21 @@ page{
 	line-height:30rpx;
 	margin-top: 36rpx;
 }
-
-.ui-historyOperationItem view:nth-child(2){
-	margin-top: 36rpx;
-	display: flex;
-}
-
-.ui-historyOperationItem view:nth-child(2) text:first-child{
-	height:22rpx;
-	font-size:22rpx;
+.ui-itemPrice {
+	width: 100%;
+	margin-top: 20rpx;
+	font-size:28rpx;
 	font-family:PingFangSC-Medium;
-	font-weight:500;
-	color:rgba(32,202,180,1);
-	line-height:22rpx;
+	font-weight:400;
+	color:#333333;
+	text-align: center;
+	line-height:28rpx;
+	/* overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis; */
+	white-space: pre-line;
+	word-break: break-all 
 }
-
-.ui-historyOperationItem view:nth-child(2) text:last-child{
-	height:30rpx;
-	font-size:30rpx;
-	font-family:PingFangSC-Medium;
-	font-weight:500;
-	color:rgba(32,202,180,1);
-	line-height:30rpx;
-}
-
 .ui-detailReport{
 	margin-top: 20rpx;
 	width: 100%;
@@ -284,7 +288,6 @@ page{
 	flex-direction: column;
 	width:152rpx;
 }
-
 .ui-detailReportTime text:first-child{
 	height:24rpx;
 	font-size:24rpx;
@@ -301,7 +304,7 @@ page{
 	font-weight:500;
 	color:rgba(153,153,153,1);
 	line-height:24rpx;
-	margin-top:14rpx;
+	margin-top:20rpx;
 }
 
 .ui-detailListInfo{

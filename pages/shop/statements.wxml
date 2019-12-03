@@ -21,7 +21,9 @@
 				<view bindtap="onChooseDate" class="ui-dateCircleBg {{currentData==item?'ui-dateCircleBgHhover':''}}" 
 				data-id="{{index}}" wx:for="{{dateList}}" wx:for-item="item" wx:key="{{index}}">	
 					<text>{{item}}</text>
+					<view class="ui-dateCircle__radius" wx:if="{{dayIndex >= index}}"></view>
 				</view>
+			   
 			</view>
 			<!-- <view class="ui-pullDown" catchtap="onPullDownTap"></view> -->
 			<image src="{{filter.getLocalPhoto('my_pulDown.png')}}"  mode="aspectFit" class="ui-pullDown" catchtap="onPullDownTap"/>
@@ -34,74 +36,83 @@
 				class="{{currentType==item.type?'ui-historyStatusTextHover':''}}"
 				>{{item.status}}</text>
 			</view>
-			<text wx:if="{{currentType==1}}" class="ui-historyDateDetail">{{reportList.startDate}}</text>
-			<text wx:else class="ui-historyDateDetail">{{reportList.startDate}}-{{reportList.endDate}}</text>
+			<text class="ui-historyDateDetail">{{info.date}}</text>
 			<view class="ui-historyOperation">
 				<view class="ui-historyOperationItem">
-					<text class="ui-itemTitle">订单总额</text>
-					<view>
-						<text>¥</text>
-						<text>{{reportList.totalShouldPayment}}</text>
-					</view>
+					<view class="ui-itemTitle">实际收入</view>
+					<view class="ui-itemPrice">¥{{info.actualIncome}}</view>
 				</view>
 				<view class="ui-historyOperationItem">
-					<text class="ui-itemTitle">实收营业额</text>
-					<view>
-						<text>¥</text>
-						<text>{{reportList.totalPayment}}</text>
-					</view>
+					<view class="ui-itemTitle">营业收入</view>
+					<view class="ui-itemPrice">¥{{info.operatingIncome}}</view>
 				</view>
 				<view class="ui-historyOperationItem">
-					<text class="ui-itemTitle">福气金额</text>
-					<view>
-						<text>¥</text>
-						<text>{{reportList.totalPointsMoney}}</text>
-					</view>
+					<view class="ui-itemTitle">订单总数</view>
+					<view class="ui-itemPrice">{{info.orderNum}}</view>
 				</view>
 				<view class="ui-historyOperationItem">
-					<text class="ui-itemTitle">订单数</text>
-					<text class="ui-orderNum">{{reportList.totalOrderNum}}</text>
+					<view class="ui-itemTitle ui-itemTitle__border">配送费</view>
+					<view  class="ui-itemPrice">¥{{info.deliveryFee}}</view>
+				</view>
+				<view class="ui-historyOperationItem">
+					<view class="ui-itemTitle">福气抵扣金额</view>
+					<view  class="ui-itemPrice">¥{{info.pointsDeductMoney}}</view>
+				</view>
+				<view class="ui-historyOperationItem">
+					<view class="ui-itemTitle">福气核销金额</view>
+					<view class="ui-itemPrice">¥{{info.pointsVerifierMoney}}</view>
+				</view>
+				<view class="ui-historyOperationItem">
+					<view class="ui-itemTitle">优惠券金额</view>
+					<view  class="ui-itemPrice" title="111">¥{{info.couponMoney}}</view>
 				</view>
 			</view>
 		</view>
-		
 		<view class="ui-detailReport">
 			<text class="ui-detailReportTitle">报表明细</text>
-			<block wx:if="{{reportList.dayFinanceList.length>0||reportList.weekFinanceList.length>0}}">
-				<view class="ui-detailReportInfoBox" wx:for="{{currentType==1?reportList.dayFinanceList:reportList.weekFinanceList}}" wx:for-item="item" wx:key="idx">
-					<view class="ui-detailReportInfoItem">
+			<block wx:if="{{list.length}}">
+				<view class="ui-detailReportInfoBox" wx:for="{{list}}" wx:for-item="item" wx:key="idx">
+					<view class="ui-detailReportInfoItem" wx:if="{{(item.operatingIncome || item.actualIncome || item.pointsDeductMoney || item.pointsVerifierMoney || item.couponMoney || item.deliveryFee || item.orderNum)}}">
 						<view class="ui-detailReportTime">
-							<text>{{currentType==1?filter.getDateOrTime(item.createTime,1):item.date}}</text>
-							<text>{{currentType==1?filter.getDateOrTime(item.createTime,2):item.week}}</text>
+							<text>{{item.date}}</text>
+							<text wx:if="{{currentType != 1}}" >{{item.week}}</text>
 						</view>
 						<view class="ui-detailListInfo">
-							<view class="ui-detailListInfoItem" wx:if="{{!item.shouldPayment}}">
-								<text>{{currentType==1?'订单金额':'当天应收金额'}}</text>
-								<text>¥{{item.shouldPayment}}</text>
+							<view class="ui-detailListInfoItem" wx:if="{{item.operatingIncome}}">
+								<text>营业收入</text>
+								<text>¥{{item.operatingIncome}}</text>
 							</view>
-							<view class="ui-detailListInfoItem" wx:if="{{!item.payment}}">
-								<text>{{currentType==1?'实收订单金额':'当天实收金额'}}</text>
-								<text>¥{{item.payment}}</text>
+							<view class="ui-detailListInfoItem" wx:if="{{item.actualIncome}}">
+								<text>实际收入</text>
+								<text>¥{{item.actualIncome}}</text>
 							</view>
-							<view class="ui-detailListInfoItem" wx:if="{{!item.pointsMoney}}">
+							<view class="ui-detailListInfoItem" wx:if="{{item.pointsDeductMoney}}">
 								<text>福气抵扣金额</text>
-								<text>¥{{item.deductionPointsMoney}}</text>
+								<text>¥{{item.pointsDeductMoney}}</text>
 							</view>
-							<view class="ui-detailListInfoItem" wx:if="{{!item.points}}">
-								<text>抵扣福气数</text>
-								<text>{{item.deductionPoints}}</text>
+							<view class="ui-detailListInfoItem" wx:if="{{item.pointsVerifierMoney}}">
+								<text>福气核销金额</text>
+								<text>¥{{item.pointsVerifierMoney}}</text>
 							</view>
-							<view class="ui-detailListInfoItem" wx:if="{{item.orderNum>0}}">
-								<text>订单数</text>
+							<view class="ui-detailListInfoItem" wx:if="{{item.couponMoney}}">
+								<text>优惠券金额</text>
+								<text>¥{{item.couponMoney}}</text>
+							</view>
+							<view class="ui-detailListInfoItem" wx:if="{{item.deliveryFee}}">
+								<text>配送费</text>
+								<text>¥{{item.deliveryFee}}</text>
+							</view>
+							<view class="ui-detailListInfoItem" wx:if="{{item.orderNum}}">
+								<text>订单数量</text>
 								<text>{{item.orderNum}}</text>
 							</view>
 						</view>
 					</view>
 				</view>
 			</block>
-			<block wx:else>
+			<!-- <block  wx:if="{{!list.length}}">
 				<view class="ui-blank"><text>暂无数据</text></view>
-			</block>
+			</block> -->
 			<view class="ui-detailFooter"></view>
 		</view>
 	</view>
