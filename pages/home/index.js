@@ -226,14 +226,12 @@ const methods = {
     getData() {
         const self = this;
         Promise.all([self.getCommonData(), self.getBrandList(), self.getSecKill(), self.getClassifyList()]).then((res)=>{
-            console.log(13, res);
-            setTimeout(function(){
                 self.onScroll('#aim', 'scrollTop');
                 self.onScroll('#head', 'headTop');
-                console.log(self.data)
-            }, 400)
-
-        }).catch(err => {console.log(14, err)});
+        }).catch(err => {
+            self.onScroll('#aim', 'scrollTop');
+            self.onScroll('#head', 'headTop');
+        });
         // self.getCommonData();
         // self.getBrandList();
         // self.getSecKill();
