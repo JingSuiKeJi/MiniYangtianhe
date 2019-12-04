@@ -918,7 +918,7 @@ page {
     width: 70rpx;
     height: 50rpx;
     position: absolute;
-    right: 20rpx;
+    right: 0rpx;
     top: 65rpx;
    /* line-height: 50rpx; */
     

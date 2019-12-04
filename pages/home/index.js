@@ -35,7 +35,7 @@ const data = {
         bottom: 0,
         coverColor: ''
     }],
-    BMIIndex: 0, //养步乐进度条
+    BMIIndex: 0, //养乐步进度条
     second: -1,
     hideModal: true, //模态框的状态  true-隐藏  false-显示
     animationData: {},

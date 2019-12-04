@@ -22,7 +22,7 @@
     <view class='tab-bar-index-add' data-index='2' data-path='{{list[2].pagePath}}' bindtap='tab_bar_index'>
       <view class='tab-bar-icon_add'>
         <image class='tab-bar-img-add' src='{{selected == 2 ? list[2].selectedIconPath : list[2].iconPath}}'/>
-		<view class='tab-bar-add-text' style='color:{{selected == 2 ? selectedColor : color}}'>养步乐</view>
+		<view class='tab-bar-add-text' style='color:{{selected == 2 ? selectedColor : color}}'>养乐步</view>
       </view>
     </view>
 

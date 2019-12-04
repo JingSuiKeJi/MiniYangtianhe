@@ -1,7 +1,7 @@
 <!-- pages/step/index.wxml -->
 <wxs module="filter" src="../../filter/filter.wxs"></wxs>
 <view class="contain">
-    <navBar title='养步乐' background='white' color='black' iconTheme='black' back="{{true}}"></navBar>
+    <navBar title='养乐步' background='white' color='black' iconTheme='black' back="{{true}}"></navBar>
     <view class='tab-bottom'></view>
     <view class="main">
         <view class="ui-stepBox">
@@ -11,7 +11,7 @@
                     <view>
                         <image src="{{filter.getLocalPhoto('run.png')}}" class="ui-leftItem_icon" />
                     </view>
-                    <view class="ui-leftItem_text">养步乐</view>
+                    <view class="ui-leftItem_text">养乐步</view>
                 </view>
                 <view class="ui-stepTapBox_center">
                     <view class="ui-block__item" wx:for="{{blockList}}" wx:key="{{index}}" style="left: {{item.left*100+155+'rpx'}};bottom: {{item.bottom*100 + 120+'rpx'}};-webkit-transform: rotate({{item.rotate+'deg'}}); -moz-transform: rotate({{item.rotate+'deg'}});-ms-transform: rotate({{item.rotate+'deg'}});-o-transform: rotate({{item.rotate+'deg'}}); transform: rotate({{item.rotate+'deg'}});background-color: {{index >= BMIIndex ?  '#EEEEEE': '#69CCBC'}}"></view>

@@ -22,7 +22,7 @@
     <cover-view class='tab-bar-index-add' data-index='2' data-path='{{list[2].pagePath}}' bindtap='tab_bar_index'>
       <cover-view class='tab-bar-icon_add'>
         <cover-image class='tab-bar-img-add' src='{{selected == 2 ? list[2].selectedIconPath : list[2].iconPath}}'/>
-		<cover-view class='tab-bar-add-text' style='color:{{selected == 2 ? selectedColor : color}}'>养步乐</cover-view>
+		<cover-view class='tab-bar-add-text' style='color:{{selected == 2 ? selectedColor : color}}'>养乐步</cover-view>
       </cover-view>
     </cover-view>
 
