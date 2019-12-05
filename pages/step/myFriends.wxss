@@ -207,7 +207,7 @@ page {
     font-size:34rpx;
     font-family:PingFangSC-Semibold,PingFangSC;
     font-weight:600;
-    color:#FFFFFFFF;
+    color:#FFFFFF;
     background:#E1E1E1;
     border-radius:0px 0px 0px 16rpx;
     text-align: center;
@@ -223,7 +223,7 @@ page {
     font-size:34rpx;
     font-family:PingFangSC-Semibold,PingFangSC;
     font-weight:600;
-    color:#FFFFFFFF;
+    color:#FFFFFF;
     background:#20CAB4;
     border-radius:0px 0px 16rpx 0px;
     text-align: center;

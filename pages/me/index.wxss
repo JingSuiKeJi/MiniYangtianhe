@@ -170,9 +170,9 @@
 }
 
 .ui-contactItem .ui-iconContact{
-	width: 48rpx;
-	height: 48rpx;
-	margin-left: 20rpx;
+	width: 52rpx;
+	height: 52rpx;
+	/* margin-left: 20rpx; */
 }
 
 .ui-contactItem text{

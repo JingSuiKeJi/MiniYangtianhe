@@ -1,6 +1,7 @@
 <!-- <wxs module="filter" src="../../filter/filter.wxs"></wxs> -->
 <!--customer.wxml-->
 <view class="container">
+    <navBar title='我的客户' background='white' color='black' iconTheme='black' back="{{true}}"></navBar>
 	<view class="ui-main">
 		<!-- 一级/二级客户 -->
 		<view class="ui-levelBox">

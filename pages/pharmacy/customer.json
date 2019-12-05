@@ -1,6 +1,7 @@
 {
-  "navigationBarTitleText": "我的客户",
-  "navigationBarBackgroundColor":"#FFFFFF",
-	"navigationBarTextStyle":"black"
+    "navigationStyle": "custom",
+    "usingComponents": {
+        "navBar": "/components/navBar/navBar"
+    }
  
 }

@@ -6,7 +6,8 @@
 	background:rgba(245,245,245,1);
 }
 .ui-main {
-    width: 100%;
+	width: 100%;
+	position: relative;
 }
 
 .ui-infoBox{

@@ -38,19 +38,19 @@
 				<view class="ui-contact">
 					<!-- <form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onBindingWeChat" >
 						<button formType="submit" class="ui-contactItem">
-							<image src="{{filter.getLocalPhoto('my_weChatIcon.png')}}" mode="aspectFill" class="ui-iconContact"/>
+							<image src="{{filter.getLocalPhoto('blindWeChat_icon.png ')}}" mode="aspectFit" class="ui-iconContact"/>
 						    <text>{{userInfo.wxNo?'修改微信':'绑定微信'}}</text>
 						</button>
                     </form>  -->
 					 <form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onBindingPhone" >
 						<button formType="submit" class="ui-contactItem">
-							<image src="{{filter.getLocalPhoto('my_phone.png')}}" mode="aspectFill" class="ui-iconContact"/>
+							<image src="{{filter.getLocalPhoto('blindPhone__icon.png')}}" mode="aspectFit" class="ui-iconContact"/>
 						    <text>{{userInfo.phone?'修改手机':'绑定手机'}}</text>
 						</button>
                     </form>
 					 <form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onPersonalTap" >
 						<button formType="submit" class="ui-contactItem">
-							<image src="{{filter.getLocalPhoto('my_share.png')}}" mode="aspectFill" class="ui-iconContact"/>
+							<image src="{{filter.getLocalPhoto('sharePoster_icon.png')}}" mode="aspectFit" class="ui-iconContact"/>
 						    <text>分享海报</text>
 						</button>
                     </form>

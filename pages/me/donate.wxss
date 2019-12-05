@@ -86,7 +86,7 @@ page {
     font-size:30rpx;
     font-family:PingFangSC-Medium,PingFangSC;
     font-weight:500;
-    color: #ffff;
+    color: #FFFFFF;
     background-color: #21CAB5;
     border-radius: 10rpx;
     text-align: center;
