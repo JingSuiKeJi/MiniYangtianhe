@@ -23,7 +23,7 @@
 					<text>二级：{{item.twoLevelTeamNum}}</text>
 				</view>
 				<view class="ui-commissionSum">¥{{item.totalMoney}}</view>
-				<view class="ui-deleteBtn" catchtap="onDeleteTap" data-id="{{item.id}}" data-idx="{{idx}}">删除</view>
+				<view class="ui-deleteBtn" catchtap="onDeleteTap" data-id="{{item.id}}" data-idx="{{idx}}" wx:if="{{userInfo.verifier.level == 1}}">删除</view>
 				<view class="ui-bottomLine"></view>
 			</view>
 		</view>

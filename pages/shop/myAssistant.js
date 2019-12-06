@@ -19,6 +19,9 @@ let data = {
 	showModal: false,//添加店员模态框显隐
 };
 const onLoad = function (self) {
+    self.setData({
+        userInfo: _g.getLS(_c.LSKeys.userInfo)
+    })
 	self.getPageData();
 }
 const onShow = function (self) { }
@@ -139,7 +142,8 @@ const methods = {
 	onConfirm: function () {
 		const self = this;
 		const checkUserId = parseInt(self.data.checkUserId);
-		const storeId = self.data.storeId;
+        const storeId = self.data.storeId;
+        const assistantList = self.data.assistantList;
 		if (checkUserId == -1) {
 			_g.toast({ title: '请选择要添加的店员' });
 			return;
@@ -148,7 +152,20 @@ const methods = {
 			storeId: storeId,
 			userId: checkUserId,
 		}).then((ret) => {
-			self.getPageData()
+            // 20 是getPageData()一次请求多少条数据
+            if (self.data.page == 1 && assistantList.length < 20) {
+                //self.getPageData();
+                assistantList.push(ret.data);
+                self.setData({
+                    assistantList: assistantList
+                })
+            }else {
+                _g.toast({
+                    title: '添加店员成功',
+                    duration: 2000
+                })
+            }
+			
 		}, (err) => {
 		});
 		self.hideModal();

@@ -8,6 +8,7 @@ const Platfrom = require('../../service/Platfrom');
 // 初始化数据
 const data = {
     platformFlag: 1,
+    list: []
 };
 
 // 页面onLoad方法
@@ -28,35 +29,37 @@ const methods = {
         let self = this;
         self.rightsCard();
     },
-    
+
     rightsCard: function () {
-       let self = this; 
-       Platfrom.rightsCard(self,{
-        platformFlag: self.data.platformFlag
-       }).then((ret) => {   
-           let data = ret.data;
-           self.setData({
-             goodsIds: data.goodsIds,
-             thirdId: data.id
-           })
-          self.getGoodsList();
-       }, (err) => { 
-           
-       });
+        let self = this;
+        Platfrom.rightsCard(self, {
+            platformFlag: self.data.platformFlag
+        }).then((ret) => {
+            let data = ret.data;
+            if (!_.isEmpty(data)) {
+                self.setData({
+                    goodsIds: data.goodsIds,
+                    thirdId: data.id
+                });
+                self.getGoodsList();
+            }
+        }, (err) => {
+
+        });
     },
-    getGoodsList: function() {
+    getGoodsList: function () {
         const self = this;
-        Platfrom.getGoodsList(self,{
+        Platfrom.getGoodsList(self, {
             platformFlag: self.data.platformFlag,
             goodsIds: self.data.goodsIds,
             page: 1,
             pageSize: 4,
             type: 3
-        }).then((ret) => {   
+        }).then((ret) => {
             self.setData({
-                list: ret.data.list 
+                list: ret.data.list
             })
-           
+
         }, (err) => { });
     },
     onSkipTap: function () {
@@ -64,12 +67,19 @@ const methods = {
         _g.navigateTo({
             url: 'pages/card/rightsCard',
             param: {
-                platformFlag: self.data.platformFlag, 
+                platformFlag: self.data.platformFlag,
             }
         }, self);
     },
     onDetailTap: function (e) {
         let self = this;
+        if (!self.data.list.length) {
+            _g.toast({
+                title: '运营小姐姐还没上架商品哦，请稍后再试',
+                duration: 2000
+            });
+            return;
+        }
         _g.navigateTo({
             param: {
                 goodsIds: self.data.goodsIds,

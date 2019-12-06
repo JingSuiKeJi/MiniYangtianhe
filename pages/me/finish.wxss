@@ -1,5 +1,5 @@
 page {
-    background-color: #FFFFFFFF;
+    background-color: #FFFFFF;
 }
 .ui-main {
     display: flex;
