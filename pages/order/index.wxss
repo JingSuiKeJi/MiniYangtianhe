@@ -172,8 +172,10 @@ page{
 	font-weight:500;
 	color:rgba(51,51,51,1);
 	line-height:36rpx;
-	margin: 40rpx 0 0 20rpx;
+    margin: 40rpx 0 0 20rpx;
+    padding-right: 20rpx;
 }
+
 
 .ui-newsWeight{
 	position: absolute;

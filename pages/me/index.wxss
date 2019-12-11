@@ -533,9 +533,9 @@
 	white-space: nowrap;
 }
 
-.ui-itemBox:last-child{
+/* .ui-itemBox:last-child{
 	margin-bottom:24rpx;
-}
+} */
 
 .ui-itemBox:active:not(:first-child) {
     opacity: 0.5

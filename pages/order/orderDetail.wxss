@@ -8,7 +8,8 @@ page{
 
 .ui-main {
     width: 100%;
-	height: 100%;
+    padding-bottom: 124rpx;
+	/* height: 100%; */
 }
 
 .ui-orderStatusBox{
@@ -275,7 +276,6 @@ page{
 
 .ui-consigneeAddressDetial{
 	width:550rpx;
-	height:40rpx;
 	font-size:26rpx;
 	font-family:PingFang-SC-Medium;
 	font-weight:500;
@@ -334,11 +334,12 @@ page{
 .ui-newsInfoDetail{
 	margin-left: 20rpx;
 	display: flex;
-	flex-direction: column;
+    flex-direction: column;
+    padding-right: 20rpx;
 }
 
 .ui-newsName{
-	height:36rpx;
+	/* height:36rpx; */
 	font-size:26rpx;
 	font-family:PingFangSC-Medium;
 	font-weight:500;
@@ -479,7 +480,9 @@ page{
 	width: 100%;
 	height:104rpx;
 	background:rgba(255,255,255,1);
-	box-shadow:0rpx 0rpx 16rpx 0rpx rgba(0,0,0,0.08);
+    box-shadow:0rpx 0rpx 16rpx 0rpx rgba(0,0,0,0.08);
+    position: fixed;
+    bottom: 0;
 }
 
 .btn-common{
