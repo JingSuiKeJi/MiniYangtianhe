@@ -108,7 +108,7 @@
                 <image src="{{filter.getLocalPhoto('order_money.png')}}" class="ui-pointesItem__moneyIcon" mode="aspectFit"/>
                 <text class="ui-pointesItem__text">优惠劵</text>
                 <view class="ui-pointesItem__moreBox" >
-                    <text class="ui-pointesItem__pageNum" wx:if="{{!couponNum }}">无优惠卷</text>
+                    <text class="ui-pointesItem__pageNum" wx:if="{{!couponNum }}">无优惠劵</text>
                     <text class="ui-pointesItem__pageNum" wx:if="{{couponNum}}">- ￥ {{couponPrice}}</text>
                     <image src="{{filter.getLocalPhoto('my_icMore.png')}}" class="ui-pointesItem__MoreIcon" wx:if="{{couponNum}}" mode="aspectFit"/>
                 </view>

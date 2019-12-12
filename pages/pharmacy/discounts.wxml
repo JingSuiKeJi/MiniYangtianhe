@@ -1,6 +1,7 @@
 <wxs module="filter" src="../../filter/filter.wxs"></wxs>
 <!--discounts.wxml-->
 <view class="container">
+	<navBar title="优惠券" background="#20CAB4" color="white" iconTheme="white" back="{{true}}"></navBar>
 	<view class="ui-main">
 		<view class="ui-memuBox">
 			<text class="{{toBeUsed?'ui-memuHover':''}}" bindtap="onToBeUsedTap">待使用({{from ? list.notUseNum : BeUsedNum}})</text>

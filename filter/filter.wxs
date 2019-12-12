@@ -235,7 +235,7 @@ var filter = {
 			case 3:
 				return '退款';
 			case 4:
-				return '养步乐任务达成奖励';
+				return '养乐步任务达成奖励';
 			case 5:
 				return '一级乐友任务达成奖励';
 			case 6:

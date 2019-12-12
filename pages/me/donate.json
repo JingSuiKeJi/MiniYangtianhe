@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
-  "navigationBarTitleText": "赠送福气"
+    "navigationStyle": "custom",
+    "usingComponents": {
+        "navBar": "/components/navBar/navBar"
+    }
 }

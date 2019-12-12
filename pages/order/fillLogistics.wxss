@@ -8,6 +8,7 @@ page{
 
 .ui-main {
     width: 100%;
+    /* padding-bottom: 110rpx; */
 }
 
 .ui-refundInfo{
@@ -167,7 +168,9 @@ page{
 	font-weight:600;
 	color:rgba(255,255,255,1);
 	line-height:100rpx;
-	text-align: center;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
 }
 	
 .btn-canSubmit{
@@ -180,5 +183,7 @@ page{
 	font-weight:600;
 	color:rgba(255,255,255,1);
 	line-height:100rpx;
-	text-align: center;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
 }

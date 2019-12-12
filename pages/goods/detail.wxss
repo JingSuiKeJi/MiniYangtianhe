@@ -790,7 +790,7 @@ page {
 .ui-detailAssess_item {
     width: 312rpx;
     height: 232rpx;
-    background: #FFFFFFFF;
+    background: #FFFFFF;
     border-radius: 8px;
     border: 2px solid #F5F5F5;
     margin: auto 30rpx;

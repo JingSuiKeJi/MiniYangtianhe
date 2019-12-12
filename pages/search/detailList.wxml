@@ -1,7 +1,8 @@
 <!--pages/search/detailList.wxml-->
 <wxs module="filter" src="../../filter/filter.wxs"></wxs>
 <view class="contain">
-   <view class="main">
+    <navBar title='搜索' background='white' color='black' iconTheme='black' back="{{true}}"></navBar>
+    <view class="main">
       <view class="ui-searchBox">
             <input type="text"  class="ui-searchItem_input" bindinput="onGetInput" value="{{value}}"  bindconfirm="onSkipTap"/>
             <view class="ui-searchItem_text" bindtap="onSkipTap">搜索</view>

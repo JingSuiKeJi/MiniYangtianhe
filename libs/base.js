@@ -564,6 +564,24 @@ base.prototype = {
                             _g.rmLS(_c.LSKeys.userInfo);
                             opts.self = self;
                             _g.wxLogin(opts);
+                        } else if (res.data.code == 4444) {
+                            _g.rmLS(_c.LSKeys.sessionKey);
+                            _g.rmLS(_c.LSKeys.userInfo);
+                            if (!_g.dm.isPopup) {
+                                _g.dm.isPopup = true;
+                                _g.showModal({
+                                    content: '您的身份发生改变，请重新登陆',
+                                    confirmColor: '#20CAB4',
+                                    cancelColor: '#666666',
+                                    confirm: function () {
+                                        _g.dm.isPopup = false;
+                                        _g.navigateTo({
+                                            url: 'pages/home/login'
+                                        },self)
+                                    }
+                        
+                                })
+                            }  
                         } else {
                             _g.toast({
                                 title: res.data.message,

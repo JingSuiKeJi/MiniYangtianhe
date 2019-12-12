@@ -1,6 +1,7 @@
 <wxs module="filter" src="../../filter/filter.wxs"></wxs>
 <!--afterSale.wxml-->
 <view class="contain">
+    <navBar title='售后订单' background='white' color='black' iconTheme='black' back="{{true}}"></navBar>
 	<view wx:if="{{orderList}}" class="ui-main">
 		<view class="ui-searchOrder">
 			<view class="ui-searchBox">

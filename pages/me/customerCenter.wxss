@@ -392,7 +392,7 @@ page{
 	
 
 .ui-newsName{
-	height:36rpx;
+	/* height:36rpx; */
 	font-size:26rpx;
 	font-family:PingFangSC-Medium;
 	font-weight:500;

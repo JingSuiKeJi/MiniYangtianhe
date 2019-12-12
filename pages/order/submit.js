@@ -302,7 +302,7 @@ const methods = {
             });
             return;
         }
-        if (self.data.points && !userInfo.phone) {
+        if (self.data.points && !userInfo.phone && self.data.pointsFlag) {
             wx.showModal({
                 content: '您当前还没绑定手机号,去绑定手机号？',
                 confirmText: '确定',

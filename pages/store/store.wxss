@@ -41,6 +41,7 @@ page {
 .ui-noticeBox .ui-noticeItem__title {
     color: #FF4035;
     font-size: 26rpx;
+    font-weight: bold;
 }
 
 .ui-collageBox {
@@ -526,6 +527,8 @@ page {
 }
 .ui-topItem_moreBrand {
     margin-left: auto;
+    display: flex;
+    align-items: center;
 }
 .ui-topItem__moreText {
     font-size:22rpx;
@@ -537,9 +540,9 @@ page {
 .ui-topItem_moreIcon {
     width: 24rpx;
     height: 24rpx;
-    margin-top: 9rpx;
+    /* margin-top: 9rpx;
     display: inline-block;
-    vertical-align: top;
+    vertical-align: top; */
 }
 .ui-brandSelectItem_bottom {
     width: 100;
@@ -841,7 +844,7 @@ page {
     width: 70rpx;
     height: 50rpx;
     position: absolute;
-    right: 20rpx;
+    right: 0rpx;
     top: 65rpx;
 }
 

@@ -1,6 +1,7 @@
 <wxs module="filter" src="../../filter/filter.wxs"></wxs>
 <!--applyAfter.wxml-->
 <view class="container">
+    <navBar title='申请售后' background='white' color='black' iconTheme='black' back="{{true}}"></navBar>
 	<view class="ui-main">
 		<!-- 退款商品 -->
 		<view class="ui-newsInfoBox">

@@ -68,10 +68,11 @@ page {
     width: 180rpx;
     height: 210rpx;
     margin-left: 32rpx;
-    background: #FFFFFFFF;
+    background: #FFFFFF;
     border-radius: 8rpx;
     text-align: center;
     position: relative;
+    z-index: 99999;
 }
 
 .ui-scrollView__goodsIcon {
@@ -148,7 +149,7 @@ page {
 .ui-rightsBox {
     width:750rpx;
     height:422rpx;
-    background:#FFFFFFFF;
+    background:#FFFFFF;
 }
 .ui-rightsItem__top {
     display: flex;

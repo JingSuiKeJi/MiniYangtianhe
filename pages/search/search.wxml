@@ -1,24 +1,29 @@
-<!--pages/search/search.wxml-->
+<!-- pages/search/search.wxml -->
 <wxs module="filter" src="../../filter/filter.wxs"></wxs>
 <view class="contain">
-   <view class="main">
-      <view class="ui-searchBox">
-        <input type="text" placeholder="药品、炎症、品牌" class="ui-searchItem_input" bindinput="onGetInput" bindconfirm="onSkipTap"/>
-         <view class="ui-searchItem_text" bindtap="onSkipTap">搜索</view>
-         <image src="{{filter.getLocalPhoto('ic_search.png')}}" class="searchItem_icon"/>
-      </view>
-      <view class="ui-hotSearchBox">
-          <view class="ui-hotItem_title">热门搜索</view>
-          <view class="ui-hotItem_tag">
-              <view wx:for="{{tagList}}" class="ui-hotItem_tagBtn" data-title = "{{item.title}}" data-type = "1" bindtap="onSkipTap">{{item.title}}</view>
-          </view>
-         <view class="ui-hotItem_title">
-             <text >历史记录</text>
-             <image src="{{filter.getLocalPhoto('delect.png')}}" class="ui-hotItem_delectIcon" bindtap="onDelectTap"/>
-         </view>
-          <view class="ui-hotItem_hisTag" wx:if="{{hisList.length}}">
-              <view wx:for="{{hisList}}" class="ui-hotItem_hisTagBtn" data-title = "{{item}}" data-type = "1" bindtap="onSkipTap" wx:if="{{item}}">{{item}}</view>
-          </view>
-      </view>
-   </view>
+    <navBar title='搜索' background='white' color='black' iconTheme='black' back="{{true}}"></navBar>
+    <view class="main">
+        <view class="ui-searchBox">
+            <input type="text" placeholder="药品、炎症、品牌" class="ui-searchItem_input" bindinput="onGetInput" bindconfirm="onSkipTap" />
+            <view class="ui-searchItem_text" bindtap="onSkipTap">搜索</view>
+            <image src="{{filter.getLocalPhoto('ic_search.png')}}" class="searchItem_icon" />
+        </view>
+        <view class="ui-hotSearchBox">
+            <view class="ui-hotItem_title">热门搜索</view>
+            <view class="ui-hotItem_tag">
+                <view wx:for="{{tagList}}" class="ui-hotItem_tagBtn" data-title="{{item.title}}" data-type="1" bindtap="onSkipTap">
+                    {{item.title}}
+                </view>
+            </view>
+            <view class="ui-hotItem_title">
+                <text>历史记录</text>
+                <image src="{{filter.getLocalPhoto('delect.png')}}" class="ui-hotItem_delectIcon" bindtap="onDelectTap" />
+            </view>
+            <view class="ui-hotItem_hisTag" wx:if="{{hisList.length}}">
+                <view wx:for="{{hisList}}" class="ui-hotItem_hisTagBtn" data-title="{{item}}" data-type="1" bindtap="onSkipTap" wx:if="{{item}}">
+                    {{item}}
+                </view>
+            </view>
+        </view>
+    </view>
 </view>

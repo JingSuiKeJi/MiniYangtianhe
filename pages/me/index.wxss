@@ -170,9 +170,9 @@
 }
 
 .ui-contactItem .ui-iconContact{
-	width: 48rpx;
-	height: 48rpx;
-	margin-left: 20rpx;
+	width: 52rpx;
+	height: 52rpx;
+	/* margin-left: 20rpx; */
 }
 
 .ui-contactItem text{
@@ -533,9 +533,9 @@
 	white-space: nowrap;
 }
 
-.ui-itemBox:last-child{
+/* .ui-itemBox:last-child{
 	margin-bottom:24rpx;
-}
+} */
 
 .ui-itemBox:active:not(:first-child) {
     opacity: 0.5

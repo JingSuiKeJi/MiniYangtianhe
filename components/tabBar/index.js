@@ -29,7 +29,7 @@ Component({
 			"iconPath": "/images/tabbarIcon/raiseHappyStep.png",
 			"selectedIconPath": "/images/tabbarIcon/raiseHappyStep.png",
 			"pagePath": "/pages/step/index",
-			"text": "养步乐"
+			"text": "养乐步"
 		},
 		{
 			"iconPath": "/images/tabbarIcon/tabbar_cart.png",

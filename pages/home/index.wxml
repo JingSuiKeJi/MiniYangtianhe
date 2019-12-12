@@ -52,7 +52,7 @@
                     <view>
                         <image src="{{filter.getLocalPhoto('run.png')}}" class="ui-leftItem_icon" mode="aspectFill" />
                     </view>
-                    <view class="ui-leftItem_text">养步乐</view>
+                    <view class="ui-leftItem_text">养乐步</view>
                 </view>
                 <view class="ui-stepTapBox_center ">
                     <view class="ui-block__item" wx:for="{{blockList}}" wx:key="{{index}}" style="left: {{item.left*100+140+'rpx'}};bottom: {{item.bottom*100 + 120+'rpx'}};-webkit-transform: rotate({{item.rotate+'deg'}}); -moz-transform: rotate({{item.rotate+'deg'}});-ms-transform: rotate({{item.rotate+'deg'}});-o-transform: rotate({{item.rotate+'deg'}}); transform: rotate({{item.rotate+'deg'}});background-color: {{index >= BMIIndex ? '#EEEEEE' : '#02CFA5'}}"></view>
