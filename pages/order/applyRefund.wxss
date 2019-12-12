@@ -424,7 +424,7 @@ page{
     font-size:30rpx;
 	font-family:PingFangSC;
 	font-weight:600;
-	color: #ffff;
+	color: #ffffff;
     z-index: 99999;
 
 }

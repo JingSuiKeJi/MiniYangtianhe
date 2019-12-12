@@ -1,6 +1,7 @@
 {
-  "navigationBarTitleText": "售后订单",
-	"navigationBarBackgroundColor":"#FFFFFF",
-	"navigationBarTextStyle":"black"
+    "navigationStyle": "custom",
+    "usingComponents": {
+        "navBar": "/components/navBar/navBar"
+    }
 	
 }

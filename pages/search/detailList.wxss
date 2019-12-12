@@ -1,13 +1,16 @@
 /* pages/search/detailList.wxss */
+page{
+    background-color: #ffffff;
+}
 .ui-searchBox {
     width: 100%;
-    padding: 10rpx 40rpx 20rpx 40rpx;
+    padding: 10rpx 0rpx 20rpx 40rpx;
     white-space: nowrap;
     position: relative;
-    margin-top: 10rpx;
+    /* margin-top: 10rpx; */
 }
 .ui-searchBox .ui-searchItem_input {
-    width: 76%;
+    width: 584rpx;
     height: 56rpx;
     font-size:26rpx;
     font-family:PingFang-SC-Medium;

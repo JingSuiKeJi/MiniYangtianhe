@@ -5,11 +5,9 @@
 page{
 	background:rgba(245,245,245,1);
 }
-
 .ui-main {
     width: 100%;
 }
-
 .ui-commentItems{
 	display: flex;
 	flex-direction: column;
