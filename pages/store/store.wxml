@@ -146,7 +146,7 @@
                             <!-- <image src="{{filter.getPhoto(host,item.logoUrl)}}" mode="aspectFit" bindtap="onBrandsTap" data-id="{{item.id}}" /> -->
                             <form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onBrandsTap" data-id="{{item.id}}">
                                 <button formType="submit" class="ui-brandScroll_itemImg">
-                                    <image src="{{filter.getPhoto(host,item.logoUrl)}}" mode="aspectFit" class="ui-brandScroll_itemImg" />
+                                    <image src="{{filter.getPhoto(host,item.logoUrl)}}" mode="aspectFit" class="ui-brandScroll_itemImg" mode="aspectFit" />
                                 </button>
                             </form>
                         </view>
@@ -158,7 +158,7 @@
                             <!-- <image src="{{filter.getPhoto(host,item.logoUrl)}}" mode="aspectFill" bindtap="onBrandsTap" data-id="{{item.id}}" /> -->
                             <form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onBrandsTap" data-id="{{item.id}}">
                                 <button formType="submit" class="ui-brandScroll_itemImg">
-                                    <image src="{{filter.getPhoto(host,item.logoUrl)}}" mode="aspectFit" class="ui-brandScroll_itemImg" />
+                                    <image src="{{filter.getPhoto(host,item.logoUrl)}}" mode="aspectFit" class="ui-brandScroll_itemImg" mode="aspectFit" />
                                 </button>
                             </form>
                         </view>
