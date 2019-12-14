@@ -158,7 +158,7 @@ const methods = {
 
 		Platform.getShareQR(self, {
 			scene: sence,
-			page: 'pages/home/index'
+			// page: 'pages/home/index'
 		}).then((ret) => {
 			self.downloadImg({
 				imgUrl: self.data.host + ret.data.shareQR

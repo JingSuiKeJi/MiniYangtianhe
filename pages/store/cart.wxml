@@ -86,7 +86,7 @@
         <view class="ui-fixBox" wx:if="{{!isMgt}}">
             <view class="ui-textBox">
                 <text class=" ui-fixItem__allText">合计：</text>
-                <text class=" ui-fixItem__price">¥ {{mediTotal + storeTotal}}</text>
+                <text class=" ui-fixItem__price">¥ {{filter.add(mediTotal,storeTotal)}}</text>
             </view>
             <view class="ui-fixItem__btn" bindtap="onAccountTap">结算({{mediNum + storeNum}})</view>
         </view>

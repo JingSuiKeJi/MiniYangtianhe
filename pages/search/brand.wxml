@@ -1,9 +1,11 @@
 <!--pages/search/brand.wxml-->
 <wxs module="filter" src="../../filter/filter.wxs"></wxs>
 <!-- 浮动种类列表 -->
+<navBar title='品牌甄选' background='white' color='black' iconTheme='black' back="{{true}}"></navBar>
+
 <view class="ui-fixBox">
 	<view wx:for="{{targetList}}" wx:for-item="item" wx:key="{{index}}"
-	bindtap='onJumpToTap' data-opt="{{item}}">{{item=='hot'?'热':item}}</view>
+	catchtap='onJumpToTap' data-opt="{{item}}">{{item=='hot'?'热':item}}</view>
 </view>
 <scroll-view  scroll-into-view="{{toView}}"  scroll-y="true"   scroll-with-animation="true" class="main">
 	<view id="hot" wx:if="{{labelList.length}}">
@@ -24,8 +26,8 @@
 	<!-- 全部品牌 -->
     <view class="ui-allBrandBox">
         <view class="ui-allBrandItem__title">全部品牌</view>
-        <view class="ui-allBrandItem" wx:for="{{list}}" wx:for-item="item" wx:key="{{index}}" id="{{item.initials}}">
-            <view class="ui-allBrandItem__sort" wx:if="{{item.showInitials}}">{{item.initials}}</view>
+        <view class="ui-allBrandItem" wx:for="{{list}}" wx:for-item="item" wx:key="{{index}}" >
+            <view class="ui-allBrandItem__sort" wx:if="{{item.showInitials}}" id="{{item.initials}}">{{item.initials}}</view>
             <view class="ui-allBrandItem__brand" bindtap="onDetailTap" data-id="{{item.id}}">
                 <image src="{{filter.getPhoto(host,item.logoUrl)}}" class="ui-brand__goodsIcon"/>
                 <text class="ui-brand__text">{{item.title}}</text>

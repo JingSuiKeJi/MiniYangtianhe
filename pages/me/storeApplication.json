@@ -1,6 +1,7 @@
 {
     
-    "navigationBarTitleText": "门店申请",
-    "navigationBarBackgroundColor": "#FFFFFF",
-    "navigationBarTextStyle": "black"
+    "navigationStyle": "custom",
+    "usingComponents": {
+        "navBar": "/components/navBar/navBar"
+    }
 }

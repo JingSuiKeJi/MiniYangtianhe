@@ -155,7 +155,7 @@ const methods = {
         let sence = 'p=' + _g.getLS(_c.LSKeys.userInfo).promoCode;
         Platform.getShareQR(self, {
             scene: sence,
-            page: 'pages/home/index'
+            // page: 'pages/home/index'
         }).then((ret) => {
             self.setData({
                 code: ret.data.shareQR

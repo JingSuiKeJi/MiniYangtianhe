@@ -29,7 +29,7 @@
                 </view>
             </view>
             <view class="ui-activityBox">
-                <image src="{{filter.getLocalPhoto('redActivity.png')}}" mode="aspectFill" />
+                <image src="{{filter.getLocalPhoto('store_change_banner.png')}}" mode="aspectFill" />
             </view>
         </view>
         <!-- 分类专区 -->
