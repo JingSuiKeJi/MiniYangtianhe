@@ -1,6 +1,7 @@
 <wxs module="filter" src="../../filter/filter.wxs"></wxs>
 <!--storeApplication.wxml-->
 <view class="container">
+    <navBar title='门店申请' background='white' color='black' iconTheme='black' back="{{true}}"></navBar>
 	<view class="ui-main">
 		<view class="ui-photoBox">
 			<view class="ui-photoBg">

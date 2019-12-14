@@ -13,12 +13,13 @@ const data = {
     imgBottomList: [],
     list: [],
     labelList: []
+    
+
 };
 
 // 页面onLoad方法
 const onLoad = function(self) {
     self.setData({
-        storeId: _g.getLS('storeInfo').id,
         platformFlag: self.data.platformFlag
     });
     self.getData();
@@ -44,7 +45,7 @@ const methods = {
             platformFlag: self.data. platformFlag 
         }).then((ret) => {
             self.setData({
-                labelList: ret.data
+                labelList: ret.data.list
             })
 
         }, (err) => {});
@@ -74,9 +75,9 @@ const methods = {
             platformFlag: self.data.platformFlag,
             page: 0
         };
-        if (self.data.platformFlag == 2) {
-            data.storeId = self.data.storeId;
-        }
+        // if (self.data.platformFlag == 2) {
+        //     data.storeId = self.data.storeId;
+        // }
         let list = [];
         let initialsList = [];
         let nowInitials = '';

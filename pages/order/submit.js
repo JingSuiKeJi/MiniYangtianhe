@@ -281,7 +281,7 @@ const methods = {
     },
     onSubmitTap: function (e) {
         const self = this;
-        const userInfo = self.data.userInfo;
+        const userInfo = _g.getLS(_c.LSKeys.userInfo);
         if (!self.data.orderAddressVo) {
             _g.toast({
                 title: '请先选择地址'

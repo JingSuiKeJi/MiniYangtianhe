@@ -352,5 +352,9 @@ var filter = {
 			   return '';
 		}
     },
+    add: function(a,b) {
+        var c = (a + b).toFixed(2);
+        return c;
+    }
 };
 module.exports = filter;

@@ -56,8 +56,8 @@ const methods = {
 					});
 				}, (err) => {
 					_g.toast({
-						title: '手动核销失败',
-						duration: 1000,
+						title: err.message,
+						duration: 2000,
 					});
 				});
 			}

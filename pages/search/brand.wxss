@@ -11,7 +11,7 @@ page{
 	align-items:center;
 	justify-content: space-between;
 	z-index: 9;
-	top: 82rpx;
+	top: 220rpx;
 	right: 12rpx;
 	width: 20rpx;
 	height: 992rpx;
