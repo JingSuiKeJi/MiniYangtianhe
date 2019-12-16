@@ -128,3 +128,8 @@
     eventName="step-index-authorize" 
     isHidden="{{authorizeHidden}}">
 </authorize>
+<werun 
+	id="werun" 
+	hiddenWerunPopup="{{hiddenWerunPopup}}"
+	bind:onCancelTap="onCancelTap">
+</werun>

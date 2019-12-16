@@ -1,0 +1,78 @@
+.ui-authorize {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 750rpx;
+    height: 100%;
+    z-index: 1010;
+}
+
+.ui-authorize__bg {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 750rpx;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.ui-dialog__bd {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 590rpx;
+    height: 330rpx;
+    margin: auto;
+    background-color: #fff;
+    box-sizing: border-box;
+    /*border: 1px solid #FFAFC6;*/
+    /*border-radius: 20rpx;*/
+}
+
+.ui-dialog__content {
+    width: 590rpx;
+    height: 238rpx;
+    text-align: center;
+    vertical-align: middle;
+    box-sizing: border-box;
+    font-size: 36rpx;
+    padding:  20rpx;
+    padding-top: 83rpx;
+    white-space:pre-wrap;
+    
+}
+
+.ui-btns {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+    display: flex;
+    /*flex-wrap: nowrap;
+	align-items: flex-start;*/
+    height: 90rpx;
+    border-top: 1px solid #f1f1f1;
+}
+
+.ui-btn {
+    flex: 1;
+    line-height: 90rpx;
+    font-size: 32rpx;
+    color: #000;
+    text-align: center;
+    /*border-right: 1px solid #f1f1f1;*/
+}
+
+/* .ui-btn:first-child {
+    border-radius: 0 0 0 20rpx;
+} */
+
+.ui-btn:last-child {
+    background-color: #0AD0AA;
+    color: #fff;
+    /*background-color: #FFAFC6;*/
+    /*background-color: #FFAFC6;*/
+    /*border-radius: 0 0 20rpx 0;*/
+}
