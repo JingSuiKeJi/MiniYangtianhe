@@ -23,7 +23,6 @@ Component({
     data: {
         message: '获取不到您的微信步数，请开启服务',
         hiddenWerunPopup: true,
-        // eventName: '',
         type: ''
     },
     methods: {

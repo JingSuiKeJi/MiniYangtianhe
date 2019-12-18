@@ -30,7 +30,8 @@ const data = {
     canvasUrl: '',
     authorizeHidden: true,
     code: '',
-    deductDoods: []
+    deductDoods: [],
+    hiddenWerunPopup: true
 };
 
 // 页面onLoad方法
@@ -77,6 +78,14 @@ const onLoad = function (self) {
             });
         }
     });
+    event.on('werun-getSettingData', self, (res) => {
+        if (res.detail.authSetting['scope.werun']) {
+            self.getWeRunData();
+            self.setData({
+                 hiddenWerunPopup: true
+            });
+        }
+    });
 
 };
 const onReady = function (self) {
@@ -100,6 +109,12 @@ const onReady = function (self) {
     self.authorize.onCancelTap = function () {
         self.setData({
             authorizeHidden: true
+        });
+    }
+    self.werun = self.selectComponent('#werun');
+    self.werun.onCancelTap = function () {
+        self.setData({
+            hiddenWerunPopup: true
         });
     }
 
@@ -230,6 +245,11 @@ const methods = {
                     jsCode: self.data.code
                 };
                 self.uploadStep(data)
+            },
+            fail(res) {
+                self.setData({
+                    hiddenWerunPopup: false
+                })
             }
         })
 

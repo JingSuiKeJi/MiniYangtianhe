@@ -268,3 +268,8 @@
     hiddenLocationPopup="{{hiddenLocationPopup}}"
     bind:onCancelTap="onCancelTap">
 </location>
+<werun 
+	id="werun" 
+	hiddenWerunPopup="{{hiddenWerunPopup}}"
+	bind:onCancelTap="onCancelTap">
+</werun>
