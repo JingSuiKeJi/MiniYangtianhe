@@ -8,6 +8,7 @@ page{
 
 .ui-main {
     width: 100%;
+    position: relative;
 }
 
 .ui-qrBox{
@@ -67,4 +68,37 @@ page{
 	position: absolute;
 	left: 0;
 	top: 0;
+}
+.ui-headPortrait{
+	position: absolute;
+	width:120rpx;
+	height:120rpx;
+	background:rgba(234,234,234,1);
+	margin: 40rpx 0 0 40rpx;
+	border-radius: 60rpx;
+}
+
+.ui-personalId{
+	position: absolute;
+	height:34rpx;
+	font-size:34rpx;
+	font-family:PingFangSC-Medium;
+	font-weight:500;
+	color:rgba(61,61,61,1);
+	line-height:34rpx;
+	margin: 84rpx 0 0 184rpx;
+}
+
+.ui-qrInfo{
+	position: absolute;
+	width:520rpx;
+	height:470rpx;
+	margin: 166rpx 0 0 82rpx;
+	
+}
+.ui-contentBox {
+    position: absolute;
+    left: 32rpx;
+    top: 80rpx;
+    margin: 0;
 }

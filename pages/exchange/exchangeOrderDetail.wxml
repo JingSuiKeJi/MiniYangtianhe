@@ -1,0 +1,87 @@
+<wxs module="filter" src="../../filter/filter.wxs"></wxs>
+<view class="container">
+    <navBar title='订单详情' background='white' color='black' iconTheme='black' back="{{true}}"></navBar>
+    <view class="ui-main">
+        <view class="ui-orderStatusBox">
+            <!-- <view class="ui-orderStatus" wx:if="{{status == 'WAIT_BUYER_PAY'}}">
+                 <image mode="aspectFill" src="{{filter.getLocalPhoto('my_waitWuliu.png')}}" class="ui-StatusIcon ui-waitShipmentsIcon" mode="aspectFit" />
+                 <text class="ui-StatusText">待支付</text>
+            </view> -->
+            <view class="ui-orderStatus" wx:if="{{status == 'WAIT_SELLER_SEND_GOODS'}}">
+                 <image mode="aspectFill" src="{{filter.getLocalPhoto('my_waitGroup.png')}}" class="ui-StatusIcon ui-waitShipmentsIcon" mode="aspectFit"/>
+                 <text class="ui-StatusText">待发货</text>
+            </view>
+            <view class="ui-orderStatus" wx:if="{{status == 'TRADE_FINISH'}}">
+                <image mode="aspectFill" src="{{filter.getLocalPhoto('my_tradeSuccessfully.png')}}" class="ui-StatusIcon ui-waitReceivingIcon" mode="aspectFit"/>
+                <text class="ui-StatusText">交易完成</text>
+            </view>
+        </view>
+        <view  class="ui-consigneeAddressBox">
+            <image mode="aspectFit" src="{{filter.getLocalPhoto('my_landmarkIcon.png')}}" class="ui-landmarkIcon" mode="aspectFit"/>
+            <view class="ui-consignee">
+                <view class="ui-consigneeinfo">
+                    <text>{{orderAddress.name}}</text>
+                    <text>{{orderAddress.phone}}</text>
+                </view>
+                <text class="ui-consigneeAddressDetial">{{orderAddress.address}}</text>
+            </view>
+        </view>
+        <view  class="ui-commodityInfo">
+            <text class="ui-title">商品信息</text>
+            <view class="ui-newsInfoBox">
+                <view class="ui-newsInfoItem" wx:for="{{list}}" wx:for-item="item" wx:key="idx">
+                    <view class="ui-newsImg">
+                        <image src="{{filter.getPhoto(host,item.imgUrl)}}"></image>
+                    </view>
+                    <view class="ui-newsInfoDetail">
+                        <text class="ui-newsName">{{item.title}}</text>
+                        <text class="ui-newsWeight" >{{item.specificationName}}</text>
+                        <!-- <text class="ui-newsMoney">¥{{item.price}}</text> -->
+                    </view>
+                    <text class="ui-newsNum">x{{item.num}}</text>
+                </view>
+            </view>
+            <view class=" ui-commodityTextCommon">
+                <text class="ui-fare__title">运费</text>
+                <text class="ui-fare">¥{{info.deliveryFee}}</text>
+            </view>
+        </view>
+        <view  class="ui-orderInfoBox" >
+            <text>订单信息</text>
+            <text>订单编号：{{info.orderNo}}</text>
+            <text>兑换时间：{{filter.getDate(info.payTime)}}</text>
+            <text >付款时间：{{filter.getDate(info.payTime)}}</text>
+        </view>
+        <view  class="ui-operationBox" wx:if="{{status == 'TRADE_FINISH'}}" >
+            <view class="ui-operationItem" bindtap="onShowModal">查看物流</view>
+        </view>
+        <!--查看物流弹窗-->
+        <view class="ui-modal">
+            <view class="ui-logisticsMask" catchtouchmove="true" wx:if="{{showLogistics}}"></view>
+            <view class="ui-logisticsDialog" wx:if="{{showLogistics}}" catchtouchmove="true">
+                <view class="ui-expressInfo">
+                    <image src="{{filter.getLocalPhoto('my_orderWaitBg.png')}}" mode="aspectFill" class="ui-expressInfoItem"/>
+                    <view class="ui-expressText">
+                        <text>{{filter.getLogiCompany(info.logisticsCompany)}}</text>
+                        <text>快递单号：{{info.logisticsNo}}</text>
+                        <text>物流状态：已发货</text>
+                    </view>
+                </view>
+                <scroll-view scroll-y="true" class="ui-deliveryStatus">
+                    <view class="ui-items" wx:for="{{deliveryStatus}}"  wx:key="{{index}}">
+                        <view class="ui-itemsStatus">
+                            <image mode="aspectFit" src="{{index == 0 ? filter.getLocalPhoto('my_wuliu.png'): filter.getLocalPhoto('my_ovalSelect.png')}}" class="{{index == 0?'ui-arriveIcon':'ui-inTheWayIcon'}}"/>
+                            <text>{{item.acceptStation}}</text>
+                        </view>
+                        <view class="ui-momentData">
+                            <text>{{item.acceptTime}}</text>
+                            <!-- <text>{{item.momentTime}}</text> -->
+                        </view>
+                    </view>
+                </scroll-view>
+            </view>
+            <image mode="aspectFit" src="{{filter.getLocalPhoto('my_closeVerify.png')}}" class="ui-closeLogisticsIcon" bindtap="onHideModal" wx:if="{{showLogistics}}" catchtouchmove="true"/>
+        </view>
+
+    </view>
+</view>

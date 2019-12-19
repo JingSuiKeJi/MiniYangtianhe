@@ -1,0 +1,62 @@
+<wxs module="filter" src="../../filter/filter.wxs"></wxs>
+<!-- exchangePrize.wxml -->
+<view class="ui-container">
+    <navBar title='兑换中心' background='white' color='black' iconTheme='black' back="{{true}}"></navBar>
+    <view class="ui-main">
+        <view class="ui-nav">
+            <view class="ui-nav__item {{ current === 1 ? 'is-active' : ''}}" data-current="1" bindtap="onNavChange">
+                奖品
+            </view>
+            <view class="ui-nav__item {{ current === 2 ? 'is-active' : ''}}" data-current="2" bindtap="onNavChange">
+                优惠券
+            </view>
+        </view>
+        <view class="ui-navContainel">
+            <!-- 奖品 -->
+            <view class="ui-prize" wx:if="{{current == 1}}">
+                <view class="ui-prize__item" wx:for="{{list}}" wx:key="{{index}}" wx:if="{{list.length}}">
+                    <view class="ui-prize__time" wx:if="{{item.showTime}}">
+                        <text>{{item.time}}</text>
+                    </view>
+                    <view class="ui-prize__infoBox">
+                        <view class="ui-prize__img">
+                            <image src="{{filter.getPhoto(host,item.imgUrl)}}" />
+                        </view>
+                        <view class="ui-prize__info">
+                            <view class="ui-prize__title">{{item.title}}</view>
+                            <view class="ui-prize__message">{{item.subTitle}}</view>
+                            <view class="ui-prize__form">{{item.gameType == 1 ? '砸金蛋' : '大转盘'}}</view>
+                        </view>
+                        <!-- 1未兑换 2兑换中 3已兑换 -->
+                        <!-- <view class="ui-prize__exchangeBtn {{item === 2 ? 'is-exchange':''}}">{{item === 0 ? '立即兑换': item === 1 ? '查看订单':'已兑换'}}</view> -->
+                        <view class="ui-quan__exchangeBtn" wx:if="{{item.status == 1}}" bindtap="onSubmitTap" data-id="{{item.id}}">立即兑换</view>
+                        <view class="ui-quan__exchangeBtn" wx:if="{{item.status == 2}}" bindtap="onCheckOrder" data-id="{{item.prizeOrderId}}">查看订单</view>
+                        <view class="ui-quan__exchangeBtn is-exchange" wx:if="{{item.status == 3}}">已过期</view>
+                    </view>
+                </view>
+            </view>
+            <!-- 优惠券 -->
+            <view class="ui-quan" wx:if="{{current == 2}}">
+                <view class="ui-quan__item" wx:for="{{list}}" wx:key="{{index}}" wx:if="{{list.length}}">
+                    <view class="ui-quan__time" wx:if="{{item.showTime}}">
+                        <text>{{item.time}}</text>
+                    </view>
+                    <view class="ui-quan__infoBox">
+                        <view class="ui-quan__price">
+                            <text>￥</text>
+                            <text>{{item.deductionPrice}}</text>
+                        </view>
+                        <view class="ui-quan__info">
+                            <view class="ui-quan__title">{{filter.couponLimit(item.useLimit)}}</view>
+                            <view class="ui-quan__message">有效期: {{filter.getDateOrTime(item.startTime,3) +'-' + filter.getDateOrTime(item.endTime,3)}}</view>
+                            <view class="ui-quan__form">{{item.gameType == 1 ? '砸金蛋' : '大转盘'}}</view>
+                        </view>
+                        <view class="ui-quan__exchangeBtn" wx:if="{{item.status == 1}}" bindtap="onUseTap" data-type="{{item.useLimit}}">去使用</view>
+                        <view class="ui-quan__exchangeBtn is-exchange" wx:if="{{item.status != 1}}">{{item.status == 2 ? '已使用':'已过期'}}</view>
+                    </view>
+                    <view class="ui-quan__warn">满{{item.limitPrice}}可用</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

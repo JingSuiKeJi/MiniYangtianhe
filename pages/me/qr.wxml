@@ -6,6 +6,11 @@
 		<view class="ui-qrBox">
 			<canvas canvas-id="share" class="ui-share__canvas" ></canvas>
 			<image class="ui-share__image" src="{{canvasUrl}}" show-menu-by-longpress="true"></image>
+        </view>
+        <view class="ui-qrBox ui-contentBox">
+			<image class="ui-headPortrait" mode="aspectFit" src="{{userInfo.avatar}}"/>
+			<text class="ui-personalId">{{userInfo.nickname}}</text>
+			<image class="ui-qrInfo" mode="aspectFit" src="{{filter.getPhoto(host,code)}}"/>
 		</view>
 		<image src="{{filter.getLocalPhoto('my_save.png')}}" mode="aspectFit" class="btn-savePoster" bindtap="onSaveImage"/>
 		<text class="ui-savePosterText">保存海报</text>

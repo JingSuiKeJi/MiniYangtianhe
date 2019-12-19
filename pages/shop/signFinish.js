@@ -187,11 +187,21 @@ const methods = {
                             callback && callback(res);
                         },
                         fail(err) {
-                            console.log(err)
                             wx.hideLoading();
+                            console.log(333,err)
+                            _g.toast({
+                                title: '获取图像失败',
+                                turation: 2000
+                            })
                         }
                     });
                 }
+            },
+            fail(err) {
+                _g.toast({
+                    title: '图像下载失败',
+                    turation: 2000
+                })
             }
         });
     },

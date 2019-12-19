@@ -1,0 +1,418 @@
+page{
+	background:rgba(245,245,245,1);
+}
+
+.ui-main {
+    width: 100%;
+    height: 100%;
+    padding-bottom: 104rpx;
+}
+.ui-orderStatusBox{
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	background: #FFFFFF;
+}
+.ui-orderStatus{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 44rpx;
+}
+.ui-StatusIcon{
+	display: block;
+	margin-top: 104rpx;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: contain;
+}
+.ui-waitShipmentsIcon{
+	width: 152rpx;
+	height: 192rpx;
+}
+.ui-waitReceivingIcon{
+	width: 186rpx;
+	height: 152rpx;
+}
+.ui-consigneeAddressBox{
+	width: 100%;
+	background: #FFFFFF;
+	display: flex;
+	align-items: center;
+	margin-top: 20rpx;
+}
+.ui-landmarkIcon{
+	width: 34rpx;
+	height: 40rpx;
+	margin-left: 40rpx;
+}
+.ui-consignee{
+	display: flex;
+	flex-direction: column;
+	margin:28rpx 0 0 48rpx;
+}
+.ui-consigneeinfo text:first-child{
+	height:30rpx;
+	font-size:30rpx;
+	font-family:PingFangSC-Medium;
+	font-weight:500;
+	color:rgba(51,51,51,1);
+	line-height:30rpx;
+}
+
+.ui-consigneeinfo text:last-child{
+	height:26rpx;
+	font-size:26rpx;
+	font-family:PingFang-SC-Regular;
+	font-weight:400;
+	color:rgba(102,102,102,1);
+	line-height:26rpx;
+	margin-left: 10rpx;
+}
+.ui-consigneeAddressDetial{
+	width:550rpx;
+	height:40rpx;
+	font-size:26rpx;
+	font-family:PingFang-SC-Medium;
+	font-weight:500;
+	color:rgba(51,51,51,1);
+	line-height:40rpx;
+	margin-top: 12rpx;
+	margin-bottom: 30rpx;
+	word-break: keep-all;
+	word-wrap: break-word;
+}
+.ui-commodityInfo{
+    width: 100%;
+	background: #FFFFFF;
+	display: flex;
+	flex-direction: column;
+    margin-top: 20rpx;
+    padding-bottom: 32rpx;
+}
+.ui-title{
+	height:30rpx;
+	font-size:30rpx;
+	font-family:PingFangSC-Medium;
+	font-weight:500;
+	color:rgba(51,51,51,1);
+	line-height:30rpx;
+	margin: 28rpx 0 24rpx 40rpx;
+}
+.ui-newsInfoBox{
+	width: 100%;
+}
+.ui-newsInfoItem{
+	display: flex;
+	flex-direction: row;
+	position: relative;
+	margin-bottom: 40rpx;
+}
+.ui-newsImg{
+	width: 160rpx;
+	height: 160rpx;
+	margin-left:56rpx;
+}
+.ui-newsImg image{
+	width: 100%;
+	height: 100%;
+}
+.ui-newsInfoDetail{
+	margin-left: 20rpx;
+	display: flex;
+	flex-direction: column;
+}
+.ui-newsName{
+	height:36rpx;
+	font-size:26rpx;
+	font-family:PingFangSC-Medium;
+	font-weight:500;
+	color:rgba(51,51,51,1);
+	line-height:36rpx;
+}
+.ui-newsWeight{
+	height:22rpx;
+	font-size:22rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(153,153,153,1);
+	line-height:22rpx;
+	margin-top: 48rpx;
+}
+.ui-newsMoney{
+	height:26rpx;
+	font-size:26rpx;
+	font-family:PingFangSC-Medium;
+	font-weight:500;
+	color:rgba(51,51,51,1);
+	line-height:26rpx;
+	margin-top:24rpx;
+}
+.ui-newsNum{
+	position: absolute;
+	right: 56rpx;
+	top: 134rpx;
+	height:22rpx;
+	font-size:22rpx;
+	font-family:PingFangSC-Medium;
+	font-weight:500;
+	color:rgba(153,153,153,1);
+	line-height:22rpx;
+}
+.ui-commodityTextCommon{
+    display: flex;
+    margin-top: 60rpx;
+    justify-content: space-between;
+    padding-right: 56rpx;
+}
+
+.ui-fare__title,.ui-fare{
+	height:26rpx;
+	font-size:28rpx;
+	font-family:PingFang-SC-Medium;
+	font-weight:500;
+	color:rgba(51,51,51,1);
+	line-height:28rpx;
+	margin-left: 56rpx;
+}
+.ui-fare{
+	font-weight:400;
+}
+.ui-operationBox {
+	display: flex;
+    width:750rpx;
+    height:104rpx;
+    background:rgba(255,255,255,1);
+    box-shadow:0rpx 0rpx 16rpx 0rpx rgba(0,0,0,0.08);
+    position: fixed;
+	bottom: 0;
+	align-items: center;
+}
+.ui-operationItem {
+    width:148rpx;
+    height:60rpx;
+    font-size:26rpx;
+    font-family:PingFangSC-Regular,PingFang SC;
+	font-weight:400;
+	line-height: 60rpx;
+    color:rgba(102,102,102,1);
+    border-radius:30rpx;
+	border:2rpx solid rgba(199,199,199,1);
+	text-align: center;
+	margin-left: auto;
+	margin-right: 40rpx;
+}
+.ui-logisticsMask {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background:rgba(0,0,0,1);
+	opacity: 0.5;
+	overflow: hidden;
+	z-index: 9000;
+	color: #fff;
+}
+.ui-logisticsDialog {
+	position: fixed;
+	z-index: 9999;
+	top: 200rpx;
+	left: 50%;
+	width:614rpx;
+	height:940rpx;
+	background:rgba(255,255,255,1);
+	border-radius:16rpx;
+	overflow: hidden;
+	transform: translateX(-50%);
+}
+
+.ui-closeLogisticsIcon{
+	position: fixed;
+	z-index: 9999;
+	top: 1220rpx;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 64rpx;
+	height: 64rpx;
+}
+
+.ui-expressInfo{
+	display: flex;
+	padding-top: 32rpx;
+	width: 614rpx;
+	height: 184rpx;
+	border-radius:16rpx 16rpx 0 0;
+	position: relative;
+}
+.ui-expressInfoItem {
+	width: 614rpx;
+	height: 184rpx;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.ui-expressImg{
+	margin-left:40rpx;
+	width: 120rpx;
+	height: 120rpx;
+	background: #FFFFFF;
+}
+
+.ui-expressImg image{
+	width: 100%;
+	height: 100%;
+}
+
+.ui-expressText{
+	display: flex;
+	flex-direction: column;
+	margin-left: 50rpx;
+	position: relative;
+}
+
+.ui-expressText text{
+	height:36rpx;
+	font-size:26rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(255,255,255,1);
+	line-height:36rpx;
+}
+
+.ui-expressText text:first-child{
+	margin-bottom: 8rpx;
+}
+
+.ui-expressText text:last-child{
+	margin-top: 4rpx;
+}
+
+.ui-deliveryStatus{
+	display: flex;
+	flex-direction: column;
+	width: 510rpx;
+	height: 708rpx;
+	margin: 48rpx 0 0 70rpx;
+	padding-bottom: 30rpx;
+}
+
+.ui-items{
+	display: flex;
+	width: 490rpx;
+	margin-left: 20rpx;
+	flex-direction: column;
+	border-left:#E9E9E9 solid 4rpx;
+}
+
+.ui-itemsStatus{
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+}
+
+.ui-items:last-child .ui-itemsStatus:after{
+	position: absolute;
+	content: "";
+	background: red;
+	border-left: #E9E9E9 solid 4rpx;
+	height: 10rpx;
+}
+
+.ui-items:last-child .ui-itemsStatus .ui-inTheWayIcon{
+	margin-left: 2rpx;
+}
+
+.ui-arriveIcon{
+	display: block;
+	width: 40rpx;
+	height: 40rpx;
+	transform: translateX(-50%);
+}
+
+.ui-inTheWayIcon{
+	display: block;
+	margin-left: -1rpx;
+	width: 20rpx;
+	height: 20rpx;
+	transform: translate(-50%,50%);
+}
+
+.ui-itemsStatus text{
+	width:450rpx;
+	font-size:26rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(0,0,0,0.65);
+	line-height:40rpx;
+	word-break: keep-all;/*不允许字断开*/
+	word-wrap: break-word;/*在长单词或URL地址内部进行换行*/
+}
+
+.ui-items:last-child{
+	border-left: none;
+}
+
+.ui-momentData{
+	display: flex;
+	justify-content: space-between;
+	width: 214rpx;
+	margin: 24rpx 0 26rpx 40rpx;
+}
+.ui-StatusText{
+	margin-top: 40rpx;
+	height:30rpx;
+	font-size:30rpx;
+	font-family:PingFangSC-Medium;
+	font-weight:500;
+	color:rgba(51,51,51,1);
+	line-height:30rpx;
+}
+.ui-momentData text{
+	height:22rpx;
+	font-size:22rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(153,153,153,1);
+	line-height:22rpx;
+}
+.ui-closeLogisticsIcon{
+	position: fixed;
+	z-index: 9999;
+	bottom: 144rpx;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 64rpx;
+	height: 64rpx;
+}
+.ui-orderInfoBox{
+	margin-top: 20rpx;
+	width: 100%;
+	background: #FFFFFF;
+	margin-bottom: 52rpx;
+	display: flex;
+	flex-direction: column;
+}
+
+.ui-orderInfoBox text:first-child{
+	height:30rpx;
+	font-size:30rpx;
+	font-family:PingFangSC-Medium;
+    color:rgba(51,51,51,1);
+    font-weight:500;
+	line-height:30rpx;
+	margin: 28rpx 0 44rpx 40rpx;
+}
+
+.ui-orderInfoBox text:not(first-child){
+	height:26rpx;
+	font-size:26rpx;
+	font-family:PingFang-SC-Medium;
+	color:rgba(51,51,51,1);
+    line-height:26rpx;
+    font-weight:500;
+	margin: 0 0 40rpx 40rpx;
+}
+

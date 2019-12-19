@@ -34,7 +34,7 @@ const methods = {
 	getData: function () {
 		let self = this;
 		self.taskSignHome();
-		self.listTaskCenter();
+		// self.listTaskCenter();
 	},
 	taskSignHome: function () {
 		let self = this;
@@ -137,7 +137,19 @@ const methods = {
 			default:
 				break;
 		}
-	}
+	},
+	onGameTap: function () {
+		let self = this;
+		// _g.navigateTo({
+		// 	url: 'pages/game/blessTurnTable',
+		// }, self)
+	},
+	onSkipTap: function () {
+		let self = this;
+		// _g.navigateTo({
+		// 	url: 'pages/game/breakEgg',
+		// }, self)
+	},
 }
 
 const temps = {}

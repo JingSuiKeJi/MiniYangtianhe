@@ -66,6 +66,9 @@ const methods = {
         Platfrom.getShareQR(self, {
             scene: 'p=' + _g.getLS(_c.LSKeys.userInfo).promoCode,
         }).then((ret) => {
+            self.setData({
+                code: ret.data.shareQR
+            })
             self.downloadImg({
                 imgUrl: self.data.host + ret.data.shareQR
             }, (res) => {

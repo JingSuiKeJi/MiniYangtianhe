@@ -20,12 +20,10 @@ let data = {
 };
 const onLoad = function (self) {
 	self.getData()
-	const avatar = self.data.avatar;
-	const nickname = self.data.nickname;
+    const userInfo = _g.getLS(_c.LSKeys.userInfo);
 	self.setData({
-		avatar: avatar,
-		nickname: nickname,
-		canvasUrl: _g.getLS('myPosterUrl')
+        canvasUrl: _g.getLS('myPosterUrl'),
+        userInfo: userInfo
 	});
 	event.on('me-poster-authorize', self, (res)=>{
 		if (res.detail.authSetting['scope.writePhotosAlbum']) {
@@ -78,11 +76,14 @@ const methods = {
 			User.getPoster(self, {
 				type: 1
 			}).then((ret) => {
+                self.setData({
+                    picUrl: ret.data.poster
+                });
 				self.downloadImg({
-					imgUrl: self.data.host +  ret.data.poster
+                    imgUrl: self.data.host +  ret.data.poster,
 				}, (res) => {
 					self.setData({
-						picThumb: res
+                        picThumb: res,
 					});
 					// _g.setLS('posterThumb', res);
 					self.checkDownload();
@@ -160,6 +161,9 @@ const methods = {
 			scene: sence,
 			// page: 'pages/home/index'
 		}).then((ret) => {
+            self.setData({
+                code: ret.data.shareQR
+            })
 			self.downloadImg({
 				imgUrl: self.data.host + ret.data.shareQR
 			}, (res) => {

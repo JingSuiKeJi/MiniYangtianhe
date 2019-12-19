@@ -76,10 +76,14 @@
     "pages/order/overOrderdetails",
     "pages/shop/sign",
     "pages/shop/signQRCode",
-    "pages/shop/task",
-    "pages/shop/blessTurnTable",
+    "pages/task/task",
+    "pages/game/blessTurnTable",
+    "pages/game/breakEgg",
+    "pages/exchange/index",
     "pages/shop/signFinish",
-    "pages/order/afterSaleDetail"
+    "pages/order/afterSaleDetail",
+    "pages/exchange/exchangeOrderDetail",
+    "pages/exchange/submit"
   ],
   "tabBar": {
     "borderStyle": "white",

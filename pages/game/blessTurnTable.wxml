@@ -1,0 +1,49 @@
+<wxs module="filter" src="../../filter/filter.wxs"></wxs>
+<!-- blessTurnTable.wxml -->
+<view class="container">
+    <navBar title='福气大转盘' background='white' color='black' iconTheme='black' back="{{true}}"></navBar>
+    <view class="ui-main">
+        <view class="ui-gameBox">
+            <view class="ui-gameBox__gz"><text>规则</text></view>
+            <view class="ui-pontTitle">消耗{{gamePoint}}福气获一次抽奖机会</view>
+            <view class="ui-gameBox__container">
+                <block wx:for="{{list}}" wx:key="{{index}}">
+                    <view class="ui-gameBox__item {{ currentIndex === index ? 'is-active':'' }}" wx:if="{{index != 4}}">
+                        <image mode="aspectFit" src="{{ filter.getPhoto(host,item.imgUrl)}}" class="ui-gameBox__prizeImg" />
+                        <view class="ui-gameBox__text">{{item.title}}</view>
+                    </view>
+                    <view class="ui-gameBox__item ui-gameBox__btn" wx:if="{{index == 4}}" bindtap="hideModal">
+                        <view class="ui-gameBox__dj">{{item.title}}</view>
+                        <view class="ui-gameBox__less">{{item.point}}</view>
+                    </view>
+                </block>
+            </view>
+            <view class="ui-gameBox__fuqi">
+                <view>我的福气数: {{basePoint}}</view>
+            </view>
+        </view>
+        <view class="ui-mask" wx:if="{{isShow}}">
+            <view class="ui-mask__bg"></view>
+            <view class="ui-mask__close" bindtap="closeModal">
+                <image src="{{filter.getLocalPhoto('zhuanpan/close_icon.png')}}" />
+            </view>
+            <view class="ui-mask__container">
+                <view class="ui-mask__title">恭喜你，中奖啦</view>
+                <view class="ui-mask__prizeTitle" wx:if="{{winInfo.type == 1}}">恭喜你获得{{winInfo.point}}福气</view>
+                <view class="ui-mask__prizeTitle" wx:if="{{winInfo.type == 2}}">恭喜你获得超级大礼包</view>
+                <view class="ui-mask__prizeTitle" wx:if="{{winInfo.type == 3}}">恭喜你获得{{winInfo.title}}</view>
+                <view class="ui-mask__prizeImg">
+                    <!-- <image src="{{ filter.getLocalPhoto('zhuanpan/libao.png')}}" /> -->
+                    <image src="{{filter.getLocalPhoto('turntable_fuqi.png')}}"  wx:if="{{winInfo.type == 1}}" mode="aspectFit"/>
+                    <image src="{{filter.getPhoto(host, winInfo.imgUrl)}}" wx:if="{{winInfo.type == 2}}" mode="aspectFit"/>
+                    <image src="{{filter.getLocalPhoto('turntable_coupon.png')}}" wx:if="{{winInfo.type == 3}}" mode="aspectFit"/>
+                </view>
+                <view class="ui-mask__warn" wx:if="{{winInfo.type == 1}}">福气已发放到个人账户</view>
+                <view class="ui-mask__warn" wx:if="{{winInfo.type == 2}}">奖品已放到兑换中心</view>
+                <view class="ui-mask__warn" wx:if="{{winInfo.type == 3}}">优惠卷已放到兑换中心</view>
+
+                <view class="ui-mask__btn" wx:if="{{winInfo.type != 1}}" bindtap="onExchangeTap">查看奖品</view>
+            </view>
+        </view>
+    </view>
+</view>
