@@ -49,7 +49,7 @@
 		</view>
     </view>
     <view class="ui-orderBox">
-        <view class="ui-orderItem" wx:for="{{goodsVoList}}" wx:key="{{index}}">
+        <view class="ui-orderItem" wx:for="{{goodsVoList}}" wx:key="index">
             <view class="ui-orderItem__imgBox">
                 <image src="{{filter.getPhoto(host, item.imgUrl)}}" 
                         class="ui-imgItem__icon"
@@ -119,7 +119,7 @@
     <view class="ui-payBox">
         <text class="ui-payItem__num">共{{num}}件</text>
         <text class="ui-payItem__text">合计：</text>
-        <text class="ui-payItem__price">¥{{payPrice}}</text>
+        <text class="ui-payItem__price">¥ {{payPrice}}</text>
         <text class="ui-payItem__orderText" bindtap="onSubmitTap">提交订单</text>
     </view>
 </view>

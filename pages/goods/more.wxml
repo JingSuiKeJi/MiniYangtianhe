@@ -3,7 +3,7 @@
 <view class="ui-contain">
     <view class="main">
         <view class="moreBox">
-            <view class="moreItem" wx:for="{{list}}" wx:key="{{index}}" wx:if="{{list.length}}">
+            <view class="moreItem" wx:for="{{list}}" wx:key="index" wx:if="{{list.length}}">
                 <view class="ui-item_imgBox">
                     <image src="{{item.avatar}}"  class="ui-imgItem_icon"/>
                 </view>

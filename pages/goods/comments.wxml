@@ -3,7 +3,7 @@
 <view class="ui-contain">
     <view class="ui-main">
         <view class="ui-commentBox" wx:if="{{commentList.length}}">
-            <view class="ui-commentItem" wx:for="{{commentList}}" wx:key="{{index}}">
+            <view class="ui-commentItem" wx:for="{{commentList}}" wx:key="index">
                 <view class="ui-commentItem__info">
                     <view class="ui-infoIrem__imgBox">
                         <image src="{{item.commentUser.avatar}}" class="ui-imgItem__perIcon" />
@@ -76,12 +76,12 @@
                                 <view class="ui-model_middle" wx:if="{{skuLength>1}}">
                                     <view class="ui-middleItem_title"> {{skuList[0].goodsSpecificationVoList[0].key}}</view>
                                     <view class="ui-ui-middleItem_btnList" wx:if="{{type ==1 || type == 3 || type == 4 ||type == 7 || type == 2}}">
-                                        <view class="ui-middleItem_btn {{index == firstIndex ? 'isSelectBtn' : ''}}" wx:for="{{skuList}}" wx:key="{{index}}" bindtap="onSelectTap" data-index="{{index}}">
+                                        <view class="ui-middleItem_btn {{index == firstIndex ? 'isSelectBtn' : ''}}" wx:for="{{skuList}}" wx:key="index" bindtap="onSelectTap" data-index="{{index}}">
                                             {{item.name}}
                                         </view>
                                     </view>
                                     <!-- <view class="ui-ui-middleItem_btnList" wx:else>
-                                        <view class="ui-middleItem_btn isSelectBtn" wx:for="{{scaleList}}" wx:key="{{index}}">
+                                        <view class="ui-middleItem_btn isSelectBtn" wx:for="{{scaleList}}" wx:key="index">
                                             {{item}}
                                         </view>
                                     </view> -->
@@ -91,7 +91,7 @@
                                     <view class="ui-ui-middleItem_btnList" >
                                         <view class="ui-middleItem_btn {{index == secondIndex && item.optional? 'isSelectBtn' : ''}} {{!item.optional && firstIndex != -1? 'noSelectBtn' : ''}}" 
                                         wx:for="{{secondSkuList}}" 
-                                        wx:key="{{index}}" 
+                                        wx:key="index" 
                                         bindtap="onSecondSelect" 
                                         data-index="{{index}}">
                                         {{item.name}}

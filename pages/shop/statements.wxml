@@ -19,7 +19,7 @@
 			</view>
 			<view class="ui-dateText">
 				<view bindtap="onChooseDate" class="ui-dateCircleBg {{currentData==item?'ui-dateCircleBgHhover':''}}" 
-				data-id="{{index}}" wx:for="{{dateList}}" wx:for-item="item" wx:key="{{index}}">	
+				data-id="{{index}}" wx:for="{{dateList}}" wx:for-item="item" wx:key="index">	
 					<text>{{item}}</text>
 					<view class="ui-dateCircle__radius" wx:if="{{dayIndex >= index}}"></view>
 				</view>

@@ -1,6 +1,7 @@
 <wxs module="filter" src="../../filter/filter.wxs"></wxs>
 <!-- test.wxml -->
 <view class="container">
+    <navBar title='任务中心' background='white' color='black' iconTheme='black' back="{{true}}"></navBar>
     <view class="ui-main">
         <view class="ui-fuqi">
             <view class="ui-fuqi__num">{{signInfo.point}}</view>
@@ -18,7 +19,7 @@
             <view class="ui-testBox__title">签到福气加倍</view>
             <view class="ui-testBox__sign" hidden="{{!signInfo.signScoreItemList.length}}">
                 <view class="ui-signItem__line"></view>
-                <view class="ui-testBox__signItem" wx:for="{{signInfo.signScoreItemList}}" wx:key="{{index}}" >
+                <view class="ui-testBox__signItem" wx:for="{{signInfo.signScoreItemList}}" wx:key="index" >
                     <view wx:if="{{!item.isSign}}" class="ui-signitem__num">
                         <image src="{{filter.getLocalPhoto('sign/sign_bg.png')}}" mode="aspectFit" />
                         <text>+{{item.score}}</text>
@@ -42,16 +43,16 @@
             </view>
         </view>
         <view class="ui-game">
-            <view class="ui-game__item">
+            <view class="ui-game__item" bindtap="onGameTap">
                 <view>福气大转盘</view>
                 <view>邀请好友一起玩</view>
             </view>
-            <view class="ui-game__item">
+            <view class="ui-game__item" bindtap="onSkipTap">
                 <view>幸运砸金蛋</view>
                 <view>天天赢好礼</view>
             </view>
         </view>
-        <view class="ui-test">
+        <!-- <view class="ui-test">
             <view class="ui-test__title">新手任务</view>
             <view class="ui-test__testItem" wx:for="{{newbieTask }}" wx:key="{{item}}">
                 <view class="ui-test__testName">{{item.title}}</view>
@@ -62,13 +63,13 @@
         </view>
         <view class="ui-test">
             <view class="ui-test__title">每日任务</view>
-            <view class="ui-test__testItem" wx:for="{{ dailyTask}}" wx:key="{{index}}" wx:if="{{(userInfo.verifier && (item.code != 22)) || !userInfo.verifier}}">
+            <view class="ui-test__testItem" wx:for="{{ dailyTask}}" wx:key="index" wx:if="{{(userInfo.verifier && (item.code != 22)) || !userInfo.verifier}}">
                 <view class="ui-test__testName">{{item.title}}</view>
                 <view class="ui-test__testAdd">+{{item.point}}</view>
                 <view class="ui-test__testStatus"  bindtap="onSkipTap" data-code="{{item.code}}"  wx:if="{{!item.status && item.sum > 0}}">{{item.successNum + '/' + item.sum}}</view>
                  <view class="ui-test__testStatus"  bindtap="onSkipTap" data-code="{{item.code}}"  wx:if="{{!item.status && item.sum == 0}}">去完成</view>
                 <view class="ui-test__testStatus" style="background:  #CCCCCC " wx:if="{{item.status}}">已完成</view>
             </view>
-        </view>
+        </view> -->
     </view>
 </view>

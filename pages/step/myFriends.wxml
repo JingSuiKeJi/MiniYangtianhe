@@ -17,7 +17,7 @@
             </view>
         </view>
         <view  class="ui-listBox" >
-            <view class="ui-listItem" wx:for="{{list}}" wx:key="{{index}}" bindtap="showModal" data-index="{{index}}">
+            <view class="ui-listItem" wx:for="{{list}}" wx:key="index" bindtap="showModal" data-index="{{index}}">
                 <view class="ui-listItem__imgBox">
                     <image src="{{filter.getPhoto(host,item.avatar)}}" class="ui-listItem__icon" />
                 </view>

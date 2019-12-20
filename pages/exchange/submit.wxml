@@ -1,0 +1,44 @@
+<wxs module="filter" src="../../filter/filter.wxs"></wxs> 
+<navBar title='填写订单' background='white' color='black' iconTheme='black' back="{{true}}"></navBar>
+<view class="ui-main">
+    <view class="ui-addressBox" bindtap="onAddressTap">
+        <image src="{{filter.getLocalPhoto('my_landmarkIcon.png')}}" class="ui-addressItem__addressIcon" mode="aspectFit"/>
+        <view class="ui-addressItem__detail" wx:if="{{orderAddressVo.id}}">
+            <view class="ui-detailItem__info">
+                <text class="ui-infoItem__name">{{orderAddressVo.name}}</text>
+                <text class="ui-infoItem__phone">{{orderAddressVo.phone}}</text>
+            </view>
+            <view class="ui-detailItem__address">{{orderAddressVo.address}}</view>
+        </view>
+        <view  class="ui-addressItem__text"  wx:if="{{!orderAddressVo.id}}">添加收货地址</view> 
+        <image src="{{filter.getLocalPhoto('my_icMore.png')}}" class="ui-addressItem__moreIcon" mode="aspectFit"/>
+    </view>
+    <view class="ui-orderBox">
+        <view class="ui-orderItem" wx:for="{{goodsList}}" wx:key="index">
+            <view class="ui-orderItem__imgBox">
+                <image src="{{filter.getPhoto(host, item.imgUrl)}}" class="ui-imgItem__icon" mode="aspectFill"></image>
+            </view>
+            <view class="ui-orderItem__info">
+                <view class="ui-infoItem__title">{{item.title}}</view>
+                <view class="ui-infoItem__scale" hidden="{{!item.specificationName}}">{{item.specificationName}}</view>
+                <view class="ui-infoItem__num">x{{item.num}}</view>
+            </view>
+        </view>
+        <view class="ui-orderItem__post">
+            <text class="ui-postItem__title">配送方式</text>
+            <text class="ui-postItem__text">快递配送</text>
+            <text class="ui-postItem__text ui-postItem__deliveryFee" >¥{{deliveryFee}}</text>
+        </view>
+        <view class="ui-orderItem__post">
+            <text class="ui-postItem__title">订单备注</text>
+            <input type="text" class="ui-postItem__input" placeholder="选填，请填写您的备注信息" bindinput="getInputValue" value="{{remark}}" />
+        </view>
+        <view class="ui-deliveryFee">运费：<text>¥ {{deliveryFee}}</text></view>
+    </view>
+     <view class="ui-payBox">
+        <text class="ui-payItem__num">共{{num}}件</text>
+        <text class="ui-payItem__text">合计：</text>
+        <text class="ui-payItem__price">¥{{payPrice}}</text>
+        <text class="ui-payItem__orderText" bindtap="onSubmitTap">提交订单</text>
+    </view>
+</view>    

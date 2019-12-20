@@ -221,7 +221,22 @@ config.prototype = {
             getRecordList: '/app/points/getRecordList.do',
             gift: '/app/points/gift.do',
             verifier: '/app/points/verifier.do',
-        }
+        },
+        game: {
+            goldenEggsHome: '/app/goldenEggs/home.do',
+            breakEgg: '/app/goldenEggs/action.do',
+            turnplateHome: '/app/turnplate/home.do',
+            turnplateAction: '/app/turnplate/action.do'
+        },
+        exchange: {
+            exchangeList: '/app/exchange/list.do',
+            preOrder: '/app/prizeOrder/pre.do',
+            placeOrder: '/app/prizeOrder/place.do',
+            prizeOrderDetail: '/app/prizeOrder/detail.do',
+            prePay: '/pay/prizeOrder/prePay.do',
+            prizeOrderTraces:'/app/prizeOrder/orderTraces.do'
+        },
+        
     }
 
 };

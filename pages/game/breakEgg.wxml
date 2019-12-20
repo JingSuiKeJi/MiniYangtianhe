@@ -1,0 +1,66 @@
+<wxs module="filter" src="../../filter/filter.wxs"></wxs>
+<!-- breakEgg.wxml -->
+<view class="container">
+    <navBar title='幸运砸金蛋' background='white' color='black' iconTheme='black' back="{{true}}"></navBar>
+    <view class="ui-main">
+        <view class="ui-eggBox">
+            <view class="ui-eggBox__gz">
+                <!-- 活动规则盒子 -->
+                <image mode="aspectFit" src="{{filter.getLocalPhoto('zadan/gz.png')}}"/>
+            </view>
+            <view class="ui-eggBox__myPrize" bindtap="onExchangeTap">
+                <!-- 我的奖品盒子 -->
+                <image mode="aspectFit" src="{{filter.getLocalPhoto('zadan/prize.png')}}" />
+            </view>
+            <view class="ui-eggBox__title">消耗{{baseInfo.gamePoint}}福气可砸一次金蛋</view>
+            <view class="ui-eggBox__eggList" bindtap="hideModal">
+                <!-- 鸡蛋盒子 -->
+                <image mode="aspectFit" src="{{filter.getLocalPhoto('zadan/egg.png')}}"/>
+                <view class="ui-eggBox__fuqi">我的福气数：{{basePoint}}</view>
+            </view>
+        </view>
+        <view class="ui-mask" wx:if="{{onShow}}">
+            <view class="ui-mask__bg"></view>
+            <view class="ui-mask__containel">
+                <view class="ui-mask__animation" wx:if="{{hideEgg}}">
+                    <view class="ui-mask__hammer">
+                        <!-- 锤子 -->
+                        <image mode="aspectFit" src="{{filter.getLocalPhoto('zadan/hammer_big.png')}}"/>
+                    </view>
+                    <view class="ui-mask__wzEgg" wx:if="{{isIntace}}">
+                        <!-- 完整鸡蛋 -->
+                        <image mode="aspextFit" src="{{filter.getLocalPhoto('zadan/intactEgg.png')}}"/>
+                    </view>
+                    <view class="ui-mask__egg" wx:if="{{!isIntace}}">
+                        <!-- 碎鸡蛋 -->
+                        <image mode="aspectFit" src="{{filter.getLocalPhoto('zadan/broken_egg.png')}}"/>
+                    </view>
+                </view>
+                <view class="ui-mask__prize" wx:if="{{!hideEgg}}">
+                    <view class="ui-mask__closeIcon" bindtap="closeMask">
+                        <image mode="aspectFit" src="{{filter.getLocalPhoto('zhuanpan/close_icon.png')}}" />
+                    </view>
+                    <view class="ui-mask__prizePop">
+                        <view class="ui-mask__popBg">
+                            <image mode="aspectFill" src="{{filter.getLocalPhoto('zadan/drawnPrize.png')}}"/>
+                        </view>
+                        <view class="ui-mask__prizeContainel">
+                            <view class="ui-prizeBox">
+                                 <view class="ui-prizeBox__img" >
+                                    <image src="{{filter.getLocalPhoto('breakEgg__fuqiIcon.png ')}}"  wx:if="{{reward.type == 1}}"/>
+                                    <image src="{{filter.getPhoto(host, reward.imgUrl)}}" wx:if="{{reward.type == 2}}"/>
+                                    <image src="{{filter.getLocalPhoto('breakEgg__moneyIcon.png')}}" wx:if="{{reward.type == 3}}"/>
+                                </view>
+                                <view class="ui-prizeBox__name" wx:if="{{reward.type == 1}}"> {{reward.point}}福气 </view>
+                                <view class="ui-prizeBox__name" wx:if="{{reward.type != 1}}"> {{reward.title}} </view>
+                            </view>
+                            <view class="ui-prizeBox__warn" wx:if="{{reward.type == 1}}">福气已发放到账户</view>
+                            <view class="ui-prizeBox__warn" wx:if="{{reward.type != 1}}">{{reward.type == 2 ? '奖品' : '优惠卷' }}已放到兑换中心</view>
+                            <view class="ui-prizeBox__btn" wx:if="{{reward.type != 1}}" bindtap="onExchangeTap">查看奖品</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

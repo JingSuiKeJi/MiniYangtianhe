@@ -1,0 +1,285 @@
+@charset "UTF-8";
+@import "/libs/common.wxss";
+/* breakEgg.wxss */
+
+page{
+    width: 750rpx;
+    height: 100%;
+    /* background:linear-gradient(to right, rgba(255, 77, 67, 1) 0%, rgba(255, 154, 149, 1) 100%); */
+}
+.ui-main {
+    width: 750rpx;
+    height: 100%;
+    background-image: url('https://app.yth-yx.com/mini/breakEgg_bg.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+.ui-eggBox {
+    position: relative;
+}
+.ui-eggBox__gz {
+    width: 132rpx;
+    height: 112rpx;
+    position: absolute;
+    top: 365rpx;
+    left: 16rpx;
+}
+.ui-eggBox__gz > image {
+    width: 132rpx;
+    height: 112rpx;
+}
+.ui-eggBox__myPrize {
+    width: 132rpx;
+    height: 112rpx;
+    position: absolute;
+    top: 365rpx;
+    right: 8rpx;
+}
+.ui-eggBox__myPrize > image {
+    width: 132rpx;
+    height: 112rpx;
+}
+.ui-eggBox__hammer {
+    width: 190rpx;
+    height: 184rpx;
+    position: absolute;
+    top: 416rpx;
+    left: 368rpx;
+    animation:swing 2s ease-in-out infinite;
+}
+.ui-eggBox__hammer > image {
+    width: 190rpx;
+    height: 184rpx;
+}
+.ui-eggBox__eggList {
+    width: 720rpx;
+    height: 454rpx;
+    position: absolute;
+    left: 16rpx;
+    top: 574rpx;
+}
+.ui-eggBox__eggList > image {
+    width: 720rpx;
+    height: 454rpx;
+}
+.ui-eggBox__fuqi {
+    width: 720rpx;
+    height: 92rpx;
+    margin-top: -92rpx;
+    font-size: 32rpx;
+    color: #fff;
+    text-align: center;
+    line-height: 92rpx;
+}
+
+/*  */
+.ui-mask__bg {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background:rgba(0,0,0,1);
+    opacity:0.7;
+    z-index: 1;
+}
+.ui-mask__containel {
+    width: 100%;
+    position: absolute;
+    top: 20rpx;
+    z-index: 2;
+}
+.ui-mask__wzEgg {
+    width: 412rpx;
+    height: 552rpx;
+    position: absolute;
+    top: 290rpx;
+    left: 170rpx;
+    animation:shake 0.3s ease 1s forwards;}
+.ui-mask__wzEgg >image {
+    width: 100%;
+    height: 100%;
+}
+.ui-mask__hammer {
+    width: 240rpx;
+    height: 224rpx;
+    position: absolute;
+    top: 218rpx;
+    left: 470rpx;
+    animation:swing 1.3s ease-in-out forwards;
+}
+.ui-mask__hammer > image {
+    width: 240rpx;
+    height: 224rpx;
+}
+.ui-mask__egg {
+    width: 548rpx;
+    height: 554rpx;
+    position: absolute;
+    top: 260rpx;
+    left: 100rpx;
+}
+.ui-mask__egg > image {
+    width: 548rpx;
+    height: 554rpx;
+}
+.ui-mask__closeIcon {
+    width: 72rpx;
+    height: 72rpx;
+    margin-top: 203rpx;
+    margin-left: 630rpx;
+}
+.ui-mask__closeIcon > image {
+    width: 72rpx;
+    height: 72rpx;
+}
+.ui-mask__prizePop {
+    width:630rpx;
+    height:722rpx;
+    margin: 34rpx auto;
+    background:rgba(255,255,255,1);
+    border-radius:40rpx;
+    position: relative;
+}
+.ui-mask__popBg {
+    width: 100%;
+    height: 374rpx;
+}
+.ui-mask__popBg > image {
+    width: 100%;
+    height: 100%;
+}
+.ui-mask__prizeContainel {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 198rpx;
+}
+.ui-prizeBox {
+    width:424rpx;
+    height:298rpx;
+    margin: 0 auto;
+    padding: 1px;
+    background:rgba(255,255,255,1);
+    box-shadow:0 2rpx 20rpx -2rpx rgba(127,127,127,0.19);
+    border-radius:20rpx;
+}
+.ui-prizeBox__img {
+    width: 136rpx;
+    height: 136rpx;
+    margin: 48rpx auto 18rpx auto;
+}
+.ui-prizeBox__img > image {
+    width: 100%;
+    height: 100%;
+}
+.ui-prizeBox__name {
+    width:100%;
+    height:40rpx;
+    font-size:40rpx;
+    font-family:PingFangSC-Medium,PingFang SC;
+    font-weight:500;
+    color:rgba(255,95,85,1);
+    line-height:40rpx;
+    text-align: center;
+}
+.ui-prizeBox__warn {
+    width:100%;
+    height:24rpx;
+    margin-top: 40rpx;
+    font-size:24rpx;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    color:rgba(51,51,51,1);
+    line-height:24rpx;
+    text-align: center;
+} 
+.ui-prizeBox__btn {
+    width:322rpx;
+    height:92rpx;
+    margin: 30rpx auto;
+    background:linear-gradient(178deg,rgba(255,97,71,1) 0%,rgba(255,167,114,1) 100%);
+    border-radius:49rpx;
+    font-size:40rpx;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    color:rgba(255,255,255,1);
+    line-height:92rpx;
+    text-align: center;
+}
+
+@keyframes shake {
+    10% {
+        transform-origin: center;
+        transform: rotateZ(3deg);
+    }
+    20% {
+        transform-origin: center;
+        transform: rotateZ(0deg);
+    }
+    30% {
+        transform-origin: center;
+        transform: rotateZ(-3deg);
+    }
+    40% {
+        transform-origin: center;
+        transform: rotateZ(0deg);
+    }
+    50% {
+        transform-origin: center;
+        transform: rotateZ(3deg);
+    }
+    60% {
+        transform-origin: center;
+        transform: rotateZ(0deg);
+    }
+    70% {
+        transform-origin: center;
+        transform: rotateZ(-3deg);
+    }
+    80% {
+        transform-origin: center;
+        transform: rotateZ(0deg);
+    }
+    90% {
+        transform-origin: center;
+        transform: rotateZ(3deg);
+    }
+    100% {
+        transform-origin: center;
+        transform: rotateZ(0deg);
+    }
+}
+
+@keyframes swing {
+    40% {
+        transform-origin: center;
+        transform: rotateZ(50deg) translate(10rpx, -70rpx);
+
+    }
+    80% {
+        transform-origin: center;
+        transform: rotateZ(-10deg) translate(0, 0);
+    }
+}
+
+@keyframes scall {
+    0% {
+        transform: scale(0.5,0.5);
+    }
+    100% {
+        transform: scall(1,1);
+    }
+}
+.ui-eggBox__title {
+    width: 100%;
+    font-size:28rpx;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    color:rgba(255,255,255,1);
+    line-height:28rpx;
+    position: absolute;
+    top: 445rpx;
+    text-align: center;
+}

@@ -11,7 +11,7 @@
     	subkey="YLTBZ-SPSRO-PPIWR-SKAML-PNQ72-CWBWC">
 	</map>
 	<scroll-view class="ui-list" lower-threshold="0" scroll-y="{{true}}" scroll-x="{{false}}">
-		<view class="ui-item" wx:for="{{storeList}}" wx:key="{{index}}">
+		<view class="ui-item" wx:for="{{storeList}}" wx:key="index">
 			<view class="ui-info">
 				<view class="ui-line">
 					<view class="ui-title">{{item.title}}</view>

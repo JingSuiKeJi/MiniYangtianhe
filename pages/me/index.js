@@ -361,13 +361,15 @@ const methods = {
         let self = this;
         if (!_g.checkLogin({type: 2})) return;
        _g.navigateTo({
-           url: 'pages/shop/task'
+           url: 'pages/task/task'
        },self)
     },
     onExchangeTap: function (e) {
         let self = this;
         if (!_g.checkLogin({type: 2})) return;
-        console.log('兑换中心');
+        _g.navigateTo({
+            url: 'pages/exchange/index'
+        },self)
     },
     
 }

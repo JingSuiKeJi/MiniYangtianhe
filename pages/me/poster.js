@@ -20,12 +20,10 @@ let data = {
 };
 const onLoad = function (self) {
 	self.getData()
-	const avatar = self.data.avatar;
-	const nickname = self.data.nickname;
+    const userInfo = _g.getLS(_c.LSKeys.userInfo);
 	self.setData({
-		avatar: avatar,
-		nickname: nickname,
-		canvasUrl: _g.getLS('myPosterUrl')
+        // canvasUrl: _g.getLS('myPosterUrl'),
+        userInfo: userInfo
 	});
 	event.on('me-poster-authorize', self, (res)=>{
 		if (res.detail.authSetting['scope.writePhotosAlbum']) {
@@ -47,9 +45,9 @@ const onReady = function (self) {
 		}, (res) => {
 			self.setData({
 				avatarThumb: res
-			});
+			},1);
 			self.checkDownload();
-		});
+		},1);
 	} else {
 		self.setData({
 			avatarThumb: _g.getLS('avatarThumb')
@@ -78,15 +76,20 @@ const methods = {
 			User.getPoster(self, {
 				type: 1
 			}).then((ret) => {
+                let imgUrl = self.data.host +  ret.data.poster
+                if (!ret.data.poster) imgUrl = 'https://app.yth-yx.com/mini/myposter.jpg';
+                self.setData({
+                    picUrl: imgUrl
+                });
 				self.downloadImg({
-					imgUrl: self.data.host +  ret.data.poster
+                    imgUrl: imgUrl,
 				}, (res) => {
 					self.setData({
-						picThumb: res
+                        picThumb: res,
 					});
-					_g.setLS('posterThumb', res);
+					// _g.setLS('posterThumb', res);
 					self.checkDownload();
-				});
+				},3);
 				
 			}, (err) => {
 				self.downloadImg({
@@ -95,9 +98,9 @@ const methods = {
 					self.setData({
 						picThumb: res
 					});
-					_g.setLS('posterThumb', res);
+					// _g.setLS('posterThumb', res);
 					self.checkDownload();
-				});
+				},3);
 				
 			});
 		} else {
@@ -160,6 +163,9 @@ const methods = {
 			scene: sence,
 			// page: 'pages/home/index'
 		}).then((ret) => {
+            self.setData({
+                code: ret.data.shareQR
+            })
 			self.downloadImg({
 				imgUrl: self.data.host + ret.data.shareQR
 			}, (res) => {
@@ -167,7 +173,7 @@ const methods = {
 					shareCode: res
 				});
 				self.checkDownload();
-			});
+			},2);
 			
 		}, (err) => {
 
@@ -188,13 +194,14 @@ const methods = {
 						},
 						fail(err) {
 							wx.hideLoading();
-							_g.toast({
-								title: '网络好像不太稳定,请稍后再试'
-							});
+							self.getImgToast(type);
 						}
 					});
 				}
-			}
+            },
+            fail(err) {
+                self.downloadToast(type)
+            }
 		});
 	},
 	onSaveTap() {
@@ -265,7 +272,7 @@ const methods = {
 					self.setData({
 						canvasUrl: res.tempFilePath
 					});
-					_g.setLS('myPosterUrl', res.tempFilePath);
+					// _g.setLS('myPosterUrl', res.tempFilePath);
 				}
 			}, self);
 		},self);
@@ -283,7 +290,49 @@ const methods = {
             path: path,
             imageUrl: self.data.canvasUrl
         }
-	}
+    },
+    downloadToast: function (type) {
+        let self = this;
+        let message = '';
+        switch (type) {
+            case 1:
+                message = '网络不稳定，头像下载失败，请在网络较好的情况下重试'
+                break;
+            case 2:
+                message = '网络不稳定，小程序码下载失败，请在网络较好的情况下重试'
+                break;
+            case 3:
+                message = '网络不稳定，背景图下载失败，请在网络较好的情况下重试'
+                break;     
+            default:
+                break;
+        }
+        _g.toast({
+            title: message,
+            duration: 2000
+        })
+    },
+    getImgToast: function (value) {
+        let self = this;
+        let message = '';
+        switch (value) {
+            case 1:
+                message = '网络不稳定，获取本地的头像失败，请在网络较好的情况下重试'
+                break;
+            case 2:
+                message = '网络不稳定，获取本地小程序码失败，请在网络较好的情况下重试'
+                break;
+            case 3:
+                message = '网络不稳定，获取本地背景图失败，请在网络较好的情况下重试'
+                break;    
+            default:
+                break;
+        }
+        _g.toast({
+            title: message,
+            duration: 2000
+        })
+    }
 }
 
 // 有引用template时定义

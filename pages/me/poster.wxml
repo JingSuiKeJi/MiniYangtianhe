@@ -3,21 +3,32 @@
 <view class="container">
 	<navBar title='我的海报' background='white' color='black' iconTheme='black' back="{{true}}"></navBar>
 	<view class="ui-main">
-		<view class="modal-mask" bindtap="hideModal" catchtouchmove="true" wx:if="{{showModal}}"></view>
-		<view class="modal-dialog" wx:if="{{showModal}}">
-			<button open-type="share" class="btn-friendsShare btn-common" style="background-color: #fff;border: none;display: block;">
-                <image class="ui-wxImg" src="{{filter.getLocalPhoto('icon-wechat.png')}}"></image>
-                <text class="ui-wxText">分享好友</text>
-            </button>
-			<view class="btn-saveImage btn-common" bindtap="onSaveImage">
-				<image mode="aspectFit" src="{{filter.getLocalPhoto('my_posterSave.png')}}" class="ui-saveImg"/>
-				<!-- <view class="ui-saveImg"></view> -->
-				<text class="ui-saveText">保存图片</text>
-			</view>
-		</view>
+        <view class="modal-mask" bindtap="hideModal" catchtouchmove="true" wx:if="{{showModal}}"></view>
+        <view class="ui-modal" wx:if="{{showModal}}">
+            <image class="ui-share__image" src="{{canvasUrl}}" show-menu-by-longpress="true"></image>
+            <view class="modal-dialog" >
+                <button open-type="share" class="btn-friendsShare btn-common" style="background-color: #fff;border: none;display: block;">
+                    <image class="ui-wxImg" src="{{filter.getLocalPhoto('icon-wechat.png')}}"></image>
+                    <text class="ui-wxText">分享好友</text>
+                </button>
+                <view class="btn-saveImage btn-common" bindtap="onSaveImage">
+                    <image mode="aspectFit" src="{{filter.getLocalPhoto('my_posterSave.png')}}" class="ui-saveImg"/>
+                    <text class="ui-saveText">保存图片</text>
+                </view>
+            </view>
+        </view>
+		
 		<view class="ui-share__bd">
 			<canvas canvas-id="share" class="ui-share__canvas" ></canvas>
-			<image class="ui-share__image" src="{{canvasUrl}}" show-menu-by-longpress="true"></image>
+        </view>
+        <view class=" ui-bgImgbox">
+            <image class="ui-posterBackground" src="{{picUrl}}" ></image>
+            <image src="{{userInfo.avatar}}" mode="aspectFit" class="ui-personalIcon"/>
+			<view class="ui-personalIdText">{{userInfo.nickname}}</view>
+			<view class="ui-ExtractQR">
+                <image mode="aspectFit" src="{{filter.getPhoto(host,code)}}" class="ui-qrCode" show-menu-by-longpress="true"/>
+				<text class="ui-explainText">|长按识别小程序码|</text>
+			</view>
         </view>
 		<view class="ui-posterShare" bindtap="showDialogBtn">分享我的专属海报</view>
 	</view>

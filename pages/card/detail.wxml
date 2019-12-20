@@ -12,7 +12,7 @@
     </view>
     <view class="ui-scrollViewBox " wx:if="{{goodList.length}}">
         <scroll-view scroll-x class="ui-scrollView">
-            <view wx:for="{{goodList}}" wx:key="{{index}}" class="ui-tapScroll_item" style="box-shadow: {{index == type ? '0rpx 2rpx 20rpx 0rpx rgba(255,214,101,0.4)' : '' }}" bindtap="onClickTap" data-type="{{index}}">
+            <view wx:for="{{goodList}}" wx:key="index" class="ui-tapScroll_item" style="box-shadow: {{index == type ? '0rpx 2rpx 20rpx 0rpx rgba(255,214,101,0.4)' : '' }}" bindtap="onClickTap" data-type="{{index}}">
                 <image src="{{filter.getPhoto(host,item.picUrl)}}" mode="aspectFit" class="ui-scrollView__goodsIcon" />
                 <view class="ui-scrollView__price">￥{{item.nowPrice}}</view>
                 <view class="ui-scrollView__Icon" hidden="{{index != type}}"></view>
@@ -31,14 +31,14 @@
             <text class="ui-topItem__text">PLUS会员6大专属权益</text>
         </view>
         <view class="ui-rightsItem__bottom">
-            <view class="ui-bottomItem" wx:for="{{iconList}}" wx:key="{{index}}">
+            <view class="ui-bottomItem" wx:for="{{iconList}}" wx:key="index">
                 <image src="{{filter.getLocalPhoto(item.url)}}" mode="aspectFit" class="ui-bottomItem__icon" />
                 <view class="ui-bottomItem__text">{{item.text}}</view>
             </view>
         </view>
     </view>
     <view class="ui-imgBox">
-        <image src="{{filter.getPhoto(host,item)}}" mode="widthFix" class="goodsItem__detailIcon" wx:for="{{imgUrl}}" wx:if="{{imgUrl.length}}" wx:key="{{index}}"/>
+        <image src="{{filter.getPhoto(host,item)}}" mode="widthFix" class="goodsItem__detailIcon" wx:for="{{imgUrl}}" wx:if="{{imgUrl.length}}" wx:key="index"/>
         <!-- <image src="../../images/cardDetail__goodsIcon2.png" mode="aspectFit" class="goodsItem__introIcon" />
         <image src="../../images/cardDetail__goodsIcon3.png" mode="aspectFit" class="goodsItem__lifeIcon" /> -->
     </view>

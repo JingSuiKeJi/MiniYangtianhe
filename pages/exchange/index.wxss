@@ -1,0 +1,255 @@
+@charset "UTF-8";
+@import "/libs/common.wxss";
+/* exchangePrize.wxss */
+page {
+    width: 100%;
+    height: 100%;
+    background: rgba(245,245,245,1);
+}
+.ui-nav {
+    display: flex;
+    width: 100%;
+    height: 88rpx;
+    padding: 0 20rpx;
+    background: rgba(255,255,255,1);
+    justify-content: space-around;
+    position: sticky;
+    top: 0;
+    left: 0;
+}
+.ui-nav__item {
+    height: 100%;
+    line-height: 88rpx;
+    font-size:30rpx;
+    font-family:PingFangSC-Medium,PingFang SC;
+    font-weight:500;
+    text-align: center;
+}
+.is-active {
+    position: relative;
+    color:rgba(32,202,180,1);
+}
+.is-active::after {
+    content: '';
+    position: absolute;
+    top:82rpx;
+    left: 0;
+    width: 100%;
+    height: 6rpx;
+    background: rgba(32,202,180,1);
+    border-radius: 3rpx;
+}
+.ui-navContainel {
+    width: 100%;
+    padding: 0 32rpx 40rpx 32rpx;
+}
+.ui-prize {
+    width: 100%;
+}
+.ui-prize__item {
+    margin-top: 40rpx;
+}
+.ui-prize__time {
+    width: 100%;
+    height:28rpx;
+    font-size:28rpx;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    color:rgba(153,153,153,1);
+    line-height:28rpx;
+    text-align: center;
+}
+.ui-prize__infoBox {
+    display: flex;
+    width:686rpx;
+    height:228rpx;
+    margin-top: 20rpx;
+    padding: 32rpx;
+    background:rgba(255,255,255,1);
+    border-radius:16rpx;
+}
+.ui-prize__img {
+    width: 164rpx;
+    height: 164rpx;
+}
+.ui-prize__img > image {
+    width: 100%;
+    height: 100%;
+}
+.ui-prize__info {
+    flex: 1;
+    width: auto;
+    height: 164rpx;
+    padding-left: 24rpx;
+}
+.ui-prize__exchangeBtn {
+    width: 150rpx;
+    height: 56rpx;
+    margin:auto 0;
+    background:linear-gradient(137deg,rgba(1,206,165,1) 0%,rgba(94,221,218,1) 100%);
+    border-radius:28rpx;
+    font-size:28rpx;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    color:rgba(255,255,255,1);
+    text-align: center;
+    line-height: 56rpx;
+}
+.ui-prize__title {
+    width: 100%;
+    height:36rpx;
+    font-size:28rpx;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    color:rgba(51,51,51,1);
+    line-height:36rpx;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.ui-prize__message {
+    width: 100%;
+    height:auto;
+    padding-top: 20rpx;
+    font-size:20rpx;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    color:rgba(153,153,153,1);
+    line-height:20rpx;
+}
+.ui-prize__form {
+    width:80rpx;
+    height:32rpx;
+    margin-top: 56rpx;
+    padding: 0 10rpx;
+    background:rgba(255,244,227,1);
+    border-radius:4rpx;
+    font-size:20rpx;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    color:rgba(255,141,0,1);
+    line-height: 32rpx;
+}
+
+.ui-quan {
+    width: 686rpx;
+    height: 252rpx;
+}
+.ui-quan__item {
+    margin-top: 40rpx;
+}
+.ui-quan__time {
+    width: 100%;
+    height:28rpx;
+    font-size:28rpx;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    color:rgba(153,153,153,1);
+    line-height:28rpx;
+    text-align: center;
+}
+.ui-quan__infoBox {
+    display: flex;
+    width:686rpx;
+    height:188rpx;
+    margin-top: 20rpx;
+    padding: 30rpx;
+    background:rgba(255,255,255,1);
+    border-radius:16rpx;
+    border-bottom-left-radius: 34rpx;
+    border-bottom-right-radius: 34rpx;
+}
+.ui-quan__price {
+    width: 140rpx;
+    height: auto;
+    padding-top: 32rpx;
+    text-align: center;
+    vertical-align: middle;
+}
+.ui-quan__price > text:nth-child(1){
+    width:20rpx;
+    height:32rpx;
+    font-size:32rpx;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    color:rgba(255,102,0,1);
+    line-height:32rpx;
+    vertical-align: bottom;
+}
+.ui-quan__price > text:nth-child(2){
+    font-size:60rpx;
+    font-family:PingFangSC-Medium,PingFang SC;
+    font-weight:500;
+    color:rgba(255,102,0,1);
+    line-height:60rpx;
+    vertical-align: bottom;
+}
+.ui-quan__info {
+    flex: 1;
+    width: auto;
+    height: 164rpx;
+    padding-left: 24rpx;
+}
+.ui-quan__exchangeBtn {
+    width: 150rpx;
+    height: 56rpx;
+    margin:auto 0;
+    background:linear-gradient(137deg,rgba(1,206,165,1) 0%,rgba(94,221,218,1) 100%);
+    border-radius:28rpx;
+    font-size:28rpx;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    color:rgba(255,255,255,1);
+    text-align: center;
+    line-height: 56rpx;
+}
+.ui-quan__title {
+    width: 100%;
+    height:36rpx;
+    font-size:28rpx;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    color:rgba(51,51,51,1);
+    line-height:36rpx;
+}
+.ui-quan__message {
+    width: 100%;
+    height:auto;
+    padding-top: 20rpx;
+    font-size:20rpx;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    color:rgba(153,153,153,1);
+    line-height:20rpx;
+}
+.ui-quan__form {
+    width:80rpx;
+    height:32rpx;
+    margin-top: 26rpx;
+    padding: 0 10rpx;
+    background:rgba(255,244,227,1);
+    border-radius:4rpx;
+    font-size:20rpx;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    color:rgba(255,141,0,1);
+    line-height: 32rpx;
+}
+.ui-quan__warn {
+    width: 686rpx;
+    height: 64rpx;
+    padding-left: 48rpx;
+    background: rgba(250,250,250,1);
+    border-radius:16rpx;
+    border-top-left-radius: 34rpx;
+    border-top-right-radius: 34rpx;
+    font-size:20rpx;
+    font-family:PingFangSC-Regular,PingFang SC;
+    font-weight:400;
+    color:rgba(153,153,153,1);
+    line-height:64rpx;
+}
+.is-exchange {
+    background: rgba(204,204,204,1);
+    color: #fff;
+}

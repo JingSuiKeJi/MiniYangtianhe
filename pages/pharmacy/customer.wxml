@@ -16,7 +16,7 @@
 		</view>
 		<!-- 客户明细 -->
 		<view class="ui-customerInfo" wx:if="{{clientList.length}}">
-			<view class="ui-items" wx:for="{{clientList}}" wx:for-item="item" wx:key="{{index}}">
+			<view class="ui-items" wx:for="{{clientList}}" wx:for-item="item" wx:key="index">
 				<view class="ui-avatar">
 				   <image src="{{item.avatar}}"></image>
 				</view>

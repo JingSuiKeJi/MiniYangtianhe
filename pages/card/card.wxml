@@ -133,7 +133,7 @@
         CHOOSE ONE OR BECOME PLUS
     </view>
     <view class="ui-goodsBox" wx:if="{{list.length}}">
-        <view class="ui-goodsItem"  wx:for="{{list}}" wx:key="{{index}}" bindtap="onDetailTap">
+        <view class="ui-goodsItem"  wx:for="{{list}}" wx:key="index" bindtap="onDetailTap">
             <image src="{{filter.getLocalPhoto('card__pulscard.png')}}" class="ui-plusItem__icon" />
             <image src="{{filter.getPhoto(host, item.picUrl)}}" mode="aspectFit" class="ui-goodsItem__img" />
             <view class="ui-goodsItem__title">{{item.mainTitle}}</view>

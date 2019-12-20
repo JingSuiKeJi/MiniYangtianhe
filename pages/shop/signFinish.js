@@ -83,8 +83,10 @@ const methods = {
             self.setData({
                 bgImg: ret.data.poster
             });
+            let imgUrl = self.data.host + ret.data.poster;
+            if (!ret.data.poster) imgUrl = 'https://app.yth-yx.com/mini/sign__finish.png'
             self.downloadImg({
-                imgUrl: self.data.host + ret.data.poster
+                imgUrl: imgUrl
             }, (res) => {
                 self.setData({
                     picThumb: res
@@ -187,11 +189,21 @@ const methods = {
                             callback && callback(res);
                         },
                         fail(err) {
-                            console.log(err)
                             wx.hideLoading();
+                            console.log(333,err)
+                            _g.toast({
+                                title: '获取图像失败',
+                                turation: 2000
+                            })
                         }
                     });
                 }
+            },
+            fail(err) {
+                _g.toast({
+                    title: '图像下载失败',
+                    turation: 2000
+                })
             }
         });
     },

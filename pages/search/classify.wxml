@@ -9,7 +9,7 @@
         </view>
         <view class="ui-classifyBox" >
             <scroll-view scroll-y class="ui-classItem_tips"  >
-                <view class="ui-tipsItem__List" wx:for="{{classifyList}}" wx:key="{{index}}" bindtap="onChoseTap" data-id="{{item.id}}" data-title="{{item.title}}" style="background-color: {{ id == item.id ? '#fff' : ''}};color: {{ id == item.id ? '#333333' : ''}}">
+                <view class="ui-tipsItem__List" wx:for="{{classifyList}}" wx:key="index" bindtap="onChoseTap" data-id="{{item.id}}" data-title="{{item.title}}" style="background-color: {{ id == item.id ? '#fff' : ''}};color: {{ id == item.id ? '#333333' : ''}}">
                     {{item.title}}
                 </view>
             </scroll-view>
@@ -18,7 +18,7 @@
                     <text class="ui-tipItem__text">{{title}}</text>
                     <image src="{{filter.getLocalPhoto('classfity_rightIcon.png')}}" class="ui-tipItem__icon" data-type="1" mode="aspectFit"/>
                 </view>
-                <view class="ui-contentBox" wx:for="{{contentList}}" wx:key="{{index}}" wx:if="{{contentList.length}}">
+                <view class="ui-contentBox" wx:for="{{contentList}}" wx:key="index" wx:if="{{contentList.length}}">
                     <image src="{{filter.getPhoto(host,item.imgUrl)}}" data-id="{{item.id}}" data-title="{{item.title}}" data-type="2" bindtap="onSkipTap" class="ui-contentItem_img" />
                     <view class="ui-contentItem__text">{{item.title}}</view>
                 </view>

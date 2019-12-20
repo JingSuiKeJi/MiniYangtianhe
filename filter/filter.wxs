@@ -244,16 +244,16 @@ var filter = {
                 return '门店签到奖励'; 
             case 11:
                 return '任务签到奖励'; 
-            case 12:
-                return '绑定微信奖励';  
-            case 13:
-                return '绑定手机号奖励';  
-            case 14:
-                return '绑定门店奖励'; 
-            case 15:
-                return '绑定上级奖励'; 
-            case 16:
-                return '购买权益卡奖励';      				
+            // case 12:
+            //     return '绑定微信奖励';  
+            // case 13:
+            //     return '绑定手机号奖励';  
+            // case 14:
+            //     return '绑定门店奖励'; 
+            // case 15:
+            //     return '绑定上级奖励'; 
+            // case 16:
+            //     return '购买权益卡奖励';      				
 			default: 
 			   return '';
 		}
@@ -355,6 +355,20 @@ var filter = {
     add: function(a,b) {
         var c = (a + b).toFixed(2);
         return c;
+    },
+    couponLimit: function (value) {
+        switch(value) {
+			case 1:
+				return '全场';
+			case 2:
+				return '商城';
+			case 3:
+                return '药房';
+            case 4:
+                return '指定药房';    
+			default: 
+			   return '';
+		}
     }
 };
 module.exports = filter;

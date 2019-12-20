@@ -1,7 +1,8 @@
 {
 	"navigationStyle": "custom",
   "usingComponents": {
-    "navBar": "/components/navBar/navBar"
+    "navBar": "/components/navBar/navBar",
+    "werun": "/components/werun/werun"
   },
   "enablePullDownRefresh": true,
   "navigationBarTextStyle":"white"

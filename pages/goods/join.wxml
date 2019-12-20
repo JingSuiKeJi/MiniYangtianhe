@@ -37,7 +37,7 @@
             </view>
             <view class="ui-bodyItem_middle">还差{{diffNum}}人</view>
             <view class="ui-bodyItem_bottom">
-                <view class="ui-personBox" wx:for="{{assembleMemberVOList}}" wx:if="{{assembleMemberVOList.length}}" wx:key="{{index}}">
+                <view class="ui-personBox" wx:for="{{assembleMemberVOList}}" wx:if="{{assembleMemberVOList.length}}" wx:key="index">
                     <image src="{{item.avatar}}"  class="ui-avatar__img"/>
                     <image src="{{filter.getLocalPhoto('join__tunzhang.png')}}"   class="ui-personItem__img" wx:if="{{item.isHead}}"/>
                     <view class="ui-personItem__team">{{item.nickname}}</view>

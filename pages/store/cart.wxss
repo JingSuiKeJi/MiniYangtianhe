@@ -229,25 +229,25 @@ page {
 
 .ui-storeBox {
     margin-top: 20rpx;
-    margin-bottom: 260rpx
+    /* margin-bottom: 260rpx */
 }
 
 .ui-fixBox {
-    position: fixed;
-    bottom: 120rpx;
-    margin-top: 100rpx;
-    padding-top: 20rpx;
-    padding-bottom: 56rpx;
     width: 100%;
-    background-color: #fff;
+    height: 112rpx;
+    position: fixed;
+    bottom: 110rpx;
+    line-height: 112rpx;
+    background-color: #ffffff;
     box-sizing: border-box;
+    /* box-shadow:0rpx 3rpx 6rpx 0rpx rgba(0,0,0,0.1); */
 }
 
 .ui-fixItem__selectIcon {
     width: 40rpx;
     height: 40rpx;
-    vertical-align: top;
-    margin: 33rpx 15rpx auto 30rpx;
+    vertical-align: middle;
+    margin-left: 30rpx;
 }
 
 .ui-fixItem__text {
@@ -256,9 +256,7 @@ page {
     font-weight: 400;
     color: #333333;
     line-height: 26rpx;
-    display: inline-block;
-    vertical-align: top;
-    margin: 40rpx 130rpx auto 20rpx;
+    margin-left: 20rpx;
 }
 
 .ui-fixItem__allText {
@@ -309,18 +307,19 @@ page {
 .ui-fixItem__delectBtn {
     position: absolute;
     right: 20rpx;
-    top: 40rpx;
-    display: inline-block;
+    top: 0rpx;
+    bottom: 0;
+    margin: auto;
     width: 148rpx;
     height: 60rpx;
-    /* line-height:60rpx; */
+    line-height:60rpx;
     font-size: 30rpx;
     font-family: PingFangSC;
     font-weight: 400;
     color: #FF5F55;
     text-align: center;
     border-radius: 30rpx;
-    border: 2px solid #FF5F55;
+    border: 2rpx solid #FF5F55;
 }
 
 .ui-noBox {

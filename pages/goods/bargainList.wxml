@@ -25,7 +25,7 @@
                 </scroll-view>
             </view> -->
             <view class="ui-content_botttom">
-                <view class="ui-bottom_item" wx:for="{{list}}" wx:key="{{index}}">
+                <view class="ui-bottom_item" wx:for="{{list}}" wx:key="index">
                     <view class="ui-bottomItem_left" data-id="{{item.goodsId}}" data-thirdid="{{item.activityId}}" bindtap="onSkipTap">
                         <image src="{{filter.getPhoto(host,item.imgUrl)}}" />
                         <view class="ui-timeBox">距离下架 {{filter.countDown(item.endTime,curTime)}}</view>

@@ -147,6 +147,7 @@ page {
     bottom: 268rpx;
     left: 100rpx;
     background-color: #FFFFFF;
+    z-index: 100;
 }
 /* .ui-share__canvas {
     width: 552rpx;

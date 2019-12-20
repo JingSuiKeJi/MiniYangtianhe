@@ -20,7 +20,7 @@
         </view>
     </view>
     <view class="ui-goodsBox" wx:if="{{list.length > 1}}">
-        <view class="ui-goodsItem" bindtap="onDetailTap" data-id="{{item.id}}" wx:for="{{list}}" wx:key="{{index}}" wx:if="{{index != 0}}">
+        <view class="ui-goodsItem" bindtap="onDetailTap" data-id="{{item.id}}" wx:for="{{list}}" wx:key="index" wx:if="{{index != 0}}">
             <image src="{{filter.getPhoto(host,item.picUrl)}}" mode="aspectFill" class="ui-goodsItem__Img" />
             <view class="ui-goods__title">{{item.mainTitle}}</view>
             <view class="ui-goods__price">
