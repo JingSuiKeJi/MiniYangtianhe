@@ -68,7 +68,7 @@
                     </view>
                 </view>
                 <scroll-view scroll-y="true" class="ui-deliveryStatus">
-                    <view class="ui-items" wx:for="{{deliveryStatus}}"  wx:key="{{index}}">
+                    <view class="ui-items" wx:for="{{deliveryStatus}}"  wx:key="index">
                         <view class="ui-itemsStatus">
                             <image mode="aspectFit" src="{{index == 0 ? filter.getLocalPhoto('my_wuliu.png'): filter.getLocalPhoto('my_ovalSelect.png')}}" class="{{index == 0?'ui-arriveIcon':'ui-inTheWayIcon'}}"/>
                             <text>{{item.acceptStation}}</text>

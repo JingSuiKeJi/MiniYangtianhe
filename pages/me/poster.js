@@ -22,7 +22,7 @@ const onLoad = function (self) {
 	self.getData()
     const userInfo = _g.getLS(_c.LSKeys.userInfo);
 	self.setData({
-        canvasUrl: _g.getLS('myPosterUrl'),
+        // canvasUrl: _g.getLS('myPosterUrl'),
         userInfo: userInfo
 	});
 	event.on('me-poster-authorize', self, (res)=>{
@@ -76,11 +76,13 @@ const methods = {
 			User.getPoster(self, {
 				type: 1
 			}).then((ret) => {
+                let imgUrl = self.data.host +  ret.data.poster
+                if (!ret.data.poster) imgUrl = 'https://app.yth-yx.com/mini/myposter.jpg';
                 self.setData({
-                    picUrl: ret.data.poster
+                    picUrl: imgUrl
                 });
 				self.downloadImg({
-                    imgUrl: self.data.host +  ret.data.poster,
+                    imgUrl: imgUrl,
 				}, (res) => {
 					self.setData({
                         picThumb: res,
@@ -270,7 +272,7 @@ const methods = {
 					self.setData({
 						canvasUrl: res.tempFilePath
 					});
-					_g.setLS('myPosterUrl', res.tempFilePath);
+					// _g.setLS('myPosterUrl', res.tempFilePath);
 				}
 			}, self);
 		},self);

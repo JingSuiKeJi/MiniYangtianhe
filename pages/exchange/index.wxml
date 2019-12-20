@@ -14,7 +14,7 @@
         <view class="ui-navContainel">
             <!-- 奖品 -->
             <view class="ui-prize" wx:if="{{current == 1}}">
-                <view class="ui-prize__item" wx:for="{{list}}" wx:key="{{index}}" wx:if="{{list.length}}">
+                <view class="ui-prize__item" wx:for="{{list}}" wx:key="index" wx:if="{{list.length}}">
                     <view class="ui-prize__time" wx:if="{{item.showTime}}">
                         <text>{{item.time}}</text>
                     </view>
@@ -37,7 +37,7 @@
             </view>
             <!-- 优惠券 -->
             <view class="ui-quan" wx:if="{{current == 2}}">
-                <view class="ui-quan__item" wx:for="{{list}}" wx:key="{{index}}" wx:if="{{list.length}}">
+                <view class="ui-quan__item" wx:for="{{list}}" wx:key="index" wx:if="{{list.length}}">
                     <view class="ui-quan__time" wx:if="{{item.showTime}}">
                         <text>{{item.time}}</text>
                     </view>

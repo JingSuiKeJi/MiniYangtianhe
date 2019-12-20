@@ -19,7 +19,7 @@
 			<!-- 退款信息 -->
 			<view class="ui-refundInfo">
 				<text class="ui-refundTitle">退款信息</text>
-				<view class="ui-newsInfoItem" wx:for="{{list.goodsList}}"  wx:key="{{index}}">
+				<view class="ui-newsInfoItem" wx:for="{{list.goodsList}}"  wx:key="index">
 					<view class="ui-newsImg">
 						<image src="{{filter.getPhoto(host,item.imgUrl)}}"></image>
 					</view>
@@ -135,7 +135,7 @@
 			<!-- 退款信息 -->
 			<view class="ui-refundInfo">
 				<text class="ui-refundTitle">退款信息</text>
-				<view class="ui-newsInfoItem" wx:for="{{list.goodsList}}"  wx:key="{{index}}">
+				<view class="ui-newsInfoItem" wx:for="{{list.goodsList}}"  wx:key="index">
 					<view class="ui-newsImg">
 						<image src="{{filter.getPhoto(host,item.imgUrl)}}" mode="aspectFit"></image>
 					</view>

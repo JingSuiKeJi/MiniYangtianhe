@@ -3,7 +3,7 @@
 <view class="container">
     <navBar title='过期订单' background='white' color='black' iconTheme='black' back="{{true}}"></navBar>
 	<view wx:if="{{orderList}}" class="ui-main">
-		<view  class="ui-orderInfoBox" wx:for="{{orderList}}"  wx:key="{{index}}" wx:if="{{orderList.length}}">
+		<view  class="ui-orderInfoBox" wx:for="{{orderList}}"  wx:key="index" wx:if="{{orderList.length}}">
 			<view bindtap="onOrderDetailTap" >
 				<view class="ui-orderStatus">
 					<text class="ui-orderReferenceText">订单编号： {{item.orderNo}}</text>

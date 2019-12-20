@@ -14,7 +14,7 @@
                     <view class="ui-leftItem_text">养乐步</view>
                 </view>
                 <view class="ui-stepTapBox_center">
-                    <view class="ui-block__item" wx:for="{{blockList}}" wx:key="{{index}}" style="left: {{item.left*100+155+'rpx'}};bottom: {{item.bottom*100 + 120+'rpx'}};-webkit-transform: rotate({{item.rotate+'deg'}}); -moz-transform: rotate({{item.rotate+'deg'}});-ms-transform: rotate({{item.rotate+'deg'}});-o-transform: rotate({{item.rotate+'deg'}}); transform: rotate({{item.rotate+'deg'}});background-color: {{index >= BMIIndex ?  '#EEEEEE': '#69CCBC'}}"></view>
+                    <view class="ui-block__item" wx:for="{{blockList}}" wx:key="index" style="left: {{item.left*100+155+'rpx'}};bottom: {{item.bottom*100 + 120+'rpx'}};-webkit-transform: rotate({{item.rotate+'deg'}}); -moz-transform: rotate({{item.rotate+'deg'}});-ms-transform: rotate({{item.rotate+'deg'}});-o-transform: rotate({{item.rotate+'deg'}}); transform: rotate({{item.rotate+'deg'}});background-color: {{index >= BMIIndex ?  '#EEEEEE': '#69CCBC'}}"></view>
                     <view class="ui-centerItem_stepText">今日步数</view>
                     <view class="ui-centerItem_detailText">
                         {{stepInfo.todayStep}}
@@ -51,7 +51,7 @@
             </view>
             <view class="ui-historyBox ui-friendsListBox">  
                 <view class=" ui-friendsListItem__text">— 乐友排行榜 —</view>
-                <view class="ui-friendsLiItem__item" wx:for="{{fridensList}}" wx:key="{{index}}" wx:if="{{fridensList.length}}" style="background-color:{{ item.isMe ? '#F5F5F5' : ''}}">
+                <view class="ui-friendsLiItem__item" wx:for="{{fridensList}}" wx:key="index" wx:if="{{fridensList.length}}" style="background-color:{{ item.isMe ? '#F5F5F5' : ''}}">
                     <view class="ui-friendsLiItem " >
                         <image src="{{filter.getLocalPhoto('gold.png')}}" mode="aspectFit" class="ui-friendsLiItem__img" wx:if="{{item.index == 1}}" />
                         <image src="{{filter.getLocalPhoto('tongpai.png')}}" class="ui-friendsLiItem__img" wx:if="{{item.index == 2}}" mode="aspectFit"/>
@@ -70,7 +70,7 @@
              <view class="ui-historyBox ui-specialBox">
                 <!-- <image src="{{filter.getLocalPhoto('step_historyIcon.png')}}" class="ui-historyItem__icon" /> -->
                 <view class="ui-historyItem__text">— 历史记录 —</view>
-                <view class="ui-hirtoryItem__list" wx:for="{{list}}" wx:key="{{index}}" wx:if="{{list.length}}">
+                <view class="ui-hirtoryItem__list" wx:for="{{list}}" wx:key="index" wx:if="{{list.length}}">
                     <text class="ui-listItem__time">{{filter.getDay(item.createTime)}}</text>
                     <text class="ui-listItem__step">{{item.step}}</text>
                     <text class="ui-listItem__status" style="color: {{ (item.status== 1 ? '#20CAB4' : '' ) || (item.status== 3 ? '#999999' : '' )}}">
@@ -106,7 +106,7 @@
                 <view class=" ui-tipItem__secondLine"></view>
             </view>
             <view class="ui-topListitem__goods" wx:if="{{deductDoods.length}}">
-                <view class="ui-goodsItem" wx:for="{{deductDoods}}" wx:key="{{index}}" bindtap="onDetainTap" data-id="{{item.id}}">
+                <view class="ui-goodsItem" wx:for="{{deductDoods}}" wx:key="index" bindtap="onDetainTap" data-id="{{item.id}}">
                     <image src="{{filter.getPhoto(host,item.picUrl)}}"  class="ui-goodsItem__img" mode="aspectFit"/>
                     <view class="ui-goodsItem__title">{{item.mainTitle}}</view>
                     <view class="ui-goodsItem__scale">已售{{item.soldNum + item.virtualNum}}件</view>

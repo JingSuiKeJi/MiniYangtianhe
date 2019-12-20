@@ -10,7 +10,7 @@
 					<text>已过期</text>
 				</view>
 				<view class="ui-newsInfoBox">
-					<view class="ui-newsInfoItem" wx:for="{{list.goodsList}}" wx:key="{{index}}">
+					<view class="ui-newsInfoItem" wx:for="{{list.goodsList}}" wx:key="index">
 						<view class="ui-newsImg">
 							<image src="{{filter.getPhoto(host,item.imgUrl)}}"></image>
 						</view>

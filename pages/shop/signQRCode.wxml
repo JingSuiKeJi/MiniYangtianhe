@@ -18,7 +18,7 @@
 				<view class="ui-recordBox__title">今日签到人数</view>
 				<view class="ui-recordBox__num"> <text>{{storeSignNum}}</text> </view>
 			</view>
-			<block wx:for="{{list}}" wx:key="{{index}}" wx:if="{{list.length}}">
+			<block wx:for="{{list}}" wx:key="index" wx:if="{{list.length}}">
 				<view class="ui-recordBox__friend">
 					<view class="ui-friendBox">
 						<view class="ui-friend__info">

@@ -13,8 +13,8 @@
             <text wx:for="{{menuList}}" wx:for-item="item" wx:key="currentId" bindtap="chooseMenu" class="ui-menuText {{currentCheck==item.currentId?'currentText currentBorder':''}}" data-id="{{item.currentId}}">{{item.name}}</text>
         </view>
         <!-- <view wx:if="{{currentCheck==item.flagId||currentCheck==item.all}}" class="ui-orderInfoBox" 
-		wx:for="{{orderList}}" wx:for-item="item" wx:key="{{index}}"> -->
-        <view class="ui-orderInfoBox" wx:for="{{orderList}}" wx:for-item="item" wx:key="{{index}}" wx:if="{{orderList.length}}">
+		wx:for="{{orderList}}" wx:for-item="item" wx:key="index"> -->
+        <view class="ui-orderInfoBox" wx:for="{{orderList}}" wx:for-item="item" wx:key="index" wx:if="{{orderList.length}}">
             <view bindtap="onOrderDetailTap" data-orderid="{{item.orderId}}">
                 <view class="ui-orderStatus">
                     <text class="ui-orderReferenceText">订单编号： {{item.orderNo}}</text>

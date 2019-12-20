@@ -41,7 +41,7 @@
 				</view>
 			</view>
 			<view wx:if="{{addressList}}">
-				<view class="ui-addressSet" wx:for="{{addressList}}" wx:for-item="item" wx:key="{{index}}">
+				<view class="ui-addressSet" wx:for="{{addressList}}" wx:for-item="item" wx:key="index">
 					<view class="ui-nameAndTel">
 						<text>{{item.receiverName}}</text>
 						<text>{{item.receiverPhone}}</text>

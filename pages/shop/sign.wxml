@@ -33,7 +33,7 @@
             </view>
             <view class="ui-signitem__date" hidden="{{!signList.length}}">
                 <view class="ui-signItem__line"></view>
-                <block wx:for="{{signList}}" wx:key="{{index}}">
+                <block wx:for="{{signList}}" wx:key="index">
                     <view class="ui-signitem__day">
                         <view wx:if="{{!item.isSign}}" class="ui-signitem__num">
                              <image src="{{filter.getLocalPhoto('sign/sign_bg.png')}}" mode="aspectFit"/> 
@@ -57,7 +57,7 @@
          <!--  -->
          <view class="ui-recordBox">
              <view class="ui-recorditem__title">乐友签到记录</view>
-             <block wx:for="{{friendsList}}" wx:key="{{index}}" wx:if="{{friendsList.length}}">
+             <block wx:for="{{friendsList}}" wx:key="index" wx:if="{{friendsList.length}}">
                  <view class="ui-recorditem__friend">
                     <image src="{{item.avatar}}" mode="aspectFit" class="ui-recorditem__avatar"/>
                     <view class="ui-recorditem__name">{{item.name}}</view>

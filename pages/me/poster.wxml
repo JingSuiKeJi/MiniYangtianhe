@@ -22,7 +22,7 @@
 			<canvas canvas-id="share" class="ui-share__canvas" ></canvas>
         </view>
         <view class=" ui-bgImgbox">
-            <image class="ui-posterBackground" src="{{picUrl ? filter.getPhoto(host,picUrl) : filter.getLocalPhoto('myposter.jpg')}}" ></image>
+            <image class="ui-posterBackground" src="{{picUrl}}" ></image>
             <image src="{{userInfo.avatar}}" mode="aspectFit" class="ui-personalIcon"/>
 			<view class="ui-personalIdText">{{userInfo.nickname}}</view>
 			<view class="ui-ExtractQR">

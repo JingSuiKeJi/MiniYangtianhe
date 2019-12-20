@@ -19,7 +19,7 @@
 			</view>
 			<view class="ui-dateText">
 				<view bindtap="onChooseDate" class="ui-dateCircleBg {{currentData==item?'ui-dateCircleBgHhover':''}}" 
-				data-id="{{index}}" wx:for="{{dateList}}" wx:for-item="item" wx:key="{{index}}">	
+				data-id="{{index}}" wx:for="{{dateList}}" wx:for-item="item" wx:key="index">	
 					<text>{{item}}</text>
 				</view>
 			</view>
@@ -54,12 +54,12 @@
 		</view>
 		<!-- 福气核销明细 -->
 		<view class="ui-detailBox"
-		wx:for="{{blissList.verifierDayList}}" wx:for-item="item" wx:key="{{index}}">
+		wx:for="{{blissList.verifierDayList}}" wx:for-item="item" wx:key="index">
 			<view class="ui-data">
 				<text>{{item.date}}</text>
 			</view>
 			<block wx:if="{{item.verifierList.length>0}}">
-				<view class="ui-detailItems" wx:for="{{item.verifierList}}" wx:for-item="lessItem" wx:key="{{index}}">
+				<view class="ui-detailItems" wx:for="{{item.verifierList}}" wx:for-item="lessItem" wx:key="index">
 					<text>{{filter.getDateOrTime(lessItem.createTime,3)}}</text>
 					<text>{{lessItem.nickname}}</text>
 					<text>核销{{lessItem.points}}福气</text>

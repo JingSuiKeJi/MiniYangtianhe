@@ -7,7 +7,7 @@
             <view class="ui-gameBox__gz"><text>规则</text></view>
             <view class="ui-pontTitle">消耗{{gamePoint}}福气获一次抽奖机会</view>
             <view class="ui-gameBox__container">
-                <block wx:for="{{list}}" wx:key="{{index}}">
+                <block wx:for="{{list}}" wx:key="index">
                     <view class="ui-gameBox__item {{ currentIndex === index ? 'is-active':'' }}" wx:if="{{index != 4}}">
                         <image mode="aspectFit" src="{{ filter.getPhoto(host,item.imgUrl)}}" class="ui-gameBox__prizeImg" />
                         <view class="ui-gameBox__text">{{item.title}}</view>

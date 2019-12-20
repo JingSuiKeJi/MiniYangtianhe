@@ -83,8 +83,10 @@ const methods = {
             self.setData({
                 bgImg: ret.data.poster
             });
+            let imgUrl = self.data.host + ret.data.poster;
+            if (!ret.data.poster) imgUrl = 'https://app.yth-yx.com/mini/sign__finish.png'
             self.downloadImg({
-                imgUrl: self.data.host + ret.data.poster
+                imgUrl: imgUrl
             }, (res) => {
                 self.setData({
                     picThumb: res

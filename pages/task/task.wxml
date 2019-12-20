@@ -19,7 +19,7 @@
             <view class="ui-testBox__title">签到福气加倍</view>
             <view class="ui-testBox__sign" hidden="{{!signInfo.signScoreItemList.length}}">
                 <view class="ui-signItem__line"></view>
-                <view class="ui-testBox__signItem" wx:for="{{signInfo.signScoreItemList}}" wx:key="{{index}}" >
+                <view class="ui-testBox__signItem" wx:for="{{signInfo.signScoreItemList}}" wx:key="index" >
                     <view wx:if="{{!item.isSign}}" class="ui-signitem__num">
                         <image src="{{filter.getLocalPhoto('sign/sign_bg.png')}}" mode="aspectFit" />
                         <text>+{{item.score}}</text>
@@ -63,7 +63,7 @@
         </view>
         <view class="ui-test">
             <view class="ui-test__title">每日任务</view>
-            <view class="ui-test__testItem" wx:for="{{ dailyTask}}" wx:key="{{index}}" wx:if="{{(userInfo.verifier && (item.code != 22)) || !userInfo.verifier}}">
+            <view class="ui-test__testItem" wx:for="{{ dailyTask}}" wx:key="index" wx:if="{{(userInfo.verifier && (item.code != 22)) || !userInfo.verifier}}">
                 <view class="ui-test__testName">{{item.title}}</view>
                 <view class="ui-test__testAdd">+{{item.point}}</view>
                 <view class="ui-test__testStatus"  bindtap="onSkipTap" data-code="{{item.code}}"  wx:if="{{!item.status && item.sum > 0}}">{{item.successNum + '/' + item.sum}}</view>

@@ -9,7 +9,7 @@
     </view>
     <view class="ui-addressBox"  bindtap="onAddressTap">
         <image src="{{filter.getLocalPhoto('my_landmarkIcon.png')}}" class="ui-addressItem__addressIcon"/>
-        <view class="ui-addressItem__detail" wx:for="{{infoList}}" wx:key="{{index}}" wx:if="{{infoList.length}}" >
+        <view class="ui-addressItem__detail" wx:for="{{infoList}}" wx:key="index" wx:if="{{infoList.length}}" >
             <view class="ui-detailItem__info">
                 <text class="ui-infoItem__name">{{item.name}}</text>
                 <text class="ui-infoItem__phone">{{item.phone}}</text>
@@ -47,7 +47,7 @@
         <image src="{{filter.getLocalPhoto('my_icMore.png')}}" class="ui-storeAddress__rightItem"/>
     </view>
     <view class="ui-orderBox">
-        <view class="ui-orderItem" wx:for="{{goodsList}}" wx:key="{{index}}">
+        <view class="ui-orderItem" wx:for="{{goodsList}}" wx:key="index">
             <view class="ui-orderItem__imgBox">
                 <image src="{{filter.getReturnPhoto(item.imgUrl)}}" class="ui-imgItem__icon"/>
             </view>

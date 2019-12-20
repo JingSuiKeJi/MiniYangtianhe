@@ -14,7 +14,7 @@
         <image src="{{filter.getLocalPhoto('my_icMore.png')}}" class="ui-addressItem__moreIcon" mode="aspectFit"/>
     </view>
     <view class="ui-orderBox">
-        <view class="ui-orderItem" wx:for="{{goodsList}}" wx:key="{{index}}">
+        <view class="ui-orderItem" wx:for="{{goodsList}}" wx:key="index">
             <view class="ui-orderItem__imgBox">
                 <image src="{{filter.getPhoto(host, item.imgUrl)}}" class="ui-imgItem__icon" mode="aspectFill"></image>
             </view>

@@ -39,7 +39,7 @@
 		</view> -->
         <view class="ui-withdrawalRecord" wx:if="{{recordList.length}}">
             <view class="ui-withdrawInfoItem">
-                <view class="ui-withdrawDetail" wx:for="{{recordList}}" wx:key="{{index}}" catchtap="onRecordTap" data-index="{{index}}">
+                <view class="ui-withdrawDetail" wx:for="{{recordList}}" wx:key="index" catchtap="onRecordTap" data-index="{{index}}">
                     <text>{{filter.getDay(item.createTime)}}</text>
                     <text style="color: {{item.status== 2 ?'#20CAB4':''}};">- {{item.realMoney}}</text>
                     <text style="color: {{item.status== 2?'#20CAB4':''}};color: {{item.status== 3 ?'#CCCCCC':''}}">{{filter.getWithdrawStatus(item.status)}}</text>

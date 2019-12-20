@@ -68,7 +68,7 @@
 				</cover-view>
 				<cover-view class="modal-explainText">请选择售后原因</cover-view>
 				<cover-view class="modal-afterReason">
-					<cover-view class="modal-reasonItems" wx:for="{{causeList}}" wx:key="{{index}}" >
+					<cover-view class="modal-reasonItems" wx:for="{{causeList}}" wx:key="index" >
 						<cover-view class="modal-reasonItems__text">{{item.reason}}</cover-view>
 						<cover-image class="modal-selectIcon "
 						src="{{reasonFlag != item.reasonFlag ?  filter.getLocalPhoto('my_check.png') : filter.getLocalPhoto('my_oval.png')}}"
@@ -103,7 +103,7 @@
 				<view class="ui-flex">
 					<!-- 展示图片 -->
 					<view wx:if="{{tempFilePaths.length}}" class="ui-showPicture"
-					wx:for="{{tempFilePaths}}"  wx:key="{{index}}" >
+					wx:for="{{tempFilePaths}}"  wx:key="index" >
 						<image src="{{filter.getLocalPhoto('my_ic_off_red.png')}}" mode="aspectFit" class="ui-deleteIcon" catchtap="onDeletePicTap" data-index="{{index}}"/>
 						<image src="{{filter.getPhoto(host,item)}}" class="ui-showPictureItem"></image>
 					</view>

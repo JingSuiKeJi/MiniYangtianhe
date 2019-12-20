@@ -156,7 +156,7 @@
                 <view class="ui-bottomItem_imgages" wx:if="{{goodsImgs.length}}">
                     <!-- <image src="http://m.qpic.cn/psb?/V12Kdegv0qd4wf/q3YUQR2wBKp3krmm9Rp1yZEwH1**f.vRjme0YuXZhIg!/b/dFYBAAAAAAAA&bo=7gKMDgAAAAADh8w!&rf=viewer_4&t=5" 
                          class="ui-bottomItem_detailIcon"/> -->
-                    <image src="{{filter.getPhoto(host, item)}}" class="ui-bottomItem_detailIcon" wx:for="{{goodsImgs}}" wx:key="{{index}}" mode="widthFix"></image>
+                    <image src="{{filter.getPhoto(host, item)}}" class="ui-bottomItem_detailIcon" wx:for="{{goodsImgs}}" wx:key="index" mode="widthFix"></image>
                 </view>
             </view>
         </view>
@@ -225,7 +225,7 @@
                                         {{skuList[0].goodsSpecificationVoList[0].key}}
                                     </view>
                                     <view class="ui-ui-middleItem_btnList" hidden="{{type == 6 || type == 5}}">
-                                        <view class="ui-middleItem_btn {{index == firstIndex ? 'isSelectBtn' : ''}}" wx:for="{{skuList}}" wx:key="{{index}}" bindtap="onSelectTap" data-index="{{index}}">
+                                        <view class="ui-middleItem_btn {{index == firstIndex ? 'isSelectBtn' : ''}}" wx:for="{{skuList}}" wx:key="index" bindtap="onSelectTap" data-index="{{index}}">
                                             {{item.name}}
                                         </view>
                                     </view>
@@ -240,7 +240,7 @@
                                     <view class="ui-ui-middleItem_btnList" >
                                         <view class="ui-middleItem_btn {{index == secondIndex && item.optional? 'isSelectBtn' : ''}} {{!item.optional && firstIndex != -1? 'noSelectBtn' : ''}}" 
                                         wx:for="{{secondSkuList}}" 
-                                        wx:key="{{index}}" 
+                                        wx:key="index" 
                                         bindtap="onSecondSelect" 
                                         data-index="{{index}}">
                                         {{item.name}}

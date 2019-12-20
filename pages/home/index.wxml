@@ -23,7 +23,7 @@
             </view>
             <view class="ui-tapBox">
                 <view class="ui-tapBox__Item">
-                    <view class="ui-tap__item" wx:for="{{hotSearch}}" wx:key="{{index}}" bindtap="onResultTap" data-id="{{item.id}}" data-value="{{item.title}}">
+                    <view class="ui-tap__item" wx:for="{{hotSearch}}" wx:key="index" bindtap="onResultTap" data-id="{{item.id}}" data-value="{{item.title}}">
                         {{item.title}}
                     </view>
                 </view>
@@ -31,14 +31,14 @@
             <view class="ui-banner" wx:if="{{banner.length}}">
                 <view class="ui-banner_bgroundBox"></view>
                 <swiper current="currentIndex" autoplay interval="2000" duration="500" circular class="ui-banner_swiper" bindchange="onChangeTap" wx:if="{{banner.length}}">
-                    <block wx:for="{{banner}}" wx:key="{{index}}">
+                    <block wx:for="{{banner}}" wx:key="index">
                         <swiper-item style="">
                             <image src="{{filter.getPhoto(host,item.imgUrl)}}" mode="aspectFill" class="ui-banner_image" data-index="{{index}}" data-isLink="{{item.isLink}}" bindtap="onGoTap" />
                         </swiper-item>
                     </block>
                 </swiper>
                 <view class="ui-banner_btnBox">
-                    <text wx:for="{{banner.length}}" wx:key="{{index}}" data-index="{{index}}" class="{{currentIndex==index ? 'isSelectBtn' : ''}}"></text>
+                    <text wx:for="{{banner.length}}" wx:key="index" data-index="{{index}}" class="{{currentIndex==index ? 'isSelectBtn' : ''}}"></text>
                 </view>
             </view>
             <view class="ui-activityBox">
@@ -55,7 +55,7 @@
                     <view class="ui-leftItem_text">养乐步</view>
                 </view>
                 <view class="ui-stepTapBox_center ">
-                    <view class="ui-block__item" wx:for="{{blockList}}" wx:key="{{index}}" style="left: {{item.left*100+140+'rpx'}};bottom: {{item.bottom*100 + 120+'rpx'}};-webkit-transform: rotate({{item.rotate+'deg'}}); -moz-transform: rotate({{item.rotate+'deg'}});-ms-transform: rotate({{item.rotate+'deg'}});-o-transform: rotate({{item.rotate+'deg'}}); transform: rotate({{item.rotate+'deg'}});background-color: {{index >= BMIIndex ? '#EEEEEE' : '#02CFA5'}}"></view>
+                    <view class="ui-block__item" wx:for="{{blockList}}" wx:key="index" style="left: {{item.left*100+140+'rpx'}};bottom: {{item.bottom*100 + 120+'rpx'}};-webkit-transform: rotate({{item.rotate+'deg'}}); -moz-transform: rotate({{item.rotate+'deg'}});-ms-transform: rotate({{item.rotate+'deg'}});-o-transform: rotate({{item.rotate+'deg'}}); transform: rotate({{item.rotate+'deg'}});background-color: {{index >= BMIIndex ? '#EEEEEE' : '#02CFA5'}}"></view>
                     <view class="ui-centerItem_stepText">今日步数</view>
                     <view class="ui-centerItem_detailText">
                         {{stepInfo.todayStep}}
@@ -73,7 +73,7 @@
         </view>
         <view class="ui-noticeBox">
             <view  wx:if="{{notion.length}}" class="ui-noticeItem__title">优选公告</view>
-            <view wx:key="{{index}}" wx:for="{{notion}}" data-id="{{item.id}}" bindtap="onNoticTap" wx:if="{{notion.length}}">
+            <view wx:key="index" wx:for="{{notion}}" data-id="{{item.id}}" bindtap="onNoticTap" wx:if="{{notion.length}}">
                 {{item.title}}
             </view>
         </view>
@@ -85,9 +85,9 @@
             <view class="ui-wrapBox">
                 <view class="ui-classBox">
                     <swiper duration="500" class="ui-imageItem_swper" bindchange="onClassifyTap">
-                        <block wx:for="{{classList}}" wx:for-item="bannerItem" wx:key="{{index}}">
+                        <block wx:for="{{classList}}" wx:for-item="bannerItem" wx:key="index">
                             <swiper-item>
-                                <form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onTabTap" wx:for="{{bannerItem}}" wx:key="{{index}}" data-id="{{item.id}}" data-isLink="{{item.isLink}}">
+                                <form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onTabTap" wx:for="{{bannerItem}}" wx:key="index" data-id="{{item.id}}" data-isLink="{{item.isLink}}">
                                     <button formType="submit" class="ui-classBox_item">
                                         <image src="{{filter.getPhoto(host,item.imgUrl)}}" class="ui-classItem__img" data-id="{{item.id}}" data-isLink="{{item.isLink}}" mode="aspectFit" />
                                         <view class="ui-classItem__text" data-id="{{item.id}}" data-isLink="{{item.isLink}}">
@@ -99,7 +99,7 @@
                         </block>
                     </swiper>
                     <view class="ui-classBox_icon">
-                        <text class="{{classifyType == index ? 'isSelect' : ''}}" wx:for="{{classList}}" wx:key="{{index}}"></text>
+                        <text class="{{classifyType == index ? 'isSelect' : ''}}" wx:for="{{classList}}" wx:key="index"></text>
                     </view>
                 </view>
             </view>
@@ -127,7 +127,7 @@
                 </view>
                 <view class="ui-buyBox_bottom" >
                     <scroll-view scroll-x class="ui-bottomItem_scrollView">
-                        <form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onDetailTap" data-id="{{item.id}}" data-thirdid="{{skillId}}" wx:for="{{goodsList}}" wx:key="{{index}}" class="ui-scrollView_item">
+                        <form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onDetailTap" data-id="{{item.id}}" data-thirdid="{{skillId}}" wx:for="{{goodsList}}" wx:key="index" class="ui-scrollView_item">
                             <button formType="submit" class="ui-scrollView_item">
                                 <image src="{{filter.getLocalPhoto('buy.png')}}" mode="aspectFill"></image>
                                 <image src="{{filter.getPhoto(host,item.picUrl)}}" mode="aspectFill"></image>
@@ -153,7 +153,7 @@
             <view class="ui-brandSelectItem_bottom" >
                 <scroll-view scroll-x class="ui-brandItem_scrollView" wx:if="{{brandList[0].length || singleBrandList.length}}">
                     <view class="ui-brandScroll_itemTop">
-                        <view wx:for="{{brandList[0] || singleBrandList}}" wx:key="{{index}}" class="ui-brandScroll_item">
+                        <view wx:for="{{brandList[0] || singleBrandList}}" wx:key="index" class="ui-brandScroll_item">
                             <!-- <image src="{{filter.getPhoto(host,item.logoUrl)}}" bindtap="onBrandsTap" data-id="{{item.id}}" /> -->
                             <form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onBrandsTap" data-id="{{item.id}}">
                                 <button formType="submit" class="ui-brandScroll_itemImg">
@@ -165,7 +165,7 @@
                 </scroll-view>
                 <scroll-view scroll-x class="ui-brandItem_scrollView" wx:if="{{brandList[1].length}}">
                     <view class="ui-brandScroll_itemBottom">
-                        <view wx:for="{{brandList[1]}}" wx:key="{{index}}" class="ui-brandScroll_item">
+                        <view wx:for="{{brandList[1]}}" wx:key="index" class="ui-brandScroll_item">
                             <!-- <image src="{{filter.getPhoto(host,item.logoUrl)}}" mode="aspectFill" bindtap="onBrandsTap" data-id="{{item.id}}" /> -->
                             <form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onBrandsTap" data-id="{{item.id}}">
                                 <button formType="submit" class="ui-brandScroll_itemImg">
@@ -183,7 +183,7 @@
             <view class="ui-listItem_bottom">
                 <view class="ui-bottomItem_tap {{isFixed ? 'isFixed' : ''}}" id="aim" style="top: {{isFixed ? headTop+ 'px' : ''}}">
                     <scroll-view scroll-x class="ui-tapItem_scrollView" scroll-into-view="{{toView}}">
-                        <view wx:for="{{tapList}}" wx:key="{{index}}" class="ui-tapScroll_item" bindtap="onClickTap" id="{{'_' + item.id}}" data-type="{{item.id}}">
+                        <view wx:for="{{tapList}}" wx:key="index" class="ui-tapScroll_item" bindtap="onClickTap" id="{{'_' + item.id}}" data-type="{{item.id}}">
                             <view class="ui-tapScroll_itemText" style="font-weight: {{classifyId == item.id ? '500' : '400'}};">
                                 {{item.title}}
                             </view>
@@ -198,7 +198,7 @@
                         <view class="bottom-dialog-body bottom-pos">
                             <view class="slideBox">
                                 <view class="ui-slideItem__left">
-                                    <view class="ui-leftItem" wx:for="{{tapList}}" wx:key="{{index}}" bindtap="onClickTap" id="{{'_' + item.id}}" data-type="{{item.id}}">
+                                    <view class="ui-leftItem" wx:for="{{tapList}}" wx:key="index" bindtap="onClickTap" id="{{'_' + item.id}}" data-type="{{item.id}}">
                                         {{item.title}}
                                     </view>
                                 </view>
@@ -210,7 +210,7 @@
                     </view>
                 </view>
                 <view class="ui-bottomItem_content" hidden="{{!list.length}}">
-                    <form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onDetailTap" data-id="{{item.id}}" wx:for="{{list}}" wx:key="{{index}}">
+                    <form report-submit="true" bindsubmit="onFormIdTap" data-fuc="onDetailTap" data-id="{{item.id}}" wx:for="{{list}}" wx:key="index">
                         <button formType="submit" class="ui-content_item">
                             <view class="ui-contentItem_left">
                                 <image src="{{filter.getPhoto(host,item.picUrl)}}" mode="aspectFit"></image>

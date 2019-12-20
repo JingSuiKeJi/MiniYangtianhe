@@ -62,7 +62,7 @@
                 <text class="ui-titleItem_line"></text>
             </view>
             <view class="ui-listItem_content" wx:if="{{list.friendList.length}}">
-                <view class="ui-contentItem_child" wx:for="{{list.friendList}}" wx:key="{{index}}" wx:if="{{list.friendList.length}}">
+                <view class="ui-contentItem_child" wx:for="{{list.friendList}}" wx:key="index" wx:if="{{list.friendList.length}}">
                     <view class="ui-childItem_left" wx:if="{{index == 0}}" style="color: #FF5F55">{{index + 1}}</view>
                     <view class="ui-childItem_left" wx:if="{{index == 1}}" style="color: #97D2FF">{{index + 1}}</view>
                     <view class="ui-childItem_left" wx:if="{{index == 2}}" style="color: #FFAA00">{{index + 1}}</view>

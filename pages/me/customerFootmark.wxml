@@ -19,7 +19,7 @@
 			</view>
 			<view class="ui-dateText">
 				<view bindtap="onChooseDate" class="ui-dateCircleBg {{currentData==item.day?'ui-dateCircleBgHhover':''}}" 
-				data-id="{{index}}" wx:for="{{dateList}}" wx:for-item="item" wx:key="{{index}}">	
+				data-id="{{index}}" wx:for="{{dateList}}" wx:for-item="item" wx:key="index">	
 					<text>{{item.day}}</text>
 				</view>
 			</view>
@@ -37,7 +37,7 @@
 					<text class="ui-dateShow">{{time}}</text>
 				</view>
 				<view class="ui-footmarkList">
-					<view class="ui-ListItems" wx:for="{{list}}" wx:key="{{index}}">
+					<view class="ui-ListItems" wx:for="{{list}}" wx:key="index">
 						<view class="ui-img"><image src="{{filter.getPhoto(host,item.goodsPicUrl)}}"></image></view>
 						<view class="ui-priceBox">
 							<!-- <view wx:if="{{showAndHideCheck}}" class="ui-select {{slectAllIcon==true?'ui-checkIcon':'ui-unCheckIcon'}}"></view> -->

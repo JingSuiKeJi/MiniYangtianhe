@@ -16,7 +16,7 @@
                 </scroll-view>
             </view> -->
             <view class="ui-content_botttom">
-                <view class="ui-bottom_item" wx:for="{{allList}}" wx:key="{{index}}" bindtap="onSkipTap" data-id="{{item.id}}">
+                <view class="ui-bottom_item" wx:for="{{allList}}" wx:key="index" bindtap="onSkipTap" data-id="{{item.id}}">
                     <view class="ui-bottomItem_left">
                         <image src="{{filter.getPhoto(host,item.picUrl)}}" />
                     </view>
