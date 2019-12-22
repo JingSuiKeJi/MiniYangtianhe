@@ -42,7 +42,7 @@
                 <text>立即签到</text>
             </view>
         </view>
-        <view class="ui-game">
+        <!-- <view class="ui-game">
             <view class="ui-game__item" bindtap="onGameTap">
                 <view>福气大转盘</view>
                 <view>邀请好友一起玩</view>
@@ -51,7 +51,7 @@
                 <view>幸运砸金蛋</view>
                 <view>天天赢好礼</view>
             </view>
-        </view>
+        </view> -->
         <!-- <view class="ui-test">
             <view class="ui-test__title">新手任务</view>
             <view class="ui-test__testItem" wx:for="{{newbieTask }}" wx:key="{{item}}">

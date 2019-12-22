@@ -98,16 +98,20 @@ const methods = {
                 self.setPageData(ret.data);
                 self.getGoodsInfo(ret.data.goodsVoList);
             }, (err) => {
-                if (err.code == 40001) {
-                    _g.toast({
-                        title: err.message,
-                    });
-                    setTimeout(() => {
+                _g.showModal({
+                    content: err.message,
+                    confirm() {
                         _g.navigateBack();
-                    }, 2000)
-
-
-                }
+                    }
+                })
+                // if (err.code == 40001) {
+                //     _g.toast({
+                //         title: err.message,
+                //     });
+                //     setTimeout(() => {
+                //         _g.navigateBack();
+                //     }, 2000)
+                // }
 
             });
 
@@ -126,16 +130,20 @@ const methods = {
                 self.setPageData(ret.data);
                 self.getGoodsInfo(ret.data.goodsVoList);
             }, (err) => {
-                if (err.code == 40001) {
-                    _g.toast({
-                        title: err.message,
-                    });
-                    setTimeout(() => {
+                _g.showModal({
+                    content: err.message,
+                    confirm() {
                         _g.navigateBack();
-                    }, 2000)
-
-
-                }
+                    }
+                })
+                // if (err.code == 40001) {
+                //     _g.toast({
+                //         title: err.message,
+                //     });
+                //     setTimeout(() => {
+                //         _g.navigateBack();
+                //     }, 2000)
+                // }
             });
         }
     },
@@ -356,7 +364,7 @@ const methods = {
             self.prePay(ret.data);
         }, (err) => {
             _g.showModal({
-                content: '提交订单失败',
+                content: err.message,
                 confirm() {
                     _g.navigateBack();
                 }

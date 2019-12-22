@@ -554,10 +554,6 @@ const methods = {
                 });
             }, 500);
             self.getCartList();
-        }, (err) => {
-            _g.toast({
-                title: '加入购物车失败'
-            });
         });
     },
     //请求购物车列表
