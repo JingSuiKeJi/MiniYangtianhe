@@ -1775,6 +1775,17 @@ base.prototype = {
         }, (err) => {
             //TODO 失败
         });
+    },
+    getImageUrl: function (url) {
+        if (url.indexOf('http') > -1) {
+            return url
+        }
+        if (url) {
+            return 'https://app.yth-yx.com' + url
+        }
+        if (!url) {
+
+        }
     }
 };
 

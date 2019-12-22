@@ -8,14 +8,14 @@ config.prototype = {
 
     debug: true,
     // debug: false,
-    version: '1.0.11', // 版本号 正式: v1.0.0 体验: v0.0.1
+    version: '1.0.14', // 版本号 正式: v1.0.0 体验: v0.0.1
     appName: '养天和', // 内容展示小程序
 
     tokenKey: '',
 
     // env: 'dev', // 切换版本(提交正式必须改为 pro): dev 开发 | test  测试 | pro 生产
-    env: 'test', // 切换版本(提交正式必须改为 pro): dev 开发 | test  测试 | pro 生产
-    // env: 'pro', // 切换版本(提交正式必须改为 pro): dev 开发 | test  测试 | pro 生产
+    // env: 'test', // 切换版本(提交正式必须改为 pro): dev 开发 | test  测试 | pro 生产
+    env: 'pro', // 切换版本(提交正式必须改为 pro): dev 开发 | test  测试 | pro 生产
 
     defaultPage: 1,// 页码 默认1
     defaultPageSize: 15,// 每页数 默认15
